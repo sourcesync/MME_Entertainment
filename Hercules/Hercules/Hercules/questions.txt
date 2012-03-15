@@ -1,0 +1,41 @@
+Hercules Questionaire Module
+
+You can present participants with questions prior to receiving their photos.  
+
+Types of questions:
+
+1. Text entry
+2. Yes/No
+3. Checkbox
+4. Picture selection
+
+type, required, question
+
+
+%TEXT
+0
+Where were you born?
+%TEXT
+1
+What is your favorite beer?
+%YESNO
+0
+Are you having a great time?
+%YESNO
+1
+Are you expecting free photos?
+%CHECKBOX
+0
+What is your favorite color?
+Red
+Blue
+Green
+Yellow
+%SELECTION
+What type of Patron do you like?
+1
+silver.jpg|silver_selected.jpg|Patron Silver
+gold.jpg|gold_selected.jpg|Patron Gold
+
+
+

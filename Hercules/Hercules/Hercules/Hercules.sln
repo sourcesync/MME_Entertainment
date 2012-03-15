@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hercules", "Hercules\Hercules.csproj", "{C1B6A689-E95D-4276-B890-C83719444FE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{83F0EEA3-B0ED-453E-9DB5-5FFEECBEA541}"
+	ProjectSection(SolutionItems) = preProject
+		layout.txt = layout.txt
+		notes.txt = notes.txt
+		questions.txt = questions.txt
+		skins.txt = skins.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Supporting Files", "Supporting Files", "{3F13067E-A2CD-455A-87C2-5B8B779C462A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fonts", "Fonts", "{ADB88DE5-AA3F-4575-AFB8-3C374184727B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Drivers", "Drivers", "{D1A09A1D-F15A-46FD-BFC5-A0E028BBCF79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DPB-1500", "DPB-1500", "{596CB02D-9CD3-489E-AF53-99FC64666550}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\copal1500.dll = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\copal1500.dll
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\DPB1500.DLL = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\DPB1500.DLL
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500.gpd = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500.gpd
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500.inf = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500.inf
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500.ini = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500.ini
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500lm.dll = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500lm.dll
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500ud.dll = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500ud.dll
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500ui.dll = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\Dpb1500ui.dll
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\DPBPrint.dll = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\DPBPrint.dll
+		..\..\..\..\Desktop\Hercules\DPB1500 Driver\ERRMSG_E.ini = ..\..\..\..\Desktop\Hercules\DPB1500 Driver\ERRMSG_E.ini
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanonSDK", "CanonSDK\CanonSDK.csproj", "{B8D10081-6185-4EEC-802F-6F39372587C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Debug|x86.ActiveCfg = Debug|x86
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Debug|x86.Build.0 = Debug|x86
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Release|Any CPU.ActiveCfg = Release|x86
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Release|Mixed Platforms.Build.0 = Release|x86
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Release|x86.ActiveCfg = Release|x86
+		{C1B6A689-E95D-4276-B890-C83719444FE1}.Release|x86.Build.0 = Release|x86
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B8D10081-6185-4EEC-802F-6F39372587C1}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ADB88DE5-AA3F-4575-AFB8-3C374184727B} = {3F13067E-A2CD-455A-87C2-5B8B779C462A}
+		{D1A09A1D-F15A-46FD-BFC5-A0E028BBCF79} = {3F13067E-A2CD-455A-87C2-5B8B779C462A}
+		{596CB02D-9CD3-489E-AF53-99FC64666550} = {D1A09A1D-F15A-46FD-BFC5-A0E028BBCF79}
+	EndGlobalSection
+EndGlobal

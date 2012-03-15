@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Hercules speechver="1" Rate="0" Volume="100" Voice="">
+
+  <!-- Leave text blank to play the sound file alternative (if exists) -->
+
+  <string key="WELCOME" text="Welcome to the Nav Tech Photo Booth." />
+  <string key="ENTEREMAIL" text="Type in your email below so that we may get started." />
+  <string key="DEVELOPING_PLEASE_WAIT" text="Welcome to the Nav Tech Photo Booth." />
+  <string key="COUNTDOWN" text="Four, Three, Two, One!" />
+  <string key="GET_READY" text="Get ready!" />
+  <string key="FAVORITE" text="Now it is time to select your favorite photo." />
+  <string key="PHOTOS_DEVELOPED" text="Photos developed in just 10 seconds." />
+  <string key="PICKUP_PHOTOS" text="Please pick up your photos." />
+  <string key="PHOTO_TYPE" text="Please select from four backgrounds." />
+  <string key="THANKS" text="Thanks for taking your photos." />
+  <string key="FACEBOOK" text="Sign on to Facebook down below.  This booth does not store passwords." />
+  
+</Hercules>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Hercules configver="1">
+
+	<page type="selection">
+		<choice x="1" y="1" width="100" height="100" text="" value="Mountain Dew Regular" color="#333333" />
+		<choice x="100" y="1" width="100" height="100" text="" value="Mountain Dew New" color="#333333" />
+	</page>
+
+	<page type="video" filename="cars.mov" />
+
+
+</Hercules>

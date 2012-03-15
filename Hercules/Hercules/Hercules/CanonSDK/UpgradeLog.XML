@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="CanonSDK">
+</Property><Property Name="Solution File" Value="C:\Users\rstone\Desktop\CanonSDK\CanonSDK\CanonSDK.sln">
+</Property><Property Name="User Options File" Value="C:\Users\rstone\Desktop\CanonSDK\CanonSDK\CanonSDK.suo">
+</Property><Property Name="Date" Value="Thursday, December 30, 2010">
+</Property><Property Name="Time" Value="10:13 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="CanonSDK.sln" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\CanonSDK.sln">
+</Event><Event ErrorLevel="0" Project="" Source="CanonSDK.suo" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\CanonSDK.suo">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="CanonSDK.csproj" Description="Project file successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\CanonSDK.csproj">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="CanonSDK.csproj.user" Description="Project user file successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\CanonSDK.csproj.user">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="AssemblyInfo.cs" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="Camera.cs" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\Camera.cs">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="cdAPI.cs" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\cdAPI.cs">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="cdError.cs" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\cdError.cs">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="cdType.cs" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\cdType.cs">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="prAPI.cs" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\prAPI.cs">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="prError.cs" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\prError.cs">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="prType.cs" Description="File successfully backed up as C:\Users\rstone\Desktop\CanonSDK\CanonSDK\Backup\prType.cs">
+</Event><Event ErrorLevel="0" Project="CanonSDK" Source="CanonSDK.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="CanonSDK" Source="CanonSDK.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="CanonSDK.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="CanonSDK.sln" Description="Converted">
+</Event></UpgradeLog>

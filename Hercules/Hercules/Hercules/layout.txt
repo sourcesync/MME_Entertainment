@@ -1,0 +1,8 @@
+
+
+
+Text color
+C3C4C6
+
+Shadow color
+712814

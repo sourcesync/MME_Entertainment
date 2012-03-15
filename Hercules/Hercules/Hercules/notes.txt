@@ -1,0 +1,9 @@
+
+
+Future versions
+
+-Background images and sound clips should be pre-loaded into memory to reduce disk I/O
+-Configuration values should be preloaded into memory to reduce NameValueCollection lookups by ConfigurationManager
+
+
+

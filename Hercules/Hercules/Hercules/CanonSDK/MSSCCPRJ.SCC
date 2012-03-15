@@ -1,0 +1,6 @@
+SCC = This is a Source Code Control file
+
+[CanonSDK.csproj]
+SCC_Aux_Path = vssr:RoboDesign
+SCC_Project_Name = $/RoboDesign .NET Components/CanonSDK/Framework 2.0
+
