@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Hercules facebookver="1">
+
+  <string key="TITLE" value="This picture was taken from the NAVTEQ Media Solutions photo booth at Cannes Lions." />
+  <string key="DESC" value="To learn more about NAVTEQ and our advertising solutions be sure to visit us at Navteqms.mobi/" />
+  <string key="LINK" value="$CUSTOM1$" />
+
+</Hercules>

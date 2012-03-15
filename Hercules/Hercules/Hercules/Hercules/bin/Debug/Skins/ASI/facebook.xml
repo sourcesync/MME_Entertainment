@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Hercules facebookver="1">
+
+  <string key="TITLE" value="I just had my photo taken at the ASI photo booth!" />
+  <string key="DESC" value="For more information about ASI, visit them at:http://www.asicentral.com" />
+  <string key="LINK" value="$CUSTOM1$" />
+
+</Hercules>

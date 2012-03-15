@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Hercules configver="1">
+
+  <!-- How many photos are printed (1, 2, 4, 6) -->
+  <add key="PHOTO_COUNT" value="4" />
+
+  <!-- How many prints (1=single print, 2=two prints .. up to 99999 -->
+  <add key="MAX_COPIES" value="1" />
+
+  <!-- Allow user choice or force one each -->
+  <add key="ALLOW_BACKGROUND_PICK" value="0" />
+
+  <!-- How many backgrounds are we dealing with? -->
+  <add key="BACKGROUNDS" value="4" />
+
+  <!-- 1 = BW only, 2 = Color only, 3 = User choice (BW/Color), 4 = Sepia only, 5 = User choice (BW/Color/Sepia) -->
+  <add key="COLOR_TYPES" value="5" />
+
+  <!-- Decide whether to show pose thumbnails -->
+  <add key="SHOW_POSE_THUMBNAILS" value="0" />
+
+  <!-- 1 = Enables Hotel mode 0 = disabled -->
+  <add key="ROOM_NUMBER_MODE" value="0" />
+
+  <!-- touch area for start page -->
+  <add key="StartButtonX" value="790" />
+  <add key="StartButtonY" value="685" />
+  <add key="StartButtonWidth" value="195" />
+  <add key="StartButtonHeight" value="70" />
+  <add key="StartButtonColor" value="" />
+
+  <!-- touch area for skip email -->
+  <add key="SkipEmailButtonX" value="900" />
+  <add key="SkipEmailButtonY" value="40" />
+  <add key="SkipEmailButtonWidth" value="100" />
+  <add key="SkipEmailButtonHeight" value="100" />
+  <add key="SkipEmailButtonColor" value=""/>  
+
+  <!-- Publish methods -->
+  <add key="AllowEmailPublish" value="1" />
+  <add key="AllowPostPublish" value="1" />
+  <add key="AllowFacebookPublish" value="1" />
+  <add key="AllowMobilePublish" value="0" />
+  <add key="HerculesPublishUrl" value="http://autolycus.mmeentertainment.com/hercules.php"/>
+  <!-- cloud for the photo booths -->
+  <add key="PublicPhotoUrl" value="http://autolycus.mmeentertainment.com/photo/{0}"/>
+
+  <!-- Email settings -->
+  <add key="ForceEmail" value="1" />
+  <!-- user cannot skip the email screen (operator has hidden skip button) -->
+  <add key="EmailPublishUrl" value="http://autolycus.mmeentertainment.com/hercules.php" />
+  <!-- leave blank to use smtp settings below -->
+  <add key="SmtpServer" value="" />
+  <add key="SmtpUsername" value="" />
+  <add key="SmtpPassword" value="" />
+
+  <!-- built-in customization -->
+  <add key="CustomPhotoUrl" value="" />
+  <add key="CustomPublishUrl" value="http://autolycus.mmeentertainment.com/maximus.php?id={0}"/>
+
+</Hercules>
