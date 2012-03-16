@@ -56,20 +56,65 @@ namespace MME.Hercules
 
         public static void PostWall(string access_token, string photourl, string msg, string caption, string desc, string url)
         {
+            /*
+            try
+            {
+                HttpWebRequest restRequest;
+                HttpWebResponse restResponse;
+
+                string uurl = "https://graph.facebook.com/me/feed?access_token={0}";
+                string accessUrl = String.Format(uurl, access_token as string);
+
+                restRequest = (HttpWebRequest)WebRequest.Create(accessUrl);
+                restRequest.Method = "POST";
+
+                var body = Encoding.UTF8.GetBytes("message=test post");
+
+                restRequest.ContentLength = body.Length;
+
+                Stream postStream = restRequest.GetRequestStream();
+                postStream.Write(body, 0, body.Length);
+                postStream.Close();
+            }
+            catch (System.Exception e)
+            {
+            }
+            return;
+            */
+
+
             NameValueCollection nvc = new NameValueCollection();
 
             theRequest = WebRequest.Create("https://graph.facebook.com/me/feed");
             theRequest.Method = "POST";
             theRequest.ContentType = "text/html";
         
+            string pphotourl = System.Web.HttpUtility.UrlEncode(  photourl );
+            string pmsg = System.Web.HttpUtility.UrlEncode(msg);
+            string pdesc = System.Web.HttpUtility.UrlEncode(desc);
+            string purl = System.Web.HttpUtility.UrlEncode(url);
+            string pcaption = System.Web.HttpUtility.UrlEncode(caption);
+
+           // string Parameters = string.Format("access_token={0}&picture={1}",
+           //     access_token, pphotourl);
+
+            
+          
+         
             // Build a string containing all the parameters
             string Parameters = string.Format("access_token={0}&picture={1}&message={2}&description={3}&link={4}&caption={5}",
                 access_token,
-                photourl,
-                msg,
-                desc,
-                url,
-                caption);
+                //photourl,
+                pphotourl,
+                //msg,
+                pmsg,
+                //desc,
+                pdesc,
+                //url,
+                purl,
+                //caption);
+                pcaption);
+             
 
             // We write the parameters into the request
             bool success = true;
@@ -93,7 +138,8 @@ namespace MME.Hercules
 
 
             }
-            catch {
+            catch (System.Exception e)
+            {
                 success = false;
             }
 

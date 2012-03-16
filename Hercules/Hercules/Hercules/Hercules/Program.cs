@@ -91,11 +91,8 @@ namespace MME.Hercules
                     ConfigUtility.Backgrounds.Add(bm);
                 }
 
-
                 // Init Phidgetboard if using it
                 PhidgetUtility.InitPhidgetBoard();
-
-                //System.Windows.Forms.MessageBox.Show("test");
 
                 // Init camera.
                 CameraUtility.InitializeCamera();
@@ -105,14 +102,18 @@ namespace MME.Hercules
                 //Facebook.FacebookClient client = new Facebook.FacebookClient(FacebookUtility.AppId, FacebookUtility.Secret);
                 //Facebook.FacebookClient client2 = new Facebook.FacebookClient(client.AccessToken);
                 //dynamic me = client.Get("me");
-
-
                 //gw
+
+                
 
                 // Start
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Forms.User.Start());
+                
+                //Session session = new Session();
+                //session.EmailAddress = "george.williams@gmail.com";
+                //Application.Run(new Forms.User.Facebook(session));
             }
             catch (System.Exception e)
             {

@@ -1,0 +1,12 @@
+<html>
+<head>
+<title></title>
+<style>
+body { background:#000; margin:0; padding:0; }
+</style>
+</head>
+<body>
+<EMBED bgcolor="#000000" background="#000000" scale="aspect" SRC="video.mp4" width="1024" kioskmode="true" showlogo="false" height="768" fullscreen="full" AUTOPLAY="true" href="javascript:function(){}" CONTROLLER="false" LOOP="false" PLUGINSPAGE="http://www.apple.com/quicktime/">
+
+
+</body>

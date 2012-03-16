@@ -222,6 +222,10 @@ namespace MME.Hercules.Forms.User
 
                 string photoUrl = string.Empty;
 
+                //gw
+                string cfg = ConfigUtility.GetConfig(ConfigUtility.Config, "PublicPhotoUrl");
+                //gw
+
                 photoUrl = string.Format(System.Web.HttpUtility.HtmlDecode(ConfigUtility.GetConfig(ConfigUtility.Config, "PublicPhotoUrl")),
                     this.currentSession.FavoritePhotoFilename,
                     ConfigUtility.Skin);

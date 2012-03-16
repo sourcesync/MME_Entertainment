@@ -28,6 +28,11 @@ namespace MME.Hercules.Forms.User
         private static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int lpdwBufferLength);
 
 
+        //gw
+        private delegate void DialogDoneHandler();
+        private Thread delayDoneThread = null;
+        //gw
+
         public Facebook(Session currentSession)
         {
             Application.DoEvents();
@@ -35,6 +40,17 @@ namespace MME.Hercules.Forms.User
             InitializeComponent();
 
             this.currentSession = currentSession;
+        }
+
+        private void DialogDone()
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void ThreadedDelayDone()
+        {
+            Thread.Sleep(1000);
+            this.Invoke(new DialogDoneHandler(this.DialogDone));
         }
 
         public static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
@@ -62,9 +78,19 @@ namespace MME.Hercules.Forms.User
 /*
             //orig webBrowser1.Url = new Uri("https://graph.afacebook.com/oauth/authorize?client_id=119375921469000&redirect_uri=" +
  */
+
+            
             webBrowser1.Url = new Uri("https://graph.facebook.com/oauth/authorize?client_id=262792687134194&redirect_uri=" +         
                 System.Web.HttpUtility.UrlEncode("https://www.facebook.com/connect/login_success.html") + 
                 "&type=user_agent&display=popup&scope=publish_stream");
+            
+
+            /*
+            webBrowser1.Url = new Uri("https://www.facebook.com/dialog/oauth?client_id=262792687134194&" +
+                "redirect_uri=" + 
+                System.Web.HttpUtility.UrlEncode("https://www.facebook.com/connect/login_success.html") + "&" +
+                "response_type=token&scope=publish_stream");
+            */
 
             alertbox.BackColor = System.Drawing.ColorTranslator.FromHtml("#6B86B5");
 
@@ -111,6 +137,7 @@ namespace MME.Hercules.Forms.User
         {
             SoundUtility.StopSpeaking();
 
+            
             HtmlElementCollection inputs = webBrowser1.Document.GetElementsByTagName("input");
 
             foreach (HtmlElement el in inputs)
@@ -137,9 +164,69 @@ namespace MME.Hercules.Forms.User
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             int pos = webBrowser1.Url.ToString().IndexOf("access_token=");
+            bool bOK = false;
+            bool bFakeClicked = false;
 
-            if (pos != -1)
+            //gw
+            if (pos <= 0) // a page other than access token...
             {
+                
+                //  look for initial app allow authorization page...
+                HtmlElementCollection inputs = webBrowser1.Document.GetElementsByTagName("input");
+                foreach (HtmlElement el in inputs)
+                {
+                    if (el.Name == "grant_required_clicked")
+                    {
+                        el.InvokeMember("click");
+                        bFakeClicked = true;
+                        //return;
+                    }
+                }
+
+                //  look for initial app allow authentication page...
+                inputs = webBrowser1.Document.GetElementsByTagName("input");
+                foreach (HtmlElement el in inputs)
+                {
+                    if (el.Name == "grant_clicked")
+                    {
+                        el.InvokeMember("click");
+                        bFakeClicked = true;
+                        
+                    }
+                }
+                 
+
+                /*
+                //  look for final success page...
+                HtmlElementCollection all = webBrowser1.Document.GetElementsByTagName("body");
+                foreach (HtmlElement el in inputs)
+                {
+                    if (el.InnerText != null)
+                    {
+                        if (el.InnerText.ToLower().Contains("success"))
+                        {
+                            this.webBrowser1.Visible = false;
+                            this.Refresh();
+                            Thread.Sleep(1);
+                            bOK = true;
+                        }
+                    }
+                }
+                 * */
+            }
+
+            if (bFakeClicked)
+            {
+                this.webBrowser1.Visible = false;
+                this.Refresh();
+                Thread.Sleep(1);
+                return;
+            }
+            //gw
+
+            
+            if (pos != -1) // access token !!
+            { 
                 string at = webBrowser1.Url.ToString().Substring(pos + 13, webBrowser1.Url.ToString().Length - (pos + 13));
                 this.currentSession.FacebookAccessToken = at.Substring(0, at.IndexOf('&'));
 
@@ -148,7 +235,12 @@ namespace MME.Hercules.Forms.User
 
                 this.currentSession.FacebookExpires = expires.Replace("&expires_in=", "");
 
-                DialogResult = System.Windows.Forms.DialogResult.OK;
+                //DialogResult = System.Windows.Forms.DialogResult.OK;
+                bOK = true;
+                this.webBrowser1.Visible = false;
+                //this.Refresh();
+                //Thread.Sleep(1);
+                
             }
 
             System.Windows.Forms.HtmlDocument HTMLDocument = webBrowser1.Document;
@@ -164,6 +256,7 @@ namespace MME.Hercules.Forms.User
                     webBrowser1.Url = new Uri("https://graph.facebook.com/oauth/authorize?client_id=119375921469000&redirect_uri=" + 
                         System.Web.HttpUtility.UrlEncode("http://www.facebook.com/connect/login_success.html") + 
                         "&type=user_agent&display=popup");
+                        //"&type=user_agent&display=none");
                     alertbox.BringToFront();
                     alertbox.Visible = true;
 
@@ -205,7 +298,10 @@ namespace MME.Hercules.Forms.User
             {
                 if (FirstTime)
                 {
-                    email.Text = this.currentSession.EmailAddress;
+                    if (this.currentSession == null)
+                        email.Text = "george.williams@gmail.com";
+                    else
+                     email.Text = this.currentSession.EmailAddress;
                     em.SetAttribute("Value", email.Text);
 
                     FirstTime = false;
@@ -224,6 +320,11 @@ namespace MME.Hercules.Forms.User
             if (!keyboard.IsEnabled)
                 keyboard.SetKeyboard(true);
 
+            if (bOK)
+            {
+                this.delayDoneThread = new Thread(this.ThreadedDelayDone);
+                this.delayDoneThread.Start();
+            }
         }
 
         protected void tbel_Focus(object sender, HtmlElementEventArgs e)

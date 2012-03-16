@@ -82,7 +82,7 @@
 
   <!-- built-in customization -->
   <add key="CustomPhotoUrl" value="http://navteqms.mobi/getphoto.php?pid={0}&amp;scale=0" />
-  <add key="CustomPublishUrl" value="http://navteqms.mobi/?pid={0}%26m=1"/>
+  <add key="CustomPublishUrl" value="http://favpic.mobi/favoritephoto.php?viewing={1}_{0}"/>
 
 
 
