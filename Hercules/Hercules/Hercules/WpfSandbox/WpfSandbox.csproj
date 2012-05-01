@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2FFEC910-0827-4BEB-8F26-65C396173AB8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WpfSandbox</RootNamespace>
+    <AssemblyName>WpfSandbox</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="UserControlBlank.xaml.cs">
+      <DependentUpon>UserControlBlank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlChoose.xaml.cs">
+      <DependentUpon>UserControlChoose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlMain.xaml.cs">
+      <DependentUpon>UserControlMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlMenu.xaml.cs">
+      <DependentUpon>UserControlMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowWhiteCastle.xaml.cs">
+      <DependentUpon>WindowWhiteCastle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Page Include="UserControlBlank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlChoose.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowWhiteCastle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FullScreenBehavior.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Desert.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SCREENBACKGROUND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\games-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pal_bk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo-ps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\games-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\games-icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\promo-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\camera-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menu-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\checkin-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\future-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\web-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CHOOSE-BKRD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CHOOSE-HOME-BKRD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TYPE-BFAST.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TYPE-BFAST1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TYPE-BIGCRAVE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TYPE-DRINK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TYPE-SACK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TYPE-SIDES.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TYPE-SLIDERS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sm1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sm2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sm3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sm4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sm5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sm6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\whitecastle-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50_50_Crave_Case.jpg" />
+    <Resource Include="Images\Brown-bag-left.jpg" />
+    <Resource Include="Images\Crave_Case_with_Cheese.jpg" />
+    <Resource Include="Images\menu_meal4.jpg" />
+    <Resource Include="Images\Original_Crave_Case.jpg" />
+    <Resource Include="Images\Variety_Crave_Case.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backarrow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menu_drinks_coffee.jpg" />
+    <Resource Include="Images\menu_drinks_coke.jpg" />
+    <Resource Include="Images\menu_drinks_hot_chocolate.jpg" />
+    <Resource Include="Images\menu_drinks_shakes.jpg" />
+    <Resource Include="Images\menu_drinks_tea.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BaconEggCheese_Bun.jpg" />
+    <Resource Include="Images\BaconEggCheese_Toast.jpg" />
+    <Resource Include="Images\EggCheese_Bun.jpg" />
+    <Resource Include="Images\EggCheese_Toast.jpg" />
+    <Resource Include="Images\FrenchToast.jpg" />
+    <Resource Include="Images\HashRounds.jpg" />
+    <Resource Include="Images\menu_bfast_oj.jpg" />
+    <Resource Include="Images\SausageCheese_Bun.jpg" />
+    <Resource Include="Images\SausageCheese_Toast.jpg" />
+    <Resource Include="Images\SausageEggCheese_Bun.jpg" />
+    <Resource Include="Images\SausageEggCheese_Toast.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BCNCHZBRGR.jpg" />
+    <Resource Include="Images\CHKNBRSTCHZ.jpg" />
+    <Resource Include="Images\CHKNRNGCHZ.jpg" />
+    <Resource Include="Images\CHZBRGR.jpg" />
+    <Resource Include="Images\DBLBCNCHZBRGR.jpg" />
+    <Resource Include="Images\DBLCHZBRGR.jpg" />
+    <Resource Include="Images\DBLJALCHZBRGR.jpg" />
+    <Resource Include="Images\FISHCHZ.jpg" />
+    <Resource Include="Images\JALCHZBRGR.jpg" />
+    <Resource Include="Images\ORIG.jpg" />
+    <Resource Include="Images\ORIGINALDOUBLE.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menu_sides_chxnrings.jpg" />
+    <Resource Include="Images\menu_sides_chzfries.jpg" />
+    <Resource Include="Images\menu_sides_chzstx.jpg" />
+    <Resource Include="Images\menu_sides_fishnibs.jpg" />
+    <Resource Include="Images\menu_sides_fries.jpg" />
+    <Resource Include="Images\menu_sides_onionrings.jpg" />
+    <Resource Include="Images\OnionChips.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

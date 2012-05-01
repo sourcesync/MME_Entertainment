@@ -1,0 +1,70 @@
+﻿<Window x:Class="WpfSandbox.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:Einstein="clr-namespace:FullScreenDemo"
+        Einstein:FullScreenBehavior.IsFullScreen="{Binding Path=IsChecked, ElementName=FullScreenButton, Mode=TwoWay}"
+        Title="Window1" Height="300" Width="300">
+    
+    <i:Interaction.Behaviors>
+        <Einstein:FullScreenBehavior
+            FullScreenOnDoubleClick="{Binding IsChecked, ElementName=FullOnDoubleClick}"
+            FullScreenOnMaximize="{Binding IsChecked, ElementName=FullOnMaximize}"
+            RestoreOnEscape="{Binding IsChecked, ElementName=ExitOnEscape}"/>
+    </i:Interaction.Behaviors>
+
+    <Viewbox Stretch="Uniform">
+
+        <Grid Width="640" Height="480">
+
+            <StackPanel Margin="20">
+
+                <TextBlock Text="Full Screen Demo" FontSize="32" />
+
+                <TextBlock TextWrapping="Wrap">
+                    
+                    <LineBreak />
+                    <LineBreak />
+                    
+                    <Run>
+                        The FullScreenBehavior makes it easy to create a WPF window that can &quot;go full screen&quot;.
+                        By default, the full screen setting can only be changed programmatically. Try pressing the 
+                        ToggleButton in the upper right hand corner which is Two-Way bound to the IsFullScreen
+                        property of the Window.
+                    </Run>
+                    
+                    <LineBreak />
+                    <LineBreak />
+                    
+                    <Run>
+                        This demo uses a ViewBox to scale the content with the Window but that is not required.
+                        You can use whatever layout strategy you want.
+                    </Run>
+
+                    <LineBreak />
+                    <LineBreak />
+
+                    <Run>
+                        There are properties that can be set that can be used to enable automatic full screen behavior
+                        in response to common user actions. Play around with the options below which control how the
+                        Window reacts to user gestures.
+                    </Run>
+                    
+                    <LineBreak />
+
+                </TextBlock>
+
+                <CheckBox x:Name="FullOnMaximize" Margin="5" Content="Maximizing enters full screen"/>
+                <CheckBox x:Name="FullOnDoubleClick" Margin="5" Content="Double clicking enters/exits full screen" />
+                <CheckBox x:Name="ExitOnEscape" Margin="5" Content="Pressing escape exits full screen"/>
+
+            </StackPanel>
+
+            <ToggleButton x:Name="FullScreenButton" Content="Full Screen"
+                          Margin="8" VerticalAlignment="Top" HorizontalAlignment="Right"
+                          Height="50" Width="120"/>
+
+        </Grid>
+
+    </Viewbox>
+</Window>
