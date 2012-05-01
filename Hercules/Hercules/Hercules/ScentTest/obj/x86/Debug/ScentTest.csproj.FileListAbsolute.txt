@@ -1,0 +1,13 @@
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\bin\Debug\ScentTest.exe
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\bin\Debug\ScentTest.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\MainWindow.baml
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\MainWindow.g.cs
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\App.g.cs
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\ScentTest_MarkupCompile.cache
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\ScentTest.g.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\ScentTest.Properties.Resources.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\ScentTest.exe
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\ScentTest\obj\x86\Debug\ScentTest.pdb

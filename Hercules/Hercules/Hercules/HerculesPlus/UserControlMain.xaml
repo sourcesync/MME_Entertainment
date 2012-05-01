@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="WpfSandbox.UserControlMain"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+
+        <Canvas Width="1024" Height="768">
+        <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/WpfSandbox;component/Images/SCREENBACKGROUND.png" />
+        <Image Canvas.Top="320" Canvas.Left="21" Height="124" Name="image2" Stretch="Fill" Width="124" Source="/WpfSandbox;component/Images/games-icon1.png" />
+        <Image Canvas.Left="305" Canvas.Top="320" Height="124" Name="image4" Source="/WpfSandbox;component/Images/camera-icon.png" Stretch="Fill" Width="124" />
+        <Image Canvas.Top="320" Canvas.Left="160" Height="124" Name="image3" Stretch="Fill" Width="124" Source="/WpfSandbox;component/Images/promo-icon.png" />
+        <Image Canvas.Left="592" Canvas.Top="320" Height="124" Name="image6" Source="/WpfSandbox;component/Images/checkin-icon.png" Stretch="Fill" Width="124" />
+        <Image Canvas.Left="879" Canvas.Top="320" Height="124" Name="image8" Source="/WpfSandbox;component/Images/web-icon.png" Stretch="Fill" Width="124" />
+        <Image Canvas.Left="452" Canvas.Top="320" Height="124" Name="image5" Source="/WpfSandbox;component/Images/menu-icon.png" Stretch="Fill" Width="124" ImageFailed="image5_ImageFailed" MouseDown="image5_MouseDown" />
+        <Image Canvas.Left="735" Canvas.Top="320" Height="124" Name="image7" Source="/WpfSandbox;component/Images/future-icon.png" Stretch="Fill" Width="124" />
+    </Canvas>
+    
+</UserControl>

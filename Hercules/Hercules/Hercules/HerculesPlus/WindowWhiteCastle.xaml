@@ -1,0 +1,52 @@
+﻿<Window x:Class="WpfSandbox.WindowWhiteCastle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:local="clr-namespace:WpfSandbox"
+        Title="Window1" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="598" Width="700">
+
+    <!--
+        xmlns:Einstein="clr-namespace:FullScreenDemo"
+        xmlns:local="clr-namespace:WpfSandbox"
+        Einstein:FullScreenBehavior.IsFullScreen="{Binding Path=IsChecked, ElementName=FullScreenButton, Mode=TwoWay}"
+    -->
+    
+    <!--
+    <i:Interaction.Behaviors>
+        <Einstein:FullScreenBehavior
+            FullScreenOnDoubleClick="{Binding IsChecked, ElementName=FullOnDoubleClick}"
+            FullScreenOnMaximize="{Binding IsChecked, ElementName=FullOnMaximize}"
+            RestoreOnEscape="{Binding IsChecked, ElementName=ExitOnEscape}"/>
+    </i:Interaction.Behaviors>
+-->
+    <Viewbox Stretch="Uniform">
+
+        <Canvas Width="1024" Height="768">
+            <Canvas Width="1024" Height="768" Name="canvas_master" >
+                <ToggleButton x:Name="FullScreenButton" Height="29" Width="37" Canvas.Left="987" Canvas.Top="63" BorderThickness="0" MouseDown="FullScreenButton_MouseDown" Visibility="Hidden">
+                    <ToggleButton.Foreground>
+                        <SolidColorBrush />
+                    </ToggleButton.Foreground>
+                    <ToggleButton.BorderBrush>
+                        <SolidColorBrush />
+                    </ToggleButton.BorderBrush>
+                    <ToggleButton.Background>
+                        <SolidColorBrush />
+                    </ToggleButton.Background>
+                </ToggleButton>
+                <local:UserControlBlank Canvas.Top="0" Canvas.Left="0" x:Name="ctlblank" IsEnabled="True" Visibility="Visible" />
+                <local:UserControlMain Canvas.Top="0" Canvas.Left="0" x:Name="ctlmain" IsEnabled="True" Visibility="Hidden" />
+                <local:UserControlMenu Canvas.Top="0" Canvas.Left="0" x:Name="ctlmenu" IsEnabled="True" Visibility="Hidden" />
+                <local:UserControlChoose Canvas.Top="0" Canvas.Left="0" x:Name="ctlchoose" IsEnabled="True" Visibility="Hidden" />
+                <Image Canvas.Left="993" Canvas.Top="1" Height="35" Name="image3" Stretch="Fill" Width="30" MouseDown="image3_MouseDown_1" Source="/WpfSandbox;component/Images/backarrow1.png" Opacity="0.01" />
+            </Canvas>
+            <Image Canvas.Left="980" Canvas.Top="725" Height="50" Name="image1" Stretch="Fill" Width="50" Source="/WpfSandbox;component/Images/whitecastle-blue.png" MouseDown="image1_MouseDown" />
+            <Image Canvas.Left="44" Canvas.Top="43" Height="50" Name="image2" Stretch="Fill" Width="50" Source="/WpfSandbox;component/Images/whitecastle-blue.png" MouseDown="image1_MouseDown">
+                <Image.RenderTransform>
+                    <RotateTransform Angle="180"></RotateTransform>
+                </Image.RenderTransform>
+            </Image>
+        </Canvas>
+
+    </Viewbox>
+</Window>

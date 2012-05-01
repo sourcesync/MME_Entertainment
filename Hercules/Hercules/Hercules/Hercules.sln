@@ -35,7 +35,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanonSDK", "CanonSDK\CanonS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfSandbox", "WpfSandbox\WpfSandbox.csproj", "{2FFEC910-0827-4BEB-8F26-65C396173AB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfApplication1\WpfApplication1.csproj", "{CD254B7A-B6BB-4A0B-9CB2-E41DFD929238}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfScrollTest", "WpfApplication1\WpfScrollTest.csproj", "{CD254B7A-B6BB-4A0B-9CB2-E41DFD929238}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFScentTest", "WFScentTest\WFScentTest.csproj", "{5F3C0671-E051-4E09-A922-096819BCD53A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerculesPlus", "HerculesPlus\HerculesPlus.csproj", "{A7427BA7-68A3-427A-8265-DB8FCAF547B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +91,26 @@ Global
 		{CD254B7A-B6BB-4A0B-9CB2-E41DFD929238}.Release|Mixed Platforms.Build.0 = Release|x86
 		{CD254B7A-B6BB-4A0B-9CB2-E41DFD929238}.Release|x86.ActiveCfg = Release|x86
 		{CD254B7A-B6BB-4A0B-9CB2-E41DFD929238}.Release|x86.Build.0 = Release|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Debug|x86.ActiveCfg = Debug|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Debug|x86.Build.0 = Debug|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Release|Any CPU.ActiveCfg = Release|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Release|x86.ActiveCfg = Release|x86
+		{5F3C0671-E051-4E09-A922-096819BCD53A}.Release|x86.Build.0 = Release|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Debug|x86.ActiveCfg = Debug|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Debug|x86.Build.0 = Debug|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Release|Any CPU.ActiveCfg = Release|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Release|x86.ActiveCfg = Release|x86
+		{A7427BA7-68A3-427A-8265-DB8FCAF547B7}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
