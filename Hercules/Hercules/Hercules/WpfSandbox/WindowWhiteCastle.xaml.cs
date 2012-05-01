@@ -22,6 +22,7 @@ namespace WpfSandbox
         protected int orientation = 0;
         protected UserControl current = null;
         public System.Collections.ArrayList cart = new System.Collections.ArrayList();
+        private int windowstate = 0;
 
         public WindowWhiteCastle()
         {
@@ -33,6 +34,10 @@ namespace WpfSandbox
             ctls.Add(this.ctlblank);
 
             this.ShowBlank();
+
+            this.WindowStyle = WindowStyle.None;
+            this.Topmost = true;
+            this.WindowState = WindowState.Maximized;
         }
 
         public static WindowWhiteCastle getParent(UserControl ctl)
@@ -162,6 +167,51 @@ namespace WpfSandbox
                         this.ShowBlank();
                     }
                 }
+            }
+        }
+
+        
+
+        private void FullScreenButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FullScreenButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.windowstate == 0)
+            {
+                this.Topmost = false;
+                this.WindowStyle = WindowStyle.SingleBorderWindow;
+                this.WindowState = WindowState.Normal;
+                this.windowstate = 1;
+            }
+            else
+            {
+
+                this.WindowStyle = WindowStyle.None;
+                this.Topmost = true;
+                this.WindowState = WindowState.Maximized;
+                this.windowstate = 0;
+            }
+        }
+
+        private void image3_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (this.windowstate == 0)
+            {
+                this.Topmost = false;
+                this.WindowStyle = WindowStyle.SingleBorderWindow;
+                this.WindowState = WindowState.Normal;
+                this.windowstate = 1;
+            }
+            else
+            {
+
+                this.WindowStyle = WindowStyle.None;
+                this.Topmost = true;
+                this.WindowState = WindowState.Maximized;
+                this.windowstate = 0;
             }
         }
 

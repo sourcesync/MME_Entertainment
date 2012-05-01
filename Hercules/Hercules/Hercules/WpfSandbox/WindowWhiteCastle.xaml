@@ -18,12 +18,23 @@
 
         <Canvas Width="1024" Height="768">
             <Canvas Width="1024" Height="768" Name="canvas_master" >
+                <ToggleButton x:Name="FullScreenButton" Height="29" Width="37" Canvas.Left="987" Canvas.Top="63" BorderThickness="0" MouseDown="FullScreenButton_MouseDown" Visibility="Hidden">
+                    <ToggleButton.Foreground>
+                        <SolidColorBrush />
+                    </ToggleButton.Foreground>
+                    <ToggleButton.BorderBrush>
+                        <SolidColorBrush />
+                    </ToggleButton.BorderBrush>
+                    <ToggleButton.Background>
+                        <SolidColorBrush />
+                    </ToggleButton.Background>
+                </ToggleButton>
                 <local:UserControlBlank Canvas.Top="0" Canvas.Left="0" x:Name="ctlblank" IsEnabled="True" Visibility="Visible" />
                 <local:UserControlMain Canvas.Top="0" Canvas.Left="0" x:Name="ctlmain" IsEnabled="True" Visibility="Hidden" />
                 <local:UserControlMenu Canvas.Top="0" Canvas.Left="0" x:Name="ctlmenu" IsEnabled="True" Visibility="Hidden" />
                 <local:UserControlChoose Canvas.Top="0" Canvas.Left="0" x:Name="ctlchoose" IsEnabled="True" Visibility="Hidden" />
+                <Image Canvas.Left="993" Canvas.Top="1" Height="35" Name="image3" Stretch="Fill" Width="30" MouseDown="image3_MouseDown_1" Source="/WpfSandbox;component/Images/backarrow1.png" Opacity="0.01" />
             </Canvas>
-            <ToggleButton x:Name="FullScreenButton" Content="Full Screen" Height="50" Width="120" Canvas.Left="800" Canvas.Top="80" />
             <Image Canvas.Left="980" Canvas.Top="725" Height="50" Name="image1" Stretch="Fill" Width="50" Source="/WpfSandbox;component/Images/whitecastle-blue.png" MouseDown="image1_MouseDown" />
             <Image Canvas.Left="44" Canvas.Top="43" Height="50" Name="image2" Stretch="Fill" Width="50" Source="/WpfSandbox;component/Images/whitecastle-blue.png" MouseDown="image1_MouseDown">
                 <Image.RenderTransform>
