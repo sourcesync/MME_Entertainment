@@ -92,7 +92,8 @@ namespace MME.Hercules
                 }
 
                 // Init Phidgetboard if using it
-                PhidgetUtility.InitPhidgetBoard();
+                //PhidgetUtility.InitPhidgetBoard();
+                if (!PhidgetUtility2.InitAll()) ;
 
                 // Init camera.
                 CameraUtility.InitializeCamera();
@@ -117,7 +118,7 @@ namespace MME.Hercules
             }
             catch (System.Exception e)
             {
-
+                System.Windows.Forms.MessageBox.Show(e.ToString());
             }
         }
     }

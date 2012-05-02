@@ -36,3 +36,5 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WpfSand
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WpfSandbox\obj\x86\Debug\WindowWhiteCastle.baml
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WpfSandbox\obj\x86\Debug\UserControlBlank.baml
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WpfSandbox\obj\x86\Debug\UserControlBlank.g.cs
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WpfSandbox\obj\x86\Debug\UserControlSwipe.baml
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WpfSandbox\obj\x86\Debug\UserControlSwipe.g.cs

@@ -28,8 +28,9 @@ namespace MME.Hercules.Forms.User
            if (ConfigUtility.IsDeveloperMode)
                this.WindowState = FormWindowState.Normal;
 
-           PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
-            true);
+           //gw
+            //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+            //true);
 
             // touch start
             startArea.Parent = pb;
@@ -99,6 +100,13 @@ namespace MME.Hercules.Forms.User
 
                 switch (pagetype)
                 {
+                    case "scentomatic":
+                        using (Hercules.Forms.User.Scentomatic selform = new Scentomatic(node, currentSession))
+                        {
+                            dr = selform.ShowDialog();
+                        }
+                        break;
+
                     case "keyboard":
                         using (Hercules.Forms.User.Keyboard kbform = new Keyboard(node, currentSession))
                         {
@@ -163,8 +171,8 @@ namespace MME.Hercules.Forms.User
             pb.Visible = false;
 
             // Turn off vanity light
-            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
-                false);
+            //gw PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+            //false);
 
             if (ConfigUtility.SequenceConfig != null)
             {
@@ -285,8 +293,9 @@ namespace MME.Hercules.Forms.User
                 }
             }
 
-            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
-            
+            //gw
+            //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
+            //gw
 
             // Back to start
             pb.Visible = true;
@@ -372,6 +381,9 @@ namespace MME.Hercules.Forms.User
         private void Start_FormClosed(object sender, FormClosedEventArgs e)
         {
             PhidgetUtility.Shutdown();
+            //gw
+            PhidgetUtility2.Shutdown();
+            //gw
             CameraUtility.Shutdown();
 
         }

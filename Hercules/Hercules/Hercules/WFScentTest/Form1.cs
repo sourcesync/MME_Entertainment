@@ -23,7 +23,7 @@ namespace WFScentTest
         {
             if (!this.open1)
             {
-                this.open1 = MME.Hercules.PhidgetUtility.InitPhidgetBoard1(259354);
+                this.open1 = MME.Hercules.PhidgetUtility2.InitPhidgetBoard1(259354);
                 if (!this.open1)
                 {
                     System.Windows.Forms.MessageBox.Show("cannot open board 1");
@@ -32,18 +32,7 @@ namespace WFScentTest
             }
 
 
-            this.Trigger(0);
-        }
-
-        private void Trigger(int which)
-        {
-            MME.Hercules.PhidgetUtility.RelayN(which, 0, true);
-            System.Threading.Thread.Sleep(500);
-            MME.Hercules.PhidgetUtility.RelayN(which, 0, false);
-
-            MME.Hercules.PhidgetUtility.RelayN(which, 1, true);
-            System.Threading.Thread.Sleep(500);
-            MME.Hercules.PhidgetUtility.RelayN(which, 1, false);
+            MME.Hercules.PhidgetUtility2.Trigger(0);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -51,7 +40,7 @@ namespace WFScentTest
 
             if (!this.open2)
             {
-                this.open2 = MME.Hercules.PhidgetUtility.InitPhidgetBoard2(259314);
+                this.open2 = MME.Hercules.PhidgetUtility2.InitPhidgetBoard2(259314);
                 if (!this.open2)
                 {
                     System.Windows.Forms.MessageBox.Show("cannot open board 2");
@@ -59,7 +48,23 @@ namespace WFScentTest
                 }
             }
 
-            this.Trigger(1);
+            MME.Hercules.PhidgetUtility2.Trigger(1);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (!this.open2)
+            {
+                this.open2 = MME.Hercules.PhidgetUtility2.InitPhidgetBoard2(259314);
+                if (!this.open2)
+                {
+                    System.Windows.Forms.MessageBox.Show("cannot open board 2");
+                    return;
+                }
+            }
+
+            MME.Hercules.PhidgetUtility2.Trigger(2);
         }
     }
 }

@@ -32,8 +32,10 @@ namespace WpfSandbox
             ctls.Add(this.ctlmain);
             ctls.Add(this.ctlmenu);
             ctls.Add(this.ctlblank);
+            ctls.Add(this.ctlswipe);
 
             this.ShowBlank();
+            //this.ShowSwipe();
 
             this.WindowStyle = WindowStyle.None;
             this.Topmost = true;
@@ -92,6 +94,13 @@ namespace WpfSandbox
             this.ctlchoose.Visibility = System.Windows.Visibility.Visible;
             this.current = this.ctlchoose;
             this.ShowRotators();
+        }
+
+        public void ShowSwipe()
+        {
+            this.HideAll();
+            this.ctlswipe.Visibility = System.Windows.Visibility.Visible;
+            this.current = this.ctlswipe;
         }
 
         public void ShowBlank()

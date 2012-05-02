@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="WpfSandbox.UserControlSwipe"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <Canvas>
+        
+                <Image Canvas.Left="437" Canvas.Top="290" Height="97" Name="image1" Stretch="Fill" Width="113" Source="/WpfSandbox;component/Images/BaconEggCheese_Bun.jpg" />
+        <Image Canvas.Left="627" Canvas.Top="290" Height="97" Name="image2" Source="/WpfSandbox;component/Images/BaconEggCheese_Bun.jpg" Stretch="Fill" Width="113" />
+        <Image Canvas.Left="823" Canvas.Top="290" Height="97" Name="image3" Source="/WpfSandbox;component/Images/BaconEggCheese_Bun.jpg" Stretch="Fill" Width="113" />
+        <Image Canvas.Left="240" Canvas.Top="290" Height="97" Name="image4" Source="/WpfSandbox;component/Images/BaconEggCheese_Bun.jpg" Stretch="Fill" Width="113" />
+        <Image Canvas.Left="47" Canvas.Top="290" Height="97" Name="image5" Source="/WpfSandbox;component/Images/BaconEggCheese_Bun.jpg" Stretch="Fill" Width="113" />
+        <ScrollViewer Canvas.Left="-3" Canvas.Top="553" Height="215" Name="scrollViewer1" Width="1027" />
+    </Canvas>
+</UserControl>

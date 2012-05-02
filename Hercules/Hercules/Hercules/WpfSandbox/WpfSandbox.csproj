@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -72,6 +73,9 @@
     <Compile Include="UserControlMenu.xaml.cs">
       <DependentUpon>UserControlMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlSwipe.xaml.cs">
+      <DependentUpon>UserControlSwipe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowWhiteCastle.xaml.cs">
       <DependentUpon>WindowWhiteCastle.xaml</DependentUpon>
     </Compile>
@@ -91,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlSwipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -282,6 +290,54 @@
     <Resource Include="Images\menu_sides_fries.jpg" />
     <Resource Include="Images\menu_sides_onionrings.jpg" />
     <Resource Include="Images\OnionChips.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SCREENBACKGROUND-notext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\text-strip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\events.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\checkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\games.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\photobooth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\promos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\events100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\games100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\promos100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\photobooth100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\web100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\checkin100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menu100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

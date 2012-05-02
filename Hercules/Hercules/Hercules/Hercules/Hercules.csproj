@@ -189,6 +189,12 @@
     <Compile Include="Forms\User\PickFavorite.Designer.cs">
       <DependentUpon>PickFavorite.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User\Scentomatic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Scentomatic.Designer.cs">
+      <DependentUpon>Scentomatic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User\Selection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +258,7 @@
     <Compile Include="Utility\FacebookUtility.cs" />
     <Compile Include="Utility\FileUtility.cs" />
     <Compile Include="Utility\PhidgetUtility.cs" />
+    <Compile Include="Utility\PhidgetUtility2.cs" />
     <Compile Include="Utility\SepiaUtility.cs" />
     <Compile Include="Utility\SoundUtility.cs" />
     <Compile Include="Forms\Test\TestForm.cs">
@@ -308,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\PickFavorite.resx">
       <DependentUpon>PickFavorite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Scentomatic.resx">
+      <DependentUpon>Scentomatic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\Selection.resx">
       <DependentUpon>Selection.cs</DependentUpon>

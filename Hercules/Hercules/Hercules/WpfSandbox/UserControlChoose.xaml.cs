@@ -11,6 +11,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
+
+using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace WpfSandbox
 {
@@ -19,6 +23,14 @@ namespace WpfSandbox
     /// </summary>
     public partial class UserControlChoose : UserControl
     {
+        private Point scrollTarget;
+        private Point scrollStartPoint;
+        private Point scrollStartOffset;
+        private Point previousPoint;
+        private Vector velocity;
+        private double friction = 0.95;
+        private DispatcherTimer animationTimer = new DispatcherTimer();
+
         private const int MAX = 6;
 
         private Image selected = null;
@@ -57,7 +69,7 @@ namespace WpfSandbox
                                        "/WpfSandbox;component/Images/menu_drinks_hot_chocolate.jpg",
                                        "/WpfSandbox;component/Images/menu_drinks_shakes.jpg",
                                         "/WpfSandbox;component/Images/menu_drinks_tea.jpg"};
-        private double[] drink_cost = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
+        private double[] drink_cost = { 1.0, 1.0, 1.0, 1.0, 1.0  };
 
         private String[] bf = { "/WpfSandbox;component/Images/BaconEggCheese_Bun.jpg",
                                        "/WpfSandbox;component/Images/BaconEggCheese_Toast.jpg",
@@ -99,7 +111,7 @@ namespace WpfSandbox
             InitializeComponent();
 
             this.textBox1.BorderThickness = new System.Windows.Thickness(0.0);
-            this.textBox2.BorderThickness = new System.Windows.Thickness(0.0);
+            this.textBoxItems.BorderThickness = new System.Windows.Thickness(0.0);
             this.textBox3.BorderThickness = new System.Windows.Thickness(0.0);
             this.textBox99.BorderThickness = new System.Windows.Thickness(0.0);
             this.textBoxSubTotal.BorderThickness = new System.Windows.Thickness(0.0);
@@ -145,6 +157,16 @@ namespace WpfSandbox
 
             //  Initial menu...
             this.SetOption(0);
+
+
+            friction = 0.95;
+
+            animationTimer.Interval = new TimeSpan(0, 0, 0, 0, 20);
+            animationTimer.Tick += new EventHandler(HandleWorldTimerTick);
+            animationTimer.Start();
+
+            ScrollViewer.Visibility = System.Windows.Visibility.Hidden;
+            //ScrollViewer.ScrollChanged += new ScrollChangedEventHandler(ScrollViewer_ScrollChanged);
         }
 
         private void UpdateCostHash(String[] paths, double[] cst)
@@ -204,7 +226,7 @@ namespace WpfSandbox
                 if (img.Source != null) img.Source = null;
                 img.Source = bm;
             }
-            for (int i = src.Length; i < max; i++)
+            for (int i = src.Length; i < MAX; i++)
             {
                 Image img = (Image)this.imgs[i];
                 img.Visibility = System.Windows.Visibility.Hidden;
@@ -306,6 +328,9 @@ namespace WpfSandbox
                 Image timg = (Image)this.display_cart[i];
                 timg.Visibility = System.Windows.Visibility.Hidden;
             }
+
+            String txt = String.Format("{0} Items In Your Cart", w.cart.Count);
+            this.textBoxItems.Text = txt;
         }
 
         private void buy(object o)
@@ -468,6 +493,110 @@ namespace WpfSandbox
             WindowWhiteCastle w = WindowWhiteCastle.getParent(this);
             w.ShowMenu();
         }
+
+        #region Mouse Events
+        protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
+        {
+            if (ScrollViewer.IsMouseOver)
+            {
+                // Save starting point, used later when determining how much to scroll.
+                scrollStartPoint = e.GetPosition(this);
+                scrollStartOffset.X = ScrollViewer.HorizontalOffset;
+                scrollStartOffset.Y = ScrollViewer.VerticalOffset;
+
+                // Update the cursor if can scroll or not.
+                this.Cursor = (ScrollViewer.ExtentWidth > ScrollViewer.ViewportWidth) ||
+                    (ScrollViewer.ExtentHeight > ScrollViewer.ViewportHeight) ?
+                    Cursors.ScrollAll : Cursors.Arrow;
+
+                this.CaptureMouse();
+            }
+
+            base.OnPreviewMouseDown(e);
+        }
+
+
+        protected override void OnPreviewMouseMove(MouseEventArgs e)
+        {
+            if (this.IsMouseCaptured)
+            {
+                Point currentPoint = e.GetPosition(this);
+
+                // Determine the new amount to scroll.
+                Point delta = new Point(scrollStartPoint.X -
+                   currentPoint.X, scrollStartPoint.Y - currentPoint.Y);
+
+                scrollTarget.X = scrollStartOffset.X + delta.X;
+                scrollTarget.Y = scrollStartOffset.Y + delta.Y;
+
+                // Scroll to the new position.
+                ScrollViewer.ScrollToHorizontalOffset(scrollTarget.X);
+                ScrollViewer.ScrollToVerticalOffset(scrollTarget.Y);
+            }
+
+            base.OnPreviewMouseMove(e);
+        }
+
+        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
+        {
+            if (this.IsMouseCaptured)
+            {
+                this.Cursor = Cursors.Arrow;
+                this.ReleaseMouseCapture();
+            }
+
+            base.OnPreviewMouseUp(e);
+        }
+        #endregion
+
+        #region Friction Stuff
+        private void HandleWorldTimerTick(object sender, EventArgs e)
+        {
+            bool move = false;
+            if (IsMouseCaptured)
+            {
+                Point currentPoint = Mouse.GetPosition(this);
+                velocity = previousPoint - currentPoint;
+                previousPoint = currentPoint;
+                move = true;
+            }
+            else
+            {
+                if (velocity.Length > 1)
+                {
+                    ScrollViewer.ScrollToHorizontalOffset(scrollTarget.X);
+                    ScrollViewer.ScrollToVerticalOffset(scrollTarget.Y);
+                    scrollTarget.X += velocity.X;
+                    scrollTarget.Y += velocity.Y;
+                    velocity *= friction;
+                    move = true;
+                }
+            }
+
+            /*
+            if (move)
+            {
+                ScrollViewer.scrp
+
+                FrameworkElement element = this.selected as FrameworkElement;
+                FrameworkElement canvas = element.Parent as FrameworkElement;
+                
+                Point cur_mousepos = e.GetPosition(canvas);
+
+                double newx = cur_mousepos.X - this.diff.X;
+                double newy = cur_mousepos.Y - this.diff.Y;
+
+                element.SetValue(Canvas.LeftProperty, newx);
+                element.SetValue(Canvas.TopProperty, newy);
+             */
+        }
+
+        public double Friction
+        {
+            get { return 1.0 - friction; }
+            set { friction = Math.Min(Math.Max(1.0 - value, 0), 1.0); }
+        }
+        #endregion
 
     }
 }
