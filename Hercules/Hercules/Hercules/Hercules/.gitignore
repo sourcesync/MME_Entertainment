@@ -1,8 +1,4 @@
 obj\
-bin\
-*.dll
-*.pdb
-*.exe
 *.user
 *.cache
 
