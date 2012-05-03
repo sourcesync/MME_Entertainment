@@ -24,25 +24,25 @@ namespace MME.Hercules.WPFForms
         {
             InitializeComponent();
             
-            /*
+            
             this.ctlblank = new HerculesWPFBlank.UserControlBlank();
             this.ctlblank.evt = new HerculesWPFBlank.UserControlBlank.UserControlBlankDelegate(this.blank_selected);
-            this.ctlblank.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlblank.Visibility = System.Windows.Visibility.Visible;
             ElementHost elhost = new ElementHost();
             elhost.Size = new Size(1024, 768);
             elhost.Location = new Point(0, 0);
             elhost.Child = this.ctlblank;
             this.Controls.Add(elhost);
-            */
+            
 
             this.ctlmain = new HerculesWPFMain.UserControlMain();
             this.ctlmain.evt = new HerculesWPFMain.UserControlMain.UserControlMainDelegate(this.main_selected);
             this.ctlmain.Visibility = System.Windows.Visibility.Visible;
-            ElementHost elhost = new ElementHost();
-            elhost.Size = new Size(1024, 768);
-            elhost.Location = new Point(0, 0);
-            elhost.Child = this.ctlmain;
-            this.Controls.Add(elhost);
+            ElementHost elhost2 = new ElementHost();
+            elhost2.Size = new Size(1024, 768);
+            elhost2.Location = new Point(0, 0);
+            elhost2.Child = this.ctlmain;
+            this.Controls.Add(elhost2);
         }
 
 
@@ -68,7 +68,22 @@ namespace MME.Hercules.WPFForms
         public void ShowMain()
         {
             this.HideAll();
-            if ( this.ctlmain!=null) this.ctlmain.Visibility = System.Windows.Visibility.Visible;
+            if (this.ctlmain != null)
+            {
+                this.ctlmain.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                this.ctlmain = new HerculesWPFMain.UserControlMain();
+                this.ctlmain.evt = new HerculesWPFMain.UserControlMain.UserControlMainDelegate(this.main_selected);
+                this.ctlmain.Visibility = System.Windows.Visibility.Visible;
+                ElementHost elhost2 = new ElementHost();
+                elhost2.Size = new Size(1024, 768);
+                elhost2.Location = new Point(0, 0);
+                elhost2.Child = this.ctlmain;
+                this.Controls.Add(elhost2);
+            }
+            
             //this.current = this.ctlmain;
             //this.ShowRotators();
         }
@@ -154,7 +169,7 @@ namespace MME.Hercules.WPFForms
 
         private void FormWPF_Load(object sender, EventArgs e)
         {
-            this.ShowMain();
+            this.ShowBlank();
         }
 
 
