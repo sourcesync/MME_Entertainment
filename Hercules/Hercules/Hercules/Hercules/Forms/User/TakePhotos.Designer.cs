@@ -46,6 +46,8 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panelVideoOne = new System.Windows.Forms.Panel();
+            this.panelVideoTwo = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.preview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -260,6 +262,20 @@
             this.label1.Size = new System.Drawing.Size(0, 31);
             this.label1.TabIndex = 17;
             // 
+            // panelVideoOne
+            // 
+            this.panelVideoOne.Location = new System.Drawing.Point(89, 349);
+            this.panelVideoOne.Name = "panelVideoOne";
+            this.panelVideoOne.Size = new System.Drawing.Size(200, 178);
+            this.panelVideoOne.TabIndex = 18;
+            // 
+            // panelVideoTwo
+            // 
+            this.panelVideoTwo.Location = new System.Drawing.Point(677, 349);
+            this.panelVideoTwo.Name = "panelVideoTwo";
+            this.panelVideoTwo.Size = new System.Drawing.Size(200, 178);
+            this.panelVideoTwo.TabIndex = 19;
+            // 
             // TakePhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,6 +283,8 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1008, 730);
             this.ControlBox = false;
+            this.Controls.Add(this.panelVideoTwo);
+            this.Controls.Add(this.panelVideoOne);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
@@ -327,5 +345,7 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelVideoOne;
+        private System.Windows.Forms.Panel panelVideoTwo;
     }
 }

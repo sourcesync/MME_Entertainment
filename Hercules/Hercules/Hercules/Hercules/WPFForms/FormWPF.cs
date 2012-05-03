@@ -12,6 +12,9 @@ namespace MME.Hercules.WPFForms
 {
     public partial class FormWPF : Form
     {
+        object current = null;
+
+        int orientation=0;
 
         HerculesWPFBlank.UserControlBlank ctlblank = null;
         ElementHost blankhost = null;
@@ -96,12 +99,18 @@ namespace MME.Hercules.WPFForms
         {
             //this.image1.Visibility = System.Windows.Visibility.Hidden;
             //this.image2.Visibility = System.Windows.Visibility.Hidden;
+            this.pictureBox1.Visible = false;
+            this.pictureBox2.Visible = false;
         }
 
         private void ShowRotators()
         {
             //this.image1.Visibility = System.Windows.Visibility.Visible;
             //this.image2.Visibility = System.Windows.Visibility.Visible;
+            this.pictureBox2.Visible = true;
+            this.pictureBox2.BringToFront();
+            this.pictureBox1.Visible = true;
+            this.pictureBox1.BringToFront();
         }
 
         public void ShowMain()
@@ -113,8 +122,9 @@ namespace MME.Hercules.WPFForms
                 this.mainhost.Visible = true;
                 this.mainhost.BringToFront();
             }
-            //this.current = this.ctlmain;
-            //this.ShowRotators();
+            
+            this.current = this.ctlmain;
+            this.ShowRotators();
         }
 
         public void ShowMenu()
@@ -125,8 +135,9 @@ namespace MME.Hercules.WPFForms
                 //this.ctlmenu.Visibility = System.Windows.Visibility.Visible;
                 this.menuhost.Visible = true;
                 this.menuhost.BringToFront();
-                //this.current = this.ctlmenu;
-                //this.ShowRotators();
+                
+                this.current = this.ctlmenu;
+                this.ShowRotators();
             }
         }
 
@@ -139,8 +150,9 @@ namespace MME.Hercules.WPFForms
                 //this.ctlchoose.Visibility = System.Windows.Visibility.Visible;
                 this.choosehost.Visible = true;
                 this.choosehost.BringToFront();
-                //this.current = this.ctlchoose;
-                //this.ShowRotators();
+               
+                this.current = this.ctlchoose;
+                this.ShowRotators();
             }
         }
 
@@ -151,6 +163,7 @@ namespace MME.Hercules.WPFForms
             //this.current = this.ctlphotobooth;
             //this.ShowRotators();
             //this.ctlphotobooth.Start();
+            this.DialogResult = DialogResult.OK;
         }
 
         /*
@@ -165,14 +178,15 @@ namespace MME.Hercules.WPFForms
         public void ShowBlank()
         {
             this.HideAll();
-            //if (this.ctlblank!=null) this.ctlblank.Visibility = System.Windows.Visibility.Visible;
-            //this.current = this.ctlblank;
-            //this.HideRotators();
+            this.current = this.ctlblank;
+            
+            this.HideRotators();
             if (this.ctlblank != null)
             {
                 this.blankhost.Visible = true;
                 this.blankhost.BringToFront();
             }
+
         }
 
         public void main_selected(int option)
@@ -216,7 +230,14 @@ namespace MME.Hercules.WPFForms
             this.ShowBlank();
         }
 
-        /*
+        private void Rotate(int i)
+        {
+            this.ctlmain.SetRotation(i);
+            this.ctlmenu.SetRotation(i);
+            this.ctlchoose.SetRotation(i);
+        }
+
+        
         private void toggle(object sender)
         {
             if (sender == this.pictureBox2 )
@@ -239,11 +260,13 @@ namespace MME.Hercules.WPFForms
                 else
                 {
                     this.orientation = 0;
-                    RotateTransform tr = new RotateTransform();
+                    /*RotateTransform tr = new RotateTransform();
                     tr.CenterX = this.canvas_master.Width / 2.0;
                     tr.CenterY = this.canvas_master.Height / 2.0;
                     tr.Angle = 0;
                     this.canvas_master.RenderTransform = tr;
+                     * */
+                    this.Rotate(this.orientation);
 
                     if (this.current == this.ctlblank)
                     {
@@ -251,16 +274,19 @@ namespace MME.Hercules.WPFForms
                     }
                 }
             }
-            else if (sender == this.pictureBox2)
+            else if (sender == this.pictureBox1)
             {
                 if (this.orientation == 0)
                 {
                     this.orientation = 1;
-                    RotateTransform tr = new RotateTransform();
+                   
+                    this.Rotate(this.orientation);
+                    /*RotateTransform tr = new RotateTransform();
                     tr.CenterX = this.canvas_master.Width / 2.0;
                     tr.CenterY = this.canvas_master.Height / 2.0;
                     tr.Angle = 180;
                     this.canvas_master.RenderTransform = tr;
+                    */
 
                     if (this.current == this.ctlblank)
                     {
@@ -284,11 +310,16 @@ namespace MME.Hercules.WPFForms
                 }
             }
         }
-         */
+         
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            this.toggle(sender);
+        }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.toggle(sender);
         }
 
 

@@ -28,6 +28,12 @@ namespace MME.Hercules.Forms.User
            if (ConfigUtility.IsDeveloperMode)
                this.WindowState = FormWindowState.Normal;
 
+           if (ConfigUtility.GetValue("BoothType") == "2")
+           {
+               this.juststart();
+               return;
+           }
+
            //gw
             //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
             //true);
@@ -167,7 +173,6 @@ namespace MME.Hercules.Forms.User
             currentSession = new Session();
 
             
-
             DialogResult dr = System.Windows.Forms.DialogResult.OK;
 
             pb.Visible = false;
@@ -176,131 +181,172 @@ namespace MME.Hercules.Forms.User
             //gw PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
             //false);
 
-            MME.Hercules.WPFForms.FormWPF frm = new MME.Hercules.WPFForms.FormWPF();
-            frm.ShowDialog();
-
-            if (ConfigUtility.SequenceConfig != null)
+            while (true)
             {
-               dr = ProcessSequenceSteps(dr);
-            }
 
-            // Are we requiring room number mode?            
-            if (ConfigUtility.RoomNumberMode && dr == System.Windows.Forms.DialogResult.OK)
-            {
-                using (User.RoomNumber rn = new RoomNumber(currentSession))
+                MME.Hercules.WPFForms.FormWPF wpffrm = null;
+                if (ConfigUtility.GetValue("BoothType") == "2")
                 {
-                    dr = rn.ShowDialog();
-                }
-            }    
-
-            // Are we supporting emailing
-            bool AllowEmailPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1"));
-            if (AllowEmailPublish && dr == System.Windows.Forms.DialogResult.OK)
-            {
-                using (User.Email ef = new Email(currentSession))
-                {
-                    dr = ef.ShowDialog(); 
-                }
-            }    
-          
-            // color types
-            if (dr == System.Windows.Forms.DialogResult.OK)
-            {
-                // do we support bw and color?
-                ColorType colorTypes = (ColorType)Convert.ToInt32(ConfigUtility.ColorTypes);
-
-                //gw
-                if ((colorTypes == ColorType.BW_Color) || (colorTypes == ColorType.BW_Color_Sepia))
-                {
-                    using (User.PhotoType ptform = new PhotoType(currentSession))
+                    //  Show main menu...
+                    if (wpffrm == null)
                     {
-                        ptform.color_choice = colorTypes;
-                        dr = ptform.ShowDialog(this);
+                        wpffrm = new MME.Hercules.WPFForms.FormWPF();
+                    }
+                    wpffrm.ShowDialog();
+                }
+
+                if (ConfigUtility.SequenceConfig != null)
+                {
+                    dr = ProcessSequenceSteps(dr);
+                }
+
+                // Are we requiring room number mode?            
+                if (ConfigUtility.RoomNumberMode && dr == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (User.RoomNumber rn = new RoomNumber(currentSession))
+                    {
+                        dr = rn.ShowDialog();
                     }
                 }
-                //gw
-                /*
-                // If we support both, ask the user.
-                if (((colorTypes & ColorType.BW) == ColorType.BW) && ((colorTypes & ColorType.Color) == ColorType.Color))
+
+                // Are we supporting emailing
+                bool AllowEmailPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1"));
+                if (AllowEmailPublish && dr == System.Windows.Forms.DialogResult.OK)
                 {
-                    using (User.PhotoType ptform = new PhotoType(currentSession))
+                    using (User.Email ef = new Email(currentSession))
                     {
-                        dr = ptform.ShowDialog(this);
+                        dr = ef.ShowDialog();
                     }
                 }
-                 * */
+
+
+                // color types
+                if (dr == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (ConfigUtility.GetValue("BoothType") == "2")
+                    {
+
+                    }
+                    else
+                    {
+
+                        // do we support bw and color?
+                        ColorType colorTypes = (ColorType)Convert.ToInt32(ConfigUtility.ColorTypes);
+
+                        //gw
+                        if ((colorTypes == ColorType.BW_Color) || (colorTypes == ColorType.BW_Color_Sepia))
+                        {
+                            using (User.PhotoType ptform = new PhotoType(currentSession))
+                            {
+                                ptform.color_choice = colorTypes;
+                                dr = ptform.ShowDialog(this);
+                            }
+                        }
+                        //gw
+                        /*
+                        // If we support both, ask the user.
+                        if (((colorTypes & ColorType.BW) == ColorType.BW) && ((colorTypes & ColorType.Color) == ColorType.Color))
+                        {
+                            using (User.PhotoType ptform = new PhotoType(currentSession))
+                            {
+                            dr = ptform.ShowDialog(this);
+                        }
+                        }
+                        * */
+                        else
+                            currentSession.SelectedColorType = colorTypes;
+                        //gw
+                    }
+                } // colortypes
+
+                /* backgrounds*/
+                if (ConfigUtility.GetValue("BoothType") == "2")
+                {
+                }
                 else
-                    currentSession.SelectedColorType = colorTypes;           
+                {
+                    // Do we have custom backgrounds for chroma key?
+                    int backgrounds = Convert.ToInt32(ConfigUtility.PhotoBackgrounds);
+
+                    // If we have backgrounds, ask the user to select
+                    if (backgrounds > 1 && dr == System.Windows.Forms.DialogResult.OK)
+                    {
+                        using (User.Backgrounds bkform = new Backgrounds(currentSession))
+                        {
+                            dr = bkform.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        if (this.currentSession.SelectedBackgrounds == null)
+                            this.currentSession.SelectedBackgrounds = new System.Collections.Generic.List<int>();
+
+                        for (int i = 0; i <= ConfigUtility.PhotoCount - 1; i++)
+                            this.currentSession.SelectedBackgrounds.Add(1);
+                    }
+                }
+
+                // Start picture taking
+                if (dr == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (User.TakePhotos tpform = new TakePhotos(currentSession))
+                    {
+                        dr = tpform.ShowDialog();
+                    }
+                }
+
+
+                bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
+
+
+                // As to pick favorite if emailing
+                if (dr == System.Windows.Forms.DialogResult.OK &&
+                    (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
+                    AllowFacebookPublish))
+                {
+                    {
+                        PickFavorite pvform = new PickFavorite(currentSession);
+                        dr = pvform.ShowDialog();
+                    }
+                }
+
+                // Are we supporting facebook
+
+                if (AllowFacebookPublish && dr == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (User.Facebook fb = new Facebook(currentSession))
+                    {
+                        dr = fb.ShowDialog();
+                    }
+                }
+
+                // Finish up
+                if (ConfigUtility.GetValue("BoothType") == "2")
+                {
+
+                }
+                else
+                {
+                    if (dr == System.Windows.Forms.DialogResult.OK)
+                    {
+                        using (User.Developing dd = new Developing(currentSession))
+                        {
+                            dr = dd.ShowDialog();
+                        }
+                    }
+                }
+
                 //gw
-            }
+                //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
+                //gw
 
-            // Do we have custom backgrounds for chroma key?
-            int backgrounds = Convert.ToInt32(ConfigUtility.PhotoBackgrounds);
 
-            // If we have backgrounds, ask the user to select
-            if (backgrounds > 1 && dr == System.Windows.Forms.DialogResult.OK)
-            {
-                using (User.Backgrounds bkform = new Backgrounds(currentSession))
+                if (ConfigUtility.GetValue("BoothType") != "2")
                 {
-                    dr = bkform.ShowDialog();
-                }
-            }
-            else
-            {
-                if (this.currentSession.SelectedBackgrounds == null)
-                    this.currentSession.SelectedBackgrounds = new System.Collections.Generic.List<int>();
-
-                for (int i=0; i<=ConfigUtility.PhotoCount - 1; i++)
-                    this.currentSession.SelectedBackgrounds.Add(1);
-            }
-            
-            // Start picture taking
-            if (dr == System.Windows.Forms.DialogResult.OK)
-            {
-                using (User.TakePhotos tpform = new TakePhotos(currentSession))
-                {
-                    dr = tpform.ShowDialog();
-                }
-            }
-
-
-            bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
-
-
-            // As to pick favorite if emailing
-            if (dr == System.Windows.Forms.DialogResult.OK &&                 
-                (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
-                AllowFacebookPublish))
-            {
-                {
-                    PickFavorite pvform = new PickFavorite(currentSession);
-                    dr = pvform.ShowDialog();
+                    break;
                 }
 
             }
-
-            // Are we supporting facebook
-     
-            if (AllowFacebookPublish && dr == System.Windows.Forms.DialogResult.OK)
-            {
-                using (User.Facebook fb = new Facebook(currentSession))
-                {
-                    dr = fb.ShowDialog();
-                }
-            }
-
-            // Finish up
-            if (dr == System.Windows.Forms.DialogResult.OK)
-            {
-                using (User.Developing dd = new Developing(currentSession))
-                {
-                    dr = dd.ShowDialog();
-                }
-            }
-
-            //gw
-            //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
-            //gw
 
             // Back to start
             pb.Visible = true;
@@ -308,8 +354,6 @@ namespace MME.Hercules.Forms.User
             if (ConfigUtility.IsDeveloperMode) 
                 this.Show();
         }
-
-
 
         private void StartForm_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
         {
@@ -365,6 +409,14 @@ namespace MME.Hercules.Forms.User
         {
             SoundUtility.Play(Hercules.Properties.SoundResources.SELECTION_BUTTON);
             Thread.Sleep(800);
+        }
+
+        private void juststart()
+        {
+            PlaySelectionSound();
+
+            // Start participant workflow
+            Workflow();
         }
 
         private void startbutton_Click(object sender, EventArgs e)

@@ -9,6 +9,17 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using System.Drawing.Imaging;
 using System.Media;
+using System.ComponentModel;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+
+using Microsoft.Expression.Encoder.Devices;
+using Microsoft.Expression.Encoder.Live;
+using Microsoft.Expression.Encoder;
 
 namespace MME.Hercules.Forms.User
 {
@@ -35,11 +46,28 @@ namespace MME.Hercules.Forms.User
         private Image threei = null;
         private Image fouri = null;
         private SoundPlayer countdown = null;
+        private bool istable = false; 
+        String[] camname ={ "",""};
+        private LiveJob[] _job = {null,null};
+        private LiveDeviceSource[] _deviceSource = {null,null};
+        private bool[] _bStartedRecording = {false,false};
+        private Panel[] vidPanel = {null,null};
         //gw
 
         public TakePhotos(Session currentSession)
         {
             InitializeComponent();
+
+            this.vidPanel[0] = this.panelVideoOne;
+            this.vidPanel[1] = this.panelVideoTwo;
+
+            if (ConfigUtility.GetValue("BoothType") == "2")
+            {
+                istable = true;
+
+                this.info.Visible = false;
+            }
+
 
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.currentSession = currentSession;
@@ -56,10 +84,6 @@ namespace MME.Hercules.Forms.User
             }
             //gw
         }
-
-
-
-
 
         protected void CountdownTimer()
         {
@@ -299,10 +323,206 @@ namespace MME.Hercules.Forms.User
 
             this.PicProcessed = true;
         }
-        
+
+        private void GetSelectedVideoAndAudioDevices(String camname, out EncoderDevice video)
+        {
+            video = null;
+
+
+            // Get the selected video device            
+            foreach (EncoderDevice edv in EncoderDevices.FindDevices(EncoderDeviceType.Video))
+            {
+                if (String.Compare(edv.Name, camname) == 0)
+                {
+                    video = edv;
+                    break;
+                }
+            }
+        }
+
+        private void StopRecording(int i)
+        {
+            // Is it Recoring ?
+            if (_bStartedRecording[i])
+            {
+                // Yes
+                // Stops encoding
+                _job[i].StopEncoding();
+                //btnStartStopRecording.Text = "Start Recording";
+                //toolStripStatusLabel1.Text = "";
+                _bStartedRecording[i] = false;
+            }
+            else
+            {
+                // Sets up publishing format for file archival type
+                FileArchivePublishFormat fileOut = new FileArchivePublishFormat();
+
+                // Sets file path and name
+                fileOut.OutputFileName = String.Format("C:\\WebCam{0:yyyyMMdd_hhmmss}.wmv", DateTime.Now);
+
+                // Adds the format to the job. You can add additional formats as well such as
+                // Publishing streams or broadcasting from a port
+                _job[i].PublishFormats.Add(fileOut);
+
+                // Start encoding
+                _job[i].StartEncoding();
+
+                //btnStartStopRecording.Text = "Stop Recording";
+                //toolStripStatusLabel1.Text = fileOut.OutputFileName;
+                _bStartedRecording[i] = true;
+            }
+        }
+
+
+        void StopJob(int i)
+        {
+            // Has the Job already been created ?
+            if (_job[i] != null)
+            {
+                // Yes
+                // Is it capturing ?
+                //if (_job.IsCapturing)
+                if (_bStartedRecording[i])
+                {
+                    // Yes
+                    // Stop Capturing
+                    StopRecording(i);
+                }
+
+                _job[i].StopEncoding();
+
+                // Remove the Device Source and destroy the job
+                _job[i].RemoveDeviceSource(_deviceSource[i]);
+
+                // Destroy the device source
+                _deviceSource[i].PreviewWindow = null;
+                _deviceSource[i] = null;
+            }
+        }
+        private void startpreview(int i)
+        {
+            EncoderDevice video = null;
+            EncoderDevice audio = null;
+
+            String cam = camname[i];
+
+            GetSelectedVideoAndAudioDevices(cam, out video);
+            StopJob(i);
+
+            if (video == null)
+            {
+                return;
+            }
+
+            // Starts new job for preview window
+            _job[i] = new LiveJob();
+
+            // Checks for a/v devices
+            //if (video != null && audio != null)
+                if (video != null )
+            {
+                // Create a new device source. We use the first audio and video devices on the system
+                _deviceSource[i] = _job[i].AddDeviceSource(video, audio);
+
+                {
+                    // No
+                    // Setup the video resolution and frame rate of the video device
+                    // NOTE: Of course, the resolution and frame rate you specify must be supported by the device!
+                    // NOTE2: May be not all video devices support this call, and so it just doesn't work, as if you don't call it (no error is raised)
+                    // NOTE3: As a workaround, if the .PickBestVideoFormat method doesn't work, you could force the resolution in the 
+                    //        following instructions (called few lines belows): 'panelVideoPreview.Size=' and '_job.OutputFormat.VideoProfile.Size=' 
+                    //        to be the one you choosed (640, 480).
+                    _deviceSource[i].PickBestVideoFormat(new Size(640, 480), 15);
+                }
+
+                // Get the properties of the device video
+                SourceProperties sp = _deviceSource[i].SourcePropertiesSnapshot();
+
+                // Resize the preview panel to match the video device resolution set
+                //this.panelVideoOne.Size = new Size(sp.Size.Width, sp.Size.Height);
+
+                // Setup the output video resolution file as the preview
+                _job[i].OutputFormat.VideoProfile.Size = new Size(sp.Size.Width, sp.Size.Height);
+
+                // Display the video device properties set
+                //toolStripStatusLabel1.Text = sp.Size.Width.ToString() + "x" + sp.Size.Height.ToString() + "  " + sp.FrameRate.ToString() + " fps";
+
+                // Sets preview window to winform panel hosted by xaml window
+                _deviceSource[i].PreviewWindow = new PreviewWindow(new HandleRef( this.vidPanel[i], this.vidPanel[i].Handle));
+
+                // Make this source the active one
+                _job[i].ActivateSource(_deviceSource[i]);
+
+                //btnStartStopRecording.Enabled = true;
+                //btnGrabImage.Enabled = true;
+
+                //toolStripStatusLabel1.Text = "Preview activated";
+            }
+            else
+            {
+                // Gives error message as no audio and/or video devices found
+                MessageBox.Show("No Video/Audio capture devices have been found.", "Warning");
+                //toolStripStatusLabel1.Text = "No Video/Audio capture devices have been found.";
+            }
+        }
+
+        private int SetupVideo()
+        {
+            int i = 0;
+            int numcams = 0;
+            
+            foreach (EncoderDevice edv in EncoderDevices.FindDevices(EncoderDeviceType.Video))
+            {
+                numcams++;
+                if (i == 0)
+                {
+                    this.camname[0] = edv.Name;
+                    break;
+                }
+                else if (i == 1)
+                {
+                    this.camname[2] = edv.Name;
+                    break;
+                }
+            }
+
+            if (numcams == 1)
+            {
+                this.panelVideoOne.Visible = true;
+                this.panelVideoTwo.Visible = false;
+            }
+            else if (numcams == 1)
+            {
+                this.panelVideoOne.Visible = true;
+                this.panelVideoTwo.Visible = true;
+            }
+
+            return numcams;
+        }
+
 
         private void TakePhotos_Load(object sender, EventArgs e)
         {
+            if (istable)
+            {
+                int numcams = SetupVideo();
+                if ((numcams==0)||(numcams>2))
+                {
+                    this.DialogResult = DialogResult.No;
+                    return;
+                }
+
+                if (numcams == 1)
+                {
+                    this.startpreview(0);
+                }
+                else if (numcams == 2)
+                {
+                    this.startpreview(0);
+                    this.startpreview(1);
+                }
+            }
+
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
             if (ConfigUtility.IsDeveloperMode)
