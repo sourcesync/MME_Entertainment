@@ -25,6 +25,11 @@ namespace MME.Hercules.WPFForms
         HerculesWPFChoose.UserControlChoose ctlchoose = null;
         ElementHost choosehost = null;
 
+        HerculesWPFImageButton.UserControl1 btn = null;
+        ElementHost btnhost = null;
+        HerculesWPFImageButtonLow.UserControl1 btnlow = null;
+        ElementHost btnhostlow = null;
+
         System.Collections.ArrayList ctls = new System.Collections.ArrayList();
 
         public FormWPF()
@@ -43,6 +48,7 @@ namespace MME.Hercules.WPFForms
 
             this.ctlmain = new HerculesWPFMain.UserControlMain();
             this.ctlmain.evt = new HerculesWPFMain.UserControlMain.UserControlMainDelegate(this.main_selected);
+            this.ctlmain.tevt = new HerculesWPFMain.UserControlMain.UserControlMainToggle(this.main_toggle);
             this.ctlmain.Visibility = System.Windows.Visibility.Visible;
             this.mainhost = new ElementHost();
             this.mainhost.Size = new Size(1024, 768);
@@ -52,6 +58,7 @@ namespace MME.Hercules.WPFForms
 
             this.ctlmenu = new HerculesWPFMenu.UserControlMenu();
             this.ctlmenu.evt = new HerculesWPFMenu.UserControlMenu.UserControlMenuDelegate(this.menu_selected);
+            this.ctlmenu.tevt = new HerculesWPFMenu.UserControlMenu.UserControlMenuToggle(this.menu_toggle);
             this.ctlmenu.Visibility = System.Windows.Visibility.Visible;
             this.menuhost = new ElementHost();
             this.menuhost.Size = new Size(1024, 768);
@@ -61,12 +68,33 @@ namespace MME.Hercules.WPFForms
 
             this.ctlchoose = new HerculesWPFChoose.UserControlChoose();
             this.ctlchoose.evt = new HerculesWPFChoose.UserControlChoose.UserControlChooseDelegate(this.choose_selected);
+            this.ctlchoose.tevt = new HerculesWPFChoose.UserControlChoose.UserControlChooseToggle(this.choose_toggle);
             this.ctlchoose.Visibility = System.Windows.Visibility.Visible;
             this.choosehost = new ElementHost();
             this.choosehost.Size = new Size(1024, 768);
             this.choosehost.Location = new Point(0, 0);
             this.choosehost.Child = this.ctlchoose;
             this.Controls.Add(this.choosehost);
+
+            this.btn = new HerculesWPFImageButton.UserControl1();
+            this.btn.evt = new HerculesWPFImageButton.UserControl1.MouseDown(this.topleft);
+            this.btn.Visibility = System.Windows.Visibility.Visible;
+            btnhost = new ElementHost();
+            btnhost.Size = new Size(30, 30);
+            btnhost.Location = new Point(0, 0);
+            btnhost.Child = this.btn;
+            this.Controls.Add(btnhost);
+            btnhost.BringToFront();
+
+            this.btnlow = new HerculesWPFImageButtonLow.UserControl1();
+            this.btnlow.evt = new HerculesWPFImageButtonLow.UserControl1.MouseDown(this.botright);
+            this.btnlow.Visibility = System.Windows.Visibility.Visible;
+            btnhostlow = new ElementHost();
+            btnhostlow.Size = new Size(30, 30);
+            btnhostlow.Location = new Point(1024-30, 768-30);
+            btnhostlow.Child = this.btnlow;
+            this.Controls.Add(btnhostlow);
+            btnhostlow.BringToFront();
         }
 
 
@@ -99,18 +127,27 @@ namespace MME.Hercules.WPFForms
         {
             //this.image1.Visibility = System.Windows.Visibility.Hidden;
             //this.image2.Visibility = System.Windows.Visibility.Hidden;
-            this.pictureBox1.Visible = false;
-            this.pictureBox2.Visible = false;
+            //this.pictureBox1.Visible = false;
+            //this.pictureBox2.Visible = false;
+
+            btnhost.Visible = false;
+            btnhostlow.Visible = false;
         }
 
         private void ShowRotators()
         {
             //this.image1.Visibility = System.Windows.Visibility.Visible;
             //this.image2.Visibility = System.Windows.Visibility.Visible;
-            this.pictureBox2.Visible = true;
-            this.pictureBox2.BringToFront();
-            this.pictureBox1.Visible = true;
-            this.pictureBox1.BringToFront();
+            //this.pictureBox2.Visible = true;
+            //this.pictureBox2.BringToFront();
+            //this.pictureBox1.Visible = true;
+            //this.pictureBox1.BringToFront();
+
+            btnhost.Visible = true;
+            btnhost.BringToFront();
+
+            btnhostlow.Visible = true;
+            btnhostlow.BringToFront();
         }
 
         public void ShowMain()
@@ -201,6 +238,31 @@ namespace MME.Hercules.WPFForms
             }
         }
 
+        public void child_toggle(int option)
+        {
+            if (option != this.orientation)
+            {
+                this.toggle(this.pictureBox2);
+            }
+            else
+            {
+                this.toggle(this.pictureBox1);
+            }
+        }
+
+        public void choose_toggle(int option)
+        {
+            this.child_toggle(option);
+        }
+        public void main_toggle(int option)
+        {
+            this.child_toggle(option);
+        }
+        public void menu_toggle(int option)
+        {
+            this.child_toggle(option);
+        }
+
 
         public void choose_selected(int option)
         {
@@ -227,7 +289,7 @@ namespace MME.Hercules.WPFForms
 
         private void FormWPF_Load(object sender, EventArgs e)
         {
-            this.ShowBlank();
+            //this.ShowBlank();
         }
 
         private void Rotate(int i)
@@ -235,6 +297,16 @@ namespace MME.Hercules.WPFForms
             this.ctlmain.SetRotation(i);
             this.ctlmenu.SetRotation(i);
             this.ctlchoose.SetRotation(i);
+        }
+
+        private void topleft()
+        {
+            this.toggle(this.pictureBox1);
+        }
+
+        private void botright()
+        {
+            this.toggle(this.pictureBox2);
         }
 
         

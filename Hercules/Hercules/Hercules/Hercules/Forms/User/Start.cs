@@ -192,6 +192,7 @@ namespace MME.Hercules.Forms.User
                     {
                         wpffrm = new MME.Hercules.WPFForms.FormWPF();
                     }
+                    wpffrm.ShowMain();
                     wpffrm.ShowDialog();
                 }
 

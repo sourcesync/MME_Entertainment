@@ -479,7 +479,7 @@ namespace MME.Hercules.Forms.User
                 if (i == 0)
                 {
                     this.camname[0] = edv.Name;
-                    break;
+                    //break;
                 }
                 else if (i == 1)
                 {

@@ -568,6 +568,14 @@
       <Project>{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}</Project>
       <Name>HerculesWPFChoose</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFImageButtonLow\HerculesWPFImageButtonLow.csproj">
+      <Project>{0A9A4394-D120-48D3-9318-EEAA9B3163E0}</Project>
+      <Name>HerculesWPFImageButtonLow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFImageButton\HerculesWPFImageButton.csproj">
+      <Project>{C68F8565-8471-4495-BA02-62B8A6BCA4CC}</Project>
+      <Name>HerculesWPFImageButton</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HerculesWPFMain\HerculesWPFMain.csproj">
       <Project>{BA40155F-F9B6-422A-9DC2-1B911C244AA7}</Project>
       <Name>HerculesWPFMain</Name>

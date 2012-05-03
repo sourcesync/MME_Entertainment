@@ -174,3 +174,7 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercule
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFChoose.pdb
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFMain.pdb
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFMenu.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFImageButton.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFImageButton.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFImageButtonLow.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFImageButtonLow.pdb
