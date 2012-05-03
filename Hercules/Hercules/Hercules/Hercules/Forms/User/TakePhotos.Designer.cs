@@ -268,6 +268,7 @@
             this.panelVideoOne.Name = "panelVideoOne";
             this.panelVideoOne.Size = new System.Drawing.Size(200, 178);
             this.panelVideoOne.TabIndex = 18;
+            this.panelVideoOne.Visible = false;
             // 
             // panelVideoTwo
             // 
@@ -275,6 +276,7 @@
             this.panelVideoTwo.Name = "panelVideoTwo";
             this.panelVideoTwo.Size = new System.Drawing.Size(200, 178);
             this.panelVideoTwo.TabIndex = 19;
+            this.panelVideoTwo.Visible = false;
             // 
             // TakePhotos
             // 

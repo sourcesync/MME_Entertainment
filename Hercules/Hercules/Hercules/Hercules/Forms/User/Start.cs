@@ -286,27 +286,35 @@ namespace MME.Hercules.Forms.User
                     }
                 }
 
-                // Start picture taking
-                if (dr == System.Windows.Forms.DialogResult.OK)
+                
                 {
-                    using (User.TakePhotos tpform = new TakePhotos(currentSession))
+                    // Start picture taking
+                    if (dr == System.Windows.Forms.DialogResult.OK)
                     {
-                        dr = tpform.ShowDialog();
+                        using (User.TakePhotos tpform = new TakePhotos(currentSession))
+                        {
+                            dr = tpform.ShowDialog();
+                        }
                     }
                 }
 
 
                 bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
 
-
-                // As to pick favorite if emailing
-                if (dr == System.Windows.Forms.DialogResult.OK &&
-                    (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
-                    AllowFacebookPublish))
+                if (ConfigUtility.GetValue("BoothType") == "2")
                 {
+                }
+                else
+                {
+                    // As to pick favorite if emailing
+                    if (dr == System.Windows.Forms.DialogResult.OK &&
+                        (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
+                        AllowFacebookPublish))
                     {
-                        PickFavorite pvform = new PickFavorite(currentSession);
-                        dr = pvform.ShowDialog();
+                        {
+                            PickFavorite pvform = new PickFavorite(currentSession);
+                            dr = pvform.ShowDialog();
+                        }
                     }
                 }
 

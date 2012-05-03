@@ -448,7 +448,9 @@ namespace MME.Hercules.Forms.User
                 //toolStripStatusLabel1.Text = sp.Size.Width.ToString() + "x" + sp.Size.Height.ToString() + "  " + sp.FrameRate.ToString() + " fps";
 
                 // Sets preview window to winform panel hosted by xaml window
+                this.vidPanel[i].Visible = true;
                 _deviceSource[i].PreviewWindow = new PreviewWindow(new HandleRef( this.vidPanel[i], this.vidPanel[i].Handle));
+
 
                 // Make this source the active one
                 _job[i].ActivateSource(_deviceSource[i]);
@@ -500,13 +502,43 @@ namespace MME.Hercules.Forms.User
             return numcams;
         }
 
-
-        private void TakePhotos_Load(object sender, EventArgs e)
+        private void GrabImage_Click(int i)
         {
+            // Create a Bitmap of the same dimension of panelVideoPreview (Width x Height)
+            Panel pnl = this.vidPanel[i];
+            using (Bitmap bitmap = new Bitmap(pnl.Width, pnl.Height))
+            {
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    // Get the paramters to call g.CopyFromScreen and get the image
+                    Rectangle rectanglePanelVideoPreview = pnl.Bounds;
+                    Point sourcePoints = pnl.PointToScreen(new Point(pnl.ClientRectangle.X, pnl.ClientRectangle.Y));
+                    g.CopyFromScreen(sourcePoints, Point.Empty, rectanglePanelVideoPreview.Size);
+                }
+
+                string strGrabFileName = "C:\\webcam.jpg";
+                    //String.Format("C:\\Snapshot_{0:yyyyMMdd_hhmmss}.jpg", DateTime.Now);
+                //toolStripStatusLabel1.Text = strGrabFileName;
+                
+                bitmap.Save(strGrabFileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+        }
+
+        private void DoWebCam_Loaded()
+        {
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
+            if (ConfigUtility.IsDeveloperMode)
+                this.WindowState = FormWindowState.Normal;
+
+            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+            info.ForeColor = System.Drawing.Color.Black;
+
+
             if (istable)
             {
                 int numcams = SetupVideo();
-                if ((numcams==0)||(numcams>2))
+                if ((numcams == 0) || (numcams > 2))
                 {
                     this.DialogResult = DialogResult.No;
                     return;
@@ -521,6 +553,46 @@ namespace MME.Hercules.Forms.User
                     this.startpreview(0);
                     this.startpreview(1);
                 }
+            }
+
+            this.Refresh();
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(1);
+
+            System.Threading.Thread.Sleep(1000);
+            SoundUtility.PlaySync(Hercules.Properties.SoundResources.GET_READY);
+
+            System.Threading.Thread.Sleep(1000);
+
+            SoundUtility.Play(Hercules.Properties.SoundResources.COUNTDOWN);
+            System.Threading.Thread.Sleep(4000);
+
+
+            SoundUtility.PlaySync(Hercules.Properties.SoundResources.CAMERA_CLICK);
+
+
+            //this.StopRecording(0);
+            //this.StopRecording(1);
+            this.StopJob(0);
+            this.StopJob(1);
+
+            if (preview.Image != null)
+                preview.Image.Dispose();
+
+            if (pb.Image != null)
+                pb.Image.Dispose();
+
+
+            DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+
+        private void TakePhotos_Load(object sender, EventArgs e)
+        {
+            if (istable)
+            {
+                this.DoWebCam_Loaded();
+                return;
             }
 
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -542,6 +614,7 @@ namespace MME.Hercules.Forms.User
 
             WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
             info.ForeColor = System.Drawing.Color.Black;
+
 
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR")))
                 info.ForeColor = ColorTranslator.FromHtml(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR"));
@@ -804,8 +877,11 @@ namespace MME.Hercules.Forms.User
             if (pb.Image != null)
                 pb.Image.Dispose();
 
-            DevelopPhotos();
-            PrintPhotos();
+            
+            {
+                DevelopPhotos();
+                PrintPhotos();
+            }
 
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
