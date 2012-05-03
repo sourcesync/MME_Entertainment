@@ -56,63 +56,78 @@ namespace HerculesWPFChoose
         //  specific menus...
 
         //  sm...
-        private String[] sms = { "/WpfSandbox;component/Images/sm1.jpg",
-                                       "/WpfSandbox;component/Images/sm2.jpg",
-                                       "/WpfSandbox;component/Images/sm3.jpg",
-                                       "/WpfSandbox;component/Images/sm4.jpg",
-                                        "/WpfSandbox;component/Images/sm5.jpg",
-                                        "/WpfSandbox;component/Images/sm6.jpg" };
+        private String[] sms = { "/HerculesWPFChoose;component/Images/sm1.jpg",
+                                       "/HerculesWPFChoose;component/Images/sm2.jpg",
+                                       "/HerculesWPFChoose;component/Images/sm3.jpg",
+                                       "/HerculesWPFChoose;component/Images/sm4.jpg",
+                                        "/HerculesWPFChoose;component/Images/sm5.jpg",
+                                        "/HerculesWPFChoose;component/Images/sm6.jpg" };
         private double[] smcost = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 
-        private String[] craves = { "/WpfSandbox;component/Images/50_50_Crave_Case.jpg",
-                                       "/WpfSandbox;component/Images/Brown-bag-left.jpg",
-                                       "/WpfSandbox;component/Images/Crave_Case_with_Cheese.jpg",
-                                       "/WpfSandbox;component/Images/menu_meal4.jpg",
-                                        "/WpfSandbox;component/Images/Original_Crave_Case.jpg",
-                                        "/WpfSandbox;component/Images/Variety_Crave_Case.jpg" };
+        private String[] craves = { "/HerculesWPFChoose;component/Images/50_50_Crave_Case.jpg",
+                                       "/HerculesWPFChoose;component/Images/Brown-bag-left.jpg",
+                                       "/HerculesWPFChoose;component/Images/Crave_Case_with_Cheese.jpg",
+                                       "/HerculesWPFChoose;component/Images/menu_meal4.jpg",
+                                        "/HerculesWPFChoose;component/Images/Original_Crave_Case.jpg",
+                                        "/HerculesWPFChoose;component/Images/Variety_Crave_Case.jpg" };
         private double[] crave_cost = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 
-        private String[] drinks = { "/WpfSandbox;component/Images/menu_drinks_coffee.jpg",
-                                       "/WpfSandbox;component/Images/menu_drinks_coke.jpg",
-                                       "/WpfSandbox;component/Images/menu_drinks_hot_chocolate.jpg",
-                                       "/WpfSandbox;component/Images/menu_drinks_shakes.jpg",
-                                        "/WpfSandbox;component/Images/menu_drinks_tea.jpg"};
+        private String[] drinks = { "/HerculesWPFChoose;component/Images/menu_drinks_coffee.jpg",
+                                       "/HerculesWPFChoose;component/Images/menu_drinks_coke.jpg",
+                                       "/HerculesWPFChoose;component/Images/menu_drinks_hot_chocolate.jpg",
+                                       "/HerculesWPFChoose;component/Images/menu_drinks_shakes.jpg",
+                                        "/HerculesWPFChoose;component/Images/menu_drinks_tea.jpg"};
         private double[] drink_cost = { 1.0, 1.0, 1.0, 1.0, 1.0 };
 
-        private String[] bf = { "/WpfSandbox;component/Images/BaconEggCheese_Bun.jpg",
-                                       "/WpfSandbox;component/Images/BaconEggCheese_Toast.jpg",
-                                       "/WpfSandbox;component/Images/EggCheese_Bun.jpg",
-                                       "/WpfSandbox;component/Images/EggCheese_Toast.jpg",
-                                        "/WpfSandbox;component/Images/FrenchToast.jpg",
-                                         "/WpfSandbox;component/Images/HashRounds.jpg",
-                                          "/WpfSandbox;component/Images/menu_bfast_oj.jpg",
-                                           "/WpfSandbox;component/Images/SausageCheese_Bun.jpg",
-                                            "/WpfSandbox;component/Images/SausageCheese_Toast.jpg",
-                                             "/WpfSandbox;component/Images/SausageEggCheese_Bun.jpg",
-                                              "/WpfSandbox;component/Images/SausageEggCheese_Toast.jpg"};
+        private String[] bf = { "/HerculesWPFChoose;component/Images/BaconEggCheese_Bun.jpg",
+                                       "/HerculesWPFChoose;component/Images/BaconEggCheese_Toast.jpg",
+                                       "/HerculesWPFChoose;component/Images/EggCheese_Bun.jpg",
+                                       "/HerculesWPFChoose;component/Images/EggCheese_Toast.jpg",
+                                        "/HerculesWPFChoose;component/Images/FrenchToast.jpg",
+                                         "/HerculesWPFChoose;component/Images/HashRounds.jpg",
+                                          "/HerculesWPFChoose;component/Images/menu_bfast_oj.jpg",
+                                           "/HerculesWPFChoose;component/Images/SausageCheese_Bun.jpg",
+                                            "/HerculesWPFChoose;component/Images/SausageCheese_Toast.jpg",
+                                             "/HerculesWPFChoose;component/Images/SausageEggCheese_Bun.jpg",
+                                              "/HerculesWPFChoose;component/Images/SausageEggCheese_Toast.jpg"};
         private double[] bf_cost = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 
-        private String[] sl = { "/WpfSandbox;component/Images/BCNCHZBRGR.jpg",
-                                       "/WpfSandbox;component/Images/CHKNBRSTCHZ.jpg",
-                                       "/WpfSandbox;component/Images/CHKNRNGCHZ.jpg",
-                                       "/WpfSandbox;component/Images/CHZBRGR.jpg",
-                                        "/WpfSandbox;component/Images/DBLBCNCHZBRGR.jpg",
-                                         "/WpfSandbox;component/Images/DBLCHZBRGR.jpg",
-                                          "/WpfSandbox;component/Images/DBLJALCHZBRGR.jpg",
-                                           "/WpfSandbox;component/Images/FISHCHZ.jpg",
-                                            "/WpfSandbox;component/Images/JALCHZBRGR.jpg",
-                                             "/WpfSandbox;component/Images/ORIG.jpg",
-                                              "/WpfSandbox;component/Images/ORIGINALDOUBLE.jpg"};
+        private String[] sl = { "/HerculesWPFChoose;component/Images/BCNCHZBRGR.jpg",
+                                       "/HerculesWPFChoose;component/Images/CHKNBRSTCHZ.jpg",
+                                       "/HerculesWPFChoose;component/Images/CHKNRNGCHZ.jpg",
+                                       "/HerculesWPFChoose;component/Images/CHZBRGR.jpg",
+                                        "/HerculesWPFChoose;component/Images/DBLBCNCHZBRGR.jpg",
+                                         "/HerculesWPFChoose;component/Images/DBLCHZBRGR.jpg",
+                                          "/HerculesWPFChoose;component/Images/DBLJALCHZBRGR.jpg",
+                                           "/HerculesWPFChoose;component/Images/FISHCHZ.jpg",
+                                            "/HerculesWPFChoose;component/Images/JALCHZBRGR.jpg",
+                                             "/HerculesWPFChoose;component/Images/ORIG.jpg",
+                                              "/HerculesWPFChoose;component/Images/ORIGINALDOUBLE.jpg"};
         private double[] sl_cost = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 
-        private String[] sd = { "/WpfSandbox;component/Images/menu_sides_chxnrings.jpg",
-                                       "/WpfSandbox;component/Images/menu_sides_chzfries.jpg",
-                                       "/WpfSandbox;component/Images/menu_sides_chzstx.jpg",
-                                       "/WpfSandbox;component/Images/menu_sides_fishnibs.jpg",
-                                       "/WpfSandbox;component/Images/menu_sides_fries.jpg",
-                                        "/WpfSandbox;component/Images/menu_sides_onionrings.jpg",
-                                        "/WpfSandbox;component/Images/OnionChips.jpg" };
+        private String[] sd = { "/HerculesWPFChoose;component/Images/menu_sides_chxnrings.jpg",
+                                       "/HerculesWPFChoose;component/Images/menu_sides_chzfries.jpg",
+                                       "/HerculesWPFChoose;component/Images/menu_sides_chzstx.jpg",
+                                       "/HerculesWPFChoose;component/Images/menu_sides_fishnibs.jpg",
+                                       "/HerculesWPFChoose;component/Images/menu_sides_fries.jpg",
+                                        "/HerculesWPFChoose;component/Images/menu_sides_onionrings.jpg",
+                                        "/HerculesWPFChoose;component/Images/OnionChips.jpg" };
         private double[] sd_cost = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
+
+        private int rotation = 0;
+
+        public void SetRotation(int i)
+        {
+            this.rotation = i;
+            if (i == 0)
+            {
+                this.RenderTransform = new RotateTransform(0, 1024 / 2.0, 768 / 2.0);
+            }
+            else
+            {
+                this.RenderTransform = new RotateTransform(180, 1024 / 2.0, 768 / 2.0);
+            }
+        }
 
         public UserControlChoose()
         {
@@ -607,5 +622,27 @@ namespace HerculesWPFChoose
         }
         #endregion
 
+
+        public delegate void UserControlChooseToggle(int option);
+        public UserControlChooseToggle tevt = null;
+
+        private void toggle(object sender)
+        {
+            if (this.tevt == null) return;
+            if (sender == this.imagea)
+                this.tevt(0);
+            else
+                this.tevt(1);
+        }
+
+        private void imagea_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.toggle(sender);
+        }
+
+        private void imageb_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.toggle(sender);
+        }
     }
 }

@@ -47,6 +47,22 @@ namespace HerculesWPFMain
         public delegate void UserControlMainDelegate(int option);
         public UserControlMainDelegate evt = null;
 
+
+        private int rotation = 0;
+
+        public void SetRotation(int i)
+        {
+            if (i == 0)
+            {
+
+                this.RenderTransform = new RotateTransform(0, 1024 / 2.0, 768 / 2.0);
+            }
+            else
+            {
+                this.RenderTransform = new RotateTransform(180, 1024 / 2.0, 768 / 2.0);
+            }
+        }
+
         public UserControlMain()
         {
             InitializeComponent();
@@ -379,7 +395,16 @@ namespace HerculesWPFMain
         #region Mouse Events
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
         {
-
+            if ( this.imagea.IsMouseOver ) 
+            {
+                this.imagea_MouseDown(this.imagea, e);
+                return;
+            }
+            else if (this.imageb.IsMouseOver)
+            {
+                this.imageb_MouseDown(this.imageb, e);
+                return;
+            }
             //this.Cursor = (this.scrollViewer1.ExtentWidth > this.scrollViewer1.ViewportWidth) ||
             //        (this.scrollViewer1.ExtentHeight > this.scrollViewer1.ViewportHeight) ?
             //       Cursors.ScrollAll : Cursors.Arrow;
@@ -442,6 +467,33 @@ namespace HerculesWPFMain
             base.OnPreviewMouseUp(e);
         }
         #endregion
+
+        private void image1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public delegate void UserControlMainToggle(int option);
+        public UserControlMainToggle tevt = null;
+
+        private void toggle(object sender)
+        {
+            if (this.tevt == null) return;
+            if (sender == this.imagea)
+                this.tevt(0);
+            else
+                this.tevt(1);
+        }
+
+        private void imagea_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.toggle(sender);
+        }
+
+        private void imageb_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.toggle(sender);
+        }
 
 
     }

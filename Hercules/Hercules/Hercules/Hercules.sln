@@ -53,6 +53,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerculesWPFMenu", "Hercules
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerculesWPFChoose", "HerculesWPFChoose\HerculesWPFChoose.csproj", "{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerculesWPFImageButton", "HerculesWPFImageButton\HerculesWPFImageButton.csproj", "{C68F8565-8471-4495-BA02-62B8A6BCA4CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerculesWPFImageButtonLow", "HerculesWPFImageButtonLow\HerculesWPFImageButtonLow.csproj", "{0A9A4394-D120-48D3-9318-EEAA9B3163E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerculesWPFMaster", "HerculesWPFMaster\HerculesWPFMaster.csproj", "{CDBA5E40-7178-47B5-B090-9F55124A61DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +189,36 @@ Global
 		{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}.Release|x86.ActiveCfg = Release|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C68F8565-8471-4495-BA02-62B8A6BCA4CC}.Release|x86.ActiveCfg = Release|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0A9A4394-D120-48D3-9318-EEAA9B3163E0}.Release|x86.ActiveCfg = Release|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CDBA5E40-7178-47B5-B090-9F55124A61DB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

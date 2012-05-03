@@ -10,7 +10,7 @@
 
     <Canvas Width="1024" Height="768">
         <Image Canvas.Left="-5" Canvas.Top="460" Height="20" Name="imagestrip3" Stretch="Fill" Width="1024" Source="/HerculesWPFMain;component/Images/text-strip.png" Visibility="Hidden" />
-        <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFMain;component/Images/SCREENBACKGROUND-notext.png" />
+        <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFMain;component/Images/SCREENBACKGROUND-notext.png" Loaded="image1_Loaded" />
         <ScrollViewer Canvas.Left="0" Canvas.Top="253" Width="1024" Height="347" x:Name="scrollViewer1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" MouseDown="image5_MouseDown">
             <Image Height="21" Name="image10" Stretch="Fill" Width="200" />
         </ScrollViewer>
@@ -30,6 +30,12 @@
         <Image Canvas.Left="920" Canvas.Top="486" Height="18" Name="imageweb" Stretch="None" Width="150" Source="/HerculesWPFMain;component/Images/web100.png" />
         <Image Canvas.Left="484" Canvas.Top="486" Height="18" Name="imagemenu" Stretch="None" Width="150" Source="/HerculesWPFMain;component/Images/menu100.png" />
         <Image Canvas.Left="-86" Canvas.Top="485" Height="18" Name="imageweb2" Stretch="None" Source="/HerculesWPFMain;component/Images/web100.png"  Width="150" />
+        <Image Canvas.Left="980" Canvas.Top="725" Height="50" Name="imagea" Stretch="Fill" Width="50" Source="/HerculesWPFChoose;component/Images/whitecastle-blue.png" MouseDown="imageb_MouseDown" Visibility="Hidden" />
+        <Image Canvas.Left="44" Canvas.Top="43" Height="50" Name="imageb" Stretch="Fill" Width="50" Source="/HerculesWPFChoose;component/Images/whitecastle-blue.png" MouseDown="imagea_MouseDown" Visibility="Hidden">
+            <Image.RenderTransform>
+                <RotateTransform Angle="180"></RotateTransform>
+            </Image.RenderTransform>
+        </Image>
     </Canvas>
 
 

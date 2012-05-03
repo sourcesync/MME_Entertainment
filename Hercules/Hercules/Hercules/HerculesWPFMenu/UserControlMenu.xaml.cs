@@ -22,11 +22,26 @@ namespace HerculesWPFMenu
 
         public delegate void UserControlMenuDelegate(int option);
         public UserControlMenuDelegate evt = null;
+        private int rotation = 0;
+
+        public void SetRotation(int i)
+        {
+            if (i == 0)
+            {
+
+                this.RenderTransform = new RotateTransform(0, 1024 / 2.0, 768 / 2.0);
+            }
+            else
+            {
+                this.RenderTransform = new RotateTransform(180, 1024 / 2.0, 768 / 2.0);
+            }
+        }
 
         public UserControlMenu()
         {
             InitializeComponent();
         }
+
 
         private void image1_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
@@ -81,5 +96,30 @@ namespace HerculesWPFMenu
             //a.ShowChoose(5);
             if (evt != null) this.evt(5);
         }
+
+        public delegate void UserControlMenuToggle(int option);
+        public UserControlMenuToggle tevt = null;
+
+        private void toggle(object sender)
+        {
+            if (this.tevt == null) return;
+            if (sender == this.imagea)
+                this.tevt(0);
+            else
+                this.tevt(1);
+        }
+
+        private void imagea_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.toggle(sender);
+        }
+
+        private void imageb_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.toggle(sender);
+        }
     }
+
+    
+       
 }

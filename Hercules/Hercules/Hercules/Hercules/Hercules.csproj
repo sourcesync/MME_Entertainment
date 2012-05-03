@@ -283,6 +283,12 @@
     <Compile Include="WPFForms\FormWPF.Designer.cs">
       <DependentUpon>FormWPF.cs</DependentUpon>
     </Compile>
+    <Compile Include="WPFForms\FormWPFMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WPFForms\FormWPFMaster.Designer.cs">
+      <DependentUpon>FormWPFMaster.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Database\Sample.resx">
       <DependentUpon>Sample.cs</DependentUpon>
     </EmbeddedResource>
@@ -378,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WPFForms\FormWPF.resx">
       <DependentUpon>FormWPF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WPFForms\FormWPFMaster.resx">
+      <DependentUpon>FormWPFMaster.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -579,6 +588,10 @@
     <ProjectReference Include="..\HerculesWPFMain\HerculesWPFMain.csproj">
       <Project>{BA40155F-F9B6-422A-9DC2-1B911C244AA7}</Project>
       <Name>HerculesWPFMain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFMaster\HerculesWPFMaster.csproj">
+      <Project>{CDBA5E40-7178-47B5-B090-9F55124A61DB}</Project>
+      <Name>HerculesWPFMaster</Name>
     </ProjectReference>
     <ProjectReference Include="..\HerculesWPFMenu\HerculesWPFMenu.csproj">
       <Project>{1D438B20-3E32-44A5-A070-4BD7673E28E1}</Project>

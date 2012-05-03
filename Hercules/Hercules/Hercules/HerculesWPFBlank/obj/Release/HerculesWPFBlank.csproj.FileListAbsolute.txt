@@ -1,0 +1,12 @@
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\bin\Release\HerculesWPFBlank.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\bin\Release\HerculesWPFBlank.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\ResolveAssemblyReference.cache
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\UserControlBlank.baml
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\UserControlBlank.g.cs
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\HerculesWPFBlank_MarkupCompile.cache
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\HerculesWPFBlank.g.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\HerculesWPFBlank.Properties.Resources.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\GenerateResource.read.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\GenerateResource.write.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\HerculesWPFBlank.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFBlank\obj\Release\HerculesWPFBlank.pdb

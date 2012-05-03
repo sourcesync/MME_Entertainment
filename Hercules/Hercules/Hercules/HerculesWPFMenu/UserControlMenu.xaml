@@ -7,12 +7,19 @@
              d:DesignHeight="768" d:DesignWidth="1024">
 
     <Canvas>
-        <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/WpfSandbox;component/Images/CHOOSE-HOME-BKRD.png" ImageFailed="image1_ImageFailed" />
+        <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFMenu;component/Images/CHOOSE-HOME-BKRD.png" ImageFailed="image1_ImageFailed" />
         <Image Canvas.Left="423" Canvas.Top="413" Height="200" Name="image2" Stretch="Fill" Width="200" Source="/HerculesWPFMenu;component/Images/TYPE-BFAST.png" MouseDown="image2_MouseDown" />
         <Image Canvas.Left="670" Canvas.Top="413" Height="200" Name="image3" Source="/HerculesWPFMenu;component/Images/TYPE-BIGCRAVE.png" Stretch="Fill" Width="200" MouseDown="image3_MouseDown" />
         <Image Canvas.Left="177" Canvas.Top="413" Height="200" Name="image4" Source="/HerculesWPFMenu;component/Images/TYPE-DRINK.png" Stretch="Fill" Width="200" MouseDown="image4_MouseDown" />
         <Image Canvas.Left="177" Canvas.Top="177" Height="200" Name="image5" Source="/HerculesWPFMenu;component/Images/TYPE-SACK.png" Stretch="Fill" Width="200" MouseDown="image5_MouseDown" />
         <Image Canvas.Left="423" Canvas.Top="177" Height="200" Name="image6" Source="/HerculesWPFMenu;component/Images/TYPE-SLIDERS.png" Stretch="Fill" Width="200" MouseDown="image6_MouseDown" />
         <Image Canvas.Left="670" Canvas.Top="177" Height="200" Name="image7" Source="/HerculesWPFMenu;component/Images/TYPE-SIDES.png" Stretch="Fill" Width="200" MouseDown="image7_MouseDown" />
+
+        <Image Canvas.Left="980" Canvas.Top="725" Height="50" Name="imagea" Stretch="Fill" Width="50" Source="/HerculesWPFChoose;component/Images/whitecastle-blue.png" MouseDown="imageb_MouseDown" Visibility="Hidden" />
+        <Image Canvas.Left="44" Canvas.Top="43" Height="50" Name="imageb" Stretch="Fill" Width="50" Source="/HerculesWPFChoose;component/Images/whitecastle-blue.png" MouseDown="imagea_MouseDown" Visibility="Hidden">
+            <Image.RenderTransform>
+                <RotateTransform Angle="180"></RotateTransform>
+            </Image.RenderTransform>
+        </Image>
     </Canvas>
 </UserControl>

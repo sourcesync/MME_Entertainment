@@ -184,15 +184,15 @@ namespace MME.Hercules.Forms.User
             while (true)
             {
 
-                MME.Hercules.WPFForms.FormWPF wpffrm = null;
+                MME.Hercules.WPFForms.FormWPFMaster wpffrm = null;
                 if (ConfigUtility.GetValue("BoothType") == "2")
                 {
                     //  Show main menu...
                     if (wpffrm == null)
                     {
-                        wpffrm = new MME.Hercules.WPFForms.FormWPF();
+                        wpffrm = new MME.Hercules.WPFForms.FormWPFMaster();
                     }
-                    wpffrm.ShowMain();
+                    //wpffrm.ShowMain();
                     wpffrm.ShowDialog();
                 }
 
