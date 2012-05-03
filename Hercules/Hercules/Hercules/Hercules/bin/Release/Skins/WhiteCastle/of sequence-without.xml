@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Hercules configver="1">
+
+
+
+<page type="selection" screen="data-2.jpg" sound="question1.wav" question="HowSelectFragrance">
+<choice x="170" y="370" width="660" height="80" text="" value="MakesMeFeel" color="" />
+<choice x="170" y="500" width="660" height="80" text="" value="ByFragranceType" color="" />
+</page>
+
+
+
+
+
+
+	
+
+</Hercules>
