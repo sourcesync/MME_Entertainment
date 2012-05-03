@@ -14,9 +14,13 @@ namespace MME.Hercules.WPFForms
     {
 
         HerculesWPFBlank.UserControlBlank ctlblank = null;
-        HerculesWPFChoose.UserControlChoose ctlchoose = null;
+        ElementHost blankhost = null;
         HerculesWPFMain.UserControlMain ctlmain = null;
+        ElementHost mainhost = null;
         HerculesWPFMenu.UserControlMenu ctlmenu = null;
+        ElementHost menuhost = null;
+        HerculesWPFChoose.UserControlChoose ctlchoose = null;
+        ElementHost choosehost = null;
 
         System.Collections.ArrayList ctls = new System.Collections.ArrayList();
 
@@ -28,28 +32,63 @@ namespace MME.Hercules.WPFForms
             this.ctlblank = new HerculesWPFBlank.UserControlBlank();
             this.ctlblank.evt = new HerculesWPFBlank.UserControlBlank.UserControlBlankDelegate(this.blank_selected);
             this.ctlblank.Visibility = System.Windows.Visibility.Visible;
-            ElementHost elhost = new ElementHost();
-            elhost.Size = new Size(1024, 768);
-            elhost.Location = new Point(0, 0);
-            elhost.Child = this.ctlblank;
-            this.Controls.Add(elhost);
-            
+            this.blankhost = new ElementHost();
+            this.blankhost.Size = new Size(1024, 768);
+            this.blankhost.Location = new Point(0, 0);
+            this.blankhost.Child = this.ctlblank;
+            this.Controls.Add(this.blankhost);
 
             this.ctlmain = new HerculesWPFMain.UserControlMain();
             this.ctlmain.evt = new HerculesWPFMain.UserControlMain.UserControlMainDelegate(this.main_selected);
             this.ctlmain.Visibility = System.Windows.Visibility.Visible;
-            ElementHost elhost2 = new ElementHost();
-            elhost2.Size = new Size(1024, 768);
-            elhost2.Location = new Point(0, 0);
-            elhost2.Child = this.ctlmain;
-            this.Controls.Add(elhost2);
+            this.mainhost = new ElementHost();
+            this.mainhost.Size = new Size(1024, 768);
+            this.mainhost.Location = new Point(0, 0);
+            this.mainhost.Child = this.ctlmain;
+            this.Controls.Add(this.mainhost);
+
+            this.ctlmenu = new HerculesWPFMenu.UserControlMenu();
+            this.ctlmenu.evt = new HerculesWPFMenu.UserControlMenu.UserControlMenuDelegate(this.menu_selected);
+            this.ctlmenu.Visibility = System.Windows.Visibility.Visible;
+            this.menuhost = new ElementHost();
+            this.menuhost.Size = new Size(1024, 768);
+            this.menuhost.Location = new Point(0, 0);
+            this.menuhost.Child = this.ctlmenu;
+            this.Controls.Add(this.menuhost);
+
+            this.ctlchoose = new HerculesWPFChoose.UserControlChoose();
+            this.ctlchoose.evt = new HerculesWPFChoose.UserControlChoose.UserControlChooseDelegate(this.choose_selected);
+            this.ctlchoose.Visibility = System.Windows.Visibility.Visible;
+            this.choosehost = new ElementHost();
+            this.choosehost.Size = new Size(1024, 768);
+            this.choosehost.Location = new Point(0, 0);
+            this.choosehost.Child = this.ctlchoose;
+            this.Controls.Add(this.choosehost);
         }
 
 
         private void HideAll()
         {
-            if (this.ctlblank!=null) this.ctlblank.Visibility = System.Windows.Visibility.Hidden;
-            if (this.ctlmain!=null) this.ctlmain.Visibility = System.Windows.Visibility.Hidden;
+            if (this.ctlblank != null)
+            {
+                //this.ctlblank.Visibility = System.Windows.Visibility.Hidden;
+                this.blankhost.Visible = false;
+            }
+            if (this.ctlmain != null)
+            {
+                //this.ctlmain.Visibility = System.Windows.Visibility.Hidden;
+                this.mainhost.Visible = false;
+            }
+            if (this.ctlmenu != null)
+            {
+                //this.ctlmain.Visibility = System.Windows.Visibility.Hidden;
+                this.menuhost.Visible = false;
+            }
+            if (this.ctlchoose != null)
+            {
+                //this.ctlmain.Visibility = System.Windows.Visibility.Hidden;
+                this.choosehost.Visible = false;
+            }
             //this.ctlphotobooth.Stop();
         }
 
@@ -70,39 +109,39 @@ namespace MME.Hercules.WPFForms
             this.HideAll();
             if (this.ctlmain != null)
             {
-                this.ctlmain.Visibility = System.Windows.Visibility.Visible;
+                //this.ctlmain.Visibility = System.Windows.Visibility.Visible;
+                this.mainhost.Visible = true;
+                this.mainhost.BringToFront();
             }
-            else
-            {
-                this.ctlmain = new HerculesWPFMain.UserControlMain();
-                this.ctlmain.evt = new HerculesWPFMain.UserControlMain.UserControlMainDelegate(this.main_selected);
-                this.ctlmain.Visibility = System.Windows.Visibility.Visible;
-                ElementHost elhost2 = new ElementHost();
-                elhost2.Size = new Size(1024, 768);
-                elhost2.Location = new Point(0, 0);
-                elhost2.Child = this.ctlmain;
-                this.Controls.Add(elhost2);
-            }
-            
             //this.current = this.ctlmain;
             //this.ShowRotators();
         }
 
         public void ShowMenu()
         {
-            //this.HideAll();
-            //this.ctlmenu.Visibility = System.Windows.Visibility.Visible;
-            //this.current = this.ctlmenu;
-            //this.ShowRotators();
+            this.HideAll();
+            if (this.menuhost != null)
+            {
+                //this.ctlmenu.Visibility = System.Windows.Visibility.Visible;
+                this.menuhost.Visible = true;
+                this.menuhost.BringToFront();
+                //this.current = this.ctlmenu;
+                //this.ShowRotators();
+            }
         }
 
         public void ShowChoose(int option)
         {
-            //this.HideAll();
-            //this.ctlchoose.SetOption(option);
-            //this.ctlchoose.Visibility = System.Windows.Visibility.Visible;
-            //this.current = this.ctlchoose;
-            //this.ShowRotators();
+            this.HideAll();
+            if (this.ctlchoose != null)
+            {
+                this.ctlchoose.SetOption(option);
+                //this.ctlchoose.Visibility = System.Windows.Visibility.Visible;
+                this.choosehost.Visible = true;
+                this.choosehost.BringToFront();
+                //this.current = this.ctlchoose;
+                //this.ShowRotators();
+            }
         }
 
         public void ShowPhotobooth()
@@ -126,9 +165,14 @@ namespace MME.Hercules.WPFForms
         public void ShowBlank()
         {
             this.HideAll();
-            if (this.ctlblank!=null) this.ctlblank.Visibility = System.Windows.Visibility.Visible;
+            //if (this.ctlblank!=null) this.ctlblank.Visibility = System.Windows.Visibility.Visible;
             //this.current = this.ctlblank;
             //this.HideRotators();
+            if (this.ctlblank != null)
+            {
+                this.blankhost.Visible = true;
+                this.blankhost.BringToFront();
+            }
         }
 
         public void main_selected(int option)
@@ -170,6 +214,81 @@ namespace MME.Hercules.WPFForms
         private void FormWPF_Load(object sender, EventArgs e)
         {
             this.ShowBlank();
+        }
+
+        /*
+        private void toggle(object sender)
+        {
+            if (sender == this.pictureBox2 )
+            {
+                if (this.orientation == 0)
+                {
+                    if ((false) && (this.current == this.ctlchoose))
+                    {
+                        this.ShowMenu();
+                    }
+                    else if (this.current != this.ctlmain)
+                    {
+                        this.ShowMain();
+                    }
+                    else
+                    {
+                        this.ShowBlank();
+                    }
+                }
+                else
+                {
+                    this.orientation = 0;
+                    RotateTransform tr = new RotateTransform();
+                    tr.CenterX = this.canvas_master.Width / 2.0;
+                    tr.CenterY = this.canvas_master.Height / 2.0;
+                    tr.Angle = 0;
+                    this.canvas_master.RenderTransform = tr;
+
+                    if (this.current == this.ctlblank)
+                    {
+                        this.ShowMain();
+                    }
+                }
+            }
+            else if (sender == this.pictureBox2)
+            {
+                if (this.orientation == 0)
+                {
+                    this.orientation = 1;
+                    RotateTransform tr = new RotateTransform();
+                    tr.CenterX = this.canvas_master.Width / 2.0;
+                    tr.CenterY = this.canvas_master.Height / 2.0;
+                    tr.Angle = 180;
+                    this.canvas_master.RenderTransform = tr;
+
+                    if (this.current == this.ctlblank)
+                    {
+                        this.ShowMain();
+                    }
+                }
+                else
+                {
+                    if ((false) && (this.current == this.ctlchoose))
+                    {
+                        this.ShowMenu();
+                    }
+                    else if (this.current != this.ctlmain)
+                    {
+                        this.ShowMain();
+                    }
+                    else
+                    {
+                        this.ShowBlank();
+                    }
+                }
+            }
+        }
+         */
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
 
 
