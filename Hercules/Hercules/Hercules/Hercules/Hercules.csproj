@@ -77,6 +77,8 @@
       <HintPath>..\packages\Phidget\Phidget21.NET.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -87,7 +89,10 @@
     <Reference Include="System.Speech" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Background.cs" />
@@ -268,6 +273,12 @@
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\WindowUtility.cs" />
+    <Compile Include="WPFForms\FormWPF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WPFForms\FormWPF.Designer.cs">
+      <DependentUpon>FormWPF.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Database\Sample.resx">
       <DependentUpon>Sample.cs</DependentUpon>
     </EmbeddedResource>
@@ -360,6 +371,9 @@
     <EmbeddedResource Include="Properties\SpeechResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SpeechResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WPFForms\FormWPF.resx">
+      <DependentUpon>FormWPF.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -541,6 +555,22 @@
     <ProjectReference Include="..\CanonSDK\CanonSDK.csproj">
       <Project>{B8D10081-6185-4EEC-802F-6F39372587C1}</Project>
       <Name>CanonSDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFBlank\HerculesWPFBlank.csproj">
+      <Project>{EBB69B0E-FCA6-4810-8C7D-3C2B06372DCE}</Project>
+      <Name>HerculesWPFBlank</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFChoose\HerculesWPFChoose.csproj">
+      <Project>{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}</Project>
+      <Name>HerculesWPFChoose</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFMain\HerculesWPFMain.csproj">
+      <Project>{BA40155F-F9B6-422A-9DC2-1B911C244AA7}</Project>
+      <Name>HerculesWPFMain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFMenu\HerculesWPFMenu.csproj">
+      <Project>{1D438B20-3E32-44A5-A070-4BD7673E28E1}</Project>
+      <Name>HerculesWPFMenu</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

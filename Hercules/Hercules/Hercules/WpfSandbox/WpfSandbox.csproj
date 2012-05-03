@@ -52,6 +52,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="WebCam_Capture">
+      <HintPath>..\More3rdParty\WebCam\WebCam_Capture.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -61,44 +64,87 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControlBlank.xaml.cs">
+    <Compile Include="Classes\Background.cs" />
+    <Compile Include="Classes\KeyboardLayout.cs" />
+    <Compile Include="Classes\Session.cs" />
+    <Compile Include="Forms\User\Keyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Keyboard.Designer.cs">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WPFWebCam\Helper.cs" />
+    <Compile Include="Keyboards\FullKeyboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Keyboards\FullKeyboard.Designer.cs">
+      <DependentUpon>FullKeyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboards\Keyboard2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Keyboards\Keyboard2.Designer.cs">
+      <DependentUpon>Keyboard2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboards\NumericKeyboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Keyboards\NumericKeyboard.Designer.cs">
+      <DependentUpon>NumericKeyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WPFKeyboard\TouchScreenKeyboard.cs" />
+    <Compile Include="Types\BoothType.cs" />
+    <Compile Include="Types\ColorType.cs" />
+    <Compile Include="Archive\UserControlBlank.xaml.cs">
       <DependentUpon>UserControlBlank.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlChoose.xaml.cs">
+    <Compile Include="Archive\UserControlChoose.xaml.cs">
       <DependentUpon>UserControlChoose.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMain.xaml.cs">
+    <Compile Include="UserControlFacebook.xaml.cs">
+      <DependentUpon>UserControlFacebook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Archive\UserControlMain.xaml.cs">
       <DependentUpon>UserControlMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMenu.xaml.cs">
+    <Compile Include="Archive\UserControlMenu.xaml.cs">
       <DependentUpon>UserControlMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlSwipe.xaml.cs">
+    <Compile Include="UserControlPhotobooth.xaml.cs">
+      <DependentUpon>UserControlPhotobooth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test\UserControlSwipe.xaml.cs">
       <DependentUpon>UserControlSwipe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPFWebCam\WebCam.cs" />
     <Compile Include="WindowWhiteCastle.xaml.cs">
       <DependentUpon>WindowWhiteCastle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
-    <Page Include="UserControlBlank.xaml">
+    <Page Include="Archive\UserControlBlank.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlChoose.xaml">
+    <Page Include="Archive\UserControlChoose.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlMain.xaml">
+    <Page Include="UserControlFacebook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlMenu.xaml">
+    <Page Include="Archive\UserControlMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlSwipe.xaml">
+    <Page Include="Archive\UserControlMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlPhotobooth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Test\UserControlSwipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,23 +152,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FullScreenBehavior.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="FullScreen\FullScreenBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -138,6 +172,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Forms\User\Keyboard.resx">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keyboards\FullKeyboard.resx">
+      <DependentUpon>FullKeyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keyboards\Keyboard2.resx">
+      <DependentUpon>Keyboard2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keyboards\NumericKeyboard.resx">
+      <DependentUpon>NumericKeyboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -338,6 +384,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\menu100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utility\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HerculesWPFBlank\HerculesWPFBlank.csproj">
+      <Project>{EBB69B0E-FCA6-4810-8C7D-3C2B06372DCE}</Project>
+      <Name>HerculesWPFBlank</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFChoose\HerculesWPFChoose.csproj">
+      <Project>{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}</Project>
+      <Name>HerculesWPFChoose</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFMain\HerculesWPFMain.csproj">
+      <Project>{BA40155F-F9B6-422A-9DC2-1B911C244AA7}</Project>
+      <Name>HerculesWPFMain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFMenu\HerculesWPFMenu.csproj">
+      <Project>{1D438B20-3E32-44A5-A070-4BD7673E28E1}</Project>
+      <Name>HerculesWPFMenu</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

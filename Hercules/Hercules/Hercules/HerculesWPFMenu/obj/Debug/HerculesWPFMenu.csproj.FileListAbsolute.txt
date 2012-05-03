@@ -1,0 +1,12 @@
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\ResolveAssemblyReference.cache
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\UserControlMenu.baml
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\UserControlMenu.g.cs
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\HerculesWPFMenu_MarkupCompile.cache
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\HerculesWPFMenu.g.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\HerculesWPFMenu.Properties.Resources.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\GenerateResource.read.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\GenerateResource.write.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\bin\Debug\HerculesWPFMenu.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\bin\Debug\HerculesWPFMenu.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\HerculesWPFMenu.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMenu\obj\Debug\HerculesWPFMenu.pdb

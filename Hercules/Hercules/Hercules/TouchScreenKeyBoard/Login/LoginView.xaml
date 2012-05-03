@@ -1,0 +1,46 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  
+    xmlns:k="clr-namespace:LoginModule.Keyboard"
+    x:Class="CardAccess.Mapping.Module.LoginView"
+         Title="" Height="250" Width="350" ShowInTaskbar="True" Topmost="False" WindowStyle="SingleBorderWindow"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+
+
+  
+  <Window.Resources>
+ 
+  </Window.Resources>
+
+
+    <StackPanel Orientation= "Vertical">
+        <Label     Content="Enter UserName A and Password A " FontFamily="Tahoma" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"/>
+        <StackPanel Orientation="Horizontal" >
+            <StackPanel Orientation= "Vertical">
+            <Label x:Name="lblUserName"   Content="User Name" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"/>
+                <Label x:Name="lblPassword"  Margin="0,27"  Content="Password" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"></Label>
+              </StackPanel>
+            <StackPanel Orientation= "Vertical">
+                <TextBox k:TouchScreenKeyboard.TouchScreenKeyboard="true" Margin="0,5" FontSize="20" x:Name="txtUserName"   Height="40" Width="230" TabIndex="1"/>
+                <PasswordBox k:TouchScreenKeyboard.TouchScreenKeyboard="true" FontSize="20" Margin="0,5" x:Name="txtPassword"  Height="40" Width="230" TabIndex="2"/>
+                </StackPanel>
+        </StackPanel>
+
+     
+       
+     
+            
+             
+            
+             
+            
+             
+            <StackPanel Orientation="Horizontal"      >
+               
+                <Button x:Name="btnLogin"   Margin="95,0,0,0" Width="90"   IsDefault="True" Height="50" Content="Login" TabIndex="3"/>
+            <Button x:Name="btnCancel" Content="Cancel" Width="90"   Height="50" TabIndex="4"/>
+        </StackPanel>
+             
+</StackPanel>
+</Window>

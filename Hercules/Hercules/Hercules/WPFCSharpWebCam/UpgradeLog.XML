@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WPFCSharpWebCam">
+</Property><Property Name="Solution File" Value="C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\WPFCSharpWebCam.sln">
+</Property><Property Name="Date" Value="Wednesday, May 02, 2012">
+</Property><Property Name="Time" Value="14:41:39 PM">
+</Property></Properties><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="WPFCSharpWebCam.csproj" Description="Project file successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\WPFCSharpWebCam.csproj">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="App.xaml.cs" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\App.xaml.cs">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="Window1.xaml.cs" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\Window1.xaml.cs">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="Helper.cs" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\Helper.cs">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="Properties\Resources.Designer.cs" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="Properties\Settings.Designer.cs" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="WebCam.cs" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\WebCam.cs">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="Properties\Settings.settings" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="Properties\Resources.resx" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="App.xaml" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\App.xaml">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="Window1.xaml" Description="File successfully backed up as C:\Users\mocap\Desktop\George\EasyWebCam\WPFCSharpWebCam\Backup\Window1.xaml">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="WPFCSharpWebCam.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="WPFCSharpWebCam" Source="WPFCSharpWebCam.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WPFCSharpWebCam" Source="WPFCSharpWebCam.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

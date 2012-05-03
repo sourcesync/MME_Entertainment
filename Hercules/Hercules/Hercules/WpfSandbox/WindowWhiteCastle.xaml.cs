@@ -28,11 +28,19 @@ namespace WpfSandbox
         {
             InitializeComponent();
 
+            //  user control delegates...
+            this.ctlmain.evt += new HerculesWPFMain.UserControlMain.UserControlMainDelegate(this.main_selected);
+            this.ctlblank.evt += new HerculesWPFBlank.UserControlBlank.UserControlBlankDelegate(this.blank_selected);
+            this.ctlmenu.evt += new HerculesWPFMenu.UserControlMenu.UserControlMenuDelegate(this.menu_selected);
+            this.ctlchoose.evt += new HerculesWPFChoose.UserControlChoose.UserControlChooseDelegate(this.choose_selected);
+
+            //  user control array..
             ctls.Add(this.ctlchoose);
             ctls.Add(this.ctlmain);
             ctls.Add(this.ctlmenu);
             ctls.Add(this.ctlblank);
-            ctls.Add(this.ctlswipe);
+            //ctls.Add(this.ctlswipe);
+            ctls.Add(this.ctlphotobooth);
 
             this.ShowBlank();
             //this.ShowSwipe();
@@ -40,6 +48,42 @@ namespace WpfSandbox
             this.WindowStyle = WindowStyle.None;
             this.Topmost = true;
             this.WindowState = WindowState.Maximized;
+        }
+
+        public void main_selected(int option)
+        {
+            if (option == 0)
+            {
+                this.ShowMenu();
+            }
+            else if (option == 1)
+            {
+                this.ShowPhotobooth();
+            }
+        }
+
+
+        public void choose_selected(int option)
+        {
+            this.ShowMenu();
+        }
+
+        public void blank_selected(int option)
+        {
+            this.ShowMain();
+        }
+
+
+        public void menu_selected(int option)
+        {
+            if (option < 0)
+            {
+                this.ShowMain();
+            }
+            else
+            {
+                this.ShowChoose(option);
+            }
         }
 
         public static WindowWhiteCastle getParent(UserControl ctl)
@@ -57,6 +101,8 @@ namespace WpfSandbox
             {
                 ctl.Visibility = System.Windows.Visibility.Hidden;
             }
+
+            this.ctlphotobooth.Stop();
         }
 
         private void HideRotators()
@@ -96,19 +142,30 @@ namespace WpfSandbox
             this.ShowRotators();
         }
 
+        public void ShowPhotobooth()
+        {
+            this.HideAll();
+            this.ctlphotobooth.Visibility = System.Windows.Visibility.Visible;
+            this.current = this.ctlphotobooth;
+            this.ShowRotators();
+            this.ctlphotobooth.Start();
+        }
+
+        /*
         public void ShowSwipe()
         {
             this.HideAll();
             this.ctlswipe.Visibility = System.Windows.Visibility.Visible;
             this.current = this.ctlswipe;
         }
+         * */
 
         public void ShowBlank()
         {
             this.HideAll();
             this.ctlblank.Visibility = System.Windows.Visibility.Visible;
             this.current = this.ctlblank;
-            this.ShowRotators();
+            this.HideRotators();
         }
 
         private void image1_MouseDown(object sender, MouseButtonEventArgs e)

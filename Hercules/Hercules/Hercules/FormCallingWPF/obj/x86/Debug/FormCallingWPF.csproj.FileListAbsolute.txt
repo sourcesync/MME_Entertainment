@@ -1,0 +1,11 @@
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\bin\Debug\FormCallingWPF.exe
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\bin\Debug\FormCallingWPF.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\obj\x86\Debug\FormCallingWPF.Form1.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\obj\x86\Debug\FormCallingWPF.Properties.Resources.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\obj\x86\Debug\FormCallingWPF.exe
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\obj\x86\Debug\FormCallingWPF.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\bin\Debug\HerculesWPFMain.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FormCallingWPF\bin\Debug\HerculesWPFMain.pdb

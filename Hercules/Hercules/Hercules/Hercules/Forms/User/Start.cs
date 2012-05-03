@@ -166,6 +166,8 @@ namespace MME.Hercules.Forms.User
             // Start new session
             currentSession = new Session();
 
+            
+
             DialogResult dr = System.Windows.Forms.DialogResult.OK;
 
             pb.Visible = false;
@@ -173,6 +175,9 @@ namespace MME.Hercules.Forms.User
             // Turn off vanity light
             //gw PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
             //false);
+
+            MME.Hercules.WPFForms.FormWPF frm = new MME.Hercules.WPFForms.FormWPF();
+            frm.ShowDialog();
 
             if (ConfigUtility.SequenceConfig != null)
             {

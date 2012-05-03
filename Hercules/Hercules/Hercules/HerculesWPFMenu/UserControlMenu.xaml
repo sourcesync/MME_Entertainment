@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="HerculesWPFMenu.UserControlMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+
+    <Canvas>
+        <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/WpfSandbox;component/Images/CHOOSE-HOME-BKRD.png" ImageFailed="image1_ImageFailed" />
+        <Image Canvas.Left="423" Canvas.Top="413" Height="200" Name="image2" Stretch="Fill" Width="200" Source="/HerculesWPFMenu;component/Images/TYPE-BFAST.png" MouseDown="image2_MouseDown" />
+        <Image Canvas.Left="670" Canvas.Top="413" Height="200" Name="image3" Source="/HerculesWPFMenu;component/Images/TYPE-BIGCRAVE.png" Stretch="Fill" Width="200" MouseDown="image3_MouseDown" />
+        <Image Canvas.Left="177" Canvas.Top="413" Height="200" Name="image4" Source="/HerculesWPFMenu;component/Images/TYPE-DRINK.png" Stretch="Fill" Width="200" MouseDown="image4_MouseDown" />
+        <Image Canvas.Left="177" Canvas.Top="177" Height="200" Name="image5" Source="/HerculesWPFMenu;component/Images/TYPE-SACK.png" Stretch="Fill" Width="200" MouseDown="image5_MouseDown" />
+        <Image Canvas.Left="423" Canvas.Top="177" Height="200" Name="image6" Source="/HerculesWPFMenu;component/Images/TYPE-SLIDERS.png" Stretch="Fill" Width="200" MouseDown="image6_MouseDown" />
+        <Image Canvas.Left="670" Canvas.Top="177" Height="200" Name="image7" Source="/HerculesWPFMenu;component/Images/TYPE-SIDES.png" Stretch="Fill" Width="200" MouseDown="image7_MouseDown" />
+    </Canvas>
+</UserControl>
