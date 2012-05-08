@@ -178,3 +178,8 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercule
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFImageButton.pdb
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFImageButtonLow.dll
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFImageButtonLow.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFMaster.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\HerculesWPFMaster.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\MME.Hercules.WPFForms.FormWPFMaster.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\MME.Hercules.Properties.ImageResources.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\MME.Hercules.WPFForms.OverlayForm.resources

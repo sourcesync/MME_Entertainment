@@ -41,9 +41,15 @@ namespace MME.Hercules
             if (!ConfigUtility.GetValue("UsePhidgetBoardScentomatic").Equals("1"))
                 return false;
 
+            /* orig */ 
             InitPhidgetBoard1(259243);
             InitPhidgetBoard2(259313);
+           
 
+            /* second one...
+            InitPhidgetBoard1(259354);
+            InitPhidgetBoard2(259314);
+            */
             return true;
         }
 

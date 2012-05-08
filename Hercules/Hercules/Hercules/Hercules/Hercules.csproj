@@ -228,6 +228,11 @@
     <Compile Include="Forms\User\VideoPlayer.Designer.cs">
       <DependentUpon>VideoPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\ImageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Keyboards\FullKeyboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -288,6 +293,18 @@
     </Compile>
     <Compile Include="WPFForms\FormWPFMaster.Designer.cs">
       <DependentUpon>FormWPFMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WPFForms\MyPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WPFForms\OverlayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WPFForms\OverlayForm.Designer.cs">
+      <DependentUpon>OverlayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WPFForms\TransPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Forms\Database\Sample.resx">
       <DependentUpon>Sample.cs</DependentUpon>
@@ -352,6 +369,10 @@
     <EmbeddedResource Include="Forms\User\VideoPlayer.resx">
       <DependentUpon>VideoPlayer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ImageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Keyboards\FullKeyboard.resx">
       <DependentUpon>FullKeyboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,6 +408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WPFForms\FormWPFMaster.resx">
       <DependentUpon>FormWPFMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WPFForms\OverlayForm.resx">
+      <DependentUpon>OverlayForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -430,6 +454,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="hercules.ico" />
+    <None Include="Resources\OverlayButton1.png" />
+    <None Include="Resources\whitecastle-blue.png" />
+    <None Include="Resources\FLIP-THUMB.png" />
+    <None Include="Resources\backarrow.png" />
+    <Content Include="Resources\backarrow-forform.png" />
     <Content Include="Skins\Default\Backgrounds\bg1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

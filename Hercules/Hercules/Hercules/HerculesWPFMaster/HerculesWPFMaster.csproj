@@ -99,9 +99,25 @@
       <Project>{1D438B20-3E32-44A5-A070-4BD7673E28E1}</Project>
       <Name>HerculesWPFMenu</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFWeb\HerculesWPFWeb.csproj">
+      <Project>{46EBD922-A658-4B01-8B08-84B9C8ABE6EE}</Project>
+      <Name>HerculesWPFWeb</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\whitecastle-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CALENDAR.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FLIP-THUMB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backarrow1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,6 +14,7 @@ namespace MME.Hercules.Forms.User
     {
         private Session currentSession;
         private Image photo;
+        private bool istable;
 
         public Developing(Session currentSession)
         {
@@ -29,17 +30,26 @@ namespace MME.Hercules.Forms.User
             if (ConfigUtility.IsDeveloperMode)
                 this.WindowState = FormWindowState.Normal;
 
+
+            if (ConfigUtility.GetValue("BoothType") == "2")
+            {
+                istable = true;
+            }
+
             WindowUtility.SetScreen(pb, Hercules.Properties.Resources.THANKS_TAKING_PHOTOS_SCREEN);
 
             this.Refresh();
 
             SoundUtility.PlaySync(Hercules.Properties.SoundResources.THANK_YOU_FOR_TAKING_PHOTOS);
 
-            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.DEVELOPING_PICS_SCREEN);
+            if (!istable)
+            {
+                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.DEVELOPING_PICS_SCREEN);
 
-            this.Refresh();
+                this.Refresh();
 
-            SoundUtility.Play(Hercules.Properties.SoundResources.DEVELOPING_PLEASE_WAIT);
+                SoundUtility.Play(Hercules.Properties.SoundResources.DEVELOPING_PLEASE_WAIT);
+            }
 
             WriteOutResults();
 
@@ -47,24 +57,37 @@ namespace MME.Hercules.Forms.User
 
             PublishToFacebook();
 
-            if ((!ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1")) &&
-            (!ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1")))
+            if (this.istable)
             {
-                Thread.Sleep(6000);
+            }
+            else
+            {
+
+                if ((!ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1")) &&
+                (!ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1")))
+                {
+                    Thread.Sleep(6000);
+                }
+
+                // turn on vanity light
+                //gw
+                //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),true);
             }
 
-            // turn on vanity light
-            //gw
-            //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),true);
+           
+                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PHOTOS_COMPLETE_SCREEN);
+            
 
-            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PHOTOS_COMPLETE_SCREEN);
+                this.Refresh();
+                SoundUtility.Play(Hercules.Properties.SoundResources.PHOTOS_COMPLETE);
 
-            this.Refresh();
-            SoundUtility.Play(Hercules.Properties.SoundResources.PHOTOS_COMPLETE); 
+                Thread.Sleep(2100);   
 
-            Thread.Sleep(2000);
-
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                //if (istable) 
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+            
         }
 
 

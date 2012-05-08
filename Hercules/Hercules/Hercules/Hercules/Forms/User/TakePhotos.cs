@@ -502,7 +502,7 @@ namespace MME.Hercules.Forms.User
             return numcams;
         }
 
-        private void GrabImage_Click(int i)
+        private void GrabImage(int i)
         {
             // Create a Bitmap of the same dimension of panelVideoPreview (Width x Height)
             Panel pnl = this.vidPanel[i];
@@ -516,7 +516,8 @@ namespace MME.Hercules.Forms.User
                     g.CopyFromScreen(sourcePoints, Point.Empty, rectanglePanelVideoPreview.Size);
                 }
 
-                string strGrabFileName = "C:\\webcam.jpg";
+                string strGrabFileName = this.currentSession.PhotoPath + "\\" +
+                            "photo" + (1) + ".jpg";
                     //String.Format("C:\\Snapshot_{0:yyyyMMdd_hhmmss}.jpg", DateTime.Now);
                 //toolStripStatusLabel1.Text = strGrabFileName;
                 
@@ -526,6 +527,9 @@ namespace MME.Hercules.Forms.User
 
         private void DoWebCam_Loaded()
         {
+
+            Directory.CreateDirectory(this.currentSession.PhotoPath);
+
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
             if (ConfigUtility.IsDeveloperMode)
@@ -570,11 +574,24 @@ namespace MME.Hercules.Forms.User
 
             SoundUtility.PlaySync(Hercules.Properties.SoundResources.CAMERA_CLICK);
 
+            this.GrabImage(0);
+
+            this.preview.Image = FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\photo" + (1) + ".jpg");
+            this.preview.Visible = true;
+            this.vidPanel[0].Visible = false;
+            this.vidPanel[1].Visible = false;
+            this.Refresh();
+            Application.DoEvents();
+
 
             //this.StopRecording(0);
             //this.StopRecording(1);
             this.StopJob(0);
             this.StopJob(1);
+
+            System.Threading.Thread.Sleep(2000);
+
+            DevelopPhotos();
 
             if (preview.Image != null)
                 preview.Image.Dispose();
@@ -905,7 +922,10 @@ namespace MME.Hercules.Forms.User
 
             using (Graphics grfx = Graphics.FromImage(template))
             {
-                for (int i = 0; i <= ConfigUtility.PhotoCount - 1; i++)
+                int pcount = ConfigUtility.PhotoCount;
+                if (istable) pcount = 1;
+
+                for (int i = 0; i <= pcount - 1; i++)
                 {
                     x = Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, string.Format("Photo{0}_X", (i + 1).ToString())));
                     y = Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, string.Format("Photo{0}_Y", (i + 1).ToString())));
@@ -913,8 +933,8 @@ namespace MME.Hercules.Forms.User
                     thumbwidth = Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, string.Format("Photo{0}_W", (i + 1).ToString())));
                     thumbheight = Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, string.Format("Photo{0}_H", (i + 1).ToString())));
 
-
-                    Bitmap photo = new Bitmap(this.currentSession.PhotoPath + "\\photo" + (i + 1).ToString() + ".jpg");
+                    String path = this.currentSession.PhotoPath + "\\photo" + (i + 1).ToString() + ".jpg";
+                    Bitmap photo = new Bitmap(path);
 
                     // initial camera flip
                     photo.RotateFlip(RotateFlipType.Rotate90FlipNone);

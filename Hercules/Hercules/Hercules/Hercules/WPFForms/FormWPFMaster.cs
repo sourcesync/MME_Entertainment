@@ -27,22 +27,89 @@ namespace MME.Hercules.WPFForms
             this.masterhost.Location = new Point(0, 0);
             this.masterhost.Child = this.ctlmaster;
             this.Controls.Add(this.masterhost);
+
+
+            //  overlay buttons...
+
+            
+            Bitmap bm = Hercules.Properties.ImageResources.backarrow;
+
+            this.SuspendLayout();
+            this.pictureBox1.Image = bm;
+            this.ResumeLayout();
+            /*
+            this.SuspendLayout();
+            MyPictureBox pictureBox1 = new MyPictureBox();
+            pictureBox1.Image = bm;
+            pictureBox1.Location = new System.Drawing.Point(33, 83);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(1024, 768);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            //this.Controls.Add(pictureBox1);
+            //pictureBox1.BringToFront();
+            */
+
+            /*
+            TransPanel.TransPanel ctl = new TransPanel.TransPanel();
+            ctl.bm = bm;
+            ctl.Location = new System.Drawing.Point(0, 0);
+            ctl.Name = "transpControl2";
+            ctl.Size = new System.Drawing.Size(bm.Width, bm.Height);
+            ctl.TabIndex = 0;
+            ctl.Text = "transpControl2";
+            this.Controls.Add(ctl);
+            ctl.BringToFront();
+
+            this.masterhost.SendToBack();
+            */
+
+            this.ResumeLayout();
+
+
+            //this.Controls.Add(this.masterhost);
         }
 
         private void master_selected(int option)
         {
+            if (option == -2) //blank
+            {
+                this.pictureBox1.Visible = false;
+            }
+            else if (option == -1) // main
+            {
+                this.pictureBox1.Visible = false;
+            }
             if (option == 0) //menu
             {
+                this.pictureBox1.Visible = false;
             }
             else if (option == 1)//photo
             {
                 this.DialogResult = DialogResult.OK;
             }
+            else if (option == 2) // web
+            {
+                this.pictureBox1.Visible = true;
+            }
+            else if (option == 3)
+            {
+                this.pictureBox1.Visible = false;
+            }
         }
 
         private void FormWPFMaster_Load(object sender, EventArgs e)
         {
+            if (ConfigUtility.IsDeveloperMode)
+                this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
             this.ctlmaster.ShowMain();
         }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.ctlmaster.ShowMain();
+        }
+
     }
 }

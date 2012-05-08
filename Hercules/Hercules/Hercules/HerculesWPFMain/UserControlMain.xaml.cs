@@ -47,6 +47,7 @@ namespace HerculesWPFMain
         public delegate void UserControlMainDelegate(int option);
         public UserControlMainDelegate evt = null;
 
+        
 
         private int rotation = 0;
 
@@ -235,25 +236,23 @@ namespace HerculesWPFMain
         private void image5_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (this.moving) return;
-            //if (this.wasmoving)
-            //{
-            //    this.wasmoving = false;
-            //    return;
-            //}
 
             String src = (String)this.src_hash[sender];
             if (src == "/HerculesWPFMain;component/Images/menu-icon.png")
             {
-                //WindowWhiteCastle a = WindowWhiteCastle.getParent(this);
-                //a.ShowMenu();
-                if (evt != null) evt(0);
-                
+                if (evt != null) evt(0);   
             }
             else if (src == "/HerculesWPFMain;component/Images/camera-icon.png")
             {
-                //WindowWhiteCastle a = WindowWhiteCastle.getParent(this);
-                //a.ShowPhotobooth();
                 if (evt != null) evt(1);
+            }
+            else if (src == "/HerculesWPFMain;component/Images/web-icon.png")
+            {
+                if (evt != null) evt(2);
+            }
+            else if (src == "/HerculesWPFMain;component/Images/future-icon.png")
+            {
+                if (evt != null) evt(3);
             }
 
         }
@@ -345,7 +344,7 @@ namespace HerculesWPFMain
         #region Friction Stuff
         private void HandleWorldTimerTick(object sender, EventArgs e)
         {
-            System.Console.WriteLine(this.moving.ToString());
+            //System.Console.WriteLine(this.moving.ToString());
             if (IsMouseCaptured)
             {
                 Point currentPoint = Mouse.GetPosition(this);
@@ -493,6 +492,11 @@ namespace HerculesWPFMain
         private void imageb_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.toggle(sender);
+        }
+
+        private void imageweb_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
 

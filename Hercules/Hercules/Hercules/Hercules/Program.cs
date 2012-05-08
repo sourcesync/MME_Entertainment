@@ -99,11 +99,7 @@ namespace MME.Hercules
                 CameraUtility.InitializeCamera();
 
 
-                //gw
-                //Facebook.FacebookClient client = new Facebook.FacebookClient(FacebookUtility.AppId, FacebookUtility.Secret);
-                //Facebook.FacebookClient client2 = new Facebook.FacebookClient(client.AccessToken);
-                //dynamic me = client.Get("me");
-                //gw
+                
 
                 
 

@@ -1,0 +1,12 @@
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\obj\x86\Debug\CanonCamTest.Form1.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\obj\x86\Debug\CanonCamTest.Properties.Resources.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\bin\Debug\CanonCamTest.exe
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\bin\Debug\CanonCamTest.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\bin\Debug\CameraSDK.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\bin\Debug\CameraSDK.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\obj\x86\Debug\CanonCamTest.exe
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\obj\x86\Debug\CanonCamTest.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonCamTest\bin\Debug\CanonCamTest.exe.config

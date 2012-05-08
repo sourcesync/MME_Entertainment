@@ -8,7 +8,7 @@
 
 
 
-    <Canvas Width="1024" Height="768">
+    <Canvas Width="1024" Height="768" Name="ctop">
         <Image Canvas.Left="-5" Canvas.Top="460" Height="20" Name="imagestrip3" Stretch="Fill" Width="1024" Source="/HerculesWPFMain;component/Images/text-strip.png" Visibility="Hidden" />
         <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFMain;component/Images/SCREENBACKGROUND-notext.png" Loaded="image1_Loaded" />
         <ScrollViewer Canvas.Left="0" Canvas.Top="253" Width="1024" Height="347" x:Name="scrollViewer1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" MouseDown="image5_MouseDown">

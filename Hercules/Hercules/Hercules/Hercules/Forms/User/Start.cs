@@ -304,6 +304,15 @@ namespace MME.Hercules.Forms.User
 
                 if (ConfigUtility.GetValue("BoothType") == "2")
                 {
+                    if (dr == System.Windows.Forms.DialogResult.OK &&
+                        (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
+                        AllowFacebookPublish))
+                    {
+                        {
+                            this.currentSession.FavoritePhoto = 1;
+                            this.currentSession.FavoritePhotoFilename = "photo1";
+                        }
+                    }
                 }
                 else
                 {
@@ -329,13 +338,9 @@ namespace MME.Hercules.Forms.User
                     }
                 }
 
-                // Finish up
-                if (ConfigUtility.GetValue("BoothType") == "2")
-                {
-
-                }
-                else
-                {
+                // Finish up ( AND ACTUALLY SEND TO FACEBOOK! )
+                
+                
                     if (dr == System.Windows.Forms.DialogResult.OK)
                     {
                         using (User.Developing dd = new Developing(currentSession))
@@ -343,7 +348,7 @@ namespace MME.Hercules.Forms.User
                             dr = dd.ShowDialog();
                         }
                     }
-                }
+                
 
                 //gw
                 //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);

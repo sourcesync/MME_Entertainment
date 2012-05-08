@@ -323,7 +323,7 @@ namespace WpfSandbox
         #region Friction Stuff
         private void HandleWorldTimerTick(object sender, EventArgs e)
         {
-            System.Console.WriteLine(this.moving.ToString());
+            //System.Console.WriteLine(this.moving.ToString());
             if (IsMouseCaptured)
             {
                 Point currentPoint = Mouse.GetPosition(this);

@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3F42835C-0B25-4767-89BD-F0A328E2B342}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HerculesForms</RootNamespace>
+    <AssemblyName>HerculesForms</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CameraSDK">
+      <HintPath>..\CanonSDK\bin\Debug\CameraSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Chromagic">
+      <HintPath>..\Hercules\bin\Debug\Chromagic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Expression.Encoder.Api2, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Expression.Encoder.Types, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Expression.Encoder.Utilities, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Phidget21.NET, Version=2.1.8.94, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Phidget\Phidget21.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Background.cs" />
+    <Compile Include="Classes\KeyboardLayout.cs" />
+    <Compile Include="Classes\Session.cs" />
+    <Compile Include="CustomControl1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl1.Designer.cs">
+      <DependentUpon>CustomControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Database\Sample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Database\Sample.Designer.cs">
+      <DependentUpon>Sample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Display\AuxDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Display\AuxDisplay.Designer.cs">
+      <DependentUpon>AuxDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Operator\Camera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Operator\Camera.Designer.cs">
+      <DependentUpon>Camera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Operator\Chromakey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Operator\Chromakey.Designer.cs">
+      <DependentUpon>Chromakey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Operator\Error.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Operator\Error.Designer.cs">
+      <DependentUpon>Error.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Operator\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Operator\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Test\Console.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Test\Console.Designer.cs">
+      <DependentUpon>Console.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Test\Console2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Test\Console2.Designer.cs">
+      <DependentUpon>Console2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Test\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Test\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Backgrounds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Backgrounds.Designer.cs">
+      <DependentUpon>Backgrounds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Developing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Developing.Designer.cs">
+      <DependentUpon>Developing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Email.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Email.Designer.cs">
+      <DependentUpon>Email.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Facebook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Facebook.Designer.cs">
+      <DependentUpon>Facebook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Keyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Keyboard.Designer.cs">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\PhotoType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\PhotoType.Designer.cs">
+      <DependentUpon>PhotoType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\PickFavorite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\PickFavorite.Designer.cs">
+      <DependentUpon>PickFavorite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\RoomNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\RoomNumber.Designer.cs">
+      <DependentUpon>RoomNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Scentomatic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Scentomatic.Designer.cs">
+      <DependentUpon>Scentomatic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Selection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Selection.Designer.cs">
+      <DependentUpon>Selection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Start.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Start.Designer.cs">
+      <DependentUpon>Start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\TakePhotos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\TakePhotos.Designer.cs">
+      <DependentUpon>TakePhotos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\VideoPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\VideoPlayer.Designer.cs">
+      <DependentUpon>VideoPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboards\FullKeyboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Keyboards\FullKeyboard.Designer.cs">
+      <DependentUpon>FullKeyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboards\Keyboard2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Keyboards\Keyboard2.Designer.cs">
+      <DependentUpon>Keyboard2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboards\NumericKeyboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Keyboards\NumericKeyboard.Designer.cs">
+      <DependentUpon>NumericKeyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Properties\SoundResources.Designer.cs">
+      <DependentUpon>SoundResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\SpeechResources.Designer.cs">
+      <DependentUpon>SpeechResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Types\BoothType.cs" />
+    <Compile Include="Types\ColorType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\CameraUtility.cs" />
+    <Compile Include="Utility\ChromakeyUtility.cs" />
+    <Compile Include="Utility\ConfigUtility.cs" />
+    <Compile Include="Utility\DisplayUtility.cs" />
+    <Compile Include="Utility\FacebookUtility.cs" />
+    <Compile Include="Utility\FileUtility.cs" />
+    <Compile Include="Utility\PhidgetUtility.cs" />
+    <Compile Include="Utility\PhidgetUtility2.cs" />
+    <Compile Include="Utility\SepiaUtility.cs" />
+    <Compile Include="Utility\SoundUtility.cs" />
+    <Compile Include="Utility\WindowUtility.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomControl1.resx">
+      <DependentUpon>CustomControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Database\Sample.resx">
+      <DependentUpon>Sample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Display\AuxDisplay.resx">
+      <DependentUpon>AuxDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Operator\Camera.resx">
+      <DependentUpon>Camera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Operator\Chromakey.resx">
+      <DependentUpon>Chromakey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Operator\Error.resx">
+      <DependentUpon>Error.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Operator\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Test\Console.resx">
+      <DependentUpon>Console.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Test\Console2.resx">
+      <DependentUpon>Console2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Test\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Backgrounds.resx">
+      <DependentUpon>Backgrounds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Developing.resx">
+      <DependentUpon>Developing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Email.resx">
+      <DependentUpon>Email.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Facebook.resx">
+      <DependentUpon>Facebook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Keyboard.resx">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\PhotoType.resx">
+      <DependentUpon>PhotoType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\PickFavorite.resx">
+      <DependentUpon>PickFavorite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\RoomNumber.resx">
+      <DependentUpon>RoomNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Scentomatic.resx">
+      <DependentUpon>Scentomatic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Selection.resx">
+      <DependentUpon>Selection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Start.resx">
+      <DependentUpon>Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\TakePhotos.resx">
+      <DependentUpon>TakePhotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\VideoPlayer.resx">
+      <DependentUpon>VideoPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keyboards\FullKeyboard.resx">
+      <DependentUpon>FullKeyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keyboards\Keyboard2.resx">
+      <DependentUpon>Keyboard2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keyboards\NumericKeyboard.resx">
+      <DependentUpon>NumericKeyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\SoundResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SoundResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\SpeechResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SpeechResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Display\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
