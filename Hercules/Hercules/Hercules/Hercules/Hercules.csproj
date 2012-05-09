@@ -282,12 +282,6 @@
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\WindowUtility.cs" />
-    <Compile Include="WPFForms\FormWPF.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WPFForms\FormWPF.Designer.cs">
-      <DependentUpon>FormWPF.cs</DependentUpon>
-    </Compile>
     <Compile Include="WPFForms\FormWPFMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,9 +397,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SpeechResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WPFForms\FormWPF.resx">
-      <DependentUpon>FormWPF.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WPFForms\FormWPFMaster.resx">
       <DependentUpon>FormWPFMaster.cs</DependentUpon>
     </EmbeddedResource>
@@ -459,6 +450,10 @@
     <None Include="Resources\FLIP-THUMB.png" />
     <None Include="Resources\backarrow.png" />
     <Content Include="Resources\backarrow-forform.png" />
+    <None Include="Resources\FLIP-THUMB-30x30.png" />
+    <None Include="Resources\FLIP-THUMB-30x30-flip.png" />
+    <None Include="Resources\FLIP-THUMB-30x301.png" />
+    <None Include="Resources\FLIP-THUMB-30x30-flip1.png" />
     <Content Include="Skins\Default\Backgrounds\bg1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

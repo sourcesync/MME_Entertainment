@@ -108,6 +108,10 @@ namespace HerculesWPFMaster
             {
                 this.ShowEvents();
             }
+            else if (option == 4) //promo...
+            {
+                //this.ShowPromo();
+            }
 
             if (this.evt != null) this.evt(option);
         }
@@ -237,26 +241,6 @@ namespace HerculesWPFMaster
             this.HideBack();
         }
 
-        /*
-        public void ShowPhotobooth()
-        {
-            this.HideAll();
-            this.ctlphotobooth.Visibility = System.Windows.Visibility.Visible;
-            this.current = this.ctlphotobooth;
-            this.ShowRotators();
-            this.ctlphotobooth.Start();
-        }
-         * */
-
-        /*
-        public void ShowSwipe()
-        {
-            this.HideAll();
-            this.ctlswipe.Visibility = System.Windows.Visibility.Visible;
-            this.current = this.ctlswipe;
-        }
-         * */
-
         public void ShowBlank()
         {
             this.HideAll();
@@ -275,20 +259,6 @@ namespace HerculesWPFMaster
             {
                 if (this.orientation == 0)
                 {
-                    /*
-                    if ((false) && (this.current == this.ctlchoose))
-                    {
-                        this.ShowMenu();
-                    }
-                    else if (this.current != this.ctlmain)
-                    {
-                        this.ShowMain();
-                    }
-                    else
-                    {
-                        this.ShowBlank();
-                    }
-                     * */
                 }
                 else
                 {
@@ -323,20 +293,6 @@ namespace HerculesWPFMaster
                 }
                 else
                 {
-                    /*
-                    if ((false) && (this.current == this.ctlchoose))
-                    {
-                        this.ShowMenu();
-                    }
-                    else if (this.current != this.ctlmain)
-                    {
-                        this.ShowMain();
-                    }
-                    else
-                    {
-                        this.ShowBlank();
-                    }
-                     * */
                 }
             }
         }

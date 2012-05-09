@@ -52,6 +52,9 @@
             this.pictureBoxAgain = new System.Windows.Forms.PictureBox();
             this.labelAgain = new System.Windows.Forms.Label();
             this.pictureBoxBack = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFlip = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFlipBottom = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFlipTop = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.preview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,6 +66,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLike)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlipBottom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlipTop)).BeginInit();
             this.SuspendLayout();
             // 
             // pb
@@ -279,7 +285,7 @@
             // 
             // pictureBoxLike
             // 
-            this.pictureBoxLike.Location = new System.Drawing.Point(174, 624);
+            this.pictureBoxLike.Location = new System.Drawing.Point(94, 624);
             this.pictureBoxLike.Name = "pictureBoxLike";
             this.pictureBoxLike.Size = new System.Drawing.Size(65, 51);
             this.pictureBoxLike.TabIndex = 19;
@@ -293,7 +299,7 @@
             this.labelLike.BackColor = System.Drawing.Color.Transparent;
             this.labelLike.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLike.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelLike.Location = new System.Drawing.Point(247, 625);
+            this.labelLike.Location = new System.Drawing.Point(169, 625);
             this.labelLike.Name = "labelLike";
             this.labelLike.Size = new System.Drawing.Size(237, 49);
             this.labelLike.TabIndex = 23;
@@ -302,7 +308,7 @@
             // 
             // pictureBoxAgain
             // 
-            this.pictureBoxAgain.Location = new System.Drawing.Point(562, 625);
+            this.pictureBoxAgain.Location = new System.Drawing.Point(479, 625);
             this.pictureBoxAgain.Name = "pictureBoxAgain";
             this.pictureBoxAgain.Size = new System.Drawing.Size(65, 50);
             this.pictureBoxAgain.TabIndex = 24;
@@ -316,7 +322,7 @@
             this.labelAgain.BackColor = System.Drawing.Color.Transparent;
             this.labelAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAgain.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelAgain.Location = new System.Drawing.Point(634, 625);
+            this.labelAgain.Location = new System.Drawing.Point(550, 625);
             this.labelAgain.Name = "labelAgain";
             this.labelAgain.Size = new System.Drawing.Size(437, 50);
             this.labelAgain.TabIndex = 25;
@@ -334,6 +340,37 @@
             this.pictureBoxBack.Visible = false;
             this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
             // 
+            // pictureBoxFlip
+            // 
+            this.pictureBoxFlip.Location = new System.Drawing.Point(210, 572);
+            this.pictureBoxFlip.Name = "pictureBoxFlip";
+            this.pictureBoxFlip.Size = new System.Drawing.Size(314, 220);
+            this.pictureBoxFlip.TabIndex = 27;
+            this.pictureBoxFlip.TabStop = false;
+            this.pictureBoxFlip.Visible = false;
+            // 
+            // pictureBoxFlipBottom
+            // 
+            this.pictureBoxFlipBottom.Image = global::MME.Hercules.Properties.Resources.FLIP_THUMB_30x30;
+            this.pictureBoxFlipBottom.Location = new System.Drawing.Point(993, 737);
+            this.pictureBoxFlipBottom.Name = "pictureBoxFlipBottom";
+            this.pictureBoxFlipBottom.Size = new System.Drawing.Size(30, 30);
+            this.pictureBoxFlipBottom.TabIndex = 28;
+            this.pictureBoxFlipBottom.TabStop = false;
+            this.pictureBoxFlipBottom.Visible = false;
+            this.pictureBoxFlipBottom.Click += new System.EventHandler(this.pictureBoxFlipBottom_Click);
+            // 
+            // pictureBoxFlipTop
+            // 
+            this.pictureBoxFlipTop.Image = global::MME.Hercules.Properties.Resources.FLIP_THUMB_30x30_flip;
+            this.pictureBoxFlipTop.Location = new System.Drawing.Point(1, 1);
+            this.pictureBoxFlipTop.Name = "pictureBoxFlipTop";
+            this.pictureBoxFlipTop.Size = new System.Drawing.Size(30, 30);
+            this.pictureBoxFlipTop.TabIndex = 29;
+            this.pictureBoxFlipTop.TabStop = false;
+            this.pictureBoxFlipTop.Visible = false;
+            this.pictureBoxFlipTop.Click += new System.EventHandler(this.pictureBoxFlipTop_Click);
+            // 
             // TakePhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,6 +378,9 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBoxFlipTop);
+            this.Controls.Add(this.pictureBoxFlipBottom);
+            this.Controls.Add(this.pictureBoxFlip);
             this.Controls.Add(this.pictureBoxBack);
             this.Controls.Add(this.labelAgain);
             this.Controls.Add(this.pictureBoxAgain);
@@ -385,6 +425,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLike)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlipBottom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlipTop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -416,5 +459,8 @@
         private System.Windows.Forms.PictureBox pictureBoxAgain;
         private System.Windows.Forms.Label labelAgain;
         private System.Windows.Forms.PictureBox pictureBoxBack;
+        private System.Windows.Forms.PictureBox pictureBoxFlip;
+        private System.Windows.Forms.PictureBox pictureBoxFlipBottom;
+        private System.Windows.Forms.PictureBox pictureBoxFlipTop;
     }
 }

@@ -74,6 +74,20 @@ namespace MME.Hercules.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap FLIP_THUMB_30x30 {
+            get {
+                object obj = ResourceManager.GetObject("FLIP_THUMB_30x30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap FLIP_THUMB_30x30_flip {
+            get {
+                object obj = ResourceManager.GetObject("FLIP_THUMB_30x30_flip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap whitecastle_blue {
             get {
                 object obj = ResourceManager.GetObject("whitecastle_blue", resourceCulture);

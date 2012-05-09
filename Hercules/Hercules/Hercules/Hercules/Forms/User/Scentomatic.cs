@@ -79,29 +79,39 @@ namespace MME.Hercules.Forms.User
                     // set the response for use later
                     this.currentSession.Responses.Add(node.Attributes["value"].Value);
 
+                    if (node.Attributes["value"].Value == "Cancelled")
+                    {
+                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                        break;
+                    }
+
                     //gw
-                    String newscreen = node.Attributes["screen"].Value;
-                    WindowUtility.SetScreen(pb, newscreen);
-                    this.Update();
-                    System.Threading.Thread.Sleep(1);
+                    if (!string.IsNullOrEmpty(node.Attributes["screen"].Value))
+                    {
+                        String newscreen = node.Attributes["screen"].Value;
+                        WindowUtility.SetScreen(pb, newscreen);
+                        this.Update();
+                        System.Threading.Thread.Sleep(1);
+                    }
 
-                    String playfile = node.Attributes["sound"].Value;
-                    SoundUtility.PlaySync(playfile);
+                    if (!string.IsNullOrEmpty(node.Attributes["sound"].Value))
+                    {
+                        String playfile = node.Attributes["sound"].Value;
+                        SoundUtility.PlaySync(playfile);
 
-                    SoundUtility.PlaySync(Hercules.Properties.SoundResources.COUNTDOWN);
+                        SoundUtility.PlaySync(Hercules.Properties.SoundResources.COUNTDOWN);
+                    }
 
-                    String servo = node.Attributes["servo"].Value;
-                    int trigger = int.Parse(servo);
+                    if (!string.IsNullOrEmpty(node.Attributes["servo"].Value))
+                    {
+                        String servo = node.Attributes["servo"].Value;
+                        int trigger = int.Parse(servo);
 
-                    PhidgetUtility2.Trigger(trigger);
-                    //gw
+                        PhidgetUtility2.Trigger(trigger);
+                        //gw
 
-
-
-                    Thread.Sleep(700);
-
-
-
+                        Thread.Sleep(700);
+                    }
 
                     this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 }

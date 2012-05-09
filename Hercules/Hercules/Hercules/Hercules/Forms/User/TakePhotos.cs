@@ -37,10 +37,6 @@ namespace MME.Hercules.Forms.User
         private bool PicProcessed = false;
         private Image proc_image = null;
         private Thread proc_thread = null;
-        //private SoundPlayer one = null;
-        //private SoundPlayer two = null;
-        //private SoundPlayer three = null; 
-        //private SoundPlayer four = null;
         private Image onei = null;
         private Image twoi = null;
         private Image threei = null;
@@ -52,12 +48,53 @@ namespace MME.Hercules.Forms.User
         private LiveDeviceSource[] _deviceSource = {null,null};
         private bool[] _bStartedRecording = {false,false};
         private Panel[] vidPanel = {null,null};
-        
+        private System.Threading.TimerCallback flip_cb;
+        private System.Threading.Timer flip_timer;
+        private int orientation = 0;
+        private int mode = 0;
         //gw
+
+        //public void Flip(object o, System.Timers.ElapsedEventArgs a)
+        public void Flip(object o)
+        {
+            this.Invoke(new System.EventHandler(this._Flip));
+        }
+
+        public void _Flip(object o, System.EventArgs a)
+        //public void _Flip(object o, 
+        {
+            // Create a Bitmap of the same dimension of panelVideoPreview (Width x Height)
+            Panel pnl = this.vidPanel[0];
+            using (Bitmap bitmap = new Bitmap(pnl.Width, pnl.Height))
+            {
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    // Get the paramters to call g.CopyFromScreen and get the image
+                    Rectangle rectanglePanelVideoPreview = pnl.Bounds;
+                    Point sourcePoints = pnl.PointToScreen(new Point(pnl.ClientRectangle.X, pnl.ClientRectangle.Y));
+                    g.CopyFromScreen(sourcePoints, Point.Empty, rectanglePanelVideoPreview.Size);
+                }
+
+                if (this.pictureBoxFlip.Image != null)
+                {
+                    this.pictureBoxFlip.Image.Dispose();
+                }
+                bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
+                this.pictureBoxFlip.Image = bitmap;
+                this.pictureBoxFlip.Refresh();
+            }
+        }
 
         public TakePhotos(Session currentSession)
         {
             InitializeComponent();
+
+            /*
+            this.flip_cb = new System.Timers.ElapsedEventHandler( this.Flip );
+            this.flip_timer = new System.Timers.Timer();
+            this.flip_timer.Elapsed += this.flip_cb;
+            this.flip_timer.Stop();
+            */
 
             this.vidPanel[0] = this.panelVideoOne;
             this.vidPanel[1] = this.panelVideoOne;
@@ -177,6 +214,15 @@ namespace MME.Hercules.Forms.User
 
         private void ShowCountdown(bool use_images, int which, bool right)
         {
+            /*
+            while (true)
+            {
+                System.Threading.Thread.Sleep(5);
+                Application.DoEvents();
+            }
+             * */
+
+
             this.pictureBox2.Visible = false;
             this.pictureBox1.Visible = false;
             if (use_images)
@@ -378,6 +424,14 @@ namespace MME.Hercules.Forms.User
 
         void StopJob(int i)
         {
+            if (this.flip_timer != null)
+            {
+                this.flip_timer.Dispose();
+                this.flip_timer = null;
+            }
+
+            //this.flip_timer.Stop();
+
             // Has the Job already been created ?
             if (_job[i] != null)
             {
@@ -450,6 +504,8 @@ namespace MME.Hercules.Forms.User
                 // Setup the output video resolution file as the preview
                 _job[i].OutputFormat.VideoProfile.Size = new Size(sp.Size.Width, sp.Size.Height);
 
+                _job[i].Status += new EventHandler<EncodeStatusEventArgs>(TakePhotos_Status);
+
                 // Display the video device properties set
                 //toolStripStatusLabel1.Text = sp.Size.Width.ToString() + "x" + sp.Size.Height.ToString() + "  " + sp.FrameRate.ToString() + " fps";
 
@@ -468,6 +524,14 @@ namespace MME.Hercules.Forms.User
                 //btnGrabImage.Enabled = true;
 
                 //toolStripStatusLabel1.Text = "Preview activated";
+
+                    //  flip...
+                //this.flip_timer.Interval = 100;
+                //this.flip_timer.Start();
+                this.flip_cb = new System.Threading.TimerCallback(this.Flip);
+                this.flip_timer = new System.Threading.Timer(this.flip_cb, null, TimeSpan.FromMilliseconds(100), TimeSpan.FromMilliseconds(100));
+                //this.flip_timer.Elapsed += this.flip_cb;
+                //this.flip_timer.Stop();
             }
             else
             {
@@ -475,6 +539,11 @@ namespace MME.Hercules.Forms.User
                 MessageBox.Show("No Video/Audio capture devices have been found.", "Warning");
                 //toolStripStatusLabel1.Text = "No Video/Audio capture devices have been found.";
             }
+        }
+
+        void TakePhotos_Status(object sender, EncodeStatusEventArgs e)
+        {
+            System.Console.WriteLine("yo");
         }
 
         private int SetupVideo()
@@ -529,8 +598,150 @@ namespace MME.Hercules.Forms.User
                     //String.Format("C:\\Snapshot_{0:yyyyMMdd_hhmmss}.jpg", DateTime.Now);
                 //toolStripStatusLabel1.Text = strGrabFileName;
                 
+                
+
                 bitmap.Save(strGrabFileName, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
+        }
+
+        private void Orient(int mode)
+        {
+            //bg...
+            if (orientation == 0)
+            {
+                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+            }
+            else
+            {
+                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_FLIPPED_SCREEN);
+            }
+
+            //backbutton
+            if (orientation == 0)
+            {
+                this.pictureBoxBack.Location = new Point(4, 719);
+            }
+            else
+            {
+                this.pictureBoxBack.Location = new Point(1024 - (4 + this.pictureBoxBack.Size.Width), 
+                    768 - (719 + this.pictureBoxBack.Size.Height));
+            }
+
+            //info
+            if (orientation == 0)
+            {
+                if (mode==0)
+                    info.Location = new Point(100, 259);
+                else
+                    info.Location = new Point(270, 259);
+            }
+            else
+            {
+                if (mode==0)
+                    info.Location = new Point(1024 - (100 + info.Size.Width), 768 - (259 + info.Size.Height));
+                else
+                    info.Location = new Point(1024-(270+info.Size.Width), 768-(259+info.Size.Height));
+            }
+
+            //numbers
+            //this.labell1.Visible = true;
+            //this.labelr2.Visible = true;
+            if (orientation == 0)
+            {
+                int x = 118;
+                int y = 316;
+                int offset = 40;
+                this.labell1.Location = new Point(x - offset, y);
+                this.labell2.Location = new Point(x - offset, y);
+                this.labell3.Location = new Point(x - offset, y);
+                this.labell4.Location = new Point(x - offset, y);
+
+                x = 678;
+                y = 309;
+                this.labelr1.Location = new Point(x + offset, y);
+                this.labelr2.Location = new Point(x + offset, y);
+                this.labelr3.Location = new Point(x + offset, y);
+                this.labelr4.Location = new Point(x + offset, y);
+            }
+            else
+            {
+                int x = 118;
+                int y = 316;
+                int offset = 40;
+                int xx = x + offset - 70; // TODO: WEIRD FUDGE FACTOR!
+                int xf = 1024 - (xx + this.labell1.Size.Width);
+                int yf = 768 - (y + this.labell1.Size.Height);
+                this.labell1.Location = new Point(xf, yf);
+                this.labell2.Location = new Point(xf, yf);
+                this.labell3.Location = new Point(xf, yf);
+                this.labell4.Location = new Point(xf, yf);
+
+                x = 678;
+                y = 309;
+                xx = x + offset;
+                xf = 1024 - (xx + this.labelr1.Size.Width);
+                yf = 768 - (y + this.labelr1.Size.Height);
+                this.labelr1.Location = new Point(xf, yf);
+                this.labelr2.Location = new Point(xf, yf);
+                this.labelr3.Location = new Point(xf, yf);
+                this.labelr4.Location = new Point(xf, yf);
+            }
+
+            //vidpanels...
+            if (orientation == 0)
+            {
+                this.vidPanel[0].Location = new Point(330, 321);
+                this.vidPanel[1].Location = new Point(330, 321);
+            }
+            else
+            {
+                this.vidPanel[0].Location = new Point(1024 - (330 + this.vidPanel[0].Size.Width),
+                    768 - (321 + this.vidPanel[0].Size.Height));
+                this.vidPanel[1].Location = new Point(1024 - (330 + this.vidPanel[1].Size.Width),
+                    768 - (321 + this.vidPanel[0].Size.Height));
+             
+            }
+
+
+            //  Match the snapshot preview to video preview...
+            this.preview.Location = this.vidPanel[0].Location;
+            this.preview.Size = this.vidPanel[0].Size;
+
+            //  Prompt...
+            if (mode == 0)
+                {
+                    this.pictureBoxLike.Visible = false;
+                    this.pictureBoxAgain.Visible = false;
+                    this.labelAgain.Visible = false;
+                    this.labelLike.Visible = false;
+                }
+                else
+                {
+                    this.pictureBoxLike.Visible = true;
+                    this.pictureBoxAgain.Visible = true;
+                    this.labelAgain.Visible = true;
+                    this.labelLike.Visible = true;
+                }
+            if (orientation == 0)
+            {
+                this.pictureBoxLike.Location = new Point(94, 624);
+                this.pictureBoxAgain.Location = new Point(479, 625);
+                this.labelLike.Location = new Point(169, 625);
+                this.labelAgain.Location = new Point(550, 625);
+            }
+            else
+            {
+                this.pictureBoxLike.Location = new Point( 1024 - (94 + this.pictureBoxLike.Size.Width), 
+                    768 - (624 + this.pictureBoxLike.Size.Height ) );
+                this.pictureBoxAgain.Location = new Point(1024 - (479 + this.pictureBoxLike.Size.Width),
+                    768 - (625 + this.pictureBoxLike.Size.Height ) );
+                this.labelLike.Location = new Point(1024 - (169 + this.labelLike.Size.Width), 
+                    768 - (625 + this.labelLike.Size.Height));
+                this.labelAgain.Location = new Point(1024 - (550+ this.labelAgain.Size.Width),
+                    768 - (625 + this.labelAgain.Size.Height));
+            }
+
+
         }
 
         private void DoWebCam_Loaded()
@@ -541,26 +752,56 @@ namespace MME.Hercules.Forms.User
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
             if (ConfigUtility.IsDeveloperMode)
+            {
                 this.WindowState = FormWindowState.Normal;
+                this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            }
 
-            //  Set the background image...
-            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
-
-            //  Back Button...
-
-            Bitmap bm = Hercules.Properties.ImageResources.backarrow;
-            this.pictureBoxBack.Image = bm;
-            this.pictureBoxBack.Parent = pb;
-            this.pictureBoxBack.Visible = true;
 
             //  Set message text properties...
             info.ForeColor = System.Drawing.Color.Black;
             info.Visible = true;
             info.Parent = pb;
-            info.Location = new Point(100, 169 + 90);
             info.Text = "Get Ready.  We are about to take your picture!";
+            info.TextAlign = ContentAlignment.MiddleCenter;
             Font nf = new Font(FontFamily.GenericSansSerif, 30);
             info.Font = nf;
+
+            //  Put elements into place based on orientation...
+            this.Orient(0);
+
+            //  Set the flip buttons...
+            Bitmap bm = Hercules.Properties.ImageResources.FLIP_THUMB_30x30_flip;
+            this.pictureBoxFlipTop.Image = bm;
+            this.pictureBoxFlipTop.Visible = true;
+            this.pictureBoxFlipTop.Parent = this.pb;
+
+            bm = Hercules.Properties.ImageResources.FLIP_THUMB_30x30;
+            this.pictureBoxFlipBottom.Image = bm;
+            this.pictureBoxFlipBottom.Visible = true;
+            this.pictureBoxFlipBottom.Parent = this.pb;
+
+            //  Back Button...
+            bm = Hercules.Properties.ImageResources.backarrow;
+            this.pictureBoxBack.Image = bm;
+            this.pictureBoxBack.Parent = pb;
+            this.pictureBoxBack.Visible = true;
+            
+            //  Determine if meta buttons are enabled...
+            if (this.mode == 0)
+            {
+                this.pictureBoxBack.Visible = false;
+                this.pictureBoxFlipBottom.Visible = false;
+                this.pictureBoxFlipTop.Visible = false;
+            }
+            else // prompt mode...
+            {
+                this.pictureBoxBack.Visible = true;
+                this.pictureBoxFlipBottom.Visible = true;
+                this.pictureBoxFlipTop.Visible = true;
+            }
+
+
 
             //  Prep the prompt buttons...
             this.pictureBoxAgain.Visible = false;
@@ -571,23 +812,10 @@ namespace MME.Hercules.Forms.User
             labelAgain.Parent = pb;
             labelLike.ForeColor = System.Drawing.Color.Black;
             labelLike.Parent = pb;
+            
 
             //  Make sure snapshot preview is off...
             this.preview.Visible = false;
-
-            //  Move the number panels into place...
-            int x = this.labell1.Location.X;
-            int offset = 40;
-            this.labell1.Location = new Point(x - offset, this.labell1.Location.Y);
-            this.labell2.Location = new Point(x - offset, this.labell1.Location.Y);
-            this.labell3.Location = new Point(x - offset, this.labell1.Location.Y);
-            this.labell4.Location = new Point(x - offset, this.labell1.Location.Y);
-
-            x = this.labelr1.Location.X;
-            this.labelr1.Location = new Point(x + offset, this.labelr1.Location.Y);
-            this.labelr2.Location = new Point(x + offset, this.labelr1.Location.Y);
-            this.labelr3.Location = new Point(x + offset, this.labelr1.Location.Y);
-            this.labelr4.Location = new Point(x + offset, this.labelr1.Location.Y);
 
             //  More number panel config to ensure transparency...
             //gw
@@ -609,8 +837,6 @@ namespace MME.Hercules.Forms.User
             this.labelr4.ForeColor = info.ForeColor;
             
             //  Setup video preview...
-            this.vidPanel[0].Location = new Point(330, 321);
-            this.vidPanel[1].Location = new Point(330, 321);
             if (istable)
             {
                 int numcams = SetupVideo();
@@ -677,16 +903,16 @@ namespace MME.Hercules.Forms.User
             this.vidPanel[0].Visible = false;
             this.vidPanel[1].Visible = false;
 
-            //  Turn on prompt...
-            this.pictureBoxAgain.Visible = true;
-            this.pictureBoxLike.Visible = true;
-            this.labelLike.Visible = true;
-            this.labelAgain.Visible = true;
-
             //  Change the message...
             info.Text = "Do You Like Your Picture?";
-            info.Location = new Point(270, info.Location.Y);
             info.TextAlign = ContentAlignment.MiddleCenter;
+
+            //  Change mode here...
+            this.mode = 1;
+            Orient(this.mode);
+            this.pictureBoxBack.Visible = true;
+            this.pictureBoxFlipBottom.Visible = true;
+            this.pictureBoxFlipTop.Visible = true;
 
             //  Refresh user interface...
             this.Refresh();
@@ -697,10 +923,11 @@ namespace MME.Hercules.Forms.User
             this.StopJob(1);
 
             //  Wait...
-            System.Threading.Thread.Sleep(4000);
+            //System.Threading.Thread.Sleep(4000);
 
             //  TODO: I think its important to call this...
             DevelopPhotos();
+
 
             /*
             if (preview.Image != null)
@@ -722,6 +949,7 @@ namespace MME.Hercules.Forms.User
                 this.DoWebCam_Loaded();
                 return;
             }
+            this.preview.Visible = false;
 
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
@@ -1157,6 +1385,8 @@ namespace MME.Hercules.Forms.User
 
         private void pictureBoxAgain_Click(object sender, EventArgs e)
         {
+            //reset mode...
+            this.mode = 0;
             this.TakePhotos_Load(this, null);
         }
 
@@ -1174,6 +1404,24 @@ namespace MME.Hercules.Forms.User
             this.StopJob(0);
             this.StopJob(1);
             return;
+        }
+
+        private void pictureBoxFlipTop_Click(object sender, EventArgs e)
+        {
+            if (orientation != 1)
+            {
+                orientation = 1;
+                this.Orient(this.mode);
+            }
+        }
+
+        private void pictureBoxFlipBottom_Click(object sender, EventArgs e)
+        {
+            if (orientation != 0)
+            {
+                orientation = 0;
+                this.Orient(this.mode);
+            }
         }
     }
 }
