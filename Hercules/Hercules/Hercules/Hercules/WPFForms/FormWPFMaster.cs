@@ -91,6 +91,8 @@ namespace MME.Hercules.WPFForms
             else if (option == 2) // web
             {
                 this.pictureBox1.Visible = true;
+                this.pictureBox1.Parent = this.masterhost;
+                this.pictureBox1.BringToFront();
             }
             else if (option == 3)
             {

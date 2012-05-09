@@ -295,6 +295,13 @@ namespace MME.Hercules.Forms.User
                         using (User.TakePhotos tpform = new TakePhotos(currentSession))
                         {
                             dr = tpform.ShowDialog();
+
+                            //  in video table mode - did they click back button?...
+                            if ((ConfigUtility.GetValue("BoothType") == "2") && (dr == DialogResult.Cancel))
+                            {
+                                dr = DialogResult.OK; // for the outer while loop...
+                                continue;
+                            }
                         }
                     }
                 }

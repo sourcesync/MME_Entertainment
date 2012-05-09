@@ -47,7 +47,11 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelVideoOne = new System.Windows.Forms.Panel();
-            this.panelVideoTwo = new System.Windows.Forms.Panel();
+            this.pictureBoxLike = new System.Windows.Forms.PictureBox();
+            this.labelLike = new System.Windows.Forms.Label();
+            this.pictureBoxAgain = new System.Windows.Forms.PictureBox();
+            this.labelAgain = new System.Windows.Forms.Label();
+            this.pictureBoxBack = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.preview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,6 +60,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLike)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             this.SuspendLayout();
             // 
             // pb
@@ -63,7 +70,7 @@
             this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb.Location = new System.Drawing.Point(0, 0);
             this.pb.Name = "pb";
-            this.pb.Size = new System.Drawing.Size(1008, 730);
+            this.pb.Size = new System.Drawing.Size(1024, 768);
             this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb.TabIndex = 0;
             this.pb.TabStop = false;
@@ -79,6 +86,7 @@
             this.info.Size = new System.Drawing.Size(570, 33);
             this.info.TabIndex = 1;
             this.info.Text = "Smile!!  We are now taking your first photo!";
+            this.info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // preview
             // 
@@ -88,7 +96,6 @@
             this.preview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.preview.TabIndex = 2;
             this.preview.TabStop = false;
-            this.preview.Visible = false;
             // 
             // pictureBox1
             // 
@@ -264,28 +271,81 @@
             // 
             // panelVideoOne
             // 
-            this.panelVideoOne.Location = new System.Drawing.Point(89, 349);
+            this.panelVideoOne.Location = new System.Drawing.Point(311, 271);
             this.panelVideoOne.Name = "panelVideoOne";
-            this.panelVideoOne.Size = new System.Drawing.Size(200, 178);
+            this.panelVideoOne.Size = new System.Drawing.Size(345, 304);
             this.panelVideoOne.TabIndex = 18;
             this.panelVideoOne.Visible = false;
             // 
-            // panelVideoTwo
+            // pictureBoxLike
             // 
-            this.panelVideoTwo.Location = new System.Drawing.Point(677, 349);
-            this.panelVideoTwo.Name = "panelVideoTwo";
-            this.panelVideoTwo.Size = new System.Drawing.Size(200, 178);
-            this.panelVideoTwo.TabIndex = 19;
-            this.panelVideoTwo.Visible = false;
+            this.pictureBoxLike.Location = new System.Drawing.Point(174, 624);
+            this.pictureBoxLike.Name = "pictureBoxLike";
+            this.pictureBoxLike.Size = new System.Drawing.Size(65, 51);
+            this.pictureBoxLike.TabIndex = 19;
+            this.pictureBoxLike.TabStop = false;
+            this.pictureBoxLike.Visible = false;
+            this.pictureBoxLike.Click += new System.EventHandler(this.pictureBoxLike_Click);
+            this.pictureBoxLike.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxLike_MouseDown);
+            // 
+            // labelLike
+            // 
+            this.labelLike.BackColor = System.Drawing.Color.Transparent;
+            this.labelLike.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLike.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelLike.Location = new System.Drawing.Point(247, 625);
+            this.labelLike.Name = "labelLike";
+            this.labelLike.Size = new System.Drawing.Size(237, 49);
+            this.labelLike.TabIndex = 23;
+            this.labelLike.Text = "I Like It !";
+            this.labelLike.Visible = false;
+            // 
+            // pictureBoxAgain
+            // 
+            this.pictureBoxAgain.Location = new System.Drawing.Point(562, 625);
+            this.pictureBoxAgain.Name = "pictureBoxAgain";
+            this.pictureBoxAgain.Size = new System.Drawing.Size(65, 50);
+            this.pictureBoxAgain.TabIndex = 24;
+            this.pictureBoxAgain.TabStop = false;
+            this.pictureBoxAgain.Visible = false;
+            this.pictureBoxAgain.Click += new System.EventHandler(this.pictureBoxAgain_Click);
+            this.pictureBoxAgain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAgain_MouseDown);
+            // 
+            // labelAgain
+            // 
+            this.labelAgain.BackColor = System.Drawing.Color.Transparent;
+            this.labelAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAgain.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelAgain.Location = new System.Drawing.Point(634, 625);
+            this.labelAgain.Name = "labelAgain";
+            this.labelAgain.Size = new System.Drawing.Size(437, 50);
+            this.labelAgain.TabIndex = 25;
+            this.labelAgain.Text = "I Want To Try Again !";
+            this.labelAgain.Visible = false;
+            // 
+            // pictureBoxBack
+            // 
+            this.pictureBoxBack.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxBack.Location = new System.Drawing.Point(4, 719);
+            this.pictureBoxBack.Name = "pictureBoxBack";
+            this.pictureBoxBack.Size = new System.Drawing.Size(51, 44);
+            this.pictureBoxBack.TabIndex = 26;
+            this.pictureBoxBack.TabStop = false;
+            this.pictureBoxBack.Visible = false;
+            this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
             // 
             // TakePhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.ClientSize = new System.Drawing.Size(1024, 768);
             this.ControlBox = false;
-            this.Controls.Add(this.panelVideoTwo);
+            this.Controls.Add(this.pictureBoxBack);
+            this.Controls.Add(this.labelAgain);
+            this.Controls.Add(this.pictureBoxAgain);
+            this.Controls.Add(this.labelLike);
+            this.Controls.Add(this.pictureBoxLike);
             this.Controls.Add(this.panelVideoOne);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox6);
@@ -322,6 +382,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLike)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,6 +411,10 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelVideoOne;
-        private System.Windows.Forms.Panel panelVideoTwo;
+        private System.Windows.Forms.PictureBox pictureBoxLike;
+        private System.Windows.Forms.Label labelLike;
+        private System.Windows.Forms.PictureBox pictureBoxAgain;
+        private System.Windows.Forms.Label labelAgain;
+        private System.Windows.Forms.PictureBox pictureBoxBack;
     }
 }

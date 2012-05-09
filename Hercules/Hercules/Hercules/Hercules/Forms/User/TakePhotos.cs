@@ -52,6 +52,7 @@ namespace MME.Hercules.Forms.User
         private LiveDeviceSource[] _deviceSource = {null,null};
         private bool[] _bStartedRecording = {false,false};
         private Panel[] vidPanel = {null,null};
+        
         //gw
 
         public TakePhotos(Session currentSession)
@@ -59,7 +60,7 @@ namespace MME.Hercules.Forms.User
             InitializeComponent();
 
             this.vidPanel[0] = this.panelVideoOne;
-            this.vidPanel[1] = this.panelVideoTwo;
+            this.vidPanel[1] = this.panelVideoOne;
 
             if (ConfigUtility.GetValue("BoothType") == "2")
             {
@@ -174,7 +175,7 @@ namespace MME.Hercules.Forms.User
             }
         }
 
-        private void ShowCountdown(bool use_images, int which)
+        private void ShowCountdown(bool use_images, int which, bool right)
         {
             this.pictureBox2.Visible = false;
             this.pictureBox1.Visible = false;
@@ -191,7 +192,8 @@ namespace MME.Hercules.Forms.User
             else
             {
                 this.labell4.Visible = true;
-                //this.labelr4.Visible = true;
+                if (right)
+                    this.labelr4.Visible = true;
             }
             this.Invalidate();
             this.Refresh();
@@ -208,9 +210,9 @@ namespace MME.Hercules.Forms.User
             else
             {
                 this.labell4.Visible = false;
-                //this.labelr4.Visible = false;
+                if (right) this.labelr4.Visible = false;
                 this.labell3.Visible = true;
-                //this.labelr3.Visible = false;
+                if (right) this.labelr3.Visible = true;
             }
             this.Invalidate();
             this.Refresh();
@@ -229,9 +231,9 @@ namespace MME.Hercules.Forms.User
             else
             {
                 this.labell3.Visible = false;
-                //this.labelr3.Visible = false;
+                if (right) this.labelr3.Visible = false;
                 this.labell2.Visible = true;
-                //this.labelr2.Visible = false;
+                if (right) this.labelr2.Visible = true;
             }
             this.Invalidate();
             this.Refresh();
@@ -250,9 +252,9 @@ namespace MME.Hercules.Forms.User
             else
             {
                 this.labell2.Visible = false;
-                //this.labelr2.Visible = false;
+                if (right) this.labelr2.Visible = false;
                 this.labell1.Visible = true;
-                //this.labelr1.Visible = true;
+                if (right) this.labelr1.Visible = true;
             }
             this.Invalidate();
             this.Refresh();
@@ -267,7 +269,7 @@ namespace MME.Hercules.Forms.User
             this.Refresh();
 
             this.labell1.Visible = false;
-            //this.labelr1.Visible = false;
+            if (right) this.labelr1.Visible = false;
         }
 
         private void ProcessPicThread(object _i)
@@ -397,6 +399,10 @@ namespace MME.Hercules.Forms.User
                 // Destroy the device source
                 _deviceSource[i].PreviewWindow = null;
                 _deviceSource[i] = null;
+
+                //gw
+                _job[i] = null;
+                //gw
             }
         }
         private void startpreview(int i)
@@ -447,6 +453,9 @@ namespace MME.Hercules.Forms.User
                 // Display the video device properties set
                 //toolStripStatusLabel1.Text = sp.Size.Width.ToString() + "x" + sp.Size.Height.ToString() + "  " + sp.FrameRate.ToString() + " fps";
 
+                //gw - match the aspect of the requested vid size...
+                this.vidPanel[i].Size = new Size(this.vidPanel[i].Size.Width, (int)(this.vidPanel[i].Size.Width * 480.0 / 640));
+                
                 // Sets preview window to winform panel hosted by xaml window
                 this.vidPanel[i].Visible = true;
                 _deviceSource[i].PreviewWindow = new PreviewWindow(new HandleRef( this.vidPanel[i], this.vidPanel[i].Handle));
@@ -470,20 +479,19 @@ namespace MME.Hercules.Forms.User
 
         private int SetupVideo()
         {
-            int i = 0;
             int numcams = 0;
             
             foreach (EncoderDevice edv in EncoderDevices.FindDevices(EncoderDeviceType.Video))
             {
                 numcams++;
-                if (i == 0)
+                if (numcams == 1)
                 {
                     this.camname[0] = edv.Name;
                     //break;
                 }
-                else if (i == 1)
+                else if (numcams==2)
                 {
-                    this.camname[2] = edv.Name;
+                    this.camname[1] = edv.Name;
                     break;
                 }
             }
@@ -491,12 +499,12 @@ namespace MME.Hercules.Forms.User
             if (numcams == 1)
             {
                 this.panelVideoOne.Visible = true;
-                this.panelVideoTwo.Visible = false;
+                //this.panelVideoOne.Visible = false;
             }
-            else if (numcams == 1)
+            else if (numcams == 2)
             {
                 this.panelVideoOne.Visible = true;
-                this.panelVideoTwo.Visible = true;
+                //this.panelVideoTwo.Visible = true;
             }
 
             return numcams;
@@ -535,10 +543,74 @@ namespace MME.Hercules.Forms.User
             if (ConfigUtility.IsDeveloperMode)
                 this.WindowState = FormWindowState.Normal;
 
+            //  Set the background image...
             WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+
+            //  Back Button...
+
+            Bitmap bm = Hercules.Properties.ImageResources.backarrow;
+            this.pictureBoxBack.Image = bm;
+            this.pictureBoxBack.Parent = pb;
+            this.pictureBoxBack.Visible = true;
+
+            //  Set message text properties...
             info.ForeColor = System.Drawing.Color.Black;
+            info.Visible = true;
+            info.Parent = pb;
+            info.Location = new Point(100, 169 + 90);
+            info.Text = "Get Ready.  We are about to take your picture!";
+            Font nf = new Font(FontFamily.GenericSansSerif, 30);
+            info.Font = nf;
 
+            //  Prep the prompt buttons...
+            this.pictureBoxAgain.Visible = false;
+            this.pictureBoxLike.Visible = false;
+            this.labelLike.Visible = false;
+            this.labelAgain.Visible = false;
+            labelAgain.ForeColor = System.Drawing.Color.Black;
+            labelAgain.Parent = pb;
+            labelLike.ForeColor = System.Drawing.Color.Black;
+            labelLike.Parent = pb;
 
+            //  Make sure snapshot preview is off...
+            this.preview.Visible = false;
+
+            //  Move the number panels into place...
+            int x = this.labell1.Location.X;
+            int offset = 40;
+            this.labell1.Location = new Point(x - offset, this.labell1.Location.Y);
+            this.labell2.Location = new Point(x - offset, this.labell1.Location.Y);
+            this.labell3.Location = new Point(x - offset, this.labell1.Location.Y);
+            this.labell4.Location = new Point(x - offset, this.labell1.Location.Y);
+
+            x = this.labelr1.Location.X;
+            this.labelr1.Location = new Point(x + offset, this.labelr1.Location.Y);
+            this.labelr2.Location = new Point(x + offset, this.labelr1.Location.Y);
+            this.labelr3.Location = new Point(x + offset, this.labelr1.Location.Y);
+            this.labelr4.Location = new Point(x + offset, this.labelr1.Location.Y);
+
+            //  More number panel config to ensure transparency...
+            //gw
+            this.labell1.Parent = pb;
+            this.labell1.ForeColor = info.ForeColor;
+            this.labell2.Parent = pb;
+            this.labell2.ForeColor = info.ForeColor;
+            this.labell3.Parent = pb;
+            this.labell3.ForeColor = info.ForeColor;
+            this.labell4.Parent = pb;
+            this.labell4.ForeColor = info.ForeColor;
+            this.labelr1.Parent = pb;
+            this.labelr1.ForeColor = info.ForeColor;
+            this.labelr2.Parent = pb;
+            this.labelr2.ForeColor = info.ForeColor;
+            this.labelr3.Parent = pb;
+            this.labelr3.ForeColor = info.ForeColor;
+            this.labelr4.Parent = pb;
+            this.labelr4.ForeColor = info.ForeColor;
+            
+            //  Setup video preview...
+            this.vidPanel[0].Location = new Point(330, 321);
+            this.vidPanel[1].Location = new Point(330, 321);
             if (istable)
             {
                 int numcams = SetupVideo();
@@ -555,44 +627,82 @@ namespace MME.Hercules.Forms.User
                 else if (numcams == 2)
                 {
                     this.startpreview(0);
-                    this.startpreview(1);
+                    //this.startpreview(1);
                 }
             }
+
+            //  Match the snapshot preview to video preview...
+            this.preview.Location = this.vidPanel[0].Location;
+            this.preview.Size = this.vidPanel[0].Size;
 
             this.Refresh();
             Application.DoEvents();
             System.Threading.Thread.Sleep(1);
-
             System.Threading.Thread.Sleep(1000);
+
+            //  Get Ready...
             SoundUtility.PlaySync(Hercules.Properties.SoundResources.GET_READY);
+            this.info.Visible = true;
 
+            /*
             System.Threading.Thread.Sleep(1000);
 
-            SoundUtility.Play(Hercules.Properties.SoundResources.COUNTDOWN);
-            System.Threading.Thread.Sleep(4000);
+            //SoundUtility.Play(Hercules.Properties.SoundResources.COUNTDOWN);
+            SoundUtility.Play(Hercules.Properties.SoundResources.FOUR_COUNT);
+            System.Threading.Thread.Sleep(1000);
 
+            SoundUtility.Play(Hercules.Properties.SoundResources.THREE_COUNT);
+            System.Threading.Thread.Sleep(1000);
 
+            SoundUtility.Play(Hercules.Properties.SoundResources.TWO_COUNT);
+            System.Threading.Thread.Sleep(1000);
+
+            SoundUtility.Play(Hercules.Properties.SoundResources.ONE_COUNT);
+            System.Threading.Thread.Sleep(1000);
+
+             * */
+
+            //  Present the countodown...
+            this.ShowCountdown(false, 0, true);
+              
+            //  Grab the image...
             SoundUtility.PlaySync(Hercules.Properties.SoundResources.CAMERA_CLICK);
-
             this.GrabImage(0);
 
+            //  Show the snapshot preview...
             this.preview.Image = FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\photo" + (1) + ".jpg");
             this.preview.Visible = true;
+            
+            //  Turn off cam preview...
             this.vidPanel[0].Visible = false;
             this.vidPanel[1].Visible = false;
+
+            //  Turn on prompt...
+            this.pictureBoxAgain.Visible = true;
+            this.pictureBoxLike.Visible = true;
+            this.labelLike.Visible = true;
+            this.labelAgain.Visible = true;
+
+            //  Change the message...
+            info.Text = "Do You Like Your Picture?";
+            info.Location = new Point(270, info.Location.Y);
+            info.TextAlign = ContentAlignment.MiddleCenter;
+
+            //  Refresh user interface...
             this.Refresh();
             Application.DoEvents();
 
-
-            //this.StopRecording(0);
-            //this.StopRecording(1);
+            //  Stop the preview jobs...
             this.StopJob(0);
             this.StopJob(1);
 
-            System.Threading.Thread.Sleep(2000);
+            //  Wait...
+            System.Threading.Thread.Sleep(4000);
 
+            //  TODO: I think its important to call this...
             DevelopPhotos();
 
+            /*
             if (preview.Image != null)
                 preview.Image.Dispose();
 
@@ -601,6 +711,7 @@ namespace MME.Hercules.Forms.User
 
 
             DialogResult = System.Windows.Forms.DialogResult.OK;
+             * */
         }
 
 
@@ -729,7 +840,7 @@ namespace MME.Hercules.Forms.User
             if (this.show_countdown)
             {
                 ClearToStart = true;
-                ShowCountdown(use_images, 0);
+                ShowCountdown(use_images, 0, false);
             }
             //gw
 
@@ -842,7 +953,7 @@ namespace MME.Hercules.Forms.User
                 {
                     if (i < ConfigUtility.PhotoCount - 1)
                     {
-                        ShowCountdown(use_images, i + 1);
+                        ShowCountdown(use_images, i + 1, false);
                     }
                 }
                 else
@@ -1033,6 +1144,36 @@ namespace MME.Hercules.Forms.User
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void pictureBoxLike_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+        }
+
+        private void pictureBoxAgain_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            
+        }
+
+        private void pictureBoxAgain_Click(object sender, EventArgs e)
+        {
+            this.TakePhotos_Load(this, null);
+        }
+
+        private void pictureBoxLike_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.StopJob(0);
+            this.StopJob(1);
+            return;
+        }
+
+        private void pictureBoxBack_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.StopJob(0);
+            this.StopJob(1);
+            return;
         }
     }
 }
