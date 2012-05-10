@@ -150,6 +150,69 @@ namespace MME.Hercules
             return HttpUploadFile(ConfigUtility.GetConfig(ConfigUtility.Config, "EmailPublishUrl"), file, filename, "photo", "image/jpeg", nvc);
         }
 
+        public static string Promo(string uniqueid, string email)
+        {
+            NameValueCollection nvc = new NameValueCollection();
+            nvc.Add("imageid", uniqueid);
+            nvc.Add("email", email);
+            nvc.Add("event", ConfigUtility.Skin);
+
+            String url = ConfigUtility.GetConfig(ConfigUtility.Config, "PromoUrl");
+            return HttpUpload(url,nvc);
+        }
+
+        public static string HttpUpload(string url, NameValueCollection nvc )
+        {
+             //gw
+            if (url=="") return "";
+            //gw
+
+            string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
+            byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+
+            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
+            wr.ContentType = "multipart/form-data; boundary=" + boundary;
+            wr.Method = "POST";
+            wr.KeepAlive = true;
+            wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+            Stream rs = wr.GetRequestStream();
+
+            string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
+            foreach (string key in nvc.Keys)
+            {
+                rs.Write(boundarybytes, 0, boundarybytes.Length);
+                string formitem = string.Format(formdataTemplate, key, nvc[key]);
+                byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
+                rs.Write(formitembytes, 0, formitembytes.Length);
+            }
+            rs.Write(boundarybytes, 0, boundarybytes.Length);
+            WebResponse wresp = null;
+            string response = null;
+            try
+            {
+                wresp = wr.GetResponse();
+                Stream stream2 = wresp.GetResponseStream();
+                StreamReader reader2 = new StreamReader(stream2);
+                response = reader2.ReadToEnd();                
+            }
+            catch (Exception ex)
+            {
+                response = "ERROR: " + ex.Message;
+                if (wresp != null)
+                {
+                    wresp.Close();
+                    wresp = null;
+                }
+            }
+            finally
+            {
+                wr = null;
+            }
+
+            return response;
+        }
+    
 
         public static string HttpUploadFile(string url, string file, string filename, string paramName, string contentType, NameValueCollection nvc)
         {

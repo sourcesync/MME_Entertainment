@@ -114,10 +114,13 @@ namespace MME.Hercules.Forms.User
 
             SoundUtility.StopSpeaking();
 
-            if (thread.ThreadState == ThreadState.Running)
-                thread.Abort();
+            if (!ispromo)
+            {
+                if (thread.ThreadState == ThreadState.Running)
+                    thread.Abort();
 
-            thread = null;
+                thread = null;
+            }
             
             if (pb.Image != null)
                 pb.Image.Dispose();
@@ -153,10 +156,13 @@ namespace MME.Hercules.Forms.User
 
         private void skipArea_Click(object sender, EventArgs e)
         {
-            if (thread.ThreadState == ThreadState.Running)
-                thread.Abort();
+            if (!ispromo)
+            {
+                if (thread.ThreadState == ThreadState.Running)
+                    thread.Abort();
 
-            thread = null;
+                thread = null;
+            }
 
             if (pb.Image != null)
                 pb.Image.Dispose();

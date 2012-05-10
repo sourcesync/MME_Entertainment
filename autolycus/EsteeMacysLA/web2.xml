@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<WebConfig version="1">
+
+<add key="Server" value="autolycus.mmeentertainment.com" /> 
+
+<add key="UseSendEmail" value="1" /> <!-- 0=hides the send email -->
+<add key="EmailSubject" value="Your favorite photo sent from a friend via the Estee  Lauder photobooth" /> <!-- email subject -->
+<add key="EmailDefaultMessage" value="Your favorite photo taken at the Estee Lauder photo booth! " /> <!-- default custom msg -->
+<add key="EmailBody" value="" /> <!-- body of the email that gets sent from favorite photo (user cannot alter this) -->
+
+<add key="FacebookLike" value="esteelauder" /> <!-- fan page to like; blank=hide -->
+<add key="UseShareFacebook" value="1" /> <!-- hides the share button -->
+<add key="FacebookTitle" value="Oi, Bonita! Check out my Estee Lauder brasil dream look!  Are you inspired by the sexy spirit of Brasil?" /> <!-- title of the wall post -->
+<add key="FacebookDesc" value="For more information about Estee  Lauder, visit us at:http://www.esteelauder.com/index.tmpl" /> <!-- facebook post desc -->
+
+<add key="UseTweet" value="1" /> <!-- hides the tweet button -->
+<add key="FollowTwitter" value="EsteeLauder" /> <!-- twitter account to follow; blank=hide -->
+<add key="TweetDefault" value="Oi, Bonita! Check out my Estee Lauder brasil dream look!  Are you inspired by the sexy spirit of Brasil? 
+
+" /> <!-- default tweet message (tinyurl auto-attached at end) -->
+
+
+</WebConfig>

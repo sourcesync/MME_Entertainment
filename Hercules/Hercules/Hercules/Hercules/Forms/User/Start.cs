@@ -190,20 +190,10 @@ namespace MME.Hercules.Forms.User
 
                     try
                     {
-                        /*
-                        if (wpffrm != null)
-                        {
-                            wpffrm.Close();
-                            wpffrm.Dispose();
-                            wpffrm = null;
-                        }
-                         * */
-
                         if (wpffrm == null)
                         {
                             wpffrm = new MME.Hercules.WPFForms.FormWPFMaster();
                         }
-                        //wpffrm.ShowMain();
                         wpffrm.ShowDialog();
                     }
                     catch (System.Exception e)
@@ -273,7 +263,7 @@ namespace MME.Hercules.Forms.User
                         {
                             using (User.Developing dd = new Developing(currentSession))
                             {
-                                dd.istablepost = true;
+                                dd.isbooth = true;
                                 dd.ispromo = false;
                                 dd.ischeckin = false;
                                 dr = dd.ShowDialog();
@@ -299,9 +289,9 @@ namespace MME.Hercules.Forms.User
                         {
                             using (User.Developing dd = new Developing(currentSession))
                             {
-                                dd.istablepost = false;
-                                dd.ispromo = false;
-                                dd.ischeckin = true;
+                                dd.isbooth = false;
+                                dd.ispromo = true;
+                                dd.ischeckin = false;
                                 dr = dd.ShowDialog();
                             }
                         }
@@ -323,7 +313,7 @@ namespace MME.Hercules.Forms.User
                         {
                             using (User.Developing dd = new Developing(currentSession))
                             {
-                                dd.istablepost = false;
+                                dd.isbooth = false;
                                 dd.ispromo = false;
                                 dd.ischeckin = true;
                                 dr = dd.ShowDialog();

@@ -17,7 +17,7 @@ namespace MME.Hercules.Forms.User
         private bool istable;
         public bool ischeckin = false;
         public bool ispromo = false;
-        public bool istablepost = false;
+        public bool isbooth = false;
 
         public Developing(Session currentSession)
         {
@@ -71,11 +71,15 @@ namespace MME.Hercules.Forms.User
 
                 if (ispromo)
                 {
-                    CustomEmail();
+                    PromoEmail();
                 }
 
-                if (istablepost)
+                if (isbooth)
                 {
+                    WriteOutResults();
+
+                    CustomEmail();
+
                     PublishToFacebook();
                 }
 
@@ -176,6 +180,16 @@ namespace MME.Hercules.Forms.User
 
 
 
+        private void PromoEmail()
+        {
+           
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "PromoUrl")))
+            {
+                String code = ConfigUtility.GetConfig(ConfigUtility.Config, "PromoCode");
+                FileUtility.Promo(code, this.currentSession.EmailAddress);
+                //ConfigUtility.IncrementCounter("Email");
+            }
+        }
 
         private void CustomEmail()
         {

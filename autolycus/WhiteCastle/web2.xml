@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<WebConfig version="1">
+
+<add key="Server" value="autolycus.mmeentertainment.com" /> 
+
+<add key="UseSendEmail" value="1" /> <!-- 0=hides the send email -->
+<add key="EmailSubject" value="Favorite photo sent from the White Castle photobooth" /> <!-- email subject -->
+<add key="EmailDefaultMessage" value="Come get your crave on at White Castle" /> <!-- default custom msg -->
+<add key="EmailBody" value="" /> <!-- body of the email that gets sent from favorite photo (user cannot alter this) -->
+
+<add key="FacebookLike" value="WhiteCastle" /> <!-- fan page to like; blank=hide -->
+<add key="UseShareFacebook" value="1" /> <!-- hides the share button -->
+<add key="FacebookTitle" value="Come get your crave on at White Castle" /> <!-- title of the wall post -->
+<add key="FacebookDesc" value="For more information about White Castle, visit us at:http://www.whitecastle.com" /> <!-- facebook post desc -->
+
+<add key="UseTweet" value="1" /> <!-- hides the tweet button -->
+<add key="FollowTwitter" value="WhiteCastle" /> <!-- twitter account to follow; blank=hide -->
+<add key="TweetDefault" value="Come get your crave on at White Castle! I just did!" /> <!-- default tweet message (tinyurl auto-attached at end) -->
+
+
+</WebConfig>
