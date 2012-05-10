@@ -188,12 +188,20 @@ namespace MME.Hercules.Forms.User
                 {
                     dr = System.Windows.Forms.DialogResult.OK;
 
-                    if (wpffrm == null)
+                    try
                     {
-                        wpffrm = new MME.Hercules.WPFForms.FormWPFMaster();
+                        if (wpffrm != null) wpffrm.Dispose();
+                        //if (wpffrm == null)
+                        {
+                            wpffrm = new MME.Hercules.WPFForms.FormWPFMaster();
+                        }
+                        //wpffrm.ShowMain();
+                        wpffrm.ShowDialog();
                     }
-                    //wpffrm.ShowMain();
-                    wpffrm.ShowDialog();
+                    catch (System.Exception e)
+                    {
+                        System.Windows.Forms.MessageBox.Show(e.ToString());
+                    }
 
                     if (wpffrm.option == 1) // booth
                     {
