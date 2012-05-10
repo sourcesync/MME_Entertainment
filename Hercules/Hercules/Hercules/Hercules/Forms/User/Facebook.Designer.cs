@@ -40,16 +40,19 @@
             this.notice = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.usepanel = new System.Windows.Forms.Panel();
-            this.pb2 = new System.Windows.Forms.PictureBox();
+            this.labelQuestion = new System.Windows.Forms.Label();
             this.fbno = new System.Windows.Forms.PictureBox();
             this.fbyes = new System.Windows.Forms.PictureBox();
+            this.pb2 = new System.Windows.Forms.PictureBox();
             this.keyboard = new MME.Hercules.Keyboards.Keyboard2();
+            this.pictureBoxBack = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.alertbox.SuspendLayout();
             this.usepanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbyes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             this.SuspendLayout();
             // 
             // pb
@@ -66,7 +69,7 @@
             // 
             this.finished.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.finished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.finished.Font = new System.Drawing.Font("Script MT Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finished.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.finished.ForeColor = System.Drawing.Color.White;
             this.finished.Location = new System.Drawing.Point(541, 657);
             this.finished.Name = "finished";
@@ -81,7 +84,7 @@
             // 
             this.skip.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.skip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.skip.Font = new System.Drawing.Font("Script MT Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skip.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skip.ForeColor = System.Drawing.Color.White;
             this.skip.Location = new System.Drawing.Point(771, 657);
             this.skip.Name = "skip";
@@ -188,6 +191,8 @@
             // 
             // usepanel
             // 
+            this.usepanel.Controls.Add(this.pictureBoxBack);
+            this.usepanel.Controls.Add(this.labelQuestion);
             this.usepanel.Controls.Add(this.fbno);
             this.usepanel.Controls.Add(this.fbyes);
             this.usepanel.Controls.Add(this.pb2);
@@ -197,15 +202,17 @@
             this.usepanel.Size = new System.Drawing.Size(1024, 768);
             this.usepanel.TabIndex = 15;
             // 
-            // pb2
+            // labelQuestion
             // 
-            this.pb2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb2.Location = new System.Drawing.Point(0, 0);
-            this.pb2.Name = "pb2";
-            this.pb2.Size = new System.Drawing.Size(1024, 768);
-            this.pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb2.TabIndex = 0;
-            this.pb2.TabStop = false;
+            this.labelQuestion.AutoSize = true;
+            this.labelQuestion.BackColor = System.Drawing.Color.Transparent;
+            this.labelQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuestion.Location = new System.Drawing.Point(108, 583);
+            this.labelQuestion.Name = "labelQuestion";
+            this.labelQuestion.Size = new System.Drawing.Size(796, 39);
+            this.labelQuestion.TabIndex = 3;
+            this.labelQuestion.Text = "Would You Like To Post Your Image To FaceBook?";
+            this.labelQuestion.Visible = false;
             // 
             // fbno
             // 
@@ -227,6 +234,16 @@
             this.fbyes.TabStop = false;
             this.fbyes.Click += new System.EventHandler(this.fbyes_Click);
             // 
+            // pb2
+            // 
+            this.pb2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb2.Location = new System.Drawing.Point(0, 0);
+            this.pb2.Name = "pb2";
+            this.pb2.Size = new System.Drawing.Size(1024, 768);
+            this.pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb2.TabIndex = 0;
+            this.pb2.TabStop = false;
+            // 
             // keyboard
             // 
             this.keyboard.BackColor = System.Drawing.Color.Transparent;
@@ -235,6 +252,16 @@
             this.keyboard.Name = "keyboard";
             this.keyboard.Size = new System.Drawing.Size(808, 252);
             this.keyboard.TabIndex = 13;
+            // 
+            // pictureBoxBack
+            // 
+            this.pictureBoxBack.Location = new System.Drawing.Point(4, 719);
+            this.pictureBoxBack.Name = "pictureBoxBack";
+            this.pictureBoxBack.Size = new System.Drawing.Size(51, 44);
+            this.pictureBoxBack.TabIndex = 4;
+            this.pictureBoxBack.TabStop = false;
+            this.pictureBoxBack.Visible = false;
+            this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
             // 
             // Facebook
             // 
@@ -266,9 +293,11 @@
             this.alertbox.ResumeLayout(false);
             this.alertbox.PerformLayout();
             this.usepanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
+            this.usepanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fbno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbyes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,5 +321,7 @@
         private System.Windows.Forms.PictureBox pb2;
         private System.Windows.Forms.PictureBox fbno;
         private System.Windows.Forms.PictureBox fbyes;
+        private System.Windows.Forms.Label labelQuestion;
+        private System.Windows.Forms.PictureBox pictureBoxBack;
     }
 }

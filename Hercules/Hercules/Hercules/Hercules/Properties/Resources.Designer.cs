@@ -192,6 +192,15 @@ namespace MME.Hercules.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to promo.jpg.
+        /// </summary>
+        internal static string PROMO_SCREEN {
+            get {
+                return ResourceManager.GetString("PROMO_SCREEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to roomnumber.jpg.
         /// </summary>
         internal static string ROOM_NUMBER_SCREEN {

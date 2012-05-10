@@ -31,6 +31,8 @@ namespace MME.Hercules.Forms.User
         //gw
         private delegate void DialogDoneHandler();
         private Thread delayDoneThread = null;
+        public bool istable = false;
+        public bool ischeckin = false;
         //gw
 
         public Facebook(Session currentSession)
@@ -40,6 +42,11 @@ namespace MME.Hercules.Forms.User
             InitializeComponent();
 
             this.currentSession = currentSession;
+
+            if (ConfigUtility.GetValue("BoothType") == "2")
+            {
+                istable = true;
+            }
         }
 
         private void DialogDone()
@@ -61,7 +68,16 @@ namespace MME.Hercules.Forms.User
         private void Facebook_Load(object sender, EventArgs e)
         {
             if (ConfigUtility.IsDeveloperMode)
+            {
                 this.WindowState = FormWindowState.Normal;
+                //gw
+                this.FormBorderStyle = FormBorderStyle.Fixed3D;
+                //gw
+            }
+
+            //gw
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            //gw
 
             SoundUtility.StopSpeaking();
 
@@ -72,8 +88,12 @@ namespace MME.Hercules.Forms.User
             InternetSetOption(IntPtr.Zero, INTERNET_OPTION_END_BROWSER_SESSION, IntPtr.Zero, 0);
             WindowUtility.ClearCache();
 
-            SoundUtility.Play("usefacebook.wav");
-            
+            //gw
+            if (!this.ischeckin)
+            {
+                SoundUtility.Play("usefacebook.wav");
+            }
+            //gw
 
 /*
             //orig webBrowser1.Url = new Uri("https://graph.afacebook.com/oauth/authorize?client_id=119375921469000&redirect_uri=" +
@@ -97,6 +117,9 @@ namespace MME.Hercules.Forms.User
             keyboard.Parent = pb;
             notice.Parent = pb;
 
+
+            
+
             pb.Load(string.Format("Skins\\{0}\\Screens\\facebook.jpg",
                 ConfigUtility.Skin));
 
@@ -110,7 +133,32 @@ namespace MME.Hercules.Forms.User
             ConfigUtility.Skin));
 
 
-            notice.ForeColor = Color.Black;         
+            notice.ForeColor = Color.Black;
+
+            if (istable)
+            {
+                this.labelQuestion.Visible = true;
+                this.labelQuestion.AutoSize = false;
+                this.labelQuestion.TextAlign = ContentAlignment.MiddleCenter;
+                if (!this.ischeckin)
+                {
+                    this.labelQuestion.Text = "Would you like to post your photo to FaceBook?";
+                }
+                else
+                {
+                    this.labelQuestion.Text = "Would you like to check-in to FaceBook?";
+                }
+                this.labelQuestion.ForeColor = System.Drawing.Color.Black;
+                this.labelQuestion.BackColor = System.Drawing.Color.Transparent;
+                this.labelQuestion.Parent = this.pb2;
+                this.labelQuestion.BringToFront();
+
+                Bitmap bm = Hercules.Properties.ImageResources.backarrow;
+                this.pictureBoxBack.Image = bm;
+                this.pictureBoxBack.BackColor = System.Drawing.Color.Transparent;
+                this.pictureBoxBack.Parent = pb2;
+                this.pictureBoxBack.Visible = true;
+            }
 
             this.Refresh();
 
@@ -442,6 +490,12 @@ namespace MME.Hercules.Forms.User
 
 
             DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void pictureBoxBack_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            return;
         }
     }
 

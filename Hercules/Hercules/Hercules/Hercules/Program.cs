@@ -99,18 +99,39 @@ namespace MME.Hercules
                 CameraUtility.InitializeCamera();
 
 
+                /*
                 
+                //if (!string.IsNullOrEmpty(this.currentSession.EmailAddress))
+                //    System.IO.File.WriteAllText(this.currentSession.PhotoPath + "\\email.txt", this.currentSession.EmailAddress);
+                System.IO.File.WriteAllText("c:\\tmp\\_email.txt", "george.williams@gmail.com");
 
-                
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "EmailPublishUrl")))
+                {
+                    String nm = "6fa39e9d188c40e79e1ddb823942534b";
+                    String str = FileUtility.PostPublishUpload(nm, 
+                        "george.williams@gmail.com",
+                        "C:\\eventphotos\\634722089735242885\\6fa39e9d188c40e79e1ddb823942534b.jpg", 
+                        "yo.jpg");
+                    //ConfigUtility.IncrementCounter("Email");
+                }
+
+                if (ConfigUtility.GetValue("UploadFavoritePhotoToAutolycus").Equals("1"))
+                {
+                    String nm = "6fa39e9d188c40e79e1ddb823942534b";
+                    String str = FileUtility.PostPublishUpload(nm,
+                    "C:\\eventphotos\\634722089735242885\\6fa39e9d188c40e79e1ddb823942534b.jpg", 
+                    "yo.jpg");
+                }
+
+                */
 
                 // Start
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Forms.User.Start());
-                
-                //Session session = new Session();
-                //session.EmailAddress = "george.williams@gmail.com";
-                //Application.Run(new Forms.User.Facebook(session));
+             
+
+
             }
             catch (System.Exception e)
             {

@@ -181,21 +181,143 @@ namespace MME.Hercules.Forms.User
             //gw PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
             //false);
 
-            while (true)
+            if (ConfigUtility.GetValue("BoothType") == "2")
             {
-
                 MME.Hercules.WPFForms.FormWPFMaster wpffrm = null;
-                if (ConfigUtility.GetValue("BoothType") == "2")
+                while (true)
                 {
-                    //  Show main menu...
+                    dr = System.Windows.Forms.DialogResult.OK;
+
                     if (wpffrm == null)
                     {
                         wpffrm = new MME.Hercules.WPFForms.FormWPFMaster();
                     }
                     //wpffrm.ShowMain();
                     wpffrm.ShowDialog();
-                }
 
+                    if (wpffrm.option == 1) // booth
+                    {
+                        // Are we supporting emailing
+                        bool AllowEmailPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1"));
+                        if (AllowEmailPublish && dr == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (User.Email ef = new Email(currentSession))
+                            {
+                                dr = ef.ShowDialog();
+                            }
+                        }
+
+                        // Start picture taking
+                        if (dr == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (User.TakePhotos tpform = new TakePhotos(currentSession))
+                            {
+                                dr = tpform.ShowDialog();
+
+                                //  in video table mode - did they click back button?...
+                                if ((ConfigUtility.GetValue("BoothType") == "2") && (dr == DialogResult.Cancel))
+                                {
+                                    dr = DialogResult.OK; // for the outer while loop...
+                                    continue;
+                                }
+                            }
+                        }
+
+
+                        bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
+
+
+                        //  Force favorite to first one...
+                        if (dr == System.Windows.Forms.DialogResult.OK &&
+                            (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
+                            AllowFacebookPublish))
+                        {
+                            {
+                                this.currentSession.FavoritePhoto = 1;
+                                this.currentSession.FavoritePhotoFilename = "photo1";
+                            }
+                        }
+
+
+                        // Are we supporting facebook
+
+                        if (AllowFacebookPublish && dr == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (User.Facebook fb = new Facebook(currentSession))
+                            {
+                                fb.ischeckin = false;
+                                dr = fb.ShowDialog();
+                            }
+                        }
+
+                        // Finish up ( AND ACTUALLY SEND TO FACEBOOK! )
+
+
+                        if (dr == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (User.Developing dd = new Developing(currentSession))
+                            {
+                                dd.istablepost = true;
+                                dd.ispromo = false;
+                                dd.ischeckin = false;
+                                dr = dd.ShowDialog();
+                            }
+                        }
+
+
+                    } // is_table, booth mode
+                    else if (wpffrm.option == 4) // promo
+                    {
+                        // Are we supporting emailing
+                        bool AllowEmailPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1"));
+                        if (AllowEmailPublish && dr == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (User.Email ef = new Email(currentSession))
+                            {
+                                ef.ispromo = true;
+                                dr = ef.ShowDialog();
+                            }
+                        }
+
+                        if (dr == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (User.Developing dd = new Developing(currentSession))
+                            {
+                                dd.istablepost = false;
+                                dd.ispromo = false;
+                                dd.ischeckin = true;
+                                dr = dd.ShowDialog();
+                            }
+                        }
+                    }
+                    else if (wpffrm.option == 5) // checkin option...
+                    {
+                        bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
+
+                        if (AllowFacebookPublish)
+                        {
+                            using (User.Facebook fb = new Facebook(currentSession))
+                            {
+                                fb.ischeckin = true;
+                                dr = fb.ShowDialog();
+                            }
+                        }
+
+                        if (dr == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (User.Developing dd = new Developing(currentSession))
+                            {
+                                dd.istablepost = false;
+                                dd.ispromo = false;
+                                dd.ischeckin = true;
+                                dr = dd.ShowDialog();
+                            }
+                        }
+                    }
+                } // END WHILE 
+            }
+            else // NOT BOOTH MODE, NORMAL...
+            {
                 if (ConfigUtility.SequenceConfig != null)
                 {
                     dr = ProcessSequenceSteps(dr);
@@ -224,116 +346,83 @@ namespace MME.Hercules.Forms.User
                 // color types
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (ConfigUtility.GetValue("BoothType") == "2")
+                    // do we support bw and color?
+                    ColorType colorTypes = (ColorType)Convert.ToInt32(ConfigUtility.ColorTypes);
+
+                    //gw
+                    if ((colorTypes == ColorType.BW_Color) || (colorTypes == ColorType.BW_Color_Sepia))
                     {
-
-                    }
-                    else
-                    {
-
-                        // do we support bw and color?
-                        ColorType colorTypes = (ColorType)Convert.ToInt32(ConfigUtility.ColorTypes);
-
-                        //gw
-                        if ((colorTypes == ColorType.BW_Color) || (colorTypes == ColorType.BW_Color_Sepia))
+                        using (User.PhotoType ptform = new PhotoType(currentSession))
                         {
-                            using (User.PhotoType ptform = new PhotoType(currentSession))
-                            {
-                                ptform.color_choice = colorTypes;
-                                dr = ptform.ShowDialog(this);
-                            }
-                        }
-                        //gw
-                        /*
-                        // If we support both, ask the user.
-                        if (((colorTypes & ColorType.BW) == ColorType.BW) && ((colorTypes & ColorType.Color) == ColorType.Color))
-                        {
-                            using (User.PhotoType ptform = new PhotoType(currentSession))
-                            {
+                            ptform.color_choice = colorTypes;
                             dr = ptform.ShowDialog(this);
                         }
-                        }
-                        * */
-                        else
-                            currentSession.SelectedColorType = colorTypes;
-                        //gw
                     }
+                    //gw
+                    /*
+                    // If we support both, ask the user.
+                    if (((colorTypes & ColorType.BW) == ColorType.BW) && ((colorTypes & ColorType.Color) == ColorType.Color))
+                    {
+                        using (User.PhotoType ptform = new PhotoType(currentSession))
+                        {
+                        dr = ptform.ShowDialog(this);
+                    }
+                    }
+                    * */
+                    else
+                        currentSession.SelectedColorType = colorTypes;
+                    //gw
+
                 } // colortypes
 
                 /* backgrounds*/
-                if (ConfigUtility.GetValue("BoothType") == "2")
+
+
+                // Do we have custom backgrounds for chroma key?
+                int backgrounds = Convert.ToInt32(ConfigUtility.PhotoBackgrounds);
+
+                // If we have backgrounds, ask the user to select
+                if (backgrounds > 1 && dr == System.Windows.Forms.DialogResult.OK)
                 {
+                    using (User.Backgrounds bkform = new Backgrounds(currentSession))
+                    {
+                        dr = bkform.ShowDialog();
+                    }
                 }
                 else
                 {
-                    // Do we have custom backgrounds for chroma key?
-                    int backgrounds = Convert.ToInt32(ConfigUtility.PhotoBackgrounds);
+                    if (this.currentSession.SelectedBackgrounds == null)
+                        this.currentSession.SelectedBackgrounds = new System.Collections.Generic.List<int>();
 
-                    // If we have backgrounds, ask the user to select
-                    if (backgrounds > 1 && dr == System.Windows.Forms.DialogResult.OK)
-                    {
-                        using (User.Backgrounds bkform = new Backgrounds(currentSession))
-                        {
-                            dr = bkform.ShowDialog();
-                        }
-                    }
-                    else
-                    {
-                        if (this.currentSession.SelectedBackgrounds == null)
-                            this.currentSession.SelectedBackgrounds = new System.Collections.Generic.List<int>();
-
-                        for (int i = 0; i <= ConfigUtility.PhotoCount - 1; i++)
-                            this.currentSession.SelectedBackgrounds.Add(1);
-                    }
+                    for (int i = 0; i <= ConfigUtility.PhotoCount - 1; i++)
+                        this.currentSession.SelectedBackgrounds.Add(1);
                 }
 
-                
+
+
+                // Start picture taking
+                if (dr == System.Windows.Forms.DialogResult.OK)
                 {
-                    // Start picture taking
-                    if (dr == System.Windows.Forms.DialogResult.OK)
+                    using (User.TakePhotos tpform = new TakePhotos(currentSession))
                     {
-                        using (User.TakePhotos tpform = new TakePhotos(currentSession))
-                        {
-                            dr = tpform.ShowDialog();
-
-                            //  in video table mode - did they click back button?...
-                            if ((ConfigUtility.GetValue("BoothType") == "2") && (dr == DialogResult.Cancel))
-                            {
-                                dr = DialogResult.OK; // for the outer while loop...
-                                continue;
-                            }
-                        }
+                        dr = tpform.ShowDialog();
                     }
                 }
-
 
                 bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
 
-                if (ConfigUtility.GetValue("BoothType") == "2")
+
+                // As to pick favorite if emailing
+                if (dr == System.Windows.Forms.DialogResult.OK &&
+                    (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
+                    AllowFacebookPublish))
                 {
-                    if (dr == System.Windows.Forms.DialogResult.OK &&
-                        (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
-                        AllowFacebookPublish))
                     {
-                        {
-                            this.currentSession.FavoritePhoto = 1;
-                            this.currentSession.FavoritePhotoFilename = "photo1";
-                        }
+                        PickFavorite pvform = new PickFavorite(currentSession);
+                        dr = pvform.ShowDialog();
                     }
                 }
-                else
-                {
-                    // As to pick favorite if emailing
-                    if (dr == System.Windows.Forms.DialogResult.OK &&
-                        (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
-                        AllowFacebookPublish))
-                    {
-                        {
-                            PickFavorite pvform = new PickFavorite(currentSession);
-                            dr = pvform.ShowDialog();
-                        }
-                    }
-                }
+
 
                 // Are we supporting facebook
 
@@ -341,33 +430,29 @@ namespace MME.Hercules.Forms.User
                 {
                     using (User.Facebook fb = new Facebook(currentSession))
                     {
+                        fb.ischeckin = false;
                         dr = fb.ShowDialog();
                     }
                 }
 
                 // Finish up ( AND ACTUALLY SEND TO FACEBOOK! )
-                
-                
-                    if (dr == System.Windows.Forms.DialogResult.OK)
+
+
+                if (dr == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (User.Developing dd = new Developing(currentSession))
                     {
-                        using (User.Developing dd = new Developing(currentSession))
-                        {
-                            dr = dd.ShowDialog();
-                        }
+                        dr = dd.ShowDialog();
                     }
-                
+                }
+
 
                 //gw
                 //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
                 //gw
 
 
-                if (ConfigUtility.GetValue("BoothType") != "2")
-                {
-                    break;
-                }
-
-            }
+            } // NORMAL MODE...
 
             // Back to start
             pb.Visible = true;

@@ -190,4 +190,7 @@
   <data name="TAKEPHOTO_FLIPPED_SCREEN" xml:space="preserve">
     <value>takephoto-flipped.jpg</value>
   </data>
+  <data name="PROMO_SCREEN" xml:space="preserve">
+    <value>promo.jpg</value>
+  </data>
 </root>

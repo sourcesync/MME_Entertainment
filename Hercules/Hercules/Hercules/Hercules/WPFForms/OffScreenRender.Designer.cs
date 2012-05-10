@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1 = new Class1();
             this.SuspendLayout();
             // 
             // panel1
@@ -46,12 +46,13 @@
             this.Controls.Add(this.panel1);
             this.Name = "OffScreenRender";
             this.Text = "OffScreenRender";
+            this.Load += new System.EventHandler(this.OffScreenRender_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private Class1 panel1;
     }
 }

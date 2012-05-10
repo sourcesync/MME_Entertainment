@@ -14,6 +14,7 @@ namespace MME.Hercules.WPFForms
     {
         HerculesWPFMaster.UserControl1 ctlmaster = null;
         ElementHost masterhost = null;
+        public int option = 0;
 
         public FormWPFMaster()
         {
@@ -67,12 +68,14 @@ namespace MME.Hercules.WPFForms
             this.ResumeLayout();
 
 
+            //this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
             //this.Controls.Add(this.masterhost);
         }
 
         private void master_selected(int option)
         {
-            if (option == -2) //blank
+            if (option == -2) // blank
             {
                 this.pictureBox1.Visible = false;
             }
@@ -80,24 +83,37 @@ namespace MME.Hercules.WPFForms
             {
                 this.pictureBox1.Visible = false;
             }
-            if (option == 0) //menu
+            if (option == 0) // menu
             {
                 this.pictureBox1.Visible = false;
             }
-            else if (option == 1)//photo
+            else if (option == 1) // photo
             {
+                this.pictureBox1.Visible = false;
                 this.DialogResult = DialogResult.OK;
             }
             else if (option == 2) // web
             {
                 this.pictureBox1.Visible = true;
-                this.pictureBox1.Parent = this.masterhost;
-                this.pictureBox1.BringToFront();
+                //this.pictureBox1.Parent = this.masterhost;
+                //this.pictureBox1.BringToFront();
             }
-            else if (option == 3)
+            else if (option == 3) // event
             {
                 this.pictureBox1.Visible = false;
             }
+            else if (option == 4) // promo...
+            {
+                this.pictureBox1.Visible = false;
+                this.DialogResult = DialogResult.OK;
+            }
+            else if (option == 5) // checkin...
+            {
+                this.pictureBox1.Visible = false;
+                this.DialogResult = DialogResult.OK;
+            }
+
+            this.option = option;
         }
 
         private void FormWPFMaster_Load(object sender, EventArgs e)

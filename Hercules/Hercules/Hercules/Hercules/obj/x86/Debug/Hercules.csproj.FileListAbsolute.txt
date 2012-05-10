@@ -183,3 +183,4 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercule
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\MME.Hercules.Properties.ImageResources.resources
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\MME.Hercules.WPFForms.OverlayForm.resources
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\MME.Hercules.WPFForms.OffScreenRender.resources
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\CustomControl.OrientAbleTextControls.OrientedTextLabel.resources

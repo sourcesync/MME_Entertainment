@@ -37,10 +37,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.skipArea = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBack = new System.Windows.Forms.PictureBox();
             this.keyboard = new MME.Hercules.Keyboards.Keyboard2();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.alertbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skipArea)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             this.SuspendLayout();
             // 
             // pb
@@ -66,7 +68,7 @@
             // 
             this.skip.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.skip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.skip.Font = new System.Drawing.Font("Script MT Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skip.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skip.ForeColor = System.Drawing.Color.White;
             this.skip.Location = new System.Drawing.Point(545, 645);
             this.skip.Name = "skip";
@@ -81,7 +83,7 @@
             // 
             this.finished.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.finished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.finished.Font = new System.Drawing.Font("Script MT Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finished.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.finished.ForeColor = System.Drawing.Color.White;
             this.finished.Location = new System.Drawing.Point(696, 645);
             this.finished.Name = "finished";
@@ -149,6 +151,16 @@
             this.skipArea.TabStop = false;
             this.skipArea.Click += new System.EventHandler(this.skip_Click);
             // 
+            // pictureBoxBack
+            // 
+            this.pictureBoxBack.Location = new System.Drawing.Point(4, 719);
+            this.pictureBoxBack.Name = "pictureBoxBack";
+            this.pictureBoxBack.Size = new System.Drawing.Size(51, 44);
+            this.pictureBoxBack.TabIndex = 9;
+            this.pictureBoxBack.TabStop = false;
+            this.pictureBoxBack.Visible = false;
+            this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
+            // 
             // keyboard
             // 
             this.keyboard.BackColor = System.Drawing.Color.Transparent;
@@ -165,6 +177,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBoxBack);
             this.Controls.Add(this.keyboard);
             this.Controls.Add(this.skipArea);
             this.Controls.Add(this.alertbox);
@@ -186,6 +199,7 @@
             this.alertbox.ResumeLayout(false);
             this.alertbox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skipArea)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +217,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox skipArea;
         private Keyboards.Keyboard2 keyboard;
+        private System.Windows.Forms.PictureBox pictureBoxBack;
     }
 }

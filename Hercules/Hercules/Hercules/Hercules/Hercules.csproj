@@ -282,6 +282,10 @@
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\WindowUtility.cs" />
+    <Compile Include="WPFForms\Class1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WPFForms\DBGraphics.cs" />
     <Compile Include="WPFForms\FormWPFMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +300,9 @@
     </Compile>
     <Compile Include="WPFForms\OffScreenRender.Designer.cs">
       <DependentUpon>OffScreenRender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WPFForms\OrientedTextLabel.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WPFForms\OverlayForm.cs">
       <SubType>Form</SubType>
@@ -408,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WPFForms\OffScreenRender.resx">
       <DependentUpon>OffScreenRender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WPFForms\OrientedTextLabel.resx">
+      <DependentUpon>OrientedTextLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WPFForms\OverlayForm.resx">
       <DependentUpon>OverlayForm.cs</DependentUpon>

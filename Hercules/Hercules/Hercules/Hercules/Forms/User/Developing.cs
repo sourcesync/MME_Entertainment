@@ -15,6 +15,9 @@ namespace MME.Hercules.Forms.User
         private Session currentSession;
         private Image photo;
         private bool istable;
+        public bool ischeckin = false;
+        public bool ispromo = false;
+        public bool istablepost = false;
 
         public Developing(Session currentSession)
         {
@@ -36,14 +39,15 @@ namespace MME.Hercules.Forms.User
                 istable = true;
             }
 
-            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.THANKS_TAKING_PHOTOS_SCREEN);
-
-            this.Refresh();
-
-            SoundUtility.PlaySync(Hercules.Properties.SoundResources.THANK_YOU_FOR_TAKING_PHOTOS);
 
             if (!istable)
             {
+                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.THANKS_TAKING_PHOTOS_SCREEN);
+
+                this.Refresh();
+
+                SoundUtility.PlaySync(Hercules.Properties.SoundResources.THANK_YOU_FOR_TAKING_PHOTOS);
+
                 WindowUtility.SetScreen(pb, Hercules.Properties.Resources.DEVELOPING_PICS_SCREEN);
 
                 this.Refresh();
@@ -51,16 +55,33 @@ namespace MME.Hercules.Forms.User
                 SoundUtility.Play(Hercules.Properties.SoundResources.DEVELOPING_PLEASE_WAIT);
             }
 
-            WriteOutResults();
-
-            CustomEmail();
-
-            PublishToFacebook();
-
-            if (this.istable)
+            if (!istable)
             {
+                WriteOutResults();
+
+                CustomEmail();
+
+                PublishToFacebook();
             }
             else
+            {
+                if (ischeckin)
+                {
+                }
+
+                if (ispromo)
+                {
+                    CustomEmail();
+                }
+
+                if (istablepost)
+                {
+                    PublishToFacebook();
+                }
+
+            }
+
+            if (!istable)
             {
 
                 if ((!ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1")) &&
@@ -72,21 +93,22 @@ namespace MME.Hercules.Forms.User
                 // turn on vanity light
                 //gw
                 //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),true);
-            }
 
-           
+
+
                 WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PHOTOS_COMPLETE_SCREEN);
-            
+
 
                 this.Refresh();
                 SoundUtility.Play(Hercules.Properties.SoundResources.PHOTOS_COMPLETE);
 
-                Thread.Sleep(2100);   
+                Thread.Sleep(2100);
 
-                //if (istable) 
-                {
-                    this.DialogResult = DialogResult.OK;
-                }
+            }
+
+           
+            this.DialogResult = DialogResult.OK;
+                
             
         }
 

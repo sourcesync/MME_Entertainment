@@ -1,7 +1,5 @@
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCallingForm\bin\Debug\WPFCallingForm.exe
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCallingForm\bin\Debug\WPFCallingForm.pdb
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCallingForm\bin\Debug\WindowsFormsControlLibrary1.dll
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCallingForm\bin\Debug\WindowsFormsControlLibrary1.pdb
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCallingForm\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCallingForm\obj\x86\Debug\App.g.cs
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCallingForm\obj\x86\Debug\WPFCallingForm_MarkupCompile.cache

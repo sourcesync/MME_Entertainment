@@ -254,6 +254,14 @@ namespace HerculesWPFMain
             {
                 if (evt != null) evt(3);
             }
+            else if (src == "/HerculesWPFMain;component/Images/promo-icon.png")
+            {
+                if (evt != null) evt(4);
+            }
+            else if (src == "/HerculesWPFMain;component/Images/checkin-icon.png")
+            {
+                if (evt != null) evt(5);
+            }
 
         }
 

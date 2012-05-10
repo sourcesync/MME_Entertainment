@@ -10,24 +10,49 @@ namespace MME.Hercules.Forms.User
     {
         private Session currentSession;
         private Thread thread;
+        public bool ispromo = false;
+        public bool istable = false;
 
         public Email(Session currentSession)
         {
             Application.DoEvents();
 
             this.currentSession = currentSession;
-            InitializeComponent();            
+            InitializeComponent();
+
+            if (ConfigUtility.GetValue("BoothType") == "2")
+            {
+                istable = true;
+            }
         }
 
         private void Email_Load(object sender, EventArgs e)
         {
             if (ConfigUtility.IsDeveloperMode)
+            {
                 this.WindowState = FormWindowState.Normal;
+                this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            }
 
-            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.EMAIL_SCREEN);
-
+            if (ispromo)
+            {
+                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PROMO_SCREEN);
+            }
+            else
+            {
+                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.EMAIL_SCREEN);
+            }
             keyboard.Parent = pb;
             keyboard.CurrentTextBox = textBox1;
+
+            if (istable)
+            {
+                Bitmap bm = Hercules.Properties.ImageResources.backarrow;
+                this.pictureBoxBack.Image = bm;
+                this.pictureBoxBack.BackColor = System.Drawing.Color.Transparent;
+                this.pictureBoxBack.Parent = pb;
+                this.pictureBoxBack.Visible = true;
+            }
 
             skipArea.Parent = pb;
             skip.Visible = (!ConfigUtility.GetConfig(ConfigUtility.Config, "ForceEmail").Equals("1"));
@@ -44,9 +69,11 @@ namespace MME.Hercules.Forms.User
             else
                 skipArea.BackColor = Color.Transparent;
 
-
-            thread = new Thread(PlayIntroSounds);
-            thread.Start();
+            if (!this.ispromo)
+            {
+                thread = new Thread(PlayIntroSounds);
+                thread.Start();
+            }
         }
 
         private void PlayIntroSounds()
@@ -137,6 +164,12 @@ namespace MME.Hercules.Forms.User
             SoundUtility.Play(Hercules.Properties.SoundResources.SELECTION_BUTTON);
             Thread.Sleep(1000);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void pictureBoxBack_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            return;
         }
 
     }

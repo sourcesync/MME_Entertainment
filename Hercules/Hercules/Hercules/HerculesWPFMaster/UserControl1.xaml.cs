@@ -45,7 +45,7 @@ namespace HerculesWPFMaster
             ctls.Add(this.ctlevents);
             //ctls.Add(this.webBrowser1);
 
-            this.webBrowser1.Loaded += new RoutedEventHandler(webBrowser1_Loaded);
+            this.webBrowser1.Loaded +=new RoutedEventHandler(webBrowser1_Loaded);
         }
 
         
@@ -85,8 +85,7 @@ namespace HerculesWPFMaster
 
         void webBrowser1_Loaded(object sender, RoutedEventArgs e)
         {
-            //this.webBrowser1.Navigate(new Uri("http://www.google.com", UriKind.RelativeOrAbsolute));
-
+            //this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com", UriKind.RelativeOrAbsolute));
         }
 
 
@@ -111,6 +110,10 @@ namespace HerculesWPFMaster
             else if (option == 4) //promo...
             {
                 //this.ShowPromo();
+            }
+            else if (option == 5) // checkin
+            {
+                //this.ShowCheckin();
             }
 
             if (this.evt != null) this.evt(option);
@@ -220,6 +223,8 @@ namespace HerculesWPFMaster
         public void ShowWeb()
         {
             this.HideAll();
+            
+            /*
             FrameworkElement el = this.webBrowser1 as FrameworkElement;
             el.SetValue(Canvas.LeftProperty, 0.0);
             el.SetValue(Canvas.TopProperty, 0.0);
@@ -227,7 +232,27 @@ namespace HerculesWPFMaster
             el.Height = 768;
             this.current = this.webBrowser1;
             this.ShowRotators();
+            
             this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com", UriKind.RelativeOrAbsolute));
+            */
+
+            
+            if (this.webBrowser1 != null)
+            {
+                this.webBrowser1.Dispose();
+                this.webBrowser1 = null;
+            }
+            this.webBrowser1 = new WebBrowser();
+            this.webBrowser1.Height = 768;
+            this.webBrowser1.Width = 1024;
+            this.canvas_master.Children.Add(this.webBrowser1);
+            FrameworkElement el = this.webBrowser1 as FrameworkElement;
+            el.SetValue(Canvas.LeftProperty, 0.0);
+            el.SetValue(Canvas.TopProperty, 0.0);
+            this.webBrowser1.BringIntoView();
+            this.current = this.webBrowser1;
+            this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com", UriKind.RelativeOrAbsolute));
+
             this.ShowBack();
         }
 
