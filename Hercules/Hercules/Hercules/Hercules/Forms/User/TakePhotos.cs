@@ -52,6 +52,8 @@ namespace MME.Hercules.Forms.User
         private System.Threading.Timer flip_timer;
         private int orientation = 0;
         private int mode = 0;
+        private MME.Hercules.WPFForms.OffScreenRender offscreen = null;
+        private int num_cams = 0;
         //gw
 
         //public void Flip(object o, System.Timers.ElapsedEventArgs a)
@@ -64,7 +66,11 @@ namespace MME.Hercules.Forms.User
         //public void _Flip(object o, 
         {
             // Create a Bitmap of the same dimension of panelVideoPreview (Width x Height)
-            Panel pnl = this.vidPanel[0];
+            Panel pnl = null;
+            if (this.offscreen != null)
+                pnl = this.offscreen.pnl;
+            else
+                pnl = this.vidPanel[0];
             using (Bitmap bitmap = new Bitmap(pnl.Width, pnl.Height))
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
@@ -214,14 +220,15 @@ namespace MME.Hercules.Forms.User
 
         private void ShowCountdown(bool use_images, int which, bool right)
         {
-            /*
+            int count = 0;
             while (true)
             {
+                count += 1;
                 System.Threading.Thread.Sleep(5);
                 Application.DoEvents();
+                if (count > ((1000.0 / 5) * 4))
+                    return;
             }
-             * */
-
 
             this.pictureBox2.Visible = false;
             this.pictureBox1.Visible = false;
@@ -430,8 +437,6 @@ namespace MME.Hercules.Forms.User
                 this.flip_timer = null;
             }
 
-            //this.flip_timer.Stop();
-
             // Has the Job already been created ?
             if (_job[i] != null)
             {
@@ -461,13 +466,14 @@ namespace MME.Hercules.Forms.User
         }
         private void startpreview(int i)
         {
+            StopJob(i);
+
             EncoderDevice video = null;
             EncoderDevice audio = null;
 
             String cam = camname[i];
 
             GetSelectedVideoAndAudioDevices(cam, out video);
-            StopJob(i);
 
             if (video == null)
             {
@@ -514,8 +520,15 @@ namespace MME.Hercules.Forms.User
                 
                 // Sets preview window to winform panel hosted by xaml window
                 this.vidPanel[i].Visible = true;
-                _deviceSource[i].PreviewWindow = new PreviewWindow(new HandleRef( this.vidPanel[i], this.vidPanel[i].Handle));
 
+                if (this.offscreen != null)
+                {
+                    _deviceSource[i].PreviewWindow = new PreviewWindow(new HandleRef(this.offscreen.pnl, this.offscreen.pnl.Handle));
+                }
+                else
+                {
+                    _deviceSource[i].PreviewWindow = new PreviewWindow(new HandleRef(this.vidPanel[i], this.vidPanel[i].Handle));
+                }
 
                 // Make this source the active one
                 _job[i].ActivateSource(_deviceSource[i]);
@@ -525,13 +538,11 @@ namespace MME.Hercules.Forms.User
 
                 //toolStripStatusLabel1.Text = "Preview activated";
 
-                    //  flip...
-                //this.flip_timer.Interval = 100;
-                //this.flip_timer.Start();
-                this.flip_cb = new System.Threading.TimerCallback(this.Flip);
-                this.flip_timer = new System.Threading.Timer(this.flip_cb, null, TimeSpan.FromMilliseconds(100), TimeSpan.FromMilliseconds(100));
-                //this.flip_timer.Elapsed += this.flip_cb;
-                //this.flip_timer.Stop();
+                //flip
+                //this.flip_cb = new System.Threading.TimerCallback(this.Flip);
+                //this.flip_timer = new System.Threading.Timer(this.flip_cb, null, TimeSpan.FromMilliseconds(100), TimeSpan.FromMilliseconds(100));
+                //this.pictureBoxFlip.Visible = true;
+                
             }
             else
             {
@@ -556,11 +567,18 @@ namespace MME.Hercules.Forms.User
                 if (numcams == 1)
                 {
                     this.camname[0] = edv.Name;
-                    //break;
+                    if (ConfigUtility.IsDeveloperMode)
+                    {
+                        System.Windows.Forms.MessageBox.Show("cam1=" + edv.Name);
+                    }
                 }
                 else if (numcams==2)
                 {
                     this.camname[1] = edv.Name;
+                    if (ConfigUtility.IsDeveloperMode)
+                    {
+                        System.Windows.Forms.MessageBox.Show("cam2=" + edv.Name);
+                    }
                     break;
                 }
             }
@@ -582,7 +600,12 @@ namespace MME.Hercules.Forms.User
         private void GrabImage(int i)
         {
             // Create a Bitmap of the same dimension of panelVideoPreview (Width x Height)
-            Panel pnl = this.vidPanel[i];
+            Panel pnl = null;
+            if (this.offscreen != null)
+                pnl = this.offscreen.pnl;
+            else
+                pnl = this.vidPanel[i];
+
             using (Bitmap bitmap = new Bitmap(pnl.Width, pnl.Height))
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
@@ -689,9 +712,11 @@ namespace MME.Hercules.Forms.User
 
             //vidpanels...
             if (orientation == 0)
-            {
+            { 
                 this.vidPanel[0].Location = new Point(330, 321);
                 this.vidPanel[1].Location = new Point(330, 321);
+                //this.vidPanel[0].Location = new Point(330+600, 321);
+                //this.vidPanel[1].Location = new Point(330+600, 321);
             }
             else
             {
@@ -757,6 +782,10 @@ namespace MME.Hercules.Forms.User
                 this.FormBorderStyle = FormBorderStyle.Fixed3D;
             }
 
+
+            //this.offscreen = new MME.Hercules.WPFForms.OffScreenRender();
+            //offscreen.Show();
+            //offscreen.BringToFront();
 
             //  Set message text properties...
             info.ForeColor = System.Drawing.Color.Black;
@@ -839,21 +868,27 @@ namespace MME.Hercules.Forms.User
             //  Setup video preview...
             if (istable)
             {
-                int numcams = SetupVideo();
-                if ((numcams == 0) || (numcams > 2))
+                this.num_cams = SetupVideo();
+                if (( this.num_cams == 0) || (this.num_cams > 2))
                 {
                     this.DialogResult = DialogResult.No;
                     return;
                 }
 
-                if (numcams == 1)
+                if (this.num_cams == 1)
                 {
                     this.startpreview(0);
                 }
-                else if (numcams == 2)
+                else if (this.num_cams == 2)
                 {
-                    this.startpreview(0);
-                    //this.startpreview(1);
+                    if (this.orientation == 0)
+                    {
+                        this.startpreview(0);
+                    }
+                    else
+                    {
+                        this.startpreview(1);
+                    }
                 }
             }
 

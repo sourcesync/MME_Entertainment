@@ -291,6 +291,12 @@
     <Compile Include="WPFForms\MyPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WPFForms\OffScreenRender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WPFForms\OffScreenRender.Designer.cs">
+      <DependentUpon>OffScreenRender.cs</DependentUpon>
+    </Compile>
     <Compile Include="WPFForms\OverlayForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -399,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WPFForms\FormWPFMaster.resx">
       <DependentUpon>FormWPFMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WPFForms\OffScreenRender.resx">
+      <DependentUpon>OffScreenRender.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WPFForms\OverlayForm.resx">
       <DependentUpon>OverlayForm.cs</DependentUpon>
