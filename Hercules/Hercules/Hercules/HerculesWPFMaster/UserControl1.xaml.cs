@@ -91,6 +91,12 @@ namespace HerculesWPFMaster
 
         public void main_selected(int option)
         {
+            if (this.webBrowser1 != null)
+            {
+                this.webBrowser1.Dispose();
+                this.webBrowser1 = null;
+            }
+
             if (option == 0) // menu
             {
                 this.ShowMenu();
@@ -151,9 +157,11 @@ namespace HerculesWPFMaster
             this.ctlchoose.Visibility = System.Windows.Visibility.Hidden;
             this.ctlevents.Visibility = System.Windows.Visibility.Hidden;
 
-            FrameworkElement el = this.webBrowser1 as FrameworkElement;
-            el.SetValue(Canvas.LeftProperty, 2000.0);
-
+            if (this.webBrowser1 != null)
+            {
+                FrameworkElement el = this.webBrowser1 as FrameworkElement;
+                el.SetValue(Canvas.LeftProperty, 2000.0);
+            }
 
             //this.ctlphotobooth.Stop();
         }

@@ -190,8 +190,14 @@ namespace MME.Hercules.Forms.User
 
                     try
                     {
-                        if (wpffrm != null) wpffrm.Dispose();
-                        //if (wpffrm == null)
+                        if (wpffrm != null)
+                        {
+                            wpffrm.Close();
+                            wpffrm.Dispose();
+                            wpffrm = null;
+                        }
+
+                        if (wpffrm == null)
                         {
                             wpffrm = new MME.Hercules.WPFForms.FormWPFMaster();
                         }
