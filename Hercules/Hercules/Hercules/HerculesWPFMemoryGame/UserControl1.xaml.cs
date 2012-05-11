@@ -223,68 +223,75 @@ namespace HerculesWPFMemoryGame
 
         void obj_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            int[] coord = FindIt(sender);
-
-            //  matched already?
-            if ( matches[ coord[0], coord[1] ] ) return;
-
-            if (this.mode == 0)
+            try
             {
-                this.cur_objs[0, 0] = coord[0];
-                this.cur_objs[0, 1] = coord[1];
-                this.mode = 1;
-            }
-            else if (this.mode == 1)
-            {
-                this.cur_objs[1, 0] = coord[0];
-                this.cur_objs[1, 1] = coord[1];
+                int[] coord = FindIt(sender);
 
-                this.mode = 2;
-            }
-            else
-            {
-                //  pause mode...
-                return;
-            }
+                //  matched already?
+                if (matches[coord[0], coord[1]]) return;
 
-            //  Show the obj...
-            int iy = coord[0];
-            int ix = coord[1];
-            Uri uri = new Uri(paths[iy, ix], UriKind.Relative);
-            BitmapImage bm = new BitmapImage(uri);
-            images[iy, ix].Source = bm;
-
-            //  compare two matches...
-            if (mode == 2)
-            {
-                //  Check if the two match...
-                String apath = paths[this.cur_objs[0, 0], this.cur_objs[0, 1]];
-                String bpath = paths[this.cur_objs[1, 0], this.cur_objs[1, 1]];
-                if (apath == bpath)
+                if (this.mode == 0)
                 {
-                    matches[this.cur_objs[0, 0], this.cur_objs[0, 1]] = true;
-                    matches[this.cur_objs[1, 0], this.cur_objs[1, 1]] = true;
-                    this.cur_matches += 2;
-                    if (this.cur_matches == (num_y * num_x))
+                    this.cur_objs[0, 0] = coord[0];
+                    this.cur_objs[0, 1] = coord[1];
+                    this.mode = 1;
+                }
+                else if (this.mode == 1)
+                {
+                    this.cur_objs[1, 0] = coord[0];
+                    this.cur_objs[1, 1] = coord[1];
+
+                    this.mode = 2;
+                }
+                else
+                {
+                    //  pause mode...
+                    return;
+                }
+
+                //  Show the obj...
+                int iy = coord[0];
+                int ix = coord[1];
+                Uri uri = new Uri(paths[iy, ix], UriKind.Relative);
+                BitmapImage bm = new BitmapImage(uri);
+                images[iy, ix].Source = bm;
+
+                //  compare two matches...
+                if (mode == 2)
+                {
+                    //  Check if the two match...
+                    String apath = paths[this.cur_objs[0, 0], this.cur_objs[0, 1]];
+                    String bpath = paths[this.cur_objs[1, 0], this.cur_objs[1, 1]];
+                    if (apath == bpath)
                     {
+                        matches[this.cur_objs[0, 0], this.cur_objs[0, 1]] = true;
+                        matches[this.cur_objs[1, 0], this.cur_objs[1, 1]] = true;
+                        this.cur_matches += 2;
+                        if (this.cur_matches == (num_y * num_x))
+                        {
+                            this.pause = new System.Windows.Threading.DispatcherTimer();
+                            this.pause.Tick += new EventHandler(this._timeout);
+                            this.pause.Interval = new TimeSpan(0, 0, 2);
+                            System.Windows.MessageBox.Show("starting");
+                            this.pause.Start();
+                        }
+                        this.mode = 0;
+                    }
+                    else
+                    {
+
+                        this.mode = 3;
                         this.pause = new System.Windows.Threading.DispatcherTimer();
                         this.pause.Tick += new EventHandler(this._timeout);
                         this.pause.Interval = new TimeSpan(0, 0, 2);
                         System.Windows.MessageBox.Show("starting");
                         this.pause.Start();
                     }
-                    this.mode = 0;
                 }
-                else
-                {
-                    
-                    this.mode = 3;
-                    this.pause = new System.Windows.Threading.DispatcherTimer();
-                    this.pause.Tick += new EventHandler(this._timeout);
-                    this.pause.Interval = new TimeSpan(0, 0, 2);
-                    System.Windows.MessageBox.Show("starting");
-                    this.pause.Start();
-                }
+            }
+            catch (System.Exception E)
+            {
+                System.Windows.MessageBox.Show(E.ToString());
             }
         }
 
