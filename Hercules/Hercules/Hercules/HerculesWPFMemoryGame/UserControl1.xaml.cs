@@ -267,6 +267,10 @@ namespace HerculesWPFMemoryGame
                     this.cur_matches += 2;
                     if (this.cur_matches == (num_y * num_x))
                     {
+                        this.pause = new System.Windows.Threading.DispatcherTimer();
+                        this.pause.Tick += new EventHandler(this._timeout);
+                        this.pause.Interval = new TimeSpan(0, 0, 2);
+                        System.Windows.MessageBox.Show("starting");
                         this.pause.Start();
                     }
                     this.mode = 0;
@@ -275,6 +279,10 @@ namespace HerculesWPFMemoryGame
                 {
                     
                     this.mode = 3;
+                    this.pause = new System.Windows.Threading.DispatcherTimer();
+                    this.pause.Tick += new EventHandler(this._timeout);
+                    this.pause.Interval = new TimeSpan(0, 0, 2);
+                    System.Windows.MessageBox.Show("starting");
                     this.pause.Start();
                 }
             }
