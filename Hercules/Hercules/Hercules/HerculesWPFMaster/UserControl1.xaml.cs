@@ -150,7 +150,14 @@ namespace HerculesWPFMaster
 
         public void choose_selected(int option)
         {
-            this.ShowMenu();
+            if (this.ctlchoose.mode == 1)
+            {
+                this.ShowMain();
+            }
+            else
+            {
+                this.ShowMenu();
+            }
         }
 
         public void blank_selected(int option)
@@ -168,6 +175,7 @@ namespace HerculesWPFMaster
             else
             {
                 this.ShowChoose(option);
+
             }
         }
 
@@ -304,6 +312,8 @@ namespace HerculesWPFMaster
         public void ShowChoose(int option)
         {
             this.HideAll();
+            if (this.ctlchoose.mode == 1) // purchased
+                this.ctlchoose.Restart();
             this.ctlchoose.SetOption(option);
             this.ctlchoose.Visibility = System.Windows.Visibility.Visible;
             this.current = this.ctlchoose;

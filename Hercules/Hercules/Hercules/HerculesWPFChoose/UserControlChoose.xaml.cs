@@ -43,6 +43,8 @@ namespace HerculesWPFChoose
         private Image purchased = null;
         private Point diff;
         private int cur_option = 0;
+        public int mode = 0; // buying...
+        private double total = 0.0;
 
         //  template structures...
         private System.Collections.Hashtable purchase_poshash = new System.Collections.Hashtable();
@@ -192,6 +194,28 @@ namespace HerculesWPFChoose
             //ScrollViewer.ScrollChanged += new ScrollChangedEventHandler(ScrollViewer_ScrollChanged);
         }
 
+        public void Restart()
+        {
+            foreach (Image img in this.imgs)
+            {
+                img.Visibility = System.Windows.Visibility.Visible;
+            }
+            foreach (Image img in this.display_cart)
+            {
+                img.Visibility = System.Windows.Visibility.Hidden;
+            }
+
+            this.textBoxItems.Visibility = System.Windows.Visibility.Hidden;
+            this.labelPay.Visibility = System.Windows.Visibility.Hidden;
+            this.labelMessage.Visibility = System.Windows.Visibility.Hidden;
+
+            this.cart.Clear();
+            this.total = 0.0;
+            this.mode = 0;
+
+            this.redraw_cart();
+        }
+
         private void UpdateCostHash(String[] paths, double[] cst)
         {
             for (int i = 0; i < paths.Length; i++)
@@ -325,7 +349,7 @@ namespace HerculesWPFChoose
 
             double tax = subtotal * 0.08;
 
-            double total = subtotal + tax;
+            this.total = subtotal + tax;
 
             this.textBoxSubTotal.Text = String.Format("{0:0.00}", subtotal);
             this.textBoxTax.Text = String.Format("{0:0.00}", tax);
@@ -643,6 +667,28 @@ namespace HerculesWPFChoose
         private void imageb_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.toggle(sender);
+        }
+
+        private void imageCheckout_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.mode = 1; // checkout...
+
+            foreach ( Image img in this.imgs )
+            {
+                img.Visibility = System.Windows.Visibility.Hidden;
+            }
+            foreach (Image img in this.display_cart) 
+            {
+                img.Visibility = System.Windows.Visibility.Hidden;
+            }
+
+            this.textBoxItems.Visibility = System.Windows.Visibility.Hidden;
+            this.labelPay.Visibility = System.Windows.Visibility.Visible;
+            this.labelMessage.Visibility = System.Windows.Visibility.Visible;
+
+            this.labelPay.Content =
+                String.Format("Your Total Is ${0:0.00}", this.total);
+            this.labelMessage.Content = "Please Pay And Pick Up Your Order Now.";
         }
     }
 }

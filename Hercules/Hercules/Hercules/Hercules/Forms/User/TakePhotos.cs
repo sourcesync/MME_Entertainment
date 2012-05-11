@@ -848,10 +848,10 @@ namespace MME.Hercules.Forms.User
             // prompt...
             if (orientation == 0)
             {
-                this.pictureBoxLike.Location = new Point(94, 624);
-                this.pictureBoxAgain.Location = new Point(479, 625);
-                this.labelLike.Location = new Point(169, 625);
-                this.labelAgain.Location = new Point(550, 625);
+                this.pictureBoxLike.Location = new Point(94, 598);
+                this.pictureBoxAgain.Location = new Point(479, 598);
+                this.labelLike.Location = new Point(169, 610);
+                this.labelAgain.Location = new Point(550, 610);
                 if (mode == 0)
                 {
                     this.pictureBoxLike.Visible = false;
@@ -865,6 +865,8 @@ namespace MME.Hercules.Forms.User
                 {
                     this.pictureBoxLike.Visible = true;
                     this.pictureBoxAgain.Visible = true;
+                    this.pictureBoxLike.Image = Hercules.Properties.ImageResources.plain_icon75x75;
+                    this.pictureBoxAgain.Image = Hercules.Properties.ImageResources.plain_icon75x75;
                     this.labelLike.Visible = true;
                     this.labelLikef.Visible = false;
                     this.labelAgain.Visible = true;
@@ -874,13 +876,13 @@ namespace MME.Hercules.Forms.User
             else
             {
                 this.pictureBoxLike.Location = new Point( 1024 - (94 + this.pictureBoxLike.Size.Width), 
-                    768 - (624 + this.pictureBoxLike.Size.Height ) );
+                    768 - (598 + this.pictureBoxLike.Size.Height ) );
                 this.pictureBoxAgain.Location = new Point(1024 - (479 + this.pictureBoxLike.Size.Width),
-                    768 - (625 + this.pictureBoxLike.Size.Height ) );      
+                    768 - (598 + this.pictureBoxLike.Size.Height));      
                 this.labelLikef.Location = new Point(1024 - (169 + this.labelLikef.Size.Width), 
-                    768 - (625 + this.labelLikef.Size.Height));
+                    768 - (610 + this.labelLikef.Size.Height));
                 this.labelAgainf.Location = new Point(1024 - (550+ this.labelAgainf.Size.Width),
-                    768 - (625 + this.labelAgainf.Size.Height));
+                    768 - (610 + this.labelAgainf.Size.Height));
 
                 if (mode == 0)
                 {
@@ -895,6 +897,8 @@ namespace MME.Hercules.Forms.User
                 {
                     this.pictureBoxLike.Visible = true;
                     this.pictureBoxAgain.Visible = true;
+                    this.pictureBoxLike.Image = Hercules.Properties.ImageResources.plain_icon75x75;
+                    this.pictureBoxAgain.Image = Hercules.Properties.ImageResources.plain_icon75x75;
                     this.labelLike.Visible = false;
                     this.labelLikef.Visible = true;
                     this.labelAgain.Visible = false;
@@ -1002,7 +1006,10 @@ namespace MME.Hercules.Forms.User
             this.pictureBoxBack.Image = bm;
             this.pictureBoxBack.Parent = pb;
             this.pictureBoxBack.Visible = true;
-            
+
+            this.pictureBoxLike.Parent = pb;
+            this.pictureBoxAgain.Parent = pb;
+
             //  Determine if meta buttons are enabled...
             if (this.mode == 0)
             {
