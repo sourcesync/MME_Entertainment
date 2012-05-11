@@ -91,7 +91,7 @@ class Board
     //  Checks the board for a winner and reassigns
     //  this.BoardState as appropriate.
     //
-    public void CheckBoard()
+    public int[] CheckBoard()
     {
         int i, j, iTotal;
         
@@ -106,12 +106,12 @@ class Board
             if (iTotal == -iBoardSize)
             {
                 this.BoardState = GameState.ComputerWins;
-                return;
+                return new int[] {0,i};
             }
             if (iTotal == iBoardSize)
             {
                 this.BoardState = GameState.HumanWins;
-                return;
+                return new int[] { 0, i };
             }
             
         }
@@ -127,12 +127,12 @@ class Board
             if (iTotal == -iBoardSize)
             {
                 this.BoardState = GameState.ComputerWins;
-                return;
+                return new int[] { 1, j };
             }
             if (iTotal == iBoardSize)
             {
                 this.BoardState = GameState.HumanWins;
-                return;
+                return new int[] { 1, j };
             }
         }
         //Check Top-Left to Bottom-Right diagonal
@@ -144,12 +144,12 @@ class Board
         if (iTotal == -iBoardSize)
         {
             this.BoardState = GameState.ComputerWins;
-            return;
+            return new int[] { 2, 0 };
         }
         if (iTotal == iBoardSize)
         {
             this.BoardState = GameState.HumanWins;
-            return;
+            return new int[] { 2, 0 };
         }
         //Check Top-Right to Bottom-Left diagonal
         iTotal = 0;
@@ -161,12 +161,15 @@ class Board
         if (iTotal == -iBoardSize)
         {
             this.BoardState = GameState.ComputerWins;
-            return;
+            return new int[] { 2, 1 };
         }
         if (iTotal == iBoardSize)
         {
             this.BoardState = GameState.HumanWins;
-            return;
+            return new int[] { 2, 1 };
         }
+
+        return null;
     }
+    
 }

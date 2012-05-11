@@ -34,7 +34,10 @@ namespace HerculesWPFTicTacToe
         private int mode = 0;
         double grid_side_len;
         private double offsetx = 200;
+        private int[] win = null;
         System.Collections.ArrayList renders = new System.Collections.ArrayList();
+        private Line[,,] xx = null;
+        private Ellipse[,] oo = null;
 
         SolidColorBrush myRedBrush = new SolidColorBrush(Colors.Red);
         SolidColorBrush myYellowBrush = new SolidColorBrush(Colors.Yellow);
@@ -69,6 +72,9 @@ namespace HerculesWPFTicTacToe
             rects = new Rectangle[num_y, num_x];
             images = new Image[num_y, num_x];
             xo = new int[num_y, num_x];
+            xx = new Line[num_y, num_x, 2];
+            oo = new Ellipse[num_y, num_x];
+
             //paths = new String[num_y, num_x];
             for (int iy = 0; iy < num_y; iy++)
             {
@@ -219,6 +225,9 @@ namespace HerculesWPFTicTacToe
                 {
                     xo[iy, ix] = 0;
                     rects[iy, ix].Fill =myTransparentBrush;
+                    xx[iy, ix, 0] = null;
+                    xx[iy, ix, 1] = null;
+                    oo[iy, ix] = null;
                 }
             }
 
@@ -257,6 +266,36 @@ namespace HerculesWPFTicTacToe
                 double center_x = this.centers[move.iCol, move.iRow, 0];
                 double center_y = this.centers[move.iCol, move.iRow, 1];
 
+
+                Line l = new Line();
+                l.X1 = center_x - grid_side_len / 2.0f + this.item_margin;
+                l.X2 = center_x + grid_side_len / 2.0f - this.item_margin;
+                l.Y1 = center_y - grid_side_len / 2.0f + this.item_margin;
+                l.Y2 = center_y + grid_side_len / 2.0f - this.item_margin;
+                l.StrokeThickness = 15.0f;
+                l.Stroke = this.myBlackBrush;
+                this.canvas_master.Children.Add(l);
+                this.renders.Add(l);
+                this.xx[move.iCol, move.iRow, 0] = l;
+
+                l = new Line();
+                l.X1 = center_x - grid_side_len / 2.0f + this.item_margin;
+                l.X2 = center_x + grid_side_len / 2.0f - this.item_margin;
+                l.Y1 = center_y + grid_side_len / 2.0f - this.item_margin;
+                l.Y2 = center_y - grid_side_len / 2.0f + this.item_margin;
+                l.StrokeThickness = 15.0f;
+                l.Stroke = this.myBlackBrush;
+                this.canvas_master.Children.Add(l);
+                this.renders.Add(l);
+                this.xx[move.iCol, move.iRow, 1] = l;
+            }
+            else
+            {
+                
+                //rects[move.iCol, move.iRow].Fill = myGreenBrush;
+                double center_x = this.centers[move.iCol, move.iRow, 0];
+                double center_y = this.centers[move.iCol, move.iRow, 1];
+
                 Ellipse el = new Ellipse();
                 el.Stroke = this.myBlackBrush;
                 el.StrokeThickness = 15.0f;
@@ -269,49 +308,103 @@ namespace HerculesWPFTicTacToe
                 this.canvas_master.Children.Add(ll);
                 this.renders.Add(el);
 
-            }
-            else
-            {
-                
-                //rects[move.iCol, move.iRow].Fill = myGreenBrush;
-                double center_x = this.centers[move.iCol, move.iRow, 0];
-                double center_y = this.centers[move.iCol, move.iRow, 1];
 
-                Line l = new Line();
-                l.X1 = center_x - grid_side_len / 2.0f + this.item_margin;
-                l.X2 = center_x + grid_side_len / 2.0f - this.item_margin;
-                l.Y1 = center_y - grid_side_len / 2.0f + this.item_margin;
-                l.Y2 = center_y + grid_side_len / 2.0f - this.item_margin;
-                l.StrokeThickness = 15.0f;
-                l.Stroke = this.myGreenBrush;
-                this.canvas_master.Children.Add(l);
-                this.renders.Add(l);
+                this.oo[move.iCol, move.iRow] = el;
 
-                l = new Line();
-                l.X1 = center_x - grid_side_len / 2.0f + this.item_margin;
-                l.X2 = center_x + grid_side_len / 2.0f - this.item_margin;
-                l.Y1 = center_y + grid_side_len / 2.0f - this.item_margin;
-                l.Y2 = center_y - grid_side_len / 2.0f + this.item_margin;
-                l.StrokeThickness = 15.0f;
-                l.Stroke = this.myGreenBrush;
-                this.canvas_master.Children.Add(l);
-                this.renders.Add(l);
             }
             rects[move.iCol, move.iRow].InvalidateVisual();
 
             
 
             //Check for endgame, switch players
-            board.CheckBoard();
-            CurrentPlayer = -CurrentPlayer;
-            this.mode = CurrentPlayer;
+            win = board.CheckBoard();
+           
 
             //If game is over, update the form text
             if (board.BoardState != GameState.InProgress)
             {
+                if (board.BoardState != GameState.Draw)
+                {
+                    if (this.win[0] == 2) // diag
+                    {
+                        if (this.win[1] == 0)
+                        {
+                            if (this.mode == 1)
+                            {
+                                this.xx[0, 0, 0].Stroke = this.myYellowBrush;
+                                this.xx[0, 0, 1].Stroke = this.myYellowBrush;
+                                this.xx[1, 1, 0].Stroke = this.myYellowBrush;
+                                this.xx[1, 1, 1].Stroke = this.myYellowBrush;
+                                this.xx[2, 2, 0].Stroke = this.myYellowBrush;
+                                this.xx[2, 2, 1].Stroke = this.myYellowBrush;
+                            }
+                            else
+                            {
+                                this.oo[0, 0].Stroke = this.myYellowBrush;
+                                this.oo[1, 1].Stroke = this.myYellowBrush;
+                                this.oo[2, 2].Stroke = this.myYellowBrush;
+                            }
+                        }
+                        else
+                        {
+                            if (this.mode == 1)
+                            {
+                                this.xx[2, 0, 0].Stroke = this.myYellowBrush;
+                                this.xx[2, 0, 1].Stroke = this.myYellowBrush;
+                                this.xx[1, 1, 0].Stroke = this.myYellowBrush;
+                                this.xx[1, 1, 1].Stroke = this.myYellowBrush;
+                                this.xx[0, 2, 0].Stroke = this.myYellowBrush;
+                                this.xx[0, 2, 1].Stroke = this.myYellowBrush;
+                            }
+                            else
+                            {
+                                this.oo[2, 0].Stroke = this.myYellowBrush;
+                                this.oo[1, 1].Stroke = this.myYellowBrush;
+                                this.oo[0, 2].Stroke = this.myYellowBrush;
+                            }
+                        }
+                    } // diag
+                    else if (win[0] == 0) // row
+                    {
+                        int col = win[1];
+                        for ( int i=0;i<3;i++)
+                        {
+                            if ( this.mode==1)
+                            {
+                                this.xx[col,i,0].Stroke = this.myYellowBrush;
+                                this.xx[col,i,1].Stroke = this.myYellowBrush;
+                            }
+                            else 
+                            {
+                                this.oo[col,i].Stroke = this.myYellowBrush;
+                            }
+                        }
+                    }
+                    else if (win[0] == 1) // col
+                    {
+                        int row = win[1];
+                        for (int i = 0; i < 3; i++)
+                        {
+                            if (this.mode == 1)
+                            {
+                                this.xx[i, row, 0].Stroke = this.myYellowBrush;
+                                this.xx[i, row, 1].Stroke = this.myYellowBrush;
+                            }
+                            else
+                            {
+                                this.oo[i, row].Stroke = this.myYellowBrush;
+                            }
+                        }
+                    }
+                }
+
                 this.timer.Start();   
-                //this.Dispatcher.Invoke(new System.EventHandler(this._restart), new object[] { null, null });   
+                //this.Dispatcher.Invoke(new System.EventHandler(this._restart), new object[] { null, null }); 
+                return;
             }
+
+            CurrentPlayer = -CurrentPlayer;
+            this.mode = CurrentPlayer;
         }
 
         void obj_MouseUp(object sender, MouseButtonEventArgs e)
