@@ -233,9 +233,11 @@ namespace HerculesWPFMemoryGame
             //System.Windows.MessageBox.Show("timeout!");
             this.pause = null;
 
+            
+            
             this.Dispatcher.Invoke(
                 new System.EventHandler(this.__timeout),
-                System.Windows.Threading.DispatcherPriority.Input,
+                System.Windows.Threading.DispatcherPriority.Render,
                 new object[] { null, null });
 
 
@@ -254,6 +256,20 @@ namespace HerculesWPFMemoryGame
                 //  matched already?
                 if (matches[coord[0], coord[1]]) return;
 
+                if (this.mode == 3) // make last disappear...
+                {
+                    int iiy = this.cur_objs[0, 0];
+                    int iix = this.cur_objs[0, 1];
+                    images[iiy, iix].Source = this.topbm;
+
+                    iiy = this.cur_objs[1, 0];
+                    iix = this.cur_objs[1, 1];
+                    images[iiy, iix].Source = this.topbm;
+
+                    this.mode = 0;
+                }
+
+
                 if (this.mode == 0)
                 {
                     this.cur_objs[0, 0] = coord[0];
@@ -266,12 +282,6 @@ namespace HerculesWPFMemoryGame
                     this.cur_objs[1, 1] = coord[1];
 
                     this.mode = 2;
-                }
-                else
-                {
-                    //  pause mode...
-                    //System.Windows.MessageBox.Show("b");
-                    return;
                 }
 
                 //  Show the obj...
@@ -294,33 +304,24 @@ namespace HerculesWPFMemoryGame
                         this.cur_matches += 2;
                         if (this.cur_matches == (num_y * num_x))
                         {
-                            //this.pause = new System.Windows.Threading.DispatcherTimer();
-                            //this.pause.Tick += new EventHandler(this._timeout);
-                            //this.pause.Interval = new TimeSpan(0, 0, 2);
-                            //System.Windows.MessageBox.Show("starting");
-                            //this.pause.Start();
-                            this.pause = new System.Threading.Timer(new System.Threading.TimerCallback(this._timeout), null, 2000, 0);
-                            
-                            
+                            this.canvas_master.UpdateLayout();
+                            //Application.Current.Dispatcher.Invoke( System.Windows.Threading.DispatcherPriority.Normal,
+                            //              new Action(delegate { }));
+                            System.Threading.Thread.Sleep(1000);
+                            this.Restart();
+                            return;
                         }
-                        this.mode = 0;
+                        else
+                        {
+                            this.mode = 0; // go on...
+                        }
                     }
                     else
                     {
-
-                        this.mode = 3;
-
-                        this.pause = new System.Threading.Timer(new System.Threading.TimerCallback(this._timeout), null, 2000, 0);
-
-                        //this.pause = new System.Windows.Threading.DispatcherTimer();
-                        //this.pause.Tick += new EventHandler(this._timeout);
-                        //this.pause.Interval = new TimeSpan(0, 0, 2);
-                        //System.Windows.MessageBox.Show("starting");
-                        //this.pause.Start();
+                        this.mode = 3; // make them disappear next time...
                     }
-                }
 
-                //System.Windows.MessageBox.Show("e");
+                }
             }
             catch (System.Exception E)
             {
