@@ -111,6 +111,10 @@
       <Project>{1D438B20-3E32-44A5-A070-4BD7673E28E1}</Project>
       <Name>HerculesWPFMenu</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFTicTacToe\HerculesWPFTicTacToe.csproj">
+      <Project>{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}</Project>
+      <Name>HerculesWPFTicTacToe</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HerculesWPFWeb\HerculesWPFWeb.csproj">
       <Project>{46EBD922-A658-4B01-8B08-84B9C8ABE6EE}</Project>
       <Name>HerculesWPFWeb</Name>

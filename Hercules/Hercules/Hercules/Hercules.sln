@@ -81,6 +81,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerculesWPFDraw", "Hercules
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerculesWPFGameMenu", "HerculesWPFGameMenu\HerculesWPFGameMenu.csproj", "{80A16FE9-322B-476F-9F3B-948C2B1C4384}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerculesWPFTicTacToe", "HerculesWPFTicTacToe\HerculesWPFTicTacToe.csproj", "{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -351,6 +353,16 @@ Global
 		{80A16FE9-322B-476F-9F3B-948C2B1C4384}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{80A16FE9-322B-476F-9F3B-948C2B1C4384}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{80A16FE9-322B-476F-9F3B-948C2B1C4384}.Release|x86.ActiveCfg = Release|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -82,8 +82,8 @@ namespace HerculesWPFMemoryGame
 
         private BitmapImage topbm = null;
 
-        //private System.Windows.Threading.DispatcherTimer pause = null;
-        private System.Threading.Timer pause = null;
+        private System.Windows.Threading.DispatcherTimer pause = new System.Windows.Threading.DispatcherTimer();
+        //private System.Threading.Timer pause = null;
 
         private int[,] cur_objs = new int[2, 2];
 
@@ -152,12 +152,12 @@ namespace HerculesWPFMemoryGame
                 }
             }
 
-            /*
-            this.pause = new System.Windows.Threading.DispatcherTimer();
-            this.pause.
-            this.pause.Tick += new EventHandler(this._timeout);
-            this.pause.Interval = new TimeSpan(0, 0, 2);
-              */
+            if (this.pause is System.Windows.Threading.DispatcherTimer )
+            {
+                
+                this.pause.Tick += new EventHandler(this.__timeout);
+                this.pause.Interval = new TimeSpan(0, 0, 2);
+            }
 
             
         }
@@ -170,7 +170,8 @@ namespace HerculesWPFMemoryGame
 
         private String ChooseRan()
         {
-            
+            //return this.sms[0];
+
             int randomNumber = random.Next(0, 6);
             switch (randomNumber)
             {
@@ -204,54 +205,127 @@ namespace HerculesWPFMemoryGame
             return null;
         }
         
-        //void _timeout(object sender, EventArgs e)
-
+        //  handler for timer in ui thread...
         void __timeout(object sender, EventArgs e )
         {
+            this.pause.Stop();
 
-            this.mode = 0;
-
-            if (this.cur_matches == (num_y * num_x))
+            if (this.mode == 2)
             {
-                this.Restart();
-                return;
+                if (this.cur_matches == (num_y * num_x))
+                {
+                    this.mode = 0;
+                    this.Restart();
+                    return;
+                }
+            }
+            else if (this.mode == 3) // keep then...
+            {
+            }
+            else if (this.mode == 4) // hide...
+            {
+                //  unpause the last cards...
+                int iy = this.cur_objs[0, 0];
+                int ix = this.cur_objs[0, 1];
+                images[iy, ix].Source = this.topbm;
+
+                iy = this.cur_objs[1, 0];
+                ix = this.cur_objs[1, 1];
+                images[iy, ix].Source = this.topbm;
             }
 
-            int iy = this.cur_objs[0, 0];
-            int ix = this.cur_objs[0, 1];
-            images[iy, ix].Source = this.topbm;
-
-            iy = this.cur_objs[1, 0];
-            ix = this.cur_objs[1, 1];
-            images[iy, ix].Source = this.topbm;
+            this.mode = 0;
         }
 
-        
+        //  handler for thread timer...
         void _timeout(object sender)
         {
-            //this.pause.Stop();
-            //System.Windows.MessageBox.Show("timeout!");
             this.pause = null;
-
-            
+           
             
             this.Dispatcher.Invoke(
                 new System.EventHandler(this.__timeout),
                 System.Windows.Threading.DispatcherPriority.Render,
                 new object[] { null, null });
 
-
-
-
         }
 
-        void obj_MouseUp(object sender, MouseButtonEventArgs e)
+        void pic_click_timer(object sender)
         {
             try
             {
                 int[] coord = FindIt(sender);
 
-                //System.Windows.MessageBox.Show("a");
+                //  matched already?
+                if (matches[coord[0], coord[1]]) return;
+
+                if (this.mode == 0)
+                {
+                    this.cur_objs[0, 0] = coord[0];
+                    this.cur_objs[0, 1] = coord[1];
+                    this.mode = 1;
+                }
+                else if (this.mode == 1)
+                {
+                    this.cur_objs[1, 0] = coord[0];
+                    this.cur_objs[1, 1] = coord[1];
+
+                    this.mode = 2;
+                }
+                else // mode==3, mode==4, we are still in pause mode...
+                {
+                    return;
+                }
+
+                //  Show the obj...
+                int iy = coord[0];
+                int ix = coord[1];
+                Uri uri = new Uri(paths[iy, ix], UriKind.Relative);
+                BitmapImage bm = new BitmapImage(uri);
+                images[iy, ix].Source = bm;
+
+                //  compare two matches...
+                if (mode == 2)
+                {
+                    //  Check if the two match...
+                    String apath = paths[this.cur_objs[0, 0], this.cur_objs[0, 1]];
+                    String bpath = paths[this.cur_objs[1, 0], this.cur_objs[1, 1]];
+                    if (apath == bpath)
+                    {
+                        matches[this.cur_objs[0, 0], this.cur_objs[0, 1]] = true;
+                        matches[this.cur_objs[1, 0], this.cur_objs[1, 1]] = true;
+                        this.cur_matches += 2;
+                        if (this.cur_matches == (num_y * num_x))
+                        {
+                            this.pause.Start(); // this will also check for end and restart game...
+                            return;
+                        }
+                        else
+                        {
+                            this.mode = 3; // a match, keep these objs displayed and go on with game...
+                            this.pause.Start();
+                        }
+                    }
+                    else
+                    {
+                        this.mode = 4;
+                        this.pause.Start(); // pause a few seconds before they can do anything...
+                    }
+
+                }
+            }
+            catch (System.Exception E)
+            {
+                System.Windows.MessageBox.Show(E.ToString());
+            }
+
+        }
+
+        void pic_click_notimer(object sender)
+        {
+            try
+            {
+                int[] coord = FindIt(sender);
 
                 //  matched already?
                 if (matches[coord[0], coord[1]]) return;
@@ -267,7 +341,6 @@ namespace HerculesWPFMemoryGame
                     images[iiy, iix].Source = this.topbm;
 
                     this.canvas_master.UpdateLayout();
-                    //System.Windows.MessageBox.Show("a");
                     this.mode = 0;
                 }
 
@@ -329,6 +402,12 @@ namespace HerculesWPFMemoryGame
             {
                 System.Windows.MessageBox.Show(E.ToString());
             }
+        }
+
+
+        void obj_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.pic_click_timer(sender);
         }
 
         public void Restart()

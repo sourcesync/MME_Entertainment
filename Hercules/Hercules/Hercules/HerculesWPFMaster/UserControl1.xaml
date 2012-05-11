@@ -9,6 +9,7 @@
              xmlns:ucmenu="clr-namespace:HerculesWPFMenu;assembly=HerculesWPFMenu"
              xmlns:ucchoose="clr-namespace:HerculesWPFChoose;assembly=HerculesWPFChoose"
              xmlns:ucmemorygame="clr-namespace:HerculesWPFMemoryGame;assembly=HerculesWPFMemoryGame"
+             xmlns:ucttt="clr-namespace:HerculesWPFTicTacToe;assembly=HerculesWPFTicTacToe"
              xmlns:ucdraw="clr-namespace:HerculesWPFDraw;assembly=HerculesWPFDraw"
              xmlns:ucgamemenu="clr-namespace:HerculesWPFGameMenu;assembly=HerculesWPFGameMenu"
              d:DesignHeight="768" d:DesignWidth="1024">
@@ -26,6 +27,8 @@
             <ucmemorygame:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlmemorygame" IsEnabled="True" Visibility="Hidden" />
             <ucdraw:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctldraw" IsEnabled="True" Visibility="Hidden" />
             <ucgamemenu:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlgamemenu" IsEnabled="True" Visibility="Hidden" />
+            <ucttt:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlttt" IsEnabled="True" Visibility="Hidden" />
+
             <Image Canvas.Left="4" Canvas.Top="719" Height="44" Name="imageback" Source="/HerculesWPFMaster;component/Images/backarrow1.png" Stretch="Fill" Width="51" MouseDown="imageback_MouseDown" />
         </Canvas>
 
