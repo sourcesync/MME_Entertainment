@@ -203,6 +203,7 @@ namespace HerculesWPFMemoryGame
         void _timeout(object sender, EventArgs e)
         {
             this.pause.Stop();
+            System.Windows.MessageBox.Show("timeout!");
             this.mode = 0;
 
             if (this.cur_matches == (num_y * num_x))
