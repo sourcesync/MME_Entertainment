@@ -32,11 +32,15 @@ namespace HerculesWPFTicTacToe
         private int[,] xo = null;
         private int cur_show = 0;
         private int mode = 0;
-        
+        double grid_side_len;
+        private double offsetx = 200;
+        System.Collections.ArrayList renders = new System.Collections.ArrayList();
+
         SolidColorBrush myRedBrush = new SolidColorBrush(Colors.Red);
         SolidColorBrush myYellowBrush = new SolidColorBrush(Colors.Yellow);
         SolidColorBrush myGreenBrush = new SolidColorBrush(Colors.Green);
         SolidColorBrush myTransparentBrush = new SolidColorBrush(Colors.Transparent);
+        SolidColorBrush myBlackBrush = new SolidColorBrush(Colors.Black);
 
         private Board board = null;
 
@@ -53,7 +57,7 @@ namespace HerculesWPFTicTacToe
             double grid_x = (this.canvas_master.Width - side_margin * 2.0f) / (num_x * 1.0f);
 
             // find lesser...
-            double grid_side_len = grid_x;
+            this.grid_side_len = grid_x;
             if (grid_y < grid_x) grid_side_len = grid_y;
 
             //Uri uri = new Uri(top, UriKind.Relative);
@@ -70,7 +74,7 @@ namespace HerculesWPFTicTacToe
             {
                 for (int ix = 0; ix < num_x; ix++)
                 {
-                    double center_x = side_margin + grid_side_len * (ix + 0.5);
+                    double center_x = side_margin + grid_side_len * (ix + 0.5) + offsetx ;
                     double center_y = top_margin + grid_side_len * (iy + 0.5);
                     centers[iy, ix, 0] = center_x;
                     centers[iy, ix, 1] = center_y;
@@ -129,6 +133,43 @@ namespace HerculesWPFTicTacToe
             }
             */
 
+           
+            Line l = new Line();
+            l.X1 = side_margin + offsetx;
+            l.Y1 = top_margin + grid_side_len;
+            l.X2 = side_margin + grid_side_len * 3.0 + offsetx;
+            l.Y2 = top_margin + grid_side_len;
+            l.StrokeThickness = 5;
+            l.Stroke = this.myBlackBrush;
+            this.canvas_master.Children.Add( l );
+
+            l = new Line();
+            l.X1 = side_margin + offsetx;
+            l.Y1 = top_margin + grid_side_len*2;
+            l.X2 = side_margin + grid_side_len * 3.0 + offsetx;
+            l.Y2 = top_margin + grid_side_len*2;
+            l.StrokeThickness = 5;
+            l.Stroke = this.myBlackBrush;
+            this.canvas_master.Children.Add(l);
+
+            l = new Line();
+            l.X1 = side_margin + grid_side_len + offsetx;
+            l.Y1 = top_margin;
+            l.X2 = side_margin + grid_side_len + offsetx;
+            l.Y2 = top_margin + grid_side_len * 3;
+            l.StrokeThickness = 5;
+            l.Stroke = this.myBlackBrush;
+            this.canvas_master.Children.Add(l);
+
+            l = new Line();
+            l.X1 = side_margin + grid_side_len * 2 + offsetx;
+            l.Y1 = top_margin;
+            l.X2 = side_margin + grid_side_len * 2 + offsetx;
+            l.Y2 = top_margin + grid_side_len * 3;
+            l.StrokeThickness = 5;
+            l.Stroke = this.myBlackBrush;
+            this.canvas_master.Children.Add(l);
+
             this.timer.Tick += new EventHandler(timer_Tick);
             this.timer.Interval = new TimeSpan(0, 0, 1);
             this.timer.Stop();
@@ -161,6 +202,14 @@ namespace HerculesWPFTicTacToe
         public void Restart()
         {
             this.cur_show = 0;
+
+            while ( this.renders.Count>0 )
+            {
+                object o = this.renders[0];
+                System.Windows.UIElement el = o as System.Windows.UIElement;
+                this.canvas_master.Children.Remove(el);
+                this.renders.RemoveAt(0);
+            }
 
             //  iterate clear...
             
@@ -203,10 +252,54 @@ namespace HerculesWPFTicTacToe
             aSquares[move.iCol, move.iRow].Invalidate();
             */
             if (CurrentPlayer == 1)
-                rects[move.iCol, move.iRow].Fill = myYellowBrush;
+            {
+                //rects[move.iCol, move.iRow].Fill = myYellowBrush;
+                double center_x = this.centers[move.iCol, move.iRow, 0];
+                double center_y = this.centers[move.iCol, move.iRow, 1];
+
+                Ellipse el = new Ellipse();
+                el.Stroke = this.myBlackBrush;
+                el.StrokeThickness = 15.0f;
+                //el.Fill = this.myBlackBrush;
+                FrameworkElement ll = el as FrameworkElement;
+                ll.Width = grid_side_len - item_margin;
+                ll.Height = grid_side_len - item_margin;
+                ll.SetValue(Canvas.TopProperty, center_y - (grid_side_len - item_margin) / 2.0);
+                ll.SetValue(Canvas.LeftProperty, center_x - (grid_side_len - item_margin) / 2.0);
+                this.canvas_master.Children.Add(ll);
+                this.renders.Add(el);
+
+            }
             else
-                rects[move.iCol, move.iRow].Fill = myGreenBrush;
+            {
+                
+                //rects[move.iCol, move.iRow].Fill = myGreenBrush;
+                double center_x = this.centers[move.iCol, move.iRow, 0];
+                double center_y = this.centers[move.iCol, move.iRow, 1];
+
+                Line l = new Line();
+                l.X1 = center_x - grid_side_len / 2.0f + this.item_margin;
+                l.X2 = center_x + grid_side_len / 2.0f - this.item_margin;
+                l.Y1 = center_y - grid_side_len / 2.0f + this.item_margin;
+                l.Y2 = center_y + grid_side_len / 2.0f - this.item_margin;
+                l.StrokeThickness = 15.0f;
+                l.Stroke = this.myGreenBrush;
+                this.canvas_master.Children.Add(l);
+                this.renders.Add(l);
+
+                l = new Line();
+                l.X1 = center_x - grid_side_len / 2.0f + this.item_margin;
+                l.X2 = center_x + grid_side_len / 2.0f - this.item_margin;
+                l.Y1 = center_y + grid_side_len / 2.0f - this.item_margin;
+                l.Y2 = center_y - grid_side_len / 2.0f + this.item_margin;
+                l.StrokeThickness = 15.0f;
+                l.Stroke = this.myGreenBrush;
+                this.canvas_master.Children.Add(l);
+                this.renders.Add(l);
+            }
             rects[move.iCol, move.iRow].InvalidateVisual();
+
+            
 
             //Check for endgame, switch players
             board.CheckBoard();
@@ -216,9 +309,7 @@ namespace HerculesWPFTicTacToe
             //If game is over, update the form text
             if (board.BoardState != GameState.InProgress)
             {
-
-                this.timer.Start();
-                
+                this.timer.Start();   
                 //this.Dispatcher.Invoke(new System.EventHandler(this._restart), new object[] { null, null });   
             }
         }
@@ -229,7 +320,6 @@ namespace HerculesWPFTicTacToe
                 return;
 
             int[] which = FindIt(sender);
-
 
             //Make the move
             //Move move = new Move(Square.iCol, Square.iRow);
