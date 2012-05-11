@@ -272,6 +272,7 @@ namespace HerculesWPFMemoryGame
                 }
                 else
                 {
+                    
                     this.mode = 3;
                     this.pause.Start();
                 }
