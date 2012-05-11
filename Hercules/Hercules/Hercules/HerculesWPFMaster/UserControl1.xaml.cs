@@ -36,6 +36,7 @@ namespace HerculesWPFMaster
             this.ctlblank.evt += new HerculesWPFBlank.UserControlBlank.UserControlBlankDelegate(this.blank_selected);
             this.ctlmenu.evt += new HerculesWPFMenu.UserControlMenu.UserControlMenuDelegate(this.menu_selected);
             this.ctlchoose.evt += new HerculesWPFChoose.UserControlChoose.UserControlChooseDelegate(this.choose_selected);
+            this.ctlgamemenu.tevt += new HerculesWPFGameMenu.UserControl1.UserControlGameMainToggle(this.game_selected);
 
             //  user control array..
             ctls.Add(this.ctlchoose);
@@ -43,7 +44,9 @@ namespace HerculesWPFMaster
             ctls.Add(this.ctlmenu);
             ctls.Add(this.ctlblank);
             ctls.Add(this.ctlevents);
-            //ctls.Add(this.webBrowser1);
+            ctls.Add(this.ctlmemorygame);
+            ctls.Add(this.ctldraw);
+            ctls.Add(this.ctlgamemenu);
 
             this.webBrowser1.Loaded +=new RoutedEventHandler(webBrowser1_Loaded);
         }
@@ -121,10 +124,29 @@ namespace HerculesWPFMaster
             {
                 //this.ShowCheckin();
             }
+            else if (option == 6) // games...
+            {
+                this.ShowGameMenu();
+            }
 
             if (this.evt != null) this.evt(option);
         }
 
+
+        public void game_selected(int option)
+        {
+            if (option == 0)
+            {
+                this.ShowMemoryGame();
+            }
+            else if (option == 1)
+            {
+                this.ShowDraw();
+            }
+            else if (option == 2)
+            {
+            }
+        }
 
         public void choose_selected(int option)
         {
@@ -156,6 +178,9 @@ namespace HerculesWPFMaster
             this.ctlblank.Visibility = System.Windows.Visibility.Hidden;
             this.ctlchoose.Visibility = System.Windows.Visibility.Hidden;
             this.ctlevents.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlmemorygame.Visibility = System.Windows.Visibility.Hidden;
+            this.ctldraw.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlgamemenu.Visibility = System.Windows.Visibility.Hidden;
 
             if (this.webBrowser1 != null)
             {
@@ -172,8 +197,6 @@ namespace HerculesWPFMaster
             el.SetValue(Canvas.LeftProperty, 2000.0);
             el = this.image2 as FrameworkElement;
             el.SetValue(Canvas.LeftProperty, 2000.0);
-            //this.image1.Visibility = System.Windows.Visibility.Hidden;
-            //this.image2.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void ShowRotators()
@@ -182,9 +205,6 @@ namespace HerculesWPFMaster
             el.SetValue(Canvas.LeftProperty, 994.0);
             el = this.image2 as FrameworkElement;
             el.SetValue(Canvas.LeftProperty, 30.0);
-            //this.image1.Visibility = System.Windows.Visibility.Visible;
-            
-            //this.image2.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void ShowBack()
@@ -228,22 +248,39 @@ namespace HerculesWPFMaster
             this.ShowBack();
         }
 
+        public void ShowGameMenu()
+        {
+            this.HideAll();
+            this.ctlgamemenu.Visibility = System.Windows.Visibility.Visible;
+            this.current = this.ctlgamemenu;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowMemoryGame()
+        {
+            this.HideAll();
+            this.ctlmemorygame.Visibility = System.Windows.Visibility.Visible;
+            this.ctlmemorygame.Restart();
+            this.current = this.ctlmemorygame;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowDraw()
+        {
+            this.HideAll();
+            this.ctldraw.Visibility = System.Windows.Visibility.Visible;
+            this.ctldraw.Restart();
+            this.current = this.ctldraw;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
         public void ShowWeb()
         {
             this.HideAll();
             
-            /*
-            FrameworkElement el = this.webBrowser1 as FrameworkElement;
-            el.SetValue(Canvas.LeftProperty, 0.0);
-            el.SetValue(Canvas.TopProperty, 0.0);
-            el.Width = 1024;
-            el.Height = 768;
-            this.current = this.webBrowser1;
-            this.ShowRotators();
-            
-            this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com", UriKind.RelativeOrAbsolute));
-            */
-
             
             if (this.webBrowser1 != null)
             {
@@ -332,7 +369,15 @@ namespace HerculesWPFMaster
 
         private void imageback_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (this.current != this.ctlmain)
+            if (this.current == this.ctldraw )
+            {
+                this.ShowGameMenu();
+            }
+            else if ( this.current == this.ctlmemorygame )
+            {
+                this.ShowGameMenu();
+            }
+            else if (this.current != this.ctlmain)
             {
                 this.ShowMain();
             }

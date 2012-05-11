@@ -67,6 +67,7 @@ namespace MME.Hercules.Forms.User
             {
                 if (ischeckin)
                 {
+                    CheckinToFacebook();
                 }
 
                 if (ispromo)
@@ -239,8 +240,23 @@ namespace MME.Hercules.Forms.User
 
 
         }
-        
-     
+
+
+        private void CheckinToFacebook()
+        {
+            if ((ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1")) && !string.IsNullOrEmpty(this.currentSession.FacebookAccessToken))
+            {
+                
+
+
+
+                // now tell facebook to make the post
+                FacebookUtility.PostCheckin(this.currentSession.FacebookAccessToken);
+
+
+                ConfigUtility.IncrementCounter("Facebook");
+            }
+        }
 
 
         private void PublishToFacebook()

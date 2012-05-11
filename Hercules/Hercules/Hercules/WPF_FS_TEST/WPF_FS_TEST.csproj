@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B589FD12-F90C-4068-A14A-CCE03B008CD1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPF_FS_TEST</RootNamespace>
+    <AssemblyName>WPF_FS_TEST</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Classes\Cache.cs" />
+    <Compile Include="Classes\Calcs.cs" />
+    <Compile Include="Classes\FS.cs" />
+    <Compile Include="Classes\GeoUtils.cs" />
+    <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\LocationHelper.cs" />
+    <Compile Include="Classes\MapHelper.cs" />
+    <Compile Include="Converters\ImageUriConverter.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="FoursquareApi\Badge.cs" />
+    <Compile Include="FoursquareApi\BeenHere.cs" />
+    <Compile Include="FoursquareApi\CheckIn.cs" />
+    <Compile Include="FoursquareApi\City.cs" />
+    <Compile Include="FoursquareApi\Foursquare.cs" />
+    <Compile Include="FoursquareApi\HistroyViewModel.cs" />
+    <Compile Include="FoursquareApi\Mayor.cs" />
+    <Compile Include="FoursquareApi\Score.cs" />
+    <Compile Include="FoursquareApi\Serializable.cs" />
+    <Compile Include="FoursquareApi\Special.cs" />
+    <Compile Include="FoursquareApi\Stats.cs" />
+    <Compile Include="FoursquareApi\User.cs" />
+    <Compile Include="FoursquareApi\Venue.cs" />
+    <Compile Include="FoursquareApi\VenueGroup.cs" />
+    <Compile Include="Helpers\Utilities.cs" />
+    <Compile Include="Pulsar.xaml.cs">
+      <DependentUpon>Pulsar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\GeocodeService.cs" />
+    <Compile Include="Services\ImageryService.cs" />
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CheckInChooseVenueViewModel.cs" />
+    <Compile Include="ViewModels\FriendDetailViewModel.cs" />
+    <Compile Include="ViewModels\FriendsViewModel.cs" />
+    <Compile Include="ViewModels\FriendViewModel.cs" />
+    <Compile Include="ViewModels\HistoryViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModel.cs" />
+    <Compile Include="ViewModels\MainMenuItemViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\NearbyVenueViewModel.cs" />
+    <Compile Include="ViewModels\SettingsItemViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Page Include="CheckInChooseVenue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CheckInConfirmation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CheckInVenueDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Error.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FriendDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Friends.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CheckInChooseVenue.xaml.cs">
+      <DependentUpon>CheckInChooseVenue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CheckInConfirmation.xaml.cs">
+      <DependentUpon>CheckInConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CheckInVenueDetails.xaml.cs">
+      <DependentUpon>CheckInVenueDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Error.xaml.cs">
+      <DependentUpon>Error.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FriendDetail.xaml.cs">
+      <DependentUpon>FriendDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Friends.xaml.cs">
+      <DependentUpon>Friends.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pulsar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SampleData\CheckInChooseVenueViewModelSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SampleData\MainMenuViewModelSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="ServiceReferences.ClientConfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ApplicationIcon.png" />
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\add_tip.png" />
+    <Resource Include="Images\add_venue.png" />
+    <Resource Include="Images\anon.png" />
+    <Resource Include="Images\background.png" />
+    <Resource Include="Images\background2.png" />
+    <Resource Include="Images\badge.png" />
+    <Resource Include="Images\blades.jpg" />
+    <Resource Include="Images\building.png" />
+    <Resource Include="Images\check-ins.png" />
+    <Resource Include="Images\check_in.png" />
+    <Resource Include="Images\compass.png" />
+    <Resource Include="Images\day.png" />
+    <Resource Include="Images\evening.png" />
+    <Resource Include="Images\foursquare_logo.png" />
+    <Resource Include="Images\gradient_mask.png" />
+    <Resource Include="Images\green2.png" />
+    <Resource Include="Images\history.png" />
+    <Resource Include="Images\home.png" />
+    <Resource Include="Images\icon_cat.png" />
+    <Resource Include="Images\Logout.png" />
+    <Resource Include="Images\mail.png" />
+    <Resource Include="Images\morning.png" />
+    <Resource Include="Images\night.png" />
+    <Resource Include="Images\null.png" />
+    <Resource Include="Images\phone.png" />
+    <Resource Include="Images\refresh.png" />
+    <Resource Include="Images\setup.png" />
+    <Resource Include="Images\splash.png" />
+    <Resource Include="Images\twitter.png" />
+    <Resource Include="Properties\AppManifest.xml" />
+    <Resource Include="Properties\WMAppManifest.xml" />
+    <Resource Include="splashscreenimage.jpg" />
+    <Content Include="WP7Square.csproj" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

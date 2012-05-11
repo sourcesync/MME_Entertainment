@@ -95,8 +95,6 @@ namespace MME.Hercules.WPFForms
             else if (option == 2) // web
             {
                 this.pictureBox1.Visible = true;
-                //this.pictureBox1.Parent = this.masterhost;
-                //this.pictureBox1.BringToFront();
             }
             else if (option == 3) // event
             {
@@ -111,6 +109,10 @@ namespace MME.Hercules.WPFForms
             {
                 this.pictureBox1.Visible = false;
                 this.DialogResult = DialogResult.OK;
+            }
+            else if (option == 6) // games...
+            {
+                this.pictureBox1.Visible = false;
             }
 
             this.option = option;

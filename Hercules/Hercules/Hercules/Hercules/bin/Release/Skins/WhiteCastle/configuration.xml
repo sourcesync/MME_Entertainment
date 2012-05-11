@@ -48,10 +48,10 @@
 
 
 
-  <add key="HerculesPublishUrl" value="http://favpic.mobi/hercules.php"/>
+  <add key="HerculesPublishUrl" value="http://favpic.mobi/hercules_test.php"/>
 
   <add key="UploadFavoritePhotoToAutolycus" value="1" />  
-  <add key="AutolycusPublishUrl" value="http://favpic.mobi/hercules.php"/>
+  <add key="AutolycusPublishUrl" value="http://favpic.mobi/hercules_test.php"/>
 
 
 
@@ -61,12 +61,15 @@
   <add key="PublicPhotoUrl" value="http://favpic.mobi/event/{1}/photo/{0}.jpg"/>
 
 
+  <add key="PromoUrl" value="http://favpic.mobi/hercules_promo.php" />
+  <add key="PromoCode" value="0001" />
+
   <!-- Email settings -->
   <add key="ForceEmail" value="1" /> <!-- 1=force, 0=give skip button -->
 
 
   <!-- user cannot skip the email screen (operator has hidden skip button) -->
-  <add key="EmailPublishUrl" value="http://favpic.mobi/hercules.php" />
+  <add key="EmailPublishUrl" value="http://favpic.mobi/hercules_test.php" />
 
 
   <!-- leave blank to use smtp settings below -->

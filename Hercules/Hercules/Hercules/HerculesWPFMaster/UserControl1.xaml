@@ -5,9 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:ucm="clr-namespace:HerculesWPFMain;assembly=HerculesWPFMain"
-        xmlns:ucb="clr-namespace:HerculesWPFBlank;assembly=HerculesWPFBlank"
-        xmlns:ucmenu="clr-namespace:HerculesWPFMenu;assembly=HerculesWPFMenu"
-        xmlns:ucchoose="clr-namespace:HerculesWPFChoose;assembly=HerculesWPFChoose"
+             xmlns:ucb="clr-namespace:HerculesWPFBlank;assembly=HerculesWPFBlank"
+             xmlns:ucmenu="clr-namespace:HerculesWPFMenu;assembly=HerculesWPFMenu"
+             xmlns:ucchoose="clr-namespace:HerculesWPFChoose;assembly=HerculesWPFChoose"
+             xmlns:ucmemorygame="clr-namespace:HerculesWPFMemoryGame;assembly=HerculesWPFMemoryGame"
+             xmlns:ucdraw="clr-namespace:HerculesWPFDraw;assembly=HerculesWPFDraw"
+             xmlns:ucgamemenu="clr-namespace:HerculesWPFGameMenu;assembly=HerculesWPFGameMenu"
              d:DesignHeight="768" d:DesignWidth="1024">
 
     <Canvas Width="1024" Height="768">
@@ -20,6 +23,9 @@
             <ucm:UserControlMain Canvas.Top="0" Canvas.Left="0" x:Name="ctlmain" IsEnabled="True" Visibility="Hidden" />
             <ucmenu:UserControlMenu Canvas.Top="0" Canvas.Left="0" x:Name="ctlmenu" IsEnabled="True" Visibility="Hidden" />
             <ucchoose:UserControlChoose Canvas.Top="0" Canvas.Left="0" x:Name="ctlchoose" IsEnabled="True" Visibility="Hidden" />
+            <ucmemorygame:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlmemorygame" IsEnabled="True" Visibility="Hidden" />
+            <ucdraw:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctldraw" IsEnabled="True" Visibility="Hidden" />
+            <ucgamemenu:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlgamemenu" IsEnabled="True" Visibility="Hidden" />
             <Image Canvas.Left="4" Canvas.Top="719" Height="44" Name="imageback" Source="/HerculesWPFMaster;component/Images/backarrow1.png" Stretch="Fill" Width="51" MouseDown="imageback_MouseDown" />
         </Canvas>
 

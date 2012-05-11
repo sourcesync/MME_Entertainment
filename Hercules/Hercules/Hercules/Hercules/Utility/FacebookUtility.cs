@@ -54,6 +54,108 @@ namespace MME.Hercules
             FileUtility.HttpUploadFile("https://graph.facebook.com/me/photos", fullfile, "", "photo", "image/jpeg", nvc);
         }
 
+        public static void PostCheckin(string access_token)
+        {
+            
+            NameValueCollection nvc = new NameValueCollection();
+
+            theRequest = WebRequest.Create("https://graph.facebook.com/me/checkins");
+            theRequest.Method = "POST";
+            theRequest.ContentType = "text/html";
+        
+            //string pphotourl = System.Web.HttpUtility.UrlEncode(  photourl );
+            //string pmsg = System.Web.HttpUtility.UrlEncode(msg);
+            //string pdesc = System.Web.HttpUtility.UrlEncode(desc);
+            //string purl = System.Web.HttpUtility.UrlEncode(url);
+            //string pcaption = System.Web.HttpUtility.UrlEncode(caption);
+
+
+
+           // string Parameters = string.Format("access_token={0}&picture={1}",
+           //     access_token, pphotourl);
+
+            string picture = 
+                 System.Web.HttpUtility.UrlEncode(
+                    "http://upload.wikimedia.org/wikipedia/commons/thumb/3/32/White_Castle_Building_8.jpg/800px-White_Castle_Building_8.jpg");
+
+            string place = System.Web.HttpUtility.UrlEncode("212780672664");
+
+            string message = System.Web.HttpUtility.UrlEncode("I went here");
+
+            string coordinates = System.Web.HttpUtility.UrlEncode("{'latitude':45.0,'longitude':46.0,'tags':'212780672664'}");
+
+
+         
+            // Build a string containing all the parameters
+            string Parameters = string.Format("access_token={0}&place={1}&message={2}&picture={3}&coordinates={4}",
+                access_token,
+                //photourl,
+                place,
+                //msg,
+                message,
+                //desc,
+                picture,
+                //url,
+                coordinates );
+             
+
+            // We write the parameters into the request
+            bool success = true;
+
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(theRequest.GetRequestStream()))
+                {
+                    sw.Write(Parameters);
+                    sw.Close();
+                }
+
+                // Execute the query
+                theResponse = (HttpWebResponse)theRequest.GetResponse();
+
+                using (StreamReader sr = new StreamReader(theResponse.GetResponseStream()))
+                {
+                    string response = sr.ReadToEnd();
+                    sr.Close();
+                }
+
+
+            }
+            catch (System.Exception e)
+            {
+                success = false;
+            }
+
+            // let's try trice
+            if (!success)
+            {
+                success = true;
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(theRequest.GetRequestStream()))
+                    {
+                        sw.Write(Parameters);
+                        sw.Close();
+                    }
+
+                    // Execute the query
+                    theResponse = (HttpWebResponse)theRequest.GetResponse();
+
+                    using (StreamReader sr = new StreamReader(theResponse.GetResponseStream()))
+                    {
+                        string response = sr.ReadToEnd();
+                        sr.Close();
+                    }
+
+                }
+                catch
+                {
+                }
+            }
+
+        }
+
+
         public static void PostWall(string access_token, string photourl, string msg, string caption, string desc, string url)
         {
             /*

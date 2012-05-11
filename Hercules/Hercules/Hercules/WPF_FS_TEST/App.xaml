@@ -1,0 +1,281 @@
+﻿<Application 
+    x:Class="WP7Square.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:layout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    xmlns:navigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Navigation">
+
+    <!--RootFrame points to and loads the first page of your application-->
+    <!--Background="{StaticResource PhoneBackgroundBrush}"-->
+    <Application.RootVisual>
+        <navigation:PhoneApplicationFrame x:Name="RootFrame">
+            <navigation:PhoneApplicationFrame.Template>
+                <ControlTemplate>
+                        <layout:TransitioningContentControl HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                                            Background="{TemplateBinding Background}"
+                                                            Style="{StaticResource TransitioningContentControlStyle}"
+                                                            Content="{TemplateBinding Content}" />
+                </ControlTemplate>
+            </navigation:PhoneApplicationFrame.Template>
+        </navigation:PhoneApplicationFrame>
+    </Application.RootVisual>
+
+    <!-- Resources for following the Windows Phone design guidelines -->
+    <Application.Resources>
+
+        <!-- Color Brushes -->
+        <Color x:Key="PhoneBackgroundColor">#001F1F1F</Color>
+        <Color x:Key="PhoneContrastForegroundColor">Black</Color>
+        <Color x:Key="PhoneForegroundColor">White</Color>
+        <Color x:Key="PhoneInactiveColor">#FF666666</Color>
+        <Color x:Key="PhoneDisabledColor">#FF808080</Color>
+        <Color x:Key="PhoneSubtleColor">#ffa7a08c</Color>
+        <!--<Color x:Key="PhoneSubtleColor">#FF999999</Color>-->
+        <Color x:Key="PhoneContrastBackgroundColor">#FFFFFFFF</Color>
+        <Color x:Key="PhoneTextBoxColor">#FFBFBFBF</Color>
+        <Color x:Key="PhoneBorderColor">#FFCCCCCC</Color>
+        <Color x:Key="PhoneTextSelectionColor">Black</Color>
+        <Color x:Key="PhoneAccentColor">#FF5AA5D6</Color>
+        <SolidColorBrush x:Key="PhoneAccentBrush" Color="{StaticResource PhoneAccentColor}"/>
+        <!--<ImageBrush x:Key="PhoneBackgroundBrush" ImageSource="images/blades.jpg" />-->
+        <SolidColorBrush x:Key="PhoneBackgroundBrush" Color="{StaticResource PhoneBackgroundColor}"/>
+        <SolidColorBrush x:Key="PhoneContrastForegroundBrush" Color="{StaticResource PhoneContrastForegroundColor}"/>
+        <SolidColorBrush x:Key="PhoneForegroundBrush" Color="{StaticResource PhoneForegroundColor}"/>
+        <SolidColorBrush x:Key="PhoneInactiveBrush" Color="{StaticResource PhoneInactiveColor}"/>
+        <SolidColorBrush x:Key="PhoneDisabledBrush" Color="{StaticResource PhoneDisabledColor}"/>
+        <SolidColorBrush x:Key="PhoneSubtleBrush" Color="{StaticResource PhoneSubtleColor}"/>
+        <SolidColorBrush x:Key="PhoneContrastBackgroundBrush" Color="{StaticResource PhoneContrastBackgroundColor}"/>
+        <SolidColorBrush x:Key="PhoneTextBoxBrush" Color="{StaticResource PhoneTextBoxColor}"/>
+        <SolidColorBrush x:Key="PhoneBorderBrush" Color="{StaticResource PhoneBorderColor}"/>
+        <SolidColorBrush x:Key="PhoneTextSelectionBrush" Color="{StaticResource PhoneTextSelectionColor}"/>
+        <SolidColorBrush x:Key="TransparentBrush" Color="Transparent"/>
+
+        <Style x:Key="TransitioningContentControlStyle" TargetType="layout:TransitioningContentControl">
+            <Setter Property="Transition" Value="SlideLeft" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="layout:TransitioningContentControl">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2">
+                            <vsm:VisualStateManager.VisualStateGroups>
+                                <vsm:VisualStateGroup x:Name="PresentationStates">
+                                    <vsm:VisualState x:Name="DefaultTransition">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="CurrentContentPresentationSite" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00.800" Value="1" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="PreviousContentPresentationSite" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1" />
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00.800" Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </vsm:VisualState>
+                                    <vsm:VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="PreviousContentPresentationSite" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>
+                                                            Collapsed
+                                                        </Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </vsm:VisualState>
+                                    <vsm:VisualState x:Name="SlideRight">
+                                        <Storyboard>
+                                            <DoubleAnimation From="-480" To="0" Duration="00:00:00.500" Storyboard.TargetName="CurrentContentPresentationSite" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseInOut" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation From="0" To="480" Duration="00:00:00.500" Storyboard.TargetName="PreviousContentPresentationSite" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseInOut" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </vsm:VisualState>
+                                    <vsm:VisualState x:Name="SlideLeft">
+                                        <Storyboard>
+                                            <DoubleAnimation From="480" To="0" Duration="00:00:00.500" Storyboard.TargetName="CurrentContentPresentationSite" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseInOut" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation From="0" To="-480" Duration="00:00:00.500" Storyboard.TargetName="PreviousContentPresentationSite" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseInOut" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </vsm:VisualState>
+                                </vsm:VisualStateGroup>
+                            </vsm:VisualStateManager.VisualStateGroups>
+                            <Grid>
+                                <ContentPresenter x:Name="PreviousContentPresentationSite" Content="{x:Null}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <ContentPresenter.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform />
+                                            <SkewTransform />
+                                            <RotateTransform />
+                                            <TranslateTransform />
+                                        </TransformGroup>
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+                                <ContentPresenter x:Name="CurrentContentPresentationSite" RenderTransformOrigin=".5,.5" Content="{x:Null}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <ContentPresenter.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform />
+                                            <SkewTransform />
+                                            <RotateTransform />
+                                            <TranslateTransform />
+                                        </TransformGroup>
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Touch Target area -->
+        <Thickness x:Key="PhoneTouchTargetOverhang">12</Thickness>
+
+        <!-- Default border size-->
+        <Thickness x:Key="PhoneDefaultBorderThickness">3</Thickness>
+
+        <!-- Font names -->
+        <FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
+        <FontFamily x:Key="PhoneFontFamilyLight">Segoe WP Light</FontFamily>
+        <FontFamily x:Key="PhoneFontFamilySemiLight">Segoe WP SemiLight</FontFamily>
+        <FontFamily x:Key="PhoneFontFamilySemiBold">Segoe WP Semibold</FontFamily>
+
+        <!-- Font sizes -->
+        <!--14pt-->
+        <System:Double x:Key="PhoneFontSizeSmall">18.667</System:Double>
+        <!--15pt-->
+        <System:Double x:Key="PhoneFontSizeNormal">20</System:Double>
+        <!--17pt-->
+        <System:Double x:Key="PhoneFontSizeMedium">22.667</System:Double>
+        <!--19pt-->
+        <System:Double x:Key="PhoneFontSizeMediumLarge">25.333</System:Double>
+        <!--24pt-->
+        <System:Double x:Key="PhoneFontSizeLarge">32</System:Double>
+        <!--32pt-->
+        <System:Double x:Key="PhoneFontSizeExtraLarge">42.667</System:Double>
+        <!--54pt-->
+        <System:Double x:Key="PhoneFontSizeExtraExtraLarge">72</System:Double>
+
+        <!-- TextBlock styles -->
+        <Style x:Key="PageTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeLarge}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+
+        <Style x:Key="PhoneTextApplicationNameStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Margin" Value="24"/>
+        </Style>
+
+        <Style x:Key="PhoneTextTitleNameStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiLight}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeExtraExtraLarge}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Margin" Value="20, 5, 20 ,0"/>
+        </Style>
+
+        <Style x:Key="PhoneTextBodyTextStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeLarge}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="LineHeight" Value="28"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <!--<Setter Property="Margin" Value="24, 11, 24, 24"/>-->
+            <Setter Property="Margin" Value="10, 5, 5, 5"/>
+        </Style>
+
+        <Style x:Key="DoubleLineListTitleTextStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiLight}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeExtraLarge}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Margin" Value="18, 4, 18, 0"/>
+        </Style>
+
+        <Style x:Key="DoubleLineListSubTitleTextStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneSubtleBrush}"/>
+            <Setter Property="Margin" Value="18, -13, 18, 10"/>
+        </Style>
+
+
+        <!-- Triple Line List -->
+        <Style x:Key="TripleLineListTitleTextStyleLarge" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiLight}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeExtraLarge}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Margin" Value="0, 0, 0, -3"/>
+        </Style>
+
+        <Style x:Key="TripleLineListTitleTextStyleMedium" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
+            <Setter Property="Margin" Value="0, -3, 0, 0"/>
+        </Style>
+
+        <Style x:Key="TripleLineListTitleTextStyleSmall" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneSubtleBrush}"/>
+            <Setter Property="Margin" Value="0, -5, 0, 5"/>
+        </Style>        
+
+        <!--ListBoxItemStyle-->
+        <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ListBox Style -->
+        <Style x:Key="ListBoxStyle" TargetType="ListBox">
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"/>
+            <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemStyle}"/>
+        </Style>
+    </Application.Resources>
+
+</Application>

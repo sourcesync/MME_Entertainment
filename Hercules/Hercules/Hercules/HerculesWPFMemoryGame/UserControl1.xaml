@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="HerculesWPFMemoryGame.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024" Loaded="UserControl_Loaded">
+    <Canvas Name="canvas_master" Background="Red" Height="768" Width="1024">
+        <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="image2" Stretch="Fill" Width="1024" Source="/HerculesWPFMemoryGame;component/Images/SCREENBACKGROUND-nothing.png" />
+        <Label Canvas.Left="54" Canvas.Top="45" Content="Tap To Reveal WhiteCastle Menu Items.  Try To Match Them All !" Height="58" Name="label1" Width="938" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" />
+    </Canvas>
+</UserControl>

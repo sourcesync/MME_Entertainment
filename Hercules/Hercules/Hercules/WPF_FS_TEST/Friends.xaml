@@ -1,0 +1,86 @@
+﻿<navigation:PhoneApplicationPage 
+    x:Class="WP7Square.Friends"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:navigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Navigation"
+    xmlns:sh="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone.Shell"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    SupportedOrientations="Portrait"    
+    xmlns:my="clr-namespace:WP7Square"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
+    d:DataContext="{d:DesignData SampleData/CheckInChooseVenueViewModelSampleData.xaml}">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="images/background.png" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="304"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Border  BorderBrush="#ffa7a08c"
+                     BorderThickness="2"
+                     HorizontalAlignment="Center">
+                <Canvas x:Name="canvasMapContainer" Width="460" Height="300">
+                    <ScrollViewer x:Name="scrollMap" Width="460" Height="300" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" >
+                        <Canvas x:Name="canvasMap" Width="600" Height="600">
+                            <Image x:Name="imageMap" Width="600" Height="600"></Image>
+                            <Canvas x:Name="ContentPopup" Visibility="Collapsed" MouseEnter="ContentPopup_MouseEnter" MouseLeftButtonDown="ContentPopup_MouseLeftButtonDown" MouseLeave="ContentPopup_MouseLeave">
+                                <Rectangle x:Name="ContentPopupRectangle" Fill="White" Opacity="0.85" RadiusX="10" RadiusY="10" Canvas.Left="0" Canvas.Top="0" Height="70" Width="200" />
+                                <Path Fill="White" Stretch="Fill" Margin="-10 60 0 0" Opacity="0.85" Height="18" Width="20" Data="M117,413 L107,429 L125,421"/>
+                                <Image x:Name="ContentPopupImage" Height="32" Width="32" Margin="10 20" VerticalAlignment="Top"/>
+                                <StackPanel Canvas.Left="10" Canvas.Top="10">
+                                    <TextBlock x:Name="ContentPopupText" Margin="40 0 0 0" Foreground="Black" FontSize="14" FontWeight="Bold" Width="145" Style="{StaticResource TripleLineListTitleTextStyleLarge}"></TextBlock>
+                                    <TextBlock x:Name="ContentPopupText2" Margin="40 0 0 0" FontSize="12" FontWeight="Bold" Width="145" Style="{StaticResource TripleLineListTitleTextStyleMedium}"/>
+                                    <TextBlock x:Name="ContentPopupText3" Margin="40 0 0 0" FontSize="12" FontWeight="Bold" Width="145" Style="{StaticResource TripleLineListTitleTextStyleSmall}"/>
+                                </StackPanel>
+                            </Canvas>
+                        </Canvas>
+                    </ScrollViewer>
+                    <StackPanel Canvas.ZIndex="99" x:Name="panelLoading" Width="460" Height="300" Background="Black">
+                        <TextBlock Margin="0 25 0 0" HorizontalAlignment="Center" Foreground="White" FontSize="32" Text="Loading..."></TextBlock>
+                    </StackPanel>
+                </Canvas>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0 10 0 0">
+            <ListBox x:Name="FriendsList"
+                     Height="Auto" 
+                     ItemsSource="{Binding Items}"
+                     SelectionChanged="FriendsList_SelectionChanged"
+                     Style="{StaticResource ListBoxStyle}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.OpacityMask>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1, 0.5">
+                                    <GradientStop Color="Black" Offset="0.85" />
+                                    <GradientStop Color="Transparent" Offset="0.95" />
+                                </LinearGradientBrush>
+                            </StackPanel.OpacityMask>
+                            <Image Height="62" Width="62" Margin="10 20" Source="{Binding PhotoUri}" VerticalAlignment="Top"/>
+                            <StackPanel>
+                                <TextBlock Width="390" Text="{Binding LineOne}" Style="{StaticResource TripleLineListTitleTextStyleLarge}"/>
+                                <TextBlock Width="390" Text="{Binding LineTwo}" Style="{StaticResource TripleLineListTitleTextStyleMedium}"/>
+                                <TextBlock Width="390" Text="{Binding LineThree}" Style="{StaticResource TripleLineListTitleTextStyleSmall}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+    <navigation:PhoneApplicationPage.ApplicationBar>
+        <sh:ApplicationBar >
+            <sh:ApplicationBar.Buttons>
+                <sh:ApplicationBarIconButton IconUri="images/refresh.png" Click="ApplicationBarRefresh_Click" />
+                <sh:ApplicationBarIconButton IconUri="images/add.png" Click="ApplicationBarAdd_Click" />
+                <sh:ApplicationBarIconButton IconUri="images/badge.png" Click="ApplicationBarBadge_Click" />
+            </sh:ApplicationBar.Buttons>
+        </sh:ApplicationBar>
+    </navigation:PhoneApplicationPage.ApplicationBar>
+</navigation:PhoneApplicationPage>

@@ -1,0 +1,14 @@
+<local:MainViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:WP7Square">
+    
+        <local:MainViewModel.Items>
+        <!--<local:ItemViewModel LineOne="Check-In" LineTwo="Check-In at my location" LineThree="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices enim at nulla semper viverra. Maecenas at velit tellus. Maecenas sit amet gravida leo. Sed ut augue sit amet orci euismod mollis. Quisque vestibulum fermentum tincidunt. Donec vitae enim nisi, id lacinia leo"/>
+        <local:ItemViewModel LineOne="Friends" LineTwo="Where are my friends?" LineThree="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices enim at nulla semper viverra. Maecenas at velit tellus. Maecenas sit amet gravida leo. Sed ut augue sit amet orci euismod mollis. Quisque vestibulum fermentum tincidunt. Donec vitae enim nisi, id lacinia leo"/>
+        <local:ItemViewModel LineOne="Society" LineTwo="What's going on?" LineThree="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices enim at nulla semper viverra. Maecenas at velit tellus. Maecenas sit amet gravida leo. Sed ut augue sit amet orci euismod mollis. Quisque vestibulum fermentum tincidunt. Donec vitae enim nisi, id lacinia leo"/>
+        <local:ItemViewModel LineOne="Settings" LineTwo="Do it my way" LineThree="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices enim at nulla semper viverra. Maecenas at velit tellus. Maecenas sit amet gravida leo. Sed ut augue sit amet orci euismod mollis. Quisque vestibulum fermentum tincidunt. Donec vitae enim nisi, id lacinia leo"/>
+        <local:ItemViewModel LineOne="Log Out" LineTwo="Get me out of here" LineThree="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices enim at nulla semper viverra. Maecenas at velit tellus. Maecenas sit amet gravida leo. Sed ut augue sit amet orci euismod mollis. Quisque vestibulum fermentum tincidunt. Donec vitae enim nisi, id lacinia leo"/>-->
+        </local:MainViewModel.Items>
+    
+</local:MainViewModel>

@@ -91,9 +91,21 @@
       <Project>{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}</Project>
       <Name>HerculesWPFChoose</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFDraw\HerculesWPFDraw.csproj">
+      <Project>{876D0340-C2C8-4F35-B369-D5A4BE74D404}</Project>
+      <Name>HerculesWPFDraw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFGameMenu\HerculesWPFGameMenu.csproj">
+      <Project>{80A16FE9-322B-476F-9F3B-948C2B1C4384}</Project>
+      <Name>HerculesWPFGameMenu</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HerculesWPFMain\HerculesWPFMain.csproj">
       <Project>{BA40155F-F9B6-422A-9DC2-1B911C244AA7}</Project>
       <Name>HerculesWPFMain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFMemoryGame\HerculesWPFMemoryGame.csproj">
+      <Project>{CCCBF0C8-5897-49F0-9FB3-FF0D26407175}</Project>
+      <Name>HerculesWPFMemoryGame</Name>
     </ProjectReference>
     <ProjectReference Include="..\HerculesWPFMenu\HerculesWPFMenu.csproj">
       <Project>{1D438B20-3E32-44A5-A070-4BD7673E28E1}</Project>

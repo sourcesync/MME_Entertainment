@@ -1,0 +1,39 @@
+﻿<navigation:PhoneApplicationPage 
+    x:Class="WP7Square.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:navigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Navigation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    SupportedOrientations="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--This is the name of the application and page title-->
+        <Grid Grid.Row="0" x:Name="TitleGrid">
+            <TextBlock x:Name="ApplicationName" Text="Settings" Style="{StaticResource PhoneTextApplicationNameStyle}"/>
+        </Grid>
+
+        <!--This section is sample list content-->
+        <Grid Grid.Row="1">
+            <ListBox x:Name="MainMenuListView" Height="Auto" SelectionMode="Single" ItemsSource="{Binding Items}" SelectionChanged="ListView_SelectionChanged" Style="{StaticResource ListBoxStyle}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Background="{Binding BackgroundBrush}">
+                            <StackPanel>
+                                <TextBlock Text="{Binding LineOne}" Width="290" Style="{StaticResource DoubleLineListTitleTextStyle}"/>
+                                <TextBlock Text="{Binding LineTwo}" Width="290" Style="{StaticResource DoubleLineListSubTitleTextStyle}"/>
+                            </StackPanel>
+                            <Image Grid.Column="1" Source="images/icon_cat.png" Height="64" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</navigation:PhoneApplicationPage>

@@ -262,6 +262,10 @@ namespace HerculesWPFMain
             {
                 if (evt != null) evt(5);
             }
+            else if (src == "/HerculesWPFMain;component/Images/games-icon1.png")
+            {
+                if (evt != null) evt(6);
+            }
 
         }
 

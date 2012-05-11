@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="BasicHttpBinding_IImageryService" maxBufferSize="2147483647"
+            maxReceivedMessageSize="2147483647">
+          <security mode="None">
+            <transport>
+              <extendedProtectionPolicy policyEnforcement="Never" />
+            </transport>
+          </security>
+        </binding>
+      </basicHttpBinding>
+      <customBinding>
+        <binding name="CustomBinding_IImageryService">
+          <binaryMessageEncoding />
+          <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647">
+            <extendedProtectionPolicy policyEnforcement="Never" />
+          </httpTransport>
+        </binding>
+      </customBinding>
+    </bindings>
+    <client>
+      <endpoint address="http://dev.virtualearth.net/webservices/v1/imageryservice/imageryservice.svc"
+          binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IImageryService"
+          contract="IImageryService" name="BasicHttpBinding_IImageryService" />
+      <endpoint address="http://dev.virtualearth.net/webservices/v1/imageryservice/imageryservice.svc/binaryHttp"
+          binding="customBinding" bindingConfiguration="CustomBinding_IImageryService"
+          contract="IImageryService" name="CustomBinding_IImageryService" />
+    </client>
+  </system.serviceModel>
+</configuration>
