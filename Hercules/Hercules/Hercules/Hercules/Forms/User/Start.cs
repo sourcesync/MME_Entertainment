@@ -241,6 +241,9 @@ namespace MME.Hercules.Forms.User
                             {
                                 this.currentSession.FavoritePhoto = 1;
                                 this.currentSession.FavoritePhotoFilename = "photo1";
+
+                                // set favorite - stolen from pick favorite...
+                                this.currentSession.FavoritePhotoFilename = Guid.NewGuid().ToString().Replace("-", "");
                             }
                         }
 
