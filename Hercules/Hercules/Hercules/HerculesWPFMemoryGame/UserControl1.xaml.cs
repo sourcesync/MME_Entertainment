@@ -266,6 +266,8 @@ namespace HerculesWPFMemoryGame
                     iix = this.cur_objs[1, 1];
                     images[iiy, iix].Source = this.topbm;
 
+                    this.canvas_master.UpdateLayout();
+                    System.Windows.MessageBox.Show("a");
                     this.mode = 0;
                 }
 
