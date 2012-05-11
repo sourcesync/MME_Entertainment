@@ -82,7 +82,8 @@ namespace HerculesWPFMemoryGame
 
         private BitmapImage topbm = null;
 
-        private System.Windows.Threading.DispatcherTimer pause = null;
+        //private System.Windows.Threading.DispatcherTimer pause = null;
+        private System.Threading.Timer pause = null;
 
         private int[,] cur_objs = new int[2, 2];
 
@@ -151,11 +152,14 @@ namespace HerculesWPFMemoryGame
                 }
             }
 
-
+            /*
             this.pause = new System.Windows.Threading.DispatcherTimer();
+            this.pause.
             this.pause.Tick += new EventHandler(this._timeout);
             this.pause.Interval = new TimeSpan(0, 0, 2);
-                
+              */
+
+            
         }
 
         private String ChooseRanInArr(String[] arr)
@@ -199,11 +203,12 @@ namespace HerculesWPFMemoryGame
             }
             return null;
         }
+        
+        //void _timeout(object sender, EventArgs e)
 
-        void _timeout(object sender, EventArgs e)
+        void __timeout(object sender, EventArgs e )
         {
-            this.pause.Stop();
-            System.Windows.MessageBox.Show("timeout!");
+
             this.mode = 0;
 
             if (this.cur_matches == (num_y * num_x))
@@ -221,13 +226,30 @@ namespace HerculesWPFMemoryGame
             images[iy, ix].Source = this.topbm;
         }
 
+        
+        void _timeout(object sender)
+        {
+            //this.pause.Stop();
+            //System.Windows.MessageBox.Show("timeout!");
+            this.pause = null;
+
+            this.Dispatcher.Invoke(
+                new System.EventHandler(this.__timeout),
+                System.Windows.Threading.DispatcherPriority.Input,
+                new object[] { null, null });
+
+
+
+
+        }
+
         void obj_MouseUp(object sender, MouseButtonEventArgs e)
         {
             try
             {
                 int[] coord = FindIt(sender);
 
-                System.Windows.MessageBox.Show("a");
+                //System.Windows.MessageBox.Show("a");
 
                 //  matched already?
                 if (matches[coord[0], coord[1]]) return;
@@ -248,7 +270,7 @@ namespace HerculesWPFMemoryGame
                 else
                 {
                     //  pause mode...
-                    System.Windows.MessageBox.Show("b");
+                    //System.Windows.MessageBox.Show("b");
                     return;
                 }
 
@@ -272,11 +294,14 @@ namespace HerculesWPFMemoryGame
                         this.cur_matches += 2;
                         if (this.cur_matches == (num_y * num_x))
                         {
-                            this.pause = new System.Windows.Threading.DispatcherTimer();
-                            this.pause.Tick += new EventHandler(this._timeout);
-                            this.pause.Interval = new TimeSpan(0, 0, 2);
-                            System.Windows.MessageBox.Show("starting");
-                            this.pause.Start();
+                            //this.pause = new System.Windows.Threading.DispatcherTimer();
+                            //this.pause.Tick += new EventHandler(this._timeout);
+                            //this.pause.Interval = new TimeSpan(0, 0, 2);
+                            //System.Windows.MessageBox.Show("starting");
+                            //this.pause.Start();
+                            this.pause = new System.Threading.Timer(new System.Threading.TimerCallback(this._timeout), null, 2000, 0);
+                            
+                            
                         }
                         this.mode = 0;
                     }
@@ -284,15 +309,18 @@ namespace HerculesWPFMemoryGame
                     {
 
                         this.mode = 3;
-                        this.pause = new System.Windows.Threading.DispatcherTimer();
-                        this.pause.Tick += new EventHandler(this._timeout);
-                        this.pause.Interval = new TimeSpan(0, 0, 2);
-                        System.Windows.MessageBox.Show("starting");
-                        this.pause.Start();
+
+                        this.pause = new System.Threading.Timer(new System.Threading.TimerCallback(this._timeout), null, 2000, 0);
+
+                        //this.pause = new System.Windows.Threading.DispatcherTimer();
+                        //this.pause.Tick += new EventHandler(this._timeout);
+                        //this.pause.Interval = new TimeSpan(0, 0, 2);
+                        //System.Windows.MessageBox.Show("starting");
+                        //this.pause.Start();
                     }
                 }
 
-                System.Windows.MessageBox.Show("e");
+                //System.Windows.MessageBox.Show("e");
             }
             catch (System.Exception E)
             {
