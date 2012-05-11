@@ -227,6 +227,8 @@ namespace HerculesWPFMemoryGame
             {
                 int[] coord = FindIt(sender);
 
+                System.Windows.MessageBox.Show("a");
+
                 //  matched already?
                 if (matches[coord[0], coord[1]]) return;
 
@@ -246,6 +248,7 @@ namespace HerculesWPFMemoryGame
                 else
                 {
                     //  pause mode...
+                    System.Windows.MessageBox.Show("b");
                     return;
                 }
 
@@ -288,6 +291,8 @@ namespace HerculesWPFMemoryGame
                         this.pause.Start();
                     }
                 }
+
+                System.Windows.MessageBox.Show("e");
             }
             catch (System.Exception E)
             {
