@@ -216,7 +216,7 @@ namespace HerculesWPFMemoryGame
             try
             {
                 this.pause.Stop();
-                System.Windows.MessageBox.Show("timeout!");
+                //System.Windows.MessageBox.Show("timeout!");
 
                 if (this.mode == 2)
                 {
@@ -232,14 +232,18 @@ namespace HerculesWPFMemoryGame
                 }
                 else if (this.mode == 4) // hide...
                 {
+                    write("hide2!\n");
+
                     //  unpause the last cards...
                     int iy = this.cur_objs[0, 0];
                     int ix = this.cur_objs[0, 1];
                     images[iy, ix].Source = this.topbm;
+                    images[iy, ix].InvalidateVisual();
 
                     iy = this.cur_objs[1, 0];
                     ix = this.cur_objs[1, 1];
                     images[iy, ix].Source = this.topbm;
+                    images[iy, ix].InvalidateVisual();
                 }
 
                 this.mode = 0;
@@ -301,6 +305,7 @@ namespace HerculesWPFMemoryGame
                 }
                 else // mode==3, mode==4, we are still in pause mode...
                 {
+                    write("mode3 or 4\n");
                     sem = false;
                     return;
                 }
@@ -311,6 +316,7 @@ namespace HerculesWPFMemoryGame
                 Uri uri = new Uri(paths[iy, ix], UriKind.Relative);
                 BitmapImage bm = new BitmapImage(uri);
                 images[iy, ix].Source = bm;
+                images[iy, ix].InvalidateVisual();
 
                 //  compare two matches...
                 if (mode == 2)
