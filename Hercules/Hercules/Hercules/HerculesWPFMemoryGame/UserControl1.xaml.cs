@@ -460,6 +460,8 @@ namespace HerculesWPFMemoryGame
 
             }
 
+            this.mode = 0;
+
         }
 
     }
