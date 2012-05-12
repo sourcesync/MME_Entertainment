@@ -218,10 +218,13 @@ namespace HerculesWPFMemoryGame
                 write("timeout!\n");
 
                 this.pause.Stop();
-                //System.Windows.MessageBox.Show("timeout!");
+
+                String md = String.Format("timeout_mode{0}\n", this.mode);
+                write(md);
 
                 if (this.mode == 2)
                 {
+                    write("check restart\n");
                     if (this.cur_matches == (num_y * num_x))
                     {
                         this.mode = 0;
@@ -231,10 +234,11 @@ namespace HerculesWPFMemoryGame
                 }
                 else if (this.mode == 3) // keep then...
                 {
+                    write("keep\n");
                 }
                 else if (this.mode == 4) // hide...
                 {
-                    write("hide2!\n");
+                    write("hide!\n");
 
                     //  unpause the last cards...
                     int iy = this.cur_objs[0, 0];
@@ -333,9 +337,8 @@ namespace HerculesWPFMemoryGame
                         this.cur_matches += 2;
                         if (this.cur_matches == (num_y * num_x))
                         {
-                            this.pause.Start(); // this will also check for end and restart game...
-
-                            //System.Windows.MessageBox.Show("a");
+                            this.mode = 2;
+                            this.pause.Start(); // this will also check for end and restart game...        
                             sem = false;
                             return;
                         }
@@ -343,19 +346,18 @@ namespace HerculesWPFMemoryGame
                         {
                             this.mode = 3; // a match, keep these objs displayed and go on with game...
                             this.pause.Start();
-                            //System.Windows.MessageBox.Show("b");
+                            sem = false;
+                            return;
                         }
                     }
-                    else
+                    else // not equal, reset the objs...
                     {
                         this.mode = 4;
                         this.pause.Start(); // pause a few seconds before they can do anything...
-                        //System.Windows.MessageBox.Show("c");
+                        sem = false;
+                        return;
                     }
-
-                }
-
-                sem = false;
+                } // mode == 2
             }
             else
             {
