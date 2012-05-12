@@ -157,6 +157,7 @@ namespace HerculesWPFMemoryGame
                 
                 this.pause.Tick += new EventHandler(this.__timeout);
                 this.pause.Interval = new TimeSpan(0, 0, 5);
+                this.pause.Stop();
             }
 
             this.Restart();
@@ -260,25 +261,37 @@ namespace HerculesWPFMemoryGame
 
         }
 
+        void write(String w)
+        {
+            System.IO.StreamWriter wr = new System.IO.StreamWriter("c:\\tmp\\log.txt", true);
+
+            wr.WriteLine(w);
+            wr.Flush();
+            wr.Close();
+        }
+
         void pic_click_timer(object sender)
         {
             try
             {
+                write("top\n");
                 int[] coord = FindIt(sender);
 
                 //  matched already?
                 if (matches[coord[0], coord[1]]) return;
 
-                //System.Windows.MessageBox.Show("aa");
+                write("not mached\n");
 
                 if (this.mode == 0)
                 {
+                    write("mode0\n");
                     this.cur_objs[0, 0] = coord[0];
                     this.cur_objs[0, 1] = coord[1];
                     this.mode = 1;
                 }
                 else if (this.mode == 1)
                 {
+                    write("mode1\n");
                     this.cur_objs[1, 0] = coord[0];
                     this.cur_objs[1, 1] = coord[1];
 
