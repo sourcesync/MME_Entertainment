@@ -215,6 +215,8 @@ namespace HerculesWPFMemoryGame
         {
             try
             {
+                write("timeout!\n");
+
                 this.pause.Stop();
                 //System.Windows.MessageBox.Show("timeout!");
 
