@@ -158,7 +158,7 @@ namespace HerculesWPFMemoryGame
             {
                 
                 this.pause.Tick += new EventHandler(this.__timeout);
-                this.pause.Interval = new TimeSpan(0, 0, 5);
+                this.pause.Interval = new TimeSpan(0, 0, 2);
                 this.pause.Stop();
             }
 
@@ -274,7 +274,7 @@ namespace HerculesWPFMemoryGame
 
         void write(String w)
         {
-            return;
+            //return;
 
             System.IO.StreamWriter wr = new System.IO.StreamWriter("c:\\tmp\\log.txt", true);
 
