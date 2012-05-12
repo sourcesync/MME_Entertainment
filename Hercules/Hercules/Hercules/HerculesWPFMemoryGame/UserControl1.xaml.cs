@@ -291,7 +291,11 @@ namespace HerculesWPFMemoryGame
                 int[] coord = FindIt(sender);
 
                 //  matched already?
-                if (matches[coord[0], coord[1]]) return;
+                if (matches[coord[0], coord[1]])
+                {
+                    sem = false;
+                    return;
+                }
 
                 write("not mached\n");
 
