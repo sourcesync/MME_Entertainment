@@ -269,6 +269,8 @@ namespace HerculesWPFMemoryGame
                 //  matched already?
                 if (matches[coord[0], coord[1]]) return;
 
+                System.Windows.MessageBox.Show("aa");
+
                 if (this.mode == 0)
                 {
                     this.cur_objs[0, 0] = coord[0];
