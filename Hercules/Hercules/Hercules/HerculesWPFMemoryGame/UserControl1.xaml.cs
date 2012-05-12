@@ -269,7 +269,7 @@ namespace HerculesWPFMemoryGame
                 //  matched already?
                 if (matches[coord[0], coord[1]]) return;
 
-                System.Windows.MessageBox.Show("aa");
+                //System.Windows.MessageBox.Show("aa");
 
                 if (this.mode == 0)
                 {
@@ -310,21 +310,22 @@ namespace HerculesWPFMemoryGame
                         if (this.cur_matches == (num_y * num_x))
                         {
                             this.pause.Start(); // this will also check for end and restart game...
-                            System.Windows.MessageBox.Show("a");
+                            
+                            //System.Windows.MessageBox.Show("a");
                             return;
                         }
                         else
                         {
                             this.mode = 3; // a match, keep these objs displayed and go on with game...
                             this.pause.Start();
-                            System.Windows.MessageBox.Show("b");
+                            //System.Windows.MessageBox.Show("b");
                         }
                     }
                     else
                     {
                         this.mode = 4;
                         this.pause.Start(); // pause a few seconds before they can do anything...
-                        System.Windows.MessageBox.Show("c");
+                        //System.Windows.MessageBox.Show("c");
                     }
 
                 }
