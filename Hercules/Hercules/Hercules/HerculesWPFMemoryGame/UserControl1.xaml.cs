@@ -89,6 +89,8 @@ namespace HerculesWPFMemoryGame
 
         Random random = new Random();
 
+        bool sem = false;
+
         public UserControl1()
         {
             InitializeComponent();
@@ -272,9 +274,9 @@ namespace HerculesWPFMemoryGame
 
         void pic_click_timer(object sender)
         {
-            try
+            if (!sem)
             {
-                write("top\n");
+                sem = true;
                 int[] coord = FindIt(sender);
 
                 //  matched already?
@@ -299,6 +301,7 @@ namespace HerculesWPFMemoryGame
                 }
                 else // mode==3, mode==4, we are still in pause mode...
                 {
+                    sem = false;
                     return;
                 }
 
@@ -323,8 +326,9 @@ namespace HerculesWPFMemoryGame
                         if (this.cur_matches == (num_y * num_x))
                         {
                             this.pause.Start(); // this will also check for end and restart game...
-                            
+
                             //System.Windows.MessageBox.Show("a");
+                            sem = false;
                             return;
                         }
                         else
@@ -342,12 +346,14 @@ namespace HerculesWPFMemoryGame
                     }
 
                 }
-            }
-            catch (System.Exception E)
-            {
-                System.Windows.MessageBox.Show(E.ToString());
-            }
 
+                sem = false;
+            }
+            else
+            {
+                write("sem fail\n");
+            }
+            
         }
 
         void pic_click_notimer(object sender)
