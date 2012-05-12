@@ -164,7 +164,6 @@ namespace HerculesWPFMemoryGame
 
             this.Restart();
 
-            System.Windows.MessageBox.Show("l");
         }
 
         private String ChooseRanInArr(String[] arr)
@@ -275,6 +274,8 @@ namespace HerculesWPFMemoryGame
 
         void write(String w)
         {
+            return;
+
             System.IO.StreamWriter wr = new System.IO.StreamWriter("c:\\tmp\\log.txt", true);
 
             wr.WriteLine(w);
