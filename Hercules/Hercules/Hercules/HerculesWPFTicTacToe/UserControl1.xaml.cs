@@ -367,16 +367,16 @@ namespace HerculesWPFTicTacToe
                     else if (win[0] == 0) // row
                     {
                         int col = win[1];
-                        for ( int i=0;i<3;i++)
+                        for (int i = 0; i < 3; i++)
                         {
-                            if ( this.mode==1)
+                            if (this.mode == 1)
                             {
-                                this.xx[col,i,0].Stroke = this.myYellowBrush;
-                                this.xx[col,i,1].Stroke = this.myYellowBrush;
+                                this.xx[col, i, 0].Stroke = this.myYellowBrush;
+                                this.xx[col, i, 1].Stroke = this.myYellowBrush;
                             }
-                            else 
+                            else
                             {
-                                this.oo[col,i].Stroke = this.myYellowBrush;
+                                this.oo[col, i].Stroke = this.myYellowBrush;
                             }
                         }
                     }
@@ -396,10 +396,25 @@ namespace HerculesWPFTicTacToe
                             }
                         }
                     }
+                } // !draw
+                else // draw
+                {
+                    foreach (object o in this.renders)
+                    {
+                        if (o is Line)
+                        {
+                            Line lll = (Line)o;
+                            lll.Stroke = this.myRedBrush;
+                        }
+                        else if (o is Ellipse)
+                        {
+                            Ellipse e = (Ellipse)o;
+                            e.Stroke = this.myRedBrush;
+                        }
+                    }
                 }
 
                 this.timer.Start();   
-                //this.Dispatcher.Invoke(new System.EventHandler(this._restart), new object[] { null, null }); 
                 return;
             }
 

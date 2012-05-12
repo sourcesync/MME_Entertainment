@@ -274,7 +274,7 @@ namespace HerculesWPFMemoryGame
 
         void write(String w)
         {
-            //return;
+            return;
 
             System.IO.StreamWriter wr = new System.IO.StreamWriter("c:\\tmp\\log.txt", true);
 
