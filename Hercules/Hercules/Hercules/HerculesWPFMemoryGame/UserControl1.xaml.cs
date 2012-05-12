@@ -159,6 +159,7 @@ namespace HerculesWPFMemoryGame
                 this.pause.Interval = new TimeSpan(0, 0, 2);
             }
 
+            this.Restart();
             
         }
 
