@@ -304,6 +304,16 @@ namespace HerculesWPFMemoryGame
                 else if (this.mode == 1)
                 {
                     write("mode1\n");
+
+                    // can't be same as first one!
+                    if ((coord[0] == this.cur_objs[0, 0]) &&
+                         (coord[1] == this.cur_objs[0, 1]))
+                    {
+                        write("same!!\n");
+                        sem = false;
+                        return;
+                    }
+
                     this.cur_objs[1, 0] = coord[0];
                     this.cur_objs[1, 1] = coord[1];
 
