@@ -358,6 +358,8 @@ namespace HerculesWPFMemoryGame
                         return;
                     }
                 } // mode == 2
+
+                sem = false;
             }
             else
             {
