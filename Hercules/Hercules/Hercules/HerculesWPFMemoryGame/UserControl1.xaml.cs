@@ -160,7 +160,8 @@ namespace HerculesWPFMemoryGame
             }
 
             this.Restart();
-            
+
+            System.Windows.MessageBox.Show("l");
         }
 
         private String ChooseRanInArr(String[] arr)
@@ -299,18 +300,21 @@ namespace HerculesWPFMemoryGame
                         if (this.cur_matches == (num_y * num_x))
                         {
                             this.pause.Start(); // this will also check for end and restart game...
+                            System.Windows.MessageBox.Show("a");
                             return;
                         }
                         else
                         {
                             this.mode = 3; // a match, keep these objs displayed and go on with game...
                             this.pause.Start();
+                            System.Windows.MessageBox.Show("b");
                         }
                     }
                     else
                     {
                         this.mode = 4;
                         this.pause.Start(); // pause a few seconds before they can do anything...
+                        System.Windows.MessageBox.Show("c");
                     }
 
                 }
