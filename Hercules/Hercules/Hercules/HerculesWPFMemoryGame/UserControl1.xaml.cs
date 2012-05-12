@@ -210,33 +210,41 @@ namespace HerculesWPFMemoryGame
         //  handler for timer in ui thread...
         void __timeout(object sender, EventArgs e )
         {
-            this.pause.Stop();
-
-            if (this.mode == 2)
+            try
             {
-                if (this.cur_matches == (num_y * num_x))
+                this.pause.Stop();
+                System.Windows.MessageBox.Show("timeout!");
+
+                if (this.mode == 2)
                 {
-                    this.mode = 0;
-                    this.Restart();
-                    return;
+                    if (this.cur_matches == (num_y * num_x))
+                    {
+                        this.mode = 0;
+                        this.Restart();
+                        return;
+                    }
                 }
-            }
-            else if (this.mode == 3) // keep then...
-            {
-            }
-            else if (this.mode == 4) // hide...
-            {
-                //  unpause the last cards...
-                int iy = this.cur_objs[0, 0];
-                int ix = this.cur_objs[0, 1];
-                images[iy, ix].Source = this.topbm;
+                else if (this.mode == 3) // keep then...
+                {
+                }
+                else if (this.mode == 4) // hide...
+                {
+                    //  unpause the last cards...
+                    int iy = this.cur_objs[0, 0];
+                    int ix = this.cur_objs[0, 1];
+                    images[iy, ix].Source = this.topbm;
 
-                iy = this.cur_objs[1, 0];
-                ix = this.cur_objs[1, 1];
-                images[iy, ix].Source = this.topbm;
-            }
+                    iy = this.cur_objs[1, 0];
+                    ix = this.cur_objs[1, 1];
+                    images[iy, ix].Source = this.topbm;
+                }
 
-            this.mode = 0;
+                this.mode = 0;
+            }
+            catch (System.Exception E)
+            {
+                System.Windows.MessageBox.Show(E.ToString());
+            }
         }
 
         //  handler for thread timer...
