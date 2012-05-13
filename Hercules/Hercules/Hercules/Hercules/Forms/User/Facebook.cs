@@ -99,11 +99,23 @@ namespace MME.Hercules.Forms.User
             //orig webBrowser1.Url = new Uri("https://graph.afacebook.com/oauth/authorize?client_id=119375921469000&redirect_uri=" +
  */
 
-            
-            webBrowser1.Url = new Uri("https://graph.facebook.com/oauth/authorize?client_id=262792687134194&redirect_uri=" +         
-                System.Web.HttpUtility.UrlEncode("https://www.facebook.com/connect/login_success.html") + 
-                "&type=user_agent&display=popup&scope=publish_stream");
-            
+            if (ischeckin)
+            {
+                //webBrowser1.Url = new Uri("http://touch.facebook.com");
+
+                Uri uri = 
+                    new Uri("https://graph.facebook.com/oauth/authorize?client_id=262792687134194&redirect_uri=" +
+                        System.Web.HttpUtility.UrlEncode("https://www.facebook.com/connect/login_success.html") +
+                        "&type=user_agent&display=popup&scope=publish_checkins");
+                System.Console.WriteLine(uri.ToString());
+                webBrowser1.Url = uri;
+            }
+            else
+            {
+                webBrowser1.Url = new Uri("https://graph.facebook.com/oauth/authorize?client_id=262792687134194&redirect_uri=" +
+                    System.Web.HttpUtility.UrlEncode("https://www.facebook.com/connect/login_success.html") +
+                    "&type=user_agent&display=popup&scope=publish_stream");
+            }
 
             /*
             webBrowser1.Url = new Uri("https://www.facebook.com/dialog/oauth?client_id=262792687134194&" +
@@ -209,8 +221,44 @@ namespace MME.Hercules.Forms.User
             SoundUtility.Play(Hercules.Properties.SoundResources.SELECTION_BUTTON);
         }
 
+        private void checkin_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            HtmlElement body =  webBrowser1.Document.Body;
+            string txt = body.OuterHtml;
+            //Console.WriteLine(txt);
+
+            HtmlElementCollection els = webBrowser1.Document.GetElementsByTagName("submit");
+            foreach (HtmlElement el in els)
+            {
+                String nm = el.Name;
+            }
+
+            els = webBrowser1.Document.GetElementsByTagName("input");
+            foreach (HtmlElement el in els)
+            {
+                String nm = el.Name;
+                Console.WriteLine("input->" + nm + "\n");
+            }
+
+            els = webBrowser1.Document.GetElementsByTagName("button");
+            foreach (HtmlElement el in els)
+            {
+                if (el.OuterHtml.ToLower().Contains("check in"))
+                {
+                    el.InvokeMember("click");
+                }
+            }
+        }
+
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            if (false) //( ischeckin )
+            {
+                checkin_DocumentCompleted(sender, e);
+                return;
+            }
+
+
             int pos = webBrowser1.Url.ToString().IndexOf("access_token=");
             bool bOK = false;
             bool bFakeClicked = false;

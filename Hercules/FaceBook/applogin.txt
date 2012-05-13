@@ -1,0 +1,1 @@
+https://graph.facebook.com/oauth/authorize?client_id=355289717868204&redirect_uri=https://www.facebook.com/connect/login_success.html&type=user_agent&display=popup&scope=publish_checkins

@@ -78,24 +78,31 @@ namespace MME.Hercules
                  System.Web.HttpUtility.UrlEncode(
                     "http://upload.wikimedia.org/wikipedia/commons/thumb/3/32/White_Castle_Building_8.jpg/800px-White_Castle_Building_8.jpg");
 
-            string place = System.Web.HttpUtility.UrlEncode("212780672664");
+            //string place = System.Web.HttpUtility.UrlEncode("145768288146");
 
-            string message = System.Web.HttpUtility.UrlEncode("I went here");
+            //string place = "145768288146"; // ROAST COFFEE, WORKS
+            //string place = "160041804023126"; // WC NO WORK
+            //string place = "157060520972164"; // GG
+            string place = ConfigUtility.GetConfig(ConfigUtility.Config, "FaceBookCheckinPlaceID");
 
-            string coordinates = System.Web.HttpUtility.UrlEncode("{'latitude':45.0,'longitude':46.0,'tags':'212780672664'}");
+            //string message = "hey";
+            string message = ConfigUtility.GetConfig(ConfigUtility.Config, "FaceBookCheckinMessage");
+            message = message.Replace(" ","%20");
+            message = message.Replace("!", "%21");
 
-
+            //string coordinates = "{\"longitude\":\"-122.42122313109\",\"latitude\":\"37.7564416080648\"}"; // ROAST, WORKS
+            //string coordinates = "{\"longitude\":\"-90.251640127612\",\"latitude\":\"38.675819981822\"}";  // WC, NO WORK
+            //string coordinates = "{\"longitude\":\"-122.419415\",\"latitude\":\"37.774929\"}"; GG, WORKS
+            string coordinates_format = "{{\"longitude\":\"{0}\",\"latitude\":\"{1}\"}}";
+            string latitude = ConfigUtility.GetConfig(ConfigUtility.Config, "FaceBookCheckinLatitude");
+            string longitude = ConfigUtility.GetConfig(ConfigUtility.Config, "FaceBookCheckinLongitude");
+            string coordinates = String.Format(coordinates_format, longitude, latitude);
          
             // Build a string containing all the parameters
-            string Parameters = string.Format("access_token={0}&place={1}&message={2}&picture={3}&coordinates={4}",
+            string Parameters = string.Format("access_token={0}&place={1}&message={2}&coordinates={3}",
                 access_token,
-                //photourl,
                 place,
-                //msg,
                 message,
-                //desc,
-                picture,
-                //url,
                 coordinates );
              
 
@@ -148,8 +155,9 @@ namespace MME.Hercules
                     }
 
                 }
-                catch
+                catch (System.Exception e)
                 {
+                    System.Windows.Forms.MessageBox.Show(e.ToString());
                 }
             }
 

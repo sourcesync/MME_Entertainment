@@ -205,15 +205,24 @@ namespace MME.Hercules.Forms.User
                 for (int i=0; i<=ConfigUtility.PhotoCount - 1; i++)
                 {
                     Bitmap photo = new Bitmap(this.currentSession.PhotoPath + "\\photo" + this.currentSession.FavoritePhoto + ".jpg");
-                    photo.RotateFlip(RotateFlipType.Rotate90FlipNone);
 
-                    System.Drawing.Image mini = photo.GetThumbnailImage(268, 387, null, IntPtr.Zero);
+                    if (!this.istable)
+                    {
+                        photo.RotateFlip(RotateFlipType.Rotate90FlipNone);
 
-                    // Clear handle to original file so that we can overwrite it if necessary
-                    photo.Dispose();
+                        System.Drawing.Image mini = photo.GetThumbnailImage(268, 387, null, IntPtr.Zero);
 
-                    grfx.DrawImage(mini, 25, 20, mini.Width, mini.Height);
-                    mini.Dispose();
+                        // Clear handle to original file so that we can overwrite it if necessary
+                        photo.Dispose();
+
+                        grfx.DrawImage(mini, 25, 20, mini.Width, mini.Height);
+                        mini.Dispose();
+                    }
+                    else
+                    {
+                        template.Dispose();
+                        template = photo;
+                    }
                 }
             }
 

@@ -81,9 +81,17 @@
   <add key="CustomPhotoUrl" value="" />
   <add key="CustomPublishUrl" value="http://favpic.mobi/favoritephoto.php?viewing={1}_{0}"/>
 
-
-
-
+  <!--facebook checkin-->
+  <!--
+  <add key="FaceBookCheckinPlaceID" value="157060520972164" />
+  <add key="FaceBookCheckinMessage" value="I was at the WhiteCastle PhotoBooth!" />
+  <add key="FaceBookCheckinLatitude" value="37.774929" />
+  <add key="FaceBookCheckinLongitude" value="-122.419415" />
+  -->
+  <add key="FaceBookCheckinPlaceID" value="125668440854442" />
+  <add key="FaceBookCheckinMessage" value="I was at the WhiteCastle PhotoBooth!" />
+  <add key="FaceBookCheckinLatitude" value="37.757653" />
+  <add key="FaceBookCheckinLongitude" value="-122.438636" />
 
   <!-- 1 Photo customization -->
   <add key="Photo1_X" value="80" />

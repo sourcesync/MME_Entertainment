@@ -1533,7 +1533,9 @@ namespace MME.Hercules.Forms.User
                     Bitmap photo = new Bitmap(path);
 
                     // initial camera flip
+                    
                     photo.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    
 
                     rotate = Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, string.Format("Photo{0}_Rotate", (i + 1).ToString())));
                     
