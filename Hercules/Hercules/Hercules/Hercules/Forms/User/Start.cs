@@ -250,19 +250,23 @@ namespace MME.Hercules.Forms.User
 
                         // Are we supporting facebook
 
+                        bool yes_clicked = false;
+                        bool skip_clicked = false;
                         if (AllowFacebookPublish && dr == System.Windows.Forms.DialogResult.OK)
                         {
                             using (User.Facebook fb = new Facebook(currentSession))
                             {
                                 fb.ischeckin = false;
                                 dr = fb.ShowDialog();
+                                yes_clicked = fb.yes_clicked;
+                                skip_clicked = fb.skip_clicked;
                             }
                         }
 
                         // Finish up ( AND ACTUALLY SEND TO FACEBOOK! )
 
 
-                        if (dr == System.Windows.Forms.DialogResult.OK)
+                        if ( (dr == System.Windows.Forms.DialogResult.OK) && ( yes_clicked ) && (!skip_clicked))
                         {
                             using (User.Developing dd = new Developing(currentSession))
                             {
@@ -303,16 +307,20 @@ namespace MME.Hercules.Forms.User
                     {
                         bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
 
+                        bool yes_clicked = false;
+                        bool skip_clicked = false;
                         if (AllowFacebookPublish)
                         {
                             using (User.Facebook fb = new Facebook(currentSession))
                             {
                                 fb.ischeckin = true;
                                 dr = fb.ShowDialog();
+                                yes_clicked = fb.yes_clicked;
+                                skip_clicked = fb.skip_clicked;
                             }
                         }
 
-                        if (dr == System.Windows.Forms.DialogResult.OK)
+                        if ((dr == System.Windows.Forms.DialogResult.OK) && (yes_clicked) && (!skip_clicked))
                         {
                             using (User.Developing dd = new Developing(currentSession))
                             {

@@ -133,7 +133,14 @@ namespace MME.Hercules.Forms.User
             else // is table
             {
                     this.label1.Visible = true;
-                    this.label1.Text = "Thanks For Using Photobooth!";
+                    if (this.ischeckin)
+                    {
+                        this.label1.Text = "You Successfully Checked-In!";
+                    }
+                    else
+                    {
+                        this.label1.Text = "Thanks For Using Photobooth!";
+                    }
                     int space = (int)(1024 - this.label1.Size.Width);
                     this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);
                     this.Refresh();

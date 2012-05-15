@@ -33,6 +33,8 @@ namespace MME.Hercules.Forms.User
         private Thread delayDoneThread = null;
         public bool istable = false;
         public bool ischeckin = false;
+        public bool yes_clicked = false;
+        public bool skip_clicked = false;
         //gw
 
         public Facebook(Session currentSession)
@@ -184,6 +186,8 @@ namespace MME.Hercules.Forms.User
 
         private void skip_Click(object sender, EventArgs e)
         {
+            this.skip_clicked = true;
+
             SoundUtility.StopSpeaking();
             SoundUtility.PlaySync(Hercules.Properties.SoundResources.SELECTION_BUTTON);
 
@@ -514,6 +518,8 @@ namespace MME.Hercules.Forms.User
 
         private void fbyes_Click(object sender, EventArgs e)
         {
+            this.yes_clicked = true;
+
             fbyes.BackColor = Color.Red;
             this.Refresh(); 
             
@@ -530,6 +536,8 @@ namespace MME.Hercules.Forms.User
 
         private void fbno_Click(object sender, EventArgs e)
         {
+            this.yes_clicked = false;
+
             fbno.BackColor = Color.Red;
             this.Refresh();
             
