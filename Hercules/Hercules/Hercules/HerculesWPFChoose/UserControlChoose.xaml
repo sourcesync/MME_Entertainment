@@ -4,19 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="768" d:DesignWidth="1024">
+             d:DesignHeight="768" d:DesignWidth="1024" Loaded="UserControl_Loaded">
     <Canvas>
-        <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFChoose;component/Images/CHOOSE-BKRD.png" MouseMove="image_MouseMove" />
-        <TextBox Canvas.Left="739" Canvas.Top="640" Height="38" Name="textBox1" Width="100" Text="SubTotal:" HorizontalAlignment="Stretch" TextAlignment="Right" Foreground="Yellow" FontSize="22">
-            <TextBox.Background>
-                <SolidColorBrush />
-            </TextBox.Background>
-        </TextBox>
-        <TextBox Canvas.Left="152" Canvas.Top="714" Height="56" Name="textBoxItems" Width="426" Text="Items In Your Cart" FontStretch="Normal" FontSize="33" Foreground="Yellow" TextAlignment="Center">
-            <TextBox.Background>
-                <SolidColorBrush />
-            </TextBox.Background>
-        </TextBox>
+        
+        <Canvas Name="canvas_checkout" Visibility="Hidden">
+            <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="imagecheckout" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFChoose;component/Images/CHECKOUT-SCREEN.png"  />
+        </Canvas> 
+        <Canvas Name="canvas_choose">
+            <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFChoose;component/Images/CHOOSE-BKRD.png" MouseMove="image_MouseMove" />
+        
+        
         <Image Canvas.Left="27" Canvas.Top="644" Height="66" Name="image8" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchase_MouseMove" />
         <Image Canvas.Left="142" Canvas.Top="644" Height="66" Name="image9" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="purchased_MouseDown" MouseMove="purchase_MouseMove" MouseUp="purchased_MouseUp" />
         <Image Canvas.Left="258" Canvas.Top="644" Height="66" Name="image10" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="purchased_MouseDown" MouseMove="purchase_MouseMove" MouseUp="purchased_MouseUp" />
@@ -24,32 +21,8 @@
         <Image Canvas.Left="485" Canvas.Top="644" Height="66" Name="image12" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="purchased_MouseDown" MouseMove="purchase_MouseMove" MouseUp="purchased_MouseUp" />
         <Image Canvas.Left="597" Canvas.Top="644" Height="66" Name="image13" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="purchased_MouseDown" MouseMove="purchase_MouseMove" MouseUp="purchased_MouseUp" />
         <Rectangle Canvas.Left="150" Canvas.Top="148" Height="470" Name="rectangle1" Stroke="Black" Width="729" Visibility="Hidden" />
-        <Image Canvas.Left="4" Canvas.Top="719" Height="44" Name="imageback" Source="/HerculesWPFChoose;component/Images/backarrow1.png" Stretch="Fill" Width="51" MouseDown="imageback_MouseDown" />
-        <TextBox Canvas.Left="739" Canvas.Top="677" FontSize="22" Foreground="Yellow" Height="38" Name="textBox3" Text="Tax" TextAlignment="Right" Width="100">
-            <TextBox.Background>
-                <SolidColorBrush />
-            </TextBox.Background>
-        </TextBox>
-        <TextBox Canvas.Left="739" Canvas.Top="713" FontSize="22" Foreground="Yellow" Height="38" Name="textBox99" Text="Total:" TextAlignment="Right" Width="100">
-            <TextBox.Background>
-                <SolidColorBrush />
-            </TextBox.Background>
-        </TextBox>
-        <TextBox Canvas.Left="845" Canvas.Top="640" FontSize="22" Foreground="Yellow" Height="38" Name="textBoxSubTotal" Text="" TextAlignment="Left" Width="112">
-            <TextBox.Background>
-                <SolidColorBrush />
-            </TextBox.Background>
-        </TextBox>
-        <TextBox Canvas.Left="845" Canvas.Top="677" FontSize="22" Foreground="Yellow" Height="38" Name="textBoxTax" Text="" TextAlignment="Left" Width="112">
-            <TextBox.Background>
-                <SolidColorBrush />
-            </TextBox.Background>
-        </TextBox>
-        <TextBox Canvas.Left="845" Canvas.Top="713" FontSize="22" Foreground="Yellow" Height="38" Name="textBoxTotalAmount" Text="" TextAlignment="Left" Width="112">
-            <TextBox.Background>
-                <SolidColorBrush />
-            </TextBox.Background>
-        </TextBox>
+        
+        
         <Rectangle Canvas.Left="0" Canvas.Top="0" Height="618" Name="rectangle2" Stroke="Black" Width="1024" Visibility="Hidden" />
 
         <Canvas Height="170"  Width="1024" >
@@ -74,8 +47,47 @@
 
         <Image Canvas.Left="994" Canvas.Top="738" Height="30" Name="imagea" Stretch="Fill" Width="30" Source="/HerculesWPFChoose;component/Images/FLIP-THUMB.png" MouseDown="imageb_MouseDown" Visibility="Hidden" />
         <Image Canvas.Left="884" Canvas.Top="774" Height="47" Name="image15" Stretch="Fill" Width="281" />
-        <Image Canvas.Left="958" Canvas.Top="631" Height="60" Name="imageCheckout" Stretch="Fill" Width="65" Source="/HerculesWPFChoose;component/Images/whitecastle-blue.png" MouseUp="imageCheckout_MouseUp" />
+        <Image Canvas.Left="912" Canvas.Top="672" Height="47" Name="imageCheckout" Stretch="Fill" Width="110" Source="/HerculesWPFChoose;component/Images/checkout-thumb.png" MouseUp="imageCheckout_MouseUp" />
         <Label Canvas.Left="169" Canvas.Top="326" Content="Label" Height="58" Name="labelPay" Width="687" FontSize="30" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Microsoft Sans Serif" Visibility="Hidden" />
         <Label Canvas.Left="169" Canvas.Top="405" Content="Label" FontSize="30" Height="58" HorizontalContentAlignment="Center" Name="labelMessage" Width="687" FontWeight="Bold" FontFamily="Microsoft Sans Serif" Visibility="Hidden" />
+        </Canvas>
+
+        <TextBox Canvas.Left="725" Canvas.Top="640" Height="38" Name="textBox1" Width="100" Text="SubTotal:" HorizontalAlignment="Stretch" TextAlignment="Right" Foreground="Yellow" FontSize="22">
+            <TextBox.Background>
+                <SolidColorBrush />
+            </TextBox.Background>
+        </TextBox>
+        <TextBox Canvas.Left="725" Canvas.Top="677" FontSize="22" Foreground="Yellow" Height="38" Name="textBox3" Text="Tax" TextAlignment="Right" Width="100">
+            <TextBox.Background>
+                <SolidColorBrush />
+            </TextBox.Background>
+        </TextBox>
+        <TextBox Canvas.Left="725" Canvas.Top="713" FontSize="22" Foreground="Yellow" Height="38" Name="textBox99" Text="Total:" TextAlignment="Right" Width="100">
+            <TextBox.Background>
+                <SolidColorBrush />
+            </TextBox.Background>
+        </TextBox>
+        <TextBox Canvas.Left="831" Canvas.Top="640" FontSize="22" Foreground="Yellow" Height="38" Name="textBoxSubTotal" Text="" TextAlignment="Left" Width="84">
+            <TextBox.Background>
+                <SolidColorBrush />
+            </TextBox.Background>
+        </TextBox>
+        <TextBox Canvas.Left="831" Canvas.Top="677" FontSize="22" Foreground="Yellow" Height="38" Name="textBoxTax" Text="" TextAlignment="Left" Width="84">
+            <TextBox.Background>
+                <SolidColorBrush />
+            </TextBox.Background>
+        </TextBox>
+        <TextBox Canvas.Left="831" Canvas.Top="713" FontSize="22" Foreground="Yellow" Height="38" Name="textBoxTotalAmount" Text="" TextAlignment="Left" Width="84">
+            <TextBox.Background>
+                <SolidColorBrush />
+            </TextBox.Background>
+        </TextBox>
+        <TextBox Canvas.Left="152" Canvas.Top="714" Height="56" Name="textBoxItems" Width="426" Text="Items In Your Cart" FontStretch="Normal" FontSize="33" Foreground="Yellow" TextAlignment="Center">
+            <TextBox.Background>
+                <SolidColorBrush />
+            </TextBox.Background>
+        </TextBox>
+        <Image Canvas.Left="4" Canvas.Top="719" Height="44" Name="imageback" Source="/HerculesWPFChoose;component/Images/backarrow1.png" Stretch="Fill" Width="51" MouseDown="imageback_MouseDown" />
+
     </Canvas>
 </UserControl>

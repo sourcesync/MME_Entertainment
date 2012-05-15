@@ -176,8 +176,9 @@ namespace HerculesWPFMaster
             }
             else
             {
+                
                 this.ShowChoose(option);
-
+                
             }
         }
 
@@ -317,7 +318,7 @@ namespace HerculesWPFMaster
             el.SetValue(Canvas.TopProperty, 0.0);
             this.webBrowser1.BringIntoView();
             this.current = this.webBrowser1;
-            this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com", UriKind.RelativeOrAbsolute));
+            this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
 
             this.ShowBack();
         }

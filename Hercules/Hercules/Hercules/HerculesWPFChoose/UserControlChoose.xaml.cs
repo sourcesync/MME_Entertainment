@@ -46,6 +46,9 @@ namespace HerculesWPFChoose
         public int mode = 0; // buying...
         private double total = 0.0;
 
+        //  remember last position of checkout controls...
+        private System.Collections.Hashtable checkout_loc = new System.Collections.Hashtable();
+
         //  template structures...
         private System.Collections.Hashtable purchase_poshash = new System.Collections.Hashtable();
         private System.Collections.Hashtable poshash = new System.Collections.Hashtable();
@@ -192,10 +195,63 @@ namespace HerculesWPFChoose
 
             ScrollViewer.Visibility = System.Windows.Visibility.Hidden;
             //ScrollViewer.ScrollChanged += new ScrollChangedEventHandler(ScrollViewer_ScrollChanged);
+
+
+            this.HashLoc(this.checkout_loc, this.textBox1);
+            this.HashLoc(this.checkout_loc, this.textBox3);
+            this.HashLoc(this.checkout_loc, this.textBox99);
+            this.HashLoc(this.checkout_loc, this.textBoxSubTotal);
+            this.HashLoc(this.checkout_loc, this.textBoxTax);
+            this.HashLoc(this.checkout_loc, this.textBoxTotalAmount);
+        }
+
+        public void HashLoc( System.Collections.Hashtable hash, System.Windows.Controls.TextBox o )
+        {
+            double x = Canvas.GetLeft(o);
+            double y = Canvas.GetTop(o);
+            hash[o] = new double[] {x,y};
+        }
+
+        public void RestoreHashLoc(System.Collections.Hashtable hash, object o)
+        {
+            double[] loc = (double[])this.checkout_loc[o];
+            FrameworkElement el = o as FrameworkElement;
+            el.SetValue(Canvas.LeftProperty, loc[0]);
+            el.SetValue(Canvas.TopProperty, loc[1]);
+        }
+
+        public void RestoreCheckoutControls()
+        {
+            this.RestoreHashLoc(this.checkout_loc, this.textBox1);
+            this.RestoreHashLoc(this.checkout_loc, this.textBox3);
+            this.RestoreHashLoc(this.checkout_loc, this.textBox99);
+            this.RestoreHashLoc(this.checkout_loc, this.textBoxSubTotal);
+            this.RestoreHashLoc(this.checkout_loc, this.textBoxTax);
+            this.RestoreHashLoc(this.checkout_loc, this.textBoxTotalAmount);
+        }
+
+        public void OffsetControl(object o, double offset)
+        {
+            FrameworkElement el = o as FrameworkElement;
+            double x = (double)el.GetValue(Canvas.LeftProperty);
+
+            x += offset;
+            el.SetValue(Canvas.LeftProperty, x);
         }
 
         public void Restart()
         {
+            this.canvas_checkout.Visibility = System.Windows.Visibility.Hidden;
+            this.canvas_choose.Visibility = System.Windows.Visibility.Visible;
+
+            this.textBox1.Foreground = new SolidColorBrush(Colors.Yellow);
+            this.textBox3.Foreground = new SolidColorBrush(Colors.Yellow);
+            this.textBox99.Foreground = new SolidColorBrush(Colors.Yellow);
+            this.textBoxSubTotal.Foreground = new SolidColorBrush(Colors.Yellow);
+            this.textBoxTax.Foreground = new SolidColorBrush(Colors.Yellow);
+            this.textBoxTotalAmount.Foreground = new SolidColorBrush(Colors.Yellow);
+            this.RestoreCheckoutControls();
+
             foreach (Image img in this.imgs)
             {
                 img.Visibility = System.Windows.Visibility.Visible;
@@ -214,6 +270,7 @@ namespace HerculesWPFChoose
             this.mode = 0;
 
             this.redraw_cart();
+            this.update_cost();
         }
 
         private void UpdateCostHash(String[] paths, double[] cst)
@@ -671,6 +728,23 @@ namespace HerculesWPFChoose
 
         private void imageCheckout_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            double offset = -250.0;
+            this.OffsetControl(this.textBox1, offset);
+            this.OffsetControl(this.textBox3, offset);
+            this.OffsetControl(this.textBox99, offset);
+            this.OffsetControl(this.textBoxSubTotal, offset);
+            this.OffsetControl(this.textBoxTax, offset);
+            this.OffsetControl(textBoxTotalAmount, offset);
+            this.textBox1.Foreground = new SolidColorBrush(Colors.Blue);
+            this.textBox3.Foreground = new SolidColorBrush(Colors.Blue);
+            this.textBox99.Foreground = new SolidColorBrush(Colors.Blue);
+            this.textBoxSubTotal.Foreground = new SolidColorBrush(Colors.Blue);
+            this.textBoxTax.Foreground = new SolidColorBrush(Colors.Blue);
+            this.textBoxTotalAmount.Foreground = new SolidColorBrush(Colors.Blue);
+
+            this.canvas_checkout.Visibility = System.Windows.Visibility.Visible;
+            this.canvas_choose.Visibility = System.Windows.Visibility.Hidden;
+
             this.mode = 1; // checkout...
 
             foreach ( Image img in this.imgs )
@@ -689,6 +763,11 @@ namespace HerculesWPFChoose
             this.labelPay.Content =
                 String.Format("Your Total Is ${0:0.00}", this.total);
             this.labelMessage.Content = "Please Pay And Pick Up Your Order Now.";
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

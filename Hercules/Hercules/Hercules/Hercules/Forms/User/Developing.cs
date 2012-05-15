@@ -47,11 +47,31 @@ namespace MME.Hercules.Forms.User
                 this.Refresh();
 
                 SoundUtility.PlaySync(Hercules.Properties.SoundResources.THANK_YOU_FOR_TAKING_PHOTOS);
+            }
 
-                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.DEVELOPING_PICS_SCREEN);
+            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.DEVELOPING_PICS_SCREEN);
 
-                this.Refresh();
 
+            if (istable)
+            {
+                this.label1.Parent = this.pb;
+                this.label1.BackColor = System.Drawing.Color.Transparent;
+                this.label1.ForeColor = System.Drawing.Color.Black;
+                this.label1.BringToFront();
+                this.label1.Visible = true;
+                this.label1.AutoSize = true;
+                this.label1.Text = "Developing Photos...Please Wait...";
+                int space = (int)(1024 - this.label1.Size.Width);
+                this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);
+                
+            }
+
+            this.Refresh();
+            Application.DoEvents();
+
+
+            if (!istable)
+            {
                 SoundUtility.Play(Hercules.Properties.SoundResources.DEVELOPING_PLEASE_WAIT);
             }
 
@@ -110,6 +130,18 @@ namespace MME.Hercules.Forms.User
                 Thread.Sleep(2100);
 
             }
+            else // is table
+            {
+                    this.label1.Visible = true;
+                    this.label1.Text = "Thanks For Using Photobooth!";
+                    int space = (int)(1024 - this.label1.Size.Width);
+                    this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);
+                    this.Refresh();
+                    Application.DoEvents();
+                    Thread.Sleep(2100);
+            }
+
+            this.Refresh();
 
            
             this.DialogResult = DialogResult.OK;
