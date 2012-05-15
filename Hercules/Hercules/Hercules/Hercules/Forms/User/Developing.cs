@@ -52,6 +52,7 @@ namespace MME.Hercules.Forms.User
             WindowUtility.SetScreen(pb, Hercules.Properties.Resources.DEVELOPING_PICS_SCREEN);
 
 
+
             if (istable)
             {
                 this.label1.Parent = this.pb;
@@ -60,10 +61,12 @@ namespace MME.Hercules.Forms.User
                 this.label1.BringToFront();
                 this.label1.Visible = true;
                 this.label1.AutoSize = true;
-                this.label1.Text = "Developing Photos...Please Wait...";
+                if ( this.ischeckin )
+                    this.label1.Text = "Checking-In...Please Wait...";
+                else
+                    this.label1.Text = "Developing Photos...Please Wait...";
                 int space = (int)(1024 - this.label1.Size.Width);
-                this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);
-                
+                this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);  
             }
 
             this.Refresh();
@@ -132,6 +135,12 @@ namespace MME.Hercules.Forms.User
             }
             else // is table
             {
+                this.label1.Parent = this.pb;
+                this.label1.BackColor = System.Drawing.Color.Transparent;
+                this.label1.ForeColor = System.Drawing.Color.Black;
+                this.label1.BringToFront();
+                this.label1.Visible = true;
+                this.label1.AutoSize = true;
                     this.label1.Visible = true;
                     if (this.ischeckin)
                     {
