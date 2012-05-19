@@ -48,9 +48,17 @@ namespace MME.Hercules.Forms.User
 
                 SoundUtility.PlaySync(Hercules.Properties.SoundResources.THANK_YOU_FOR_TAKING_PHOTOS);
             }
-
-            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.DEVELOPING_PICS_SCREEN);
-
+            else
+            {
+                if (!this.ispromo)
+                {
+                    WindowUtility.SetScreen(pb, Hercules.Properties.Resources.DEVELOPING_PICS_SCREEN);
+                }
+                else
+                {
+                    WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PROMO_COMPLETE);
+                }
+            }
 
 
             if (istable)
@@ -61,10 +69,22 @@ namespace MME.Hercules.Forms.User
                 this.label1.BringToFront();
                 this.label1.Visible = true;
                 this.label1.AutoSize = true;
-                if ( this.ischeckin )
+                if (this.ischeckin)
                     this.label1.Text = "Checking-In...Please Wait...";
                 else
+                {
+                    bool bypass_developing_text = false;
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "BypassDevelopingText")))
+                    {
+                        bypass_developing_text = true;
+                    }
+                    if (bypass_developing_text)
+                        this.label1.Visible = false;
+                    else
+                        this.label1.Visible = true;
+                    
                     this.label1.Text = "Developing Photos...Please Wait...";
+                }
                 int space = (int)(1024 - this.label1.Size.Width);
                 this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);  
             }
@@ -123,9 +143,15 @@ namespace MME.Hercules.Forms.User
                 //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),true);
 
 
+                if (this.ispromo)
+                {
+                    WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PROMO_COMPLETE);
 
-                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PHOTOS_COMPLETE_SCREEN);
-
+                }
+                else
+                {
+                    WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PHOTOS_COMPLETE_SCREEN);
+                }
 
                 this.Refresh();
                 SoundUtility.Play(Hercules.Properties.SoundResources.PHOTOS_COMPLETE);
@@ -135,6 +161,15 @@ namespace MME.Hercules.Forms.User
             }
             else // is table
             {
+                if (this.ispromo)
+                {
+                    WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PROMO_COMPLETE);
+                }
+                else
+                {
+                    WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PHOTOS_COMPLETE_SCREEN);
+                }
+
                 this.label1.Parent = this.pb;
                 this.label1.BackColor = System.Drawing.Color.Transparent;
                 this.label1.ForeColor = System.Drawing.Color.Black;
@@ -148,6 +183,16 @@ namespace MME.Hercules.Forms.User
                     }
                     else
                     {
+                        bool bypass_developing_text = false;
+                        if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "BypassThanksText")))
+                        {
+                            bypass_developing_text = true;
+                        }
+                        if (bypass_developing_text)
+                            this.label1.Visible = false;
+                        else
+                            this.label1.Visible = true;
+
                         this.label1.Text = "Thanks For Using Photobooth!";
                     }
                     int space = (int)(1024 - this.label1.Size.Width);

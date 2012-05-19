@@ -970,8 +970,18 @@ namespace MME.Hercules.Forms.User
                 offscreen.BringToFront();
             }
 
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR")))
+            {
+                String str = ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR");
+                info.ForeColor = ColorTranslator.FromHtml(str);
+            }
+            else
+            {
+                info.ForeColor = System.Drawing.Color.Black;
+            }
+
             //  Set message text properties...
-            info.ForeColor = System.Drawing.Color.Black;
+            
             infof.ForeColor = info.ForeColor;
             //info.BackColor = System.Drawing.Color.Red;
             //infof.BackColor = System.Drawing.Color.Red;
@@ -1031,10 +1041,10 @@ namespace MME.Hercules.Forms.User
             this.pictureBoxLike.Visible = false;
             this.labelLike.Visible = false;
             this.labelAgain.Visible = false;
-            labelAgain.ForeColor = System.Drawing.Color.Black;
+            labelAgain.ForeColor = info.ForeColor;
             labelAgainf.ForeColor = labelAgain.ForeColor;
             labelAgain.Parent = pb;
-            labelLike.ForeColor = System.Drawing.Color.Black;
+            labelLike.ForeColor = info.ForeColor;
             labelLikef.ForeColor = labelLike.ForeColor;
             labelLike.Parent = pb;
             

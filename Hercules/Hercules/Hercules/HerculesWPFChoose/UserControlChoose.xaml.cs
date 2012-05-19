@@ -15,6 +15,7 @@ using System.Threading;
 
 using System.Windows.Threading;
 using System.Diagnostics;
+using MME.HerculesConfig;
 
 namespace HerculesWPFChoose
 {
@@ -121,6 +122,11 @@ namespace HerculesWPFChoose
 
         private int rotation = 0;
 
+        public String[][] item_paths = new String[6][] {null,null,null,null,null,null};
+        public double[][] item_cost = new double[6][] { null, null, null, null, null, null };
+
+        public System.Collections.Hashtable bmcache = new System.Collections.Hashtable();
+
         public void SetRotation(int i)
         {
             this.rotation = i;
@@ -175,17 +181,41 @@ namespace HerculesWPFChoose
             display_cart.Add(this.image12);
             display_cart.Add(this.image13);
 
+           
+
+
+            //  white castle specific...
+            this.item_paths[0] = this.sms;
+            this.item_paths[1] = this.craves;
+            this.item_paths[2] = this.drinks;
+            this.item_paths[3] = this.bf;
+            this.item_paths[4] = this.sd;
+            this.item_paths[5] = this.sl;
+
+
+            //
+            //  load from config...
+            //
+            this.LoadMenuFromConfig();
+
             //  Specific menus...
-            this.UpdateCostHash(this.sms, this.smcost);
-            this.UpdateCostHash(this.craves, this.crave_cost);
-            this.UpdateCostHash(this.drinks, this.drink_cost);
-            this.UpdateCostHash(this.bf, this.bf_cost);
-            this.UpdateCostHash(this.sl, this.sl_cost);
-            this.UpdateCostHash(this.sd, this.sd_cost);
+            //this.UpdateCostHash(this.sms, this.smcost);
+            //this.UpdateCostHash(this.craves, this.crave_cost);
+            //this.UpdateCostHash(this.drinks, this.drink_cost);
+            //this.UpdateCostHash(this.bf, this.bf_cost);
+            //this.UpdateCostHash(this.sl, this.sl_cost);
+            //this.UpdateCostHash(this.sd, this.sd_cost);
+
+            //this.UpdateCostHash(this.item_paths[0], this.smcost);
+            //this.UpdateCostHash(this.item_paths[1], this.crave_cost);
+            //this.UpdateCostHash(this.item_paths[2], this.drink_cost);
+            //this.UpdateCostHash(this.item_paths[3], this.bf_cost);
+            //this.UpdateCostHash(this.item_paths[4], this.sl_cost);
+            //this.UpdateCostHash(this.item_paths[5], this.sl_cost);
 
             //  Initial menu...
-            this.SetOption(0);
-
+            //this.SetOption(0);
+            this.cur_option = 0;
 
             friction = 0.95;
 
@@ -203,6 +233,31 @@ namespace HerculesWPFChoose
             this.HashLoc(this.checkout_loc, this.textBoxSubTotal);
             this.HashLoc(this.checkout_loc, this.textBoxTax);
             this.HashLoc(this.checkout_loc, this.textBoxTotalAmount);
+
+
+            BitmapSource src = WindowUtility.GetScreenBitmapWPF("menu_select.png");
+            this.image1.Source = src;
+
+            src = WindowUtility.GetScreenBitmapWPF("checkout_bg.png");
+            this.imagecheckout.Source = src;
+        }
+
+        public void LoadMenuFromConfig()
+        {
+            //  the menu...
+            System.Collections.ArrayList lst = WindowUtility.GetMenu();
+
+            for ( int i=0;i< lst.Count; i++ )
+            {
+                String item = (String)lst[i];
+                String[] paths = WindowUtility.GetMenuPaths( item );
+                this.item_paths[i] = paths;
+                double[] costs = WindowUtility.GetMenuCosts( item );
+                this.item_cost[i] = costs;
+
+                this.UpdateCostHash( paths, costs );
+            }
+
         }
 
         public void HashLoc( System.Collections.Hashtable hash, System.Windows.Controls.TextBox o )
@@ -281,6 +336,7 @@ namespace HerculesWPFChoose
             }
         }
 
+        /*
         private String[] GetOptionSource(int option)
         {
             String[] src = null;
@@ -310,12 +366,51 @@ namespace HerculesWPFChoose
             }
             return src;
         }
-
-        public void SetOption(int option)
+         * */
+        private String[] GetOptionSource(int option)
         {
-            this.cur_option = option;
+            return this.item_paths[option];
+        }
 
-            String[] src = this.GetOptionSource(option);
+        public BitmapImage GetBitMap(String path)
+        {
+            BitmapImage bi = (BitmapImage)this.bmcache[path];
+            if (bi == null)
+            {
+                //Uri uri = new Uri(path, UriKind.Absolute);
+                //BitmapImage bm = new BitmapImage(uri);
+
+                BitmapImage bm = WindowUtility.GetBitmapWPF(path);
+
+                this.bmcache.Add(path, bm);
+                return bm;
+            }
+            else
+            {
+                return bi;
+            }
+        }
+
+
+        public int GetIconIndex(String name)
+        {
+
+            System.Collections.ArrayList icon_pngs = WindowUtility.GetMenuIconFilenames();
+
+            String check = string.Format("{0}.png", name);
+            for (int i = 0; i < icon_pngs.Count; i++)
+            {
+                String icon = (String)icon_pngs[i];
+                if (icon.EndsWith(check)) return i;
+            }
+            return -1;
+        }
+
+        public void SetOption(String option)
+        {
+            this.cur_option = GetIconIndex(option);
+
+            String[] src = this.GetOptionSource(this.cur_option);
 
             int max = src.Length;
             if (max > MAX) max = MAX;
@@ -325,8 +420,9 @@ namespace HerculesWPFChoose
                 Image img = (Image)this.imgs[i];
                 img.Visibility = System.Windows.Visibility.Visible;
                 String path = (String)src[i];
-                Uri uri = new Uri(path, UriKind.Relative);
-                BitmapImage bm = new BitmapImage(uri);
+                //Uri uri = new Uri(path, UriKind.Relative);
+                //BitmapImage bm = new BitmapImage(uri);
+                BitmapImage bm = this.GetBitMap(path);
                 if (img.Source != null) img.Source = null;
                 img.Source = bm;
             }
@@ -420,8 +516,9 @@ namespace HerculesWPFChoose
             {
                 Image timg = (Image)this.display_cart[i];
                 String path = (String)cart[i];
-                Uri uri = new Uri(path, UriKind.Relative);
-                BitmapImage bm = new BitmapImage(uri);
+                //Uri uri = new Uri(path, UriKind.Relative);
+                //BitmapImage bm = new BitmapImage(uri);
+                BitmapImage bm = this.GetBitMap(path);
                 if (timg.Source != null) timg.Source = null;
                 timg.Source = bm;
                 timg.Visibility = System.Windows.Visibility.Visible;
@@ -735,12 +832,27 @@ namespace HerculesWPFChoose
             this.OffsetControl(this.textBoxSubTotal, offset);
             this.OffsetControl(this.textBoxTax, offset);
             this.OffsetControl(textBoxTotalAmount, offset);
+
             this.textBox1.Foreground = new SolidColorBrush(Colors.Blue);
-            this.textBox3.Foreground = new SolidColorBrush(Colors.Blue);
-            this.textBox99.Foreground = new SolidColorBrush(Colors.Blue);
-            this.textBoxSubTotal.Foreground = new SolidColorBrush(Colors.Blue);
-            this.textBoxTax.Foreground = new SolidColorBrush(Colors.Blue);
-            this.textBoxTotalAmount.Foreground = new SolidColorBrush(Colors.Blue);
+                    this.textBox3.Foreground = new SolidColorBrush(Colors.Blue);
+                    this.textBox99.Foreground = new SolidColorBrush(Colors.Blue);
+                    this.textBoxSubTotal.Foreground = new SolidColorBrush(Colors.Blue);
+                    this.textBoxTax.Foreground = new SolidColorBrush(Colors.Blue);
+                    this.textBoxTotalAmount.Foreground = new SolidColorBrush(Colors.Blue);
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "CheckoutTextColor")))
+            {
+                String color = ConfigUtility.GetConfig(ConfigUtility.Config, "CheckoutTextColor");
+                if (color=="yellow")
+                {
+                    this.textBox1.Foreground = new SolidColorBrush(Colors.Yellow);
+                    this.textBox3.Foreground = new SolidColorBrush(Colors.Yellow);
+                    this.textBox99.Foreground = new SolidColorBrush(Colors.Yellow);
+                    this.textBoxSubTotal.Foreground = new SolidColorBrush(Colors.Yellow);
+                    this.textBoxTax.Foreground = new SolidColorBrush(Colors.Yellow);
+                    this.textBoxTotalAmount.Foreground = new SolidColorBrush(Colors.Yellow);
+                }
+            }
 
             this.canvas_checkout.Visibility = System.Windows.Visibility.Visible;
             this.canvas_choose.Visibility = System.Windows.Visibility.Hidden;

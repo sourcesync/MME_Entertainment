@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="768" d:DesignWidth="1024">
+             d:DesignHeight="768" d:DesignWidth="1024" Loaded="UserControl_Loaded">
 
 
 
@@ -14,6 +14,7 @@
         <ScrollViewer Canvas.Left="0" Canvas.Top="253" Width="1024" Height="347" x:Name="scrollViewer1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" MouseDown="image5_MouseDown">
             <Image Height="21" Name="image10" Stretch="Fill" Width="200" />
         </ScrollViewer>
+        <Image Canvas.Left="-248" Canvas.Top="320" Height="124" Name="image11" Source="/HerculesWPFMain;component/Images/future-icon.png" Stretch="Fill" Width="124" />
         <Image Canvas.Left="-119" Canvas.Top="320" Height="124" Name="image9" Source="/HerculesWPFMain;component/Images/web-icon.png" Stretch="Fill" Width="124" MouseDown="image5_MouseDown" MouseUp="image5_MouseUp" />
         <Image Canvas.Top="320" Canvas.Left="21" Height="124" Name="image2" Stretch="Fill" Width="124" Source="/HerculesWPFMain;component/Images/games-icon1.png" MouseUp="image5_MouseUp" />
         <Image Canvas.Left="305" Canvas.Top="320" Height="124" Name="image4" Source="/HerculesWPFMain;component/Images/camera-icon.png" Stretch="Fill" Width="124" MouseUp="image5_MouseUp" />
@@ -36,6 +37,18 @@
                 <RotateTransform Angle="180"></RotateTransform>
             </Image.RenderTransform>
         </Image>
+        <Image Canvas.Left="10" Canvas.Top="10" Height="18" Name="image12" Source="/HerculesWPFMain;component/Images/web100.png" Stretch="None" Width="150" />
+        <Image Canvas.Left="-248" Canvas.Top="485" Height="18" Name="imageevents2" Source="/HerculesWPFMain;component/Images/events100.png" Stretch="None" Width="150" />
+        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label1" />
+        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label2" />
+        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label3" />
+        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label4" />
+        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label5" />
+        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label6" />
+        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label7" />
+        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label8" />
+        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label9" />
+        
     </Canvas>
 
 

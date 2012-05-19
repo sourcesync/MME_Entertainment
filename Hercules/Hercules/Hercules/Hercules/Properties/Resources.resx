@@ -193,4 +193,7 @@
   <data name="PROMO_SCREEN" xml:space="preserve">
     <value>promo.jpg</value>
   </data>
+  <data name="PROMO_COMPLETE" xml:space="preserve">
+    <value>promo_complete.jpg</value>
+  </data>
 </root>

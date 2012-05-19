@@ -154,12 +154,33 @@ namespace MME.Hercules.Forms.User
                 this.labelQuestion.Visible = true;
                 this.labelQuestion.AutoSize = false;
                 this.labelQuestion.TextAlign = ContentAlignment.MiddleCenter;
+
                 if (!this.ischeckin)
                 {
+                    bool bypass_facebook_post_text = false;
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "BypassFacebookPostText")))
+                    {
+                        bypass_facebook_post_text = true;
+                    }
+                    if (bypass_facebook_post_text)
+                        this.labelQuestion.Visible = false;
+                    else
+                        this.labelQuestion.Visible = true;
+
                     this.labelQuestion.Text = "Would you like to post your photo to FaceBook?";
                 }
                 else
                 {
+                    bool bypass_facebook_checkin_text = false;
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "BypassFacebookCheckinText")))
+                    {
+                        bypass_facebook_checkin_text = true;
+                    }
+                    if (bypass_facebook_checkin_text)
+                        this.labelQuestion.Visible = false;
+                    else
+                        this.labelQuestion.Visible = true;
+
                     this.labelQuestion.Text = "Would you like to check-in to FaceBook?";
                 }
                 this.labelQuestion.ForeColor = System.Drawing.Color.Black;

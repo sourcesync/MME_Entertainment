@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 using System.Windows.Threading;
 using System.Diagnostics;
+using MME.HerculesConfig;
 
 namespace HerculesWPFMain
 {
@@ -39,17 +40,33 @@ namespace HerculesWPFMain
         private System.Collections.ArrayList srcq = new System.Collections.ArrayList();
         private System.Collections.Hashtable src_hash = new System.Collections.Hashtable();
 
+
         private System.Collections.ArrayList captions = new System.Collections.ArrayList();
         private System.Collections.ArrayList cap_srcq = new System.Collections.ArrayList();
         private System.Collections.Hashtable cap_src_hash = new System.Collections.Hashtable();
         private System.Collections.Hashtable cap_tr = new System.Collections.Hashtable();
 
+
+        private System.Collections.ArrayList labels = new System.Collections.ArrayList();
+        private System.Collections.ArrayList lab_srcq = new System.Collections.ArrayList();
+        private System.Collections.Hashtable lab_src_hash = new System.Collections.Hashtable();
+        private System.Collections.Hashtable lab_tr = new System.Collections.Hashtable();
+
         public delegate void UserControlMainDelegate(int option);
         public UserControlMainDelegate evt = null;
 
-        
+        private System.Collections.Hashtable bmcache = new System.Collections.Hashtable();
 
         private int rotation = 0;
+
+
+        SolidColorBrush myRedBrush = new SolidColorBrush(Colors.Red);
+        SolidColorBrush myYellowBrush = new SolidColorBrush(Colors.Yellow);
+        SolidColorBrush myGreenBrush = new SolidColorBrush(Colors.Green);
+        SolidColorBrush myTransparentBrush = new SolidColorBrush(Colors.Transparent);
+        SolidColorBrush myBlackBrush = new SolidColorBrush(Colors.Black);
+        SolidColorBrush myWhiteBrush = new SolidColorBrush(Colors.White);
+        SolidColorBrush myForeBrush = null;
 
         public void SetRotation(int i)
         {
@@ -68,6 +85,7 @@ namespace HerculesWPFMain
         {
             InitializeComponent();
 
+            this.images.Add(this.image11);
             this.images.Add(this.image9);
             this.images.Add(this.image2);
             this.images.Add(this.image3);
@@ -76,8 +94,8 @@ namespace HerculesWPFMain
             this.images.Add(this.image6);
             this.images.Add(this.image7);
             this.images.Add(this.image8);
-            //this.images.Add(this.image10);
 
+            this.captions.Add(this.imageevents2);
             this.captions.Add(this.imageweb2);
             this.captions.Add(this.imagegames);
             this.captions.Add(this.imagepromos);
@@ -87,7 +105,17 @@ namespace HerculesWPFMain
             this.captions.Add(this.imageevents);
             this.captions.Add(this.imageweb);
 
+            this.labels.Add(this.label1);
+            this.labels.Add(this.label2);
+            this.labels.Add(this.label3);
+            this.labels.Add(this.label4);
+            this.labels.Add(this.label5);
+            this.labels.Add(this.label6);
+            this.labels.Add(this.label7);
+            this.labels.Add(this.label8);
+            this.labels.Add(this.label9);
 
+            /*
             this.srcq.Add("/HerculesWPFMain;component/Images/games-icon1.png");
             this.srcq.Add("/HerculesWPFMain;component/Images/promo-icon.png");
             this.srcq.Add("/HerculesWPFMain;component/Images/camera-icon.png");
@@ -95,7 +123,11 @@ namespace HerculesWPFMain
             this.srcq.Add("/HerculesWPFMain;component/Images/checkin-icon.png");
             this.srcq.Add("/HerculesWPFMain;component/Images/future-icon.png");
             this.srcq.Add("/HerculesWPFMain;component/Images/web-icon.png");
+            */
+            this.srcq  = WindowUtility.GetMainPaths();
 
+            
+            /*
             this.cap_srcq.Add("/HerculesWPFMain;component/Images/games100.png");
             this.cap_srcq.Add("/HerculesWPFMain;component/Images/promos100.png");
             this.cap_srcq.Add("/HerculesWPFMain;component/Images/photobooth100.png");
@@ -103,24 +135,35 @@ namespace HerculesWPFMain
             this.cap_srcq.Add("/HerculesWPFMain;component/Images/checkin100.png");
             this.cap_srcq.Add("/HerculesWPFMain;component/Images/events100.png");
             this.cap_srcq.Add("/HerculesWPFMain;component/Images/web100.png");
+            */
+            this.cap_srcq = WindowUtility.GetMainPaths();
 
+            /*
             TransformGroup gr = new TransformGroup();
             gr.Children.Add(new TranslateTransform(-11, 0));
             gr.Children.Add(new ScaleTransform(3, 3));
+             * */
+            TransformGroup gr = new TransformGroup();
+            //gr.Children.Add(new TranslateTransform(20, 0));
+            gr.Children.Add(new ScaleTransform(2, 2));
+
+
+            /*
             this.cap_tr["/HerculesWPFMain;component/Images/games100.png"] = gr;
-
             this.cap_tr["/HerculesWPFMain;component/Images/promos100.png"] = gr;
-
             this.cap_tr["/HerculesWPFMain;component/Images/photobooth100.png"] = gr;
-
             this.cap_tr["/HerculesWPFMain;component/Images/menu100.png"] = gr;
-
             this.cap_tr["/HerculesWPFMain;component/Images/checkin100.png"] = gr;
-
             this.cap_tr["/HerculesWPFMain;component/Images/events100.png"] = gr;
-
             this.cap_tr["/HerculesWPFMain;component/Images/web100.png"] = gr;
+             * */
+            foreach (String cap_path in this.cap_srcq)
+            {
+                this.cap_tr[cap_path] = gr;
+            }
 
+            /*
+            this.src_hash[this.image11] = "/HerculesWPFMain;component/Images/future-icon.png";
             this.src_hash[this.image9] = "/HerculesWPFMain;component/Images/web-icon.png";
             this.src_hash[this.image2] = "/HerculesWPFMain;component/Images/games-icon1.png";
             this.src_hash[this.image3] = "/HerculesWPFMain;component/Images/promo-icon.png";
@@ -130,7 +173,20 @@ namespace HerculesWPFMain
             this.src_hash[this.image7] = "/HerculesWPFMain;component/Images/future-icon.png";
             this.src_hash[this.image8] = "/HerculesWPFMain;component/Images/web-icon.png";
             //this.src_hash[this.image10] = "/WpfSandbox;component/Images/games-icon1.png";
+            */
+            for (int i = 0; i < this.images.Count; i++)
+            {
+                int count = this.srcq.Count;
+                int which = (i % count);
+                String path = (String)this.srcq[which];
+                this.src_hash[this.images[i]] = path;
 
+                Image img = (Image)this.images[i];
+                img.Source = this.GetBitMap(path);
+            }
+
+            /*
+            this.cap_src_hash[this.imageevents2] = "/HerculesWPFMain;component/Images/events100.png";
             this.cap_src_hash[this.imageweb2] = "/HerculesWPFMain;component/Images/web100.png";
             this.cap_src_hash[this.imagegames] = "/HerculesWPFMain;component/Images/games100.png";
             this.cap_src_hash[this.imagepromos] = "/HerculesWPFMain;component/Images/promos100.png";
@@ -139,6 +195,49 @@ namespace HerculesWPFMain
             this.cap_src_hash[this.imagecheckin] = "/HerculesWPFMain;component/Images/checkin100.png";
             this.cap_src_hash[this.imageevents] = "/HerculesWPFMain;component/Images/events100.png";
             this.cap_src_hash[this.imageweb] = "/HerculesWPFMain;component/Images/web100.png";
+            */
+            for (int i = 0; i < this.captions.Count; i++)
+            {
+                int which = (i % this.cap_srcq.Count);
+                String path = (String)this.cap_srcq[which];
+                this.cap_src_hash[this.captions[i]] = path;
+
+
+                //Image img = (Image)this.images[i];
+                //img.Source = this.GetBitMap(path);
+            }
+
+
+            this.lab_srcq = WindowUtility.GetMain();
+            for (int i = 0; i < this.lab_srcq.Count; i++)
+            {
+                String path = (String)this.lab_srcq[i];
+                Label lbl = (Label)this.labels[0];
+                FrameworkElement el = lbl as FrameworkElement;
+                lbl.Content = this.lab_srcq[i];
+                double w = 1024 / 7;
+                double off = (w - (double)el.GetValue(Canvas.ActualWidthProperty)) / 2.0 - 15;
+                TransformGroup ggr = new TransformGroup();
+                ggr.Children.Add(new ScaleTransform(2, 2));
+                ggr.Children.Add(new TranslateTransform(off-10, 0));
+                this.lab_tr[path] = ggr;
+            }
+
+
+            for (int i = 0; i < this.labels.Count; i++)
+            {
+                int which = (i % this.lab_srcq.Count);
+                String path = (String)this.lab_srcq[which];
+                this.lab_src_hash[this.labels[i]] = path;
+                Label lbl = (Label)this.labels[i];
+                lbl.Content = path;
+                lbl.Foreground = this.myWhiteBrush;
+
+
+            }
+
+
+
 
             this.ResizeImages(1.4);
 
@@ -157,9 +256,19 @@ namespace HerculesWPFMain
                 element.SetValue(Canvas.LeftProperty, x);
                 element.SetValue(Canvas.TopProperty, y);
 
+
                 Image img = (Image)this.captions[i];
                 String path = (String)this.cap_src_hash[img];
                 img.RenderTransform = (TransformGroup)this.cap_tr[path];
+
+
+                y = 480;
+                element = this.labels[i] as FrameworkElement;
+                element.SetValue(Canvas.LeftProperty, x);
+                element.SetValue(Canvas.TopProperty, y);
+                Label lbl = (Label)element;
+                path = (String)this.lab_src_hash[lbl];
+                lbl.RenderTransform = (TransformGroup)this.lab_tr[path];
             }
 
 
@@ -170,6 +279,9 @@ namespace HerculesWPFMain
             animationTimer.Tick += new EventHandler(HandleWorldTimerTick);
             animationTimer.Start();
 
+
+            BitmapSource src = WindowUtility.GetScreenBitmapWPF("table_main_menu_bg.jpg");
+            this.image1.Source = src;
         }
 
         public String[] GetPrev(object o)
@@ -178,9 +290,13 @@ namespace HerculesWPFMain
             String path = (String)this.src_hash[o];
             int idx = this.srcq.IndexOf(path);
             if (idx == 0)
-                return new String[] { (String)this.srcq[this.srcq.Count - 1], (String)this.cap_srcq[this.srcq.Count - 1] };
+                return new String[] { (String)this.srcq[this.srcq.Count - 1], 
+                    (String)this.cap_srcq[this.srcq.Count - 1],
+                    (String)this.lab_srcq[this.srcq.Count - 1]};
             else
-                return new String[] { (String)this.srcq[idx - 1], (String)this.cap_srcq[idx - 1] };
+                return new String[] { (String)this.srcq[idx - 1], 
+                    (String)this.cap_srcq[idx - 1],
+                    (String)this.lab_srcq[idx - 1]};
         }
 
         public String[] GetPost(object o)
@@ -189,9 +305,11 @@ namespace HerculesWPFMain
             String path = (String)this.src_hash[o];
             int idx = this.srcq.IndexOf(path);
             if (idx == this.srcq.Count - 1)
-                return new String[] { (String)this.srcq[0], (String)this.cap_srcq[0] };
+                return new String[] { (String)this.srcq[0], (String)this.cap_srcq[0],
+                 (String)this.lab_srcq[0]};
             else
-                return new String[] { (String)this.srcq[idx + 1], (String)this.cap_srcq[idx + 1] };
+                return new String[] { (String)this.srcq[idx + 1], (String)this.cap_srcq[idx + 1],
+                (String)this.lab_srcq[idx + 1]};
         }
 
         public void HashPos(System.Collections.Hashtable hash, object el)
@@ -269,11 +387,44 @@ namespace HerculesWPFMain
 
         }
 
+        public BitmapImage GetBitMap(String path)
+        {
+            BitmapImage bi = (BitmapImage)this.bmcache[path];
+            if (bi == null)
+            {
+                //Uri uri = new Uri(path, UriKind.Absolute);
+                //BitmapImage bm = new BitmapImage(uri);
+
+                BitmapImage bm = WindowUtility.GetBitmapWPF(path);
+
+                this.bmcache.Add(path, bm);
+                return bm;
+            }
+            else
+            {
+                return bi;
+            }
+        }
+
+        public void ReplaceLabel(Label lbl, String txt)
+        {
+            lbl.Content = txt;
+
+            //img.Source = null;
+            //Uri uri = new Uri(path, UriKind.Relative);
+            //BitmapImage bm = new BitmapImage(uri);
+            //BitmapImage bm = this.GetBitMap(path);
+
+            //img.Source = bm;
+        }
+
         public void ReplaceImage(Image img, String path)
         {
             img.Source = null;
-            Uri uri = new Uri(path, UriKind.Relative);
-            BitmapImage bm = new BitmapImage(uri);
+            //Uri uri = new Uri(path, UriKind.Relative);
+            //BitmapImage bm = new BitmapImage(uri);
+            BitmapImage bm = this.GetBitMap(path);
+
             img.Source = bm;
         }
 
@@ -299,20 +450,31 @@ namespace HerculesWPFMain
                 coordx = (double)el.GetValue(Canvas.LeftProperty);
                 coordx += diff;
                 el.SetValue(Canvas.LeftProperty, coordx);
+
+                el = this.labels[i] as FrameworkElement;
+                coordx = (double)el.GetValue(Canvas.LeftProperty);
+                coordx += diff;
+                el.SetValue(Canvas.LeftProperty, coordx);
             }
 
             /*reque as needed*/
             {
                 Image fimg = (Image)this.images[0];
                 Image fcap = (Image)this.captions[0];
+                fcap.Visibility = System.Windows.Visibility.Hidden;
+                Label flab = (Label)this.labels[0];
                 Image limg = (Image)this.images[this.images.Count - 1];
                 Image lcap = (Image)this.captions[this.captions.Count - 1];
+                lcap.Visibility = System.Windows.Visibility.Hidden;
+                Label llab = (Label)this.labels[this.labels.Count - 1];
 
                 FrameworkElement fel = fimg as FrameworkElement;
                 FrameworkElement fcapel = fcap as FrameworkElement;
+                FrameworkElement flabel = flab as FrameworkElement;
                 double fcoordx = (double)fel.GetValue(Canvas.LeftProperty);
                 FrameworkElement lel = limg as FrameworkElement;
                 FrameworkElement lcapel = lcap as FrameworkElement;
+                FrameworkElement llabel = llab as FrameworkElement;
                 double lcoordx = (double)lel.GetValue(Canvas.LeftProperty);
 
                 if (fcoordx + 1024 / 7 < 0)
@@ -330,6 +492,13 @@ namespace HerculesWPFMain
                     this.ReplaceImage(fcap, paths[1]);
                     fcap.RenderTransform = (TransformGroup)this.cap_tr[paths[1]];
                     this.cap_src_hash[fcap] = paths[1];
+
+                    this.labels.RemoveAt(0);
+                    this.labels.Add(flab);
+                    flabel.SetValue(Canvas.LeftProperty, lcoordx + 1024 / 7);
+                    this.ReplaceLabel(flab, paths[2]);
+                    flab.RenderTransform = (TransformGroup)this.lab_tr[paths[2]];
+                    this.lab_src_hash[flab] = paths[2];
                 }
                 else if (lcoordx > 1024)
                 {
@@ -346,6 +515,13 @@ namespace HerculesWPFMain
                     this.ReplaceImage(lcap, paths[1]);
                     lcap.RenderTransform = (TransformGroup)this.cap_tr[paths[1]];
                     this.cap_src_hash[lcap] = paths[1];
+
+                    this.labels.RemoveAt(this.labels.Count - 1);
+                    this.labels.Insert(0, llab);
+                    llabel.SetValue(Canvas.LeftProperty, fcoordx - 1024 / 7);
+                    this.ReplaceLabel(llab, paths[2]);
+                    llab.RenderTransform = (TransformGroup)this.lab_tr[paths[2]];
+                    this.lab_src_hash[llab] = paths[2];
                 }
             }
 
@@ -509,6 +685,30 @@ namespace HerculesWPFMain
         private void imageweb_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            /*
+            for (int i = 0; i < this.labels.Count; i++)
+            {
+                int which = (i % this.lab_srcq.Count);
+                String path = (String)this.lab_srcq[which];
+                this.lab_src_hash[this.labels[i]] = path;
+                Label lbl = (Label)this.labels[i];
+                
+
+                TransformGroup ggr = new TransformGroup();
+                double off = lbl.Width;
+                FrameworkElement el = lbl as FrameworkElement;
+                off = (1024.0 / 7 - (double)el.GetValue(Canvas.ActualWidthProperty)) / 2.0;
+                
+                ggr.Children.Add(new TranslateTransform(off, 0));
+                //ggr.Children.Add(new ScaleTransform(2, 2));
+                this.lab_tr[path] = ggr;
+
+            }
+             * */
         }
 
 

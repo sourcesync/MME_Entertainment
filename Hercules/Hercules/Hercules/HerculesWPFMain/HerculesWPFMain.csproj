@@ -342,6 +342,16 @@
   <ItemGroup>
     <Resource Include="Images\whitecastle-blue.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HerculesCommon\HerculesCommon.csproj">
+      <Project>{AB1FB280-727C-4D8E-A4F7-FC0821BB10E7}</Project>
+      <Name>HerculesCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesConfig\HerculesConfig.csproj">
+      <Project>{9B7E97E5-F7AC-47C4-8147-B1B19BBC76E9}</Project>
+      <Name>HerculesConfig</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

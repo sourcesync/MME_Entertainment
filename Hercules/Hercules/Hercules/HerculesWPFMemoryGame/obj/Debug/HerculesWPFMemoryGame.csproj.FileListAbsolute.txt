@@ -10,3 +10,5 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercule
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\GenerateResource.write.1.tlog
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.dll
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesConfig.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesConfig.pdb

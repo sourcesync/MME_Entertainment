@@ -28,3 +28,5 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercule
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMaster\bin\Debug\HerculesWPFGameMenu.pdb
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMaster\bin\Debug\HerculesWPFTicTacToe.dll
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMaster\bin\Debug\HerculesWPFTicTacToe.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMaster\bin\Debug\HerculesConfig.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMaster\bin\Debug\HerculesConfig.pdb

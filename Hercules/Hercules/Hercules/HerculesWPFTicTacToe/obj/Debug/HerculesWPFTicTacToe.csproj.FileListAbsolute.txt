@@ -10,3 +10,5 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercule
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\GenerateResource.write.1.tlog
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.dll
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesConfig.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesConfig.pdb

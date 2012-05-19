@@ -1,0 +1,5 @@
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\obj\Debug\ResolveAssemblyReference.cache
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\bin\Debug\HerculesConfig.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\bin\Debug\HerculesConfig.pdb
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\obj\Debug\HerculesConfig.dll
+C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\obj\Debug\HerculesConfig.pdb

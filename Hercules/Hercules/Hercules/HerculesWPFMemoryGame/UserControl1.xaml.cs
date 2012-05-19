@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MME.HerculesConfig;
 
 namespace HerculesWPFMemoryGame
 {
@@ -91,9 +92,66 @@ namespace HerculesWPFMemoryGame
 
         bool sem = false;
 
+        public String[][] item_paths = new String[6][] { null, null, null, null, null, null };
+
+        private System.Collections.Hashtable bmcache = new System.Collections.Hashtable();
+
         public UserControl1()
         {
             InitializeComponent();
+
+            this.LoadMenuFromConfig();
+
+            BitmapSource src = WindowUtility.GetScreenBitmapWPF("table_main_menu_bg.jpg");
+            this.image2.Source = src;
+
+        }
+
+        public BitmapImage GetBitMap(String path)
+        {
+            if (path == null)
+            {
+                path = "memory_game.png";
+            }
+
+            BitmapImage bi = (BitmapImage)this.bmcache[path];
+            if (bi == null)
+            {
+                //Uri uri = new Uri(path, UriKind.Absolute);
+                //BitmapImage bm = new BitmapImage(uri);
+                BitmapImage bm = null;
+                if (path=="memory_game.png")
+                {
+                    bm = WindowUtility.GetScreenBitmapWPF(path);
+                }
+                else
+                {
+                    bm = WindowUtility.GetBitmapWPF(path);
+                }
+                this.bmcache.Add(path, bm);
+                return bm;
+            }
+            else
+            {
+                return bi;
+            }
+        }
+
+        public void LoadMenuFromConfig()
+        {
+            //  the menu...
+            System.Collections.ArrayList lst = WindowUtility.GetMenu();
+
+            for (int i = 0; i < lst.Count; i++)
+            {
+                String item = (String)lst[i];
+                String[] paths = WindowUtility.GetMenuPaths(item);
+                this.item_paths[i] = paths;
+                //double[] costs = WindowUtility.GetMenuCosts(item);
+                //this.item_cost[i] = costs;
+                //this.UpdateCostHash(paths, costs);
+            }
+
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -106,8 +164,9 @@ namespace HerculesWPFMemoryGame
             double grid_side_len = grid_x;
             if (grid_y < grid_x) grid_side_len = grid_y;
 
-            Uri uri = new Uri(top, UriKind.Relative);
-            BitmapImage bm = new BitmapImage(uri);
+            //Uri uri = new Uri(top, UriKind.Relative);
+            //BitmapImage bm = new BitmapImage(uri);
+            BitmapImage bm = this.GetBitMap(null);
             this.topbm = bm;
 
             //  populate centers...
@@ -139,8 +198,9 @@ namespace HerculesWPFMemoryGame
 
                     //  image source...
                     //String path = this.sd[1];
-                    uri = new Uri(top, UriKind.Relative);
-                    bm = new BitmapImage(uri);
+                    //uri = new Uri(top, UriKind.Relative);
+                    //bm = new BitmapImage(uri);
+                    bm = this.GetBitMap(null);
                     obj.Source = bm;
                     obj.MouseUp += new MouseButtonEventHandler(obj_MouseUp);
 
@@ -180,17 +240,23 @@ namespace HerculesWPFMemoryGame
             switch (randomNumber)
             {
                 case 0:
-                    return ChooseRanInArr(this.sms);
+                    return ChooseRanInArr(this.item_paths[0]);
+                    //return ChooseRanInArr(this.sms);
                 case 1:
-                    return ChooseRanInArr(this.craves);
+                    return ChooseRanInArr(this.item_paths[1]);
+                    //return ChooseRanInArr(this.craves);
                 case 2:
-                    return ChooseRanInArr(this.drinks);
+                    return ChooseRanInArr(this.item_paths[2]);
+                    //return ChooseRanInArr(this.drinks);
                 case 3:
-                    return ChooseRanInArr(this.bf);
+                    return ChooseRanInArr(this.item_paths[3]);
+                    //return ChooseRanInArr(this.bf);
                 case 4:
-                    return ChooseRanInArr(this.sl);
+                    return ChooseRanInArr(this.item_paths[4]);
+                    //return ChooseRanInArr(this.sl);
                 case 5:
-                    return ChooseRanInArr(this.sd);
+                    return ChooseRanInArr(this.item_paths[5]);
+                    //return ChooseRanInArr(this.sd);
             }
             return "";
         }
@@ -334,8 +400,10 @@ namespace HerculesWPFMemoryGame
                 //  Show the obj...
                 int iy = coord[0];
                 int ix = coord[1];
-                Uri uri = new Uri(paths[iy, ix], UriKind.Relative);
-                BitmapImage bm = new BitmapImage(uri);
+                //Uri uri = new Uri(paths[iy, ix], UriKind.Relative);
+                //BitmapImage bm = new BitmapImage(uri);
+
+                BitmapImage bm = this.GetBitMap(paths[iy, ix]);
                 images[iy, ix].Source = bm;
                 images[iy, ix].InvalidateVisual();
 
@@ -424,8 +492,9 @@ namespace HerculesWPFMemoryGame
                 //  Show the obj...
                 int iy = coord[0];
                 int ix = coord[1];
-                Uri uri = new Uri(paths[iy, ix], UriKind.Relative);
-                BitmapImage bm = new BitmapImage(uri);
+                //Uri uri = new Uri(paths[iy, ix], UriKind.Relative);
+                //BitmapImage bm = new BitmapImage(uri);
+                BitmapImage bm = this.GetBitMap(paths[iy, ix]);
                 images[iy, ix].Source = bm;
 
                 //  compare two matches...

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MME.HerculesConfig;
 
 namespace HerculesWPFWeb
 {
@@ -22,19 +23,36 @@ namespace HerculesWPFWeb
         public UserControl1()
         {
             InitializeComponent();
+
+
+           
         }
 
         private void webBrowser1_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL")))
+            {
+                String weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL");
+                this.webBrowser1.Navigate(new Uri(weburl, UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
+            }
 
-
-            this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
         }
 
         public void Load()
         {
-
-            this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL")))
+            {
+                String weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL");
+                this.webBrowser1.Navigate(new Uri(weburl, UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
+            }
         }
     }
 }

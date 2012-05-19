@@ -83,6 +83,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HerculesConfig\HerculesConfig.csproj">
+      <Project>{9B7E97E5-F7AC-47C4-8147-B1B19BBC76E9}</Project>
+      <Name>HerculesConfig</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HerculesWPFBlank\HerculesWPFBlank.csproj">
       <Project>{EBB69B0E-FCA6-4810-8C7D-3C2B06372DCE}</Project>
       <Name>HerculesWPFBlank</Name>

@@ -86,6 +86,12 @@
   <ItemGroup>
     <Resource Include="Images\SCREENBACKGROUND-nothing.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HerculesConfig\HerculesConfig.csproj">
+      <Project>{9B7E97E5-F7AC-47C4-8147-B1B19BBC76E9}</Project>
+      <Name>HerculesConfig</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

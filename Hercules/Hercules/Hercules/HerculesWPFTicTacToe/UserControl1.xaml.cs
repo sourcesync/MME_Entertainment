@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MME.HerculesConfig;
 
 namespace HerculesWPFTicTacToe
 {
@@ -44,6 +45,8 @@ namespace HerculesWPFTicTacToe
         SolidColorBrush myGreenBrush = new SolidColorBrush(Colors.Green);
         SolidColorBrush myTransparentBrush = new SolidColorBrush(Colors.Transparent);
         SolidColorBrush myBlackBrush = new SolidColorBrush(Colors.Black);
+        SolidColorBrush myWhiteBrush = new SolidColorBrush(Colors.White);
+        SolidColorBrush myForeBrush = null;
 
         private Board board = null;
 
@@ -52,6 +55,18 @@ namespace HerculesWPFTicTacToe
         public UserControl1()
         {
             InitializeComponent();
+
+
+            BitmapSource src = WindowUtility.GetScreenBitmapWPF("table_main_menu_bg.jpg");
+            this.image2.Source = src;
+
+            this.myForeBrush = this.myBlackBrush;
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "GameForeColor")))
+            {
+                String color = ConfigUtility.GetConfig(ConfigUtility.Config, "GameForeColor");
+                if (color == "white")
+                    this.myForeBrush = this.myWhiteBrush;
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -146,7 +161,7 @@ namespace HerculesWPFTicTacToe
             l.X2 = side_margin + grid_side_len * 3.0 + offsetx;
             l.Y2 = top_margin + grid_side_len;
             l.StrokeThickness = 5;
-            l.Stroke = this.myBlackBrush;
+            l.Stroke = this.myForeBrush;
             this.canvas_master.Children.Add( l );
 
             l = new Line();
@@ -155,7 +170,7 @@ namespace HerculesWPFTicTacToe
             l.X2 = side_margin + grid_side_len * 3.0 + offsetx;
             l.Y2 = top_margin + grid_side_len*2;
             l.StrokeThickness = 5;
-            l.Stroke = this.myBlackBrush;
+            l.Stroke = this.myForeBrush;
             this.canvas_master.Children.Add(l);
 
             l = new Line();
@@ -164,7 +179,7 @@ namespace HerculesWPFTicTacToe
             l.X2 = side_margin + grid_side_len + offsetx;
             l.Y2 = top_margin + grid_side_len * 3;
             l.StrokeThickness = 5;
-            l.Stroke = this.myBlackBrush;
+            l.Stroke = this.myForeBrush;
             this.canvas_master.Children.Add(l);
 
             l = new Line();
@@ -173,7 +188,7 @@ namespace HerculesWPFTicTacToe
             l.X2 = side_margin + grid_side_len * 2 + offsetx;
             l.Y2 = top_margin + grid_side_len * 3;
             l.StrokeThickness = 5;
-            l.Stroke = this.myBlackBrush;
+            l.Stroke = this.myForeBrush;
             this.canvas_master.Children.Add(l);
 
             this.timer.Tick += new EventHandler(timer_Tick);
@@ -273,7 +288,7 @@ namespace HerculesWPFTicTacToe
                 l.Y1 = center_y - grid_side_len / 2.0f + this.item_margin;
                 l.Y2 = center_y + grid_side_len / 2.0f - this.item_margin;
                 l.StrokeThickness = 15.0f;
-                l.Stroke = this.myBlackBrush;
+                l.Stroke = this.myForeBrush;
                 this.canvas_master.Children.Add(l);
                 this.renders.Add(l);
                 this.xx[move.iCol, move.iRow, 0] = l;
@@ -284,7 +299,7 @@ namespace HerculesWPFTicTacToe
                 l.Y1 = center_y + grid_side_len / 2.0f - this.item_margin;
                 l.Y2 = center_y - grid_side_len / 2.0f + this.item_margin;
                 l.StrokeThickness = 15.0f;
-                l.Stroke = this.myBlackBrush;
+                l.Stroke = this.myForeBrush;
                 this.canvas_master.Children.Add(l);
                 this.renders.Add(l);
                 this.xx[move.iCol, move.iRow, 1] = l;
@@ -297,7 +312,7 @@ namespace HerculesWPFTicTacToe
                 double center_y = this.centers[move.iCol, move.iRow, 1];
 
                 Ellipse el = new Ellipse();
-                el.Stroke = this.myBlackBrush;
+                el.Stroke = this.myForeBrush;
                 el.StrokeThickness = 15.0f;
                 //el.Fill = this.myBlackBrush;
                 FrameworkElement ll = el as FrameworkElement;

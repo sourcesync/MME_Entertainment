@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using MME.HerculesConfig;
 
 namespace HerculesWPFMaster
 {
@@ -50,6 +51,17 @@ namespace HerculesWPFMaster
             ctls.Add(this.ctlttt);
 
             this.webBrowser1.Loaded +=new RoutedEventHandler(webBrowser1_Loaded);
+
+            /*
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR")))
+            {
+
+            }
+             * */
+
+
+            BitmapSource src = WindowUtility.GetScreenBitmapWPF("calendar.jpg");
+            this.ctlevents.Source = src;
         }
 
         
@@ -168,9 +180,9 @@ namespace HerculesWPFMaster
         }
 
 
-        public void menu_selected(int option)
+        public void menu_selected(String option)
         {
-            if (option < 0)
+            if (option == null)
             {
                 this.ShowMain();
             }
@@ -318,12 +330,23 @@ namespace HerculesWPFMaster
             el.SetValue(Canvas.TopProperty, 0.0);
             this.webBrowser1.BringIntoView();
             this.current = this.webBrowser1;
-            this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
+
+            String val = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL");
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL")))
+            {
+                String weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL");
+                this.webBrowser1.Navigate(new Uri(weburl, UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
+            }
 
             this.ShowBack();
         }
 
-        public void ShowChoose(int option)
+        public void ShowChoose(String option)
         {
             this.HideAll();
             if (this.ctlchoose.mode == 1) // purchased
