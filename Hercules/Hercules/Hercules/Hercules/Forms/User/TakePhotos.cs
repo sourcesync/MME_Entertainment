@@ -1101,7 +1101,7 @@ namespace MME.Hercules.Forms.User
                     }
                     else
                     {
-                        this.startpreview(0);
+                        this.startpreview(1);
                     }
                 }
             }
