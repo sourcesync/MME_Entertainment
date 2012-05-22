@@ -415,7 +415,7 @@ namespace HerculesWPFMaster
                 this.webBrowser1 = new WebBrowser();
             }
 
-            this.webBrowser1.Height = 720;
+            this.webBrowser1.Height = 715;
             this.webBrowser1.Width = 1024;
             this.canvas_master.Children.Add(this.webBrowser1);
             FrameworkElement el = this.webBrowser1 as FrameworkElement;
