@@ -358,7 +358,8 @@ namespace HerculesWPFMain
 
         private void image5_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            return;
+            //return;
+            this.image5_MouseDown(sender, e);
         }
 
         private void image5_MouseUp(object sender, MouseButtonEventArgs e)

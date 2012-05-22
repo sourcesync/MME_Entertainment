@@ -30,6 +30,7 @@ namespace HerculesWPFWeb
 
         private void webBrowser1_Loaded(object sender, RoutedEventArgs e)
         {
+            /*
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL")))
             {
                 String weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL");
@@ -39,11 +40,12 @@ namespace HerculesWPFWeb
             {
                 this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
             }
-
+            */
         }
 
         public void Load()
         {
+            /*
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL")))
             {
                 String weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL");
@@ -53,6 +55,7 @@ namespace HerculesWPFWeb
             {
                 this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
             }
+            */
         }
     }
 }

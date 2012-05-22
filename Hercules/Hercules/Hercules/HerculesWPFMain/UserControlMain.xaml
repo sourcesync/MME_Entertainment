@@ -11,7 +11,7 @@
     <Canvas Width="1024" Height="768" Name="ctop">
         <Image Canvas.Left="-5" Canvas.Top="460" Height="20" Name="imagestrip3" Stretch="Fill" Width="1024" Source="/HerculesWPFMain;component/Images/text-strip.png" Visibility="Hidden" />
         <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFMain;component/Images/SCREENBACKGROUND-notext.png" Loaded="image1_Loaded" />
-        <ScrollViewer Canvas.Left="0" Canvas.Top="253" Width="1024" Height="347" x:Name="scrollViewer1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" MouseDown="image5_MouseDown">
+        <ScrollViewer Canvas.Left="0" Canvas.Top="433" Width="1024" Height="167" x:Name="scrollViewer1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" MouseDown="image5_MouseDown">
             <Image Height="21" Name="image10" Stretch="Fill" Width="200" />
         </ScrollViewer>
         <Image Canvas.Left="-248" Canvas.Top="320" Height="124" Name="image11" Source="/HerculesWPFMain;component/Images/future-icon.png" Stretch="Fill" Width="124" MouseUp="image5_MouseUp" />

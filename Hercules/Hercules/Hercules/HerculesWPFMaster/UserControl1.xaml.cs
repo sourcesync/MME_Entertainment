@@ -127,7 +127,11 @@ namespace HerculesWPFMaster
             }
             else if (option == "web") //web...
             {
-                this.ShowWeb();
+                this.ShowWeb("http://www.whitecastle.com");
+            }
+            else if (option == "about") //web...
+            {
+                this.ShowAbout();
             }
             else if (option == "events") // events...
             {
@@ -135,7 +139,7 @@ namespace HerculesWPFMaster
             }
             else if (option == "calendar") // calendar...
             {
-                this.ShowEvents();
+                this.ShowCalendar();
             }
             else if (option == "promo") //promo...
             {
@@ -271,13 +275,13 @@ namespace HerculesWPFMaster
             this.ShowBack();
         }
 
-        public void ShowEvents()
+        public void ShowCalendar()
         {
             this.HideAll();
             this.ctlevents.Visibility = System.Windows.Visibility.Visible;
             this.current = this.ctlevents;
             this.ShowRotators();
-            this.ShowBack();
+            this.ShowBack();       
         }
 
         public void ShowGameMenu()
@@ -319,7 +323,31 @@ namespace HerculesWPFMaster
             this.ShowBack();
         }
 
-        public void ShowWeb()
+        public void ShowAbout()
+        {
+            String weburl = "http://www.whitecastle.com/company";
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "AboutURL")))
+            {
+                weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "AboutURL");
+            }
+
+            this.ShowWeb( weburl );
+        }
+
+        public void ShowEvents()
+        {
+            String weburl = "http://www.whitecastle.com/company";
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "EventsURL")))
+            {
+                weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "EventsURL");
+            }
+
+            this.ShowWeb(weburl);
+        }
+
+        public void ShowWeb(String url)
         {
             this.HideAll();
             
