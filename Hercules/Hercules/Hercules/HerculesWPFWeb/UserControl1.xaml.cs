@@ -24,8 +24,13 @@ namespace HerculesWPFWeb
         {
             InitializeComponent();
 
-
+            this.webBrowser1.Navigated += new NavigatedEventHandler(webBrowser1_Navigated);
            
+        }
+
+        void webBrowser1_Navigated(object sender, NavigationEventArgs e)
+        {
+            String str = e.WebResponse.ResponseUri.ToString();
         }
 
         private void webBrowser1_Loaded(object sender, RoutedEventArgs e)

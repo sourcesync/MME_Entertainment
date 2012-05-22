@@ -68,26 +68,34 @@ namespace MME.HerculesConfig
 
         public static System.Windows.Controls.Image GetScreenImageWPF(string screenname)
         {
-            FileStream fs;
-            fs = new FileStream(string.Format("Skins\\{0}\\Screens\\{1}",
-                ConfigUtility.Skin,
-                screenname), FileMode.Open, FileAccess.Read);
-            FileStream stream = fs;
+            try
+            {
+                FileStream fs;
+                fs = new FileStream(string.Format("Skins\\{0}\\Screens\\{1}",
+                    ConfigUtility.Skin,
+                    screenname), FileMode.Open, FileAccess.Read);
+                FileStream stream = fs;
 
-            //Image i = new Image();
-            System.Windows.Controls.Image i = new System.Windows.Controls.Image();
-            System.Windows.Media.Imaging.BitmapImage src = new System.Windows.Media.Imaging.BitmapImage();
-            src.BeginInit();
-            src.StreamSource = stream;
-            src.EndInit();
-            i.Source = src;
-            i.Stretch = System.Windows.Media.Stretch.Uniform;
+                //Image i = new Image();
+                System.Windows.Controls.Image i = new System.Windows.Controls.Image();
+                System.Windows.Media.Imaging.BitmapImage src = new System.Windows.Media.Imaging.BitmapImage();
+                src.BeginInit();
+                src.StreamSource = stream;
+                src.EndInit();
+                i.Source = src;
+                i.Stretch = System.Windows.Media.Stretch.Uniform;
 
-            //Uri uri = new Uri(path, UriKind.Relative);
-            //BitmapImage bm = new BitmapImage(uri);
-            //System.Drawing.Image img = System.Drawing.Image.FromStream(fs);
-            //fs.Close();
-            return i;
+                //Uri uri = new Uri(path, UriKind.Relative);
+                //BitmapImage bm = new BitmapImage(uri);
+                //System.Drawing.Image img = System.Drawing.Image.FromStream(fs);
+                //fs.Close();
+                return i;
+            }
+            catch (System.Exception e)
+            {
+                System.Windows.MessageBox.Show(e.ToString());
+            }
+            return null;
         }
 
         public static System.Collections.ArrayList GetMenu()
@@ -105,27 +113,41 @@ namespace MME.HerculesConfig
 
         public static System.Collections.ArrayList GetMain()
         {
-            System.Collections.ArrayList result = new System.Collections.ArrayList();
-            foreach (String fl in Directory.EnumerateFiles(string.Format("Skins\\{0}\\Main", ConfigUtility.Skin)))
+            try
             {
-                String[] parts = fl.Split(new char[] { '\\' });
-                String fname = parts[parts.Length - 1];
-                parts = fname.Split(new char[] { '.' });
-                result.Add(parts[0]);
-            }
+                System.Collections.ArrayList result = new System.Collections.ArrayList();
+                foreach (String fl in Directory.EnumerateFiles(string.Format("Skins\\{0}\\Main", ConfigUtility.Skin)))
+                {
+                    String[] parts = fl.Split(new char[] { '\\' });
+                    String fname = parts[parts.Length - 1];
+                    parts = fname.Split(new char[] { '.' });
+                    result.Add(parts[0]);
+                }
 
-            return result;
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static System.Collections.ArrayList GetMainPaths()
         {
-            System.Collections.ArrayList result = new System.Collections.ArrayList();
-            foreach (String fl in Directory.EnumerateFiles(string.Format("Skins\\{0}\\Main", ConfigUtility.Skin)))
+            try
             {
-                result.Add(fl);
-            }
+                System.Collections.ArrayList result = new System.Collections.ArrayList();
+                foreach (String fl in Directory.EnumerateFiles(string.Format("Skins\\{0}\\Main", ConfigUtility.Skin)))
+                {
+                    result.Add(fl);
+                }
 
-            return result;
+                return result;
+            }
+            catch (System.Exception e)
+            {
+                return null;
+            }
         }
 
         public static System.Collections.ArrayList GetMenuIconFilenames()

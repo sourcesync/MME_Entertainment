@@ -129,11 +129,16 @@ namespace HerculesWPFMain
             this.srcq  = WindowUtility.GetMainPaths();
 
             System.Collections.ArrayList main_items = WindowUtility.GetMain();
-            for (int i=0;i<this.srcq.Count;i++)
+            if (main_items == null)
+                return;
+            else
             {
-                String src_str = (String)this.srcq[i];
-                String main_item  = (String)main_items[i];
-                this.main_hash[src_str] = main_item;
+                for (int i = 0; i < this.srcq.Count; i++)
+                {
+                    String src_str = (String)this.srcq[i];
+                    String main_item = (String)main_items[i];
+                    this.main_hash[src_str] = main_item;
+                }
             }
 
             

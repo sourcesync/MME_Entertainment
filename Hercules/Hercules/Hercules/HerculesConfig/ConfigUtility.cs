@@ -48,13 +48,13 @@ namespace MME.HerculesConfig
                 else if (required)
                 {
                     System.Windows.Forms.MessageBox.Show("Missing skin " + name + ".xml.  This file is required.", "Cannot continue");
-                    Environment.Exit(0);
+                    //Environment.Exit(0);
                 }
             }
             catch
             {
                 System.Windows.Forms.MessageBox.Show("Improperly formatted " + name + ".xml.");
-                Environment.Exit(0);
+                //Environment.Exit(0);
             }
         }
 

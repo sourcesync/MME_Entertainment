@@ -28,6 +28,9 @@
             <ucdraw:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctldraw" IsEnabled="True" Visibility="Hidden" />
             <ucgamemenu:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlgamemenu" IsEnabled="True" Visibility="Hidden" />
             <ucttt:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlttt" IsEnabled="True" Visibility="Hidden" />
+            <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagepromo" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/SURVEYSCREEN.jpg" />
+            <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagecono" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/concierge.png" />
+            <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagesocial" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/interact-screen.png" />
 
             <Image Canvas.Left="4" Canvas.Top="719" Height="44" Name="imageback" Source="/HerculesWPFMaster;component/Images/backarrow1.png" Stretch="Fill" Width="51" MouseDown="imageback_MouseDown" />
         </Canvas>

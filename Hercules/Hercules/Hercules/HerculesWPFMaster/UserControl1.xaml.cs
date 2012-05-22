@@ -28,6 +28,8 @@ namespace HerculesWPFMaster
         public delegate void UserControlMasterDelegate(String option);
         public UserControlMasterDelegate evt = null;
 
+        //public WebBrowser webBrowser1 = null;
+
         public UserControl1()
         {
             InitializeComponent();
@@ -59,9 +61,15 @@ namespace HerculesWPFMaster
             }
              * */
 
-
-            BitmapSource src = WindowUtility.GetScreenBitmapWPF("calendar.jpg");
-            this.ctlevents.Source = src;
+            try
+            {
+                BitmapSource src = WindowUtility.GetScreenBitmapWPF("calendar.jpg");
+                this.ctlevents.Source = src;
+            }
+            catch (System.Exception E)
+            {
+                System.Windows.MessageBox.Show(E.ToString());
+            }
         }
 
         
@@ -117,6 +125,10 @@ namespace HerculesWPFMaster
             {
                 this.ShowMenu();
             }
+            else if (option == "social")
+            {
+                this.ShowSocial();
+            }
             else if (option == "photobooth") // photobooth
             {
                 //this.ShowPhotobooth();
@@ -144,6 +156,10 @@ namespace HerculesWPFMaster
             else if (option == "promo") //promo...
             {
                 //this.ShowPromo();
+            }
+            else if (option == "concierge") //promo...
+            {
+                this.ShowConcierge();
             }
             else if (option == "check-in") // checkin
             {
@@ -224,6 +240,11 @@ namespace HerculesWPFMaster
                 el.SetValue(Canvas.LeftProperty, 2000.0);
             }
 
+            this.imagepromo.Visibility = System.Windows.Visibility.Hidden;
+
+            this.imagecono.Visibility = System.Windows.Visibility.Hidden;
+
+            this.imagesocial.Visibility = System.Windows.Visibility.Hidden;
             //this.ctlphotobooth.Stop();
         }
 
@@ -323,6 +344,36 @@ namespace HerculesWPFMaster
             this.ShowBack();
         }
 
+        public void ShowPromo()
+        {
+            this.HideAll();
+            this.imagepromo.Visibility = System.Windows.Visibility.Visible;
+
+            this.current = this.imagepromo;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowSocial()
+        {
+            this.HideAll();
+            this.imagepromo.Visibility = System.Windows.Visibility.Visible;
+
+            this.current = this.imagesocial;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowConcierge()
+        {
+            this.HideAll();
+            this.imagecono.Visibility = System.Windows.Visibility.Visible;
+
+            this.current = this.imagecono;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
         public void ShowAbout()
         {
             String weburl = "http://www.whitecastle.com/company";
@@ -358,6 +409,8 @@ namespace HerculesWPFMaster
                 this.webBrowser1 = null;
             }
             this.webBrowser1 = new WebBrowser();
+             
+
             this.webBrowser1.Height = 768;
             this.webBrowser1.Width = 1024;
             this.canvas_master.Children.Add(this.webBrowser1);
