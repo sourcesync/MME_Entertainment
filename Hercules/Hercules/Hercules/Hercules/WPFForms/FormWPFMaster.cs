@@ -14,7 +14,7 @@ namespace MME.Hercules.WPFForms
     {
         HerculesWPFMaster.UserControl1 ctlmaster = null;
         ElementHost masterhost = null;
-        public int option = 0;
+        public String option = "main";
 
         public FormWPFMaster()
         {
@@ -73,44 +73,49 @@ namespace MME.Hercules.WPFForms
             //this.Controls.Add(this.masterhost);
         }
 
-        private void master_selected(int option)
+        private void master_selected(String option)
         {
-            if (option == -2) // blank
+            if (option == "blank") // blank
             {
                 this.pictureBox1.Visible = false;
             }
-            else if (option == -1) // main
+            else if (option == "main") // main
             {
                 this.pictureBox1.Visible = false;
             }
-            if (option == 0) // menu
+            if (option == "menu") // menu
             {
                 this.pictureBox1.Visible = false;
             }
-            else if (option == 1) // photo
+            else if (option == "photobooth") // photo
             {
                 this.pictureBox1.Visible = false;
                 this.DialogResult = DialogResult.OK;
             }
-            else if (option == 2) // web
+            else if (option == "camera") // camera
+            {
+                this.pictureBox1.Visible = false;
+                this.DialogResult = DialogResult.OK;
+            }
+            else if (option == "web") // web
             {
                 this.pictureBox1.Visible = true;
             }
-            else if (option == 3) // event
+            else if (option == "event") // event
             {
                 this.pictureBox1.Visible = false;
             }
-            else if (option == 4) // promo...
-            {
-                this.pictureBox1.Visible = false;
-                this.DialogResult = DialogResult.OK;
-            }
-            else if (option == 5) // checkin...
+            else if (option == "promo") // promo...
             {
                 this.pictureBox1.Visible = false;
                 this.DialogResult = DialogResult.OK;
             }
-            else if (option == 6) // games...
+            else if (option == "check-in") // checkin...
+            {
+                this.pictureBox1.Visible = false;
+                this.DialogResult = DialogResult.OK;
+            }
+            else if (option == "games") // games...
             {
                 this.pictureBox1.Visible = false;
             }

@@ -36,6 +36,8 @@ namespace HerculesWPFMain
         bool moving = false;
         bool wasmoving = false;
 
+        private System.Collections.Hashtable main_hash = new System.Collections.Hashtable();
+
         private System.Collections.ArrayList images = new System.Collections.ArrayList();
         private System.Collections.ArrayList srcq = new System.Collections.ArrayList();
         private System.Collections.Hashtable src_hash = new System.Collections.Hashtable();
@@ -52,7 +54,7 @@ namespace HerculesWPFMain
         private System.Collections.Hashtable lab_src_hash = new System.Collections.Hashtable();
         private System.Collections.Hashtable lab_tr = new System.Collections.Hashtable();
 
-        public delegate void UserControlMainDelegate(int option);
+        public delegate void UserControlMainDelegate(String option);
         public UserControlMainDelegate evt = null;
 
         private System.Collections.Hashtable bmcache = new System.Collections.Hashtable();
@@ -125,6 +127,14 @@ namespace HerculesWPFMain
             this.srcq.Add("/HerculesWPFMain;component/Images/web-icon.png");
             */
             this.srcq  = WindowUtility.GetMainPaths();
+
+            System.Collections.ArrayList main_items = WindowUtility.GetMain();
+            for (int i=0;i<this.srcq.Count;i++)
+            {
+                String src_str = (String)this.srcq[i];
+                String main_item  = (String)main_items[i];
+                this.main_hash[src_str] = main_item;
+            }
 
             
             /*
@@ -356,6 +366,11 @@ namespace HerculesWPFMain
             if (this.moving) return;
 
             String src = (String)this.src_hash[sender];
+
+            String main_item = (String)this.main_hash[src];
+
+            if (evt != null) evt(main_item);
+            /*
             if (src == "/HerculesWPFMain;component/Images/menu-icon.png")
             {
                 if (evt != null) evt(0);   
@@ -384,7 +399,7 @@ namespace HerculesWPFMain
             {
                 if (evt != null) evt(6);
             }
-
+            */
         }
 
         public BitmapImage GetBitMap(String path)
@@ -392,9 +407,6 @@ namespace HerculesWPFMain
             BitmapImage bi = (BitmapImage)this.bmcache[path];
             if (bi == null)
             {
-                //Uri uri = new Uri(path, UriKind.Absolute);
-                //BitmapImage bm = new BitmapImage(uri);
-
                 BitmapImage bm = WindowUtility.GetBitmapWPF(path);
 
                 this.bmcache.Add(path, bm);
@@ -409,22 +421,12 @@ namespace HerculesWPFMain
         public void ReplaceLabel(Label lbl, String txt)
         {
             lbl.Content = txt;
-
-            //img.Source = null;
-            //Uri uri = new Uri(path, UriKind.Relative);
-            //BitmapImage bm = new BitmapImage(uri);
-            //BitmapImage bm = this.GetBitMap(path);
-
-            //img.Source = bm;
         }
 
         public void ReplaceImage(Image img, String path)
         {
             img.Source = null;
-            //Uri uri = new Uri(path, UriKind.Relative);
-            //BitmapImage bm = new BitmapImage(uri);
             BitmapImage bm = this.GetBitMap(path);
-
             img.Source = bm;
         }
 
@@ -660,16 +662,16 @@ namespace HerculesWPFMain
 
         }
 
-        public delegate void UserControlMainToggle(int option);
+        public delegate void UserControlMainToggle(String option);
         public UserControlMainToggle tevt = null;
 
         private void toggle(object sender)
         {
             if (this.tevt == null) return;
             if (sender == this.imagea)
-                this.tevt(0);
+                this.tevt("main");
             else
-                this.tevt(1);
+                this.tevt("menu");
         }
 
         private void imagea_MouseDown(object sender, MouseButtonEventArgs e)
@@ -709,6 +711,11 @@ namespace HerculesWPFMain
 
             }
              * */
+        }
+
+        private void image11_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
 

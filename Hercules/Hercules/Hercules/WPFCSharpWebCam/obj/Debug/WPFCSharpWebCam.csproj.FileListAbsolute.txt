@@ -25,3 +25,16 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSha
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\ResGen.write.1.tlog
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.exe
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.pdb
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\bin\Debug\WPFCSharpWebCam.exe
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\bin\Debug\WPFCSharpWebCam.pdb
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\ResolveAssemblyReference.cache
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\Window1.baml
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\Window1.g.cs
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\App.g.cs
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam_MarkupCompile.cache
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.g.resources
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.Properties.Resources.resources
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\ResGen.read.1.tlog
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\ResGen.write.1.tlog
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.exe
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.pdb

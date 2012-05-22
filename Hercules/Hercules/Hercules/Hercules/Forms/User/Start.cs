@@ -201,7 +201,7 @@ namespace MME.Hercules.Forms.User
                         System.Windows.Forms.MessageBox.Show(e.ToString());
                     }
 
-                    if (wpffrm.option == 1) // booth
+                    if ( (wpffrm.option == "photobooth") || (wpffrm.option == "camera") )// booth
                     {
                         // Are we supporting emailing
                         bool AllowEmailPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1"));
@@ -279,7 +279,7 @@ namespace MME.Hercules.Forms.User
 
 
                     } // is_table, booth mode
-                    else if (wpffrm.option == 4) // promo
+                    else if (wpffrm.option == "promo") // promo
                     {
                         // Are we supporting emailing
                         bool AllowEmailPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1"));
@@ -303,7 +303,7 @@ namespace MME.Hercules.Forms.User
                             }
                         }
                     }
-                    else if (wpffrm.option == 5) // checkin option...
+                    else if (wpffrm.option == "check-in") // checkin option...
                     {
                         bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
 

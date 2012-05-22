@@ -25,7 +25,7 @@ namespace HerculesWPFMaster
         private object current;
         private int orientation = 0;
         
-        public delegate void UserControlMasterDelegate(int option);
+        public delegate void UserControlMasterDelegate(String option);
         public UserControlMasterDelegate evt = null;
 
         public UserControl1()
@@ -105,7 +105,7 @@ namespace HerculesWPFMaster
         }
 
 
-        public void main_selected(int option)
+        public void main_selected(String option)
         {
             if (this.webBrowser1 != null)
             {
@@ -113,31 +113,39 @@ namespace HerculesWPFMaster
                 this.webBrowser1 = null;
             }
 
-            if (option == 0) // menu
+            if (option == "menu") // menu
             {
                 this.ShowMenu();
             }
-            else if (option == 1) // photobooth
+            else if (option == "photobooth") // photobooth
             {
                 //this.ShowPhotobooth();
             }
-            else if (option == 2) //web...
+            else if (option == "camera") // photobooth
+            {
+                //this.ShowPhotobooth();
+            }
+            else if (option == "web") //web...
             {
                 this.ShowWeb();
             }
-            else if (option == 3) // events...
+            else if (option == "events") // events...
             {
                 this.ShowEvents();
             }
-            else if (option == 4) //promo...
+            else if (option == "calendar") // calendar...
+            {
+                this.ShowEvents();
+            }
+            else if (option == "promo") //promo...
             {
                 //this.ShowPromo();
             }
-            else if (option == 5) // checkin
+            else if (option == "check-in") // checkin
             {
                 //this.ShowCheckin();
             }
-            else if (option == 6) // games...
+            else if (option == "games") // games...
             {
                 this.ShowGameMenu();
             }
@@ -251,7 +259,7 @@ namespace HerculesWPFMaster
             this.ShowRotators();
             this.ShowBack();
 
-            if (this.evt != null) this.evt(-1);
+            if (this.evt != null) this.evt("main");
         }
 
         public void ShowMenu()
@@ -367,7 +375,7 @@ namespace HerculesWPFMaster
             this.HideBack();
 
 
-            if (this.evt != null) this.evt(-2);
+            if (this.evt != null) this.evt("blank");
         }
 
         private void image1_MouseDown(object sender, MouseButtonEventArgs e)

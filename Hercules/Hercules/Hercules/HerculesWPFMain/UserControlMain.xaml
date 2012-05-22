@@ -14,7 +14,7 @@
         <ScrollViewer Canvas.Left="0" Canvas.Top="253" Width="1024" Height="347" x:Name="scrollViewer1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" MouseDown="image5_MouseDown">
             <Image Height="21" Name="image10" Stretch="Fill" Width="200" />
         </ScrollViewer>
-        <Image Canvas.Left="-248" Canvas.Top="320" Height="124" Name="image11" Source="/HerculesWPFMain;component/Images/future-icon.png" Stretch="Fill" Width="124" />
+        <Image Canvas.Left="-248" Canvas.Top="320" Height="124" Name="image11" Source="/HerculesWPFMain;component/Images/future-icon.png" Stretch="Fill" Width="124" MouseUp="image5_MouseUp" />
         <Image Canvas.Left="-119" Canvas.Top="320" Height="124" Name="image9" Source="/HerculesWPFMain;component/Images/web-icon.png" Stretch="Fill" Width="124" MouseDown="image5_MouseDown" MouseUp="image5_MouseUp" />
         <Image Canvas.Top="320" Canvas.Left="21" Height="124" Name="image2" Stretch="Fill" Width="124" Source="/HerculesWPFMain;component/Images/games-icon1.png" MouseUp="image5_MouseUp" />
         <Image Canvas.Left="305" Canvas.Top="320" Height="124" Name="image4" Source="/HerculesWPFMain;component/Images/camera-icon.png" Stretch="Fill" Width="124" MouseUp="image5_MouseUp" />
