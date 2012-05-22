@@ -113,7 +113,7 @@ namespace HerculesWPFMaster
                 this.webBrowser1 = null;
             }
 
-            if (option == "menu") // menu
+            if ((option == "menu")||(option=="drinks")) // menu
             {
                 this.ShowMenu();
             }
