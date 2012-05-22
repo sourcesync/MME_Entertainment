@@ -357,7 +357,7 @@ namespace HerculesWPFMaster
         public void ShowSocial()
         {
             this.HideAll();
-            this.imagepromo.Visibility = System.Windows.Visibility.Visible;
+            this.imagesocial.Visibility = System.Windows.Visibility.Visible;
 
             this.current = this.imagesocial;
             this.ShowRotators();
