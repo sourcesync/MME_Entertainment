@@ -96,7 +96,7 @@
   <add key="FaceBookCheckinLatitude" value="37.757653" />
   <add key="FaceBookCheckinLongitude" value="-122.438636" />
 
-  <add key="MenuCoords" value="drinks-290,70:wine-530,70:beer-770,70:food-290,300:dessert-530,300:beverages-770,300:server-545,535" />
+  <add key="MenuCoords" value="drinks-315,70:wine-550,70:beer-770,70:food-315,300:dessert-550,300:beverages-770,300:server-545,535" />
 
   <add key="CheckoutTextColor" value="yellow" />
   <add key="GameForeColor" value="white" />
