@@ -92,7 +92,7 @@
   <add key="FaceBookCheckinLongitude" value="-122.419415" />
   -->
   <add key="FaceBookCheckinPlaceID" value="125668440854442" />
-  <add key="FaceBookCheckinMessage" value="I took this picture at the Mobar PhotoBooth in the Mandarin Oriental Hotel!" />
+  <add key="FaceBookCheckinMessage" value="I took this picture at the MoBar PhotoBooth in the Mandarin Oriental Hotel!" />
   <add key="FaceBookCheckinLatitude" value="37.757653" />
   <add key="FaceBookCheckinLongitude" value="-122.438636" />
 
