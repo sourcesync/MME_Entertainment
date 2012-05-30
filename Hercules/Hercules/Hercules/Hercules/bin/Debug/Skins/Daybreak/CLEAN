@@ -1,0 +1,6 @@
+rm main/chat.png
+rm main/magazine.png
+rm main/laptop.png
+rm menu/server.png
+rm -r menu/server
+mv main/drinks.png main/menu.png

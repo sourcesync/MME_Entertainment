@@ -235,6 +235,7 @@ namespace HerculesWPFMain
                 TransformGroup ggr = new TransformGroup();
                 ggr.Children.Add(new ScaleTransform(2, 2));
 
+                /* MANDARIN
                 double fudge = 10.0f;
                 if (path == "concierge")
                     fudge = 30;
@@ -248,6 +249,19 @@ namespace HerculesWPFMain
                     fudge = 10;
                 else if (path == "web")
                     fudge = 8;
+                 * */
+
+                double fudge = 20.0f;
+                if (path == "daybreaker site")
+                    fudge = 55;
+                else if (path == "check-in")
+                    fudge = 25;
+                else if (path == "games")
+                    fudge = 15;
+                else if (path == "jackboxer site")
+                    fudge = 45;
+                else if (path == "photobooth")
+                    fudge = 35;
 
                 ggr.Children.Add(new TranslateTransform(off-fudge, 0));
                 this.lab_tr[path] = ggr;
@@ -261,8 +275,10 @@ namespace HerculesWPFMain
                 this.lab_src_hash[this.labels[i]] = path;
                 Label lbl = (Label)this.labels[i];
                 lbl.Content = path;
+                /* 
                 lbl.Foreground = this.myWhiteBrush;
-
+                */
+                lbl.Foreground = this.myBlackBrush;
 
             }
 

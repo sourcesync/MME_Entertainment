@@ -123,7 +123,7 @@ namespace MME.Hercules
                         "c:\\eventphotos\\634733123411250000\\0d990439657242148d26ca844cd90927.jpg", 
                     "");
                 }
-                 * */
+                */ 
                 
 
                 // Start

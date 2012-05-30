@@ -145,6 +145,14 @@ namespace HerculesWPFMaster
             {
                 this.ShowAbout();
             }
+            else if (option == "daybreaker site") //web...
+            {
+                this.ShowDBS();
+            }
+            else if (option == "jackboxer site") //web...
+            {
+                this.ShowJBS();
+            }
             else if (option == "events") // events...
             {
                 this.ShowEvents();
@@ -403,6 +411,22 @@ namespace HerculesWPFMaster
             }
 
             this.ShowWeb( weburl, false);
+        }
+
+        public void ShowJBS()
+        {
+            String weburl = "http://findthetruth.jackboxers.com";
+
+           
+            this.ShowWeb(weburl, false);
+        }
+
+        public void ShowDBS()
+        {
+            String weburl = "http://dev4.northkingdom.com/daybreak/main-site-4/";
+
+
+            this.ShowWeb(weburl, false);
         }
 
         public void ShowEvents()
