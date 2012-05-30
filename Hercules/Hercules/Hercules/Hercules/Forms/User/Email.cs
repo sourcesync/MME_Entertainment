@@ -12,6 +12,7 @@ namespace MME.Hercules.Forms.User
         private Thread thread;
         public bool ispromo = false;
         public bool istable = false;
+        public int mode = 0;
 
         public Email(Session currentSession)
         {
@@ -24,10 +25,52 @@ namespace MME.Hercules.Forms.User
             {
                 istable = true;
             }
+
+            this.mode = 0;
         }
 
         private void Email_Load(object sender, EventArgs e)
         {
+            this.mode = 0;
+
+            if (ConfigUtility.IsDeveloperMode)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            }
+
+            if (!ispromo)
+            {
+                this.Email_Load2(sender, e);
+            }
+            else
+            {
+                WindowUtility.SetScreen(pb, Hercules.Properties.Resources.SURVEY);
+                this.keyboard.Visible = false;
+                this.skip.Visible = false;
+                this.finished.Visible = false;
+                this.skipArea.Visible = false;
+                this.textBox1.Visible = false;
+                if (istable)
+                {
+                    Bitmap bm = Hercules.Properties.ImageResources.backarrow;
+                    this.pictureBoxBack.Image = bm;
+                    this.pictureBoxBack.BackColor = System.Drawing.Color.Transparent;
+                    this.pictureBoxBack.Parent = pb;
+                    this.pictureBoxBack.Visible = true;
+                }
+            }
+        }
+        
+
+        private void Email_Load2(object sender, EventArgs e)
+        {
+            this.keyboard.Visible = true;
+            this.skip.Visible = true;
+            this.finished.Visible = true;
+            this.skipArea.Visible = true;
+            this.textBox1.Visible = true;
+
             if (ConfigUtility.IsDeveloperMode)
             {
                 this.WindowState = FormWindowState.Normal;
@@ -176,6 +219,15 @@ namespace MME.Hercules.Forms.User
         {
             this.DialogResult = DialogResult.Cancel;
             return;
+        }
+
+        private void pb_Click(object sender, EventArgs e)
+        {
+            if (this.mode == 0)
+            {
+                this.mode = 1;
+                this.Email_Load2(sender, e);
+            }
         }
 
     }

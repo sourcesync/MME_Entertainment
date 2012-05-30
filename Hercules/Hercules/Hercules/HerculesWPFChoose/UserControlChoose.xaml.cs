@@ -59,6 +59,8 @@ namespace HerculesWPFChoose
 
         private System.Collections.ArrayList cart = new System.Collections.ArrayList();
 
+        private System.Collections.Hashtable des_hash = new System.Collections.Hashtable();
+
         //  specific menus...
 
         //  sm...
@@ -126,6 +128,8 @@ namespace HerculesWPFChoose
         public double[][] item_cost = new double[6][] { null, null, null, null, null, null };
 
         public System.Collections.Hashtable bmcache = new System.Collections.Hashtable();
+
+        private bool semaphore = false;
 
         public void SetRotation(int i)
         {
@@ -240,12 +244,33 @@ namespace HerculesWPFChoose
 
             src = WindowUtility.GetScreenBitmapWPF("checkout_bg.png");
             this.imagecheckout.Source = src;
+
+            this.des_hash["bellapesca.jpg"] = "Bella Pesca- Champagne, Elderflower Liqueur, \nGrapefruit & Lychee Juices, Splash of Chambord $19";
+            this.des_hash["ayala.jpg"] = "Rosé Champagne - Ayala, \"Rosé Majeur,\" Aÿ NV $30";
+            this.des_hash["amstel.jpg"] = "Amstel Light, Holland $9";
+            this.des_hash["bahnmi.jpg"] = "Vietnamese Banh Mi Sandwich $15";
+                    ///French Bread, Country Pâté and Char Su Pork, Pickled Daikon";
+            this.des_hash["applepie.jpg"] = "Warm Apple Pie - Tahitian Chantilly Crème, Caramel Sauce  $12";
+            this.des_hash["einbacher-beer.jpg"] = "Einbecker Beer, \"Brauherren Alkoholfrei,\" $9";
+
+           // this.label1.N
+        }
+
+        void write(String w)
+        {
+            return;
+
+            System.IO.StreamWriter wr = new System.IO.StreamWriter("c:\\tmp\\log.txt", true);
+
+            wr.WriteLine(w);
+            wr.Flush();
+            wr.Close();
         }
 
         public void LoadMenuFromConfig()
         {
             //  the menu...
-            System.Collections.ArrayList lst = WindowUtility.GetMenu();
+            System.Collections.ArrayList lst = WindowUtility.GetMenu("server");
 
             for ( int i=0;i< lst.Count; i++ )
             {
@@ -432,6 +457,7 @@ namespace HerculesWPFChoose
                 img.Visibility = System.Windows.Visibility.Hidden;
             }
 
+            this.label1.Visibility = System.Windows.Visibility.Hidden;
 
         }
 
@@ -445,6 +471,10 @@ namespace HerculesWPFChoose
 
         private void image_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            write("mouse down! - " + sender.ToString());
+
+            if (this.selected!=null) return;
+
             Image img = (Image)sender;
             this.selected = img; // this.image2;
             FrameworkElement element = this.selected as FrameworkElement;
@@ -456,6 +486,47 @@ namespace HerculesWPFChoose
 
             this.diff.X = pos.X - ix;
             this.diff.Y = pos.Y - iy;
+
+            String path = String.Empty;
+            if (sender == this.image2)
+            {
+                path = this.item_paths[this.cur_option][0];
+            }
+            else if (sender == this.image3)
+            {
+                path = this.item_paths[this.cur_option][1];
+            }
+            else if (sender == this.image4)
+            {
+                path = this.item_paths[this.cur_option][2];
+            }
+            else if (sender == this.image5)
+            {
+                path = this.item_paths[this.cur_option][3];
+            }
+            else if (sender == this.image6)
+            {
+                path = this.item_paths[this.cur_option][4];
+            }
+            else if (sender == this.image7)
+            {
+                path = this.item_paths[this.cur_option][5];
+            }
+
+            this.label1.Visibility = System.Windows.Visibility.Hidden;
+            if (path != String.Empty)
+            {
+                String[] parts = path.Split(new char[] { '\\' });
+                String fname = parts[parts.Length - 1];
+                if (this.des_hash[fname]!=null)
+                {
+                    this.label1.Visibility = System.Windows.Visibility.Visible;
+                    this.label1.Content = this.des_hash[fname];
+                    
+                }
+            }
+
+            
         }
 
 
@@ -463,6 +534,8 @@ namespace HerculesWPFChoose
         {
             if (this.selected != null)
             {
+                write("mouse move selected! - " + sender.ToString());
+
                 FrameworkElement element = this.selected as FrameworkElement;
                 FrameworkElement canvas = element.Parent as FrameworkElement;
 
@@ -565,10 +638,22 @@ namespace HerculesWPFChoose
                 {
                     this.buy(this.selected);
                     this.drag_cancel(this.selected);
+
+                    write("shop test passed! - " + sender.ToString());
                     return true;
                 }
+                else
+                {
+
+                    write("shop test failed inside1! - " + sender.ToString());
+                    return false;
+                }
             }
-            return false;
+            else
+            {
+                write("shop test failed inside2! - " + sender.ToString());
+                return false;
+            }
         }
 
         private void drag_cancel(object sender)
@@ -577,21 +662,30 @@ namespace HerculesWPFChoose
             {
                 if (this.poshash[this.selected] != null)
                 {
-                    Point p = (Point)this.poshash[sender];
+                    Point p = (Point)this.poshash[this.selected];
                     FrameworkElement element = this.selected as FrameworkElement;
                     element.SetValue(Canvas.LeftProperty, p.X);
                     element.SetValue(Canvas.TopProperty, p.Y);
                 }
                 this.selected = null;
             }
+
+            this.label1.Visibility = System.Windows.Visibility.Hidden;
         }
 
 
         private void image_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (!this.shop_test(sender, e))
+
+            write("mouse up! - " + sender.ToString());
+
+            if (this.selected != null)
             {
-                this.drag_cancel(sender);
+                if (!this.shop_test(sender, e))
+                {
+                    write("shop test failed! - " + sender.ToString());
+                    this.drag_cancel(sender);
+                }
             }
         }
 
@@ -642,10 +736,15 @@ namespace HerculesWPFChoose
 
             this.diff.X = pos.X - ix;
             this.diff.Y = pos.Y - iy;
+
+
         }
 
         private void purchased_MouseUp(object sender, MouseButtonEventArgs e)
         {
+
+            this.label1.Visibility = System.Windows.Visibility.Hidden;
+
             if (!this.purchased_remove_test(sender, e))
             {
                 this.purchased_drag_cancel(sender);
@@ -879,7 +978,38 @@ namespace HerculesWPFChoose
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            this.label1.Visibility = System.Windows.Visibility.Hidden;
+        }
 
+        private void label1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.selected != null)
+            {
+               // write("mouse move selected! - " + sender.ToString());
+
+                FrameworkElement element = this.selected as FrameworkElement;
+                FrameworkElement canvas = element.Parent as FrameworkElement;
+
+                Point cur_mousepos = e.GetPosition(canvas);
+
+                double newx = cur_mousepos.X - this.diff.X;
+                double newy = cur_mousepos.Y - this.diff.Y;
+
+                element.SetValue(Canvas.LeftProperty, newx);
+                element.SetValue(Canvas.TopProperty, newy);
+            }
+        }
+
+        private void label1_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (this.selected != null)
+            {
+                if (!this.shop_test(sender, e))
+                {
+                    write("shop test failed! - " + sender.ToString());
+                    this.drag_cancel(sender);
+                }
+            }
         }
     }
 }

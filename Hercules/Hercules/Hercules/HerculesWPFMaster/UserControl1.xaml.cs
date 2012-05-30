@@ -139,7 +139,7 @@ namespace HerculesWPFMaster
             }
             else if (option == "web") //web...
             {
-                this.ShowWeb("http://www.whitecastle.com");
+                this.ShowWebMain();
             }
             else if (option == "about") //web...
             {
@@ -192,11 +192,11 @@ namespace HerculesWPFMaster
 
         public void choose_selected(int option)
         {
-            if (this.ctlchoose.mode == 1)
+            if (this.ctlchoose.mode == 1) // go to main from choose
             {
                 this.ShowMain();
             }
-            else
+            else // go back up from choose...
             {
                 this.ShowMenu();
             }
@@ -214,9 +214,12 @@ namespace HerculesWPFMaster
             {
                 this.ShowMain();
             }
+            else if (option=="server")
+            {
+                this.ShowServer();
+            }
             else
             {
-                
                 this.ShowChoose(option);
                 
             }
@@ -245,6 +248,12 @@ namespace HerculesWPFMaster
             this.imagecono.Visibility = System.Windows.Visibility.Hidden;
 
             this.imagesocial.Visibility = System.Windows.Visibility.Hidden;
+
+
+            this.imageserver.Visibility = System.Windows.Visibility.Hidden;
+
+            this.addressbar.Visibility = System.Windows.Visibility.Hidden;
+
             //this.ctlphotobooth.Stop();
         }
 
@@ -259,9 +268,9 @@ namespace HerculesWPFMaster
         private void ShowRotators()
         {
             FrameworkElement el = this.image1 as FrameworkElement;
-            el.SetValue(Canvas.LeftProperty, 994.0);
+            el.SetValue(Canvas.LeftProperty, 964.0);
             el = this.image2 as FrameworkElement;
-            el.SetValue(Canvas.LeftProperty, 30.0);
+            el.SetValue(Canvas.LeftProperty, 60.0);
         }
 
         private void ShowBack()
@@ -354,6 +363,16 @@ namespace HerculesWPFMaster
             this.ShowBack();
         }
 
+        public void ShowServer()
+        {
+            this.HideAll();
+            this.imageserver.Visibility = System.Windows.Visibility.Visible;
+
+            this.current = this.imageserver;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
         public void ShowSocial()
         {
             this.HideAll();
@@ -383,7 +402,7 @@ namespace HerculesWPFMaster
                 weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "AboutURL");
             }
 
-            this.ShowWeb( weburl );
+            this.ShowWeb( weburl, false);
         }
 
         public void ShowEvents()
@@ -395,13 +414,25 @@ namespace HerculesWPFMaster
                 weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "EventsURL");
             }
 
-            this.ShowWeb(weburl);
+            this.ShowWeb(weburl, false);
         }
 
-        public void ShowWeb(String url)
+        public void ShowWebMain()
+        {
+            String weburl = "http://www.whitecastle.com/company";
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL")))
+            {
+                weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL");
+            }
+
+            this.ShowWeb(weburl, true);
+        }
+
+        public void ShowWeb(String weburl, bool ab)
         {
             this.HideAll();
-            
+
             /*
             if (this.webBrowser1 != null)
             {
@@ -409,21 +440,40 @@ namespace HerculesWPFMaster
                 this.webBrowser1 = null;
             }
              * */
-
             if (this.webBrowser1 == null)
             {
                 this.webBrowser1 = new WebBrowser();
+                this.webBrowser1.Navigated += new NavigatedEventHandler(webBrowser1_Navigated);
             }
 
+            if (ab)
+            {
+                this.addressbar.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                this.addressbar.Visibility = System.Windows.Visibility.Hidden;
+
+            }
             this.webBrowser1.Height = 715;
             this.webBrowser1.Width = 1024;
             this.canvas_master.Children.Add(this.webBrowser1);
             FrameworkElement el = this.webBrowser1 as FrameworkElement;
             el.SetValue(Canvas.LeftProperty, 0.0);
-            el.SetValue(Canvas.TopProperty, 0.0);
+            if (ab)
+            {
+                el.SetValue(Canvas.TopProperty, 35.0);
+            }
+            else
+            {
+                el.SetValue(Canvas.TopProperty, 0.0);
+            }
             this.webBrowser1.BringIntoView();
             this.current = this.webBrowser1;
 
+            this.HideRotators();
+
+            /*
             String val = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL");
 
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL")))
@@ -435,8 +485,28 @@ namespace HerculesWPFMaster
             {
                 this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com/company", UriKind.RelativeOrAbsolute));
             }
+             
+             */
+            this.webBrowser1.Navigate(new Uri(weburl, UriKind.RelativeOrAbsolute));
 
             this.ShowBack();
+        }
+
+        void webBrowser1_Navigated(object sender, NavigationEventArgs e)
+        {
+            this.addressbar.Text = e.Uri.ToString();
+        }
+
+        void KeyDown(object sender, KeyEventArgs args)
+        {
+            //if (Keyboard.IsKeyDown(Key.Return))
+            if ( args.Key == Key.Return )
+            {
+                if (this.webBrowser1 != null)
+                {
+                    this.webBrowser1.Navigate(this.addressbar.Text);
+                }
+            }
         }
 
         public void ShowChoose(String option)
@@ -465,10 +535,21 @@ namespace HerculesWPFMaster
 
         private void image1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender == this.image1)
+            if ((sender == this.image1)||(sender == this.image2 ) )
             {
                 if (this.orientation == 0)
                 {
+                    this.orientation = 1;
+                    RotateTransform tr = new RotateTransform();
+                    tr.CenterX = this.canvas_master.Width / 2.0;
+                    tr.CenterY = this.canvas_master.Height / 2.0;
+                    tr.Angle = 180;
+                    this.canvas_master.RenderTransform = tr;
+
+                    if (this.current == this.ctlblank)
+                    {
+                        this.ShowMain();
+                    }
                 }
                 else
                 {
@@ -485,6 +566,7 @@ namespace HerculesWPFMaster
                     }
                 }
             }
+                /*
             else if (sender == this.image2)
             {
                 if (this.orientation == 0)
@@ -505,6 +587,7 @@ namespace HerculesWPFMaster
                 {
                 }
             }
+                 * */
         }
 
         private void imageback_MouseDown(object sender, MouseButtonEventArgs e)
@@ -523,7 +606,7 @@ namespace HerculesWPFMaster
             }
             else
             {
-                this.ShowBlank();
+                //this.ShowBlank();
             }
         }
     }

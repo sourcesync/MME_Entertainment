@@ -148,6 +148,13 @@
   <ItemGroup>
     <Resource Include="Images\interact-screen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\server-screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\flipcropped.png" />
+    <Resource Include="Images\flipcropped180.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

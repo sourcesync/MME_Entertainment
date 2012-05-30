@@ -123,7 +123,7 @@ namespace HerculesWPFMenu
             System.Collections.ArrayList coords_arr )
         {
             //  the menu...
-            System.Collections.ArrayList lst = WindowUtility.GetMenu();
+            System.Collections.ArrayList lst = WindowUtility.GetMenu("server");
 
             //  the menu pngs..
             System.Collections.ArrayList icon_pngs = WindowUtility.GetMenuIconFilenames();
@@ -136,6 +136,7 @@ namespace HerculesWPFMenu
                 this.LoadIcon(3, this.image5, icon_pngs, icons, coords_arr);
                 this.LoadIcon(4, this.image6, icon_pngs, icons, coords_arr);
                 this.LoadIcon(5, this.image7, icon_pngs, icons, coords_arr);
+                //this.LoadIcon(6, this.image8, icon_pngs, icons, coords_arr);
             }
         }
 
@@ -153,7 +154,11 @@ namespace HerculesWPFMenu
         private void Clicked(object sender)
         {
             Image img = (Image)sender;
-            String icon = (String)this.button_hash[sender];
+            String icon = "server";
+            if (sender != this.image8)
+            {
+                icon = (String)this.button_hash[sender];
+            }
             if (evt != null) this.evt(icon);
         }
 
@@ -183,6 +188,11 @@ namespace HerculesWPFMenu
         }
 
         private void image7_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Clicked(sender);
+        }
+
+        private void image8_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Clicked(sender);
         }

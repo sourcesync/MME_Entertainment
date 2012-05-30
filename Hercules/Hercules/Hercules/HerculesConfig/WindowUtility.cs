@@ -98,20 +98,21 @@ namespace MME.HerculesConfig
             return null;
         }
 
-        public static System.Collections.ArrayList GetMenu()
+        public static System.Collections.ArrayList GetMenu(String skip)
         {
             System.Collections.ArrayList result = new System.Collections.ArrayList();
             foreach (String dir in Directory.EnumerateDirectories(string.Format("Skins\\{0}\\Menu", ConfigUtility.Skin)))
             {
                 String[] parts = dir.Split(new char[] { '\\' });
                 String fname = parts[parts.Length - 1];
+                if (fname == skip) continue;
                 result.Add(fname);
             }
 
             return result;
         }
 
-        public static System.Collections.ArrayList GetMain()
+        public static System.Collections.ArrayList GetMain(String skip)
         {
             try
             {
@@ -121,6 +122,7 @@ namespace MME.HerculesConfig
                     String[] parts = fl.Split(new char[] { '\\' });
                     String fname = parts[parts.Length - 1];
                     parts = fname.Split(new char[] { '.' });
+                    if (parts[0] == skip) continue;
                     result.Add(parts[0]);
                 }
 
@@ -132,13 +134,14 @@ namespace MME.HerculesConfig
             }
         }
 
-        public static System.Collections.ArrayList GetMainPaths()
+        public static System.Collections.ArrayList GetMainPaths(String skip)
         {
             try
             {
                 System.Collections.ArrayList result = new System.Collections.ArrayList();
                 foreach (String fl in Directory.EnumerateFiles(string.Format("Skins\\{0}\\Main", ConfigUtility.Skin)))
                 {
+                    if (fl == skip) continue;
                     result.Add(fl);
                 }
 
@@ -200,7 +203,7 @@ namespace MME.HerculesConfig
         {
             
             System.Collections.ArrayList paths = new System.Collections.ArrayList();
-            System.Collections.ArrayList names = GetMenu();
+            System.Collections.ArrayList names = GetMenu(null);
 
             String[][] pths = new String[names.Count][];
 

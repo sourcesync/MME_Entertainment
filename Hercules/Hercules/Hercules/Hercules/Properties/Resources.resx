@@ -196,4 +196,7 @@
   <data name="PROMO_COMPLETE" xml:space="preserve">
     <value>promo_complete.jpg</value>
   </data>
+  <data name="SURVEY" xml:space="preserve">
+    <value>survey.jpg</value>
+  </data>
 </root>

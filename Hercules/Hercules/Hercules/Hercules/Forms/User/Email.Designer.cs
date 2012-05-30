@@ -54,6 +54,7 @@
             this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb.TabIndex = 0;
             this.pb.TabStop = false;
+            this.pb.Click += new System.EventHandler(this.pb_Click);
             // 
             // textBox1
             // 

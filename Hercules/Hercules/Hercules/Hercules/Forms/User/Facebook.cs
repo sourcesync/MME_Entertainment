@@ -137,8 +137,12 @@ namespace MME.Hercules.Forms.User
             pb.Load(string.Format("Skins\\{0}\\Screens\\facebook.jpg",
                 ConfigUtility.Skin));
 
-            pb2.Load(string.Format("Skins\\{0}\\Screens\\usefacebook.jpg",
-                ConfigUtility.Skin));
+            if ( this.ischeckin )
+                pb2.Load(string.Format("Skins\\{0}\\Screens\\usefacebook-checkin.jpg",
+                    ConfigUtility.Skin));
+            else
+                pb2.Load(string.Format("Skins\\{0}\\Screens\\usefacebook.jpg",
+                    ConfigUtility.Skin));
 
             fbyes.Load(string.Format("Skins\\{0}\\Screens\\fbyes.jpg",
                 ConfigUtility.Skin));

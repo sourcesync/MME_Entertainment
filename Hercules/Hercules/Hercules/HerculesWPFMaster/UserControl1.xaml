@@ -18,7 +18,8 @@
         <Canvas Width="1024" Height="768" Name="canvas_master" >
             
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="ctlevents" Width="1024" Source="/HerculesWPFMaster;component/Images/CALENDAR.jpg" />
-            
+            <TextBox Canvas.Left="0" Canvas.Top="0" Height="35" Name="addressbar"  Width="1024" FontSize="22" FontFamily="Verdana" FontWeight="Bold" KeyUp="KeyDown"/>
+
             <WebBrowser Canvas.Left="0" Canvas.Top="0" Height="768" Name="webBrowser1" Width="1024" />
             <ucb:UserControlBlank Canvas.Top="0" Canvas.Left="0" x:Name="ctlblank" IsEnabled="True" Visibility="Visible" />
             <ucm:UserControlMain Canvas.Top="0" Canvas.Left="0" x:Name="ctlmain" IsEnabled="True" Visibility="Hidden" />
@@ -32,11 +33,13 @@
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagecono" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/concierge.png" />
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagesocial" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/interact-screen.png" />
 
+            <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imageserver" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/server-screen.png" />
+
             <Image Canvas.Left="4" Canvas.Top="719" Height="44" Name="imageback" Source="/HerculesWPFMaster;component/Images/backarrow1.png" Stretch="Fill" Width="51" MouseDown="imageback_MouseDown" />
         </Canvas>
 
-        <Image Canvas.Left="994" Canvas.Top="738" Height="30" Name="image1" Stretch="Fill" Width="30" Source="/HerculesWPFMaster;component/Images/FLIP-THUMB.png" MouseDown="image1_MouseDown" />
-        <Image Canvas.Left="30" Canvas.Top="30" Height="30" Name="image2" Stretch="Fill" Width="30" Source="/HerculesWPFMaster;component/Images/FLIP-THUMB.png" MouseDown="image1_MouseDown">
+        <Image Canvas.Left="934" Canvas.Top="708" Height="60" Name="image1" Stretch="Fill" Width="60" Source="/HerculesWPFMaster;component/Images/flipcropped.png" MouseDown="image1_MouseDown" />
+        <Image Canvas.Left="90" Canvas.Top="60" Height="60" Name="image2" Stretch="Fill" Width="60" Source="/HerculesWPFMaster;component/Images/flipcropped.png" MouseDown="image1_MouseDown">
             <Image.RenderTransform>
                 <RotateTransform Angle="180"></RotateTransform>
             </Image.RenderTransform>

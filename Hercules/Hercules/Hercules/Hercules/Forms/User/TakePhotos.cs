@@ -1003,12 +1003,12 @@ namespace MME.Hercules.Forms.User
             //  Set the flip buttons...
             Bitmap bm = Hercules.Properties.ImageResources.FLIP_THUMB_30x30_flip;
             this.pictureBoxFlipTop.Image = bm;
-            this.pictureBoxFlipTop.Visible = true;
+            this.pictureBoxFlipTop.Visible = false;
             this.pictureBoxFlipTop.Parent = this.pb;
 
             bm = Hercules.Properties.ImageResources.FLIP_THUMB_30x30;
             this.pictureBoxFlipBottom.Image = bm;
-            this.pictureBoxFlipBottom.Visible = true;
+            this.pictureBoxFlipBottom.Visible = false;
             this.pictureBoxFlipBottom.Parent = this.pb;
 
             //  Back Button...
@@ -1031,7 +1031,7 @@ namespace MME.Hercules.Forms.User
             {
                 this.pictureBoxBack.Visible = true;
                 this.pictureBoxFlipBottom.Visible = true;
-                this.pictureBoxFlipTop.Visible = true;
+                this.pictureBoxFlipTop.Visible = false;
             }
 
 
@@ -1172,7 +1172,7 @@ namespace MME.Hercules.Forms.User
             Orient(this.mode);
             this.pictureBoxBack.Visible = true;
             this.pictureBoxFlipBottom.Visible = true;
-            this.pictureBoxFlipTop.Visible = true;
+            this.pictureBoxFlipTop.Visible = false;
 
             //  Stop the offscreen...
             if (this.offscreen!=null)

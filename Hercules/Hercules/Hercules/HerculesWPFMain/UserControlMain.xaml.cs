@@ -126,9 +126,9 @@ namespace HerculesWPFMain
             this.srcq.Add("/HerculesWPFMain;component/Images/future-icon.png");
             this.srcq.Add("/HerculesWPFMain;component/Images/web-icon.png");
             */
-            this.srcq  = WindowUtility.GetMainPaths();
+            this.srcq  = WindowUtility.GetMainPaths("server");
 
-            System.Collections.ArrayList main_items = WindowUtility.GetMain();
+            System.Collections.ArrayList main_items = WindowUtility.GetMain("server");
             if (main_items == null)
                 return;
             else
@@ -151,7 +151,7 @@ namespace HerculesWPFMain
             this.cap_srcq.Add("/HerculesWPFMain;component/Images/events100.png");
             this.cap_srcq.Add("/HerculesWPFMain;component/Images/web100.png");
             */
-            this.cap_srcq = WindowUtility.GetMainPaths();
+            this.cap_srcq = WindowUtility.GetMainPaths("server");
 
             /*
             TransformGroup gr = new TransformGroup();
@@ -223,7 +223,7 @@ namespace HerculesWPFMain
             }
 
 
-            this.lab_srcq = WindowUtility.GetMain();
+            this.lab_srcq = WindowUtility.GetMain("server");
             for (int i = 0; i < this.lab_srcq.Count; i++)
             {
                 String path = (String)this.lab_srcq[i];
@@ -234,7 +234,22 @@ namespace HerculesWPFMain
                 double off = (w - (double)el.GetValue(Canvas.ActualWidthProperty)) / 2.0 - 15;
                 TransformGroup ggr = new TransformGroup();
                 ggr.Children.Add(new ScaleTransform(2, 2));
-                ggr.Children.Add(new TranslateTransform(off-10, 0));
+
+                double fudge = 10.0f;
+                if (path == "concierge")
+                    fudge = 30;
+                else if (path == "check-in")
+                    fudge = 25;
+                else if (path == "camera")
+                    fudge = 20;
+                else if (path == "calendar")
+                    fudge = 25;
+                else if (path == "promo")
+                    fudge = 10;
+                else if (path == "web")
+                    fudge = 8;
+
+                ggr.Children.Add(new TranslateTransform(off-fudge, 0));
                 this.lab_tr[path] = ggr;
             }
 
@@ -275,6 +290,7 @@ namespace HerculesWPFMain
                 Image img = (Image)this.captions[i];
                 String path = (String)this.cap_src_hash[img];
                 img.RenderTransform = (TransformGroup)this.cap_tr[path];
+                img.Visibility = System.Windows.Visibility.Hidden;
 
 
                 y = 480;
@@ -364,48 +380,25 @@ namespace HerculesWPFMain
         private void image5_MouseDown(object sender, MouseButtonEventArgs e)
         {
             //return;
-            this.image5_MouseDown(sender, e);
+            //this.image5_MouseDown(sender, e);
+            this.item_clicked(sender);
         }
 
         private void image5_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (this.moving) return;
+            //this.item_clicked(sender);
+            
+        }
+
+        private void item_clicked(object sender)
+        {
+            //if (this.moving) return;
 
             String src = (String)this.src_hash[sender];
 
             String main_item = (String)this.main_hash[src];
 
             if (evt != null) evt(main_item);
-            /*
-            if (src == "/HerculesWPFMain;component/Images/menu-icon.png")
-            {
-                if (evt != null) evt(0);   
-            }
-            else if (src == "/HerculesWPFMain;component/Images/camera-icon.png")
-            {
-                if (evt != null) evt(1);
-            }
-            else if (src == "/HerculesWPFMain;component/Images/web-icon.png")
-            {
-                if (evt != null) evt(2);
-            }
-            else if (src == "/HerculesWPFMain;component/Images/future-icon.png")
-            {
-                if (evt != null) evt(3);
-            }
-            else if (src == "/HerculesWPFMain;component/Images/promo-icon.png")
-            {
-                if (evt != null) evt(4);
-            }
-            else if (src == "/HerculesWPFMain;component/Images/checkin-icon.png")
-            {
-                if (evt != null) evt(5);
-            }
-            else if (src == "/HerculesWPFMain;component/Images/games-icon1.png")
-            {
-                if (evt != null) evt(6);
-            }
-            */
         }
 
         public BitmapImage GetBitMap(String path)
@@ -546,7 +539,7 @@ namespace HerculesWPFMain
                 Point currentPoint = Mouse.GetPosition(this);
                 velocity = previousPoint - currentPoint;
                 previousPoint = currentPoint;
-                if (velocity.Length < 1)
+                if (velocity.Length < 0.25)
                 {
                     this.moving = false;
                     this.wasmoving = true;
@@ -560,10 +553,10 @@ namespace HerculesWPFMain
             {
                 this.moving = true;
 
-                if (velocity.Length > 1)
+                if (velocity.Length > 0.5)
                 {
-                    if (velocity.X > 35) velocity.X = 35;
-                    else if (velocity.X < -35) velocity.X = -35;
+                    if (velocity.X > 45) velocity.X = 45;
+                    else if (velocity.X < -45) velocity.X = -45;
 
                     scrollTarget.X -= velocity.X;
                     velocity *= friction;
@@ -588,8 +581,10 @@ namespace HerculesWPFMain
 
 
         #region Mouse Events
+        
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
         {
+
             if ( this.imagea.IsMouseOver ) 
             {
                 this.imagea_MouseDown(this.imagea, e);
@@ -605,27 +600,32 @@ namespace HerculesWPFMain
             //       Cursors.ScrollAll : Cursors.Arrow;
 
             //if (ScrollViewer.IsMouseOver)
-            //if (this.scrollViewer1.IsMouseOver)
+            if (this.scrollViewer1.IsMouseOver)
             {
                 // Save starting point, used later when determining how much to scroll.
                 scrollStartPoint = e.GetPosition(this);
                 scrollStartOffset.X = this.offset.X; // ScrollViewer.HorizontalOffset;
                 scrollStartOffset.Y = this.offset.Y; // ScrollViewer.VerticalOffset;
 
-                /*
-                // Update the cursor if can scroll or not.
-                this.Cursor = (ScrollViewer.ExtentWidth > ScrollViewer.ViewportWidth) ||
-                    (ScrollViewer.ExtentHeight > ScrollViewer.ViewportHeight) ?
-                    Cursors.ScrollAll : Cursors.Arrow;
-                */
-
-                this.CaptureMouse();
+                //if (this.offset.Y > 432)
+                {
+                    this.CaptureMouse();
+                }
             }
 
+        
             base.OnPreviewMouseDown(e);
+            
         }
+         
 
 
+        /*
+        // Update the cursor if can scroll or not.
+        this.Cursor = (ScrollViewer.ExtentWidth > ScrollViewer.ViewportWidth) ||
+            (ScrollViewer.ExtentHeight > ScrollViewer.ViewportHeight) ?
+            Cursors.ScrollAll : Cursors.Arrow;
+        */
         protected override void OnPreviewMouseMove(MouseEventArgs e)
         {
             if (this.IsMouseCaptured)

@@ -39,6 +39,7 @@ namespace HerculesWPFTicTacToe
         System.Collections.ArrayList renders = new System.Collections.ArrayList();
         private Line[,,] xx = null;
         private Ellipse[,] oo = null;
+        private Image[,] ff = null;
 
         SolidColorBrush myRedBrush = new SolidColorBrush(Colors.Red);
         SolidColorBrush myYellowBrush = new SolidColorBrush(Colors.Yellow);
@@ -47,6 +48,12 @@ namespace HerculesWPFTicTacToe
         SolidColorBrush myBlackBrush = new SolidColorBrush(Colors.Black);
         SolidColorBrush myWhiteBrush = new SolidColorBrush(Colors.White);
         SolidColorBrush myForeBrush = null;
+
+        private BitmapSource fan = null;
+        private BitmapSource rfan = null;
+        private BitmapSource yfan = null;
+
+        private System.Collections.Hashtable bmcache = new System.Collections.Hashtable();
 
         private Board board = null;
 
@@ -66,6 +73,52 @@ namespace HerculesWPFTicTacToe
                 String color = ConfigUtility.GetConfig(ConfigUtility.Config, "GameForeColor");
                 if (color == "white")
                     this.myForeBrush = this.myWhiteBrush;
+            }
+
+            this.fan = GetBitMap("fan.png");
+            this.rfan = GetBitMap("rfan.png");
+            this.yfan = GetBitMap("yfan.png");
+        }
+
+        public BitmapImage GetBitMap(String path)
+        {
+            if (path == null)
+            {
+                path = "memory_game.png";
+            }
+
+            BitmapImage bi = (BitmapImage)this.bmcache[path];
+            if (bi == null)
+            {
+                //Uri uri = new Uri(path, UriKind.Absolute);
+                //BitmapImage bm = new BitmapImage(uri);
+                BitmapImage bm = null;
+                if (path == "memory_game.png")
+                {
+                    bm = WindowUtility.GetScreenBitmapWPF(path);
+                }
+                else if (path == "fan.png")
+                {
+                    bm = WindowUtility.GetScreenBitmapWPF(path);
+                }
+                else if (path == "rfan.png")
+                {
+                    bm = WindowUtility.GetScreenBitmapWPF(path);
+                }
+                else if (path == "yfan.png")
+                {
+                    bm = WindowUtility.GetScreenBitmapWPF(path);
+                }
+                else
+                {
+                    bm = WindowUtility.GetBitmapWPF(path);
+                }
+                this.bmcache.Add(path, bm);
+                return bm;
+            }
+            else
+            {
+                return bi;
             }
         }
 
@@ -89,6 +142,7 @@ namespace HerculesWPFTicTacToe
             xo = new int[num_y, num_x];
             xx = new Line[num_y, num_x, 2];
             oo = new Ellipse[num_y, num_x];
+            ff = new Image[num_y, num_x];
 
             //paths = new String[num_y, num_x];
             for (int iy = 0; iy < num_y; iy++)
@@ -240,8 +294,11 @@ namespace HerculesWPFTicTacToe
                 {
                     xo[iy, ix] = 0;
                     rects[iy, ix].Fill =myTransparentBrush;
+                    /*
                     xx[iy, ix, 0] = null;
                     xx[iy, ix, 1] = null;
+                     * */
+                    ff[iy, ix] = null;
                     oo[iy, ix] = null;
                 }
             }
@@ -281,7 +338,8 @@ namespace HerculesWPFTicTacToe
                 double center_x = this.centers[move.iCol, move.iRow, 0];
                 double center_y = this.centers[move.iCol, move.iRow, 1];
 
-
+                /** DRAW AN X**/
+                /*
                 Line l = new Line();
                 l.X1 = center_x - grid_side_len / 2.0f + this.item_margin;
                 l.X2 = center_x + grid_side_len / 2.0f - this.item_margin;
@@ -303,6 +361,19 @@ namespace HerculesWPFTicTacToe
                 this.canvas_master.Children.Add(l);
                 this.renders.Add(l);
                 this.xx[move.iCol, move.iRow, 1] = l;
+                 * */
+
+                Image i = new Image();
+                i.Source = this.fan;
+                FrameworkElement el = i as FrameworkElement;
+                
+                i.Width = 230;
+                i.Height = 230;
+                el.SetValue(Canvas.LeftProperty, center_x- i.Width/2.0);
+                el.SetValue(Canvas.TopProperty, center_y - i.Height/2.0 + 20);
+                this.canvas_master.Children.Add(i);
+                this.renders.Add(i);
+                this.ff[move.iCol, move.iRow] = i;
             }
             else
             {
@@ -316,10 +387,10 @@ namespace HerculesWPFTicTacToe
                 el.StrokeThickness = 15.0f;
                 //el.Fill = this.myBlackBrush;
                 FrameworkElement ll = el as FrameworkElement;
-                ll.Width = grid_side_len - item_margin;
-                ll.Height = grid_side_len - item_margin;
-                ll.SetValue(Canvas.TopProperty, center_y - (grid_side_len - item_margin) / 2.0);
-                ll.SetValue(Canvas.LeftProperty, center_x - (grid_side_len - item_margin) / 2.0);
+                ll.Width = grid_side_len - item_margin - 40;
+                ll.Height = grid_side_len - item_margin - 40;
+                ll.SetValue(Canvas.TopProperty, center_y - (grid_side_len - item_margin) / 2.0 + 20.0);
+                ll.SetValue(Canvas.LeftProperty, center_x - (grid_side_len - item_margin) / 2.0 + 20.0);
                 this.canvas_master.Children.Add(ll);
                 this.renders.Add(el);
 
@@ -346,12 +417,17 @@ namespace HerculesWPFTicTacToe
                         {
                             if (this.mode == 1)
                             {
+                                /*
                                 this.xx[0, 0, 0].Stroke = this.myYellowBrush;
                                 this.xx[0, 0, 1].Stroke = this.myYellowBrush;
                                 this.xx[1, 1, 0].Stroke = this.myYellowBrush;
                                 this.xx[1, 1, 1].Stroke = this.myYellowBrush;
                                 this.xx[2, 2, 0].Stroke = this.myYellowBrush;
                                 this.xx[2, 2, 1].Stroke = this.myYellowBrush;
+                                 * */
+                                this.ff[0, 0].Source = this.yfan;
+                                this.ff[1, 1].Source = this.yfan;
+                                this.ff[2, 2].Source = this.yfan;
                             }
                             else
                             {
@@ -364,12 +440,17 @@ namespace HerculesWPFTicTacToe
                         {
                             if (this.mode == 1)
                             {
+                                /*
                                 this.xx[2, 0, 0].Stroke = this.myYellowBrush;
                                 this.xx[2, 0, 1].Stroke = this.myYellowBrush;
                                 this.xx[1, 1, 0].Stroke = this.myYellowBrush;
                                 this.xx[1, 1, 1].Stroke = this.myYellowBrush;
                                 this.xx[0, 2, 0].Stroke = this.myYellowBrush;
                                 this.xx[0, 2, 1].Stroke = this.myYellowBrush;
+                                 * */
+                                this.ff[2, 0].Source = this.yfan;
+                                this.ff[1, 1].Source = this.yfan;
+                                this.ff[0, 2].Source = this.yfan;
                             }
                             else
                             {
@@ -386,8 +467,11 @@ namespace HerculesWPFTicTacToe
                         {
                             if (this.mode == 1)
                             {
+                                /*
                                 this.xx[col, i, 0].Stroke = this.myYellowBrush;
                                 this.xx[col, i, 1].Stroke = this.myYellowBrush;
+                                 * */
+                                this.ff[col, i].Source = this.yfan;
                             }
                             else
                             {
@@ -402,8 +486,11 @@ namespace HerculesWPFTicTacToe
                         {
                             if (this.mode == 1)
                             {
+                                /*
                                 this.xx[i, row, 0].Stroke = this.myYellowBrush;
                                 this.xx[i, row, 1].Stroke = this.myYellowBrush;
+                                 * */
+                                this.ff[i, row].Source = this.yfan;
                             }
                             else
                             {
@@ -425,6 +512,11 @@ namespace HerculesWPFTicTacToe
                         {
                             Ellipse e = (Ellipse)o;
                             e.Stroke = this.myRedBrush;
+                        }
+                        else if (o is Image)
+                        {
+                            Image i = (Image)o;
+                            i.Source = this.rfan;
                         }
                     }
                 }

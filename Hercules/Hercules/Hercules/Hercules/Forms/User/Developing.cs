@@ -50,7 +50,10 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
-                if (!this.ispromo)
+                if (this.ischeckin)
+                {
+                }
+                else if (!this.ispromo)
                 {
                     WindowUtility.SetScreen(pb, Hercules.Properties.Resources.DEVELOPING_PICS_SCREEN);
                 }
@@ -63,9 +66,11 @@ namespace MME.Hercules.Forms.User
 
             if (istable)
             {
+                pb.Load(string.Format("Skins\\{0}\\Screens\\facebook.jpg",
+                    ConfigUtility.Skin));
                 this.label1.Parent = this.pb;
                 this.label1.BackColor = System.Drawing.Color.Transparent;
-                this.label1.ForeColor = System.Drawing.Color.Black;
+                this.label1.ForeColor = System.Drawing.Color.White;
                 this.label1.BringToFront();
                 this.label1.Visible = true;
                 this.label1.AutoSize = true;
@@ -91,6 +96,7 @@ namespace MME.Hercules.Forms.User
 
             this.Refresh();
             Application.DoEvents();
+            Thread.Sleep(1000);
 
 
             if (!istable)
@@ -142,8 +148,11 @@ namespace MME.Hercules.Forms.User
                 //gw
                 //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),true);
 
+                if (this.ischeckin)
+                {
 
-                if (this.ispromo)
+                }
+                else if (this.ispromo)
                 {
                     WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PROMO_COMPLETE);
 
@@ -154,14 +163,21 @@ namespace MME.Hercules.Forms.User
                 }
 
                 this.Refresh();
-                SoundUtility.Play(Hercules.Properties.SoundResources.PHOTOS_COMPLETE);
 
-                Thread.Sleep(2100);
+                if (!this.ischeckin)
+                {
+                    SoundUtility.Play(Hercules.Properties.SoundResources.PHOTOS_COMPLETE);
 
+                    Thread.Sleep(2100);
+                }
             }
             else // is table
             {
-                if (this.ispromo)
+                if (this.ischeckin)
+                {
+
+                }
+                else if (this.ispromo)
                 {
                     WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PROMO_COMPLETE);
                 }
@@ -172,14 +188,14 @@ namespace MME.Hercules.Forms.User
 
                 this.label1.Parent = this.pb;
                 this.label1.BackColor = System.Drawing.Color.Transparent;
-                this.label1.ForeColor = System.Drawing.Color.Black;
+                this.label1.ForeColor = System.Drawing.Color.White;
                 this.label1.BringToFront();
                 this.label1.Visible = true;
                 this.label1.AutoSize = true;
                     this.label1.Visible = true;
                     if (this.ischeckin)
                     {
-                        this.label1.Text = "You Successfully Checked-In!";
+                        this.label1.Text = "Thank you for checking-in To MoBar!";
                     }
                     else
                     {
@@ -331,7 +347,12 @@ namespace MME.Hercules.Forms.User
 
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "EmailPublishUrl")))
             {
-                FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.EmailAddress, this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+                String p1 = this.currentSession.FavoritePhotoFilename;
+                String p2 = this.currentSession.EmailAddress;
+                String p3 = this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg";
+
+                FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.EmailAddress, 
+                    this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
                 ConfigUtility.IncrementCounter("Email");
             }
 

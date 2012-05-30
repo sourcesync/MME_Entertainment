@@ -140,7 +140,7 @@ namespace HerculesWPFMemoryGame
         public void LoadMenuFromConfig()
         {
             //  the menu...
-            System.Collections.ArrayList lst = WindowUtility.GetMenu();
+            System.Collections.ArrayList lst = WindowUtility.GetMenu("server");
 
             for (int i = 0; i < lst.Count; i++)
             {
