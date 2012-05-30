@@ -106,14 +106,21 @@ namespace TestDisplayProgram
                 dm.dmSize = (short)Marshal.SizeOf(dm);
 
                 if (0 != NativeMethods.EnumDisplaySettings(
-                null,
-                NativeMethods.ENUM_CURRENT_SETTINGS,
-                ref dm))
+                    null,
+                    NativeMethods.ENUM_CURRENT_SETTINGS,
+                    ref dm))
                 {
+
+                    System.Windows.Forms.MessageBox.Show(
+                        String.Format("res->{0},{1}",
+                        dm.dmPelsWidth, dm.dmPelsHeight));
+
                     // swap width and height
-                    int temp = dm.dmPelsHeight;
-                    dm.dmPelsHeight = dm.dmPelsWidth;
-                    dm.dmPelsWidth = temp;
+                    //int temp = dm.dmPelsHeight;
+                    //dm.dmPelsHeight = dm.dmPelsWidth;
+                    //dm.dmPelsWidth = temp;
+
+
 
                     // determine new orientation
                     switch (dm.dmDisplayOrientation)
@@ -140,7 +147,12 @@ namespace TestDisplayProgram
                     if (NativeMethods.DISP_CHANGE_SUCCESSFUL != iRet)
                     {
                         // add exception handling here
+                        System.Windows.Forms.MessageBox.Show("cannot change");
                     }
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("cannot enum");
                 }
 
 
