@@ -23,7 +23,7 @@ namespace HerculesWPFMemoryGame
         int num_y = 3;
         int num_x = 6;
         private double[,,] centers = null;
-        double top_margin = 130.0f;
+        double top_margin = 180.0f;
         double bottom_margin = 30.0f;
         double side_margin = 30.0f;
         double item_margin = 10.0f;
@@ -102,7 +102,7 @@ namespace HerculesWPFMemoryGame
 
             this.LoadMenuFromConfig();
 
-            BitmapSource src = WindowUtility.GetScreenBitmapWPF("table_main_menu_bg.jpg");
+            BitmapSource src = WindowUtility.GetScreenBitmapWPF("gamebg.jpg");
             this.image2.Source = src;
 
         }

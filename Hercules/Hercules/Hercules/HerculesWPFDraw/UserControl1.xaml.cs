@@ -59,7 +59,7 @@ namespace HerculesWPFDraw
 
             this.label1.Foreground = this.myForeBrush;
 
-            BitmapSource src = WindowUtility.GetScreenBitmapWPF("table_main_menu_bg.jpg");
+            BitmapSource src = WindowUtility.GetScreenBitmapWPF("gamebg.jpg");
             this.image2.Source = src;
         }
 

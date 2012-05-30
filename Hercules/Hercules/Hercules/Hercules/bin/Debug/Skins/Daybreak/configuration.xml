@@ -49,12 +49,8 @@
   <add key="AllowMobilePublish" value="0" />
 
   <!-- Table Web Stuff-->
-  <add key="WebURL" value="http://www.mandarinoriental.com" />
-  <add key="AboutURL" value="http://www.mandarinoriental.com/about_mo/" />
-  
-<!--<add key="EventsURL" value="http://www.mmeentertainment.com/weddingdecor.html" />-->
-
-	<add key="EventsURL" value="http://www.mandarinoriental.com" />
+  <add key="JBSURL" value="http://findthetruth.jackboxers.com" />
+  <add key="DBSURL" value="http://dev4.northkingdom.com/daybreak/main-site-4/" />
 
 
   <add key="HerculesPublishUrl" value="http://favpic.mobi/hercules_test.php"/>
@@ -100,16 +96,22 @@
   <add key="FaceBookCheckinLongitude" value="-122.438636" />
 -->
 
+  <!--
   <add key="FaceBookCheckinPlaceID" value="60870622131" />
   <add key="FaceBookCheckinMessage" value="I took this picture at the MoBar PhotoBooth in the Mandarin Oriental Hotel!" />
   <add key="FaceBookCheckinLatitude" value="40.6645071" />
   <add key="FaceBookCheckinLongitude" value="-73.5260445" />
+  -->
 
-
+  <add key="FaceBookCheckinPlaceID" value="77359216490" />
+  <add key="FaceBookCheckinMessage" value="I took this picture at the ATT Daybreak Screening!" />
+  <add key="FaceBookCheckinLatitude" value="40.750394" />
+  <add key="FaceBookCheckinLongitude" value="-74.004915" />
+  
   <add key="MenuCoords" value="drinks-315,70:wine-550,70:beer-770,70:food-315,300:dessert-550,300:beverages-770,300:server-545,535" />
 
   <add key="CheckoutTextColor" value="yellow" />
-  <add key="GameForeColor" value="white" />
+  <add key="GameForeColor" value="black" />
   
   <!-- 1 Photo customization -->
   <add key="Photo1_X" value="80" />

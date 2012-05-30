@@ -489,6 +489,10 @@ namespace HerculesWPFMaster
         {
             String weburl = "http://findthetruth.jackboxers.com";
 
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "JBSURL")))
+            {
+                weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "JBSURL");
+            }
            
             this.ShowWeb(weburl, false);
         }
@@ -497,6 +501,10 @@ namespace HerculesWPFMaster
         {
             String weburl = "http://dev4.northkingdom.com/daybreak/main-site-4/";
 
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "DBSURL")))
+            {
+                weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "DBSURL");
+            }
 
             this.ShowWeb(weburl, false);
         }
