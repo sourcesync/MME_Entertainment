@@ -1,0 +1,9 @@
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestPlatformInvoke\bin\Debug\TestPlatformInvoke.exe
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestPlatformInvoke\bin\Debug\TestPlatformInvoke.pdb
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestPlatformInvoke\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestPlatformInvoke\obj\x86\Debug\TestPlatformInvoke.Form1.resources
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestPlatformInvoke\obj\x86\Debug\TestPlatformInvoke.Properties.Resources.resources
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestPlatformInvoke\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestPlatformInvoke\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestPlatformInvoke\obj\x86\Debug\TestPlatformInvoke.exe
+C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestPlatformInvoke\obj\x86\Debug\TestPlatformInvoke.pdb
