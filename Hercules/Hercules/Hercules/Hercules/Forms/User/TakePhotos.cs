@@ -1096,7 +1096,7 @@ namespace MME.Hercules.Forms.User
                 }
                 else if (this.num_cams == 2)
                 {
-                    if (this.static_orientation == 1)
+                    if (this.global_orientation == 0)
                     {
                         this.startpreview(0);
                     }
