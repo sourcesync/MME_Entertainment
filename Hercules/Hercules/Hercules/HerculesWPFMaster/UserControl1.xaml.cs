@@ -559,6 +559,8 @@ namespace HerculesWPFMaster
 
         private void image1_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            System.Windows.Forms.SendKeys.SendWait("^%{UP}");
+
             if ((sender == this.image1)||(sender == this.image2 ) )
             {
                 if (this.orientation == 0)
