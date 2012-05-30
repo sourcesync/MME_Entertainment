@@ -95,7 +95,7 @@ namespace HerculesWPFMaster
     {
         private System.Collections.ArrayList ctls = new System.Collections.ArrayList();
         private object current;
-        private int orientation = 0;
+        public int orientation = 0;
         
         public delegate void UserControlMasterDelegate(String option);
         public UserControlMasterDelegate evt = null;
@@ -567,7 +567,7 @@ namespace HerculesWPFMaster
             this.webBrowser1.BringIntoView();
             this.current = this.webBrowser1;
 
-            this.HideRotators();
+            //this.HideRotators();
 
             /*
             String val = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL");
@@ -657,6 +657,7 @@ namespace HerculesWPFMaster
                     //dm.dmPelsHeight = dm.dmPelsWidth;
                     //dm.dmPelsWidth = temp;
 
+                    int new_orientation = 0;
 
 
                     // determine new orientation
@@ -664,12 +665,14 @@ namespace HerculesWPFMaster
                     {
                         case NativeMethods.DMDO_DEFAULT:
                             dm.dmDisplayOrientation = NativeMethods.DMDO_180;
+                            new_orientation = 1;
                             break;
                         case NativeMethods.DMDO_270:
                             dm.dmDisplayOrientation = NativeMethods.DMDO_180;
                             break;
                         case NativeMethods.DMDO_180:
                             dm.dmDisplayOrientation = NativeMethods.DMDO_DEFAULT;
+                            new_orientation = 0;
                             break;
                         case NativeMethods.DMDO_90:
                             dm.dmDisplayOrientation = NativeMethods.DMDO_DEFAULT;
@@ -680,12 +683,20 @@ namespace HerculesWPFMaster
                             break;
                     }
 
+                    bool worked = true;
                     int iRet = NativeMethods.ChangeDisplaySettings(ref dm, 0);
                     if (NativeMethods.DISP_CHANGE_SUCCESSFUL != iRet)
                     {
                         // add exception handling here
                         System.Windows.Forms.MessageBox.Show("cannot change display");
+                        worked = false;
                     }
+
+                    if (worked)
+                    {
+                        this.orientation = new_orientation;
+                    }
+
                 }
                 else
                 {
