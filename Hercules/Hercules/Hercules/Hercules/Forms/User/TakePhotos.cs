@@ -50,7 +50,8 @@ namespace MME.Hercules.Forms.User
         private Panel[] vidPanel = {null,null};
         private System.Threading.TimerCallback flip_cb;
         private System.Threading.Timer flip_timer;
-        private int orientation = 0;
+        private int static_orientation = 0;
+        private int global_orientation = 0;
         private int mode = 0;
         private MME.Hercules.WPFForms.OffScreenRender offscreen = null;
         private int num_cams = 0;
@@ -277,7 +278,7 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
-                if (this.orientation == 0)
+                if (this.static_orientation == 0)
                 {
                     this.labell4.Visible = true;
                     if (right)
@@ -303,7 +304,7 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
-                if (this.orientation == 0)
+                if (this.static_orientation == 0)
                 {
                     this.labell4.Visible = false;
                     if (right) this.labelr4.Visible = false;
@@ -334,7 +335,7 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
-                if (this.orientation == 0)
+                if (this.static_orientation == 0)
                 {
                     this.labell3.Visible = false;
                     if (right) this.labelr3.Visible = false;
@@ -365,7 +366,7 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
-                if (this.orientation==0)
+                if (this.static_orientation==0)
                 {
                     this.labell2.Visible = false;
                     if (right) this.labelr2.Visible = false;
@@ -392,7 +393,7 @@ namespace MME.Hercules.Forms.User
             this.pictureBox2.Visible = false;
             this.Refresh();
 
-            if (this.orientation == 0)
+            if (this.static_orientation == 0)
             {
                 this.labell1.Visible = false;
                 if (right) this.labelr1.Visible = false;
@@ -738,7 +739,7 @@ namespace MME.Hercules.Forms.User
         private void Orient(int mode)
         {
             //bg...
-            if (orientation == 0)
+            if (this.static_orientation == 0)
             {
                 WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
             }
@@ -748,7 +749,7 @@ namespace MME.Hercules.Forms.User
             }
 
             //backbutton
-            if (orientation == 0)
+            if (static_orientation == 0)
             {
                 this.pictureBoxBack.Location = new Point(4, 719);
             }
@@ -759,7 +760,7 @@ namespace MME.Hercules.Forms.User
             }
 
             //info
-            if (orientation == 0)
+            if (static_orientation == 0)
             {
                 infof.Visible = false;
                 info.Visible = true;
@@ -782,7 +783,7 @@ namespace MME.Hercules.Forms.User
             //numbers
             //this.labell1.Visible = true;
             //this.labelr2.Visible = true;
-            if (orientation == 0)
+            if (static_orientation == 0)
             {
                 int x = 118;
                 int y = 316;
@@ -824,7 +825,7 @@ namespace MME.Hercules.Forms.User
             }
 
             //vidpanels...
-            if (orientation == 0)
+            if (static_orientation == 0)
             { 
                 this.vidPanel[0].Location = new Point(330, 321);
                 this.vidPanel[1].Location = new Point(330, 321);
@@ -846,7 +847,7 @@ namespace MME.Hercules.Forms.User
             this.preview.Size = this.vidPanel[0].Size;
 
             // prompt...
-            if (orientation == 0)
+            if (static_orientation == 0)
             {
                 this.pictureBoxLike.Location = new Point(94, 598);
                 this.pictureBoxAgain.Location = new Point(479, 598);
@@ -1095,7 +1096,7 @@ namespace MME.Hercules.Forms.User
                 }
                 else if (this.num_cams == 2)
                 {
-                    if (this.orientation == 1)
+                    if (this.static_orientation == 1)
                     {
                         this.startpreview(0);
                     }
@@ -1117,7 +1118,7 @@ namespace MME.Hercules.Forms.User
 
             //  Get Ready...
             SoundUtility.PlaySync(Hercules.Properties.SoundResources.GET_READY);
-            if (this.orientation == 0)
+            if (this.static_orientation == 0)
             {
                 this.info.Visible = true;
                 this.infof.Visible = false;
@@ -1169,7 +1170,7 @@ namespace MME.Hercules.Forms.User
 
             //  Change mode here...
             this.mode = 1;
-            Orient(this.mode);
+            Orient(1);
             this.pictureBoxBack.Visible = true;
             this.pictureBoxFlipBottom.Visible = true;
             this.pictureBoxFlipTop.Visible = true;
@@ -1740,7 +1741,7 @@ namespace MME.Hercules.Forms.User
 
                     if (worked)
                     {
-                        this.orientation = new_orientation;
+                        this.global_orientation = new_orientation;
                     }
 
                 }
@@ -1779,12 +1780,12 @@ namespace MME.Hercules.Forms.User
                     switch (dm.dmDisplayOrientation)
                     {
                         case NativeMethods.DMDO_DEFAULT:
-                            this.orientation = 0;
+                            this.global_orientation = 0;
                             break;
                        
                         case NativeMethods.DMDO_180:
                             dm.dmDisplayOrientation = NativeMethods.DMDO_DEFAULT;
-                            this.orientation = 1;
+                            this.global_orientation = 1;
                             break;
                        
                         default:
@@ -1809,9 +1810,9 @@ namespace MME.Hercules.Forms.User
             rotate_via_graphics();
             return;
 
-            if (orientation != 1)
+            if (static_orientation != 1)
             {
-                orientation = 1;
+                static_orientation = 1;
                 this.Orient(this.mode);
             }
         }
@@ -1821,9 +1822,9 @@ namespace MME.Hercules.Forms.User
             rotate_via_graphics();
             return;
 
-            if (orientation != 0)
+            if (static_orientation != 0)
             {
-                orientation = 0;
+                static_orientation = 0;
                 this.Orient(this.mode);
             }
         }
