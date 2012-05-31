@@ -7,6 +7,6 @@
              d:DesignHeight="768" d:DesignWidth="1024" Loaded="UserControl_Loaded">
     <Canvas Name="canvas_master" Background="Red" Height="768" Width="1024">
         <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="image2" Stretch="Fill" Width="1024" Source="/HerculesWPFMemoryGame;component/Images/SCREENBACKGROUND-nothing.png" />
-        <Label Canvas.Left="94" Canvas.Top="118" Content="Tap To Reveal ATT Products.  Try To Match Them All !" Height="58" Name="label1" Width="829" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" Foreground="Black" />
+        <Label Canvas.Left="94" Canvas.Top="120" Content="Tap To Reveal Hidden Images.  Try To Match Them All !" Height="58" Name="label1" Width="829" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" Foreground="Black" />
     </Canvas>
 </UserControl>

@@ -8,7 +8,7 @@
     <Canvas Name="canvas_master" Background="Red" Height="768" Width="1024">
         <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="image2" Stretch="Fill" Width="1024" Source="/HerculesWPFMemoryGame;component/Images/SCREENBACKGROUND-nothing.png" />
         <InkCanvas Canvas.Left="0" Canvas.Top="69" Height="699" Name="inkCanvas1" Width="1024" Background="Transparent"/>
-        <Label Canvas.Left="284" Canvas.Top="17" Content="Go Ahead, Draw Something !" Height="59" Name="label1" Width="565" FontSize="30" FontWeight="Bold" />
+        <Label Canvas.Left="284" Canvas.Top="136" Content="Go Ahead, Draw Something !" Height="59" Name="label1" Width="565" FontSize="30" FontWeight="Bold" />
         <!--<Label Canvas.Left="54" Canvas.Top="45" Content="Tap To Reveal WhiteCastle Menu Items.  Try To Match Them All !" Height="58" Name="label1" Width="938" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" />-->
     </Canvas>
 </UserControl>

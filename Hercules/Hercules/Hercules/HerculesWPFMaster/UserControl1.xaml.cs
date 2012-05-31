@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.IO;
 using MME.HerculesConfig;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace HerculesWPFMaster
 {
@@ -99,6 +100,7 @@ namespace HerculesWPFMaster
         
         public delegate void UserControlMasterDelegate(String option);
         public UserControlMasterDelegate evt = null;
+        private bool silenced = false;
 
         //public WebBrowser webBrowser1 = null;
 
@@ -181,6 +183,11 @@ namespace HerculesWPFMaster
 
         void webBrowser1_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!silenced)
+            {
+                this.HideScriptErrors(this.webBrowser1, true);
+                silenced = true;
+            }
             //this.webBrowser1.Navigate(new Uri("http://www.whitecastle.com", UriKind.RelativeOrAbsolute));
         }
 
@@ -191,11 +198,16 @@ namespace HerculesWPFMaster
             {
                 this.webBrowser1.Dispose();
                 this.webBrowser1 = null;
+                this.silenced = false;
             }
 
             if ((option == "menu")||(option=="drinks")) // menu
             {
                 this.ShowMenu();
+            }
+            else if (option == "hidden")
+            {
+                this.ShowHidden();
             }
             else if (option == "social")
             {
@@ -217,7 +229,7 @@ namespace HerculesWPFMaster
             {
                 this.ShowAbout();
             }
-            else if (option == "daybreaker site") //web...
+            else if (option == "daybreak site") //web...
             {
                 this.ShowDBS();
             }
@@ -473,6 +485,18 @@ namespace HerculesWPFMaster
             this.ShowBack();
         }
 
+        public void ShowHidden()
+        {
+            String weburl = "http://dev4.northkingdom.com/daybreak/main-site-4/";
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "HiddenURL")))
+            {
+                weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "HiddenURL");
+            }
+
+            this.ShowWeb(weburl, false);
+        }
+
         public void ShowAbout()
         {
             String weburl = "http://www.whitecastle.com/company";
@@ -548,6 +572,7 @@ namespace HerculesWPFMaster
             {
                 this.webBrowser1 = new WebBrowser();
                 this.webBrowser1.Navigated += new NavigatedEventHandler(webBrowser1_Navigated);
+                //this.webBrowser1.Loaded +=new RoutedEventHandler(webBrowser1_Loaded);
             }
 
             if (ab)
@@ -596,8 +621,29 @@ namespace HerculesWPFMaster
             this.ShowBack();
         }
 
+        public void HideScriptErrors(WebBrowser wb, bool Hide)
+        {
+            try
+            {
+                FieldInfo fiComWebBrowser = typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
+                if (fiComWebBrowser == null) return;
+                object objComWebBrowser = fiComWebBrowser.GetValue(wb);
+                if (objComWebBrowser == null) return;
+                objComWebBrowser.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] { Hide });
+            }
+            catch (System.Exception ex)
+            {
+            }
+        }
+
         void webBrowser1_Navigated(object sender, NavigationEventArgs e)
         {
+            if (!silenced)
+            {
+                this.HideScriptErrors(this.webBrowser1, true);
+                silenced = true;
+            }
+
             this.addressbar.Text = e.Uri.ToString();
         }
 

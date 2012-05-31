@@ -413,7 +413,12 @@ namespace HerculesWPFMemoryGame
                     //  Check if the two match...
                     String apath = paths[this.cur_objs[0, 0], this.cur_objs[0, 1]];
                     String bpath = paths[this.cur_objs[1, 0], this.cur_objs[1, 1]];
-                    if (apath == bpath)
+
+                    String[] aparts = apath.Split( new char[] {'\\'} );
+                    String[] bparts = bpath.Split( new char[] {'\\'} );
+
+                    if ( aparts[ aparts.Length - 1 ] == bparts[ bparts.Length - 1 ] )
+                    //if (apath == bpath)
                     {
                         matches[this.cur_objs[0, 0], this.cur_objs[0, 1]] = true;
                         matches[this.cur_objs[1, 0], this.cur_objs[1, 1]] = true;

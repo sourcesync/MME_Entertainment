@@ -50,7 +50,7 @@
 
   <!-- Table Web Stuff-->
   <add key="JBSURL" value="http://findthetruth.jackboxers.com" />
-  <add key="DBSURL" value="http://dev4.northkingdom.com/daybreak/main-site-4/" />
+  <add key="DBSURL" value="http://daybreak2012.com" />
 
 
   <add key="HerculesPublishUrl" value="http://favpic.mobi/hercules_test.php"/>

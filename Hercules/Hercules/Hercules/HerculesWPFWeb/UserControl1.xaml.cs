@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MME.HerculesConfig;
+using System.Reflection;
 
 namespace HerculesWPFWeb
 {
@@ -20,6 +21,8 @@ namespace HerculesWPFWeb
     /// </summary>
     public partial class UserControl1 : UserControl
     {
+        private bool silenced = false;
+
         public UserControl1()
         {
             InitializeComponent();
@@ -28,8 +31,23 @@ namespace HerculesWPFWeb
            
         }
 
+        public void HideScriptErrors(WebBrowser wb, bool Hide)
+        {
+            FieldInfo fiComWebBrowser = typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (fiComWebBrowser == null) return;
+            object objComWebBrowser = fiComWebBrowser.GetValue(wb);
+            if (objComWebBrowser == null) return;
+            objComWebBrowser.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] { Hide });
+        }
+
         void webBrowser1_Navigated(object sender, NavigationEventArgs e)
         {
+            if (!silenced)
+            {
+                this.HideScriptErrors(this.webBrowser1, true);
+                silenced = true;
+            }
+
             String str = e.WebResponse.ResponseUri.ToString();
         }
 

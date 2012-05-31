@@ -252,8 +252,8 @@ namespace HerculesWPFMain
                  * */
 
                 double fudge = 20.0f;
-                if (path == "daybreaker site")
-                    fudge = 55;
+                if (path == "daybreak site")
+                    fudge = 45;
                 else if (path == "check-in")
                     fudge = 25;
                 else if (path == "games")
@@ -600,6 +600,20 @@ namespace HerculesWPFMain
         
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
         {
+
+            Point pt = e.GetPosition(this);
+            double x = pt.X;
+            double y = pt.Y;
+            //339/81
+            double lx = 339 - 50;
+            double ty = 81 - 50;
+            double rx = 339 + 50;
+            double by = 81 + 50;
+            if ((x > lx) && (x < rx) && (y > ty) && (y < by))
+            {
+                this.evt("hidden");
+                return;
+            }
 
             if ( this.imagea.IsMouseOver ) 
             {
