@@ -307,7 +307,15 @@ namespace MME.Hercules.Forms.User
                 return;
             
             // load the template            
-            Bitmap template = new Bitmap("Skins\\" + ConfigUtility.Skin + "\\Templates\\email.jpg");
+            Bitmap template = null;
+            if (!this.istable)
+            {
+                template = new Bitmap("Skins\\" + ConfigUtility.Skin + "\\Templates\\email.jpg");
+            }
+            else
+            {
+                template = new Bitmap("Skins\\" + ConfigUtility.Skin + "\\Templates\\email-cropped.jpg");
+            }
 
             using (Graphics grfx = Graphics.FromImage(template))
             {
@@ -315,9 +323,13 @@ namespace MME.Hercules.Forms.User
                 {
                     Bitmap photo = new Bitmap(this.currentSession.PhotoPath + "\\photo" + this.currentSession.FavoritePhoto + ".jpg");
 
+                    //345,258
+
                     if (!this.istable)
                     {
                         photo.RotateFlip(RotateFlipType.Rotate90FlipNone);
+
+                        //320,480
 
                         System.Drawing.Image mini = photo.GetThumbnailImage(268, 387, null, IntPtr.Zero);
 
@@ -329,8 +341,13 @@ namespace MME.Hercules.Forms.User
                     }
                     else
                     {
-                        template.Dispose();
-                        template = photo;
+                        System.Drawing.Image mini = photo.GetThumbnailImage(270, 218, null, IntPtr.Zero);
+
+                        // Clear handle to original file so that we can overwrite it if necessary
+                        photo.Dispose();
+
+                        grfx.DrawImage(mini, 25, 45, mini.Width, mini.Height);
+                        mini.Dispose();
                     }
                 }
             }

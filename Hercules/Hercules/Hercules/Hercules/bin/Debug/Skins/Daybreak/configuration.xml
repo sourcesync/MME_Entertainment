@@ -112,6 +112,8 @@
 
   <add key="CheckoutTextColor" value="yellow" />
   <add key="GameForeColor" value="black" />
+
+  <add key="SwapWebCams" value="1" />
   
   <!-- 1 Photo customization -->
   <add key="Photo1_X" value="80" />

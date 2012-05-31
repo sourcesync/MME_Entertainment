@@ -666,6 +666,17 @@ namespace MME.Hercules.Forms.User
                 }
             }
 
+            if ( numcams==2)
+            {
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "SwapWebCams")))
+                {
+                    String tmpname = this.camname[0];
+                    this.camname[0] = this.camname[1];
+                    this.camname[1] = tmpname;
+                }
+            }
+
+
             if (numcams == 1)
             {
                 this.panelVideoOne.Visible = true;
