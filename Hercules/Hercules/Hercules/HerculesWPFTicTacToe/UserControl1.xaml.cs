@@ -82,13 +82,13 @@ namespace HerculesWPFTicTacToe
                     this.myForeBrush = this.myWhiteBrush;
             }
 
-            this.fan = GetBitMap("ATT_Black.png");
-            this.rfan = GetBitMap("ATT_Red.png");
-            this.yfan = GetBitMap("ATT_Orange.png");
+            this.fan = GetBitMap("X_Normal.png");
+            this.rfan = GetBitMap("X_Draw.png");
+            this.yfan = GetBitMap("X_Win.png");
 
-            this.dbn = GetBitMap("Daybreak_Normal.png");
-            this.dbr = GetBitMap("Daybreak_Red.png");
-            this.dbo = GetBitMap("Daybreak_Orange.png");
+            this.dbn = GetBitMap("O_Normal.png");
+            this.dbr = GetBitMap("O_Draw.png");
+            this.dbo = GetBitMap("O_Win.png");
         }
 
         public BitmapImage GetBitMap(String path)
@@ -108,27 +108,27 @@ namespace HerculesWPFTicTacToe
                 {
                     bm = WindowUtility.GetScreenBitmapWPF(path);
                 }
-                else if (path == "ATT_Black.png")
+                else if (path == "X_Normal.png")
                 {
                     bm = WindowUtility.GetScreenBitmapWPF(path);
                 }
-                else if (path == "ATT_Red.png")
+                else if (path == "X_Draw.png")
                 {
                     bm = WindowUtility.GetScreenBitmapWPF(path);
                 }
-                else if (path == "ATT_Orange.png")
+                else if (path == "X_Win.png")
                 {
                     bm = WindowUtility.GetScreenBitmapWPF(path);
                 }
-                else if (path == "Daybreak_Red.png")
+                else if (path == "O_Draw.png")
                 {
                     bm = WindowUtility.GetScreenBitmapWPF(path);
                 }
-                else if (path == "Daybreak_Normal.png")
+                else if (path == "O_Normal.png")
                 {
                     bm = WindowUtility.GetScreenBitmapWPF(path);
                 }
-                else if (path == "Daybreak_Orange.png")
+                else if (path == "O_Win.png")
                 {
                     bm = WindowUtility.GetScreenBitmapWPF(path);
                 }

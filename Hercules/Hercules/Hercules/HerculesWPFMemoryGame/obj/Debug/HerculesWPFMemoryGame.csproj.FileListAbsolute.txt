@@ -26,3 +26,17 @@ C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMem
 C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\GenerateResource.write.1.tlog
 C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.dll
 C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.pdb
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesWPFMemoryGame.dll
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesWPFMemoryGame.pdb
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesConfig.dll
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesConfig.pdb
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\UserControl1.baml
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\UserControl1.g.cs
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame_MarkupCompile.cache
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.g.resources
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.Properties.Resources.resources
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.dll
+C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.pdb
