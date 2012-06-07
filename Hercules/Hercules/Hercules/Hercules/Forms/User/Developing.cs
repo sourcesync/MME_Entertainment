@@ -70,7 +70,8 @@ namespace MME.Hercules.Forms.User
                     ConfigUtility.Skin));
                 this.label1.Parent = this.pb;
                 this.label1.BackColor = System.Drawing.Color.Transparent;
-                this.label1.ForeColor = System.Drawing.Color.White;
+                String str = ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR");
+                this.label1.ForeColor = ColorTranslator.FromHtml(str);
                 this.label1.BringToFront();
                 this.label1.Visible = true;
                 this.label1.AutoSize = true;
@@ -188,14 +189,17 @@ namespace MME.Hercules.Forms.User
 
                 this.label1.Parent = this.pb;
                 this.label1.BackColor = System.Drawing.Color.Transparent;
-                this.label1.ForeColor = System.Drawing.Color.White;
+                String str = ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR");
+                this.label1.ForeColor = ColorTranslator.FromHtml(str);
+                //this.label1.ForeColor = System.Drawing.Color.White;
                 this.label1.BringToFront();
                 this.label1.Visible = true;
                 this.label1.AutoSize = true;
                     this.label1.Visible = true;
                     if (this.ischeckin)
                     {
-                        this.label1.Text = "Thank you for checking-in To MoBar!";
+                        String tstr = ConfigUtility.GetConfig(ConfigUtility.Config, "CheckinThankyouText");
+                        this.label1.Text = tstr;
                     }
                     else
                     {
