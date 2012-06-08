@@ -1338,14 +1338,11 @@ namespace HerculesWPFChoose
             }
 
             this.textBoxItems.Visibility = System.Windows.Visibility.Hidden;
-            /*
-            this.labelPay.Visibility = System.Windows.Visibility.Visible;
-            this.labelMessage.Visibility = System.Windows.Visibility.Visible;
-
-            this.labelPay.Content =
-                String.Format("Your Total Is ${0:0.00}", this.total);
-            this.labelMessage.Content = "Please Pay And Pick Up Your Order Now.";
-             * */
+            
+            
+            //this.labelMessage.Visibility = System.Windows.Visibility.Visible;
+            //this.labelMessage.Content = "Please Pay And Pick Up Your Order Now.";
+            
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -1410,6 +1407,10 @@ namespace HerculesWPFChoose
                 this.canvas_purchase.Visibility = System.Windows.Visibility.Visible;
                 this.canvas_totals.Visibility = System.Windows.Visibility.Hidden;
                 this.canvas_itemized.Visibility = System.Windows.Visibility.Hidden;
+                
+                this.labelPay.Visibility = System.Windows.Visibility.Visible;
+                this.labelPay.Content =
+                    String.Format("${0:0.00}", this.total);
 
             }
             else // edit, go back to choosing...

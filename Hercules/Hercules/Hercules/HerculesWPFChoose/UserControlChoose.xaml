@@ -6,14 +6,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024" Loaded="UserControl_Loaded">
     <Canvas Name="cmaster">
-        <Canvas Name="canvas_purchase" Visibility="Hidden">
-            <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="imagepurchase" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFChoose;component/Images/purchase.png" MouseDown="imagepurchase_MouseDown" />
-        </Canvas>
+        
         <Canvas Name="canvas_checkout" Visibility="Hidden">
             <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="imagecheckout" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFChoose;component/Images/checkout_bg.png" MouseDown="imagecheckout_MouseDown" />
            <Image Canvas.Left="884" Canvas.Top="774" Height="47" Name="image_15" Stretch="Fill" Width="281" />
-            <Label Canvas.Left="169" Canvas.Top="326" Content="Label" Height="58" Name="labelPay" Width="687" FontSize="30" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Microsoft Sans Serif" Visibility="Hidden" />
-            <Label Canvas.Left="169" Canvas.Top="405" Content="Label" FontSize="30" Height="58" HorizontalContentAlignment="Center" Name="labelMessage" Width="687" FontWeight="Bold" FontFamily="Microsoft Sans Serif" Visibility="Hidden" />
+            
         </Canvas> 
         <Canvas Name="canvas_choose">
             
@@ -112,6 +109,11 @@
         <Canvas Name="canvas_itemized" >
             <TextBlock Canvas.Left="12" Canvas.Top="214" Height="23" Name="textBlock1" Text="TextBlockFirst" Width="188" Visibility="Hidden" />
         </Canvas>
+
+        <Canvas Name="canvas_purchase" Visibility="Hidden">
+            <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="imagepurchase" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFChoose;component/Images/purchase.png" MouseDown="imagepurchase_MouseDown" />
+            <Label Canvas.Left="169" Canvas.Top="405" Content="Label" FontSize="30" Height="58" HorizontalContentAlignment="Center" Name="labelMessage" Width="687" FontWeight="Bold" FontFamily="Microsoft Sans Serif" Visibility="Hidden" />
+        </Canvas>
         
         <Image Canvas.Left="994" Canvas.Top="738" Height="30" Name="imagea" Stretch="Fill" Width="30" Source="/HerculesWPFChoose;component/Images/FLIP-THUMB.png" MouseDown="imageb_MouseDown" Visibility="Hidden" />
 
@@ -121,5 +123,6 @@
                 <RotateTransform Angle="180"></RotateTransform>
             </Image.RenderTransform>
         </Image>
+        <Label Canvas.Left="169" Canvas.Top="653" Content="Label" Height="58" Name="labelPay" Width="687" FontSize="30" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Microsoft Sans Serif" Visibility="Hidden" />
     </Canvas>
 </UserControl>
