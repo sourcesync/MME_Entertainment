@@ -669,6 +669,7 @@ namespace HerculesWPFChoose
 
         private void image_MouseMove(object sender, MouseEventArgs e)
         {
+            /*
             if (this.selected != null)
             {
                 write("mouse move selected! - " + sender.ToString());
@@ -684,6 +685,7 @@ namespace HerculesWPFChoose
                 element.SetValue(Canvas.LeftProperty, newx);
                 element.SetValue(Canvas.TopProperty, newy);
             }
+             * */
             
         }
 
@@ -745,8 +747,8 @@ namespace HerculesWPFChoose
                 double y = (double)model.GetValue(Canvas.TopProperty) + i * this.textBlock1.Height;
                 if (this.mode == 1)
                 {
-                    x = x + 400;
-                    y = y+100;
+                    x = x + 440;
+                    y = y + 80;
                 }
                 el.SetValue(Canvas.LeftProperty, x);
                 el.SetValue(Canvas.TopProperty, y);
@@ -1273,7 +1275,7 @@ namespace HerculesWPFChoose
         {
             //double xoffset = -250.0;
             double xoffset = -250.0;
-            double yoffset = -150;
+            double yoffset = -100;
             this.OffsetControl(this.textBox1, xoffset, yoffset);
             this.OffsetControl(this.textBox3, xoffset, yoffset);
             this.OffsetControl(this.textBox99, xoffset, yoffset);
