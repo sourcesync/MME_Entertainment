@@ -747,7 +747,7 @@ namespace HerculesWPFChoose
                 double y = (double)model.GetValue(Canvas.TopProperty) + i * this.textBlock1.Height;
                 if (this.mode == 1)
                 {
-                    x = x + 440;
+                    x = x + 410;
                     y = y + 80;
                 }
                 el.SetValue(Canvas.LeftProperty, x);
@@ -804,6 +804,8 @@ namespace HerculesWPFChoose
                 cart.RemoveAt(0);
             }
             int idx = this.imgs.IndexOf(o);
+            if (idx < 0) return;
+
             String[] src = this.GetOptionSource(this.cur_option);
             String path = (String)src[idx];
             cart.Add(path);
@@ -932,6 +934,7 @@ namespace HerculesWPFChoose
         private void RemoveItem(object sender)
         {
             int idx = this.display_cart.IndexOf(this.purchased);
+            if (idx < 0) return;
 
             //WindowWhiteCastle w = WindowWhiteCastle.getParent(this);
             cart.RemoveAt(idx);

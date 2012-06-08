@@ -102,7 +102,9 @@
   -->
   <add key="MenuCoords" value="breakfast-215,250:sliders-450,250:drinks-670,250:big_craves-215,480:sack_meals-450,480:sides-670,480" />
 
+  <!--
   <add key="SwapWebCams" value="1" />
+  -->
 
   <add key="CheckoutTextColor" value="blue" />
 
