@@ -192,7 +192,7 @@ namespace MME.Hercules.Forms.User
                 this.labelQuestion.Parent = this.pb2;
                 this.labelQuestion.BringToFront();
 
-                Bitmap bm = Hercules.Properties.ImageResources.backarrow;
+                Bitmap bm = Hercules.Properties.ImageResources.back_button;
                 this.pictureBoxBack.Image = bm;
                 this.pictureBoxBack.BackColor = System.Drawing.Color.Transparent;
                 this.pictureBoxBack.Parent = pb2;

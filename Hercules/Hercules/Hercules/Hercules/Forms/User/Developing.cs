@@ -213,7 +213,7 @@ namespace MME.Hercules.Forms.User
                         else
                             this.label1.Visible = true;
 
-                        this.label1.Text = "Thanks For Using Photobooth!";
+                        this.label1.Text = "Thanks For Using The WhiteCastle Photobooth!";
                     }
                     int space = (int)(1024 - this.label1.Size.Width);
                     this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);

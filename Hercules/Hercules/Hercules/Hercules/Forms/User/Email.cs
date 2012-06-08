@@ -53,7 +53,7 @@ namespace MME.Hercules.Forms.User
                 this.textBox1.Visible = false;
                 if (istable)
                 {
-                    Bitmap bm = Hercules.Properties.ImageResources.backarrow;
+                    Bitmap bm = Hercules.Properties.ImageResources.back_button;
                     this.pictureBoxBack.Image = bm;
                     this.pictureBoxBack.BackColor = System.Drawing.Color.Transparent;
                     this.pictureBoxBack.Parent = pb;

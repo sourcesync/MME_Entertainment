@@ -44,13 +44,6 @@ namespace HerculesWPFMenu
             InitializeComponent();
 
 
-            BitmapSource src = WindowUtility.GetScreenBitmapWPF("menu_select.png");
-            this.image1.Source = src;
-
-            System.Collections.ArrayList results = null;
-            System.Collections.ArrayList idxs =this.PositionMenu(ref results);
-
-            this.LoadMenuFromConfig( idxs, results );
 
 
         }
@@ -217,6 +210,23 @@ namespace HerculesWPFMenu
         private void imageb_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.toggle(sender);
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                BitmapSource src = WindowUtility.GetScreenBitmapWPF("menu_select.png");
+                this.image1.Source = src;
+
+                System.Collections.ArrayList results = null;
+                System.Collections.ArrayList idxs = this.PositionMenu(ref results);
+
+                this.LoadMenuFromConfig(idxs, results);
+            }
+            catch (System.Exception E)
+            {
+            }
         }
     }
 

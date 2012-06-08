@@ -472,6 +472,7 @@
     <None Include="Resources\whitecastle-blue.png" />
     <None Include="Resources\FLIP-THUMB.png" />
     <None Include="Resources\backarrow.png" />
+    <None Include="Resources\back-button.png" />
     <Content Include="Resources\backarrow-forform.png" />
     <None Include="Resources\FLIP-THUMB-30x30.png" />
     <None Include="Resources\FLIP-THUMB-30x30-flip.png" />

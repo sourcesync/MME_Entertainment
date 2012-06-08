@@ -18,7 +18,7 @@
         <Canvas Width="1024" Height="768" Name="canvas_master" >
             
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="ctlevents" Width="1024" Source="/HerculesWPFMaster;component/Images/CALENDAR.jpg" />
-            <TextBox Canvas.Left="0" Canvas.Top="0" Height="35" Name="addressbar"  Width="1024" FontSize="22" FontFamily="Verdana" FontWeight="Bold" KeyUp="KeyDown"/>
+            <TextBox Canvas.Left="75" Canvas.Top="15" Height="35" Name="addressbar"  Width="950" FontSize="22" FontFamily="Verdana" FontWeight="Bold" KeyUp="KeyDown"/>
 
             <WebBrowser Canvas.Left="0" Canvas.Top="0" Height="768" Name="webBrowser1" Width="1024" />
             <ucb:UserControlBlank Canvas.Top="0" Canvas.Left="0" x:Name="ctlblank" IsEnabled="True" Visibility="Visible" />
@@ -35,7 +35,11 @@
 
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imageserver" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/server-screen.png" />
 
+            <!--
             <Image Canvas.Left="4" Canvas.Top="719" Height="44" Name="imageback" Source="/HerculesWPFMaster;component/Images/backarrow1.png" Stretch="Fill" Width="51" MouseDown="imageback_MouseDown" />
+            -->
+            <Image Canvas.Left="4" Canvas.Top="708" Height="57" Name="imageback" Source="/HerculesWPFMaster;component/Images/back-button.png" Stretch="Fill" Width="119" MouseDown="imageback_MouseDown" />
+
         </Canvas>
 
         <Image Canvas.Left="934" Canvas.Top="708" Height="60" Name="image1" Stretch="Fill" Width="60" Source="/HerculesWPFMaster;component/Images/flipcropped.png" MouseDown="image1_MouseDown" />

@@ -44,6 +44,7 @@ namespace HerculesWPFChoose
         private Image purchased = null;
         private Point diff;
         private int cur_option = 0;
+        private String cur_set_option = "";
         public int mode = 0; // buying...
         private double total = 0.0;
 
@@ -66,6 +67,7 @@ namespace HerculesWPFChoose
         private BitmapSource select_src = null;
         private BitmapSource choose_src = null;
         private BitmapSource checkout_src = null;
+        private BitmapSource purchase_src = null;
 
         //  specific menus...
 
@@ -262,6 +264,7 @@ namespace HerculesWPFChoose
             this.select_src = WindowUtility.GetScreenBitmapWPF("menu_select.png");
             this.choose_src = WindowUtility.GetScreenBitmapWPF("menu_choose.png");
             this.checkout_src = WindowUtility.GetScreenBitmapWPF("checkout_bg.png"); ;
+            this.purchase_src = WindowUtility.GetScreenBitmapWPF("purchase.png"); ;
 
             this.image1.Source = this.choose_src;
             this.imagecheckout.Source = this.checkout_src;
@@ -353,8 +356,13 @@ namespace HerculesWPFChoose
 
         public void Restart()
         {
+            this.mode = 0;
             this.canvas_checkout.Visibility = System.Windows.Visibility.Hidden;
             this.canvas_choose.Visibility = System.Windows.Visibility.Visible;
+            this.canvas_purchase.Visibility = System.Windows.Visibility.Hidden;
+            this.canvas_totals.Visibility = System.Windows.Visibility.Visible;
+            this.canvas_itemized.Visibility = System.Windows.Visibility.Visible;
+            this.RestoreCheckoutControls();
 
             this.textBox1.Foreground = new SolidColorBrush(Colors.Yellow);
             this.textBox3.Foreground = new SolidColorBrush(Colors.Yellow);
@@ -362,7 +370,7 @@ namespace HerculesWPFChoose
             this.textBoxSubTotal.Foreground = new SolidColorBrush(Colors.Yellow);
             this.textBoxTax.Foreground = new SolidColorBrush(Colors.Yellow);
             this.textBoxTotalAmount.Foreground = new SolidColorBrush(Colors.Yellow);
-            this.RestoreCheckoutControls();
+            
 
             foreach (Image img in this.imgs)
             {
@@ -379,7 +387,6 @@ namespace HerculesWPFChoose
 
             this.cart.Clear();
             this.total = 0.0;
-            this.mode = 0;
 
 
             this.image1.Source = this.choose_src;
@@ -389,7 +396,7 @@ namespace HerculesWPFChoose
             for (int i = 0; i < this.itemized.Count; i++)
             {
                 TextBlock tb = (TextBlock)this.itemized[i];
-                this.cmaster.Children.Remove(tb);
+                this.canvas_itemized.Children.Remove(tb);
             }
             this.itemized.Clear();
 
@@ -506,7 +513,8 @@ namespace HerculesWPFChoose
 
             this.label1.Visibility = System.Windows.Visibility.Hidden;
             this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
-
+             
+            this.cur_set_option = option;
         }
 
         private Point GetElementPos(object o)
@@ -658,7 +666,7 @@ namespace HerculesWPFChoose
                     tb.Height = this.textBlock1.Height;
                    
                     this.itemized.Add(tb);
-                    this.cmaster.Children.Add(tb);
+                    this.canvas_itemized.Children.Add(tb);
 
 
 
@@ -913,7 +921,31 @@ namespace HerculesWPFChoose
         {
             //WindowWhiteCastle w = WindowWhiteCastle.getParent(this);
             //w.ShowMenu();
-            if (this.evt != null) this.evt(0);
+            if (mode == 0)
+            {
+                if (this.evt != null) this.evt(0); // go to menu...
+            }
+            else if (mode == 1) // checkout, go back to choosing...
+            {
+                this.mode = 0;
+                this.canvas_purchase.Visibility = System.Windows.Visibility.Hidden;
+                this.canvas_choose.Visibility = System.Windows.Visibility.Visible;
+                this.canvas_checkout.Visibility = System.Windows.Visibility.Hidden;
+                this.canvas_totals.Visibility = System.Windows.Visibility.Visible;
+                this.canvas_itemized.Visibility = System.Windows.Visibility.Visible;
+                this.RestoreCheckoutControls();
+
+
+                this.SetOption(this.cur_set_option);
+
+                this.redraw_itemized();
+                this.redraw_cart();
+                this.update_cost();
+            }
+            else if (mode == 2) // purchase, go to main...
+            {
+                if (this.evt != null) this.evt(1); // go to main...
+            }
         }
 
         #region Mouse Events
@@ -1043,11 +1075,8 @@ namespace HerculesWPFChoose
             this.toggle(sender);
         }
 
-        private void imageCheckout_MouseUp(object sender, MouseButtonEventArgs e)
+        private void OffsetCheckoutControls()
         {
-            //  change bg...
-            this.imagecheckout.Source = this.checkout_src;
-
             //double xoffset = -250.0;
             double xoffset = -250.0;
             double yoffset = -150;
@@ -1057,6 +1086,14 @@ namespace HerculesWPFChoose
             this.OffsetControl(this.textBoxSubTotal, xoffset, yoffset);
             this.OffsetControl(this.textBoxTax, xoffset, yoffset);
             this.OffsetControl(textBoxTotalAmount, xoffset, yoffset);
+        }
+
+        private void imageCheckout_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            //  change bg...
+            this.imagecheckout.Source = this.checkout_src;
+
+            
 
             this.textBox1.Foreground = new SolidColorBrush(Colors.Blue);
                     this.textBox3.Foreground = new SolidColorBrush(Colors.Blue);
@@ -1079,10 +1116,15 @@ namespace HerculesWPFChoose
                 }
             }
 
+            this.mode = 1; // checkout...
+
             this.canvas_checkout.Visibility = System.Windows.Visibility.Visible;
             this.canvas_choose.Visibility = System.Windows.Visibility.Hidden;
-
-            this.mode = 1; // checkout...
+            this.canvas_purchase.Visibility = System.Windows.Visibility.Hidden;
+            this.canvas_totals.Visibility = System.Windows.Visibility.Visible;
+            this.canvas_itemized.Visibility = System.Windows.Visibility.Visible;
+            this.OffsetCheckoutControls();
+            //this.RestoreCheckoutControls();
 
             //  redraw itemized list...
             this.redraw_itemized();
@@ -1097,18 +1139,27 @@ namespace HerculesWPFChoose
             }
 
             this.textBoxItems.Visibility = System.Windows.Visibility.Hidden;
+            /*
             this.labelPay.Visibility = System.Windows.Visibility.Visible;
             this.labelMessage.Visibility = System.Windows.Visibility.Visible;
 
             this.labelPay.Content =
                 String.Format("Your Total Is ${0:0.00}", this.total);
             this.labelMessage.Content = "Please Pay And Pick Up Your Order Now.";
+             * */
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.label1.Visibility = System.Windows.Visibility.Hidden;
             this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
+
+            this.mode = 0;
+            this.canvas_checkout.Visibility = System.Windows.Visibility.Hidden;
+            this.canvas_choose.Visibility = System.Windows.Visibility.Visible;
+            this.canvas_purchase.Visibility = System.Windows.Visibility.Hidden;
+            this.canvas_itemized.Visibility = System.Windows.Visibility.Visible;
+            this.canvas_totals.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void label1_MouseMove(object sender, MouseEventArgs e)
@@ -1140,6 +1191,48 @@ namespace HerculesWPFChoose
                     this.drag_cancel(sender);
                 }
             }
+        }
+
+        private void imagecheckout_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Point xy = e.GetPosition(this.canvas_checkout);
+            if (xy.X > 1024.0 / 2) // purchase, show purchase page...
+            {
+                this.mode = 2;
+
+                this.imagepurchase.Source = this.purchase_src;
+                this.canvas_checkout.Visibility = System.Windows.Visibility.Hidden;
+                this.canvas_choose.Visibility = System.Windows.Visibility.Hidden;
+                this.canvas_purchase.Visibility = System.Windows.Visibility.Visible;
+                this.canvas_totals.Visibility = System.Windows.Visibility.Hidden;
+                this.canvas_itemized.Visibility = System.Windows.Visibility.Hidden;
+
+            }
+            else // edit, go back to choosing...
+            {
+                this.mode = 0;
+                this.canvas_purchase.Visibility = System.Windows.Visibility.Hidden;
+                this.canvas_choose.Visibility = System.Windows.Visibility.Visible;
+                this.canvas_checkout.Visibility = System.Windows.Visibility.Hidden;
+                this.canvas_totals.Visibility = System.Windows.Visibility.Visible;
+                this.canvas_itemized.Visibility = System.Windows.Visibility.Visible;
+                this.RestoreCheckoutControls();
+
+                this.SetOption(this.cur_set_option);
+
+                this.redraw_itemized();
+                this.redraw_cart();
+                this.update_cost();
+            }
+
+        }
+
+        private void imagepurchase_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //  reset here for next time...
+            this.Restart();
+
+            if (this.evt != null) this.evt(1);
         }
     }
 }

@@ -110,8 +110,8 @@
   
   <add key="MenuCoords" value="drinks-315,70:wine-550,70:beer-770,70:food-315,300:dessert-550,300:beverages-770,300:server-545,535" />
 
-  <add key="CheckoutTextColor" value="yellow" />
-  <add key="GameForeColor" value="black" />
+  <add key="CheckoutTextColor" value="blue" />
+  <add key="GameForeColor" value="white" />
 
   <add key="SwapWebCams" value="1" />
   

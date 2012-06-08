@@ -1024,7 +1024,7 @@ namespace MME.Hercules.Forms.User
             this.pictureBoxFlipBottom.Parent = this.pb;
 
             //  Back Button...
-            bm = Hercules.Properties.ImageResources.backarrow;
+            bm = Hercules.Properties.ImageResources.back_button;
             this.pictureBoxBack.Image = bm;
             this.pictureBoxBack.Parent = pb;
             this.pictureBoxBack.Visible = true;

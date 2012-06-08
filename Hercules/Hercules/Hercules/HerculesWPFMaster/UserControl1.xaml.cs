@@ -203,6 +203,8 @@ namespace HerculesWPFMaster
 
             if ((option == "menu")||(option=="drinks")) // menu
             {
+
+                this.ctlchoose.Restart();
                 this.ShowMenu();
             }
             else if (option == "hidden")
@@ -284,14 +286,29 @@ namespace HerculesWPFMaster
 
         public void choose_selected(int option)
         {
-            if (this.ctlchoose.mode == 1) // go to main from choose
-            {
-                this.ShowMain();
-            }
-            else // go back up from choose...
+            if (option == 0)
             {
                 this.ShowMenu();
             }
+            else if (option == 1)
+            {
+                this.ShowMain();
+            }
+
+                /*
+            else if (this.ctlchoose.mode == 0) // go to main from choose...
+            {
+                this.ShowMain();
+            }
+            else if (this.ctlchoose.mode ==1 ) // go to menu from checkout...
+            {
+                this.ShowMenu();
+            }
+            else // goto menu from purchase...
+            {
+                this.ShowMenu();
+            }
+                 * */
         }
 
         public void blank_selected(int option)
@@ -535,7 +552,7 @@ namespace HerculesWPFMaster
 
         public void ShowEvents()
         {
-            String weburl = "http://www.whitecastle.com/company";
+            String weburl = "http://www.whitecastle.com";
 
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "EventsURL")))
             {
@@ -547,7 +564,7 @@ namespace HerculesWPFMaster
 
         public void ShowWebMain()
         {
-            String weburl = "http://www.whitecastle.com/company";
+            String weburl = "http://www.whitecastle.com";
 
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "WebURL")))
             {
@@ -584,14 +601,14 @@ namespace HerculesWPFMaster
                 this.addressbar.Visibility = System.Windows.Visibility.Hidden;
 
             }
-            this.webBrowser1.Height = 715;
+            this.webBrowser1.Height = 646 ;
             this.webBrowser1.Width = 1024;
             this.canvas_master.Children.Add(this.webBrowser1);
             FrameworkElement el = this.webBrowser1 as FrameworkElement;
             el.SetValue(Canvas.LeftProperty, 0.0);
             if (ab)
             {
-                el.SetValue(Canvas.TopProperty, 35.0);
+                el.SetValue(Canvas.TopProperty, 60.0);
             }
             else
             {

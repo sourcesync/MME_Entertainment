@@ -32,8 +32,8 @@ namespace MME.Hercules.WPFForms
 
             //  overlay buttons...
 
-            
-            Bitmap bm = Hercules.Properties.ImageResources.backarrow;
+
+            Bitmap bm = Hercules.Properties.ImageResources.back_button;
 
             this.SuspendLayout();
             this.pictureBox1.Image = bm;

@@ -154,9 +154,9 @@
             // 
             // pictureBoxBack
             // 
-            this.pictureBoxBack.Location = new System.Drawing.Point(4, 719);
+            this.pictureBoxBack.Location = new System.Drawing.Point(4, 708);
             this.pictureBoxBack.Name = "pictureBoxBack";
-            this.pictureBoxBack.Size = new System.Drawing.Size(51, 44);
+            this.pictureBoxBack.Size = new System.Drawing.Size(119, 57);
             this.pictureBoxBack.TabIndex = 9;
             this.pictureBoxBack.TabStop = false;
             this.pictureBoxBack.Visible = false;

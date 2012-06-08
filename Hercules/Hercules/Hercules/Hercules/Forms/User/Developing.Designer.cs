@@ -51,7 +51,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(784, 86);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Thanks For Using Photobooth !";
+            this.label1.Text = "Thanks For Using The WhiteCastle Photobooth !";
             this.label1.Visible = false;
             // 
             // Developing

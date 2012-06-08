@@ -23,10 +23,12 @@ h1 {
     margin:0 auto;
     width:1024px;
     height:768px;
-    background:#000 url(/event/WhiteCastle/images/bg.jpg) no-repeat;
+    background:#000 url(/event/WhiteCastle/images/promo_bg.jpg) no-repeat;
 }
 
-#favphoto {
+#favphoto 
+{
+    visibility:hidden;
     padding-top:30px;
 }
 
@@ -254,61 +256,8 @@ function showRecaptcha(element) {
     
         <h1></h1>
         
-        <div id="favphoto">            
-            <a href="/event/%event%/images/%id%.jpg" target="_blank"><img border="0" src="/event/%event%/images/%id%.jpg" /></a>           
-        </div>
         
         
-        <div style="text-align:center; margin-top:20px">
-
-        <a href="#" onclick="return rsemail()"><img border="0" align="absmiddle" src="/images/email.jpg" /></a> &nbsp;
-        
-        <a href="#" onclick="return rsshare()"><img border="0" align="absmiddle" src="/images/facebookshare.jpg" /></a> &nbsp;
-        <a href="http://www.facebook.com/%facebooklike%" target="_blank"><img  align="absmiddle" border="0" src="/images/facebooklike.jpg" /></a><br/>
-
-        <div style="text-align:center; width:200px; padding-left:30px; margin:8px auto;">
-        <a href="http://twitter.com/%followtwitter%" class="twitter-follow-button" data-show-count="false"></a>
-        </div>
-        <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-
-
-        </div>
-        
-
-
-        <div id="email" style="display:none">
-
-            <form method="post" action="/sendmessage.php">
-            <input type="hidden" name="subject" value="" />
-            <input type="hidden" name="returnurl" value="%tinyurl%" />
-
-            <h3>Email a Friend</h3>
-
-            To share this photo, enter a recipient email address and short message.  The url will be automatically attached to the end of your message.
-
-            <hr />
-
-            <p>
-            Who would you like to send your favorite photo to: (email address only)<br/>
-            <input type="text" id="emailto" name="emailto" /></p>
-
-            <p>
-            Enter a custom greeting message below (optional):<br/>
-            <table border="0" width="100%">
-            <tr>
-            <td width="70">
-            <img width="69" height="100" src="/event/%event%/photo/%id%.jpg" />
-            </td><td style="vertical-align:top">
-            <textarea rows="4" name="body">%emaildefault%</textarea>
-            </td></tr></table>
-            </p>
-
-            <button onclick="return sendmsg()">Send email</button> 
-            <button onclick="document.getElementById('email').style.display='none'; return false">cancel</button>
-
-            </form>
-
-        </div>
      
      
      </div>

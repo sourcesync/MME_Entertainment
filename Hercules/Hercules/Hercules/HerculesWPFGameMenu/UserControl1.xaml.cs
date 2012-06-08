@@ -33,16 +33,18 @@ namespace HerculesWPFGameMenu
             BitmapSource src = WindowUtility.GetScreenBitmapWPF("table_main_menu_bg.jpg");
             this.image2.Source = src;
 
+            /*
             BitmapImage bm = WindowUtility.GetScreenBitmapWPF("plain_button.png");
             this.image1.Source = bm;
             this.image3.Source = bm;
             this.image4.Source = bm;
+             * */
 
             this.myForeBrush = this.myBlackBrush;
             System.Windows.Media.Color scolor = Colors.Black;
-            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "GameForeColor")))
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "GameMenuTextColor")))
             {
-                String colorstr = ConfigUtility.GetConfig(ConfigUtility.Config, "GameForeColor");
+                String colorstr = ConfigUtility.GetConfig(ConfigUtility.Config, "GameMenuTextColor");
                 if (colorstr == "white")
                 {
                     this.myForeBrush = this.myWhiteBrush;

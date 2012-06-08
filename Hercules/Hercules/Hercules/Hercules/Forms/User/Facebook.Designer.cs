@@ -40,19 +40,19 @@
             this.notice = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.usepanel = new System.Windows.Forms.Panel();
+            this.pictureBoxBack = new System.Windows.Forms.PictureBox();
             this.labelQuestion = new System.Windows.Forms.Label();
             this.fbno = new System.Windows.Forms.PictureBox();
             this.fbyes = new System.Windows.Forms.PictureBox();
             this.pb2 = new System.Windows.Forms.PictureBox();
             this.keyboard = new MME.Hercules.Keyboards.Keyboard2();
-            this.pictureBoxBack = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.alertbox.SuspendLayout();
             this.usepanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbyes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             this.SuspendLayout();
             // 
             // pb
@@ -202,6 +202,16 @@
             this.usepanel.Size = new System.Drawing.Size(1024, 768);
             this.usepanel.TabIndex = 15;
             // 
+            // pictureBoxBack
+            // 
+            this.pictureBoxBack.Location = new System.Drawing.Point(4, 708);
+            this.pictureBoxBack.Name = "pictureBoxBack";
+            this.pictureBoxBack.Size = new System.Drawing.Size(119, 57);
+            this.pictureBoxBack.TabIndex = 4;
+            this.pictureBoxBack.TabStop = false;
+            this.pictureBoxBack.Visible = false;
+            this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
+            // 
             // labelQuestion
             // 
             this.labelQuestion.AutoSize = true;
@@ -253,16 +263,6 @@
             this.keyboard.Size = new System.Drawing.Size(808, 252);
             this.keyboard.TabIndex = 13;
             // 
-            // pictureBoxBack
-            // 
-            this.pictureBoxBack.Location = new System.Drawing.Point(4, 719);
-            this.pictureBoxBack.Name = "pictureBoxBack";
-            this.pictureBoxBack.Size = new System.Drawing.Size(51, 44);
-            this.pictureBoxBack.TabIndex = 4;
-            this.pictureBoxBack.TabStop = false;
-            this.pictureBoxBack.Visible = false;
-            this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
-            // 
             // Facebook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,10 +294,10 @@
             this.alertbox.PerformLayout();
             this.usepanel.ResumeLayout(false);
             this.usepanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbyes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
