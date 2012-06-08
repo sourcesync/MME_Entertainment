@@ -201,6 +201,19 @@ namespace MME.Hercules.Forms.User
                         String tstr = ConfigUtility.GetConfig(ConfigUtility.Config, "CheckinThankyouText");
                         this.label1.Text = tstr;
                     }
+                    else if (this.ispromo)
+                    {
+                        bool bypass_developing_text = false;
+                        if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "BypassThanksText")))
+                        {
+                            bypass_developing_text = true;
+                        }
+                        if (bypass_developing_text)
+                            this.label1.Visible = false;
+                        else
+                            this.label1.Visible = true;
+                        this.label1.Text = "Your Promotional Offer Will Be Emailed To You Shortly.";
+                    }
                     else
                     {
                         bool bypass_developing_text = false;
@@ -219,7 +232,7 @@ namespace MME.Hercules.Forms.User
                     this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);
                     this.Refresh();
                     Application.DoEvents();
-                    Thread.Sleep(2100);
+                    Thread.Sleep(2900);
             }
 
             this.Refresh();

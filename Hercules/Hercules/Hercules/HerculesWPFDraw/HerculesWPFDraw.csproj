@@ -91,6 +91,17 @@
       <Name>HerculesConfig</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fbno.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fbyes.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\X_Draw.png" />
+    <Resource Include="Images\X_Normal.png" />
+    <Resource Include="Images\X_Win.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

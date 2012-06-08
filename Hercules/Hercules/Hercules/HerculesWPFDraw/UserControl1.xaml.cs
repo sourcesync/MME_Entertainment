@@ -24,6 +24,7 @@ namespace HerculesWPFDraw
 
         SolidColorBrush myBlackBrush = new SolidColorBrush(Colors.Black);
         SolidColorBrush myWhiteBrush = new SolidColorBrush(Colors.White);
+        SolidColorBrush myRedBrush = new SolidColorBrush(Colors.Red);
         SolidColorBrush myForeBrush = null;
 
         public UserControl1()
@@ -32,12 +33,14 @@ namespace HerculesWPFDraw
 
             //this.inkCanvas1.S
 
-            this.inkCanvas1.EditingMode = InkCanvasEditingMode.InkAndGesture;
+            //this.inkCanvas1.EditingMode = InkCanvasEditingMode.InkAndGesture;
+            this.inkCanvas1.EditingMode = InkCanvasEditingMode.Ink;
 
 
             this.myForeBrush = this.myBlackBrush;
             
             System.Windows.Media.Color scolor = Colors.Black;
+            /*
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "GameForeColor")))
             {
                 String colorstr = ConfigUtility.GetConfig(ConfigUtility.Config, "GameForeColor");
@@ -48,14 +51,19 @@ namespace HerculesWPFDraw
                 }
                  
             }
-
+            */
 
 
             DrawingAttributes inkAttributes = new DrawingAttributes();
             inkAttributes.Height = 5;
             inkAttributes.Width = 5;
             this.inkCanvas1.DefaultDrawingAttributes = inkAttributes;
-            this.inkCanvas1.DefaultDrawingAttributes.Color = scolor;
+            this.inkCanvas1.DefaultDrawingAttributes.Color = Colors.Black;
+
+            this.rectangle1.Visibility = System.Windows.Visibility.Hidden;
+            this.rectangle2.Visibility = System.Windows.Visibility.Visible;
+            this.rectangle3.Visibility = System.Windows.Visibility.Hidden;
+            this.InvalidateVisual();
 
             this.label1.Foreground = this.myForeBrush;
 
@@ -67,5 +75,61 @@ namespace HerculesWPFDraw
         {
             this.inkCanvas1.Strokes.Clear();
         }
+
+        private void image1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.rectangle1.Visibility = System.Windows.Visibility.Visible;
+            this.rectangle2.Visibility = System.Windows.Visibility.Hidden;
+            this.rectangle3.Visibility = System.Windows.Visibility.Hidden;
+            this.InvalidateVisual();
+
+            DrawingAttributes inkAttributes = new DrawingAttributes();
+            inkAttributes.Height = 5;
+            inkAttributes.Width = 5;
+            this.inkCanvas1.DefaultDrawingAttributes = inkAttributes;
+            this.inkCanvas1.DefaultDrawingAttributes.Color = Colors.Red;
+        }
+
+       
+
+        private void image3_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            this.rectangle1.Visibility = System.Windows.Visibility.Hidden;
+            this.rectangle2.Visibility = System.Windows.Visibility.Visible;
+            this.rectangle3.Visibility = System.Windows.Visibility.Hidden;
+            this.InvalidateVisual();
+
+            DrawingAttributes inkAttributes = new DrawingAttributes();
+            inkAttributes.Height = 5;
+            inkAttributes.Width = 5;
+            this.inkCanvas1.DefaultDrawingAttributes = inkAttributes;
+            this.inkCanvas1.DefaultDrawingAttributes.Color = Colors.Black;
+        }
+
+        private void image4_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.rectangle1.Visibility = System.Windows.Visibility.Hidden;
+            this.rectangle2.Visibility = System.Windows.Visibility.Hidden;
+            this.rectangle3.Visibility = System.Windows.Visibility.Visible;
+            this.InvalidateVisual();
+
+            DrawingAttributes inkAttributes = new DrawingAttributes();
+            inkAttributes.Height = 5;
+            inkAttributes.Width = 5;
+            this.inkCanvas1.DefaultDrawingAttributes = inkAttributes;
+            this.inkCanvas1.DefaultDrawingAttributes.Color = Colors.Green;
+        }
+
+        private void textBlock1_TouchDown(object sender, TouchEventArgs e)
+        {
+            this.inkCanvas1.Strokes.Clear();
+        }
+
+        private void textBlock1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.inkCanvas1.Strokes.Clear();
+        }
+
+
     }
 }
