@@ -89,7 +89,7 @@
   <add key="FaceBookCheckinLongitude" value="-122.419415" />
   -->
   <add key="FaceBookCheckinPlaceID" value="125668440854442" />
-  <add key="FaceBookCheckinMessage" value="I was at the WhiteCastle PhotoBooth!" />
+  <add key="FaceBookCheckinMessage" value="I am checking in from White Castles new touch screen tables.  This is by far the coolest thing I have ever seen!" />
   <add key="FaceBookCheckinLatitude" value="37.757653" />
   <add key="FaceBookCheckinLongitude" value="-122.438636" />
   <add key="CheckinThankyouText=" value="Thank you for checking-in to WhiteCastle!" />
