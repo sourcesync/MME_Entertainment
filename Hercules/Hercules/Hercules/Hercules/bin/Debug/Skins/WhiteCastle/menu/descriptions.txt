@@ -25,9 +25,9 @@ Slider Cravings
 ORIG.jpg:The Original Slider:Perfection between two buns. It’s the taste that started it all.
 ORIGINALDOUBLE.jpg:The Original Slider Double:When the original is good enough to start an empire. Double it.
 CHZBRGR.jpg:Cheeseburger:Cheese makes everything better. Even perfection.
-Double Cheeseburger:Two times the meat. Two times the cheese.
+DBLCHZBRGR.jpg:Double Cheeseburger:Two times the meat. Two times the cheese.
 BCNCHZBRGR.jpg:Bacon Cheeseburger:When you think our cheeseburger is as good as it gets, it's time to meet bacon.
-Jalapeno Cheeseburger:This cheeseburger means business. See if you can handle this kind of flavor.
+JALCHZBRGR.jpg:Jalapeno Cheeseburger:This cheeseburger means business. See if you can handle this kind of flavor.
 DBLBCNCHZBRGR.jpg:Double Bacon Cheeseburger:Bun. Beef. Cheese. Bacon. Repeat.
 DBLJALCHZBRGR.jpg:Double Jalapeno Cheeseburger:And if you can handle one, try two.
 CHKNRNGCHZ.jpg:Chicken Ring w/ Cheese:When you have a side that's unique and delicious, why not make a sandwich out of it?
