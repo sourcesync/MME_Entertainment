@@ -38,7 +38,7 @@ namespace HerculesWPFChoose
         private double friction = 0.95;
         private DispatcherTimer animationTimer = new DispatcherTimer();
 
-        private const int MAX = 6;
+        private const int MAX = 11;
 
         private Image selected = null;
         private Image purchased = null;
@@ -146,6 +146,23 @@ namespace HerculesWPFChoose
         private SolidColorBrush myYellowBrush = new SolidColorBrush(Colors.Yellow);
         private SolidColorBrush myBlueBrush = new SolidColorBrush(Colors.Blue);
 
+
+        /* scrolling */
+        private System.Collections.ArrayList images = new System.Collections.ArrayList();
+        private System.Collections.ArrayList srcq = new System.Collections.ArrayList();
+        private System.Collections.Hashtable src_hash = new System.Collections.Hashtable();
+
+        public void SetupScroll()
+        {
+            this.images.Add(this.image8);
+            this.images.Add(this.image9);
+            this.images.Add(this.image10);
+            this.images.Add(this.image11);
+            this.images.Add(this.image12);
+            this.images.Add(this.image13);
+
+        }
+
         public void SetRotation(int i)
         {
             this.rotation = i;
@@ -179,6 +196,11 @@ namespace HerculesWPFChoose
             this.poshash[this.image5] = this.GetElementPos(this.image5);
             this.poshash[this.image6] = this.GetElementPos(this.image6);
             this.poshash[this.image7] = this.GetElementPos(this.image7);
+            this.poshash[this.image71] = this.GetElementPos(this.image71);
+            this.poshash[this.image72] = this.GetElementPos(this.image72);
+            this.poshash[this.image73] = this.GetElementPos(this.image73);
+            this.poshash[this.image74] = this.GetElementPos(this.image74);
+            this.poshash[this.image75] = this.GetElementPos(this.image75);
              
 
             imgs.Add(this.image2);
@@ -187,7 +209,11 @@ namespace HerculesWPFChoose
             imgs.Add(this.image5);
             imgs.Add(this.image6);
             imgs.Add(this.image7);
-           
+            imgs.Add(this.image71);
+            imgs.Add(this.image72);
+            imgs.Add(this.image73);
+            imgs.Add(this.image74);
+            imgs.Add(this.image75);
 
             this.purchase_poshash[this.image8] = this.GetElementPos(this.image8);
             this.purchase_poshash[this.image9] = this.GetElementPos(this.image9);
@@ -202,6 +228,11 @@ namespace HerculesWPFChoose
             display_cart.Add(this.image11);
             display_cart.Add(this.image12);
             display_cart.Add(this.image13);
+            display_cart.Add(this.image14);
+            display_cart.Add(this.image15);
+            display_cart.Add(this.image16);
+            display_cart.Add(this.image17);
+            display_cart.Add(this.image18);
 
             for (int i = 0; i < display_cart.Count; i++)
             {
@@ -209,6 +240,11 @@ namespace HerculesWPFChoose
                 img.Visibility = System.Windows.Visibility.Hidden;
             }
 
+            for (int i = 0; i < imgs.Count; i++)
+            {
+                Image img = (Image)imgs[i];
+                img.Visibility = System.Windows.Visibility.Hidden;
+            }
 
             //  white castle specific...
             this.item_paths[0] = this.sms;
@@ -249,7 +285,7 @@ namespace HerculesWPFChoose
             animationTimer.Tick += new EventHandler(HandleWorldTimerTick);
             animationTimer.Start();
 
-            ScrollViewer.Visibility = System.Windows.Visibility.Hidden;
+            //ScrollViewer.Visibility = System.Windows.Visibility.Hidden;
             //ScrollViewer.ScrollChanged += new ScrollChangedEventHandler(ScrollViewer_ScrollChanged);
 
 
@@ -515,6 +551,8 @@ namespace HerculesWPFChoose
             this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
              
             this.cur_set_option = option;
+
+            this.BottomScroller.ScrollToLeftEnd();
         }
 
         private Point GetElementPos(object o)
@@ -528,11 +566,24 @@ namespace HerculesWPFChoose
         private void image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             write("mouse down! - " + sender.ToString());
-
-            if (this.selected!=null) return;
-
+            
             Image img = (Image)sender;
+
+            if (this.selected != null)
+            {
+                if (this.selected != img)
+                {
+                    this.drag_cancel(sender);
+                }
+                else
+                {
+                    return;
+                }
+            }
+
             this.selected = img; // this.image2;
+
+
             FrameworkElement element = this.selected as FrameworkElement;
             FrameworkElement canvas = element.Parent as FrameworkElement;
             Point pos = e.GetPosition(canvas);
@@ -544,6 +595,7 @@ namespace HerculesWPFChoose
             this.diff.Y = pos.Y - iy;
 
             String path = String.Empty;
+
             if (sender == this.image2)
             {
                 path = this.item_paths[this.cur_option][0];
@@ -568,6 +620,27 @@ namespace HerculesWPFChoose
             {
                 path = this.item_paths[this.cur_option][5];
             }
+            else if (sender == this.image71)
+            {
+                path = this.item_paths[this.cur_option][6];
+            }
+            else if (sender == this.image72)
+            {
+                path = this.item_paths[this.cur_option][7];
+            }
+            else if (sender == this.image73)
+            {
+                path = this.item_paths[this.cur_option][8];
+            }
+            else if (sender == this.image74)
+            {
+                path = this.item_paths[this.cur_option][9];
+            }
+            else if (sender == this.image75)
+            {
+                path = this.item_paths[this.cur_option][10];
+            }
+            
 
             this.label1.Visibility = System.Windows.Visibility.Hidden;
             this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
@@ -586,6 +659,10 @@ namespace HerculesWPFChoose
                 }
             }
 
+
+            //  reparent...
+            this.canvas_menu.Children.Remove(this.selected);
+            this.canvas_choose.Children.Add(this.selected);
             
         }
 
@@ -607,19 +684,7 @@ namespace HerculesWPFChoose
                 element.SetValue(Canvas.LeftProperty, newx);
                 element.SetValue(Canvas.TopProperty, newy);
             }
-            else if (this.purchased != null)
-            {
-                FrameworkElement element = this.purchased as FrameworkElement;
-                FrameworkElement canvas = element.Parent as FrameworkElement;
-
-                Point cur_mousepos = e.GetPosition(canvas);
-
-                double newx = cur_mousepos.X - this.diff.X;
-                double newy = cur_mousepos.Y - this.diff.Y;
-
-                element.SetValue(Canvas.LeftProperty, newx);
-                element.SetValue(Canvas.TopProperty, newy);
-            }
+            
         }
 
         private void update_cost()
@@ -744,17 +809,48 @@ namespace HerculesWPFChoose
             this.redraw_itemized();
             this.redraw_cart();
             this.update_cost();
+
+            //  scroll to last item...
+            if (cart.Count > 6)
+            {
+                FrameworkElement el = this.display_cart[cart.Count - 1] as FrameworkElement;
+                double x = (double)el.GetValue(Canvas.LeftProperty);
+                this.TopScroller.ScrollToHorizontalOffset(x);
+            }
+            else if ( cart.Count < 6 )
+            {
+                this.TopScroller.ScrollToLeftEnd();
+            }
+
         }
 
-        private bool shop_test(object sender, MouseButtonEventArgs e)
+        private bool shop_test(object sender) //, MouseButtonEventArgs e)
         {
             if (this.selected != null)
             {
                 FrameworkElement element = this.selected as FrameworkElement;
                 FrameworkElement canvas = element.Parent as FrameworkElement;
-                Point cur_mousepos = e.GetPosition(canvas);
+
+                double x = (double)element.GetValue(Canvas.LeftProperty);
+                double y = (double)element.GetValue(Canvas.TopProperty);
+
                 Point box = this.GetElementPos(this.rectangle1);
 
+                if ((x > box.X) && (y > box.Y) &&
+                   (x < (box.X + this.rectangle1.Width)) &&
+                   (y < (y + this.rectangle1.Height)))
+                {
+
+                    write("shop test passed! - " + sender.ToString());
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                //Point cur_mousepos = e.GetPosition(canvas);
+                //Point box = this.GetElementPos(this.rectangle1);
+                /*
                 if ((cur_mousepos.X > box.X) && (cur_mousepos.Y > box.Y) &&
                     (cur_mousepos.X < (box.X + this.rectangle1.Width)) &&
                     (cur_mousepos.X < (box.Y + this.rectangle1.Height)))
@@ -771,6 +867,7 @@ namespace HerculesWPFChoose
                     write("shop test failed inside1! - " + sender.ToString());
                     return false;
                 }
+                 * */
             }
             else
             {
@@ -783,6 +880,10 @@ namespace HerculesWPFChoose
         {
             if (this.selected != null)
             {
+                //  return parent...
+                this.canvas_choose.Children.Remove(this.selected);
+                this.canvas_menu.Children.Add(this.selected);
+
                 if (this.poshash[this.selected] != null)
                 {
                     Point p = (Point)this.poshash[this.selected];
@@ -805,9 +906,14 @@ namespace HerculesWPFChoose
 
             if (this.selected != null)
             {
-                if (!this.shop_test(sender, e))
+                if (this.shop_test(sender))
                 {
                     write("shop test failed! - " + sender.ToString());
+                    this.buy(this.selected);
+                    this.drag_cancel(sender);
+                }
+                else
+                {
                     this.drag_cancel(sender);
                 }
             }
@@ -815,7 +921,9 @@ namespace HerculesWPFChoose
 
         private void image_MouseLeave(object sender, MouseEventArgs e)
         {
+            /*
             this.drag_cancel(sender);
+             * */
         }
 
 
@@ -826,18 +934,27 @@ namespace HerculesWPFChoose
             //WindowWhiteCastle w = WindowWhiteCastle.getParent(this);
             cart.RemoveAt(idx);
 
+            this.redraw_itemized();
             this.redraw_cart();
             this.update_cost();
+
+            if (cart.Count <= 6)
+            {
+                this.TopScroller.ScrollToLeftEnd();
+            }
         }
 
-        private void purchase_MouseMove(object sender, MouseEventArgs e)
+        
+
+        private void purchased_MouseMove(object sender, MouseEventArgs e)
         {
+            /*
             if (this.purchased != null)
             {
                 FrameworkElement element = this.purchased as FrameworkElement;
                 FrameworkElement canvas = element.Parent as FrameworkElement;
 
-                Point cur_mousepos = e.GetPosition(canvas);
+                Point cur_mousepos = e.GetPosition(canvas_choose);
 
                 double newx = cur_mousepos.X - this.diff.X;
                 double newy = cur_mousepos.Y - this.diff.Y;
@@ -845,16 +962,30 @@ namespace HerculesWPFChoose
                 element.SetValue(Canvas.LeftProperty, newx);
                 element.SetValue(Canvas.TopProperty, newy);
             }
-        }
-
-        private void purchased_MouseMove(object sender, MouseEventArgs e)
-        {
+             * */
         }
 
         private void purchased_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            
             Image img = (Image)sender;
+
+            //  Do we need to release the last one?...
+            if (this.purchased != null)
+            {
+                if (this.purchased != img)
+                {
+                    this.purchased_drag_cancel(this.purchased);
+                }
+                else
+                {
+                    return;
+                }
+            }
+
             this.purchased = img; // this.image2;
+
+
             FrameworkElement element = this.purchased as FrameworkElement;
             FrameworkElement canvas = element.Parent as FrameworkElement;
             Point pos = e.GetPosition(canvas);
@@ -862,42 +993,59 @@ namespace HerculesWPFChoose
             double ix = (double)element.GetValue(Canvas.LeftProperty);
             double iy = (double)element.GetValue(Canvas.TopProperty);
 
-            this.diff.X = pos.X - ix;
-            this.diff.Y = pos.Y - iy;
+            this.diff.X = pos.X - ix; // +this.TopScroller.ContentVerticalOffset;
+            this.diff.Y = pos.Y - iy; // +this.TopScroller.ContentHorizontalOffset;
 
-
+            //  reparent...
+            this.canvas_display_cart.Children.Remove(this.purchased);
+            this.canvas_choose.Children.Add(this.purchased);
         }
 
         private void purchased_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
-            this.label1.Visibility = System.Windows.Visibility.Hidden;
-            this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
-
-            if (!this.purchased_remove_test(sender, e))
+            if (this.purchased != null)
             {
-                this.purchased_drag_cancel(sender);
+                this.label1.Visibility = System.Windows.Visibility.Hidden;
+                this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
+
+                if (this.purchased_remove_test(sender))
+                {
+                    this.RemoveItem(this.purchased);
+                    this.purchased_drag_cancel(sender);
+                }
+                else
+                {
+                    this.purchased_drag_cancel(sender);
+                }
             }
         }
 
 
-        private bool purchased_remove_test(object sender, MouseButtonEventArgs e)
+        private bool purchased_remove_test(object sender)
         {
             if (this.purchased != null)
             {
                 FrameworkElement element = this.purchased as FrameworkElement;
                 FrameworkElement canvas = element.Parent as FrameworkElement;
-                Point cur_mousepos = e.GetPosition(canvas);
+                //Point cur_mousepos = e.GetPosition(canvas);
+
+                double y = (double)element.GetValue(Canvas.TopProperty);
+                if (y > 100)
+                {
+                    return true;
+                }
+                /*
                 Point box = this.GetElementPos(this.rectangle2);
 
                 if ((cur_mousepos.X > box.X) && (cur_mousepos.Y > box.Y) &&
                     (cur_mousepos.X < (box.X + this.rectangle2.Width)) &&
                     (cur_mousepos.Y < (box.Y + this.rectangle2.Height)))
                 {
-                    this.RemoveItem(this.purchased);
-                    this.purchased_drag_cancel(this.purchased);
+                    
+                    //this.purchased_drag_cancel(this.purchased);
                     return true;
                 }
+                 * */
             }
             return false;
         }
@@ -906,13 +1054,20 @@ namespace HerculesWPFChoose
         {
             if (this.purchased != null)
             {
+                //  return parent...
+                this.canvas_choose.Children.Remove(this.purchased);
+                this.canvas_display_cart.Children.Add(this.purchased);
+
+                //  return to its last position...
                 if (this.purchase_poshash[this.purchased] != null)
                 {
-                    Point p = (Point)this.purchase_poshash[sender];
+                    Point p = (Point)this.purchase_poshash[this.purchased];
                     FrameworkElement element = this.purchased as FrameworkElement;
                     element.SetValue(Canvas.LeftProperty, p.X);
                     element.SetValue(Canvas.TopProperty, p.Y);
                 }
+
+
                 this.purchased = null;
             }
         }
@@ -951,6 +1106,7 @@ namespace HerculesWPFChoose
         #region Mouse Events
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
         {
+            /*
             if (ScrollViewer.IsMouseOver)
             {
                 // Save starting point, used later when determining how much to scroll.
@@ -965,6 +1121,7 @@ namespace HerculesWPFChoose
 
                 this.CaptureMouse();
             }
+             * */
 
             base.OnPreviewMouseDown(e);
         }
@@ -972,32 +1129,69 @@ namespace HerculesWPFChoose
 
         protected override void OnPreviewMouseMove(MouseEventArgs e)
         {
-            if (this.IsMouseCaptured)
+            if (this.purchased != null)
             {
-                Point currentPoint = e.GetPosition(this);
+                FrameworkElement element = this.purchased as FrameworkElement;
+                FrameworkElement canvas = element.Parent as FrameworkElement;
 
-                // Determine the new amount to scroll.
-                Point delta = new Point(scrollStartPoint.X -
-                   currentPoint.X, scrollStartPoint.Y - currentPoint.Y);
+                Point cur_mousepos = e.GetPosition(canvas_choose);
 
-                scrollTarget.X = scrollStartOffset.X + delta.X;
-                scrollTarget.Y = scrollStartOffset.Y + delta.Y;
+                double offsetx = this.TopScroller.ContentHorizontalOffset;
+                double newx = cur_mousepos.X - this.diff.X; // -this.TopScroller.ContentHorizontalOffset;
+                double newy = cur_mousepos.Y -this.diff.Y;
 
-                // Scroll to the new position.
-                ScrollViewer.ScrollToHorizontalOffset(scrollTarget.X);
-                ScrollViewer.ScrollToVerticalOffset(scrollTarget.Y);
+                element.SetValue(Canvas.LeftProperty, newx);
+                element.SetValue(Canvas.TopProperty, newy);
+
             }
+            else if (this.selected != null)
+            {
+                FrameworkElement element = this.selected as FrameworkElement;
+                FrameworkElement canvas = element.Parent as FrameworkElement;
 
-            base.OnPreviewMouseMove(e);
+                Point cur_mousepos = e.GetPosition(canvas_choose);
+
+                double offsetx = this.BottomScroller.ContentHorizontalOffset;
+                double newx = cur_mousepos.X - this.diff.X; // -this.TopScroller.ContentHorizontalOffset;
+                double newy = cur_mousepos.Y - this.diff.Y;
+
+                element.SetValue(Canvas.LeftProperty, newx);
+                element.SetValue(Canvas.TopProperty, newy);
+
+            }
+            else
+            {
+                /*
+                if (this.IsMouseCaptured)
+                {
+                    Point currentPoint = e.GetPosition(this);
+
+                    // Determine the new amount to scroll.
+                    Point delta = new Point(scrollStartPoint.X -
+                       currentPoint.X, scrollStartPoint.Y - currentPoint.Y);
+
+                    scrollTarget.X = scrollStartOffset.X + delta.X;
+                    scrollTarget.Y = scrollStartOffset.Y + delta.Y;
+
+                    // Scroll to the new position.
+                    ScrollViewer.ScrollToHorizontalOffset(scrollTarget.X);
+                    ScrollViewer.ScrollToVerticalOffset(scrollTarget.Y);
+                }
+                 * */
+
+                base.OnPreviewMouseMove(e);
+            }
         }
 
         protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
         {
+            /*
             if (this.IsMouseCaptured)
             {
                 this.Cursor = Cursors.Arrow;
                 this.ReleaseMouseCapture();
             }
+            */
 
             base.OnPreviewMouseUp(e);
         }
@@ -1018,8 +1212,8 @@ namespace HerculesWPFChoose
             {
                 if (velocity.Length > 1)
                 {
-                    ScrollViewer.ScrollToHorizontalOffset(scrollTarget.X);
-                    ScrollViewer.ScrollToVerticalOffset(scrollTarget.Y);
+                    //ScrollViewer.ScrollToHorizontalOffset(scrollTarget.X);
+                    //ScrollViewer.ScrollToVerticalOffset(scrollTarget.Y);
                     scrollTarget.X += velocity.X;
                     scrollTarget.Y += velocity.Y;
                     velocity *= friction;
@@ -1185,7 +1379,12 @@ namespace HerculesWPFChoose
         {
             if (this.selected != null)
             {
-                if (!this.shop_test(sender, e))
+                if (this.shop_test(sender))
+                {
+                    this.buy(sender);
+                    this.drag_cancel(sender);
+                }
+                else
                 {
                     write("shop test failed! - " + sender.ToString());
                     this.drag_cancel(sender);
@@ -1233,6 +1432,28 @@ namespace HerculesWPFChoose
             this.Restart();
 
             if (this.evt != null) this.evt(1);
+        }
+
+        private void purchased_MouseLeave(object sender, MouseEventArgs e)
+        {
+            /*
+            if (this.purchased != null)
+            {
+                this.label1.Visibility = System.Windows.Visibility.Hidden;
+                this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
+
+                if (this.purchased_remove_test(sender))
+                {
+                    this.RemoveItem(this.purchased);
+                    this.purchased_drag_cancel(sender);
+                }
+                else
+                {
+                    this.purchased_drag_cancel(sender);
+                }
+                
+            }
+             * */
         }
     }
 }

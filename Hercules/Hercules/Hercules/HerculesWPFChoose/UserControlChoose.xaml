@@ -11,8 +11,7 @@
         </Canvas>
         <Canvas Name="canvas_checkout" Visibility="Hidden">
             <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="imagecheckout" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFChoose;component/Images/checkout_bg.png" MouseDown="imagecheckout_MouseDown" />
-            <Image Canvas.Left="994" Canvas.Top="738" Height="30" Name="imagea" Stretch="Fill" Width="30" Source="/HerculesWPFChoose;component/Images/FLIP-THUMB.png" MouseDown="imageb_MouseDown" Visibility="Hidden" />
-            <Image Canvas.Left="884" Canvas.Top="774" Height="47" Name="image15" Stretch="Fill" Width="281" />
+           <Image Canvas.Left="884" Canvas.Top="774" Height="47" Name="image_15" Stretch="Fill" Width="281" />
             <Label Canvas.Left="169" Canvas.Top="326" Content="Label" Height="58" Name="labelPay" Width="687" FontSize="30" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Microsoft Sans Serif" Visibility="Hidden" />
             <Label Canvas.Left="169" Canvas.Top="405" Content="Label" FontSize="30" Height="58" HorizontalContentAlignment="Center" Name="labelMessage" Width="687" FontWeight="Bold" FontFamily="Microsoft Sans Serif" Visibility="Hidden" />
         </Canvas> 
@@ -21,35 +20,53 @@
             <Image Height="768" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="1024" Source="/HerculesWPFChoose;component/Images/menu_choose.png" MouseMove="image_MouseMove" />
             <Image Canvas.Left="912" Canvas.Top="637" Height="47" Name="imageCheckout" Stretch="Fill" Width="110" Source="/HerculesWPFChoose;component/Images/checkout-thumb.png" MouseUp="imageCheckout_MouseUp" />
 
-            <Image Canvas.Left="27" Canvas.Top="644" Height="66" Name="image2" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
-            <Image Canvas.Left="142" Canvas.Top="644" Height="66" Name="image3" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
-            <Image Canvas.Left="258" Canvas.Top="644" Height="66" Name="image4" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
-            <Image Canvas.Left="373" Canvas.Top="644" Height="66" Name="image5" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
-            <Image Canvas.Left="485" Canvas.Top="644" Height="66" Name="image6" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
-            <Image Canvas.Left="597" Canvas.Top="644" Height="66" Name="image7" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+
+            <ScrollViewer Name="BottomScroller" Canvas.Left="0" Canvas.Top="608" Height="103" Width="700" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+                <Canvas Canvas.Left="0" Canvas.Top="0" Height="160"  Width="1300" Name="canvas_menu">
+                    <Image Canvas.Left="27" Canvas.Top="14" Height="66" Name="image2" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="142" Canvas.Top="14" Height="66" Name="image3" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="258" Canvas.Top="14" Height="66" Name="image4" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="373" Canvas.Top="14" Height="66" Name="image5" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="485" Canvas.Top="14" Height="66" Name="image6" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="597" Canvas.Top="14" Height="66" Name="image7" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="709" Canvas.Top="14" Height="66" Name="image71" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="821" Canvas.Top="14" Height="66" Name="image72" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="933" Canvas.Top="14" Height="66" Name="image73" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="1045" Canvas.Top="14" Height="66" Name="image74" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    <Image Canvas.Left="1157" Canvas.Top="14" Height="66" Name="image75" Source="/HerculesWPFChoose;component/Images/sm1.jpg" Stretch="Fill" Width="90" Visibility="Hidden" MouseDown="image_MouseDown" MouseMove="image_MouseMove" MouseUp="image_MouseUp" />
+                    
+                </Canvas>
+            </ScrollViewer>
+            
             <Rectangle Canvas.Left="150" Canvas.Top="148" Height="470" Name="rectangle1" Stroke="Black" Width="729" Visibility="Hidden" />
-            <Rectangle Canvas.Left="0" Canvas.Top="0" Height="618" Name="rectangle2" Stroke="Black" Width="1024" Visibility="Hidden" />
-            <Canvas Height="170"  Width="1024" >
-                <Image Canvas.Left="68" Canvas.Top="25" Height="93" Name="image8" Stretch="Fill" Width="123" Source="/HerculesWPFChoose;component/Images/sm1.jpg" MouseDown="purchased_MouseDown" MouseMove="image_MouseMove" MouseUp="purchased_MouseUp" />
-                <Image Canvas.Left="230" Canvas.Top="25" Height="93" Name="image9" Source="/HerculesWPFChoose;component/Images/sm2.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseMove="image_MouseMove" MouseUp="purchased_MouseUp" />
-                <Image Canvas.Left="391" Canvas.Top="25" Height="93" Name="image10" Source="/HerculesWPFChoose;component/Images/sm3.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseMove="image_MouseMove" MouseUp="purchased_MouseUp" />
-                <Image Canvas.Left="553" Canvas.Top="25" Height="93" Name="image11" Source="/HerculesWPFChoose;component/Images/sm4.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseMove="image_MouseMove" MouseUp="purchased_MouseUp" />
-                <Image Canvas.Left="715" Canvas.Top="25" Height="93" Name="image12" Source="/HerculesWPFChoose;component/Images/sm5.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseMove="image_MouseMove" MouseUp="purchased_MouseUp" />
-                <Image Canvas.Left="875" Canvas.Top="25" Height="93" Name="image13" Source="/HerculesWPFChoose;component/Images/sm6.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseMove="image_MouseMove" MouseUp="purchased_MouseUp" />
+            <ScrollViewer Name="TopScroller" Height="160"  Width="1024" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+            <Canvas Height="160"  Width="2024" Name="canvas_display_cart">
+                    <Image Canvas.Left="68" Canvas.Top="25" Height="93" Name="image8" Stretch="Fill" Width="123" Source="/HerculesWPFChoose;component/Images/sm1.jpg" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                    <Image Canvas.Left="230" Canvas.Top="25" Height="93" Name="image9" Source="/HerculesWPFChoose;component/Images/sm2.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                    <Image Canvas.Left="391" Canvas.Top="25" Height="93" Name="image10" Source="/HerculesWPFChoose;component/Images/sm3.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                    <Image Canvas.Left="553" Canvas.Top="25" Height="93" Name="image11" Source="/HerculesWPFChoose;component/Images/sm4.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                    <Image Canvas.Left="715" Canvas.Top="25" Height="93" Name="image12" Source="/HerculesWPFChoose;component/Images/sm5.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                    <Image Canvas.Left="875" Canvas.Top="25" Height="93" Name="image13" Source="/HerculesWPFChoose;component/Images/sm6.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+
+                    <Image Canvas.Left="1035" Canvas.Top="25" Height="93" Name="image14" Stretch="Fill" Width="123" Source="/HerculesWPFChoose;component/Images/sm1.jpg" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                    <Image Canvas.Left="1195" Canvas.Top="25" Height="93" Name="image15" Source="/HerculesWPFChoose;component/Images/sm2.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                    <Image Canvas.Left="1355" Canvas.Top="25" Height="93" Name="image16" Source="/HerculesWPFChoose;component/Images/sm3.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                    <Image Canvas.Left="1515" Canvas.Top="25" Height="93" Name="image17" Source="/HerculesWPFChoose;component/Images/sm4.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                    <Image Canvas.Left="1675" Canvas.Top="25" Height="93" Name="image18" Source="/HerculesWPFChoose;component/Images/sm5.jpg" Stretch="Fill" Width="123" MouseDown="purchased_MouseDown" MouseUp="purchased_MouseUp" MouseMove="purchased_MouseMove" MouseLeave="purchased_MouseLeave"/>
+                
+                <!--
                 <ScrollViewer Canvas.Left="-50" Canvas.Top="148" Height="80" Name="ScrollViewer" Width="1024" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                     <Canvas Height="80" Width="10115" Canvas.Left="-5000">
                     <Image Height="73" Name="image14" Stretch="Fill" Width="115" Source="/HerculesWPFChoose;component/Images/50_50_Crave_Case.jpg" Canvas.Left="460" Canvas.Top="0" />
                     <Image Canvas.Left="502" Canvas.Top="61" Height="150" Name="image17" Stretch="Fill" Width="200" />
                     </Canvas>
                 </ScrollViewer>
-                <Image Canvas.Left="32" Canvas.Top="33" Height="30" Name="imageb" Stretch="Fill" Width="30" Source="/HerculesWPFChoose;component/Images/FLIP-THUMB.png" MouseDown="imagea_MouseDown" Visibility="Hidden">
-                    <Image.RenderTransform>
-                    <RotateTransform Angle="180"></RotateTransform>
-                    </Image.RenderTransform>
-                </Image>
-            </Canvas>           
+                -->               
+            </Canvas>
+            </ScrollViewer>
             <Image Canvas.Left="309" Canvas.Top="315" Height="156" Name="image_slide_instructions" Stretch="Fill" Width="395" Source="/HerculesWPFChoose;component/Images/slide_instructions.png" Visibility="Visible" MouseMove="image_MouseMove" MouseLeave="image_MouseLeave" MouseUp="image_MouseUp" />
             <TextBox Canvas.Left="282" Canvas.Top="315" Height="145" Name="label1" Width="449" BorderThickness="0" TextWrapping="Wrap" HorizontalContentAlignment="Center" FontSize="21" Background="Transparent" Foreground="White" MouseMove="label1_MouseMove" MouseUp="label1_MouseUp" />
+            <Rectangle Canvas.Left="0" Canvas.Top="0" Height="618" Name="rectangle2" Stroke="Black" Width="1024" Visibility="Hidden" />
         </Canvas>
 
 
@@ -96,7 +113,13 @@
             <TextBlock Canvas.Left="12" Canvas.Top="214" Height="23" Name="textBlock1" Text="TextBlockFirst" Width="188" Visibility="Hidden" />
         </Canvas>
         
-        <Image Canvas.Left="4" Canvas.Top="708" Height="57" Name="imageback" Source="/HerculesWPFChoose;component/Images/back-button.png" Stretch="Fill" Width="119" MouseDown="imageback_MouseDown" />
+        <Image Canvas.Left="994" Canvas.Top="738" Height="30" Name="imagea" Stretch="Fill" Width="30" Source="/HerculesWPFChoose;component/Images/FLIP-THUMB.png" MouseDown="imageb_MouseDown" Visibility="Hidden" />
 
+        <Image Canvas.Left="4" Canvas.Top="708" Height="57" Name="imageback" Source="/HerculesWPFChoose;component/Images/back-button.png" Stretch="Fill" Width="119" MouseDown="imageback_MouseDown" />
+        <Image Canvas.Left="32" Canvas.Top="33" Height="30" Name="imageb" Stretch="Fill" Width="30" Source="/HerculesWPFChoose;component/Images/FLIP-THUMB.png" MouseDown="imagea_MouseDown" Visibility="Hidden">
+            <Image.RenderTransform>
+                <RotateTransform Angle="180"></RotateTransform>
+            </Image.RenderTransform>
+        </Image>
     </Canvas>
 </UserControl>
