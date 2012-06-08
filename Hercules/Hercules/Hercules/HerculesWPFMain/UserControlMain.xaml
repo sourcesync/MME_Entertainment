@@ -39,15 +39,15 @@
         </Image>
         <Image Canvas.Left="10" Canvas.Top="10" Height="18" Name="image12" Source="/HerculesWPFMain;component/Images/web100.png" Stretch="None" Width="150" />
         <Image Canvas.Left="-248" Canvas.Top="485" Height="18" Name="imageevents2" Source="/HerculesWPFMain;component/Images/events100.png" Stretch="None" Width="150" />
-        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label1" />
-        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label2" />
-        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label3" />
-        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label4" />
-        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label5" />
-        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label6" />
-        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label7" />
-        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label8" />
-        <Label Canvas.Left="101" Canvas.Top="530" Content="Label" Height="28" Name="label9" />
+        <TextBlock Canvas.Left="101" Canvas.Top="530" Height="28" Name="label1" />
+        <TextBlock Canvas.Left="101" Canvas.Top="530"  Height="28" Name="label2" />
+        <TextBlock Canvas.Left="101" Canvas.Top="530"  Height="28" Name="label3" />
+        <TextBlock Canvas.Left="101" Canvas.Top="530"  Height="28" Name="label4" />
+        <TextBlock Canvas.Left="101" Canvas.Top="530"  Height="28" Name="label5" />
+        <TextBlock Canvas.Left="101" Canvas.Top="530"  Height="28" Name="label6" />
+        <TextBlock Canvas.Left="101" Canvas.Top="530"  Height="28" Name="label7" />
+        <TextBlock Canvas.Left="101" Canvas.Top="530"  Height="28" Name="label8" />
+        <TextBlock Canvas.Left="101" Canvas.Top="530"  Height="28" Name="label9" />
         
     </Canvas>
 

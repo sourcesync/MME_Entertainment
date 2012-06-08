@@ -153,35 +153,48 @@ namespace MME.HerculesConfig
             }
         }
 
-        /*
-        public static System.Collections.Hashtable GetMenuDescription()
+        public static System.Collections.Hashtable[] GetMenuDescription()
         {
-            System.Collections.Hashtable hash = new System.Collections.Hashtable();
+            System.Collections.Hashtable item_name_hash = new System.Collections.Hashtable();
+            System.Collections.Hashtable item_desc_hash = new System.Collections.Hashtable();
 
             try
             {
                 // Create an instance of StreamReader to read from a file.
                 // The using statement also closes the StreamReader.
-                Path = string.Format("Skins\\{0}\\Menu", ConfigUtility.Skin)
-                using (StreamReader sr = new StreamReader("TestFile.txt"))
+                String Path = string.Format("Skins\\{0}\\Menu\\descriptions.txt", ConfigUtility.Skin);
+                using (StreamReader sr = new StreamReader(Path))
                 {
                     String line;
                     // Read and display lines from the file until the end of
                     // the file is reached.
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(line);
+                        String[] parts = line.Trim().Split( new char[] {':'} );
+                        if ( parts.Count() == 3 )
+                        {
+                            String fname = parts[0];
+                            String name = parts[1];
+                            String des = parts[2];
+                            item_name_hash[ fname ] = name;
+                            item_desc_hash[ fname ] = des;
+                        }
                     }
                 }
+
+                System.Collections.Hashtable[] arr = new System.Collections.Hashtable[2];
+                arr[0] = item_name_hash;
+                arr[1] = item_desc_hash;
+                return arr;
             }
             catch (Exception e)
             {
                 // Let the user know what went wrong.
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
+                return null;
             }
         }
-         * */
 
         public static System.Collections.ArrayList GetMenuIconFilenames()
         {

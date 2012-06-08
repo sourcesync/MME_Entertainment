@@ -61,6 +61,12 @@ namespace HerculesWPFChoose
 
         private System.Collections.Hashtable des_hash = new System.Collections.Hashtable();
 
+        private System.Collections.Hashtable item_name_hash = new System.Collections.Hashtable();
+
+        private BitmapSource select_src = null;
+        private BitmapSource choose_src = null;
+        private BitmapSource checkout_src = null;
+
         //  specific menus...
 
         //  sm...
@@ -131,6 +137,13 @@ namespace HerculesWPFChoose
 
         private bool semaphore = false;
 
+        //  Itemized items...
+        private System.Collections.ArrayList itemized = new System.Collections.ArrayList();
+
+
+        private SolidColorBrush myYellowBrush = new SolidColorBrush(Colors.Yellow);
+        private SolidColorBrush myBlueBrush = new SolidColorBrush(Colors.Blue);
+
         public void SetRotation(int i)
         {
             this.rotation = i;
@@ -157,12 +170,14 @@ namespace HerculesWPFChoose
             this.textBoxTotalAmount.BorderThickness = new System.Windows.Thickness(0.0);
 
             //  Template objects...
+            
             this.poshash[this.image2] = this.GetElementPos(this.image2);
             this.poshash[this.image3] = this.GetElementPos(this.image3);
             this.poshash[this.image4] = this.GetElementPos(this.image4);
             this.poshash[this.image5] = this.GetElementPos(this.image5);
             this.poshash[this.image6] = this.GetElementPos(this.image6);
             this.poshash[this.image7] = this.GetElementPos(this.image7);
+             
 
             imgs.Add(this.image2);
             imgs.Add(this.image3);
@@ -170,6 +185,7 @@ namespace HerculesWPFChoose
             imgs.Add(this.image5);
             imgs.Add(this.image6);
             imgs.Add(this.image7);
+           
 
             this.purchase_poshash[this.image8] = this.GetElementPos(this.image8);
             this.purchase_poshash[this.image9] = this.GetElementPos(this.image9);
@@ -177,7 +193,7 @@ namespace HerculesWPFChoose
             this.purchase_poshash[this.image11] = this.GetElementPos(this.image11);
             this.purchase_poshash[this.image12] = this.GetElementPos(this.image12);
             this.purchase_poshash[this.image13] = this.GetElementPos(this.image13);
-
+            
             display_cart.Add(this.image8);
             display_cart.Add(this.image9);
             display_cart.Add(this.image10);
@@ -185,7 +201,11 @@ namespace HerculesWPFChoose
             display_cart.Add(this.image12);
             display_cart.Add(this.image13);
 
-           
+            for (int i = 0; i < display_cart.Count; i++)
+            {
+                Image img = (Image)display_cart[i];
+                img.Visibility = System.Windows.Visibility.Hidden;
+            }
 
 
             //  white castle specific...
@@ -239,11 +259,12 @@ namespace HerculesWPFChoose
             this.HashLoc(this.checkout_loc, this.textBoxTotalAmount);
 
 
-            BitmapSource src = WindowUtility.GetScreenBitmapWPF("menu_select.png");
-            this.image1.Source = src;
+            this.select_src = WindowUtility.GetScreenBitmapWPF("menu_select.png");
+            this.choose_src = WindowUtility.GetScreenBitmapWPF("menu_choose.png");
+            this.checkout_src = WindowUtility.GetScreenBitmapWPF("checkout_bg.png"); ;
 
-            src = WindowUtility.GetScreenBitmapWPF("checkout_bg.png");
-            this.imagecheckout.Source = src;
+            this.image1.Source = this.choose_src;
+            this.imagecheckout.Source = this.checkout_src;
 
             this.des_hash["bellapesca.jpg"] = "Bella Pesca- Champagne, Elderflower Liqueur, \nGrapefruit & Lychee Juices, Splash of Chambord $19";
             this.des_hash["ayala.jpg"] = "Rosé Champagne - Ayala, \"Rosé Majeur,\" Aÿ NV $30";
@@ -283,6 +304,12 @@ namespace HerculesWPFChoose
                 this.UpdateCostHash( paths, costs );
             }
 
+            System.Collections.Hashtable[] arr = WindowUtility.GetMenuDescription();
+            if (arr != null)
+            {
+                this.item_name_hash = arr[0];
+                this.des_hash = arr[1];
+            }
         }
 
         public void HashLoc( System.Collections.Hashtable hash, System.Windows.Controls.TextBox o )
@@ -310,13 +337,18 @@ namespace HerculesWPFChoose
             this.RestoreHashLoc(this.checkout_loc, this.textBoxTotalAmount);
         }
 
-        public void OffsetControl(object o, double offset)
+        public void OffsetControl(object o, double xoffset, double yoffset)
         {
             FrameworkElement el = o as FrameworkElement;
             double x = (double)el.GetValue(Canvas.LeftProperty);
 
-            x += offset;
+            x += xoffset;
             el.SetValue(Canvas.LeftProperty, x);
+
+            double y = (double)el.GetValue(Canvas.TopProperty);
+
+            y += yoffset;
+            el.SetValue(Canvas.TopProperty, y);
         }
 
         public void Restart()
@@ -349,7 +381,22 @@ namespace HerculesWPFChoose
             this.total = 0.0;
             this.mode = 0;
 
+
+            this.image1.Source = this.choose_src;
+
+            //  itemized...
+            this.textBlock1.Visibility = System.Windows.Visibility.Hidden;
+            for (int i = 0; i < this.itemized.Count; i++)
+            {
+                TextBlock tb = (TextBlock)this.itemized[i];
+                this.cmaster.Children.Remove(tb);
+            }
+            this.itemized.Clear();
+
+            //  cart...
             this.redraw_cart();
+
+            //  cost...
             this.update_cost();
         }
 
@@ -458,6 +505,7 @@ namespace HerculesWPFChoose
             }
 
             this.label1.Visibility = System.Windows.Visibility.Hidden;
+            this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
 
         }
 
@@ -514,15 +562,19 @@ namespace HerculesWPFChoose
             }
 
             this.label1.Visibility = System.Windows.Visibility.Hidden;
+            this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
             if (path != String.Empty)
             {
                 String[] parts = path.Split(new char[] { '\\' });
                 String fname = parts[parts.Length - 1];
                 if (this.des_hash[fname]!=null)
                 {
+                    //  hide slide...
+                    this.image_slide_instructions.Visibility = System.Windows.Visibility.Hidden;
+
                     this.label1.Visibility = System.Windows.Visibility.Visible;
-                    this.label1.Content = this.des_hash[fname];
-                    
+                    this.label1.Text = (String) this.des_hash[fname];
+                
                 }
             }
 
@@ -582,6 +634,68 @@ namespace HerculesWPFChoose
             this.textBoxTotalAmount.Text = String.Format("{0:0.00}", total);
         }
 
+        private void redraw_itemized()
+        {
+            for (int i = 0; i < this.itemized.Count; i++)
+            {
+                TextBlock tb = (TextBlock)this.itemized[i];
+                tb.Visibility = Visibility.Hidden;
+            }
+
+            for (int i = 0; i < cart.Count; i++)
+            {
+                String path = (String)cart[i];
+
+                TextBlock tb = null;
+                if (i < this.itemized.Count)
+                {
+                    tb = (TextBlock)this.itemized[i];
+                }
+                else
+                {
+                    tb = new TextBlock();
+                    tb.Width = this.textBlock1.Width;
+                    tb.Height = this.textBlock1.Height;
+                   
+                    this.itemized.Add(tb);
+                    this.cmaster.Children.Add(tb);
+
+
+
+                }
+
+                tb.Visibility = Visibility.Visible;
+
+                FrameworkElement model = this.textBlock1 as FrameworkElement;            
+                FrameworkElement el = tb as FrameworkElement;
+                double x = (double)model.GetValue(Canvas.LeftProperty);
+                double y = (double)model.GetValue(Canvas.TopProperty) + i * this.textBlock1.Height;
+                if (this.mode == 1)
+                {
+                    x = x + 400;
+                    y = y+100;
+                }
+                el.SetValue(Canvas.LeftProperty, x);
+                el.SetValue(Canvas.TopProperty, y);
+
+                if ( this.mode == 0 )
+                    tb.Foreground = this.myYellowBrush;
+                else
+                    tb.Foreground = this.myBlueBrush;
+
+                //  Set the itemized name...
+                tb.Text = "Unknown";
+                String[] parts = path.Split(new char[] { '\\' });
+                String name = (String)this.item_name_hash[parts[parts.Length - 1]];
+                if (name != null)
+                {
+                    tb.Text = name;
+                }
+
+            }
+        }
+
+
         private void redraw_cart()
         {
             //WindowWhiteCastle w = WindowWhiteCastle.getParent(this);
@@ -619,6 +733,7 @@ namespace HerculesWPFChoose
             String path = (String)src[idx];
             cart.Add(path);
 
+            this.redraw_itemized();
             this.redraw_cart();
             this.update_cost();
         }
@@ -671,6 +786,7 @@ namespace HerculesWPFChoose
             }
 
             this.label1.Visibility = System.Windows.Visibility.Hidden;
+            this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
         }
 
 
@@ -723,6 +839,10 @@ namespace HerculesWPFChoose
             }
         }
 
+        private void purchased_MouseMove(object sender, MouseEventArgs e)
+        {
+        }
+
         private void purchased_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
@@ -744,6 +864,7 @@ namespace HerculesWPFChoose
         {
 
             this.label1.Visibility = System.Windows.Visibility.Hidden;
+            this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
 
             if (!this.purchased_remove_test(sender, e))
             {
@@ -924,13 +1045,18 @@ namespace HerculesWPFChoose
 
         private void imageCheckout_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            double offset = -250.0;
-            this.OffsetControl(this.textBox1, offset);
-            this.OffsetControl(this.textBox3, offset);
-            this.OffsetControl(this.textBox99, offset);
-            this.OffsetControl(this.textBoxSubTotal, offset);
-            this.OffsetControl(this.textBoxTax, offset);
-            this.OffsetControl(textBoxTotalAmount, offset);
+            //  change bg...
+            this.imagecheckout.Source = this.checkout_src;
+
+            //double xoffset = -250.0;
+            double xoffset = -250.0;
+            double yoffset = -150;
+            this.OffsetControl(this.textBox1, xoffset, yoffset);
+            this.OffsetControl(this.textBox3, xoffset, yoffset);
+            this.OffsetControl(this.textBox99, xoffset, yoffset);
+            this.OffsetControl(this.textBoxSubTotal, xoffset, yoffset);
+            this.OffsetControl(this.textBoxTax, xoffset, yoffset);
+            this.OffsetControl(textBoxTotalAmount, xoffset, yoffset);
 
             this.textBox1.Foreground = new SolidColorBrush(Colors.Blue);
                     this.textBox3.Foreground = new SolidColorBrush(Colors.Blue);
@@ -958,6 +1084,9 @@ namespace HerculesWPFChoose
 
             this.mode = 1; // checkout...
 
+            //  redraw itemized list...
+            this.redraw_itemized();
+
             foreach ( Image img in this.imgs )
             {
                 img.Visibility = System.Windows.Visibility.Hidden;
@@ -979,6 +1108,7 @@ namespace HerculesWPFChoose
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.label1.Visibility = System.Windows.Visibility.Hidden;
+            this.image_slide_instructions.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void label1_MouseMove(object sender, MouseEventArgs e)

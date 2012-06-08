@@ -227,9 +227,15 @@ namespace HerculesWPFMain
             for (int i = 0; i < this.lab_srcq.Count; i++)
             {
                 String path = (String)this.lab_srcq[i];
-                Label lbl = (Label)this.labels[0];
+                TextBlock lbl = (TextBlock)this.labels[0];
+                System.Windows.Media.Color col = new System.Windows.Media.Color();
+                col.R = 0xff;
+                col.G = 0xff;
+                col.B = 0xff;
+                lbl.Foreground = new SolidColorBrush(col);
                 FrameworkElement el = lbl as FrameworkElement;
-                lbl.Content = this.lab_srcq[i];
+                
+                lbl.Text = (String)this.lab_srcq[i];
                 double w = 1024 / 7;
                 double off = (w - (double)el.GetValue(Canvas.ActualWidthProperty)) / 2.0 - 15;
                 TransformGroup ggr = new TransformGroup();
@@ -251,17 +257,28 @@ namespace HerculesWPFMain
                     fudge = 8;
                  * */
 
-                double fudge = 20.0f;
+                
+                double fudge = 0.0f;
                 if (path == "daybreak site")
                     fudge = 45;
                 else if (path == "check-in")
-                    fudge = 25;
-                else if (path == "games")
                     fudge = 15;
+                else if (path == "games")
+                    fudge = 7;
                 else if (path == "jackboxer site")
                     fudge = 45;
                 else if (path == "photobooth")
-                    fudge = 35;
+                    fudge = 25;
+                else if (path == "calendar")
+                    fudge = 15;
+                else if (path == "web")
+                    fudge = -5;
+                
+                else if (path == "menu")
+                    fudge = 0;
+                else if (path == "promo")
+                    fudge = 5;
+                
 
                 ggr.Children.Add(new TranslateTransform(off-fudge, 0));
                 this.lab_tr[path] = ggr;
@@ -273,12 +290,13 @@ namespace HerculesWPFMain
                 int which = (i % this.lab_srcq.Count);
                 String path = (String)this.lab_srcq[which];
                 this.lab_src_hash[this.labels[i]] = path;
-                Label lbl = (Label)this.labels[i];
-                lbl.Content = path;
-                /* 
+                TextBlock lbl = (TextBlock)this.labels[i];
+                lbl.Text = path;
+                
+                
                 lbl.Foreground = this.myWhiteBrush;
-                */
-                lbl.Foreground = this.myBlackBrush;
+                
+                //lbl.Foreground = this.myBlackBrush;
 
             }
 
@@ -313,7 +331,7 @@ namespace HerculesWPFMain
                 element = this.labels[i] as FrameworkElement;
                 element.SetValue(Canvas.LeftProperty, x);
                 element.SetValue(Canvas.TopProperty, y);
-                Label lbl = (Label)element;
+                TextBlock lbl = (TextBlock)element;
                 path = (String)this.lab_src_hash[lbl];
                 lbl.RenderTransform = (TransformGroup)this.lab_tr[path];
             }
@@ -433,9 +451,9 @@ namespace HerculesWPFMain
             }
         }
 
-        public void ReplaceLabel(Label lbl, String txt)
+        public void ReplaceLabel(TextBlock lbl, String txt)
         {
-            lbl.Content = txt;
+            lbl.Text = txt;
         }
 
         public void ReplaceImage(Image img, String path)
@@ -479,11 +497,11 @@ namespace HerculesWPFMain
                 Image fimg = (Image)this.images[0];
                 Image fcap = (Image)this.captions[0];
                 fcap.Visibility = System.Windows.Visibility.Hidden;
-                Label flab = (Label)this.labels[0];
+                TextBlock flab = (TextBlock)this.labels[0];
                 Image limg = (Image)this.images[this.images.Count - 1];
                 Image lcap = (Image)this.captions[this.captions.Count - 1];
                 lcap.Visibility = System.Windows.Visibility.Hidden;
-                Label llab = (Label)this.labels[this.labels.Count - 1];
+                TextBlock llab = (TextBlock)this.labels[this.labels.Count - 1];
 
                 FrameworkElement fel = fimg as FrameworkElement;
                 FrameworkElement fcapel = fcap as FrameworkElement;

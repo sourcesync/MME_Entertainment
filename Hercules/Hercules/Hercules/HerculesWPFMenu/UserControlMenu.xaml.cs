@@ -44,7 +44,7 @@ namespace HerculesWPFMenu
             InitializeComponent();
 
 
-            BitmapSource src = WindowUtility.GetScreenBitmapWPF("menu_choose.png");
+            BitmapSource src = WindowUtility.GetScreenBitmapWPF("menu_select.png");
             this.image1.Source = src;
 
             System.Collections.ArrayList results = null;
