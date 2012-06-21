@@ -100,7 +100,7 @@
   
  
   
-  <add key="CheckinThankyouText=" value="Thank you for checking-in to MoBar!" />
+  <add key="CheckinThankyouText=" value="Thank you for checking-in to the Mandarin Oriental PhotoBooth!" />
   
 
   <add key="MenuCoords" value="breakfast-215,250:sliders-450,250:drinks-670,250:big_craves-215,480:sack_meals-450,480:sides-670,480" />
@@ -116,28 +116,34 @@
   	value="check-in:35;photobooth:50;gallery:35;bermuda:40;atlanta:30;boston:30;las vegas:35;miami:25;new york:40;san francisco:58;washington:50" />
   <add key="WebURLKey" 
   	value="bermuda;http://www.mandarinoriental.com/bermuda,atlanta;http://www.mandarinoriental.com/atlanta,boston;http://www.mandarinoriental.com/boston,las vegas;http://www.mandarinoriental.com/lasvegas,miami;http://www.mandarinoriental.com/miami,new york;http://www.mandarinoriental.com/newyork,san francisco;http://www.mandarinoriental.com/sanfrancisco,washington;http://www.mandarinoriental.com/washington" />
+  <add key="BGFile" value="main-americas-bg.jpg" />
 	-->
   
   <!--emea-->
     <add key="MainMenuDir" value="main-emea" />
   <add key="WebURL" value="http://www.mandarinoriental.com/" />
   <add key="MenuItemOffset" 
-  	value="check-in:35;photobooth:50;gallery:35;barcelona:35;geneva:30;london:30;munich:35;paris:25;prague:30" />
+  	value="check-in:35;photobooth:50;gallery:35;barcelona:40;geneva:30;london:30;munich:35;paris:25;prague:30" />
   <add key="WebURLKey" 
   	value="barcelona;http://www.mandarinoriental.com/barcelona,geneva;http://www.mandarinoriental.com/geneva,london;http://www.mandarinoriental.com/london,munich;http://www.mandarinoriental.com/munich,paris;http://www.mandarinoriental.com/paris,prague;http://www.mandarinoriental.com/prague" />
+  <add key="GalleryDir"
+	value="C:\Users\Disco\Desktop\George\MandarinEvent\Gallery\Americas-Gallery\large" />
+  <add key="BGFile" value="main-EMEA-bg.jpg" />
   
-  
+
   <!--asia pacific
   <add key="MainMenuDir" value="main-asiapac" />
   <add key="WebURL" value="http://www.mandarinoriental.com/" />
   <add key="MenuItemOffset" 
-  	value="check-in:40;photobooth:50;gallery:35;bangkok:38;chiangmai:48;hongkong:45;kuala lumpur:60;landmark:45;singapore:43;tokyo:27;shanghai:43" />
+  	value="check-in:40;photobooth:50;gallery:35;bangkok:38;chiang mai:48;hong kong:45;kuala lumpur:60;landmark:45;singapore:43;tokyo:27;shanghai:43" />
   <add key="WebURLKey" 
-  	value="bangkok;http://www.mandarinoriental.com/bangkok,chiangmai;http://www.mandarinoriental.com/chiangmai,hongkong;http://www.mandarinoriental.com/hongkong,kualalumpur;http://www.mandarinoriental.com/kualalumpur,landmark;http://www.mandarinoriental.com/landmark,singapore;http://www.mandarinoriental.com/singapore,tokyo;http://www.mandarinoriental.com/tokyo,shanghai;http://www.mandarinoriental.com/about_mo/developments" />
-  -->
-  	
+  	value="bangkok;http://www.mandarinoriental.com/bangkok,chiang mai;http://www.mandarinoriental.com/chiangmai,hong kong;http://www.mandarinoriental.com/hongkong,kualalumpur;http://www.mandarinoriental.com/kualalumpur,landmark;http://www.mandarinoriental.com/landmark,singapore;http://www.mandarinoriental.com/singapore,tokyo;http://www.mandarinoriental.com/tokyo,shanghai;http://www.mandarinoriental.com/about_mo/developments" />
+  <add key="BGFile" value="main-asia-pacific-bg.jpg" />
+  	-->
+
   <add key="MenuOffsetY" value="420" />
   <add key="MenuLabelOffsetY" value="520" />
+
 
   <add key="CheckoutTextColor" value="blue" />
 
