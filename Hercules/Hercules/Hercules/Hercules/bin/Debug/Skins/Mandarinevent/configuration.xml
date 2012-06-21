@@ -81,23 +81,23 @@
   <add key="CustomPhotoUrl" value="" />
   <add key="CustomPublishUrl" value="http://favpic.mobi/favoritephoto.php?viewing={1}_{0}"/>
 
-  <add key="ThanksText" "Thanks for visiting the MoBar PhotoBooth!" />
+  <add key="ThanksText" value="Thanks for visiting the MoBar PhotoBooth!" />
 
   <!--facebook checkin-->
  
+<!--
   <add key="FaceBookCheckinPlaceID" value="125668440854442" />
   <add key="FaceBookCheckinMessage" value="I am checking in from White Castles new touch screen tables.  This is by far the coolest thing I have ever seen!" />
   <add key="FaceBookCheckinLatitude" value="37.757653" />
   <add key="FaceBookCheckinLongitude" value="-122.438636" />
   
+  -->
   
-  
-  <!--
-  <add key="FaceBookCheckinPlaceID" value="1895242477?49570" />
-  <add key="FaceBookCheckinMessage" value="I took this picture at the MoBar PhotoBooth in the Mandarin Oriental Hotel!" />
+  <add key="FaceBookCheckinPlaceID" value="125668440854442" />
+  <add key="FaceBookCheckinMessage" value="I just had my photo taken from the interactive tables at the Mandarin Oriental in NYC at the Road Show!" />
   <add key="FaceBookCheckinLatitude" value="40.6645071" />
   <add key="FaceBookCheckinLongitude" value="-73.5260445" />
-  -->
+  
  
   
   <add key="CheckinThankyouText=" value="Thank you for checking-in to MoBar!" />
