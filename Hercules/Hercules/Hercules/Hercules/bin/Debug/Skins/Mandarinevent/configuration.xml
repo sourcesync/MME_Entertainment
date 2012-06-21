@@ -130,7 +130,7 @@
   <add key="MainMenuDir" value="main-asiapac" />
   <add key="WebURL" value="http://www.mandarinoriental.com/" />
   <add key="MenuItemOffset" 
-  	value="check-in:35;photobooth:45;gallery:35;bangkok:35;chiangmai:40;hongkong:40;kualalumpur:45;landmark:35;singapore:40;tokyo:30;shanghai:35" />
+  	value="check-in:40;photobooth:50;gallery:35;bangkok:38;chiangmai:48;hongkong:45;kuala lumpur:60;landmark:45;singapore:43;tokyo:27;shanghai:43" />
   <add key="WebURLKey" 
   	value="bangkok;http://www.mandarinoriental.com/bangkok,chiangmai;http://www.mandarinoriental.com/chiangmai,hongkong;http://www.mandarinoriental.com/hongkong,kualalumpur;http://www.mandarinoriental.com/kualalumpur,landmark;http://www.mandarinoriental.com/landmark,singapore;http://www.mandarinoriental.com/singapore,tokyo;http://www.mandarinoriental.com/tokyo,shanghai;http://www.mandarinoriental.com/about_mo/developments" />
   
