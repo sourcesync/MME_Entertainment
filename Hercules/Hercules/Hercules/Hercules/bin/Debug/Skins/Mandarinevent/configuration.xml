@@ -81,7 +81,7 @@
   <add key="CustomPhotoUrl" value="" />
   <add key="CustomPublishUrl" value="http://favpic.mobi/favoritephoto.php?viewing={1}_{0}"/>
 
-  <add key="ThanksText" value="Thanks for visiting the MoBar PhotoBooth!" />
+  <add key="ThanksText" value="Thanks for visiting the Mandarin PhotoBooth!" />
 
   <!--facebook checkin-->
  
