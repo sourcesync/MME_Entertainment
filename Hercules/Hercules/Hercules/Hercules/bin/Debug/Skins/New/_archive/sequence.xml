@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Hercules configver="1">
+
+
+
+<page type="selection" screen="data-2.jpg" sound="question1.wav" question="HowSelectFragrance">
+<choice x="170" y="370" width="660" height="80" text="" value="MakesMeFeel" color="" />
+<choice x="170" y="500" width="660" height="80" text="" value="ByFragranceType" color="" />
+</page>
+
+
+
+
+<page type="scentomatic" screen="fragrance.jpg" sound="fragrances.wav" question="SelectedScent">
+
+<choice servo="0" x="170" y="282" width="150" height="270" color="" value="Nude"  screen="scent2.jpg" sound="scent1.wav" acceleration="4500" velocity="1500" startposition="150" middleposition="40" endposition="150" delay="350" />
+	<choice servo="1" x="444" y="282" width="150" height="270" color="" value="Bloom" screen="scent3.jpg" sound="scent1.wav" acceleration="4500" velocity="1500" startposition="150" middleposition="89" endposition="150" delay="350" />
+	<choice servo="2" x="690" y="282" width="150" height="270" color="" value="Sheer" screen="scent1.jpg" sound="scent1.wav" acceleration="4500" velocity="1500" startposition="30" middleposition="155" endposition="30" delay="350" />
+
+
+	<choice servo="" x="640" y="670" width="200" height="70" color="" value="Cancelled" />
+
+</page>
+
+
+
+
+
+	
+
+</Hercules>
