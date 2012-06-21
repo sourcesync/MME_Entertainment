@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Hercules facebookver="1">
 
-  <string key="TITLE" value="That was awesome!  I just did the WhiteCastle Photobooth." />
-  <string key="DESC" value="For more information about WhiteCastle, visit us at:http://www.whitecastle.com" />
+  <string key="TITLE" value="I just had my photo take from the interactive tables at the Mandarin Oriental in NYC at the Road Show." />
+  <string key="DESC" value="For more information about Mandarin Oriental, visit us at:http://www.mandarinoriental.com" />
   <string key="LINK" value="$CUSTOM1$" />
 
 </Hercules>
