@@ -121,7 +121,7 @@
   <add key="BGFile" value="main-americas-bg.jpg" />
 	-->
   
-  <!--emea-->
+  <!--emea
     <add key="MainMenuDir" value="main-emea" />
   <add key="WebURL" value="http://www.mandarinoriental.com/" />
   <add key="MenuItemOffset" 
@@ -131,7 +131,7 @@
   <add key="GalleryDir"
 	value="C:\Users\Photomation\Desktop\EMEA" />
   <add key="BGFile" value="main-EMEA-bg.jpg" />
-  
+  -->
 
   <!--asia pacific-->
   <add key="MainMenuDir" value="main-asiapac" />
@@ -141,7 +141,7 @@
   <add key="WebURLKey" 
   	value="bangkok;http://www.mandarinoriental.com/bangkok,chiang mai;http://www.mandarinoriental.com/chiangmai,hong kong;http://www.mandarinoriental.com/hongkong,kualalumpur;http://www.mandarinoriental.com/kualalumpur,landmark;http://www.mandarinoriental.com/landmark,singapore;http://www.mandarinoriental.com/singapore,tokyo;http://www.mandarinoriental.com/tokyo,shanghai;http://www.mandarinoriental.com/about_mo/developments" />
   <add key="GalleryDir"
-	value="C:\Users\Photomation\Desktop\Asia-Pacific" />
+	value="C:\Users\Photomation\Desktop\Asia-Pacific\Asia-Pacific-Gallery\Large" />
   <add key="BGFile" value="main-asia-pacific-bg.jpg" />
   	
 
