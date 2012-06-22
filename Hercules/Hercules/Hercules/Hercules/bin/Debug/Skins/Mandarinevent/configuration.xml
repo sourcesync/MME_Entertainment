@@ -94,7 +94,7 @@
   -->
   
   <add key="FaceBookCheckinPlaceID" value="175360442194" />
-  <add key="FaceBookCheckinMessage" value="I just had my photo taken from the interactive tables at the Mandarin Oriental in NYC at the Road Show!" />
+  <add key="FaceBookCheckinMessage" value="Having a delightful time at the Mandarin Oriental Fanfare!" />
   <add key="FaceBookCheckinLatitude" value="40.6646892" />
   <add key="FaceBookCheckinLongitude" value="-73.5261379" />
   
