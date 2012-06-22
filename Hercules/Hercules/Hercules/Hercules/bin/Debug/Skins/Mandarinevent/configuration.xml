@@ -121,7 +121,7 @@
   <add key="BGFile" value="main-americas-bg.jpg" />
   -->
   
-  <!--emea
+  <!--emea-->
     <add key="MainMenuDir" value="buttons-emea" />
   <add key="WebURL" value="http://www.mandarinoriental.com/" />
   <add key="MenuItemOffset" 
@@ -131,7 +131,7 @@
   <add key="GalleryDir"
 	value="C:\Users\Photomation\Desktop\EMEA\EMEA-Gallery\Large" />
   <add key="BGFile" value="main-EMEA-bg.jpg" />
-  -->
+  
 
   <!--asia pacific-->
   <add key="MainMenuDir" value="buttons-asiapac" />
