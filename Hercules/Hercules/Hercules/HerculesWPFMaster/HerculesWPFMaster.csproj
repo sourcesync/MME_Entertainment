@@ -88,6 +88,10 @@
       <Project>{9B7E97E5-F7AC-47C4-8147-B1B19BBC76E9}</Project>
       <Name>HerculesConfig</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HerculesWFPAngryBirds\HerculesWFPAngryBirds.csproj">
+      <Project>{01E1D21F-29D7-4E92-AAA0-8A0E8784FF99}</Project>
+      <Name>HerculesWFPAngryBirds</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HerculesWPFBlank\HerculesWPFBlank.csproj">
       <Project>{EBB69B0E-FCA6-4810-8C7D-3C2B06372DCE}</Project>
       <Name>HerculesWPFBlank</Name>
@@ -99,6 +103,10 @@
     <ProjectReference Include="..\HerculesWPFDraw\HerculesWPFDraw.csproj">
       <Project>{876D0340-C2C8-4F35-B369-D5A4BE74D404}</Project>
       <Name>HerculesWPFDraw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFGallery\HerculesWPFGallery.csproj">
+      <Project>{187D4723-2BC8-4AFD-8A76-0AE4B9C7ECA9}</Project>
+      <Name>HerculesWPFGallery</Name>
     </ProjectReference>
     <ProjectReference Include="..\HerculesWPFGameMenu\HerculesWPFGameMenu.csproj">
       <Project>{80A16FE9-322B-476F-9F3B-948C2B1C4384}</Project>

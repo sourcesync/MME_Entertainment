@@ -266,13 +266,14 @@ namespace MME.Hercules.Forms.User
                         // Finish up ( AND ACTUALLY SEND TO FACEBOOK! )
 
 
-                        if ( (dr == System.Windows.Forms.DialogResult.OK) && ( yes_clicked ) && (!skip_clicked))
+                        if ( (dr == System.Windows.Forms.DialogResult.OK ) )
                         {
                             using (User.Developing dd = new Developing(currentSession))
                             {
                                 dd.isbooth = true;
                                 dd.ispromo = false;
                                 dd.ischeckin = false;
+                                dd.facebook_publish = yes_clicked;
                                 dr = dd.ShowDialog();
                             }
                         }

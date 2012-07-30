@@ -104,6 +104,8 @@ namespace HerculesWPFMaster
 
         //public WebBrowser webBrowser1 = null;
 
+        public System.Collections.Hashtable webkey = new System.Collections.Hashtable();
+
         public UserControl1()
         {
             InitializeComponent();
@@ -125,6 +127,8 @@ namespace HerculesWPFMaster
             ctls.Add(this.ctldraw);
             ctls.Add(this.ctlgamemenu);
             ctls.Add(this.ctlttt);
+            ctls.Add(this.ctlgallery);
+            ctls.Add(this.ctlangrybirds);
 
             this.webBrowser1.Loaded +=new RoutedEventHandler(webBrowser1_Loaded);
 
@@ -144,8 +148,28 @@ namespace HerculesWPFMaster
             {
                 System.Windows.MessageBox.Show(E.ToString());
             }
+
+            this.GetWebURLKey();
         }
 
+        public void GetWebURLKey()
+        {
+            //  override y offset based on config value...
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "WebURLKey")))
+            {
+                String keystr = ConfigUtility.GetConfig(ConfigUtility.Config, "WebURLKey");
+
+                String[] keyvals = keystr.Split(new char[] { ',' });
+
+                foreach (String kv in keyvals)
+                {
+                    String[] pair = kv.Split(new char[] { ';' });
+                    this.webkey[pair[0]] = pair[1];
+                }
+            }
+
+
+        }
         
         public RenderTargetBitmap RenderToFile()
         {
@@ -192,7 +216,7 @@ namespace HerculesWPFMaster
         }
 
 
-        public void main_selected(String option)
+        public void main_selected(String poption)
         {
             if (this.webBrowser1 != null)
             {
@@ -200,6 +224,9 @@ namespace HerculesWPFMaster
                 this.webBrowser1 = null;
                 this.silenced = false;
             }
+
+
+            String option = poption.ToLower();
 
             if ((option == "menu")||(option=="drinks")) // menu
             {
@@ -263,6 +290,19 @@ namespace HerculesWPFMaster
             {
                 this.ShowGameMenu();
             }
+            else if (option == "gallery") // gallery...
+            {
+                this.ShowGallery();
+            }
+            else //try it as a web url via key dictionary...
+            {
+
+                if ( this.webkey[option] != null )
+                {
+                    String url = (String)this.webkey[option];
+                    this.ShowWeb( url, false );
+                }
+            }
 
             if (this.evt != null) this.evt(option);
         }
@@ -281,6 +321,10 @@ namespace HerculesWPFMaster
             else if (option == 2)
             {
                 this.ShowTTT();
+            }
+            else if (option == 3)
+            {
+                this.ShowAngryBirds();
             }
         }
 
@@ -345,6 +389,10 @@ namespace HerculesWPFMaster
             this.ctldraw.Visibility = System.Windows.Visibility.Hidden;
             this.ctlgamemenu.Visibility = System.Windows.Visibility.Hidden;
             this.ctlttt.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlgallery.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlgallery.Stop();
+            this.ctlangrybirds.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlangrybirds.Stop();
 
             if (this.webBrowser1 != null)
             {
@@ -400,7 +448,7 @@ namespace HerculesWPFMaster
             this.ctlmain.Visibility = System.Windows.Visibility.Visible;
             this.current = this.ctlmain;
             this.ShowRotators();
-            this.ShowBack();
+            this.HideBack();
 
             if (this.evt != null) this.evt("main");
         }
@@ -432,6 +480,16 @@ namespace HerculesWPFMaster
             this.ShowBack();
         }
 
+        public void ShowGallery()
+        {
+            this.HideAll();
+            this.ctlgallery.Visibility = System.Windows.Visibility.Visible;
+            this.current = this.ctlgallery;
+            this.ShowRotators();
+            this.ShowBack();
+            this.ctlgallery.Start();
+        }
+
         public void ShowMemoryGame()
         {
             this.HideAll();
@@ -458,6 +516,16 @@ namespace HerculesWPFMaster
             this.ctlttt.Visibility = System.Windows.Visibility.Visible;
             this.ctlttt.Restart();
             this.current = this.ctlttt;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowAngryBirds()
+        {
+            this.HideAll();
+            this.ctlangrybirds.Visibility = System.Windows.Visibility.Visible;
+            this.ctlangrybirds.Restart();
+            this.current = this.ctlangrybirds;
             this.ShowRotators();
             this.ShowBack();
         }
@@ -601,7 +669,9 @@ namespace HerculesWPFMaster
                 this.addressbar.Visibility = System.Windows.Visibility.Hidden;
 
             }
-            this.webBrowser1.Height = 646 ;
+            this.webBrowser1.Height = 646;
+            if (!ab) this.webBrowser1.Height = 646+45;
+
             this.webBrowser1.Width = 1024;
             this.canvas_master.Children.Add(this.webBrowser1);
             FrameworkElement el = this.webBrowser1 as FrameworkElement;
@@ -850,6 +920,14 @@ namespace HerculesWPFMaster
                 this.ShowGameMenu();
             }
             else if ( this.current == this.ctlmemorygame )
+            {
+                this.ShowGameMenu();
+            }
+            else if (this.current == this.ctlttt)
+            {
+                this.ShowGameMenu();
+            }
+            else if (this.current == this.ctlangrybirds)
             {
                 this.ShowGameMenu();
             }

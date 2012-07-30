@@ -7,11 +7,13 @@
              d:DesignHeight="768" d:DesignWidth="1024">
     <Canvas Name="canvas_master" Background="Red" Height="768" Width="1024">
         <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="image2" Stretch="Fill" Width="1024" Source="/HerculesWPFGameMenu;component/Images/SCREENBACKGROUND-notext.png" />
-        <Image Canvas.Left="96" Canvas.Top="318" Height="170" Name="image1" Stretch="Fill" Width="198" Source="/HerculesWPFGameMenu;component/Images/memory-icon.png" MouseUp="image1_MouseUp" />
-        <Image Canvas.Left="408" Canvas.Top="318" Height="170" Name="image3" Stretch="Fill" Width="200" Source="/HerculesWPFGameMenu;component/Images/draw-icon.png" MouseUp="image3_MouseUp" />
-        <Image Canvas.Left="728" Canvas.Top="318" Height="170" Name="image4" Stretch="Fill" Width="200" Source="/HerculesWPFGameMenu;component/Images/tictactoe-icon.png" MouseUp="image4_MouseUp" />
-        <Label Canvas.Left="123" Canvas.Top="484" Content="Memory Game" Height="41" Name="label1" Width="198" FontSize="20" FontWeight="Bold" FontFamily="Microsoft Sans Serif" />
-        <Label Canvas.Left="477" Canvas.Top="484" Content="Draw" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="41" Name="label2" Width="198" />
-        <Label Canvas.Left="770" Canvas.Top="484" Content="Tic-Tac-Toe" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="41" Name="label3" Width="198" />
+        <Image Canvas.Left="64" Canvas.Top="318" Height="170" Name="image1" Stretch="Fill" Width="198" Source="/HerculesWPFGameMenu;component/Images/memory-icon.png" MouseUp="image1_MouseUp" />
+        <Image Canvas.Left="303" Canvas.Top="318" Height="170" Name="image3" Stretch="Fill" Width="200" Source="/HerculesWPFGameMenu;component/Images/draw-icon.png" MouseUp="image3_MouseUp" />
+        <Image Canvas.Left="543" Canvas.Top="318" Height="170" Name="image4" Stretch="Fill" Width="200" Source="/HerculesWPFGameMenu;component/Images/tictactoe-icon.png" MouseUp="image4_MouseUp" />
+        <Label Canvas.Left="88" Canvas.Top="484" Content="Memory Game" Height="41" Name="label1" Width="198" FontSize="20" FontWeight="Bold" FontFamily="Microsoft Sans Serif" />
+        <Label Canvas.Left="376" Canvas.Top="484" Content="Draw" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="41" Name="label2" Width="198" />
+        <Label Canvas.Left="580" Canvas.Top="484" Content="Tic-Tac-Toe" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="41" Name="label3" Width="198" />
+        <Image Canvas.Left="779" Canvas.Top="318" Height="170" Name="image6" Source="/HerculesWPFGameMenu;component/Images/memory-icon.png" Stretch="Fill" Width="198" MouseUp="image6_MouseUp" />
+        <Label Canvas.Left="805" Canvas.Top="484" Content="Angry Cravers" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="41" Name="label4" Width="198" />
     </Canvas>
 </UserControl>

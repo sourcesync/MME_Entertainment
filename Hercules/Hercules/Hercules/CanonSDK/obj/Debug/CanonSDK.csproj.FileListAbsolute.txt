@@ -98,3 +98,8 @@ C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercu
 C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Debug\CameraSDK.dll
 C:\Users\mocap\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Debug\CameraSDK.pdb
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\bin\Debug\CameraSDK.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\bin\Debug\CameraSDK.pdb
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Debug\CameraSDK.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Debug\CameraSDK.pdb

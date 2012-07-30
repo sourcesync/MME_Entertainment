@@ -116,14 +116,23 @@ namespace MME.HerculesConfig
         {
             try
             {
+                String main_dir = "Main";
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "MainMenuDir")))
+                {
+                    main_dir = ConfigUtility.GetConfig(ConfigUtility.Config, "MainMenuDir");
+                }
+
                 System.Collections.ArrayList result = new System.Collections.ArrayList();
-                foreach (String fl in Directory.EnumerateFiles(string.Format("Skins\\{0}\\Main", ConfigUtility.Skin)))
+
+                foreach (String fl in Directory.EnumerateFiles(string.Format("Skins\\{0}\\{1}", ConfigUtility.Skin, main_dir)))
                 {
                     String[] parts = fl.Split(new char[] { '\\' });
                     String fname = parts[parts.Length - 1];
                     parts = fname.Split(new char[] { '.' });
                     if (parts[0] == skip) continue;
-                    result.Add(parts[0]);
+
+                    String use = parts[0].Substring(10);
+                    result.Add(use);
                 }
 
                 return result;
@@ -138,8 +147,15 @@ namespace MME.HerculesConfig
         {
             try
             {
+                String main_dir = "Main";
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "MainMenuDir")))
+                {
+                    main_dir = ConfigUtility.GetConfig(ConfigUtility.Config, "MainMenuDir");
+                }
+
                 System.Collections.ArrayList result = new System.Collections.ArrayList();
-                foreach (String fl in Directory.EnumerateFiles(string.Format("Skins\\{0}\\Main", ConfigUtility.Skin)))
+
+                foreach (String fl in Directory.EnumerateFiles(string.Format("Skins\\{0}\\{1}", ConfigUtility.Skin, main_dir)))
                 {
                     if (fl == skip) continue;
                     result.Add(fl);
@@ -304,6 +320,7 @@ namespace MME.HerculesConfig
 
             System.Windows.Controls.Image i = new System.Windows.Controls.Image();
             System.Windows.Media.Imaging.BitmapImage src = new System.Windows.Media.Imaging.BitmapImage();
+            
             src.BeginInit();
             src.StreamSource = stream;
             src.EndInit();

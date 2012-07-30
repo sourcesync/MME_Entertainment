@@ -18,6 +18,7 @@ namespace MME.Hercules.Forms.User
         public bool ischeckin = false;
         public bool ispromo = false;
         public bool isbooth = false;
+        public bool facebook_publish = false;
 
         public Developing(Session currentSession)
         {
@@ -226,7 +227,11 @@ namespace MME.Hercules.Forms.User
                         else
                             this.label1.Visible = true;
 
-                        this.label1.Text = "Thanks For Using The WhiteCastle Photobooth!";
+                        this.label1.Text = "Thanks!";
+                        if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "ThanksText")))
+                        {
+                            this.label1.Text = ConfigUtility.GetConfig(ConfigUtility.Config, "ThanksText");
+                        }
                     }
                     int space = (int)(1024 - this.label1.Size.Width);
                     this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);
@@ -415,9 +420,11 @@ namespace MME.Hercules.Forms.User
             }
         }
 
-
+         
         private void PublishToFacebook()
         {
+            if (!this.facebook_publish) return;
+
             if ((ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1")) && !string.IsNullOrEmpty(this.currentSession.FacebookAccessToken))
             {
                 string response = string.Empty;

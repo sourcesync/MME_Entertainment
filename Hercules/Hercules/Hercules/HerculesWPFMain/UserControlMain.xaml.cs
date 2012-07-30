@@ -61,6 +61,7 @@ namespace HerculesWPFMain
 
         private int rotation = 0;
 
+        private System.Collections.Hashtable menuItemOffset = new System.Collections.Hashtable();
 
         SolidColorBrush myRedBrush = new SolidColorBrush(Colors.Red);
         SolidColorBrush myYellowBrush = new SolidColorBrush(Colors.Yellow);
@@ -81,6 +82,25 @@ namespace HerculesWPFMain
             {
                 this.RenderTransform = new RotateTransform(180, 1024 / 2.0, 768 / 2.0);
             }
+        }
+
+        public String MakeCap(String inp)
+        {
+            if (inp.ToLower() == "dc") return "DC";
+            if (inp.ToLower() == "nyc") return "NYC";
+
+            String tot = "";
+            String[] parts = inp.Split(new char[] { ' ' });
+
+            foreach (String part in parts )
+            {
+                
+                tot += ( part[0].ToString().ToUpper() + part.Substring(1) );
+                tot += " ";
+            }
+
+            tot = tot.Trim();
+            return tot;
         }
 
         public UserControlMain()
@@ -235,7 +255,10 @@ namespace HerculesWPFMain
                 lbl.Foreground = new SolidColorBrush(col);
                 FrameworkElement el = lbl as FrameworkElement;
                 
-                lbl.Text = (String)this.lab_srcq[i];
+                //String ppath = (String)this.lab_srcq[i];
+                //String item = ppath[0].ToString().ToUpper() + ppath.Substring(1);
+                lbl.Text = MakeCap((String)this.lab_srcq[i]);
+
                 double w = 1024 / 7;
                 double off = (w - (double)el.GetValue(Canvas.ActualWidthProperty)) / 2.0 - 15;
                 TransformGroup ggr = new TransformGroup();
@@ -256,28 +279,40 @@ namespace HerculesWPFMain
                 else if (path == "web")
                     fudge = 8;
                  * */
-
                 
-                double fudge = 0.0f;
+                this.GetMenuOffset();
+                
+                double fudge = 20.0f;
+
+
+                String pppath = path.ToLower();
+                if (this.menuItemOffset[pppath] != null)
+                {
+                    String val = (String)this.menuItemOffset[pppath];
+                    fudge = double.Parse(val);
+
+                }
+
+                    /*
                 if (path == "daybreak site")
                     fudge = 45;
                 else if (path == "check-in")
-                    fudge = 15;
+                    fudge = 35;
                 else if (path == "games")
                     fudge = 7;
                 else if (path == "jackboxer site")
                     fudge = 45;
                 else if (path == "photobooth")
-                    fudge = 25;
+                    fudge = 40;
                 else if (path == "calendar")
-                    fudge = 15;
-                else if (path == "web")
-                    fudge = -5;
-                
+                    fudge = 15;          
+                else if (path == "gallery" )
+                    fudge = 30;
                 else if (path == "menu")
                     fudge = 0;
                 else if (path == "promo")
                     fudge = 5;
+                 */
                 
 
                 ggr.Children.Add(new TranslateTransform(off-fudge, 0));
@@ -291,19 +326,20 @@ namespace HerculesWPFMain
                 String path = (String)this.lab_srcq[which];
                 this.lab_src_hash[this.labels[i]] = path;
                 TextBlock lbl = (TextBlock)this.labels[i];
-                lbl.Text = path;
+
+                //lbl.Text = path;
+                //String item = path[0].ToString().ToUpper() + path.Substring(1);
+
+                lbl.Text = MakeCap(path);
                 
                 
                 lbl.Foreground = this.myWhiteBrush;
                 
-                //lbl.Foreground = this.myBlackBrush;
 
             }
 
-
-
-
-            this.ResizeImages(1.4);
+            //this.ResizeImages(1.4);
+            this.ResizeImages(1.0);
 
             double frac = 1024 / 7;
 
@@ -315,11 +351,20 @@ namespace HerculesWPFMain
                 element.SetValue(Canvas.LeftProperty, x);
                 element.SetValue(Canvas.TopProperty, y);
 
+                //  override y offset based on config value...
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "MenuOffsetY")))
+                {
+                    double global_offset_y = 0.0;
+                    global_offset_y = double.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "MenuOffsetY"));
+                    element.SetValue(Canvas.TopProperty, global_offset_y);
+                }
+
                 y = 480;
                 element = this.captions[i] as FrameworkElement;
                 element.SetValue(Canvas.LeftProperty, x);
                 element.SetValue(Canvas.TopProperty, y);
 
+               
 
                 Image img = (Image)this.captions[i];
                 String path = (String)this.cap_src_hash[img];
@@ -334,6 +379,15 @@ namespace HerculesWPFMain
                 TextBlock lbl = (TextBlock)element;
                 path = (String)this.lab_src_hash[lbl];
                 lbl.RenderTransform = (TransformGroup)this.lab_tr[path];
+
+                //  override y offset based on config value...
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "MenuLabelOffsetY")))
+                {
+                    double global_offset_y = 0.0;
+                    global_offset_y = double.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "MenuLabelOffsetY"));
+                    element.SetValue(Canvas.TopProperty, global_offset_y);
+                }
+
             }
 
 
@@ -345,8 +399,31 @@ namespace HerculesWPFMain
             animationTimer.Start();
 
 
-            BitmapSource src = WindowUtility.GetScreenBitmapWPF("table_main_menu_bg.jpg");
+            String bg_file = "table_main_menu_bg.jpg";
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "BGFile")))
+            {
+                bg_file = ConfigUtility.GetConfig(ConfigUtility.Config, "BGFile");
+            }
+
+            BitmapSource src = WindowUtility.GetScreenBitmapWPF(bg_file);
+
             this.image1.Source = src;
+
+        }
+
+        private void GetMenuOffset()
+        {
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "MenuItemOffset")))
+            {
+                String str = ConfigUtility.GetConfig(ConfigUtility.Config, "MenuItemOffset");
+
+                String[] kvs = str.Split( new char[] {';'} );
+                foreach ( String kv in kvs )
+                {
+                    String[] pair = kv.Split( new char[] {':'} );
+                    this.menuItemOffset[pair[0]] = pair[1];
+                }
+            }
         }
 
         public String[] GetPrev(object o)
@@ -402,6 +479,13 @@ namespace HerculesWPFMain
                 double y = (double)element.GetValue(Canvas.TopProperty);
                 element.SetValue(Canvas.LeftProperty, x - offx / 2.0);
                 element.SetValue(Canvas.TopProperty, y - offy / 2.0);
+
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "MenuOffsetY")))
+                {
+                    double global_offset_y = 0.0;
+                    global_offset_y = double.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "MenuOffsetY"));
+                    element.SetValue(Canvas.TopProperty, global_offset_y);
+                }
             }
         }
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -453,7 +537,11 @@ namespace HerculesWPFMain
 
         public void ReplaceLabel(TextBlock lbl, String txt)
         {
-            lbl.Text = txt;
+            //String item = txt[0].ToString().ToUpper() + txt.Substring(1);
+
+            lbl.Text = MakeCap(txt);
+
+            //String.lbl.Text = txt;
         }
 
         public void ReplaceImage(Image img, String path)
@@ -619,6 +707,7 @@ namespace HerculesWPFMain
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
         {
 
+            /*
             Point pt = e.GetPosition(this);
             double x = pt.X;
             double y = pt.Y;
@@ -632,6 +721,7 @@ namespace HerculesWPFMain
                 this.evt("hidden");
                 return;
             }
+            */
 
             if ( this.imagea.IsMouseOver ) 
             {

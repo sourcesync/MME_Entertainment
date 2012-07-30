@@ -171,6 +171,12 @@ namespace MME.Hercules.Forms.User
                     else
                         this.labelQuestion.Visible = true;
 
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR")))
+                    {
+                        String str = ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR");
+                        this.labelQuestion.ForeColor = ColorTranslator.FromHtml(str);
+                    }
+
                     this.labelQuestion.Text = "Would you like to post your photo to FaceBook?";
                 }
                 else
@@ -185,9 +191,9 @@ namespace MME.Hercules.Forms.User
                     else
                         this.labelQuestion.Visible = true;
 
-                    this.labelQuestion.Text = "Would you like to check-in to FaceBook?";
+                    this.labelQuestion.Text = ""; // // "Would you like to check-in to FaceBook?";
                 }
-                this.labelQuestion.ForeColor = System.Drawing.Color.Black;
+                this.labelQuestion.ForeColor = System.Drawing.Color.White;
                 this.labelQuestion.BackColor = System.Drawing.Color.Transparent;
                 this.labelQuestion.Parent = this.pb2;
                 this.labelQuestion.BringToFront();

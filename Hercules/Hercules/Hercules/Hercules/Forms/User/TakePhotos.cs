@@ -588,7 +588,8 @@ namespace MME.Hercules.Forms.User
                 //this.panelVideoOne.Size = new Size(sp.Size.Width, sp.Size.Height);
 
                 // Setup the output video resolution file as the preview
-                _job[i].OutputFormat.VideoProfile.Size = new Size(sp.Size.Width, sp.Size.Height);
+                
+                //_job[i].OutputFormat.VideoProfile.Size = new Size(sp.Size.Width, sp.Size.Height);
 
                 _job[i].Status += new EventHandler<EncodeStatusEventArgs>(TakePhotos_Status);
 

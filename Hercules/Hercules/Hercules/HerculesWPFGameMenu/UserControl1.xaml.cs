@@ -55,6 +55,7 @@ namespace HerculesWPFGameMenu
             this.label1.Foreground = this.myForeBrush;
             this.label2.Foreground = this.myForeBrush;
             this.label3.Foreground = this.myForeBrush;
+            this.label4.Foreground = this.myForeBrush;
 
         }
 
@@ -83,6 +84,15 @@ namespace HerculesWPFGameMenu
             if (this.tevt != null)
             {
                 this.tevt(2);
+            }
+        }
+
+
+        private void image6_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (this.tevt != null)
+            {
+                this.tevt(3);
             }
         }
     }

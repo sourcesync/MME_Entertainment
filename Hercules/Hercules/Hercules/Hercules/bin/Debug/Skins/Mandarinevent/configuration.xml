@@ -109,7 +109,7 @@
   <add key="SwapWebCams" value="1" />
   -->
 
-  <!--americas
+  <!--americas-->
     <add key="MainMenuDir" value="buttons-americas" />
   <add key="WebURL" value="http://www.mandarinoriental.com/" />
   <add key="MenuItemOffset" 
@@ -119,9 +119,9 @@
   <add key="GalleryDir"
 	value="C:\Users\Photomation\Desktop\Americas\Americas-Gallery\Large" />
   <add key="BGFile" value="main-americas-bg.jpg" />
-  -->
   
-  <!--emea-->
+  
+  <!--emea-
     <add key="MainMenuDir" value="buttons-emea" />
   <add key="WebURL" value="http://www.mandarinoriental.com/" />
   <add key="MenuItemOffset" 
@@ -131,9 +131,9 @@
   <add key="GalleryDir"
 	value="C:\Users\Photomation\Desktop\EMEA\EMEA-Gallery\Large" />
   <add key="BGFile" value="main-EMEA-bg.jpg" />
-  
+  -->
 
-  <!--asia pacific-->
+  <!--asia pacific
   <add key="MainMenuDir" value="buttons-asiapac" />
   <add key="WebURL" value="http://www.mandarinoriental.com/" />
   <add key="MenuItemOffset" 
@@ -143,7 +143,7 @@
   <add key="GalleryDir"
 	value="C:\Users\Photomation\Desktop\Asia-Pacific\Asia-Pacific-Gallery\Large" />
   <add key="BGFile" value="main-asia-pacific-bg.jpg" />
-  
+  -->
 
   <add key="MenuOffsetY" value="420" />
   <add key="MenuLabelOffsetY" value="520" />
