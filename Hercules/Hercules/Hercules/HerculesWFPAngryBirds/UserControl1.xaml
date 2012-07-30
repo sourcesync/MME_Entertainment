@@ -11,5 +11,8 @@
         <Image Canvas.Left="0" Canvas.Top="0" Height="132" Name="spatula" Stretch="Fill"  Width="15" />
         <Image Canvas.Left="0" Canvas.Top="0" Height="43" Name="guy" Stretch="Fill" Width="78" />
         <Image Canvas.Left="0" Canvas.Top="0" Height="79" Name="girl" Stretch="Fill" Width="52" />
+        <Image Canvas.Left="0" Canvas.Top="0" Height="58" Name="logomed" Stretch="Fill" Width="64" />
+        <TextBlock Canvas.Left="889" Canvas.Top="32" Height="61" Name="textBlock1" Text="30" Width="86" FontSize="32" />
+        <TextBlock Canvas.Left="70" Canvas.Top="32" Height="61" Name="textBlock2" Text="Destroy The WhiteCastle !  Hurry Up !  Time Remaining:" Width="782" FontSize="32" />
     </Canvas>
 </UserControl>

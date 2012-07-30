@@ -27,6 +27,11 @@ namespace HerculesWFPAngryBirds
         }
 
         private System.Windows.Threading.DispatcherTimer simfunc = new System.Windows.Threading.DispatcherTimer();
+        private System.Windows.Threading.DispatcherTimer restart_timer = new System.Windows.Threading.DispatcherTimer();
+
+        private static int TIMEOUT = 30;
+        private System.DateTime game_time = new System.DateTime();
+        private int countdown = 0;
 
         private Polygon catapult = null;
         private Polygon[] boxes = null;
@@ -35,6 +40,8 @@ namespace HerculesWFPAngryBirds
         private bool sem = false;
         private bool simstopped = false;
         private bool moving_arm = false;
+        private bool restart = false;
+
 
         private static int NumBoxes = 21;
         private static float ScreenX = 1024.0f;
@@ -174,15 +181,40 @@ namespace HerculesWFPAngryBirds
             return p;
         }
 
+        void __restart(object sender, EventArgs e)
+        {
+                this.restart_timer.Stop();
+
+                this.Restart();
+            
+        }
+
         void __timeout(object sender, EventArgs e)
         {
             try
             {
+
                 if (this.simstopped) return;
 
                 //this.simfunc.Stop();
                 if (this.sem) return;
                 this.sem = true;
+
+                System.DateTime now = System.DateTime.Now;        
+                System.TimeSpan span = now.Subtract( this.game_time );
+                if ( span.TotalSeconds != this.countdown )
+                {
+                    this.countdown = (int)span.TotalSeconds;
+                    int show = TIMEOUT - this.countdown;
+                    this.textBlock1.Text = show.ToString();
+                    if (show == 0)
+                    {
+                        this.restart_timer.Start();
+                        this.sem = false;
+                        return;
+                    }
+
+                }
 
                 BoxEngine_SimulationLoop();
 
@@ -240,6 +272,8 @@ namespace HerculesWFPAngryBirds
                 this.canvas_master.Children.Add(p);
                 this.boxes[i] = p;
             }
+
+            this.logomed.Source = this.GetBitMap( "logomed-transp.png" );
         }
 
         private void CreateBullet()
@@ -326,7 +360,20 @@ namespace HerculesWFPAngryBirds
 
                 FrameworkElement el = this.boxes[i] as FrameworkElement;
                 el.SetValue(Canvas.ZIndexProperty, 1);
+
+                if (i == 13)
+                {
+                    TransformGroup grp2 = new TransformGroup();
+                    grp2.Children.Add(new TranslateTransform(-this.logomed.Width / 2.0f, -this.logomed.Height / 2.0f));
+                    grp2.Children.Add(new RotateTransform(-data[2]));
+                    grp2.Children.Add(new TranslateTransform(data[0], data[1]));
+                    this.logomed.RenderTransform = grp2;
+                    FrameworkElement el2 = this.logomed as FrameworkElement;
+                    el2.SetValue(Canvas.ZIndexProperty, 3);
+                }
             }
+
+            
         }
 
         private void UpdateMouseJoint(int buttonstate)
@@ -491,19 +538,31 @@ namespace HerculesWFPAngryBirds
 
             BoxEngine_Init(0);
 
-            this.simfunc = new System.Windows.Threading.DispatcherTimer();
-            this.simfunc.Tick += new EventHandler(this.__timeout);
-            this.simfunc.Interval = new TimeSpan(10000);
             this.simfunc.Stop();
             this.simstopped = false;
             this.simfunc.Start();
 
+            this.restart_timer.Stop();
+
+            this.countdown = 0;
+            this.textBlock1.Text = TIMEOUT.ToString();
+            this.game_time = System.DateTime.Now;
         }
 
         public void Stop()
         {
-            this.simfunc.Stop();
-            this.simstopped = true;
+            if (this.simfunc != null)
+            {
+                this.simfunc.Stop();
+                this.simstopped = true;
+               
+            }
+
+            if (this.restart_timer != null)
+            {
+                this.restart_timer.Stop();
+            }
+
             BoxEngine_Stop();
 
 
@@ -527,6 +586,17 @@ namespace HerculesWFPAngryBirds
                 this.CreateCursor();
 
                 this.CreateBullet();
+
+                this.restart_timer = new System.Windows.Threading.DispatcherTimer();
+                this.restart_timer.Tick += new EventHandler(this.__restart);
+                this.restart_timer.Interval = new TimeSpan(10000);
+                this.restart_timer.Stop();
+
+                this.simfunc = new System.Windows.Threading.DispatcherTimer();
+                this.simfunc.Tick += new EventHandler(this.__timeout);
+                this.simfunc.Interval = new TimeSpan(10000);
+                this.simfunc.Stop();
+                this.simstopped = false;
             }
             catch (System.Exception ex)
             {
