@@ -342,11 +342,11 @@ BOXENGINE_API int BoxEngine_Mouse(int32 button, int32 state, int32 x, int32 y)
 			bullet->SetActive(false);
 
 			b2CircleShape circle;
-			circle.m_radius = 1.0f;
+			circle.m_radius = 3.0f;
 
 			b2FixtureDef ballShapeDef;
 			ballShapeDef.shape = &circle;
-			ballShapeDef.density = 0.8f;
+			ballShapeDef.density = 0.2f;
 			ballShapeDef.restitution = 0.2f;
 			ballShapeDef.friction = 0.99f;
 			bullet->CreateFixture( &ballShapeDef );

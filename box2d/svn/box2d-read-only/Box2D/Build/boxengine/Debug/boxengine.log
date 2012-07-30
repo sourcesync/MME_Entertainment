@@ -1,12 +1,9 @@
-﻿Build started 7/30/2012 12:16:59 PM.
-     1>Project "C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\boxengine\boxengine.vcxproj" on node 2 (rebuild target(s)).
-     1>_PrepareForClean:
-         Deleting file "Debug\boxengine.lastbuildstate".
-       InitializeBuildStatus:
+﻿Build started 7/30/2012 1:51:31 PM.
+     1>Project "C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\boxengine\boxengine.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
          Creating "Debug\boxengine.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I. /I.. /I..\.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D BOXENGINE_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc /Fp"Debug\boxengine.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
+         All outputs are up-to-date.
          c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I. /I.. /I..\.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D BOXENGINE_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt boxengine.cpp
          boxengine.cpp
      1>c:\users\disco\desktop\george\mme\sourcecontrol\mme_entertainment\box2d\svn\box2d-read-only\box2d\build\boxengine\boxengine.cpp(291): warning C4244: '=' : conversion from 'int32' to 'float', possible loss of data
@@ -15,10 +12,9 @@
      1>c:\users\disco\desktop\george\mme\sourcecontrol\mme_entertainment\box2d\svn\box2d-read-only\box2d\build\boxengine\boxengine.cpp(315): warning C4244: '=' : conversion from 'int32' to 'float', possible loss of data
      1>c:\users\disco\desktop\george\mme\sourcecontrol\mme_entertainment\box2d\svn\box2d-read-only\box2d\build\boxengine\boxengine.cpp(505): warning C4305: '=' : truncation from 'double' to 'float32'
      1>c:\users\disco\desktop\george\mme\sourcecontrol\mme_entertainment\box2d\svn\box2d-read-only\box2d\build\boxengine\boxengine.cpp(506): warning C4305: '=' : truncation from 'double' to 'float32'
-         c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I. /I.. /I..\.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D BOXENGINE_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt dllmain.cpp
-         dllmain.cpp
+         All outputs are up-to-date.
        ManifestResourceCompile:
-         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\boxengine.dll.embed.manifest.res" Debug\boxengine_manifest.rc 
+         All outputs are up-to-date.
        Link:
          c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.dll" /INCREMENTAL /NOLOGO ..\vs2010\bin\Debug\Box2D.lib ..\vs2010\bin\Debug\FreeGLUT.lib ..\vs2010\bin\Debug\GLUI.lib glu32.lib opengl32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\boxengine.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.lib" /MACHINE:X86 /DLL Debug\boxengine.dll.embed.manifest.res
          Debug\boxengine.obj
@@ -26,21 +22,16 @@
          Debug\stdafx.obj
             Creating library C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.lib and object C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.exp
        Manifest:
-         Deleting file "Debug\boxengine.dll.embed.manifest".
          C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\boxengine.dll.embed.manifest" /manifest Debug\boxengine.dll.intermediate.manifest
-         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\boxengine.dll.embed.manifest.res" Debug\boxengine_manifest.rc 
+         All outputs are up-to-date.
        LinkEmbedManifest:
-         c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.dll" /INCREMENTAL /NOLOGO ..\vs2010\bin\Debug\Box2D.lib ..\vs2010\bin\Debug\FreeGLUT.lib ..\vs2010\bin\Debug\GLUI.lib glu32.lib opengl32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\boxengine.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.lib" /MACHINE:X86 /DLL Debug\boxengine.dll.embed.manifest.res
-         Debug\boxengine.obj
-         Debug\dllmain.obj
-         Debug\stdafx.obj
-            Creating library C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.lib and object C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.exp
+         All outputs are up-to-date.
          boxengine.vcxproj -> C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\vs2010\Debug\boxengine.dll
        FinalizeBuildStatus:
          Deleting file "Debug\boxengine.unsuccessfulbuild".
          Touching "Debug\boxengine.lastbuildstate".
-     1>Done Building Project "C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\boxengine\boxengine.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\box2d\svn\box2d-read-only\Box2D\Build\boxengine\boxengine.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:08.60
+Time Elapsed 00:00:01.93

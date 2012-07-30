@@ -41,13 +41,14 @@ namespace HerculesWFPAngryBirds
         private bool simstopped = false;
         private bool moving_arm = false;
         private bool restart = false;
-
+        private int restart_count = 0;
 
         private static int NumBoxes = 21;
         private static float ScreenX = 1024.0f;
         private static float ScreenY = 768.0f;
         private static float WorldX = 200.0f;
         private static float WorldY = 200.0f * (ScreenY / ScreenX);
+        private static int BULLET_OFFSET = 7;
 
         private Point mousepos = new Point();
 
@@ -183,9 +184,12 @@ namespace HerculesWFPAngryBirds
 
         void __restart(object sender, EventArgs e)
         {
-                this.restart_timer.Stop();
+            this.restart_count++;
+            if (this.restart_count == 1) return;
 
-                this.Restart();
+            this.restart_timer.Stop();
+
+            this.Restart();
             
         }
 
@@ -207,8 +211,14 @@ namespace HerculesWFPAngryBirds
                     this.countdown = (int)span.TotalSeconds;
                     int show = TIMEOUT - this.countdown;
                     this.textBlock1.Text = show.ToString();
-                    if (show == 0)
+                    if (show <= 0)
                     {
+                        this.textBlock1.Visibility = System.Windows.Visibility.Hidden;
+                        this.textBlock3.Visibility = System.Windows.Visibility.Visible; // timesup
+                        this.textBlock2.Visibility = System.Windows.Visibility.Hidden; // instructions
+
+                        this.simstopped = true;
+                        this.restart_count = 0;
                         this.restart_timer.Start();
                         this.sem = false;
                         return;
@@ -246,7 +256,7 @@ namespace HerculesWFPAngryBirds
             this.catapult = p;
             this.catapult.Visibility = System.Windows.Visibility.Hidden;
 
-            this.spatula.Source = this.GetBitMap("spatula-transp.png");
+            this.spatula.Source = this.GetBitMap("spatula-transp-arrow2.png");
 
             this.catap.Source = this.GetBitMap("catapult-transp.png");
             this.catap.RenderTransform =
@@ -420,9 +430,11 @@ namespace HerculesWFPAngryBirds
                     this.guy.Visibility = System.Windows.Visibility.Visible;
 
                     TransformGroup grp = new TransformGroup();
-                    grp.Children.Add(new TranslateTransform(-this.guy.Width / 2.0f, -this.guy.Height / 2.0f));
+
+                    double offset = (BULLET_OFFSET * 1.0f / WorldY) * ScreenY;
+                    grp.Children.Add(new TranslateTransform(-this.guy.Width / 2.0f, -(this.guy.Height / 2.0f)));
                     //grp.Children.Add(new RotateTransform(data[2]));
-                    grp.Children.Add(new TranslateTransform(this.mousepos.X, this.mousepos.Y - (4/WorldY)*ScreenY));
+                    grp.Children.Add(new TranslateTransform(this.mousepos.X, this.mousepos.Y - (BULLET_OFFSET/WorldY)*ScreenY));
                     this.guy.RenderTransform = grp;
                     FrameworkElement el2 = this.guy as FrameworkElement;
                     el2.SetValue(Canvas.ZIndexProperty, 3);
@@ -450,7 +462,8 @@ namespace HerculesWFPAngryBirds
                 {
                     this.guy.Visibility = System.Windows.Visibility.Visible;
                     TransformGroup grp = new TransformGroup();
-                    grp.Children.Add(new TranslateTransform(-this.guy.Width / 2.0f, -this.guy.Height / 2.0f));
+                    double offset = (BULLET_OFFSET*1.0f / WorldY) * ScreenY;
+                    grp.Children.Add(new TranslateTransform(-this.guy.Width / 2.0f, -(this.guy.Height / 2.0f) ));
                     grp.Children.Add(new RotateTransform(data[2]));
                     grp.Children.Add(new TranslateTransform(data[0], data[1]));
                     this.guy.RenderTransform = grp;
@@ -546,7 +559,16 @@ namespace HerculesWFPAngryBirds
 
             this.countdown = 0;
             this.textBlock1.Text = TIMEOUT.ToString();
+            this.textBlock1.Visibility = System.Windows.Visibility.Visible;
+            this.textBlock2.Text = "Destroy The WhiteCastle !  Hurry Up !  Time Remaining:";
+
+            this.textBlock2.Visibility = System.Windows.Visibility.Visible; // instructions...
+            this.textBlock3.Visibility = System.Windows.Visibility.Hidden; // timesup
+            this.canvas_master.UpdateLayout();
+
             this.game_time = System.DateTime.Now;
+
+            this.moving_arm = false;
         }
 
         public void Stop()
@@ -589,7 +611,7 @@ namespace HerculesWFPAngryBirds
 
                 this.restart_timer = new System.Windows.Threading.DispatcherTimer();
                 this.restart_timer.Tick += new EventHandler(this.__restart);
-                this.restart_timer.Interval = new TimeSpan(10000);
+                this.restart_timer.Interval = new TimeSpan(300000);
                 this.restart_timer.Stop();
 
                 this.simfunc = new System.Windows.Threading.DispatcherTimer();
