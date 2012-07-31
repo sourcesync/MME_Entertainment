@@ -21,12 +21,15 @@ namespace TestPlatformInvoke
             [DllImport("user32.dll", CharSet = CharSet.Auto)]
             public static extern int MessageBox(int hWnd, String text,
                             String caption, uint type);
-    
 
+
+            [DllImport("boxengine.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Cdecl)]
+            public static extern int fnboxengine();
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
+                fnboxengine();
                 MessageBox(0, "yo", "yo", 0);
             }
             catch (System.Exception ex)
