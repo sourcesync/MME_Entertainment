@@ -560,7 +560,13 @@ namespace HerculesWFPAngryBirds
             this.countdown = 0;
             this.textBlock1.Text = TIMEOUT.ToString();
             this.textBlock1.Visibility = System.Windows.Visibility.Visible;
-            this.textBlock2.Text = "Destroy The WhiteCastle !  Hurry Up !  Time Remaining:";
+            //this.textBlock2.Text = "Destroy The WhiteCastle !  Hurry Up !  Time Remaining:";
+            this.textBlock2.Inlines.Clear();
+            this.textBlock2.Inlines.Add( "Move the catapult arm to launch hungry cravers at" );
+            this.textBlock2.Inlines.Add(new LineBreak());
+            this.textBlock2.Inlines.Add( "WhiteCastle.  Hurry up, you don't have much time! " );
+            this.textBlock2.TextAlignment = TextAlignment.Center;
+            //the WhiteCastle!
 
             this.textBlock2.Visibility = System.Windows.Visibility.Visible; // instructions...
             this.textBlock3.Visibility = System.Windows.Visibility.Hidden; // timesup

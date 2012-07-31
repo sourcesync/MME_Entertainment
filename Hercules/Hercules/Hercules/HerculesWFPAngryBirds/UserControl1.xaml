@@ -12,8 +12,8 @@
         <Image Canvas.Left="0" Canvas.Top="0" Height="43" Name="guy" Stretch="Fill" Width="78" />
         <Image Canvas.Left="0" Canvas.Top="0" Height="79" Name="girl" Stretch="Fill" Width="52" />
         <Image Canvas.Left="0" Canvas.Top="0" Height="58" Name="logomed" Stretch="Fill" Width="64" />
-        <TextBlock Canvas.Left="889" Canvas.Top="32" Height="61" Name="textBlock1" Text="30" Width="86" FontSize="32" />
-        <TextBlock Canvas.Left="70" Canvas.Top="32" Height="61" Name="textBlock2" Text="Destroy The WhiteCastle !  Hurry Up !  Time Remaining:" Width="782" FontSize="32" HorizontalAlignment="Center" />
+        <TextBlock Canvas.Left="876" Canvas.Top="51" Height="65" Name="textBlock1" Text="30" Width="95" FontSize="32" TextWrapping="Wrap" />
+        <TextBlock Canvas.Left="70" Canvas.Top="32" Height="100" Name="textBlock2" Text="" Width="782" FontSize="32" HorizontalAlignment="Center" />
         <TextBlock Canvas.Left="397" Canvas.Top="32" Height="45" Name="textBlock3" Text="Times Up !" Width="169" FontSize="32" />
     </Canvas>
 </UserControl>

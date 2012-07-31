@@ -14,6 +14,6 @@
         <Label Canvas.Left="376" Canvas.Top="484" Content="Draw" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="41" Name="label2" Width="198" />
         <Label Canvas.Left="580" Canvas.Top="484" Content="Tic-Tac-Toe" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="41" Name="label3" Width="198" />
         <Image Canvas.Left="779" Canvas.Top="318" Height="170" Name="image6" Source="/HerculesWPFGameMenu;component/Images/memory-icon.png" Stretch="Fill" Width="198" MouseUp="image6_MouseUp" />
-        <Label Canvas.Left="805" Canvas.Top="484" Content="Angry Cravers" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="41" Name="label4" Width="198" />
+        <Label Canvas.Left="805" Canvas.Top="484" Content="Hungry Cravers" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="41" Name="label4" Width="198" />
     </Canvas>
 </UserControl>
