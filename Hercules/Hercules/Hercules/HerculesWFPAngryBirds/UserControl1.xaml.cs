@@ -56,6 +56,7 @@ namespace HerculesWFPAngryBirds
         private bool mouse_down = false;
         private bool ignore_mouseup = false;
         private bool winner = false;
+        private double rscale = 1.0f;
 
         [DllImport("boxengine.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Cdecl)]
         public static extern int BoxEngine_Init(Int32 w);
@@ -259,6 +260,7 @@ namespace HerculesWFPAngryBirds
                 if (done)
                 {
                     this.logomed.Source = this.GetBitMap("burger-alpha-square.png");
+                    
                     this.winner = true;
                     this.Finish();
                 }
@@ -417,6 +419,7 @@ namespace HerculesWFPAngryBirds
                 {
                     TransformGroup grp2 = new TransformGroup();
                     grp2.Children.Add(new TranslateTransform(-this.logomed.Width / 2.0f, -this.logomed.Height / 2.0f));
+                    grp2.Children.Add(new ScaleTransform(this.rscale, this.rscale));
                     grp2.Children.Add(new RotateTransform(-data[2]));
                     grp2.Children.Add(new TranslateTransform(data[0], data[1]));
                     this.logomed.RenderTransform = grp2;
