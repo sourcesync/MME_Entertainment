@@ -45,7 +45,7 @@ namespace HerculesWFPAngryBirds
         private System.Collections.ArrayList items =
             new System.Collections.ArrayList();
         
-        private static int NumBoxes = 22;
+        private static int NumBoxes = 21;
         private static float ScreenX = 1024.0f;
         private static float ScreenY = 768.0f;
         private static float WorldX = 200.0f;
@@ -55,6 +55,7 @@ namespace HerculesWFPAngryBirds
         private Point mousepos = new Point();
         private bool mouse_down = false;
         private bool ignore_mouseup = false;
+        private bool winner = false;
 
         [DllImport("boxengine.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Cdecl)]
         public static extern int BoxEngine_Init(Int32 w);
@@ -64,7 +65,7 @@ namespace HerculesWFPAngryBirds
         
         [DllImport("boxengine.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Cdecl)] 
         public static extern void BoxEngine_GetBoxData( int idx, IntPtr data );
-
+        
         [DllImport("boxengine.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Cdecl)]
         public static extern void BoxEngine_GetCatapultData(IntPtr data);
          
@@ -189,7 +190,10 @@ namespace HerculesWFPAngryBirds
         void __restart(object sender, EventArgs e)
         {
             this.restart_count++;
-            if (this.restart_count == 1) return;
+            if (this.restart_count == 1)
+            {
+                return;
+            }
 
             this.restart_timer.Stop();
 
@@ -197,6 +201,25 @@ namespace HerculesWFPAngryBirds
 
             this.Restart();
             
+        }
+
+        void Finish()
+        {
+            this.textBlock1.Visibility = System.Windows.Visibility.Hidden;
+
+            if (this.winner)
+                this.textBlock3.Text = "WINNER!";
+            else
+                this.textBlock3.Text = "Times Up!";
+
+            this.textBlock3.Visibility = System.Windows.Visibility.Visible; // timesup
+
+            this.textBlock2.Visibility = System.Windows.Visibility.Hidden; // instructions
+
+            this.simstopped = true;
+            this.restart_count = 0;
+            this.restart_timer.Start();
+            this.sem = false;
         }
 
         void __timeout(object sender, EventArgs e)
@@ -219,15 +242,8 @@ namespace HerculesWFPAngryBirds
                     this.textBlock1.Text = show.ToString();
                     if (show <= 0)
                     {
-                        this.textBlock1.Visibility = System.Windows.Visibility.Hidden;
-                        this.textBlock3.Visibility = System.Windows.Visibility.Visible; // timesup
-                        this.textBlock2.Visibility = System.Windows.Visibility.Hidden; // instructions
-
-                        this.simstopped = true;
-                        this.restart_count = 0;
-                        this.restart_timer.Start();
-                        this.sem = false;
-                        return;
+                        this.Finish();
+                         return;
                     }
 
                 }
@@ -236,9 +252,16 @@ namespace HerculesWFPAngryBirds
 
                 this.UpdateCatapult();
 
-                this.UpdateBoxes();
+                bool done = this.UpdateBoxes();
 
                 this.UpdateBullet();
+
+                if (done)
+                {
+                    this.logomed.Source = this.GetBitMap("burger-alpha-square.png");
+                    this.winner = true;
+                    this.Finish();
+                }
 
                 //this.simfunc.Start();
                 this.sem = false;
@@ -293,11 +316,11 @@ namespace HerculesWFPAngryBirds
                 this.items.Add(p);
             }
 
-            //this.logomed.Source = this.GetBitMap( "logomed-transp.png" );
+            this.logomed.Source = this.GetBitMap( "logomed-transp.png" );
             //this.logomed.Visibility = System.Windows.Visibility.Hidden;
-            this.logomed.Source = this.GetBitMap("burger-alpha-square.png");
+            //this.logomed.Source = this.GetBitMap("burger-alpha-square.png");
             this.burger.Source = this.GetBitMap("burger-alpha-square.png");
-            
+            this.burger.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void CreateBullet()
@@ -372,8 +395,10 @@ namespace HerculesWFPAngryBirds
             el2.SetValue(Canvas.ZIndexProperty, 2);
         }
 
-        private void UpdateBoxes()
+        private bool UpdateBoxes()
         {
+            bool done = false;
+
             for (int i = 0; i < NumBoxes; i++)
             {
                 float[] data = GetBox(i);
@@ -398,6 +423,12 @@ namespace HerculesWFPAngryBirds
                     FrameworkElement el2 = this.logomed as FrameworkElement;
                     el2.SetValue(Canvas.ZIndexProperty, 3);
                     this.boxes[i].Visibility = System.Windows.Visibility.Hidden;
+
+                    if (data[1] > 380)
+                    {
+                        done = true;
+                    }
+
                 }
                 else if (i == 21)
                 {
@@ -412,6 +443,7 @@ namespace HerculesWFPAngryBirds
                 }
             }
 
+            return done;
             
         }
 
@@ -518,7 +550,15 @@ namespace HerculesWFPAngryBirds
             }
             else
             {
-                //this.moving_arm = false;
+                /*
+                if (this.mouse_down)
+                {
+                    this.ignore_mouseup = true;
+
+                    this.UpdateCursor(1);
+                }
+                 * */
+
             }
 
             base.OnPreviewMouseMove(e);
@@ -526,12 +566,14 @@ namespace HerculesWFPAngryBirds
 
         protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
         {
-            if (this.ignore_mouseup)
+            if ( this.ignore_mouseup)
             {
                 this.ignore_mouseup = false;
                 this.moving_arm = false;
                 return;
             }
+
+            this.ignore_mouseup = false;
 
             this.mousepos = e.GetPosition(this.canvas_master);
             this.mouse_down = false;
@@ -539,6 +581,8 @@ namespace HerculesWFPAngryBirds
             {
                 if ((this.moving_arm) && (this.mousepos.X < (ScreenX / 2.0f)))
                 {
+
+                    this.rectangle1.Visibility = System.Windows.Visibility.Hidden;
                     this.UpdateCursor(1);
                 }
             }
@@ -552,9 +596,47 @@ namespace HerculesWFPAngryBirds
             this.moving_arm = false;
         }
 
+        private bool InBounds()
+        {
+            FrameworkElement el = this.rectangle1 as FrameworkElement;
+            double left = (double)el.GetValue(Canvas.LeftProperty);
+            double top = (double)el.GetValue(Canvas.TopProperty);
+            double width = (double)el.GetValue(Canvas.WidthProperty);
+            double height = (double)el.GetValue(Canvas.HeightProperty);
+
+            double right = left +width;
+            double bottom = top + height;
+
+            if ((this.mousepos.X > left) &&
+                (this.mousepos.X < right) &&
+                (this.mousepos.Y > top) &&
+                (this.mousepos.Y < bottom))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
         {
             this.mousepos = e.GetPosition(this.canvas_master);
+
+            if (!this.InBounds())
+            {
+                // show helper box...
+
+                this.rectangle1.Visibility = System.Windows.Visibility.Visible;
+
+                base.OnPreviewMouseDown(e);
+                return;
+            }
+
+            //  remove helper box...
+            this.rectangle1.Visibility = System.Windows.Visibility.Hidden;
+
             this.mouse_down = true;
 
             //if (e.ChangedButton == MouseButton.Left)
@@ -608,14 +690,13 @@ namespace HerculesWFPAngryBirds
             this.countdown = 0;
             this.textBlock1.Text = TIMEOUT.ToString();
             this.textBlock1.Visibility = System.Windows.Visibility.Visible;
-            //this.textBlock2.Text = "Destroy The WhiteCastle !  Hurry Up !  Time Remaining:";
             this.textBlock2.Inlines.Clear();
-            //this.textBlock2.Inlines.Add( "Move the catapult arm to launch hungry cravers at" );
-            this.textBlock2.Inlines.Add("The cravers are hungry!  Move the catapult arm to");
+            this.textBlock2.Inlines.Add( "Move the catapult arm to launch hungry cravers at" );
+            //this.textBlock2.Inlines.Add("The cravers are hungry!  Move the catapult arm to");
             this.textBlock2.Inlines.Add(new LineBreak());
 
-            this.textBlock2.Inlines.Add( "launch the hungry cravers at the food.  Hurry up! " );
-            //this.textBlock2.Inlines.Add( "WhiteCastle.  Hurry up, you don't have much time! " );
+            //this.textBlock2.Inlines.Add( "launch the hungry cravers at the food.  Hurry up! " );
+            this.textBlock2.Inlines.Add( "WhiteCastle.  Hurry up, you don't have much time! " );
             this.textBlock2.TextAlignment = TextAlignment.Center;
             //the WhiteCastle!
 
@@ -627,8 +708,13 @@ namespace HerculesWFPAngryBirds
 
             this.moving_arm = false;
 
+            if (this.mouse_down)
             this.ignore_mouseup = true;
+            this.restart = true;
 
+            this.winner = false;
+
+            this.rectangle1.Visibility = System.Windows.Visibility.Hidden;
         }
 
         public void Stop()
@@ -680,7 +766,7 @@ namespace HerculesWFPAngryBirds
 
             this.restart_timer = new System.Windows.Threading.DispatcherTimer();
             this.restart_timer.Tick += new EventHandler(this.__restart);
-            this.restart_timer.Interval = new TimeSpan(300000);
+            this.restart_timer.Interval = new TimeSpan(5000000);
             this.restart_timer.Stop();
 
             this.simfunc = new System.Windows.Threading.DispatcherTimer();
