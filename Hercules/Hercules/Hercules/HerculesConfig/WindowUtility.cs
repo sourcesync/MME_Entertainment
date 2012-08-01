@@ -286,6 +286,7 @@ namespace MME.HerculesConfig
             FileStream stream = fs;
 
             System.Windows.Controls.Image i = new System.Windows.Controls.Image();
+            i.SnapsToDevicePixels = true;
             System.Windows.Media.Imaging.BitmapImage src = new System.Windows.Media.Imaging.BitmapImage();
             src.BeginInit();
             src.StreamSource = stream;
@@ -304,6 +305,7 @@ namespace MME.HerculesConfig
             FileStream stream = fs;
 
             System.Windows.Controls.Image i = new System.Windows.Controls.Image();
+            i.SnapsToDevicePixels = true;
             System.Windows.Media.Imaging.BitmapImage src = new System.Windows.Media.Imaging.BitmapImage();
             src.BeginInit();
             src.StreamSource = stream;
@@ -319,6 +321,7 @@ namespace MME.HerculesConfig
             FileStream stream = fs;
 
             System.Windows.Controls.Image i = new System.Windows.Controls.Image();
+            i.SnapsToDevicePixels = true;
             System.Windows.Media.Imaging.BitmapImage src = new System.Windows.Media.Imaging.BitmapImage();
             
             src.BeginInit();

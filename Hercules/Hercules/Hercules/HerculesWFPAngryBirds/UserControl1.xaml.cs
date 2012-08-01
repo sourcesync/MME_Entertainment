@@ -45,7 +45,7 @@ namespace HerculesWFPAngryBirds
         private System.Collections.ArrayList items =
             new System.Collections.ArrayList();
         
-        private static int NumBoxes = 21;
+        private static int NumBoxes = 22;
         private static float ScreenX = 1024.0f;
         private static float ScreenY = 768.0f;
         private static float WorldX = 200.0f;
@@ -291,7 +291,11 @@ namespace HerculesWFPAngryBirds
                 this.items.Add(p);
             }
 
-            this.logomed.Source = this.GetBitMap( "logomed-transp.png" );
+            //this.logomed.Source = this.GetBitMap( "logomed-transp.png" );
+            //this.logomed.Visibility = System.Windows.Visibility.Hidden;
+            this.logomed.Source = this.GetBitMap("burger-alpha-square.png");
+            this.burger.Source = this.GetBitMap("burger-alpha-square.png");
+            
         }
 
         private void CreateBullet()
@@ -382,7 +386,7 @@ namespace HerculesWFPAngryBirds
                 FrameworkElement el = this.boxes[i] as FrameworkElement;
                 el.SetValue(Canvas.ZIndexProperty, 1);
 
-                if (i == 13)
+                if (i == 13) // logo
                 {
                     TransformGroup grp2 = new TransformGroup();
                     grp2.Children.Add(new TranslateTransform(-this.logomed.Width / 2.0f, -this.logomed.Height / 2.0f));
@@ -391,6 +395,18 @@ namespace HerculesWFPAngryBirds
                     this.logomed.RenderTransform = grp2;
                     FrameworkElement el2 = this.logomed as FrameworkElement;
                     el2.SetValue(Canvas.ZIndexProperty, 3);
+                    this.boxes[i].Visibility = System.Windows.Visibility.Hidden;
+                }
+                else if (i == 21)
+                {
+                    TransformGroup grp2 = new TransformGroup();
+                    grp2.Children.Add(new TranslateTransform(-this.burger.Width / 2.0f, -this.burger.Height / 2.0f));
+                    grp2.Children.Add(new RotateTransform(-data[2]));
+                    grp2.Children.Add(new TranslateTransform(data[0], data[1]));
+                    this.burger.RenderTransform = grp2;
+                    FrameworkElement el2 = this.burger as FrameworkElement;
+                    el2.SetValue(Canvas.ZIndexProperty, 3);
+                    this.boxes[i].Visibility = System.Windows.Visibility.Hidden;
                 }
             }
 
@@ -581,9 +597,12 @@ namespace HerculesWFPAngryBirds
             this.textBlock1.Visibility = System.Windows.Visibility.Visible;
             //this.textBlock2.Text = "Destroy The WhiteCastle !  Hurry Up !  Time Remaining:";
             this.textBlock2.Inlines.Clear();
-            this.textBlock2.Inlines.Add( "Move the catapult arm to launch hungry cravers at" );
+            //this.textBlock2.Inlines.Add( "Move the catapult arm to launch hungry cravers at" );
+            this.textBlock2.Inlines.Add("The cravers are hungry!  Move the catapult arm to");
             this.textBlock2.Inlines.Add(new LineBreak());
-            this.textBlock2.Inlines.Add( "WhiteCastle.  Hurry up, you don't have much time! " );
+
+            this.textBlock2.Inlines.Add( "launch the hungry cravers at the food.  Hurry up! " );
+            //this.textBlock2.Inlines.Add( "WhiteCastle.  Hurry up, you don't have much time! " );
             this.textBlock2.TextAlignment = TextAlignment.Center;
             //the WhiteCastle!
 
