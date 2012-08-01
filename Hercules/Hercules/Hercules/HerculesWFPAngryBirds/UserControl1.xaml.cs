@@ -191,6 +191,8 @@ namespace HerculesWFPAngryBirds
 
             this.restart_timer.Stop();
 
+            this.Stop();
+
             this.Restart();
             
         }
@@ -559,7 +561,6 @@ namespace HerculesWFPAngryBirds
             BoxEngine_Stop();
 
             BoxEngine_Init(0);
-
 
             this.Init();
 
