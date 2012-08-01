@@ -766,7 +766,7 @@ namespace HerculesWFPAngryBirds
 
             this.restart_timer = new System.Windows.Threading.DispatcherTimer();
             this.restart_timer.Tick += new EventHandler(this.__restart);
-            this.restart_timer.Interval = new TimeSpan(5000000);
+            this.restart_timer.Interval = new TimeSpan(8000000);
             this.restart_timer.Stop();
 
             this.simfunc = new System.Windows.Threading.DispatcherTimer();

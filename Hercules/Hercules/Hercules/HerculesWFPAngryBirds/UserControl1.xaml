@@ -23,6 +23,6 @@
         <TextBlock Canvas.Left="44" Canvas.Top="32" Height="100" Name="textBlock2" Text="" Width="808" FontSize="32" HorizontalAlignment="Center" />
         <TextBlock Canvas.Left="397" Canvas.Top="32" Height="84" Name="textBlock3" Text="Times Up !" Width="259" FontSize="50" Foreground="Red" FontWeight="Bold" />
         <Rectangle Canvas.Left="223" Canvas.Top="394" Height="161" Name="rectangle1" Stroke="Red" Width="92" />
-        <Rectangle Canvas.Left="721" Canvas.Top="423" Height="89" Name="rectangle2" Stroke="Black" Width="74" />
+        <Rectangle Canvas.Left="721" Canvas.Top="423" Height="89" Name="rectangle2" Stroke="Transparent" Width="74" />
     </Canvas>
 </UserControl>
