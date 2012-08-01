@@ -714,7 +714,9 @@ namespace HerculesWFPAngryBirds
 
             this.winner = false;
 
+
             this.rectangle1.Visibility = System.Windows.Visibility.Hidden;
+            this.rectangle2.Visibility = System.Windows.Visibility.Hidden;
         }
 
         public void Stop()
