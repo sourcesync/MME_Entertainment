@@ -42,7 +42,9 @@ namespace HerculesWFPAngryBirds
         private bool moving_arm = false;
         private bool restart = false;
         private int restart_count = 0;
-
+        private System.Collections.ArrayList items =
+            new System.Collections.ArrayList();
+        
         private static int NumBoxes = 21;
         private static float ScreenX = 1024.0f;
         private static float ScreenY = 768.0f;
@@ -253,6 +255,8 @@ namespace HerculesWFPAngryBirds
             p.VerticalAlignment = VerticalAlignment.Center;
             p.Points = new PointCollection() { new Point(10, 10), new Point(100, 100), new Point(10, 200) };
             this.canvas_master.Children.Add(p);
+            this.items.Add(p);
+            
             this.catapult = p;
             this.catapult.Visibility = System.Windows.Visibility.Hidden;
 
@@ -269,6 +273,7 @@ namespace HerculesWFPAngryBirds
         private void CreateBoxes()
         {
             this.boxes = new Polygon[NumBoxes];
+            
 
             for (int i = 0; i < NumBoxes; i++)
             {
@@ -281,6 +286,7 @@ namespace HerculesWFPAngryBirds
                 p.Points = new PointCollection() { new Point(10, 10), new Point(100, 100), new Point(10, 200) };
                 this.canvas_master.Children.Add(p);
                 this.boxes[i] = p;
+                this.items.Add(p);
             }
 
             this.logomed.Source = this.GetBitMap( "logomed-transp.png" );
@@ -305,6 +311,7 @@ namespace HerculesWFPAngryBirds
             this.bullet.Fill = blueBrush;
 
             this.canvas_master.Children.Add(this.bullet);
+            this.items.Add(this.bullet);
 
             this.guy.Source = this.GetBitMap("guy.png");
             this.guy.Visibility = System.Windows.Visibility.Hidden;
@@ -321,6 +328,7 @@ namespace HerculesWFPAngryBirds
             blueBrush.Color = Colors.Blue;
             SolidColorBrush blackBrush = new SolidColorBrush();
             blackBrush.Color = Colors.Black;
+           
 
             // Set Ellipse's width and color
             this.cursor.StrokeThickness = 4;
@@ -329,6 +337,7 @@ namespace HerculesWFPAngryBirds
             this.cursor.Fill = blueBrush;
 
             this.canvas_master.Children.Add(this.cursor);
+            this.items.Add(this.cursor);
         }
 
 
@@ -551,11 +560,20 @@ namespace HerculesWFPAngryBirds
 
             BoxEngine_Init(0);
 
-            this.simfunc.Stop();
-            this.simstopped = false;
-            this.simfunc.Start();
 
-            this.restart_timer.Stop();
+            this.Init();
+
+            if (this.simfunc != null)
+            {
+                this.simfunc.Stop();
+                this.simstopped = false;
+                this.simfunc.Start();
+            }
+
+            if (this.restart_timer != null)
+            {
+                this.restart_timer.Stop();
+            }
 
             this.countdown = 0;
             this.textBlock1.Text = TIMEOUT.ToString();
@@ -575,6 +593,7 @@ namespace HerculesWFPAngryBirds
             this.game_time = System.DateTime.Now;
 
             this.moving_arm = false;
+
         }
 
         public void Stop()
@@ -583,17 +602,27 @@ namespace HerculesWFPAngryBirds
             {
                 this.simfunc.Stop();
                 this.simstopped = true;
+                this.simfunc = null;
                
             }
 
             if (this.restart_timer != null)
             {
                 this.restart_timer.Stop();
+                this.restart_timer = null;
             }
 
             BoxEngine_Stop();
 
 
+
+            while (this.items.Count > 0)
+            {
+                object o = this.items[0];
+                UIElement el = o as UIElement;
+                this.canvas_master.Children.Remove(el);
+                this.items.Remove(o);
+            }
 
         }
 
@@ -603,28 +632,33 @@ namespace HerculesWFPAngryBirds
             
         }
 
+        private void Init()
+        {
+
+            this.CreateBoxes();
+
+            this.CreateCatapult();
+
+            this.CreateCursor();
+
+            this.CreateBullet();
+
+            this.restart_timer = new System.Windows.Threading.DispatcherTimer();
+            this.restart_timer.Tick += new EventHandler(this.__restart);
+            this.restart_timer.Interval = new TimeSpan(300000);
+            this.restart_timer.Stop();
+
+            this.simfunc = new System.Windows.Threading.DispatcherTimer();
+            this.simfunc.Tick += new EventHandler(this.__timeout);
+            this.simfunc.Interval = new TimeSpan(10000);
+            this.simfunc.Stop();
+            this.simstopped = false;
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                this.CreateBoxes();
-
-                this.CreateCatapult();
-
-                this.CreateCursor();
-
-                this.CreateBullet();
-
-                this.restart_timer = new System.Windows.Threading.DispatcherTimer();
-                this.restart_timer.Tick += new EventHandler(this.__restart);
-                this.restart_timer.Interval = new TimeSpan(300000);
-                this.restart_timer.Stop();
-
-                this.simfunc = new System.Windows.Threading.DispatcherTimer();
-                this.simfunc.Tick += new EventHandler(this.__timeout);
-                this.simfunc.Interval = new TimeSpan(10000);
-                this.simfunc.Stop();
-                this.simstopped = false;
             }
             catch (System.Exception ex)
             {
