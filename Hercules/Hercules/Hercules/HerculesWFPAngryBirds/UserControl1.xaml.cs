@@ -53,6 +53,8 @@ namespace HerculesWFPAngryBirds
         private static int BULLET_OFFSET = 7;
 
         private Point mousepos = new Point();
+        private bool mouse_down = false;
+        private bool ignore_mouseup = false;
 
         [DllImport("boxengine.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Cdecl)]
         public static extern int BoxEngine_Init(Int32 w);
@@ -524,11 +526,21 @@ namespace HerculesWFPAngryBirds
 
         protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
         {
-            this.mousepos = e.GetPosition(this.canvas_master);
-
-            if ( e.ChangedButton == MouseButton.Left )
+            if (this.ignore_mouseup)
             {
-                this.UpdateCursor(1);
+                this.ignore_mouseup = false;
+                this.moving_arm = false;
+                return;
+            }
+
+            this.mousepos = e.GetPosition(this.canvas_master);
+            this.mouse_down = false;
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                if ((this.moving_arm) && (this.mousepos.X < (ScreenX / 2.0f)))
+                {
+                    this.UpdateCursor(1);
+                }
             }
             else
             {
@@ -543,6 +555,7 @@ namespace HerculesWFPAngryBirds
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
         {
             this.mousepos = e.GetPosition(this.canvas_master);
+            this.mouse_down = true;
 
             //if (e.ChangedButton == MouseButton.Left)
             {
@@ -613,6 +626,8 @@ namespace HerculesWFPAngryBirds
             this.game_time = System.DateTime.Now;
 
             this.moving_arm = false;
+
+            this.ignore_mouseup = true;
 
         }
 
