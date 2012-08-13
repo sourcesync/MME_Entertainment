@@ -103,7 +103,7 @@
   <add key="MenuCoords" value="breakfast-215,250:sliders-450,250:drinks-670,250:big_craves-215,480:sack_meals-450,480:sides-670,480" />
 
   <add key="MenuItemOffset"
-  	value="photobooth:0;web:20;games:30;check-in:40;menu:25;calendar:40;photobooth:45;promo:30" />
+  	value="photobooth:0;check-in:0;request-a-song:0" />
 
 
   <add key="MainMenuDir" value="main" />
