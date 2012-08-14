@@ -368,7 +368,11 @@ namespace MME.Hercules.Forms.User
                         // Clear handle to original file so that we can overwrite it if necessary
                         photo.Dispose();
 
-                        grfx.DrawImage(mini, 25, 45, mini.Width, mini.Height);
+                        grfx.DrawImage(mini, 
+                            (int)((1024 - mini.Width) / 2.0f), 
+                            (int)((768 - mini.Height) / 2.0f), 
+                            mini.Width, mini.Height);
+
                         mini.Dispose();
                     }
                 }
