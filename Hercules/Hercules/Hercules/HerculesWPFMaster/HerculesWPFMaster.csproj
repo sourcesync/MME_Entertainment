@@ -100,6 +100,10 @@
       <Project>{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}</Project>
       <Name>HerculesWPFChoose</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFDJRequestor\HerculesWPFDJRequestor.csproj">
+      <Project>{58B0B147-664A-4244-AFBB-88C77CBB94E6}</Project>
+      <Name>HerculesWPFDJRequestor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HerculesWPFDraw\HerculesWPFDraw.csproj">
       <Project>{876D0340-C2C8-4F35-B369-D5A4BE74D404}</Project>
       <Name>HerculesWPFDraw</Name>

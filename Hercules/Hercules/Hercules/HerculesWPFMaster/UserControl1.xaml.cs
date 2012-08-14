@@ -128,7 +128,8 @@ namespace HerculesWPFMaster
             ctls.Add(this.ctlgamemenu);
             ctls.Add(this.ctlttt);
             ctls.Add(this.ctlgallery);
-            ctls.Add(this.ctlangrybirds);
+            //ctls.Add(this.ctlangrybirds);
+            ctls.Add(this.ctldjrequestor);
 
             this.webBrowser1.Loaded +=new RoutedEventHandler(webBrowser1_Loaded);
 
@@ -294,6 +295,10 @@ namespace HerculesWPFMaster
             {
                 this.ShowGallery();
             }
+            else if (option == "request-a-song") // gallery...
+            {
+                this.ShowRequestASong();
+            }
             else //try it as a web url via key dictionary...
             {
 
@@ -391,8 +396,10 @@ namespace HerculesWPFMaster
             this.ctlttt.Visibility = System.Windows.Visibility.Hidden;
             this.ctlgallery.Visibility = System.Windows.Visibility.Hidden;
             this.ctlgallery.Stop();
-            this.ctlangrybirds.Visibility = System.Windows.Visibility.Hidden;
-            this.ctlangrybirds.Stop();
+            //this.ctlangrybirds.Visibility = System.Windows.Visibility.Hidden;
+            //this.ctlangrybirds.Stop();
+            this.ctldjrequestor.Visibility = System.Windows.Visibility.Hidden;
+            this.ctldjrequestor.Stop();
 
             if (this.webBrowser1 != null)
             {
@@ -490,6 +497,18 @@ namespace HerculesWPFMaster
             this.ctlgallery.Start();
         }
 
+        public void ShowRequestASong()
+        {
+            this.HideAll();
+            this.ctldjrequestor.Visibility = System.Windows.Visibility.Visible;
+            this.current = this.ctldjrequestor;
+            this.ShowRotators();
+            this.ShowBack();
+            this.ctldjrequestor.Start();
+
+            //this.ctlgallery.Start();
+        }
+
         public void ShowMemoryGame()
         {
             this.HideAll();
@@ -523,9 +542,9 @@ namespace HerculesWPFMaster
         public void ShowAngryBirds()
         {
             this.HideAll();
-            this.ctlangrybirds.Visibility = System.Windows.Visibility.Visible;
-            this.ctlangrybirds.Restart();
-            this.current = this.ctlangrybirds;
+            //this.ctlangrybirds.Visibility = System.Windows.Visibility.Visible;
+            //this.ctlangrybirds.Restart();
+            //this.current = this.ctlangrybirds;
             this.ShowRotators();
             this.ShowBack();
         }
@@ -927,10 +946,10 @@ namespace HerculesWPFMaster
             {
                 this.ShowGameMenu();
             }
-            else if (this.current == this.ctlangrybirds)
-            {
-                this.ShowGameMenu();
-            }
+            //else if (this.current == this.ctlangrybirds)
+            //{
+            //    this.ShowGameMenu();
+            //}
             else if (this.current != this.ctlmain)
             {
                 this.ShowMain();
