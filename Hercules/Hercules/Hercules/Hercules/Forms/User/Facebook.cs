@@ -69,6 +69,19 @@ namespace MME.Hercules.Forms.User
 
         private void Facebook_Load(object sender, EventArgs e)
         {
+
+            // possibly adjust the buttons
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FBBUTTON_OFFSET")))
+            {
+                String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "FBBUTTON_OFFSET");
+
+                int yoff = int.Parse( offset );
+
+                this.fbno.Location = new Point(this.fbno.Location.X, this.fbno.Location.Y + yoff);
+                this.fbyes.Location = new Point(this.fbyes.Location.X, this.fbyes.Location.Y + yoff);
+            }
+
+
             if (ConfigUtility.IsDeveloperMode)
             {
                 this.WindowState = FormWindowState.Normal;

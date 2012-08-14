@@ -90,11 +90,21 @@
   <add key="FaceBookCheckinLatitude" value="37.774929" />
   <add key="FaceBookCheckinLongitude" value="-122.419415" />
   -->
+  
+  <!--
   <add key="FaceBookCheckinPlaceID" value="125668440854442" />
   <add key="FaceBookCheckinMessage" value="I am checking in from White Castles new touch screen tables.  This is by far the coolest thing I have ever seen!" />
   <add key="FaceBookCheckinLatitude" value="37.757653" />
   <add key="FaceBookCheckinLongitude" value="-122.438636" />
   <add key="CheckinThankyouText=" value="Thank you for checking-in to WhiteCastle!" />
+  -->
+
+  
+  <add key="FaceBookCheckinPlaceID" value="204068136279565" />
+  <add key="FaceBookCheckinMessage" value="I was at the Buddy Media photobooth at Pier 60.  This is by far the coolest thing I have ever seen!" />
+  <add key="FaceBookCheckinLatitude" value="40.748557" />
+  <add key="FaceBookCheckinLongitude" value="-73.999297" />
+  <add key="CheckinThankyouText=" value="Thank you for checking-in!" />
   
   <!--
   <add key="MenuCoords" value="breakfast-315,70:sliders-550,70:drinks-770,70:big_craves-315,300:sack_meals-550,300:sides-770,300" />
@@ -107,6 +117,7 @@
   <add key="MenuItemOffset"
   	value="photobooth:0;check-in:0;request-a-song:0" />
 
+  <add key="FBBUTTON_OFFSET" value="100" />
 
   <add key="MainMenuDir" value="main" />
   <!--
