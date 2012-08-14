@@ -8,6 +8,8 @@ using System.Collections.Specialized;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using System.Collections.Specialized;
+
 namespace MME.Hercules
 {
     class FileUtility
@@ -129,7 +131,24 @@ namespace MME.Hercules
             return "1";
         }
 
+        public static string DJRequest(string song)
+        {
+            String prefix = ConfigUtility.GetConfig(ConfigUtility.Config, "TablePrefix");
 
+            String email = ConfigUtility.GetConfig(ConfigUtility.Config, "RequestEmail");
+
+            NameValueCollection nvc = new NameValueCollection();
+            nvc.Add("email", email);
+            nvc.Add("song", prefix + song);
+
+
+
+            String url = ConfigUtility.GetConfig(ConfigUtility.Config, "DJRequestUrl");
+
+            String str =  HttpUpload(url, nvc);
+
+            return str;
+        }
 
         public static string PostPublishUpload(string uniqueid, string file, string filename)
         {

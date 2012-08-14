@@ -11,7 +11,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.Specialized;
+using System.Net;
+using System.IO;
 
+using MME.HerculesConfig;
 using Twitterizer;
 namespace HerculesWPFDJRequestor
 {
@@ -136,16 +140,97 @@ namespace HerculesWPFDJRequestor
             this.image2.Visibility = System.Windows.Visibility.Hidden;
         }
 
+
+        public static string HttpUpload(string url, NameValueCollection nvc)
+        {
+            //gw
+            if (url == "") return "";
+            //gw
+
+            string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
+            byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+
+            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
+            wr.ContentType = "multipart/form-data; boundary=" + boundary;
+            wr.Method = "POST";
+            wr.KeepAlive = true;
+            wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+            Stream rs = wr.GetRequestStream();
+
+            string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
+            foreach (string key in nvc.Keys)
+            {
+                rs.Write(boundarybytes, 0, boundarybytes.Length);
+                string formitem = string.Format(formdataTemplate, key, nvc[key]);
+                byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
+                rs.Write(formitembytes, 0, formitembytes.Length);
+            }
+            rs.Write(boundarybytes, 0, boundarybytes.Length);
+            WebResponse wresp = null;
+            string response = null;
+            try
+            {
+                wresp = wr.GetResponse();
+                Stream stream2 = wresp.GetResponseStream();
+                StreamReader reader2 = new StreamReader(stream2);
+                response = reader2.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                response = "ERROR: " + ex.Message;
+                if (wresp != null)
+                {
+                    wresp.Close();
+                    wresp = null;
+                }
+            }
+            finally
+            {
+                wr = null;
+            }
+
+            return response;
+        }
+    
+
+        public static string DJRequest(string song)
+        {
+            String prefix = ConfigUtility.GetConfig(ConfigUtility.Config, "TablePrefix");
+
+            String email = ConfigUtility.GetConfig(ConfigUtility.Config, "RequestEmail");
+
+            NameValueCollection nvc = new NameValueCollection();
+            nvc.Add("email", email);
+            nvc.Add("song", prefix + song);
+
+
+
+            String url = ConfigUtility.GetConfig(ConfigUtility.Config, "DJRequestUrl");
+
+            String str = HttpUpload(url, nvc);
+
+            return str;
+        }
+
         private void SendIt()
         {
             this.Keyboard.Visibility = System.Windows.Visibility.Hidden;
             this.Keyboard.IsOpen = false;
 
-            this.textBlock1.Text = "Great Choice that's my favorite too!";
+            String[] popups = new String[4];
+            popups[0] = "Great Choice that's my favorite too!";
+            popups[1] = "Wait...... you really want to hear that?";
+            popups[2] = "Sweet Pick!";
+            popups[3] = "See ya on the dance floor.";
+
+            System.Random ran = new Random((int) DateTime.Now.Ticks & 0x0000FFFF);
+            this.textBlock1.Text = popups[ran.Next(4)];
 
             this.textBlock1.Visibility = System.Windows.Visibility.Visible;
             this.image2.Visibility = System.Windows.Visibility.Visible;
 
+            DJRequest(this.textBox1.Text);
         }
 
         private void button1_MouseDown(object sender, MouseButtonEventArgs e)
@@ -154,7 +239,7 @@ namespace HerculesWPFDJRequestor
             this.Keyboard.IsOpen = true;
 
             this.textBox1.Focus();
-
+            this.textBox1.Text = "";
 
             this.textBlock1.Visibility = System.Windows.Visibility.Hidden;
             this.image2.Visibility = System.Windows.Visibility.Hidden;
@@ -166,6 +251,7 @@ namespace HerculesWPFDJRequestor
             this.Keyboard.IsOpen = true;
 
             this.textBox1.Focus();
+            this.textBox1.Text = "";
 
 
             this.textBlock1.Visibility = System.Windows.Visibility.Hidden;
@@ -178,6 +264,7 @@ namespace HerculesWPFDJRequestor
             this.Keyboard.IsOpen = true;
 
             this.textBox1.Focus();
+            this.textBox1.Text = "";
 
 
             this.textBlock1.Visibility = System.Windows.Visibility.Hidden;

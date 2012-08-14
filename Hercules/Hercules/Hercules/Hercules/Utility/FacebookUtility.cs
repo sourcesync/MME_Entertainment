@@ -164,6 +164,30 @@ namespace MME.Hercules
         }
 
 
+        public static void DJRequest(String email, String song)
+        {
+            try
+            {
+                theRequest = WebRequest.Create("http://favpic.mobi/djrequest.php");
+                theRequest.Method = "GET";
+
+                string pemail = System.Web.HttpUtility.UrlEncode(email);
+                string psong = System.Web.HttpUtility.UrlEncode(song);
+
+                // Execute the query
+                theResponse = (HttpWebResponse)theRequest.GetResponse();
+
+                using (StreamReader sr = new StreamReader(theResponse.GetResponseStream()))
+                {
+                    string response = sr.ReadToEnd();
+                    sr.Close();
+                }
+            }
+            catch (System.Exception ex)
+            {
+            }
+        }
+
         public static void PostWall(string access_token, string photourl, string msg, string caption, string desc, string url)
         {
             /*

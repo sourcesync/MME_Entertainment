@@ -46,7 +46,9 @@
   <add key="AllowMobilePublish" value="0" />
 
 
-
+  <add key="TablePrefix" value="Table1: " />
+  <add key="RequestEmail" value="jtli33@aol.com" />
+  <add key="DJRequestUrl" value="http://favpic.mobi/djrequest.php" />
 
   <add key="HerculesPublishUrl" value="http://favpic.mobi/hercules_test.php"/>
 

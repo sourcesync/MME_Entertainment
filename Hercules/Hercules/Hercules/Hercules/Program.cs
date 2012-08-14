@@ -98,7 +98,7 @@ namespace MME.Hercules
                 // Init camera.
                 CameraUtility.InitializeCamera();
 
-
+                //FileUtility.DJRequest("This is it!");
                 
                 /*
                 //if (!string.IsNullOrEmpty(this.currentSession.EmailAddress))

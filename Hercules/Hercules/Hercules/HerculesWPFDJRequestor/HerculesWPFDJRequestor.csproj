@@ -40,6 +40,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -101,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="nothing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HerculesConfig\HerculesConfig.csproj">
+      <Project>{9B7E97E5-F7AC-47C4-8147-B1B19BBC76E9}</Project>
+      <Name>HerculesConfig</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
