@@ -363,6 +363,8 @@ namespace MME.Hercules.Forms.User
                     }
                     else
                     {
+                        //System.Drawing.Image mini = photo.GetThumbnailImage(270, 218, null, IntPtr.Zero);
+
                         System.Drawing.Image mini = photo.GetThumbnailImage(270, 218, null, IntPtr.Zero);
 
                         // Clear handle to original file so that we can overwrite it if necessary

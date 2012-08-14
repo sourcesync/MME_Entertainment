@@ -20,5 +20,7 @@
         <TextBlock Canvas.Left="763" Canvas.Top="210" Height="100" Name="textBlock1" Text="TextBlock" Width="188" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" />
         <Image Canvas.Left="57" Canvas.Top="356" Height="62" Name="button1" Stretch="Fill" Width="215" MouseDown="button1_MouseDown" TouchDown="button1_TouchDown" Source="/HerculesWPFDJRequestor;component/nothing.png" />
         <Image Canvas.Left="352" Canvas.Top="231" Height="215" Name="button2" Stretch="Fill" Width="322" MouseDown="button2_MouseDown" Source="/HerculesWPFDJRequestor;component/nothing.png" />
+        <Image Canvas.Left="10" Canvas.Top="461" Height="295" Name="image3" Stretch="Fill" Width="295" Source="/HerculesWPFDJRequestor;component/record.png" />
+        <Image Canvas.Left="634" Canvas.Top="463" Height="295" Name="image4" Source="/HerculesWPFDJRequestor;component/record.png" Stretch="Fill" Width="295" />
     </Canvas>
 </UserControl>
