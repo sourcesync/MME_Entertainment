@@ -46,9 +46,6 @@
   <add key="AllowMobilePublish" value="0" />
 
 
-  <add key="TablePrefix" value="Table1: " />
-  <add key="RequestEmail" value="jtli33@aol.com" />
-  <add key="DJRequestUrl" value="http://favpic.mobi/djrequest.php" />
 
   <add key="HerculesPublishUrl" value="http://favpic.mobi/hercules_test.php"/>
 
@@ -84,20 +81,6 @@
   <add key="CustomPublishUrl" value="http://favpic.mobi/favoritephoto.php?viewing={1}_{0}"/>
 
   <!--facebook checkin-->
-  <!--
-  <add key="FaceBookCheckinPlaceID" value="157060520972164" />
-  <add key="FaceBookCheckinMessage" value="I was at the WhiteCastle PhotoBooth!" />
-  <add key="FaceBookCheckinLatitude" value="37.774929" />
-  <add key="FaceBookCheckinLongitude" value="-122.419415" />
-  -->
-  
-  <!--
-  <add key="FaceBookCheckinPlaceID" value="125668440854442" />
-  <add key="FaceBookCheckinMessage" value="I am checking in from White Castles new touch screen tables.  This is by far the coolest thing I have ever seen!" />
-  <add key="FaceBookCheckinLatitude" value="37.757653" />
-  <add key="FaceBookCheckinLongitude" value="-122.438636" />
-  <add key="CheckinThankyouText=" value="Thank you for checking-in to WhiteCastle!" />
-  -->
 
   
   <add key="FaceBookCheckinPlaceID" value="204068136279565" />
@@ -106,12 +89,6 @@
   <add key="FaceBookCheckinLongitude" value="-73.999297" />
   <add key="CheckinThankyouText" value="Thank you for checking-in!" />
   
-  <!--
-  <add key="MenuCoords" value="breakfast-315,70:sliders-550,70:drinks-770,70:big_craves-315,300:sack_meals-550,300:sides-770,300" />
-  -->
-  <!--
-  <add key="MenuCoords" value="breakfast-215,170:sliders-450,170:drinks-670,170:big_craves-215,400:sack_meals-450,400:sides-670,400" />
-  -->
   <add key="MenuCoords" value="breakfast-215,250:sliders-450,250:drinks-670,250:big_craves-215,480:sack_meals-450,480:sides-670,480" />
 
   <add key="MenuItemOffset"
@@ -135,6 +112,18 @@
   <add key="Photo1_W" value="1085" />
   <add key="Photo1_H" value="1445" />
   <add key="Photo1_Rotate" value="0" />
-  
+
+  <add key="DJRequestSendType" value="twitter"  />
+  <add key="TablePrefix" value="Table1" />
+
+  <add key="RequestHashTag" value="BuddyMediaPier60" />
+  <add key="TwitterConsumerKey" value="Xi4yTO2Ywb1dlFmWF26g" />
+  <add key="TwitterConsumerSecret" value="YA5OhGSezEG8JAnAGZ7KUMxLRAJYJRDhgYDddrXelA" />
+  <add key="TwitterAccessToken" value="630544227-ukVCxciFFdlfnLKkj0PYCKPPGNYR8HzKo1EaxdpY" />
+  <add key="TwitterAccessTokenSecret" value="psVZa0sefPOXo9ktip4631mDbitD0TCb5io0TM5Vx0" />
+
+  <add key="RequestEmail" value="jtli33@aol.com" />
+  <add key="DJRequestUrl" value="http://favpic.mobi/djrequest.php" />
+
 
 </Hercules>

@@ -222,21 +222,57 @@ namespace HerculesWPFDJRequestor
 
         public static string DJRequest(string song)
         {
-            String prefix = ConfigUtility.GetConfig(ConfigUtility.Config, "TablePrefix");
+            // email or twitter ?
+            String send_type = ConfigUtility.GetConfig(ConfigUtility.Config, "DJRequestSendType");
+            if (send_type == "email")
+            {
 
-            String email = ConfigUtility.GetConfig(ConfigUtility.Config, "RequestEmail");
+                String prefix = ConfigUtility.GetConfig(ConfigUtility.Config, "TablePrefix");
 
-            NameValueCollection nvc = new NameValueCollection();
-            nvc.Add("email", email);
-            nvc.Add("song", prefix + song);
+                String email = ConfigUtility.GetConfig(ConfigUtility.Config, "RequestEmail");
 
+                NameValueCollection nvc = new NameValueCollection();
+                nvc.Add("email", email);
+                nvc.Add("song", prefix +": " + song);
 
+                String url = ConfigUtility.GetConfig(ConfigUtility.Config, "DJRequestUrl");
 
-            String url = ConfigUtility.GetConfig(ConfigUtility.Config, "DJRequestUrl");
+                String str = HttpUpload(url, nvc);
 
-            String str = HttpUpload(url, nvc);
+                return str;
+            }
+            else if (send_type == "twitter")
+            {
+                String prefix = ConfigUtility.GetConfig(ConfigUtility.Config, "TablePrefix");
 
-            return str;
+                String hash_tag = ConfigUtility.GetConfig(ConfigUtility.Config, "RequestHashTag");
+
+                String TwitterConsumerKey = ConfigUtility.GetConfig(ConfigUtility.Config, "TwitterConsumerKey");
+
+                String TwitterConsumerSecret = ConfigUtility.GetConfig(ConfigUtility.Config, "TwitterConsumerSecret");
+
+                String TwitterAccessToken = ConfigUtility.GetConfig(ConfigUtility.Config, "TwitterAccessToken");
+
+                String TwitterAccessTokenSecret = ConfigUtility.GetConfig(ConfigUtility.Config, "TwitterAccessTokenSecret");
+
+                OAuthTokens tokens = new OAuthTokens();
+                tokens.ConsumerKey = TwitterConsumerKey;
+                tokens.ConsumerSecret = TwitterConsumerSecret;
+                tokens.AccessToken = TwitterAccessToken;
+                tokens.AccessTokenSecret = TwitterAccessTokenSecret;
+
+                //TwitterStatusCollection homeTimeline = TwitterStatus.GetHomeTimeline(tokens);
+                //object stuff = TwitterTimeline.HomeTimeline(tokens);
+
+                String tweet = String.Format("#{0} {1} requests: {2}", hash_tag, prefix, song);
+                TwitterResponse<TwitterStatus> tweetResponse = TwitterStatus.Update(tokens, tweet);//"#buddymediapier60 table1 requests:this song");
+
+                return tweetResponse.ToString();
+            }
+            else
+            {
+                return "";
+            }
         }
 
         private void SendIt()
