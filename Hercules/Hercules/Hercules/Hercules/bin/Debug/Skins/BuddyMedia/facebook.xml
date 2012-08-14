@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Hercules facebookver="1">
 
-  <string key="TITLE" value="That was awesome!  I just did the BuddyMedia Photobooth." />
-  <string key="DESC" value="For more information about BuddyMedia, visit us at:http://www.buddymedia.com" />
+  <string key="TITLE" value="This picture was taken in the Buddy Media photobooth at Pier 60." />
+  <string key="DESC" value="Please visit http://www.buddymedia.com to view your favorite photo taken today!." />
   <string key="LINK" value="$CUSTOM1$" />
 
 </Hercules>
