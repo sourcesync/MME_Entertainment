@@ -67,8 +67,12 @@ namespace MME.Hercules.Forms.User
 
             if (istable)
             {
-                pb.Load(string.Format("Skins\\{0}\\Screens\\facebook.jpg",
+                //pb.Load(string.Format("Skins\\{0}\\Screens\\facebook.jpg",
+                 //   ConfigUtility.Skin));
+
+                pb.Load(string.Format("Skins\\{0}\\Screens\\generic-bg.jpg",
                     ConfigUtility.Skin));
+
                 this.label1.Parent = this.pb;
                 this.label1.BackColor = System.Drawing.Color.Transparent;
                 String str = ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR");
@@ -177,7 +181,7 @@ namespace MME.Hercules.Forms.User
             {
                 if (this.ischeckin)
                 {
-
+                    WindowUtility.SetScreen(pb, "generic-bg.jpg");
                 }
                 else if (this.ispromo)
                 {

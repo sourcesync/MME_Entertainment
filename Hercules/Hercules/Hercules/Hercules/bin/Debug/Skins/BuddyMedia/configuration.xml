@@ -104,7 +104,7 @@
   <add key="FaceBookCheckinMessage" value="I was at the Buddy Media photobooth at Pier 60.  This is by far the coolest thing I have ever seen!" />
   <add key="FaceBookCheckinLatitude" value="40.748557" />
   <add key="FaceBookCheckinLongitude" value="-73.999297" />
-  <add key="CheckinThankyouText=" value="Thank you for checking-in!" />
+  <add key="CheckinThankyouText" value="Thank you for checking-in!" />
   
   <!--
   <add key="MenuCoords" value="breakfast-315,70:sliders-550,70:drinks-770,70:big_craves-315,300:sack_meals-550,300:sides-770,300" />
