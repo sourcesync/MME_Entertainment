@@ -216,6 +216,12 @@ namespace MME.Hercules.Forms.User
                 this.pictureBoxBack.BackColor = System.Drawing.Color.Transparent;
                 this.pictureBoxBack.Parent = pb2;
                 this.pictureBoxBack.Visible = true;
+
+                bm = Hercules.Properties.ImageResources.q_button;
+                this.pictureBox1.Image = bm;
+                this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+                this.pictureBox1.Parent = pb2;
+                this.pictureBox1.Visible = true;
             }
 
             this.Refresh();
@@ -595,6 +601,13 @@ namespace MME.Hercules.Forms.User
         private void pictureBoxBack_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+            return;
+        }
+
+        private void pictureBoxQuit_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            System.Environment.Exit(0);
             return;
         }
     }

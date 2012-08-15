@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pb = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Facebook));
             this.finished = new System.Windows.Forms.Button();
             this.skip = new System.Windows.Forms.Button();
             this.email = new System.Windows.Forms.TextBox();
@@ -40,30 +40,23 @@
             this.notice = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.usepanel = new System.Windows.Forms.Panel();
-            this.pictureBoxBack = new System.Windows.Forms.PictureBox();
             this.labelQuestion = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBack = new System.Windows.Forms.PictureBox();
             this.fbno = new System.Windows.Forms.PictureBox();
             this.fbyes = new System.Windows.Forms.PictureBox();
             this.pb2 = new System.Windows.Forms.PictureBox();
             this.keyboard = new MME.Hercules.Keyboards.Keyboard2();
-            ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
+            this.pb = new System.Windows.Forms.PictureBox();
             this.alertbox.SuspendLayout();
             this.usepanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbyes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pb
-            // 
-            this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb.Location = new System.Drawing.Point(0, 0);
-            this.pb.Name = "pb";
-            this.pb.Size = new System.Drawing.Size(1024, 768);
-            this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb.TabIndex = 0;
-            this.pb.TabStop = false;
             // 
             // finished
             // 
@@ -191,6 +184,7 @@
             // 
             // usepanel
             // 
+            this.usepanel.Controls.Add(this.pictureBox1);
             this.usepanel.Controls.Add(this.pictureBoxBack);
             this.usepanel.Controls.Add(this.labelQuestion);
             this.usepanel.Controls.Add(this.fbno);
@@ -201,16 +195,6 @@
             this.usepanel.Name = "usepanel";
             this.usepanel.Size = new System.Drawing.Size(1024, 768);
             this.usepanel.TabIndex = 15;
-            // 
-            // pictureBoxBack
-            // 
-            this.pictureBoxBack.Location = new System.Drawing.Point(4, 708);
-            this.pictureBoxBack.Name = "pictureBoxBack";
-            this.pictureBoxBack.Size = new System.Drawing.Size(119, 57);
-            this.pictureBoxBack.TabIndex = 4;
-            this.pictureBoxBack.TabStop = false;
-            this.pictureBoxBack.Visible = false;
-            this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
             // 
             // labelQuestion
             // 
@@ -223,6 +207,27 @@
             this.labelQuestion.TabIndex = 3;
             this.labelQuestion.Text = "Would You Like To Post Your Image To FaceBook?";
             this.labelQuestion.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(902, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(119, 57);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBoxQuit_Click);
+            // 
+            // pictureBoxBack
+            // 
+            this.pictureBoxBack.Location = new System.Drawing.Point(4, 708);
+            this.pictureBoxBack.Name = "pictureBoxBack";
+            this.pictureBoxBack.Size = new System.Drawing.Size(119, 57);
+            this.pictureBoxBack.TabIndex = 4;
+            this.pictureBoxBack.TabStop = false;
+            this.pictureBoxBack.Visible = false;
+            this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
             // 
             // fbno
             // 
@@ -263,6 +268,16 @@
             this.keyboard.Size = new System.Drawing.Size(808, 252);
             this.keyboard.TabIndex = 13;
             // 
+            // pb
+            // 
+            this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb.Location = new System.Drawing.Point(0, 0);
+            this.pb.Name = "pb";
+            this.pb.Size = new System.Drawing.Size(1024, 768);
+            this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb.TabIndex = 0;
+            this.pb.TabStop = false;
+            // 
             // Facebook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,15 +304,16 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Facebook_FormClosing);
             this.Load += new System.EventHandler(this.Facebook_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.alertbox.ResumeLayout(false);
             this.alertbox.PerformLayout();
             this.usepanel.ResumeLayout(false);
             this.usepanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fbyes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,5 +339,6 @@
         private System.Windows.Forms.PictureBox fbyes;
         private System.Windows.Forms.Label labelQuestion;
         private System.Windows.Forms.PictureBox pictureBoxBack;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

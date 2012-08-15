@@ -504,6 +504,7 @@
     <None Include="Resources\plain-icon-50x50f.png" />
     <None Include="Resources\plain-icon50x50.png" />
     <None Include="Resources\plain-icon75x75.png" />
+    <None Include="Resources\q-button.png" />
     <Content Include="Skins\Default\Backgrounds\bg1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

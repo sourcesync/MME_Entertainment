@@ -136,5 +136,10 @@ namespace MME.Hercules.WPFForms
             this.ctlmaster.ShowMain();
         }
 
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
     }
 }
