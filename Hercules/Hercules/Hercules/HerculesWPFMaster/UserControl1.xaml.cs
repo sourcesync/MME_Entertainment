@@ -151,6 +151,8 @@ namespace HerculesWPFMaster
             }
 
             this.GetWebURLKey();
+
+            this.imagequit.Visibility = System.Windows.Visibility.Hidden;
         }
 
         public void GetWebURLKey()
