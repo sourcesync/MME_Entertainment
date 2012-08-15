@@ -45,7 +45,7 @@
             <Image Canvas.Left="4" Canvas.Top="719" Height="44" Name="imageback" Source="/HerculesWPFMaster;component/Images/backarrow1.png" Stretch="Fill" Width="51" MouseDown="imageback_MouseDown" />
             -->
             <Image Canvas.Left="4" Canvas.Top="708" Height="57" Name="imageback" Source="/HerculesWPFMaster;component/Images/back-button.png" Stretch="Fill" Width="119" MouseDown="imageback_MouseDown" />
-            <Image Canvas.Left="930" Canvas.Top="0" Height="57" Name="imagequit" Source="/HerculesWPFMaster;component/Images/q-button.png" Stretch="Fill" Width="119" MouseDown="imageq_MouseDown" />
+            <Image Canvas.Left="930" Canvas.Top="0" Height="57" Name="imagequit" Source="/HerculesWPFMaster;component/Images/q-button2.png" Stretch="Fill" Width="119" MouseDown="imageq_MouseDown" />
 
         </Canvas>
 
