@@ -50,6 +50,7 @@
             this.b1.TabIndex = 3;
             this.b1.TabStop = false;
             this.b1.Click += new System.EventHandler(this.b1_Click);
+            this.b1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.colortypepb_MouseDown);
             // 
             // pb
             // 
@@ -84,6 +85,7 @@
             this.b2.TabIndex = 6;
             this.b2.TabStop = false;
             this.b2.Click += new System.EventHandler(this.b2_Click);
+            this.b2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.colortypepb_MouseDown);
             // 
             // b3
             // 
@@ -96,6 +98,7 @@
             this.b3.TabIndex = 7;
             this.b3.TabStop = false;
             this.b3.Click += new System.EventHandler(this.b3_Click);
+            this.b3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.colortypepb_MouseDown);
             // 
             // NumPrints
             // 

@@ -70,5 +70,11 @@ namespace MME.Hercules.Forms.User
         }
 
 
+        private void colortypepb_MouseDown(object sender, MouseEventArgs e)
+        {
+            PictureBox pbtype = (PictureBox)sender;
+            pbtype.BackColor = System.Drawing.Color.Red;
+        }
+
     }
 }
