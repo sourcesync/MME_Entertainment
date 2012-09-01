@@ -1646,8 +1646,8 @@ namespace MME.Hercules.Forms.User
             if (thread != null)
                 thread.Abort();
 
-            if (prompts != null)
-                prompts.Abort();
+            //if (prompts != null)
+            //    prompts.Abort();
 
             prompts = null;
             thread = null;

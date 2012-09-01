@@ -458,13 +458,14 @@ namespace MME.Hercules.Forms.User
 
 
                 // Are we supporting facebook
-
+                bool facebook_yes = false;
                 if (AllowFacebookPublish && dr == System.Windows.Forms.DialogResult.OK)
                 {
                     using (User.Facebook fb = new Facebook(currentSession))
                     {
                         fb.ischeckin = false;
                         dr = fb.ShowDialog();
+                        facebook_yes = fb.yes_clicked;
                     }
                 }
 
@@ -475,6 +476,7 @@ namespace MME.Hercules.Forms.User
                 {
                     using (User.Developing dd = new Developing(currentSession))
                     {
+                        dd.facebook_publish = facebook_yes;
                         dr = dd.ShowDialog();
                     }
                 }
