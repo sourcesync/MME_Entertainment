@@ -66,5 +66,8 @@ namespace MME.Hercules
 
         public List<string> Responses
         { get; set; }
+
+        public int MaxCopies
+        { get; set; }
     }
 }

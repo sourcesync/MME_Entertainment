@@ -117,75 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="PHOTO_BACKGROUND_IMAGE" xml:space="preserve">
-    <value>bg{0}.jpg</value>
-  </data>
-  <data name="SELECTBW_IMAGE" xml:space="preserve">
-    <value>selectbw.jpg</value>
-  </data>
-  <data name="DEVELOPING_PICS_SCREEN" xml:space="preserve">
-    <value>developingpics.jpg</value>
-  </data>
-  <data name="TAKEPHOTO_SCREEN" xml:space="preserve">
-    <value>takephoto.jpg</value>
-  </data>
-  <data name="MAKE_SELECTION_TEXT" xml:space="preserve">
-    <value>Please make your selection in {0} second{1}</value>
-  </data>
-  <data name="CHOOSEBACKGROUND_SCREEN" xml:space="preserve">
-    <value>choosebackground.jpg</value>
-  </data>
-  <data name="SMILE_TAKING_PHOTO_TEXT" xml:space="preserve">
-    <value>Smile!! We are now taking your {0} photo!</value>
-  </data>
-  <data name="NUMBER_ONE" xml:space="preserve">
-    <value>photomation_countdown_1.png</value>
-  </data>
-  <data name="NUMBER_THREE" xml:space="preserve">
-    <value>photomation_countdown_3.png</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="FLIP-THUMB-30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FLIP-THUMB-30x301.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="THANKS_TAKING_PHOTOS_SCREEN" xml:space="preserve">
-    <value>thanksforphotos.jpg</value>
-  </data>
-  <data name="PICK_FAVORITE_SCREEN" xml:space="preserve">
-    <value>pickfavorite.jpg</value>
-  </data>
   <data name="PHOTOTYPE_SCREEN" xml:space="preserve">
     <value>choosecolor.jpg</value>
   </data>
-  <data name="PHOTOS_COMPLETE_SCREEN" xml:space="preserve">
-    <value>photoscomplete.jpg</value>
+  <data name="PHOTO_BACKGROUND_IMAGE" xml:space="preserve">
+    <value>bg{0}.jpg</value>
   </data>
-  <data name="ROOM_NUMBER_SCREEN" xml:space="preserve">
-    <value>roomnumber.jpg</value>
-  </data>
-  <data name="START_SCREEN" xml:space="preserve">
-    <value>start.jpg</value>
-  </data>
-  <data name="SELECTSEPIA_IMAGE" xml:space="preserve">
-    <value>selectsepia.jpg</value>
-  </data>
-  <data name="SELECTCOLOR_IMAGE" xml:space="preserve">
-    <value>selectcolor.jpg</value>
-  </data>
-  <data name="NUMBER_FOUR" xml:space="preserve">
-    <value>photomation_countdown_4.png</value>
-  </data>
-  <data name="NUMBER_TWO" xml:space="preserve">
-    <value>photomation_countdown_2.png</value>
-  </data>
-  <data name="CHOOSE_BG_INSTRUCTIONS_TEXT" xml:space="preserve">
-    <value>Choose up to {0} background{1}.  Default will be used if none selected!</value>
-  </data>
-  <data name="EMAIL_SCREEN" xml:space="preserve">
-    <value>email.jpg</value>
-  </data>
-  <data name="FLIP-THUMB-30x30-flip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FLIP-THUMB-30x30-flip1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="TAKEPHOTO_SCREEN" xml:space="preserve">
+    <value>takephoto.jpg</value>
   </data>
   <data name="TAKEPHOTO_FLIPPED_SCREEN" xml:space="preserve">
     <value>takephoto-flipped.jpg</value>
@@ -193,10 +132,80 @@
   <data name="PROMO_SCREEN" xml:space="preserve">
     <value>promo.jpg</value>
   </data>
-  <data name="PROMO_COMPLETE" xml:space="preserve">
-    <value>promo_complete.jpg</value>
+  <data name="THANKS_TAKING_PHOTOS_SCREEN" xml:space="preserve">
+    <value>thanksforphotos.jpg</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="FLIP-THUMB-30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FLIP-THUMB-30x301.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EMAIL_SCREEN" xml:space="preserve">
+    <value>email.jpg</value>
   </data>
   <data name="SURVEY" xml:space="preserve">
     <value>survey.jpg</value>
+  </data>
+  <data name="CHOOSE_BG_INSTRUCTIONS_TEXT" xml:space="preserve">
+    <value>Choose up to {0} background{1}.  Default will be used if none selected!</value>
+  </data>
+  <data name="SMILE_TAKING_PHOTO_TEXT" xml:space="preserve">
+    <value>Smile!! We are now taking your {0} photo!</value>
+  </data>
+  <data name="DEVELOPING_PICS_SCREEN" xml:space="preserve">
+    <value>developingpics.jpg</value>
+  </data>
+  <data name="CHOOSEBACKGROUND_SCREEN" xml:space="preserve">
+    <value>choosebackground.jpg</value>
+  </data>
+  <data name="ROOM_NUMBER_SCREEN" xml:space="preserve">
+    <value>roomnumber.jpg</value>
+  </data>
+  <data name="NUMBER_TWO" xml:space="preserve">
+    <value>photomation_countdown_2.png</value>
+  </data>
+  <data name="chooseprint1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chooseprint1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PHOTOS_COMPLETE_SCREEN" xml:space="preserve">
+    <value>photoscomplete.jpg</value>
+  </data>
+  <data name="NUMBER_FOUR" xml:space="preserve">
+    <value>photomation_countdown_4.png</value>
+  </data>
+  <data name="START_SCREEN" xml:space="preserve">
+    <value>start.jpg</value>
+  </data>
+  <data name="NUMBER_THREE" xml:space="preserve">
+    <value>photomation_countdown_3.png</value>
+  </data>
+  <data name="SELECTBW_IMAGE" xml:space="preserve">
+    <value>selectbw.jpg</value>
+  </data>
+  <data name="FLIP-THUMB-30x30-flip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FLIP-THUMB-30x30-flip1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PROMO_COMPLETE" xml:space="preserve">
+    <value>promo_complete.jpg</value>
+  </data>
+  <data name="NUMBER_ONE" xml:space="preserve">
+    <value>photomation_countdown_1.png</value>
+  </data>
+  <data name="chooseprint2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chooseprint2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PICK_FAVORITE_SCREEN" xml:space="preserve">
+    <value>pickfavorite.jpg</value>
+  </data>
+  <data name="MAKE_SELECTION_TEXT" xml:space="preserve">
+    <value>Please make your selection in {0} second{1}</value>
+  </data>
+  <data name="SELECTCOLOR_IMAGE" xml:space="preserve">
+    <value>selectcolor.jpg</value>
+  </data>
+  <data name="SELECTSEPIA_IMAGE" xml:space="preserve">
+    <value>selectsepia.jpg</value>
+  </data>
+  <data name="chooseprint3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chooseprint3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

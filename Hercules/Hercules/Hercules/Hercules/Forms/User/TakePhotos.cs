@@ -1611,9 +1611,11 @@ namespace MME.Hercules.Forms.User
             printDoc.PrintPage += new PrintPageEventHandler(printDoc_PrintPage);
             printDoc.DefaultPageSettings.Landscape = false;
 
-            if (ConfigUtility.MaxCopies > 1)
+            //gw if (ConfigUtility.MaxCopies > 1)
+            if ( currentSession.MaxCopies >= 1 )
             {
-                printDoc.PrinterSettings.Copies = (short)ConfigUtility.MaxCopies;
+                printDoc.PrinterSettings.Copies = (short)currentSession.MaxCopies;
+                    //gw (short)ConfigUtility.MaxCopies;
             }
 
     

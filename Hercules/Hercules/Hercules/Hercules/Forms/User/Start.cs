@@ -393,6 +393,21 @@ namespace MME.Hercules.Forms.User
 
                 } // colortypes
 
+                // num prints ?
+
+                if (ConfigUtility.MaxCopies < 0)
+                {
+                    using (User.NumPrints npform = new NumPrints(currentSession))
+                    {          
+                        dr = npform.ShowDialog(this);
+                    }
+                }
+                else
+                {
+                    currentSession.MaxCopies = ConfigUtility.MaxCopies;
+                }
+
+
                 /* backgrounds*/
 
 
