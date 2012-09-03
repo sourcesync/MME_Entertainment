@@ -202,8 +202,8 @@ namespace MME.Hercules.Forms.User
                     //gw
                     if (!this.show_countdown)
                     {
-                        Thread.Sleep(countdownwait);
-                        SoundUtility.Play(Hercules.Properties.SoundResources.COUNTDOWN);
+                        //Thread.Sleep(countdownwait);
+                        //SoundUtility.Play(Hercules.Properties.SoundResources.COUNTDOWN);
                     }
                     else
                     {
@@ -1466,9 +1466,12 @@ namespace MME.Hercules.Forms.User
                 }
                 else
                 {
-                    
+                    /*was commented*/
                     if (i < ConfigUtility.PhotoCount - 1)
                     {
+
+                        int countdownwait = Convert.ToInt32(ConfigUtility.GetValue("CountdownWait"));
+                        Thread.Sleep(countdownwait);
                         SoundUtility.PlaySync(Hercules.Properties.SoundResources.COUNTDOWN);
                     }
                      
