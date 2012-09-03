@@ -1466,12 +1466,12 @@ namespace MME.Hercules.Forms.User
                 }
                 else
                 {
-                    /*
+                    
                     if (i < ConfigUtility.PhotoCount - 1)
                     {
                         SoundUtility.PlaySync(Hercules.Properties.SoundResources.COUNTDOWN);
                     }
-                     * */
+                     
                 }
 
                 //gw
