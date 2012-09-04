@@ -5,5 +5,6 @@ public enum ColorType
     Color = 2,
     BW_Color = 3,
     Sepia = 4,
-    BW_Color_Sepia = 5
+    BW_Color_Sepia = 5,
+    NoSelection = 6
 }

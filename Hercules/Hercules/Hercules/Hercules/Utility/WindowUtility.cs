@@ -64,6 +64,20 @@ namespace MME.Hercules
             fs.Close();
         }
 
+        public static System.Drawing.Size GetScreenSize(string screenname)
+        {
+            
+            FileStream fs;
+            fs = new FileStream(string.Format("Skins\\{0}\\Screens\\{1}",
+                ConfigUtility.Skin,
+                screenname), FileMode.Open, FileAccess.Read);
+            System.Drawing.Image img = System.Drawing.Image.FromStream(fs);
+
+            System.Drawing.Size sz = img.Size;
+            img.Dispose();
+            return sz;
+        }
+
 
 
 

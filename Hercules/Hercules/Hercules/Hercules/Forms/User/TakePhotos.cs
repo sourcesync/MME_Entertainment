@@ -131,13 +131,25 @@ namespace MME.Hercules.Forms.User
             this.vidPanel[0] = this.panelVideoOne;
             this.vidPanel[1] = this.panelVideoOne;
 
+            /*
+             * DETERMINE IF WE USE CANON OR WEBCAM !!!
+             */
+
             if (ConfigUtility.GetValue("BoothType") == "2")
             {
                 istable = true;
-
                 this.info.Visible = false;
             }
 
+            if (ConfigUtility.GetValue("CameraName").Equals("Web"))
+            {
+                istable = true;
+                this.info.Visible = false;
+            }
+
+            /*
+             * DETERMINE IF WE USE CANON OR WEBCAM !!!
+             */
 
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.currentSession = currentSession;

@@ -344,6 +344,12 @@
     <Compile Include="WPFForms\TransPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WPFForms\WebCamMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WPFForms\WebCamMaster.Designer.cs">
+      <DependentUpon>WebCamMaster.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Database\Sample.resx">
       <DependentUpon>Sample.cs</DependentUpon>
     </EmbeddedResource>
@@ -455,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WPFForms\OverlayForm.resx">
       <DependentUpon>OverlayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WPFForms\WebCamMaster.resx">
+      <DependentUpon>WebCamMaster.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>

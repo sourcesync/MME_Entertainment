@@ -42,6 +42,11 @@ namespace MME.Hercules.Forms.User
             startArea.Parent = pb;
             WindowUtility.SetScreen(pb, Hercules.Properties.Resources.START_SCREEN);
 
+            // possibly change form size 
+            Size sz = WindowUtility.GetScreenSize(Hercules.Properties.Resources.START_SCREEN);
+            pb.Size = sz;
+            this.Size = sz;
+
             // Set start button
             startArea.Location = new Point(Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "StartButtonX")),
                                 Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "StartButtonY")));
@@ -334,7 +339,7 @@ namespace MME.Hercules.Forms.User
                     }
                 } // END WHILE 
             }
-            else // NOT BOOTH MODE, NORMAL...
+            else // NOT TABLE MODE, NORMAL...
             {
                 if (ConfigUtility.SequenceConfig != null)
                 {
@@ -376,17 +381,6 @@ namespace MME.Hercules.Forms.User
                             dr = ptform.ShowDialog(this);
                         }
                     }
-                    //gw
-                    /*
-                    // If we support both, ask the user.
-                    if (((colorTypes & ColorType.BW) == ColorType.BW) && ((colorTypes & ColorType.Color) == ColorType.Color))
-                    {
-                        using (User.PhotoType ptform = new PhotoType(currentSession))
-                        {
-                        dr = ptform.ShowDialog(this);
-                    }
-                    }
-                    * */
                     else
                         currentSession.SelectedColorType = colorTypes;
                     //gw
@@ -434,13 +428,29 @@ namespace MME.Hercules.Forms.User
 
 
                 // Start picture taking
-                if (dr == System.Windows.Forms.DialogResult.OK)
+
+
+                if (!ConfigUtility.GetValue("CameraName").Equals("Web"))
                 {
-                    using (User.TakePhotos tpform = new TakePhotos(currentSession))
+                    if (dr == System.Windows.Forms.DialogResult.OK)
                     {
-                        dr = tpform.ShowDialog();
+                        using (User.TakePhotos tpform = new TakePhotos(currentSession))
+                        {
+                            dr = tpform.ShowDialog();
+                        }
                     }
                 }
+                else
+                {
+                    if (dr == System.Windows.Forms.DialogResult.OK)
+                    {
+                        using (User.TakePhotos tpform = new TakePhotos(currentSession))
+                        {
+                            dr = tpform.ShowDialog();
+                        }
+                    }
+                }
+
 
                 bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
 

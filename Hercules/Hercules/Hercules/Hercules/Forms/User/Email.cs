@@ -88,6 +88,12 @@ namespace MME.Hercules.Forms.User
             keyboard.Parent = pb;
             keyboard.CurrentTextBox = textBox1;
 
+            // adjust form/pb sizes...
+            Size sz = WindowUtility.GetScreenSize(Hercules.Properties.Resources.EMAIL_SCREEN);
+            this.Size = sz;
+            pb.Size = sz;
+
+
             if (istable)
             {
                 Bitmap bm = Hercules.Properties.ImageResources.backarrow;
@@ -112,11 +118,36 @@ namespace MME.Hercules.Forms.User
             else
                 skipArea.BackColor = Color.Transparent;
 
+
+            // adjust keyboard location...
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")))
+            {
+                keyboard.Location =
+                    new Point(keyboard.Location.X, keyboard.Location.Y +
+                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")));
+
+                this.textBox1.Location =
+                    new Point(this.textBox1.Location.X, this.textBox1.Location.Y +
+                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")));
+
+                this.skip.Location =
+                    new Point(this.skip.Location.X, this.skip.Location.Y +
+                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")));
+
+                this.finished.Location =
+                    new Point(this.finished.Location.X, this.finished.Location.Y +
+                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")));
+
+                this.Refresh();
+                System.Threading.Thread.Sleep(1);
+            }
+
             if (!this.ispromo)
             {
                 thread = new Thread(PlayIntroSounds);
                 thread.Start();
             }
+
         }
 
         private void PlayIntroSounds()
@@ -223,11 +254,13 @@ namespace MME.Hercules.Forms.User
 
         private void pb_Click(object sender, EventArgs e)
         {
+            /*
             if (this.mode == 0)
             {
                 this.mode = 1;
                 this.Email_Load2(sender, e);
             }
+             * */
         }
 
     }
