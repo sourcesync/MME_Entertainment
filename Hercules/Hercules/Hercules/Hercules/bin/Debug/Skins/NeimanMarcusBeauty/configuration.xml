@@ -38,8 +38,8 @@
   <add key="SkipEmailButtonColor" value=""/>  
 
   <!-- keyboard offset for email screen -->
-  <add key="KeyboardDisplayY" value="400" />
-  <add key="KeyboardY" value="700" />
+  <add key="KeyboardDisplayY" value="305" />
+  <add key="KeyboardY" value="250" />
 
   <!-- button offset for takephoto controls -->
   <add key="TAKEPHOTO_OFFSET" value="400" />
@@ -48,7 +48,7 @@
   <add key="PlayHelpAudio" value="photo.wav" />
 
   <!-- button offset for facebook yes or no -->
-  <add key="FBBUTTON_OFFSET" value="400" />
+  <add key="FBBUTTON_OFFSET" value="350" />
 
   <!-- button offset for facebook keyboard -->
   <add key="FBBUTTON_KEYBOARD_OFFSET" value="400" />
