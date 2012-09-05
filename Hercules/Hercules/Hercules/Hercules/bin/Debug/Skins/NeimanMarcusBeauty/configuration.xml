@@ -44,7 +44,7 @@
 
   <!-- button offset for takephoto controls -->
   <add key="TAKEPHOTO_PREVIEW_OFFSET" value="40" />
-  <add key="TAKEPHOTO_OFFSET" value="75" />
+  <add key="TAKEPHOTO_OFFSET" value="95" />
   
   <!-- extra help audio for takephoto-->
   <add key="PlayHelpAudio" value="photo.wav" />
