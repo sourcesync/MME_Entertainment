@@ -36,8 +36,11 @@
 
 
   <page type="selection" screen="question3.jpg" sound="question3.wav" question="Choice 3">
-    <choice x="282" y="519" width="252" height="150" text="" value="YES" color="" />
-    <choice x="534" y="519" width="252" height="150" text="" value="NO" color="" />
+    <choice x="74" y="472" width="215" height="63" text="" value="AGE_SPOTS" color="" />
+    <choice x="342" y="472" width="297" height="63" text="" value="ACNE_BLEMISHS" color="" />
+    <choice x="678" y="472" width="337" height="63" text="" value="UNEVEN_SKIN" color="" />
+    <choice x="228" y="579" width="189" height="63" text="" value="DRY_SKIN" color="" />
+    <choice x="492" y="579" width="396" height="63" text="" value="FINE_LINES" color="" />
   </page>
 
 	
