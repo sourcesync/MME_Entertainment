@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Hercules configver="1">
+
+  
+  <!-- How many photos are printed (1, 2, 4, 6) -->
+  <add key="PHOTO_COUNT" value="2" />
+
+  <!-- How many prints (1=single print, 2=two prints .. up to 99999 -->
+  <add key="MAX_COPIES" value="-1" />
+
+  <!-- Allow user choice or force one each  -->
+  <add key="ALLOW_BACKGROUND_PICK" value="0" />
+
+  <!-- How many backgrounds are we dealing with? (1=only 1 bg every time no screen choosing)  -->
+  <add key="BACKGROUNDS" value="1" />
+
+  <!-- 1 = BW only, 2 = Color only 3 = User choice -->
+  <add key="COLOR_TYPES" value="3" />
+
+  <add key="ROOM_NUMBER_MODE" value="0" />
+
+  <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->
+  <add key="TEXT_COLOR" value="#666666" />
+
+
+  <!-- touch area for start page -->
+  <add key="StartButtonX" value="0" />
+  <add key="StartButtonY" value="483" />
+  <add key="StartButtonWidth" value="468" />
+  <add key="StartButtonHeight" value="306" />
+  <add key="StartButtonColor" value="" />
+
+  <!-- touch area for skip email -->
+  <add key="SkipEmailButtonX" value="900" />
+  <add key="SkipEmailButtonY" value="0" />
+  <add key="SkipEmailButtonWidth" value="180" />
+  <add key="SkipEmailButtonHeight" value="180" />
+  <add key="SkipEmailButtonColor" value=""/>  
+
+  <!-- Publish methods -->
+  <add key="AllowEmailPublish" value="1" /> <!-- 1=on, 0=off -->
+
+
+  <add key="AllowPostPublish" value="1" />
+  <add key="AllowFacebookPublish" value="1" />
+  <add key="AllowMobilePublish" value="0" />
+
+
+
+
+  <add key="HerculesPublishUrl" value="http://autolycus.mmeentertainment.com/hercules.php"/>
+
+  <add key="UploadFavoritePhotoToAutolycus" value="1" />  
+  <add key="AutolycusPublishUrl" value="http://autolycus.mmeentertainment.com/hercules.php"/>
+
+
+
+  <!-- cloud for the photo booths -->
+
+
+  <add key="PublicPhotoUrl" value="http://autolycus.mmeentertainment.com/event/{1}/photo/{0}.jpg"/>
+
+
+  <!-- Email settings -->
+  <add key="ForceEmail" value="1" /> <!-- 1=force, 0=give skip button -->
+
+
+  <!-- user cannot skip the email screen (operator has hidden skip button) -->
+  <add key="EmailPublishUrl" value="http://autolycus.mmeentertainment.com/hercules.php" />
+
+
+  <!-- leave blank to use smtp settings below -->
+  <add key="SmtpServer" value="" />
+  <add key="SmtpUsername" value="" />
+  <add key="SmtpPassword" value="" />
+
+  <!-- built-in customization -->
+  <add key="CustomPhotoUrl" value="" />
+  <add key="CustomPublishUrl" value="http://autolycus.mmeentertainment.com/favoritephoto.php?viewing={1}_{0}"/>
+
+
+
+
+
+  <!-- 1 Photo customization -->
+  <add key="Photo1_X" value="80" />
+  <add key="Photo1_Y" value="48" />
+  <add key="Photo1_W" value="1085" />
+  <add key="Photo1_H" value="1445" />
+  <add key="Photo1_Rotate" value="0" />
+
+
+  <!-- 2 Photo customization -->
+  <add key="Photo2_X" value="80" />
+  <add key="Photo2_Y" value="48" />
+  <add key="Photo2_W" value="1085" />
+  <add key="Photo2_H" value="1445" />
+  <add key="Photo2_Rotate" value="0" />
+
+</Hercules>
