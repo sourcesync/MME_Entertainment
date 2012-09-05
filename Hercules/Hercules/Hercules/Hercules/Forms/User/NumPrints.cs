@@ -27,7 +27,8 @@ namespace MME.Hercules.Forms.User
             if (ConfigUtility.IsDeveloperMode)
                 this.WindowState = FormWindowState.Normal;
 
-            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PHOTOTYPE_SCREEN);
+            WindowUtility.SetScreen(pb, "chooseprint.jpg");
+                //Hercules.Properties.Resources.PHOTOTYPE_SCREEN);
 
             this.timeoutlabel.Visible = false;
             this.b1.Parent = pb;

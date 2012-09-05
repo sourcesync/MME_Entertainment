@@ -38,7 +38,6 @@
             this.pb.Location = new System.Drawing.Point(0, 0);
             this.pb.Name = "pb";
             this.pb.Size = new System.Drawing.Size(1008, 730);
-            this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb.TabIndex = 0;
             this.pb.TabStop = false;
             this.pb.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pb_MouseClick);

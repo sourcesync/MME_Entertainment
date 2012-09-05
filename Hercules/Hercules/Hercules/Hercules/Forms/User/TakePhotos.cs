@@ -66,6 +66,7 @@ namespace MME.Hercules.Forms.User
         private CustomControl.OrientAbleTextControls.OrientedTextLabel labelr2f;
         private CustomControl.OrientAbleTextControls.OrientedTextLabel labelr3f;
         private CustomControl.OrientAbleTextControls.OrientedTextLabel labelr4f;
+        public bool b_show_overlay_buttons = true;
         //gw
 
         //public void Flip(object o, System.Timers.ElapsedEventArgs a)
@@ -145,6 +146,7 @@ namespace MME.Hercules.Forms.User
             {
                 istable = true;
                 this.info.Visible = false;
+                this.b_show_overlay_buttons = false;
             }
 
             /*
@@ -766,6 +768,8 @@ namespace MME.Hercules.Forms.User
             if (this.static_orientation == 0)
             {
                 WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+
+
             }
             else
             {
@@ -976,6 +980,20 @@ namespace MME.Hercules.Forms.User
 
         private void DoWebCam_Loaded()
         {
+
+            // show overlay buttons or not...
+            if (!this.b_show_overlay_buttons)
+            {
+                this.pictureBoxBack.Visible = false;
+                this.pictureBoxFlip.Visible = false;
+                this.pictureBoxFlipBottom.Visible = false;
+            }
+
+            // adjust form/pb sizes...
+            Size sz = WindowUtility.GetScreenSize(Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+            this.Size = sz;
+            pb.Size = sz;
+
             this.get_rotation();
 
             Directory.CreateDirectory(this.currentSession.PhotoPath);
@@ -1054,9 +1072,12 @@ namespace MME.Hercules.Forms.User
             }
             else // prompt mode...
             {
-                this.pictureBoxBack.Visible = true;
-                this.pictureBoxFlipBottom.Visible = true;
-                this.pictureBoxFlipTop.Visible = true;
+                if (this.b_show_overlay_buttons)
+                {
+                    this.pictureBoxBack.Visible = true;
+                    this.pictureBoxFlipBottom.Visible = true;
+                    this.pictureBoxFlipTop.Visible = true;
+                }
             }
 
 
@@ -1110,8 +1131,8 @@ namespace MME.Hercules.Forms.User
                 this.num_cams = SetupVideo();
                 if (( this.num_cams == 0) || (this.num_cams > 2))
                 {
-                    this.DialogResult = DialogResult.No;
-                    return;
+                    //this.DialogResult = DialogResult.No;
+                    //return;
                 }
 
                 if (this.num_cams == 1)
@@ -1195,9 +1216,12 @@ namespace MME.Hercules.Forms.User
             //  Change mode here...
             this.mode = 1;
             Orient(1);
-            this.pictureBoxBack.Visible = true;
-            this.pictureBoxFlipBottom.Visible = true;
-            this.pictureBoxFlipTop.Visible = true;
+            if (this.b_show_overlay_buttons)
+            {
+                this.pictureBoxBack.Visible = true;
+                this.pictureBoxFlipBottom.Visible = true;
+                this.pictureBoxFlipTop.Visible = true;
+            }
 
             //  Stop the offscreen...
             if (this.offscreen!=null)
@@ -1247,6 +1271,15 @@ namespace MME.Hercules.Forms.User
 
             if (ConfigUtility.IsDeveloperMode)
                 this.WindowState = FormWindowState.Normal;
+
+            // show overlay buttons or not...
+            if (!this.b_show_overlay_buttons)
+            {
+                this.pictureBoxBack.Visible = false;
+                this.pictureBoxFlip.Visible = false;
+                this.pictureBoxFlipBottom.Visible = false;
+            }
+
 
             //gw
             bool show_pose = ConfigUtility.GetValue("SHOW_POSE_THUMBNAILS").Equals("1");

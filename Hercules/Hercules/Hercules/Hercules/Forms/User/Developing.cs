@@ -45,6 +45,11 @@ namespace MME.Hercules.Forms.User
             {
                 WindowUtility.SetScreen(pb, Hercules.Properties.Resources.THANKS_TAKING_PHOTOS_SCREEN);
 
+                // adjust form/pb sizes...
+                Size sz = WindowUtility.GetScreenSize(Hercules.Properties.Resources.THANKS_TAKING_PHOTOS_SCREEN);
+                this.Size = sz;
+                pb.Size = sz;
+
                 this.Refresh();
 
                 SoundUtility.PlaySync(Hercules.Properties.SoundResources.THANK_YOU_FOR_TAKING_PHOTOS);
@@ -166,6 +171,8 @@ namespace MME.Hercules.Forms.User
                 else
                 {
                     WindowUtility.SetScreen(pb, Hercules.Properties.Resources.PHOTOS_COMPLETE_SCREEN);
+
+
                 }
 
                 this.Refresh();
@@ -441,6 +448,16 @@ namespace MME.Hercules.Forms.User
                 // upload to publish server (don't need to send the email if it was sent custom way 
                 if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "EmailPublishUrl")))
                 {
+                    // debugging so that it works without web cam...
+                    if (!File.Exists(this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg"))
+                    {
+                        File.Copy(
+                            ConfigUtility.GetValue("testphoto"),
+                                this.currentSession.PhotoPath + "\\" +
+                                this.currentSession.FavoritePhotoFilename + ".jpg");
+                    }
+
+
                     // try 3 times
                     response = FileUtility.HerculesUpload(DateTime.Now.Ticks.ToString(), "", this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
 

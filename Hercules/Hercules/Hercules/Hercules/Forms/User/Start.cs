@@ -454,18 +454,19 @@ namespace MME.Hercules.Forms.User
 
                 bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
 
-
-                // As to pick favorite if emailing
-                if (dr == System.Windows.Forms.DialogResult.OK &&
-                    (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
-                    AllowFacebookPublish))
+                if (!ConfigUtility.GetValue("CameraName").Equals("Web"))
                 {
+                    // As to pick favorite if emailing
+                    if (dr == System.Windows.Forms.DialogResult.OK &&
+                        (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
+                        AllowFacebookPublish))
                     {
-                        PickFavorite pvform = new PickFavorite(currentSession);
-                        dr = pvform.ShowDialog();
+                        {
+                            PickFavorite pvform = new PickFavorite(currentSession);
+                            dr = pvform.ShowDialog();
+                        }
                     }
                 }
-
 
                 // Are we supporting facebook
                 bool facebook_yes = false;

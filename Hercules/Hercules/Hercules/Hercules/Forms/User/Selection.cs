@@ -34,11 +34,20 @@ namespace MME.Hercules.Forms.User
 
             WindowUtility.SetScreen(pb, pageNode.Attributes["screen"].Value);
 
+
+            // adjust form/pb sizes...
+            String path = pageNode.Attributes["screen"].Value;
+            Size sz = WindowUtility.GetScreenSize(path);
+            this.Size = sz;
+            pb.Size = sz;
+
             if (this.currentSession.Responses == null)
                 this.currentSession.Responses = new List<string>();
 
             foreach (XmlNode node in pageNode.ChildNodes)
             {
+                XmlAttribute attr = node.Attributes["color"];
+
                 if (!string.IsNullOrEmpty(node.Attributes["color"].Value))
                 {
                     Panel panel = new Panel();

@@ -40,9 +40,9 @@
             this.notice = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.usepanel = new System.Windows.Forms.Panel();
-            this.labelQuestion = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxBack = new System.Windows.Forms.PictureBox();
+            this.labelQuestion = new System.Windows.Forms.Label();
             this.fbno = new System.Windows.Forms.PictureBox();
             this.fbyes = new System.Windows.Forms.PictureBox();
             this.pb2 = new System.Windows.Forms.PictureBox();
@@ -196,18 +196,6 @@
             this.usepanel.Size = new System.Drawing.Size(1024, 768);
             this.usepanel.TabIndex = 15;
             // 
-            // labelQuestion
-            // 
-            this.labelQuestion.AutoSize = true;
-            this.labelQuestion.BackColor = System.Drawing.Color.Transparent;
-            this.labelQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuestion.Location = new System.Drawing.Point(108, 583);
-            this.labelQuestion.Name = "labelQuestion";
-            this.labelQuestion.Size = new System.Drawing.Size(796, 39);
-            this.labelQuestion.TabIndex = 3;
-            this.labelQuestion.Text = "Would You Like To Post Your Image To FaceBook?";
-            this.labelQuestion.Visible = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
@@ -228,6 +216,18 @@
             this.pictureBoxBack.TabStop = false;
             this.pictureBoxBack.Visible = false;
             this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
+            // 
+            // labelQuestion
+            // 
+            this.labelQuestion.AutoSize = true;
+            this.labelQuestion.BackColor = System.Drawing.Color.Transparent;
+            this.labelQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuestion.Location = new System.Drawing.Point(108, 583);
+            this.labelQuestion.Name = "labelQuestion";
+            this.labelQuestion.Size = new System.Drawing.Size(796, 39);
+            this.labelQuestion.TabIndex = 3;
+            this.labelQuestion.Text = "Would You Like To Post Your Image To FaceBook?";
+            this.labelQuestion.Visible = false;
             // 
             // fbno
             // 
@@ -255,7 +255,6 @@
             this.pb2.Location = new System.Drawing.Point(0, 0);
             this.pb2.Name = "pb2";
             this.pb2.Size = new System.Drawing.Size(1024, 768);
-            this.pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb2.TabIndex = 0;
             this.pb2.TabStop = false;
             // 
@@ -274,7 +273,6 @@
             this.pb.Location = new System.Drawing.Point(0, 0);
             this.pb.Name = "pb";
             this.pb.Size = new System.Drawing.Size(1024, 768);
-            this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb.TabIndex = 0;
             this.pb.TabStop = false;
             // 
