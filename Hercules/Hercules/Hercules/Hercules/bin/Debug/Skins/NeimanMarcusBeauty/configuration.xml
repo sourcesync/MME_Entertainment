@@ -43,7 +43,7 @@
   <add key="KeyboardFinishY" value="1100" />
 
   <!-- button offset for takephoto controls -->
-  <add key="TAKEPHOTO_OFFSET" value="400" />
+  <add key="TAKEPHOTO_OFFSET" value="75" />
   
   <!-- extra help audio for takephoto-->
   <add key="PlayHelpAudio" value="photo.wav" />
