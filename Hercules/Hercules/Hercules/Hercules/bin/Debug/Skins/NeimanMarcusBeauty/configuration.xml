@@ -53,6 +53,7 @@
 
   <!-- button offset for facebook keyboard -->
   <add key="FBBUTTON_KEYBOARD_OFFSET" value="200" />
+  <add key="FB_FINISH_OFFSET" value="1100" />
   
   <!-- Publish methods -->
   <add key="AllowEmailPublish" value="1" /> <!-- 1=on, 0=off -->
