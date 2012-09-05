@@ -44,6 +44,9 @@
   <!-- button offset for takephoto controls -->
   <add key="TAKEPHOTO_OFFSET" value="400" />
   
+  <!-- extra help audio for takephoto-->
+  <add key="PlayHelpAudio" value="photo.wav" />
+
   <!-- button offset for facebook yes or no -->
   <add key="FBBUTTON_OFFSET" value="400" />
 
