@@ -40,7 +40,7 @@
   <!-- keyboard offset for email screen -->
   <add key="KeyboardDisplayY" value="305" />
   <add key="KeyboardY" value="250" />
-  <add key="KeyboardFinishY" value="800" />
+  <add key="KeyboardFinishY" value="900" />
 
   <!-- button offset for takephoto controls -->
   <add key="TAKEPHOTO_OFFSET" value="400" />
