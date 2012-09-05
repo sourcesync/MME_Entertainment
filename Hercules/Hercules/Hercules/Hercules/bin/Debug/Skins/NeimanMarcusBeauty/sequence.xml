@@ -20,7 +20,7 @@
 	</page>
   -->
 
-<page type="selection" screen="question1.jpg" sound="" question="Choice 1">
+<page type="selection" screen="question1.jpg" sound="welcome.wav" question="Choice 1">
   <choice x="282" y="519" width="252" height="150" text="" value="YES" color="" />
   <choice x="534" y="519" width="252" height="150" text="" value="NO" color="" /> 
 </page>
