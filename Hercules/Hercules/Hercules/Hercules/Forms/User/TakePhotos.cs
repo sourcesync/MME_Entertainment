@@ -776,6 +776,14 @@ namespace MME.Hercules.Forms.User
                 WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_FLIPPED_SCREEN);
             }
 
+            // global y offset...
+            int yoff = 0;
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TAKEPHOTO_OFFSET")))
+            {
+                String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "TAKEPHOTO_OFFSET");
+                yoff = int.Parse(offset);
+            }
+
             //backbutton
             if (static_orientation == 0)
             {
@@ -793,19 +801,19 @@ namespace MME.Hercules.Forms.User
                 infof.Visible = false;
                 info.Visible = true;
                 if (mode==0)
-                    info.Location = new Point(100, 259);
+                    info.Location = new Point(100, 259 + yoff);
                 else
-                    info.Location = new Point(100, 259);
+                    info.Location = new Point(100, 259 + yoff);
             }
             else
             {
                 infof.Visible = true;
                 info.Visible = false;
                 if (mode==0)
-                    infof.Location = new Point(1024 - (100 + infof.Size.Width), 768 - (259 + infof.Size.Height));
+                    infof.Location = new Point(1024 - (100 + infof.Size.Width), 768 - (259 + infof.Size.Height + yoff));
                 else
                     infof.Location = new Point(1024-(100+infof.Size.Width), //TODO: FUDGE FACTOR
-                        768-(259+infof.Size.Height));
+                        768 - (259 + infof.Size.Height) + yoff);
             }
 
             //numbers
@@ -816,17 +824,17 @@ namespace MME.Hercules.Forms.User
                 int x = 118;
                 int y = 316;
                 int offset = 40;
-                this.labell1.Location = new Point(x - offset, y);
-                this.labell2.Location = new Point(x - offset, y);
-                this.labell3.Location = new Point(x - offset, y);
-                this.labell4.Location = new Point(x - offset, y);
+                this.labell1.Location = new Point(x - offset, y + yoff);
+                this.labell2.Location = new Point(x - offset, y + yoff);
+                this.labell3.Location = new Point(x - offset, y + yoff);
+                this.labell4.Location = new Point(x - offset, y + yoff);
 
                 x = 678;
                 y = 309;
-                this.labelr1.Location = new Point(x + offset, y);
-                this.labelr2.Location = new Point(x + offset, y);
-                this.labelr3.Location = new Point(x + offset, y);
-                this.labelr4.Location = new Point(x + offset, y);
+                this.labelr1.Location = new Point(x + offset, y + yoff);
+                this.labelr2.Location = new Point(x + offset, y + yoff);
+                this.labelr3.Location = new Point(x + offset, y + yoff);
+                this.labelr4.Location = new Point(x + offset, y + yoff);
             }
             else
             {
@@ -836,36 +844,36 @@ namespace MME.Hercules.Forms.User
                 int xx = x + offset - 70; // TODO: WEIRD FUDGE FACTOR!
                 int xf = 1024 - (xx + this.labell1f.Size.Width);
                 int yf = 768 - (y + this.labell1f.Size.Height);
-                this.labell1f.Location = new Point(xf, yf);
-                this.labell2f.Location = new Point(xf, yf);
-                this.labell3f.Location = new Point(xf, yf);
-                this.labell4f.Location = new Point(xf, yf);
+                this.labell1f.Location = new Point(xf, yf + yoff);
+                this.labell2f.Location = new Point(xf, yf + yoff);
+                this.labell3f.Location = new Point(xf, yf + yoff);
+                this.labell4f.Location = new Point(xf, yf + yoff);
 
                 x = 678;
                 y = 309;
                 xx = x + offset;
                 xf = 1024 - (xx + this.labelr1.Size.Width);
                 yf = 768 - (y + this.labelr1.Size.Height);
-                this.labelr1f.Location = new Point(xf, yf);
-                this.labelr2f.Location = new Point(xf, yf);
-                this.labelr3f.Location = new Point(xf, yf);
-                this.labelr4f.Location = new Point(xf, yf);
+                this.labelr1f.Location = new Point(xf, yf + yoff);
+                this.labelr2f.Location = new Point(xf, yf + yoff);
+                this.labelr3f.Location = new Point(xf, yf + yoff);
+                this.labelr4f.Location = new Point(xf, yf + yoff);
             }
 
             //vidpanels...
             if (static_orientation == 0)
-            { 
-                this.vidPanel[0].Location = new Point(330, 321);
-                this.vidPanel[1].Location = new Point(330, 321);
+            {
+                this.vidPanel[0].Location = new Point(330, 321 + yoff);
+                this.vidPanel[1].Location = new Point(330, 321 + yoff);
                 //this.vidPanel[0].Location = new Point(330+600, 321);
                 //this.vidPanel[1].Location = new Point(330+600, 321);
             }
             else
             {
                 this.vidPanel[0].Location = new Point(1024 - (330 + this.vidPanel[0].Size.Width),
-                    768 - (321 + this.vidPanel[0].Size.Height));
+                    768 - (321 + this.vidPanel[0].Size.Height) + yoff);
                 this.vidPanel[1].Location = new Point(1024 - (330 + this.vidPanel[1].Size.Width),
-                    768 - (321 + this.vidPanel[0].Size.Height));
+                    768 - (321 + this.vidPanel[0].Size.Height) + yoff);
              
             }
 
@@ -877,10 +885,10 @@ namespace MME.Hercules.Forms.User
             // prompt...
             if (static_orientation == 0)
             {
-                this.pictureBoxLike.Location = new Point(94, 598);
-                this.pictureBoxAgain.Location = new Point(479, 598);
-                this.labelLike.Location = new Point(169, 610);
-                this.labelAgain.Location = new Point(550, 610);
+                this.pictureBoxLike.Location = new Point(94, 598 + yoff);
+                this.pictureBoxAgain.Location = new Point(479, 598 + yoff);
+                this.labelLike.Location = new Point(169, 610 + yoff);
+                this.labelAgain.Location = new Point(550, 610 + yoff);
                 if (mode == 0)
                 {
                     this.pictureBoxLike.Visible = false;
@@ -904,14 +912,14 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
-                this.pictureBoxLike.Location = new Point( 1024 - (94 + this.pictureBoxLike.Size.Width), 
-                    768 - (598 + this.pictureBoxLike.Size.Height ) );
+                this.pictureBoxLike.Location = new Point( 1024 - (94 + this.pictureBoxLike.Size.Width),
+                    768 - (598 + this.pictureBoxLike.Size.Height) + yoff);
                 this.pictureBoxAgain.Location = new Point(1024 - (479 + this.pictureBoxLike.Size.Width),
-                    768 - (598 + this.pictureBoxLike.Size.Height));      
-                this.labelLikef.Location = new Point(1024 - (169 + this.labelLikef.Size.Width), 
-                    768 - (610 + this.labelLikef.Size.Height));
+                    768 - (598 + this.pictureBoxLike.Size.Height) + yoff);      
+                this.labelLikef.Location = new Point(1024 - (169 + this.labelLikef.Size.Width),
+                    768 - (610 + this.labelLikef.Size.Height) + yoff);
                 this.labelAgainf.Location = new Point(1024 - (550+ this.labelAgainf.Size.Width),
-                    768 - (610 + this.labelAgainf.Size.Height));
+                    768 - (610 + this.labelAgainf.Size.Height) + yoff);
 
                 if (mode == 0)
                 {

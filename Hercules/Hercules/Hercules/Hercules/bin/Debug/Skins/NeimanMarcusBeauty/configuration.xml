@@ -37,9 +37,14 @@
   <add key="SkipEmailButtonHeight" value="180" />
   <add key="SkipEmailButtonColor" value=""/>  
 
-  <!-- keyboard offset -->
+  <!-- keyboard offset for email screen -->
   <add key="KeyboardY" value="400" />
+
+  <!-- button offset for facebook yes or no -->
+  <add key="TAKEPHOTO_OFFSET" value="400" />
   
+  <!-- button offset for facebook yes or no -->
+  <add key="FBBUTTON_OFFSET" value="400" />
   
   <!-- Publish methods -->
   <add key="AllowEmailPublish" value="1" /> <!-- 1=on, 0=off -->

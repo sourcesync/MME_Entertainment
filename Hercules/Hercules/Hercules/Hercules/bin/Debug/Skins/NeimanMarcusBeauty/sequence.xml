@@ -27,8 +27,11 @@
 
 
   <page type="selection" screen="question2.jpg" sound="" question="Choice 2">
-    <choice x="282" y="519" width="252" height="150" text="" value="YES" color="" />
-    <choice x="534" y="519" width="252" height="150" text="" value="NO" color="" />
+    <choice x="189" y="459" width="210" height="115" text="" value="DRY" color="" />
+    <choice x="399" y="459" width="171" height="115" text="" value="OILY" color="" />
+    <choice x="570" y="459" width="342" height="115" text="" value="COMBINATION" color="" />
+    <choice x="189" y="564" width="348" height="115" text="" value="SENSITIVE" color="" />
+    <choice x="537" y="564" width="348" height="115" text="" value="NORMAL" color="" />
   </page>
 
 
