@@ -39,7 +39,7 @@
 
   <!-- keyboard offset for email screen -->
   <add key="KeyboardDisplayY" value="305" />
-  <add key="KeyboardY" value="250" />
+  <add key="KeyboardY" value="245" />
   <add key="KeyboardFinishY" value="1100" />
 
   <!-- button offset for takephoto controls -->
