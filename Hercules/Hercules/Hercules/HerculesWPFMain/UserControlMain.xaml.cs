@@ -35,6 +35,7 @@ namespace HerculesWPFMain
         bool firsttime = true;
         bool moving = false;
         bool wasmoving = false;
+        public bool offline = false;
 
         private System.Collections.Hashtable main_hash = new System.Collections.Hashtable();
 

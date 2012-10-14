@@ -85,6 +85,8 @@ namespace MME.Hercules
             //set the color matrix attribute
             attributes.SetColorMatrix(colorMatrix);
 
+            //System.Windows.Forms.MessageBox.Show(original.Width.ToString());
+
             //draw the original image on the new image
             //using the grayscale color matrix
             g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height),

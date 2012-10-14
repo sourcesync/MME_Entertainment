@@ -55,6 +55,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.preview = new System.Windows.Forms.PictureBox();
             this.pb = new System.Windows.Forms.PictureBox();
+            this.skipArea = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlipTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlipBottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlip)).BeginInit();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.preview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skipArea)).BeginInit();
             this.SuspendLayout();
             // 
             // info
@@ -372,6 +374,16 @@
             this.pb.TabIndex = 0;
             this.pb.TabStop = false;
             // 
+            // skipArea
+            // 
+            this.skipArea.BackColor = System.Drawing.Color.Transparent;
+            this.skipArea.Location = new System.Drawing.Point(827, 34);
+            this.skipArea.Name = "skipArea";
+            this.skipArea.Size = new System.Drawing.Size(100, 50);
+            this.skipArea.TabIndex = 30;
+            this.skipArea.TabStop = false;
+            this.skipArea.Click += new System.EventHandler(this.skipArea_Click);
+            // 
             // TakePhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,6 +391,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.ControlBox = false;
+            this.Controls.Add(this.skipArea);
             this.Controls.Add(this.pictureBoxFlipTop);
             this.Controls.Add(this.pictureBoxFlipBottom);
             this.Controls.Add(this.pictureBoxFlip);
@@ -429,6 +442,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.preview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skipArea)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,5 +477,6 @@
         private System.Windows.Forms.PictureBox pictureBoxFlip;
         private System.Windows.Forms.PictureBox pictureBoxFlipBottom;
         private System.Windows.Forms.PictureBox pictureBoxFlipTop;
+        private System.Windows.Forms.PictureBox skipArea;
     }
 }

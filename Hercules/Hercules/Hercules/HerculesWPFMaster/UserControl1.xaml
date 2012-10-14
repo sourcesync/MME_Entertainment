@@ -13,7 +13,6 @@
              xmlns:ucdraw="clr-namespace:HerculesWPFDraw;assembly=HerculesWPFDraw"
              xmlns:ucgamemenu="clr-namespace:HerculesWPFGameMenu;assembly=HerculesWPFGameMenu"
              xmlns:ucgallery="clr-namespace:HerculesWPFGallery;assembly=HerculesWPFGallery"
-             xmlns:ucangrybirds="clr-namespace:HerculesWFPAngryBirds;assembly=HerculesWFPAngryBirds"
              xmlns:ucdjrequestor="clr-namespace:HerculesWPFDJRequestor;assembly=HerculesWPFDJRequestor"
              d:DesignHeight="768" d:DesignWidth="1024">
 
@@ -33,7 +32,6 @@
             <ucgamemenu:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlgamemenu" IsEnabled="True" Visibility="Hidden" />
             <ucttt:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlttt" IsEnabled="True" Visibility="Hidden" />
             <ucgallery:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlgallery" IsEnabled="True" Visibility="Hidden" />
-            <ucangrybirds:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlangrybirds" IsEnabled="True" Visibility="Hidden" />
             <ucdjrequestor:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctldjrequestor" IsEnabled="True" Visibility="Hidden" />
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagepromo" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/SURVEYSCREEN.jpg" />
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagecono" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/concierge.png" />

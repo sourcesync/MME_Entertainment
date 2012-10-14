@@ -14,7 +14,7 @@ namespace MME.Hercules
                 if (!ConfigUtility.GetValue("CameraEnabled").Equals("1"))
                     return;
 
-                if (!ConfigUtility.GetValue("CameraName").Equals("Web"))
+                if (ConfigUtility.GetValue("CameraName").Equals("Web"))
                     return;
 
                 // Start Camera

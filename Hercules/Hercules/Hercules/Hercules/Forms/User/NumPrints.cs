@@ -30,10 +30,16 @@ namespace MME.Hercules.Forms.User
             WindowUtility.SetScreen(pb, "chooseprint.jpg");
                 //Hercules.Properties.Resources.PHOTOTYPE_SCREEN);
 
+
             this.timeoutlabel.Visible = false;
             this.b1.Parent = pb;
             this.b2.Parent = pb;
             this.b3.Parent = pb;
+
+
+            this.Refresh();
+
+            SoundUtility.Play("print.wav");
         }
 
         private void b1_Click(object sender, EventArgs e)

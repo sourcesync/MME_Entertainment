@@ -81,6 +81,38 @@ namespace MME.Hercules.Forms.User
                 this.fbyes.Location = new Point(this.fbyes.Location.X, this.fbyes.Location.Y + yoff);
             }
 
+            //possibly adjust the keyboard...
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FBBUTTON_KEYBOARD_OFFSET")))
+            {
+                String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "FBBUTTON_KEYBOARD_OFFSET");
+
+                int yoff = int.Parse( offset );
+
+                this.keyboard.Location = new Point(this.keyboard.Location.X, this.keyboard.Location.Y + yoff);
+            }
+
+            //possibly adjust the browser area...
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FBBUTTON_KEYBOARD_OFFSET")))
+            {
+                String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "FBBUTTON_KEYBOARD_OFFSET");
+
+                int yoff = int.Parse(offset);
+
+                this.webBrowser1.Location = new Point(this.webBrowser1.Location.X, this.webBrowser1.Location.Y + yoff);
+
+                this.notice.Location = new Point(this.notice.Location.X, this.notice.Location.Y + yoff);
+            }
+
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FB_FINISH_OFFSET")))
+            {
+                String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "FB_FINISH_OFFSET");
+
+                int yoff = int.Parse(offset);
+
+                this.skip.Location = new Point(this.skip.Location.X, yoff);
+                this.finished.Location = new Point(this.finished.Location.X, yoff);
+            }
 
             if (ConfigUtility.IsDeveloperMode)
             {
@@ -191,6 +223,12 @@ namespace MME.Hercules.Forms.User
                     }
 
                     this.labelQuestion.Text = "Would you like to post your photo to FaceBook?";
+
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FB_POST_TEXT")))
+                    {
+                        String text = ConfigUtility.GetConfig(ConfigUtility.Config, "FB_POST_TEXT");
+                        this.labelQuestion.Text = text;
+                    }
                 }
                 else
                 {

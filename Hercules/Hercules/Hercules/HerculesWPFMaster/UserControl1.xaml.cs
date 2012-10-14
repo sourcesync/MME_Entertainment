@@ -103,6 +103,7 @@ namespace HerculesWPFMaster
         private bool silenced = false;
 
         //public WebBrowser webBrowser1 = null;
+        public bool offline = false;
 
         public System.Collections.Hashtable webkey = new System.Collections.Hashtable();
 
@@ -128,7 +129,7 @@ namespace HerculesWPFMaster
             ctls.Add(this.ctlgamemenu);
             ctls.Add(this.ctlttt);
             ctls.Add(this.ctlgallery);
-            ctls.Add(this.ctlangrybirds);
+            //ctls.Add(this.ctlangrybirds);
             ctls.Add(this.ctldjrequestor);
 
             this.webBrowser1.Loaded +=new RoutedEventHandler(webBrowser1_Loaded);
@@ -398,8 +399,8 @@ namespace HerculesWPFMaster
             this.ctlttt.Visibility = System.Windows.Visibility.Hidden;
             this.ctlgallery.Visibility = System.Windows.Visibility.Hidden;
             this.ctlgallery.Stop();
-            this.ctlangrybirds.Visibility = System.Windows.Visibility.Hidden;
-            this.ctlangrybirds.Stop();
+            //this.ctlangrybirds.Visibility = System.Windows.Visibility.Hidden;
+            //this.ctlangrybirds.Stop();
             this.ctldjrequestor.Visibility = System.Windows.Visibility.Hidden;
             this.ctldjrequestor.Stop();
 
@@ -544,9 +545,9 @@ namespace HerculesWPFMaster
         public void ShowAngryBirds()
         {
             this.HideAll();
-            this.ctlangrybirds.Visibility = System.Windows.Visibility.Visible;
-            this.ctlangrybirds.Restart();
-            this.current = this.ctlangrybirds;
+            //this.ctlangrybirds.Visibility = System.Windows.Visibility.Visible;
+            //this.ctlangrybirds.Restart();
+            //this.current = this.ctlangrybirds;
             this.ShowRotators();
             this.ShowBack();
         }
@@ -665,6 +666,9 @@ namespace HerculesWPFMaster
 
         public void ShowWeb(String weburl, bool ab)
         {
+            if (weburl.ToLower().StartsWith("http:") && this.offline)
+                return;
+
             this.HideAll();
 
             /*
@@ -953,10 +957,10 @@ namespace HerculesWPFMaster
             {
                 this.ShowGameMenu();
             }
-            else if (this.current == this.ctlangrybirds)
-            {
-                this.ShowGameMenu();
-            }
+            //else if (this.current == this.ctlangrybirds)
+            //{
+            //    this.ShowGameMenu();
+            //}
             else if (this.current != this.ctlmain)
             {
                 this.ShowMain();

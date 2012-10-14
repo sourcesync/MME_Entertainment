@@ -119,6 +119,11 @@ namespace MME.Hercules.Forms.User
                 skipArea.BackColor = Color.Transparent;
 
 
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FinishedEmailButtonColor")))
+                finished.BackColor = ColorTranslator.FromHtml(ConfigUtility.GetConfig(ConfigUtility.Config, "FinishedEmailButtonColor"));
+            else
+                finished.BackColor = Color.Transparent;
+
             // adjust keyboard location...
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")))
             {
@@ -126,20 +131,37 @@ namespace MME.Hercules.Forms.User
                     new Point(keyboard.Location.X, keyboard.Location.Y +
                         int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")));
 
-                this.textBox1.Location =
-                    new Point(this.textBox1.Location.X, this.textBox1.Location.Y +
-                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")));
 
-                this.skip.Location =
-                    new Point(this.skip.Location.X, this.skip.Location.Y +
-                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")));
-
-                this.finished.Location =
-                    new Point(this.finished.Location.X, this.finished.Location.Y +
-                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")));
 
                 this.Refresh();
                 System.Threading.Thread.Sleep(1);
+            }
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardDisplayY")))
+            {
+                this.textBox1.Location =
+                    new Point(this.textBox1.Location.X, this.textBox1.Location.Y +
+                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardDisplayY")));
+
+                this.skip.Location =
+                    new Point(this.skip.Location.X, this.skip.Location.Y +
+                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardDisplayY")));
+
+                this.finished.Location =
+                    new Point(this.finished.Location.X, this.finished.Location.Y +
+                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardDisplayY")));
+
+                this.Refresh();
+                System.Threading.Thread.Sleep(1);
+            }
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardFinishY")))
+            {
+                int y = int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardFinishY"));
+                this.finished.Location = 
+                    new Point( this.finished.Location.X, y );
+                this.skip.Location =
+                    new Point(this.finished.Location.X, y);
             }
 
             if (!this.ispromo)
@@ -162,7 +184,13 @@ namespace MME.Hercules.Forms.User
             SoundUtility.Play(Hercules.Properties.SoundResources.SELECTION_BUTTON);
 
             Thread.Sleep(1000);
-            
+
+            //this.textBox1.Text = "george@devnullenterprises.com";
+            //this.Refresh();
+            //Thread.Sleep(1000);
+
+            this.currentSession.EmailAddress = this.textBox1.Text;
+
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 

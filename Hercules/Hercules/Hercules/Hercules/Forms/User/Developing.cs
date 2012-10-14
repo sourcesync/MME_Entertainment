@@ -341,7 +341,11 @@ namespace MME.Hercules.Forms.User
             
             // load the template            
             Bitmap template = null;
-            if (!this.istable)
+            if (ConfigUtility.GetValue("CameraName").Equals("Web")) // web cam, not table
+            {
+                template = new Bitmap("Skins\\" + ConfigUtility.Skin + "\\Templates\\email-cropped.jpg");
+            }
+            else if (!this.istable)
             {
                 template = new Bitmap("Skins\\" + ConfigUtility.Skin + "\\Templates\\email.jpg");
             }
@@ -357,8 +361,32 @@ namespace MME.Hercules.Forms.User
                     Bitmap photo = new Bitmap(this.currentSession.PhotoPath + "\\photo" + this.currentSession.FavoritePhoto + ".jpg");
 
                     //345,258
+                    if (ConfigUtility.GetValue("CameraName").Equals("Web")) // web cam, not table
+                    {
 
-                    if (!this.istable)
+                        System.Drawing.Image mini = photo.GetThumbnailImage(270, 218, null, IntPtr.Zero);
+
+                        // Clear handle to original file so that we can overwrite it if necessary
+                        photo.Dispose();
+
+                        int embed_x = 25;
+                        int embed_y = 20;
+                        if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TemplateEmbedX")))
+                        {
+                            embed_x = int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "TemplateEmbedX"));
+                        }
+
+                        if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TemplateEmbedY")))
+                        {
+                            embed_y = int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "TemplateEmbedY"));
+                        }
+
+                        grfx.DrawImage(mini, embed_x, embed_y, mini.Width, mini.Height);
+                        mini.Dispose();
+
+                        mini.Dispose();
+                    }
+                    else  if (!this.istable) // normal
                     {
                         photo.RotateFlip(RotateFlipType.Rotate90FlipNone);
 
@@ -372,7 +400,7 @@ namespace MME.Hercules.Forms.User
                         grfx.DrawImage(mini, 25, 20, mini.Width, mini.Height);
                         mini.Dispose();
                     }
-                    else
+                    else // vid table
                     {
                         //System.Drawing.Image mini = photo.GetThumbnailImage(270, 218, null, IntPtr.Zero);
 
@@ -381,9 +409,9 @@ namespace MME.Hercules.Forms.User
                         // Clear handle to original file so that we can overwrite it if necessary
                         photo.Dispose();
 
-                        grfx.DrawImage(mini, 
-                            (int)((1024 - mini.Width) / 2.0f), 
-                            (int)((768 - mini.Height) / 2.0f), 
+                        grfx.DrawImage(mini,
+                            (int)((1024 - mini.Width) / 2.0f),
+                            (int)((768 - mini.Height) / 2.0f),
                             mini.Width, mini.Height);
 
                         mini.Dispose();
@@ -407,14 +435,48 @@ namespace MME.Hercules.Forms.User
                 String p2 = this.currentSession.EmailAddress;
                 String p3 = this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg";
 
-                FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.EmailAddress, 
-                    this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+                bool offline = false;
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
+                {
+                    String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
+                    if (val == "1")
+                        offline = true;
+                }
+
+                if (!offline)
+                {
+                    FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.EmailAddress,
+                        this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+                }
                 ConfigUtility.IncrementCounter("Email");
+
+                if (offline)
+                {
+                    //  Write the email address to that photo directory...
+                    String pth = this.currentSession.PhotoPath + "\\OFFLINE.txt";
+                    if ((!System.IO.File.Exists(pth)) && (this.currentSession.EmailAddress != null))
+                    {
+                        StreamWriter email_file = System.IO.File.CreateText(pth);
+                        email_file.WriteLine(this.currentSession.EmailAddress);
+                        email_file.Flush();
+                        email_file.Close();
+                    }
+                }
+
             }
 
             if (ConfigUtility.GetValue("UploadFavoritePhotoToAutolycus").Equals("1"))
             {
-                FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+                bool offline = false;
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
+                {
+                    String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
+                    if (val == "1")
+                        offline = true;
+                }
+
+                if (!offline)
+                    FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
             }
 
 
@@ -425,15 +487,23 @@ namespace MME.Hercules.Forms.User
         {
             if ((ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1")) && !string.IsNullOrEmpty(this.currentSession.FacebookAccessToken))
             {
-                
+
+                bool offline = false;
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
+                {
+                    String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
+                    if (val == "1")
+                        offline = true;
+                }
+
+                if (!offline)
+                {
+                    // now tell facebook to make the post
+                    FacebookUtility.PostCheckin(this.currentSession.FacebookAccessToken);
 
 
-
-                // now tell facebook to make the post
-                FacebookUtility.PostCheckin(this.currentSession.FacebookAccessToken);
-
-
-                ConfigUtility.IncrementCounter("Facebook");
+                    ConfigUtility.IncrementCounter("Facebook");
+                }
             }
         }
 
@@ -448,6 +518,7 @@ namespace MME.Hercules.Forms.User
                 // upload to publish server (don't need to send the email if it was sent custom way 
                 if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "EmailPublishUrl")))
                 {
+                    
                     // debugging so that it works without web cam...
                     if (!File.Exists(this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg"))
                     {
@@ -457,31 +528,54 @@ namespace MME.Hercules.Forms.User
                                 this.currentSession.FavoritePhotoFilename + ".jpg");
                     }
 
-
-                    // try 3 times
-                    response = FileUtility.HerculesUpload(DateTime.Now.Ticks.ToString(), "", this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
-
-                    if (response != "1")
-                        response = FileUtility.HerculesUpload(DateTime.Now.Ticks.ToString(), "", this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
-
-                    if (response != "1")
+                    bool offline = false;
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
                     {
-                        Thread.Sleep(500);
+                        String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
+                        if (val == "1")
+                            offline = true;
+                    }
+
+                    if (!offline)
+                    {
+
+                        // try 3 times
                         response = FileUtility.HerculesUpload(DateTime.Now.Ticks.ToString(), "", this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+
+                        if (response != "1")
+                            response = FileUtility.HerculesUpload(DateTime.Now.Ticks.ToString(), "", this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+
+                        if (response != "1")
+                        {
+                            Thread.Sleep(500);
+                            response = FileUtility.HerculesUpload(DateTime.Now.Ticks.ToString(), "", this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+                        }
                     }
 
                 }
                 else if (!string.IsNullOrEmpty(this.currentSession.EmailAddress))
                 {
-                    // try 3 times
-                    response = FileUtility.HerculesUpload(DateTime.Now.Ticks.ToString(), this.currentSession.EmailAddress, this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename.ToString() + ".jpg", "");
+                    bool offline = false;
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
+                    {
+                        String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
+                        if (val == "1")
+                            offline = true;
+                    }
 
-                    if (response != "1")
+                    if (!offline)
+                    {
+
+                        // try 3 times
                         response = FileUtility.HerculesUpload(DateTime.Now.Ticks.ToString(), this.currentSession.EmailAddress, this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename.ToString() + ".jpg", "");
 
-                    if (response != "1")
-                    {
-                        Thread.Sleep(500);
+                        if (response != "1")
+                            response = FileUtility.HerculesUpload(DateTime.Now.Ticks.ToString(), this.currentSession.EmailAddress, this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename.ToString() + ".jpg", "");
+
+                        if (response != "1")
+                        {
+                            Thread.Sleep(500);
+                        }
                     }
 
                     ConfigUtility.IncrementCounter("Email");
@@ -506,15 +600,24 @@ namespace MME.Hercules.Forms.User
                 else
                     link = FacebookUtility.GetConfig("link");
 
+                bool offl = false;
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
+                    {
+                        String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
+                        if (val == "1")
+                            offl = true;
+                    }
 
-                // now tell facebook to make the post
-                FacebookUtility.PostWall(this.currentSession.FacebookAccessToken,
-                        photoUrl,
-                        FacebookUtility.GetConfig("title"),
-                        "",
-                        FacebookUtility.GetConfig("desc"),
-                        link);
-
+                if (!offl)
+                {
+                    // now tell facebook to make the post
+                    FacebookUtility.PostWall(this.currentSession.FacebookAccessToken,
+                            photoUrl,
+                            FacebookUtility.GetConfig("title"),
+                            "",
+                            FacebookUtility.GetConfig("desc"),
+                            link);
+                }
 
                 ConfigUtility.IncrementCounter("Facebook");
             }

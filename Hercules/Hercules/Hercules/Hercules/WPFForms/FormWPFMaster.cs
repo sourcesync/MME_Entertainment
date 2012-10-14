@@ -15,6 +15,7 @@ namespace MME.Hercules.WPFForms
         HerculesWPFMaster.UserControl1 ctlmaster = null;
         ElementHost masterhost = null;
         public String option = "main";
+        public bool offline = false;
 
         public FormWPFMaster()
         {
@@ -71,6 +72,12 @@ namespace MME.Hercules.WPFForms
             //this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
             //this.Controls.Add(this.masterhost);
+        }
+
+        public void SetOffline(bool offline)
+        {
+            this.offline = offline;
+            this.ctlmaster.offline = offline;
         }
 
         private void master_selected(String option)

@@ -66,6 +66,7 @@ namespace MME.Hercules.Forms.User
         private CustomControl.OrientAbleTextControls.OrientedTextLabel labelr2f;
         private CustomControl.OrientAbleTextControls.OrientedTextLabel labelr3f;
         private CustomControl.OrientAbleTextControls.OrientedTextLabel labelr4f;
+        private bool prev_set = false;
         public bool b_show_overlay_buttons = true;
         //gw
 
@@ -128,6 +129,7 @@ namespace MME.Hercules.Forms.User
         {
             InitializeComponent();
 
+            
 
             this.vidPanel[0] = this.panelVideoOne;
             this.vidPanel[1] = this.panelVideoOne;
@@ -732,6 +734,8 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
+                Application.DoEvents();
+                //System.Windows.Forms.MessageBox.Show("about to grab");
 
                 // Create a Bitmap of the same dimension of panelVideoPreview (Width x Height)
                 Panel pnl = null;
@@ -756,6 +760,8 @@ namespace MME.Hercules.Forms.User
                     //toolStripStatusLabel1.Text = strGrabFileName;
 
 
+                    Application.DoEvents();
+                    //System.Windows.Forms.MessageBox.Show("about to save");
 
                     bitmap.Save(strGrabFileName, System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
@@ -776,12 +782,22 @@ namespace MME.Hercules.Forms.User
                 WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_FLIPPED_SCREEN);
             }
 
+            // adjust vid panel...
+
+
             // global y offset...
             int yoff = 0;
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TAKEPHOTO_OFFSET")))
             {
                 String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "TAKEPHOTO_OFFSET");
                 yoff = int.Parse(offset);
+            }
+
+            int ypoff = 0;
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TAKEPHOTO_PREVIEW_OFFSET")))
+            {
+                String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "TAKEPHOTO_PREVIEW_OFFSET");
+                ypoff = int.Parse(offset);
             }
 
             //backbutton
@@ -799,7 +815,7 @@ namespace MME.Hercules.Forms.User
             if (static_orientation == 0)
             {
                 infof.Visible = false;
-                info.Visible = true;
+                info.Visible = false;
                 if (mode==0)
                     info.Location = new Point(100, 259 + yoff);
                 else
@@ -807,7 +823,7 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
-                infof.Visible = true;
+                infof.Visible = false;
                 info.Visible = false;
                 if (mode==0)
                     infof.Location = new Point(1024 - (100 + infof.Size.Width), 768 - (259 + infof.Size.Height + yoff));
@@ -819,22 +835,24 @@ namespace MME.Hercules.Forms.User
             //numbers
             //this.labell1.Visible = true;
             //this.labelr2.Visible = true;
+            int loff = -80;
+            int roff = 170;
             if (static_orientation == 0)
             {
                 int x = 118;
                 int y = 316;
                 int offset = 40;
-                this.labell1.Location = new Point(x - offset, y + yoff);
-                this.labell2.Location = new Point(x - offset, y + yoff);
-                this.labell3.Location = new Point(x - offset, y + yoff);
-                this.labell4.Location = new Point(x - offset, y + yoff);
+                this.labell1.Location = new Point(x - offset + loff, y + yoff);
+                this.labell2.Location = new Point(x - offset + loff, y + yoff);
+                this.labell3.Location = new Point(x - offset + loff, y + yoff);
+                this.labell4.Location = new Point(x - offset + loff, y + yoff);
 
                 x = 678;
                 y = 309;
-                this.labelr1.Location = new Point(x + offset, y + yoff);
-                this.labelr2.Location = new Point(x + offset, y + yoff);
-                this.labelr3.Location = new Point(x + offset, y + yoff);
-                this.labelr4.Location = new Point(x + offset, y + yoff);
+                this.labelr1.Location = new Point(x + offset + roff, y + yoff);
+                this.labelr2.Location = new Point(x + offset + roff, y + yoff);
+                this.labelr3.Location = new Point(x + offset + roff, y + yoff);
+                this.labelr4.Location = new Point(x + offset + roff, y + yoff);
             }
             else
             {
@@ -861,12 +879,45 @@ namespace MME.Hercules.Forms.User
             }
 
             //vidpanels...
+            int prevoff = 0;
             if (static_orientation == 0)
             {
-                this.vidPanel[0].Location = new Point(330, 321 + yoff);
-                this.vidPanel[1].Location = new Point(330, 321 + yoff);
+                //this.vidPanel[0].Location = new Point(330, 321 + yoff);
+                //this.vidPanel[1].Location = new Point(330, 321 + yoff);
+
+
                 //this.vidPanel[0].Location = new Point(330+600, 321);
                 //this.vidPanel[1].Location = new Point(330+600, 321);
+
+                // new size and readjust...
+                if (!prev_set)
+                {
+                    ypoff = 0;
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "VIDPANEL_YOFF")))
+                    {
+                        String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "VIDPANEL_YOFF");
+                        ypoff = int.Parse(offset);
+                    }
+
+                    int sizef = 1;
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "VIDPANEL_SCALE")))
+                    {
+                        String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "VIDPANEL_SCALE");
+                        sizef = int.Parse(offset);
+                    }
+
+                    this.panelVideoOne.Size = new Size(
+                        (int)this.panelVideoOne.Size.Width * sizef, (int)this.panelVideoOne.Size.Height * sizef);
+                    this.vidPanel[0].Location = new Point(
+                        (int)((this.Size.Width - this.panelVideoOne.Size.Width) / 2.0),
+                        this.vidPanel[0].Location.Y + ypoff);
+                    this.vidPanel[1].Location = new Point(
+                        (int)((this.Size.Width - this.panelVideoOne.Size.Width) / 2.0),
+                        this.vidPanel[0].Location.Y + ypoff);
+                    prevoff = 50;
+                    prev_set = true;
+                     
+                }
             }
             else
             {
@@ -885,10 +936,18 @@ namespace MME.Hercules.Forms.User
             // prompt...
             if (static_orientation == 0)
             {
-                this.pictureBoxLike.Location = new Point(94, 598 + yoff);
-                this.pictureBoxAgain.Location = new Point(479, 598 + yoff);
-                this.labelLike.Location = new Point(169, 610 + yoff);
-                this.labelAgain.Location = new Point(550, 610 + yoff);
+                int lower = 0;
+                
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "LIKEAGAIN_LOWER")))
+                {
+                    String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "LIKEAGAIN_LOWER");
+                    lower = int.Parse(offset);
+                }
+
+                this.pictureBoxLike.Location = new Point(94, 598 + yoff + prevoff + lower);
+                this.pictureBoxAgain.Location = new Point(479, 598 + yoff + prevoff + lower);
+                this.labelLike.Location = new Point(169, 610 + yoff + prevoff + lower);
+                this.labelAgain.Location = new Point(550, 610 + yoff + prevoff + lower);
                 if (mode == 0)
                 {
                     this.pictureBoxLike.Visible = false;
@@ -942,6 +1001,9 @@ namespace MME.Hercules.Forms.User
                     this.labelAgainf.Visible = true;
                 }
             }
+
+            infof.Visible = false;
+            info.Visible = false;
         }
 
         private CustomControl.OrientAbleTextControls.OrientedTextLabel MakeFlipLabel(System.Windows.Forms.Label lbl)
@@ -997,6 +1059,28 @@ namespace MME.Hercules.Forms.User
                 this.pictureBoxFlipBottom.Visible = false;
             }
 
+            // skip area...
+
+            skipArea.Parent = pb;
+            skipArea.Visible = true;
+
+            // set skip button
+            skipArea.Location = new Point(Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonX")),
+                              Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonY")));
+
+            skipArea.Width = Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonWidth"));
+            skipArea.Height = Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonHeight"));
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonColor")))
+                skipArea.BackColor = ColorTranslator.FromHtml(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonColor"));
+            else
+            {
+                skipArea.BackColor = Color.Transparent;
+                
+            }
+
+
+
             // adjust form/pb sizes...
             Size sz = WindowUtility.GetScreenSize(Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
             this.Size = sz;
@@ -1036,17 +1120,26 @@ namespace MME.Hercules.Forms.User
             infof.ForeColor = info.ForeColor;
             //info.BackColor = System.Drawing.Color.Red;
             //infof.BackColor = System.Drawing.Color.Red;
-            info.Visible = true;
+            info.Visible = false;
             info.Parent = pb;
             info.AutoSize = false;
             info.Text = "Get Ready.  We are about to take your picture!";
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TAKEPHOTO_MESSAGE")))
+            {
+                String message = ConfigUtility.GetConfig(ConfigUtility.Config, "TAKEPHOTO_MESSAGE");
+                info.Text = message;
+            }
             info.TextAlign = ContentAlignment.MiddleCenter;
             Font nf = new Font(FontFamily.GenericSansSerif, 30);
             info.Font = nf;
             infof.Text = info.Text;
             infof.Size = info.Size;
             infof.Font = new Font(info.Font.FontFamily, info.Font.SizeInPoints, info.Font.Style);
+            infof.Visible = false;
 
+
+            infof.Visible = false;
+            info.Visible = false;
 
             //  Put elements into place based on orientation...
             this.Orient(this.mode);
@@ -1132,7 +1225,29 @@ namespace MME.Hercules.Forms.User
             this.labelr4.Parent = pb;
             this.labelr4.ForeColor = info.ForeColor;
             this.labelr4f.ForeColor = info.ForeColor;
-            
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "CountdownColor")))
+            {
+                Color color = ColorTranslator.FromHtml(ConfigUtility.GetConfig(ConfigUtility.Config,
+                    "CountdownColor"));
+                this.labelr1.ForeColor = color;
+                this.labelr1f.ForeColor = color;
+                this.labelr2.ForeColor = color;
+                this.labelr2f.ForeColor = color;
+                this.labelr3.ForeColor = color;
+                this.labelr3f.ForeColor = color;
+                this.labelr4.ForeColor = color;
+                this.labelr4f.ForeColor = color;
+                this.labell1.ForeColor = color;
+                this.labell1f.ForeColor = color;
+                this.labell2.ForeColor = color;
+                this.labell2f.ForeColor = color;
+                this.labell3.ForeColor = color;
+                this.labell3f.ForeColor = color;
+                this.labell4.ForeColor = color;
+                this.labell4f.ForeColor = color;
+            }
+
             //  Setup video preview...
             if (istable)
             {
@@ -1149,6 +1264,9 @@ namespace MME.Hercules.Forms.User
                 }
                 else if (this.num_cams == 2)
                 {
+                    //System.Windows.Forms.MessageBox.Show("2 cams!");
+                    Application.DoEvents();
+                    
                     if (this.global_orientation == 1)
                     {
                         this.startpreview(0);
@@ -1169,17 +1287,24 @@ namespace MME.Hercules.Forms.User
             System.Threading.Thread.Sleep(1);
             System.Threading.Thread.Sleep(1000);
 
+            //System.Windows.Forms.MessageBox.Show("about to play help!");
+            Application.DoEvents();
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "PlayHelpAudio")))
+            {
+                SoundUtility.PlaySync("photo.wav");
+            }
+
             //  Get Ready...
             SoundUtility.PlaySync(Hercules.Properties.SoundResources.GET_READY);
             if (this.static_orientation == 0)
             {
-                this.info.Visible = true;
+                this.info.Visible = false;
                 this.infof.Visible = false;
             }
             else
             {
                 this.info.Visible = false;
-                this.infof.Visible = true;
+                this.infof.Visible = false;
             }
 
             /*
@@ -1200,10 +1325,14 @@ namespace MME.Hercules.Forms.User
 
              * */
 
+            Application.DoEvents();
+            //System.Windows.Forms.MessageBox.Show("about to show countdown");
+
             //  Present the countodown...
             this.ShowCountdown(false, 0, true);
               
             //  Grab the image...
+            
             SoundUtility.PlaySync(Hercules.Properties.SoundResources.CAMERA_CLICK);
             this.GrabImage(0);
 
@@ -1286,6 +1415,25 @@ namespace MME.Hercules.Forms.User
                 this.pictureBoxBack.Visible = false;
                 this.pictureBoxFlip.Visible = false;
                 this.pictureBoxFlipBottom.Visible = false;
+            }
+
+
+            skipArea.Parent = pb;
+            skipArea.Visible = true;
+
+            // set skip button
+            skipArea.Location = new Point(Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonX")),
+                              Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonY")));
+
+            skipArea.Width = Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonWidth"));
+            skipArea.Height = Convert.ToInt32(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonHeight"));
+
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonColor")))
+                skipArea.BackColor = ColorTranslator.FromHtml(ConfigUtility.GetConfig(ConfigUtility.Config, "SkipEmailButtonColor"));
+            else
+            {
+                skipArea.BackColor = Color.Transparent;
+
             }
 
 
@@ -1504,6 +1652,11 @@ namespace MME.Hercules.Forms.User
                     if (this.currentSession.SelectedColorType == ColorType.BW)
                         this.preview.Image = FileUtility.MakeGrayscale((System.Drawing.Bitmap)this.preview.Image);
 
+                    this.preview.Visible = true;
+                    this.preview.BringToFront();
+                    this.Invalidate();
+                    this.Refresh();
+                    Thread.Sleep(1);
 
                 }
                 //THREADED
@@ -1897,6 +2050,17 @@ namespace MME.Hercules.Forms.User
                 static_orientation = 0;
                 this.Orient(this.mode);
             }
+        }
+
+        private void skipArea_Click(object sender, EventArgs e)
+        {
+
+            if (pb.Image != null)
+                pb.Image.Dispose();
+
+            SoundUtility.Play(Hercules.Properties.SoundResources.SELECTION_BUTTON);
+            Thread.Sleep(1000);
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }
 

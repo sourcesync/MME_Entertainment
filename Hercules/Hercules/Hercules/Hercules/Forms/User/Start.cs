@@ -186,6 +186,17 @@ namespace MME.Hercules.Forms.User
             //gw PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
             //false);
 
+            //  Deal with offline status...
+            bool offline = false;
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
+            {
+                String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
+                if (val == "1")
+                    offline = true;
+            }
+
+
+
             if (ConfigUtility.GetValue("BoothType") == "2")
             {
                 MME.Hercules.WPFForms.FormWPFMaster wpffrm = null;
@@ -198,6 +209,7 @@ namespace MME.Hercules.Forms.User
                         if (wpffrm == null)
                         {
                             wpffrm = new MME.Hercules.WPFForms.FormWPFMaster();
+                            wpffrm.SetOffline(offline);
                         }
                         wpffrm.ShowDialog();
                     }
@@ -236,7 +248,8 @@ namespace MME.Hercules.Forms.User
 
 
                         bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
-
+                        //  override if offline
+                        if (offline) AllowFacebookPublish = false;
 
                         //  Force favorite to first one...
                         if (dr == System.Windows.Forms.DialogResult.OK &&
@@ -312,6 +325,7 @@ namespace MME.Hercules.Forms.User
                     else if (wpffrm.option == "check-in") // checkin option...
                     {
                         bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
+                        if (offline) AllowFacebookPublish = false;
 
                         bool yes_clicked = false;
                         bool skip_clicked = false;
@@ -453,6 +467,7 @@ namespace MME.Hercules.Forms.User
 
 
                 bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
+                if (offline) AllowFacebookPublish = false;
 
                 if (!ConfigUtility.GetValue("CameraName").Equals("Web"))
                 {
@@ -464,6 +479,22 @@ namespace MME.Hercules.Forms.User
                         {
                             PickFavorite pvform = new PickFavorite(currentSession);
                             dr = pvform.ShowDialog();
+                        }
+                    }
+                }
+                else
+                {
+                    //  Force favorite to first one...
+                    if (dr == System.Windows.Forms.DialogResult.OK &&
+                        (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
+                        AllowFacebookPublish))
+                    {
+                        {
+                            this.currentSession.FavoritePhoto = 1;
+                            this.currentSession.FavoritePhotoFilename = "photo1";
+
+                            // set favorite - stolen from pick favorite...
+                            this.currentSession.FavoritePhotoFilename = Guid.NewGuid().ToString().Replace("-", "");
                         }
                     }
                 }
