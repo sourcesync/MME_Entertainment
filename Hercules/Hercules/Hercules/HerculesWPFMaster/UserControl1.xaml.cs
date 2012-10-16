@@ -224,6 +224,7 @@ namespace HerculesWPFMaster
         {
             if (this.webBrowser1 != null)
             {
+                this.webBrowser1.Navigate(new Uri("about:blank"));
                 this.webBrowser1.Dispose();
                 this.webBrowser1 = null;
                 this.silenced = false;
@@ -454,6 +455,11 @@ namespace HerculesWPFMaster
 
         public void ShowMain()
         {
+            if (this.webBrowser1 != null)
+            {
+                this.webBrowser1.Navigate(new Uri("about:blank"));
+            }
+
             this.HideAll();
             this.ctlmain.Visibility = System.Windows.Visibility.Visible;
             this.current = this.ctlmain;

@@ -22,6 +22,7 @@
   <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->
   <add key="TEXT_COLOR" value="#000000" />
 
+<add key="TemplateEmbedY" value="100" />
 
   <!-- touch area for start page -->
   <add key="StartButtonX" value="600" />
@@ -35,10 +36,10 @@
   <add key="SkipEmailButtonY" value="40" />
   <add key="SkipEmailButtonWidth" value="100" />
   <add key="SkipEmailButtonHeight" value="100" />
-  <add key="SkipEmailButtonColor" value=""/>
+  <add key="SkipEmailButtonColor" value=""/> 
 
-
-  <add key="FinishedEmailButtonColor" value="#FFFF00"/>
+  <add key="FinishedEmailButtonColor" value="#ff69b4"/> 
+  <add key="CountdownColor" value="#ff69b4"/> 
 
   <!-- Publish methods -->
   <add key="AllowEmailPublish" value="1" /> <!-- 1=on, 0=off -->
@@ -86,24 +87,36 @@
   <!--facebook checkin-->
 
   
-  <add key="FaceBookCheckinPlaceID" value="204068136279565" />
-  <add key="FaceBookCheckinMessage" value="I was at the Buddy Media photobooth at Pier 60.  This is by far the coolest thing I have ever seen!" />
-  <add key="FaceBookCheckinLatitude" value="40.748557" />
-  <add key="FaceBookCheckinLongitude" value="-73.999297" />
+  <add key="FaceBookCheckinPlaceID" value="164889353570329" />
+  <add key="FaceBookCheckinMessage" value="This picture was taken at Bloomingdale's 59th Street at the Estee Lauder Breast Cancer Awareness Campaign Photo Interactive Table." />
+  <add key="FaceBookCheckinLatitude" value="40.762601" />
+  <add key="FaceBookCheckinLongitude" value="-73.967217" />
   <add key="CheckinThankyouText" value="Thank you for checking-in!" />
   
   <add key="MenuCoords" value="breakfast-215,250:sliders-450,250:drinks-670,250:big_craves-215,480:sack_meals-450,480:sides-670,480" />
 
   <add key="MenuItemOffset"
   	value="photobooth:0;check-in:0;request-a-song:0" />
+  <add key="MenuOffsetY"
+  	value="435" />
 
-  <add key="FBBUTTON_OFFSET" value="100" />
+  <add key="MenuLabelOffsetY"
+  	value="1000" />
 
+  <add key="WebURLKey"
+  	value="bcacpage;http://www.facebook.com/BCACampaign,learnthefacts;C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\Skins\BCAC\factsheet.html,seethevideo;C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\Skins\BCAC\movie.html" />
+
+  <add key="FBBUTTON_OFFSET" value="0" />
+
+  <add key="FB_POST_TEXT" value="." />
+
+  <add key="OFFLINE" value="0" />
+  
   <add key="MainMenuDir" value="main" />
+  
   <!--
   <add key="SwapWebCams" value="1" />
   -->
-  <add key="OFFLINE" value="1" />
 
   <add key="CheckoutTextColor" value="blue" />
 
@@ -118,7 +131,7 @@
   <add key="Photo1_Rotate" value="0" />
 
   <add key="DJRequestSendType" value="twitter"  />
-  <add key="TablePrefix" value="Table1" />
+  <add key="TablePrefix" value="Table3" />
 
   <add key="RequestHashTag" value="BuddyMediaPier60" />
   <add key="TwitterConsumerKey" value="Xi4yTO2Ywb1dlFmWF26g" />

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Hercules facebookver="1">
 
-  <string key="TITLE" value="This picture was taken in the Buddy Media photobooth at Pier 60." />
-  <string key="DESC" value="Please visit http://www.buddymedia.com to view your favorite photo taken today!." />
+  <string key="TITLE" value="This picture was taken at Bloomingdale's 59th Street at the Estee Lauder Breast Cancer Awareness Campaign Photo Interactive Table." />
+  <string key="DESC" value="I joined the Breast Cancer Awareness Campaign at Bloomingdales 59th Street in their pursuit to raise awareness.  Early detections saves lives.  Believe in a time without breast cancer.  What we do.  What you can do. Your contributions are changing the future.  Thank you." />
   <string key="LINK" value="$CUSTOM1$" />
 
 </Hercules>
