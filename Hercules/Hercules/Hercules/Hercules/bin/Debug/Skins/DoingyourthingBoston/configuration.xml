@@ -3,7 +3,7 @@
 
   
   <!-- How many photos are printed (1, 2, 4, 6) -->
-  <add key="PHOTO_COUNT" value="1" />
+  <add key="PHOTO_COUNT" value="4" />
 
   <!-- How many prints (1=single print, 2=two prints .. up to 99999 -->
   <add key="MAX_COPIES" value="1" />
@@ -15,9 +15,11 @@
   <add key="BACKGROUNDS" value="4" />
 
   <!-- 1 = BW only, 2 = Color only 3 = User choice -->
-  <add key="COLOR_TYPES" value="3" />
+  <add key="COLOR_TYPES" value="5" />
 
   <add key="ROOM_NUMBER_MODE" value="0" />
+
+  <add key="BIRTHDAY_MODE" value="0" />
 
   <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->
   <add key="TEXT_COLOR" value="#000000" />
@@ -102,12 +104,34 @@
 
   <add key="GameMenuTextColor" value="white" />
   <add key="GameForeColor" value="black" />
-  
-  <!-- 1 Photo customization -->
-  <add key="Photo1_X" value="80" />
-  <add key="Photo1_Y" value="48" />
-  <add key="Photo1_W" value="1085" />
-  <add key="Photo1_H" value="1445" />
+
+  <add key="CustomIntegrationURL" value="http://doingourthing-admin.group360.com/photomation.php" />
+  <add key="CustomLocation" value="testlocation" />"
+
+  <!-- 4 Photo customization -->
+  <add key="Photo1_X" value="60" />
+  <add key="Photo1_Y" value="40" />
+  <add key="Photo1_W" value="570" />
+  <add key="Photo1_H" value="750" />
   <add key="Photo1_Rotate" value="0" />
+
+  <add key="Photo2_X" value="655" />
+  <add key="Photo2_Y" value="40" />
+  <add key="Photo2_W" value="570" />
+  <add key="Photo2_H" value="750" />
+  <add key="Photo2_Rotate" value="0" />
+
+  <add key="Photo3_X" value="60" />
+  <add key="Photo3_Y" value="830" />
+  <add key="Photo3_W" value="570" />
+  <add key="Photo3_H" value="750" />
+  <add key="Photo3_Rotate" value="0" />
+
+  <add key="Photo4_X" value="655" />
+  <add key="Photo4_Y" value="830" />
+  <add key="Photo4_W" value="570" />
+  <add key="Photo4_H" value="750" />
+  <add key="Photo4_Rotate" value="0" />
+
 
 </Hercules>

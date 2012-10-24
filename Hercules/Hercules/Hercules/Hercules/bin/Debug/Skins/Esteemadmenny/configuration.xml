@@ -79,6 +79,9 @@
   <add key="CustomPublishUrl" value="http://favpic.mobi/favoritephoto.php?viewing={1}_{0}"/>
 
 
+  <!-- stuff for doingyourthing -->
+  <add key="CustomIntegrationURL" value="http://doingourthing-admin.group360.com/photomation.php" />
+  <add key="CustomLocation" value="TestLocation" />
 
 
   <!-- 4 Photo customization -->
