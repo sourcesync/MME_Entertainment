@@ -98,6 +98,8 @@ namespace MME.Hercules.Forms.User
             this.currentSession.FavoritePhoto = Convert.ToInt32(bg.Name.Replace("bg", ""));
             this.currentSession.FavoritePhotoFilename = Guid.NewGuid().ToString().Replace("-", "");
 
+            //System.Windows.Forms.MessageBox.Show("favorite " + this.currentSession.FavoritePhoto + " " + this.currentSession.FavoritePhotoFilename);
+
             bg.BackColor = Color.Red;
             this.Refresh();
 

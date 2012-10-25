@@ -109,6 +109,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetItTest", "TweetItTest\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterizerTest", "TwitterizerTest\TwitterizerTest.csproj", "{0241C421-F7F1-4DE1-9A9A-E8E759FE6301}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zuess", "Zuess\Zuess.csproj", "{A1F4341F-B717-45BE-9C22-757D6AB368E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -519,6 +521,16 @@ Global
 		{0241C421-F7F1-4DE1-9A9A-E8E759FE6301}.Release|Mixed Platforms.Build.0 = Release|x86
 		{0241C421-F7F1-4DE1-9A9A-E8E759FE6301}.Release|x86.ActiveCfg = Release|x86
 		{0241C421-F7F1-4DE1-9A9A-E8E759FE6301}.Release|x86.Build.0 = Release|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Debug|x86.ActiveCfg = Debug|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Debug|x86.Build.0 = Debug|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Release|Any CPU.ActiveCfg = Release|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Release|x86.ActiveCfg = Release|x86
+		{A1F4341F-B717-45BE-9C22-757D6AB368E3}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

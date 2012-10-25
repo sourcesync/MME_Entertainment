@@ -48,6 +48,7 @@
             this.pb.Size = new System.Drawing.Size(1024, 768);
             this.pb.TabIndex = 0;
             this.pb.TabStop = false;
+            this.pb.Click += new System.EventHandler(this.pb_Click);
             // 
             // startArea
             // 
@@ -90,6 +91,7 @@
             this.pb2.TabStop = false;
             this.pb2.Visible = false;
             this.pb2.Click += new System.EventHandler(this.pb2_Click_1);
+            this.pb2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pb2_MouseDown);
             // 
             // Start
             // 

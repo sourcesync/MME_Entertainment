@@ -152,6 +152,21 @@ namespace MME.Hercules
             return str;
         }
 
+        public static string PostPublishUploadURL(string uniqueid,
+            String eventstr, string file, string filename, string location,
+                String emailaddr, String fblogin, String datestr, string url)
+        {
+            NameValueCollection nvc = new NameValueCollection();
+            nvc.Add("imageid", uniqueid);
+            nvc.Add("event", eventstr);
+            nvc.Add("location", location);
+            nvc.Add("email", emailaddr);
+            nvc.Add("fblogin", fblogin);
+            nvc.Add("date", datestr);
+
+            return HttpUploadFile(url, file, filename, "photo", "image/jpeg", nvc);
+        }
+
         public static string PostPublishUpload(string uniqueid, string file, string filename)
         {
             NameValueCollection nvc = new NameValueCollection();
@@ -266,6 +281,8 @@ namespace MME.Hercules
             string header = string.Format(headerTemplate, paramName, file, contentType);
             byte[] headerbytes = System.Text.Encoding.UTF8.GetBytes(header);
             rs.Write(headerbytes, 0, headerbytes.Length);
+
+            //System.Windows.Forms.MessageBox.Show("trying to open " + file);
 
             FileStream fileStream = new FileStream(file, FileMode.Open, FileAccess.Read);
             byte[] buffer = new byte[4096];

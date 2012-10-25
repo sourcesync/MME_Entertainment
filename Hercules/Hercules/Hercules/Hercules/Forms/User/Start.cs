@@ -28,11 +28,6 @@ namespace MME.Hercules.Forms.User
            if (ConfigUtility.IsDeveloperMode)
                this.WindowState = FormWindowState.Normal;
 
-           if (ConfigUtility.GetValue("BoothType") == "2")
-           {
-               this.juststart();
-               return;
-           }
 
            //gw
             //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
@@ -90,6 +85,14 @@ namespace MME.Hercules.Forms.User
                 sb1.Parent = pb;
 
             }
+
+            /*
+            if (ConfigUtility.GetValue("BoothType") == "0")
+            {
+                this.juststart();
+                //return;
+            }
+             * */
         }
 
         private DialogResult ProcessSequenceSteps(DialogResult dr)
@@ -177,6 +180,7 @@ namespace MME.Hercules.Forms.User
             // Start new session
             currentSession = new Session();
 
+           // System.Windows.Forms.MessageBox.Show(currentSession.ID.ToString());
             
             DialogResult dr = System.Windows.Forms.DialogResult.OK;
 
@@ -360,6 +364,15 @@ namespace MME.Hercules.Forms.User
                     dr = ProcessSequenceSteps(dr);
                 }
 
+                // Are we requiring birthday ?            
+                if (dr == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (User.Birthday bd = new Birthday(currentSession))
+                    {
+                        dr = bd.ShowDialog();
+                    }
+                }
+
                 // Are we requiring room number mode?            
                 if (ConfigUtility.RoomNumberMode && dr == System.Windows.Forms.DialogResult.OK)
                 {
@@ -469,6 +482,9 @@ namespace MME.Hercules.Forms.User
                 bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
                 if (offline) AllowFacebookPublish = false;
 
+                
+
+                
                 if (!ConfigUtility.GetValue("CameraName").Equals("Web"))
                 {
                     // As to pick favorite if emailing
@@ -536,6 +552,8 @@ namespace MME.Hercules.Forms.User
 
             if (ConfigUtility.IsDeveloperMode) 
                 this.Show();
+
+            
         }
 
         private void StartForm_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -631,12 +649,33 @@ namespace MME.Hercules.Forms.User
         
         private void pb2_Click_1(object sender, EventArgs e)
         {
-            SoundUtility.Play(Hercules.Properties.SoundResources.SELECTION_BUTTON);
+            //SoundUtility.Play(Hercules.Properties.SoundResources.SELECTION_BUTTON);
 
-            Thread.Sleep(800);
+            //Thread.Sleep(800);
 
-            pb2.Visible = false;
+            //pb2.Visible = false;
 
+            PlaySelectionSound();
+
+            // Start participant workflow
+            Workflow();
+
+        }
+
+        private void pb2_MouseDown(object sender, MouseEventArgs e)
+        {
+            //PlaySelectionSound();
+
+            // Start participant workflow
+            //Workflow();
+        }
+
+        private void pb_Click(object sender, EventArgs e)
+        {
+            PlaySelectionSound();
+
+            // Start participant workflow
+            Workflow();
         }
 
 

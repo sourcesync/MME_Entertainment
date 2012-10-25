@@ -112,7 +112,8 @@ namespace MME.Hercules.Forms.User
 
             if (!istable)
             {
-                SoundUtility.Play(Hercules.Properties.SoundResources.DEVELOPING_PLEASE_WAIT);
+
+                // SoundUtility.Play(Hercules.Properties.SoundResources.DEVELOPING_PLEASE_WAIT);
             }
 
             if (!istable)
@@ -145,6 +146,12 @@ namespace MME.Hercules.Forms.User
                 }
 
             }
+
+
+
+            this.DialogResult = DialogResult.OK;
+            this.Refresh();
+            return;
 
             if (!istable)
             {
@@ -358,7 +365,10 @@ namespace MME.Hercules.Forms.User
             {
                 for (int i=0; i<=ConfigUtility.PhotoCount - 1; i++)
                 {
-                    Bitmap photo = new Bitmap(this.currentSession.PhotoPath + "\\photo" + this.currentSession.FavoritePhoto + ".jpg");
+                    String path = this.currentSession.PhotoPath + "\\photo" + this.currentSession.FavoritePhoto + ".jpg";
+                    //System.Windows.Forms.MessageBox.Show("bitmap from fav " + path);
+
+                    Bitmap photo = new Bitmap(path);
 
                     //345,258
                     if (ConfigUtility.GetValue("CameraName").Equals("Web")) // web cam, not table
@@ -421,8 +431,10 @@ namespace MME.Hercules.Forms.User
 
             if (this.currentSession.SelectedColorType == ColorType.BW)
                 template = FileUtility.MakeGrayscale((System.Drawing.Bitmap)template);
-               
-            template.Save(this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", ImageFormat.Jpeg);
+
+            String svpath = this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg";
+            //System.Windows.Forms.MessageBox.Show("template save " + svpath);
+            template.Save(svpath, ImageFormat.Jpeg);
             template.Dispose();         
 
             // create email textfile
@@ -476,10 +488,54 @@ namespace MME.Hercules.Forms.User
                 }
 
                 if (!offline)
-                    FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+                    FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, 
+                        this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", 
+                        "");
             }
 
+            String url = ConfigUtility.GetConfig(ConfigUtility.Config, "CustomIntegrationURL");
 
+            if ( ! String.IsNullOrEmpty(url) )
+            {
+                bool offline = false;
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
+                {
+                    String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
+                    if (val == "1")
+                        offline = true;
+                }
+
+                if (!offline)
+                {
+                    
+
+                    String location = ConfigUtility.GetValue("CustomLocation");
+
+                    String birthday = this.currentSession.BirthDate.ToShortDateString();
+
+                    String emailaddress = this.currentSession.EmailAddress;
+                    if (emailaddress == null) emailaddress = "NA";
+
+                    String fblogin = this.currentSession.EmailAddress;
+                    if (fblogin == null) fblogin = "NA";
+
+                    String photopath = this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg";
+
+                    String photoname = this.currentSession.FavoritePhotoFilename;
+
+                    String ret =
+                        FileUtility.PostPublishUploadURL(
+                            "634856860824358963",
+                            "eventname",
+                            photopath,//"C:\\eventphotos\\634856819414680465\\55ae1b2778f5488fb9074274d70df87e.jpg",
+                            photoname,//"55ae1b2778f5488fb9074274d70df87e.jpg",
+                            location,
+                            emailaddress,
+                            fblogin,
+                            birthday,
+                            url);
+                }
+            }
         }
 
 

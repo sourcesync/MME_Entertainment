@@ -181,6 +181,12 @@
     <Compile Include="Forms\User\Backgrounds.Designer.cs">
       <DependentUpon>Backgrounds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User\Birthday.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Birthday.Designer.cs">
+      <DependentUpon>Birthday.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User\Email.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -377,6 +383,9 @@
     <EmbeddedResource Include="Forms\User\Backgrounds.resx">
       <DependentUpon>Backgrounds.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Birthday.resx">
+      <DependentUpon>Birthday.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\Email.resx">
       <DependentUpon>Email.cs</DependentUpon>
     </EmbeddedResource>
@@ -506,7 +515,9 @@
     <Folder Include="Skins\Default\Templates\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\Skins\DoingyourthingBoston\screens\birthdate.jpg" />
     <Content Include="hercules.ico" />
+    <Content Include="WPFForms\configuration.xml" />
     <None Include="Resources\OverlayButton1.png" />
     <None Include="Resources\whitecastle-blue.png" />
     <None Include="Resources\FLIP-THUMB.png" />

@@ -231,26 +231,29 @@
             // 
             // fbno
             // 
-            this.fbno.Location = new System.Drawing.Point(529, 269);
+            this.fbno.BackColor = System.Drawing.Color.White;
+            this.fbno.Location = new System.Drawing.Point(545, 269);
             this.fbno.Name = "fbno";
             this.fbno.Padding = new System.Windows.Forms.Padding(10);
-            this.fbno.Size = new System.Drawing.Size(220, 270);
+            this.fbno.Size = new System.Drawing.Size(275, 272);
             this.fbno.TabIndex = 2;
             this.fbno.TabStop = false;
             this.fbno.Click += new System.EventHandler(this.fbno_Click);
             // 
             // fbyes
             // 
-            this.fbyes.Location = new System.Drawing.Point(258, 269);
+            this.fbyes.BackColor = System.Drawing.Color.White;
+            this.fbyes.Location = new System.Drawing.Point(217, 269);
             this.fbyes.Name = "fbyes";
             this.fbyes.Padding = new System.Windows.Forms.Padding(10);
-            this.fbyes.Size = new System.Drawing.Size(220, 270);
+            this.fbyes.Size = new System.Drawing.Size(275, 272);
             this.fbyes.TabIndex = 1;
             this.fbyes.TabStop = false;
             this.fbyes.Click += new System.EventHandler(this.fbyes_Click);
             // 
             // pb2
             // 
+            this.pb2.BackColor = System.Drawing.Color.White;
             this.pb2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb2.Location = new System.Drawing.Point(0, 0);
             this.pb2.Name = "pb2";

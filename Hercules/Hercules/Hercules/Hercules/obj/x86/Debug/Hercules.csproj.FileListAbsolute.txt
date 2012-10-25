@@ -576,3 +576,4 @@ C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercu
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\MME.Hercules.Forms.User.NumPrints.resources
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\MME.Hercules.WPFForms.WebCamMaster.resources
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\obj\x86\Debug\MME.Hercules.Forms.User.Birthday.resources

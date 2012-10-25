@@ -79,7 +79,7 @@
             this.info.BackColor = System.Drawing.Color.Transparent;
             this.info.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.info.ForeColor = System.Drawing.Color.White;
-            this.info.Location = new System.Drawing.Point(201, 169);
+            this.info.Location = new System.Drawing.Point(201, 183);
             this.info.Name = "info";
             this.info.Size = new System.Drawing.Size(570, 33);
             this.info.TabIndex = 1;

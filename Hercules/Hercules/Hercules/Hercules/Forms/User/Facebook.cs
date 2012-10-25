@@ -195,6 +195,8 @@ namespace MME.Hercules.Forms.User
             fbno.Load(string.Format("Skins\\{0}\\Screens\\fbno.jpg",
             ConfigUtility.Skin));
 
+            //fbyes.Parent = pb;
+            //fbno.Parent = pb;
 
             notice.ForeColor = Color.Black;
 
@@ -487,7 +489,7 @@ namespace MME.Hercules.Forms.User
                 if (FirstTime)
                 {
                     if (this.currentSession == null)
-                        email.Text = "george.williams@gmail.com";
+                        email.Text = "george@devnullenterprises.com";
                     else
                      email.Text = this.currentSession.EmailAddress;
                     em.SetAttribute("Value", email.Text);

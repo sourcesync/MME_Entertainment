@@ -29,6 +29,9 @@ namespace MME.Hercules
         public Guid ID
         { get; set; }
 
+        public DateTime BirthDate
+        { get; set; }
+
         public DateTime StartDate
         { get; set; }
 

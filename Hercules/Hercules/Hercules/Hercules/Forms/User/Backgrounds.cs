@@ -212,7 +212,7 @@ namespace MME.Hercules.Forms.User
             //gw
 
 
-            if (TotalSelected == ConfigUtility.PhotoCount)
+            if (TotalSelected == 1 ) //ConfigUtility.PhotoCount)
             {
                 FinishedSelecting();
             }

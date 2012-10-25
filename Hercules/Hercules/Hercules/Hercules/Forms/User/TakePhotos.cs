@@ -811,15 +811,17 @@ namespace MME.Hercules.Forms.User
                     768 - (719 + this.pictureBoxBack.Size.Height));
             }
 
+            int more_infooff = 50;
+
             //info
             if (static_orientation == 0)
             {
                 infof.Visible = false;
                 info.Visible = false;
                 if (mode==0)
-                    info.Location = new Point(100, 259 + yoff);
+                    info.Location = new Point(100, 259 + yoff + more_infooff);
                 else
-                    info.Location = new Point(100, 259 + yoff);
+                    info.Location = new Point(100, 259 + yoff + more_infooff);
             }
             else
             {
@@ -1050,6 +1052,7 @@ namespace MME.Hercules.Forms.User
 
         private void DoWebCam_Loaded()
         {
+            bool right = false;
 
             // show overlay buttons or not...
             if (!this.b_show_overlay_buttons)
@@ -1329,7 +1332,7 @@ namespace MME.Hercules.Forms.User
             //System.Windows.Forms.MessageBox.Show("about to show countdown");
 
             //  Present the countodown...
-            this.ShowCountdown(false, 0, true);
+            this.ShowCountdown(false, 0, right);
               
             //  Grab the image...
             
@@ -1397,6 +1400,8 @@ namespace MME.Hercules.Forms.User
 
         private void TakePhotos_Load(object sender, EventArgs e)
         {
+            bool right = true;
+
             if (istable)
             {
                 this.DoWebCam_Loaded();
@@ -1549,7 +1554,7 @@ namespace MME.Hercules.Forms.User
             if (this.show_countdown)
             {
                 ClearToStart = true;
-                ShowCountdown(use_images, 0, false);
+                ShowCountdown(use_images, 0, right);
             }
             //gw
 
@@ -1558,10 +1563,45 @@ namespace MME.Hercules.Forms.User
             {
                 current = (i + 1);
 
+                //gw - make prev disappear
+                
+                if ( show_pose && i>1 )
+                {
+                    int j = i - 1;
+
+                    // remove this one...
+                    string ctl_name = "pictureBox" + (j + 3).ToString();
+                    Control[] ctl = this.Controls.Find(ctl_name, true);
+                    if (ctl.Length == 1)
+                    {
+                        PictureBox posepb = (PictureBox)ctl[0];
+                        posepb.Visible = false;
+                        posepb.Refresh();
+                    }
+
+                    // highlight next...
+                    ctl_name = "pictureBox" + (j + 1 + 3).ToString();
+                    ctl = this.Controls.Find(ctl_name, true);
+                    if (ctl.Length == 1)
+                    {
+                        PictureBox posepb = (PictureBox)ctl[0];
+                        posepb.Visible = true;
+                        posepb.Width = 145;
+                        posepb.Height = 121;
+                        posepb.Location = new Point(posepb.Location.X - 3, posepb.Location.Y - 3);
+                        posepb.BackColor = System.Drawing.Color.Red;
+                        posepb.Padding = new Padding(3, 3, 3, 3);
+                    }
+
+                    this.Refresh();
+                }
+
 
                 if (ConfigUtility.CameraEnabled)
                 {
                     if (CameraUtility.camera != null && !string.IsNullOrEmpty(CameraUtility.camera.ConnectedCameraName))
+                        
+                        
                         CameraUtility.camera.Release(this.currentSession.PhotoPath + "\\" +
                             "forephoto" + (i + 1) + ".jpg");
                 }
@@ -1570,8 +1610,12 @@ namespace MME.Hercules.Forms.User
                     // Simulate a photo being taken
                     SoundUtility.PlaySync(Hercules.Properties.SoundResources.CAMERA_CLICK);
 
-                    File.Copy(ConfigUtility.GetValue("testphoto"), this.currentSession.PhotoPath + "\\" +
-                         "forephoto" + (i + 1).ToString() + ".jpg");
+                    String path = this.currentSession.PhotoPath + "\\" +
+                         "forephoto" + (i + 1).ToString() + ".jpg";
+
+                    //System.Windows.Forms.MessageBox.Show(path);
+
+                    File.Copy(ConfigUtility.GetValue("testphoto"), path);
 
                 }
 
@@ -1667,7 +1711,7 @@ namespace MME.Hercules.Forms.User
                 {
                     if (i < ConfigUtility.PhotoCount - 1)
                     {
-                        ShowCountdown(use_images, i + 1, false);
+                        ShowCountdown(use_images, i + 1, right);
                     }
                 }
                 else
@@ -1693,6 +1737,7 @@ namespace MME.Hercules.Forms.User
                     {
                         PictureBox posepb = (PictureBox)ctl[0];
                         posepb.Visible = false;
+                        posepb.Refresh();
                     }
 
                     // highlight next...
@@ -1708,6 +1753,8 @@ namespace MME.Hercules.Forms.User
                         posepb.BackColor = System.Drawing.Color.Red;
                         posepb.Padding = new Padding(3, 3, 3, 3);
                     }
+
+                    this.Refresh();
                 }
                 //gw
 
