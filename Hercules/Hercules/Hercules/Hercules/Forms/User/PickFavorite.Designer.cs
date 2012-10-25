@@ -57,6 +57,7 @@
             this.Text = "PickFavorite";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PickFavorite_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PickFavorite_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.ResumeLayout(false);
 

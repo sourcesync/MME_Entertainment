@@ -202,7 +202,7 @@ namespace Zuess
         {
             try
             {
-                this.Location = new Point(-1024, 0);
+                this.Location = new Point(0, 0);
 
                 this.path = "Images";
 

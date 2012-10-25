@@ -123,6 +123,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Backgrounds_FormClosed);
             this.Load += new System.EventHandler(this.Backgrounds_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Backgrounds_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -134,5 +134,13 @@ namespace MME.Hercules.Forms.User
 
 
         }
+
+        private void PickFavorite_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == 27)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

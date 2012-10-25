@@ -290,5 +290,13 @@ namespace MME.Hercules.Forms.User
 
         }
 
+        private void Backgrounds_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((int)e.KeyValue == 27)
+            {
+                Application.Exit();
+            }
+        }
+
     }
 }

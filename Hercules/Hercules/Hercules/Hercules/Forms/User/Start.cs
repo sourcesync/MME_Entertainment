@@ -678,6 +678,14 @@ namespace MME.Hercules.Forms.User
             Workflow();
         }
 
+        private void Start_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if ((int)e.KeyValue == 27)
+            {
+                Application.Exit();
+            }
+        }
+
 
     }
 }

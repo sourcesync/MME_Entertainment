@@ -428,6 +428,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TakePhotos_FormClosed);
             this.Load += new System.EventHandler(this.TakePhotos_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TakePhotos_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlipTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlipBottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlip)).EndInit();

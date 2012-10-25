@@ -650,6 +650,19 @@ namespace MME.Hercules.Forms.User
             System.Environment.Exit(0);
             return;
         }
+
+        private void Facebook_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Facebook_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == 27)
+            {
+                Application.Exit();
+            }
+        }
     }
 
 }

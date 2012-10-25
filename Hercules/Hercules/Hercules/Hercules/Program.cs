@@ -146,7 +146,7 @@ namespace MME.Hercules
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Forms.User.Start());
              
-
+                
 
             }
             catch (System.Exception e)

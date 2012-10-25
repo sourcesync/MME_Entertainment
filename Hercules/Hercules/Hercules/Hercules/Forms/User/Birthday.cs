@@ -161,5 +161,21 @@ namespace MME.Hercules.Forms.User
             return;
         }
 
+        private void Birthday_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((int)e.KeyValue == 27)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void Birthday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == 27)
+            {
+                Application.Exit();
+            }
+        }
+
     }
 }

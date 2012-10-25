@@ -62,7 +62,7 @@
             // 
             // pb
             // 
-            
+            this.pb.Dock = System.Windows.Forms.DockStyle.Top;
             this.pb.Location = new System.Drawing.Point(0, 0);
             this.pb.Margin = new System.Windows.Forms.Padding(0);
             this.pb.Name = "pb";
@@ -230,6 +230,8 @@
             this.ShowIcon = false;
             this.Text = "NumPrints";
             this.Load += new System.EventHandler(this.Birthday_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Birthday_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Birthday_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.b1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

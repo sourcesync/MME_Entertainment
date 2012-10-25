@@ -2109,6 +2109,14 @@ namespace MME.Hercules.Forms.User
             Thread.Sleep(1000);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
+
+        private void TakePhotos_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == 27)
+            {
+                Application.Exit();
+            }
+        }
     }
 
 

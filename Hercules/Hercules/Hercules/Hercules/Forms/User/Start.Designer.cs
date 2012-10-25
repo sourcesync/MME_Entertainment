@@ -42,8 +42,9 @@
             // 
             // pb
             // 
-            this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb.Dock = System.Windows.Forms.DockStyle.Top;
             this.pb.Location = new System.Drawing.Point(0, 0);
+            this.pb.Margin = new System.Windows.Forms.Padding(0);
             this.pb.Name = "pb";
             this.pb.Size = new System.Drawing.Size(1024, 768);
             this.pb.TabIndex = 0;
@@ -82,8 +83,9 @@
             // 
             // pb2
             // 
-            this.pb2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb2.Location = new System.Drawing.Point(0, 0);
+            this.pb2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pb2.Location = new System.Drawing.Point(0, 768);
+            this.pb2.Margin = new System.Windows.Forms.Padding(0);
             this.pb2.Name = "pb2";
             this.pb2.Size = new System.Drawing.Size(1024, 768);
             this.pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -116,6 +118,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Start_FormClosed);
             this.Load += new System.EventHandler(this.StartForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Start_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.StartForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.startArea)).EndInit();
