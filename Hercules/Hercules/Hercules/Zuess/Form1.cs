@@ -229,5 +229,11 @@ namespace Zuess
             {
             }
         }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+            this.Location = new Point(-1024, 0);
+        }
     }
 }
