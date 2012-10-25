@@ -3,7 +3,7 @@
 
   
   <!-- How many photos are printed (1, 2, 4, 6) -->
-  <add key="PHOTO_COUNT" value="1" />
+  <add key="PHOTO_COUNT" value="4" />
 
   <!-- How many prints (1=single print, 2=two prints .. up to 99999 -->
   <add key="MAX_COPIES" value="1" />
