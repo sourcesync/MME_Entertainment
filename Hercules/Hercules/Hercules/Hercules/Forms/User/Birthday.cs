@@ -78,6 +78,9 @@ namespace MME.Hercules.Forms.User
             int year = (int)this.numericUpDown4.Value;
 
             System.DateTime bd = new System.DateTime(year, month, day );
+            
+            System.DateTime now = System.DateTime.Now;
+
 
             if ((bd.Day == 1) && (bd.Month == 1) && (bd.Year == 1900))
             {
@@ -91,22 +94,12 @@ namespace MME.Hercules.Forms.User
             String str = bd.ToShortDateString();
             this.currentSession.BirthDate = bd;
 
-
-
-
-            System.DateTime now = System.DateTime.Now;
-
-            
-
-
             System.TimeSpan span = now.Subtract(bd);
 
-            
 
-
-            if (span.TotalDays < 18 * 365)
+            if (span.TotalDays < 21 * 365)
             {
-                this.label1.Text = "In order to proceed, you must be at least 18 years old.";
+                this.label1.Text = "In order to proceed, you must be at least 21 years old.";
                 this.alertbox.BringToFront();
                 alertbox.Visible = true;
                 return;

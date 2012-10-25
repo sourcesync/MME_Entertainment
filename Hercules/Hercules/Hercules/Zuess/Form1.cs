@@ -145,11 +145,22 @@ namespace Zuess
             }
         }
 
+        private void RestartTimer()
+        {
+            this.KillTimer();
+
+            this.timer = new System.Timers.Timer();
+            this.timer.Interval = 3000.0;
+            this.thandler = new System.Timers.ElapsedEventHandler(this.tcall);
+            this.timer.Elapsed += this.thandler;
+            this.timer.Start();
+        }
+
         private void KillTimer()
         {
-            this.TopMost = false;
-            this.FormBorderStyle = FormBorderStyle.Fixed3D;
-            this.Size = new Size(1024, 768);
+            //this.TopMost = false;
+            //this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            //this.Size = new Size(1024, 768);
 
             if (this.timer != null)
             {
@@ -185,6 +196,38 @@ namespace Zuess
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Form1_Click(sender, e);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Location = new Point(-1024, 0);
+
+                this.path = "Images";
+
+                this.tcall(null, null);
+
+                this.RestartTimer();
+            }
+            catch
+            {
+            }
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                char c = e.KeyChar;
+                if ((int)c == 27)
+                {
+                    Application.Exit();
+                }
+            }
+            catch
+            {
+            }
         }
     }
 }
