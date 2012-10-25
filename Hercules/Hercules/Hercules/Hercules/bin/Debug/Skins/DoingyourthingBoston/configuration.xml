@@ -105,8 +105,10 @@
   <add key="GameMenuTextColor" value="white" />
   <add key="GameForeColor" value="black" />
 
+  <!-- customizations for doingyourthing-->
   <add key="CustomIntegrationURL" value="http://doingourthing-admin.group360.com/photomation.php" />
   <add key="CustomLocation" value="testlocation" />"
+  <add key="KeyboardY" value="-50" />
 
   <!-- 4 Photo customization -->
   <add key="Photo1_X" value="60" />
