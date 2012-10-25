@@ -64,7 +64,7 @@ namespace MME.Hercules.Forms.User
             this.numericUpDown3.Value = 1;
             this.numericUpDown4.BackColor = ColorTranslator.FromHtml("#008751");
             this.numericUpDown4.Visible = false;
-            this.numericUpDown4.Value = 1900;
+            this.numericUpDown4.Value = 1950;
 
             SoundUtility.Play("Start.wav");
         }
