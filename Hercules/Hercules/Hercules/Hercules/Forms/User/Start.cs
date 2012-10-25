@@ -682,7 +682,34 @@ namespace MME.Hercules.Forms.User
         {
             if ((int)e.KeyValue == 27)
             {
-                Application.Exit();
+                bool zkilled = false;
+
+                try
+                {
+                    /* check zeuss first */
+                    System.Diagnostics.Process[] processes = System.Diagnostics.Process.GetProcessesByName("Zuess.vhost");
+                    System.Diagnostics.Process[] processes2 = System.Diagnostics.Process.GetProcessesByName("Zuess");
+
+                    System.Collections.ArrayList pcess = new System.Collections.ArrayList();
+                    pcess.AddRange(processes);
+                    pcess.AddRange(processes2);
+
+                    if (pcess.Count>0)
+                    {
+                        zkilled = true;
+                        foreach (System.Diagnostics.Process process in pcess)
+                        {
+                            process.Kill();
+                        }
+                    }
+                }
+                catch
+                {
+                    zkilled = false;
+                }
+
+                if ( !zkilled )
+                    Application.Exit();
             }
         }
 
