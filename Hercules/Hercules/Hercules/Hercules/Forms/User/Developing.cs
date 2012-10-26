@@ -107,7 +107,7 @@ namespace MME.Hercules.Forms.User
 
             this.Refresh();
             Application.DoEvents();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
 
             if (!istable)
