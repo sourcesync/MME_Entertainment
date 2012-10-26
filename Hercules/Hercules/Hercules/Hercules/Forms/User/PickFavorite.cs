@@ -26,6 +26,13 @@ namespace MME.Hercules.Forms.User
 
         private void LoadPhotos()
         {
+            int off = 0;
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "PIC_OFFSET_Y")))
+            {
+                String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "PIC_OFFSET_Y");
+                off = int.Parse(offset);
+            }
+
             bgs.Clear();
 
             int startx = (ConfigUtility.PhotoCount == 4) ? 280 : 170;
@@ -74,7 +81,7 @@ namespace MME.Hercules.Forms.User
 
                 x += (bg.Width + xspacing);
 
-                bg.Location = new Point(x, y);
+                bg.Location = new Point(x, y + off);
                 bg.Click += new EventHandler(bg_Click);
 
                 Background background = new Background(bg, 0);
