@@ -15,6 +15,8 @@ namespace MME.Hercules.Forms.User
 
         private Session currentSession;
 
+        private bool started = false;
+
         public Birthday(Session currentSession)
         {
             InitializeComponent();
@@ -66,11 +68,21 @@ namespace MME.Hercules.Forms.User
             this.numericUpDown4.Visible = false;
             this.numericUpDown4.Value = 1950;
 
+            this.started = false;
+
             SoundUtility.Play("Start.wav");
         }
 
         private void b1_Click(object sender, EventArgs e)
         {
+            if (!started)
+            {
+                this.label1.Text = "Please enter your birthdate.";
+                this.alertbox.Visible = true;
+                this.alertbox.BringToFront();
+                return;
+            }
+
 
             //  Get date, calc age...
             int month = (int)this.numericUpDown2.Value;
@@ -151,7 +163,8 @@ namespace MME.Hercules.Forms.User
             this.numericUpDown3.BackColor = ColorTranslator.FromHtml("#008751");
             this.numericUpDown3.Visible = true;
             this.numericUpDown4.BackColor = ColorTranslator.FromHtml("#008751");
-            this.numericUpDown4.Visible = true; 
+            this.numericUpDown4.Visible = true;
+            this.started = true;
         }
 
         private void button1_MouseDown(object sender, MouseEventArgs e)
