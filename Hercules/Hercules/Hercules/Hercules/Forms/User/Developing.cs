@@ -53,6 +53,8 @@ namespace MME.Hercules.Forms.User
                 this.Refresh();
 
                 SoundUtility.PlaySync(Hercules.Properties.SoundResources.THANK_YOU_FOR_TAKING_PHOTOS);
+                Application.DoEvents();
+                Thread.Sleep(500);
             }
             else
             {
