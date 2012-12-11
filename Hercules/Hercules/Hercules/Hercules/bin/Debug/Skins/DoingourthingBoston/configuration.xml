@@ -107,7 +107,7 @@
 
   <!-- customizations for doingyourthing-->
   <add key="CustomIntegrationURL" value="http://doingourthing-admin.group360.com/photomation.php" />
-  <add key="CustomLocation" value="testlocation" />"
+  <add key="CustomLocation" value="San Francisco" />"
   <add key="KeyboardY" value="-50" />
   <add key="KeyboardFinishY" value="600" />
   <add key="PIC_OFFSET_Y" value="-100" />

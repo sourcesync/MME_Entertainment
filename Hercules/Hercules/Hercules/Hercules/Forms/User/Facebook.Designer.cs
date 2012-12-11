@@ -302,7 +302,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Facebook";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Facebook_FormClosing);
             this.Load += new System.EventHandler(this.Facebook_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Facebook_KeyDown);

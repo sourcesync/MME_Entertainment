@@ -69,7 +69,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Develop Photos";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Finished_FormClosed);
             this.Load += new System.EventHandler(this.Finished_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();

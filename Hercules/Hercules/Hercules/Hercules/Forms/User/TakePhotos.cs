@@ -1052,6 +1052,38 @@ namespace MME.Hercules.Forms.User
 
         private void DoWebCam_Loaded()
         {
+            
+            // adjust form/pb sizes...
+            Size sz = WindowUtility.GetScreenSize(Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+            this.Size = sz;
+            pb.Size = sz;
+
+
+            this.Visible = true;
+            this.pb.Visible = true;
+            this.info.Visible = true;
+
+            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+            info.ForeColor = System.Drawing.Color.Black;
+
+
+            this.Refresh();
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(1);
+            
+
+            this.Invoke(
+                new System.EventHandler(this._DoWebCam_Loaded));
+        }
+
+        private void _DoWebCam_Loaded(object o, EventArgs args)
+        {
+
+
+
+            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+            info.ForeColor = System.Drawing.Color.Black;
+
             bool right = false;
 
             // show overlay buttons or not...
@@ -1399,6 +1431,33 @@ namespace MME.Hercules.Forms.User
 
 
         private void TakePhotos_Load(object sender, EventArgs e)
+        {
+            // adjust form/pb sizes...
+            Size sz = WindowUtility.GetScreenSize(Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+            this.Size = sz;
+            pb.Size = sz;
+
+
+            this.Visible = true;
+            this.pb.Visible = true;
+            this.info.Visible = true;
+
+            WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
+            info.ForeColor = System.Drawing.Color.Black;
+
+
+            this.Refresh();
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(1);
+
+
+            this.Invoke(
+                new System.EventHandler(this._TakePhotos_Load));
+
+        }
+        
+
+        private void _TakePhotos_Load(object sender, EventArgs e)
         {
             bool right = true;
 

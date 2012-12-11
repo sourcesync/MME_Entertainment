@@ -512,6 +512,10 @@ namespace MME.Hercules.Forms.User
                     
 
                     String location = ConfigUtility.GetValue("CustomLocation");
+                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "CustomLocation")))
+                    {
+                        location = ConfigUtility.GetConfig(ConfigUtility.Config, "CustomLocation");
+                    }
 
                     String birthday = this.currentSession.BirthDate.ToShortDateString();
 

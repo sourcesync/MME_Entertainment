@@ -86,9 +86,9 @@
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\json_newton\Json40r5\Bin\Net\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\json_newton\Json45r8\Bin\Net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Phidget21.NET, Version=2.1.8.41, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -186,6 +186,12 @@
     </Compile>
     <Compile Include="Forms\User\Birthday.Designer.cs">
       <DependentUpon>Birthday.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\Google.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Google.Designer.cs">
+      <DependentUpon>Google.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\User\Email.cs">
       <SubType>Form</SubType>
@@ -385,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\Birthday.resx">
       <DependentUpon>Birthday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Google.resx">
+      <DependentUpon>Google.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\Email.resx">
       <DependentUpon>Email.cs</DependentUpon>

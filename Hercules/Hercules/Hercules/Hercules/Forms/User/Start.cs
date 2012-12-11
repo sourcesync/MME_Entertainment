@@ -86,13 +86,13 @@ namespace MME.Hercules.Forms.User
 
             }
 
-            /*
-            if (ConfigUtility.GetValue("BoothType") == "0")
+            
+            if (ConfigUtility.GetValue("BoothType") == "2")
             {
                 this.juststart();
                 //return;
             }
-             * */
+             
         }
 
         private DialogResult ProcessSequenceSteps(DialogResult dr)
@@ -335,12 +335,22 @@ namespace MME.Hercules.Forms.User
                         bool skip_clicked = false;
                         if (AllowFacebookPublish)
                         {
+                            /*
                             using (User.Facebook fb = new Facebook(currentSession))
                             {
                                 fb.ischeckin = true;
                                 dr = fb.ShowDialog();
                                 yes_clicked = fb.yes_clicked;
                                 skip_clicked = fb.skip_clicked;
+                            }
+                             * */
+
+                            using (User.Google google = new Google(currentSession))
+                            {
+                                google.ischeckin = true;
+                                dr = google.ShowDialog();
+                                yes_clicked = google.yes_clicked;
+                                skip_clicked = google.skip_clicked;
                             }
                         }
 
