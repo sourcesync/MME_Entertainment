@@ -19,10 +19,10 @@
 
   <add key="ROOM_NUMBER_MODE" value="0" />
 
-  <add key="BIRTHDAY_MODE" value="0" />
+  <add key="BIRTHDAY_MODE" value="" />
 
   <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->
-  <add key="TEXT_COLOR" value="#000000" />
+  <add key="TEXT_COLOR" value="#ffffff" />
 
   <add key="TemplateEmbedY" value="100" />
 
@@ -106,10 +106,10 @@
   <add key="GameForeColor" value="black" />
 
   <!-- customizations for doingyourthing-->
-  <add key="CustomIntegrationURL" value="http://doingourthing-admin.group360.com/photomation.php" />
+  <add key="CustomIntegrationURL" value="" />
   <add key="CustomLocation" value="" />"
-  <add key="KeyboardY" value="-50" />
-  <add key="KeyboardFinishY" value="600" />
+  <add key="KeyboardY" value="0" />
+  <add key="KeyboardFinishY" value="670" />
   <add key="PIC_OFFSET_Y" value="-100" />
 
   <!-- 4 Photo customization -->
