@@ -22,7 +22,7 @@
   <add key="BIRTHDATE_MODE" value="0" />
   
   <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->
-  <add key="TEXT_COLOR" value="#000000" />
+  <add key="TEXT_COLOR" value="#ffffff" />
 
 
   <!-- touch area for start page -->
@@ -37,14 +37,17 @@
   <add key="SkipEmailButtonY" value="40" />
   <add key="SkipEmailButtonWidth" value="100" />
   <add key="SkipEmailButtonHeight" value="100" />
-  <add key="SkipEmailButtonColor" value=""/>  
+  <add key="SkipEmailButtonColor" value=""/>
+
+
+  <add key="FinishedEmailButtonColor" value="#808080"/>
 
   <!-- Publish methods -->
   <add key="AllowEmailPublish" value="1" /> <!-- 1=on, 0=off -->
 
 
   <add key="AllowPostPublish" value="1" />
-  <add key="AllowFacebookPublish" value="1" />
+  <add key="AllowFacebookPublish" value="0" />
   <add key="AllowMobilePublish" value="0" />
 
 
@@ -93,10 +96,20 @@
   
   <add key="MenuCoords" value="breakfast-215,250:sliders-450,250:drinks-670,250:big_craves-215,480:sack_meals-450,480:sides-670,480" />
 
+  <add key="MenuLabelOffsetY"
+  	value="1000" />
+
+  
   <add key="MenuItemOffset"
-  	value="photobooth:0;check-in:0;request-a-song:0" />
+  	value="photobooth:0;moviegallery:0;request-a-song:0" />
+
+  <add key="WebURLKey"
+  	value="moviegallery;C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercules\bin\Debug\Skins\GoogleEvent\movie.html" />
+
 
   <add key="FBBUTTON_OFFSET" value="100" />
+
+  <add key="INFO_OFFSET" value="-50" />
 
   <add key="MainMenuDir" value="main" />
   <!--
