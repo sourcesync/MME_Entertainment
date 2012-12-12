@@ -675,6 +675,7 @@ namespace HerculesWPFMaster
             if (weburl.ToLower().StartsWith("http:") && this.offline)
                 return;
 
+            
             this.HideAll();
 
             /*
@@ -690,6 +691,8 @@ namespace HerculesWPFMaster
                 this.webBrowser1.Navigated += new NavigatedEventHandler(webBrowser1_Navigated);
                 //this.webBrowser1.Loaded +=new RoutedEventHandler(webBrowser1_Loaded);
             }
+
+            this.webBrowser1.Visibility = System.Windows.Visibility.Hidden;
 
             if (ab)
             {
@@ -715,7 +718,6 @@ namespace HerculesWPFMaster
             {
                 el.SetValue(Canvas.TopProperty, 0.0);
             }
-            this.webBrowser1.BringIntoView();
             this.current = this.webBrowser1;
 
             //this.HideRotators();
@@ -735,8 +737,16 @@ namespace HerculesWPFMaster
              
              */
             this.webBrowser1.Navigate(new Uri(weburl, UriKind.RelativeOrAbsolute));
+            this.webBrowser1.LoadCompleted += new LoadCompletedEventHandler(webBrowser1_LoadCompleted);
 
             this.ShowBack();
+        }
+
+        void webBrowser1_LoadCompleted(object sender, NavigationEventArgs e)
+        {
+            this.webBrowser1.Visibility = System.Windows.Visibility.Visible;
+            this.webBrowser1.BringIntoView();
+            //sthrow new NotImplementedException();
         }
 
         public void HideScriptErrors(WebBrowser wb, bool Hide)

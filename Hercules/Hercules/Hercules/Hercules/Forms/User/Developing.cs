@@ -19,10 +19,11 @@ namespace MME.Hercules.Forms.User
         public bool ispromo = false;
         public bool isbooth = false;
         public bool facebook_publish = false;
+        public System.Timers.Timer timer = null;
 
         public Developing(Session currentSession)
         {
-            Application.DoEvents();
+            //Application.DoEvents();
 
             InitializeComponent();
             this.currentSession = currentSession;
@@ -30,6 +31,16 @@ namespace MME.Hercules.Forms.User
 
 
         private void Finished_Load(object sender, EventArgs e)
+        {
+            
+           
+            this.Invoke(new System.EventHandler(this._Finished_Load));
+            
+        }
+
+        
+
+        private void _Finished_Load(object sender, EventArgs e)
         {
             if (ConfigUtility.IsDeveloperMode)
                 this.WindowState = FormWindowState.Normal;
@@ -71,16 +82,18 @@ namespace MME.Hercules.Forms.User
                 }
             }
 
+            this.Refresh();
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(1);
+           
 
             if (istable)
             {
                 //pb.Load(string.Format("Skins\\{0}\\Screens\\facebook.jpg",
                  //   ConfigUtility.Skin));
 
-                pb.Load(string.Format("Skins\\{0}\\Screens\\generic-bg.jpg",
-                    ConfigUtility.Skin));
-
-                this.label1.Parent = this.pb;
+                pb.Load(string.Format("Skins\\{0}\\Screens\\generic-bg.jpg", ConfigUtility.Skin));
+                //GW this.label1.Parent = this.pb;
                 this.label1.BackColor = System.Drawing.Color.Transparent;
                 String str = ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR");
                 this.label1.ForeColor = ColorTranslator.FromHtml(str);
@@ -107,53 +120,31 @@ namespace MME.Hercules.Forms.User
                 this.label1.Location = new Point( (int)(space/2.0), this.label1.Location.Y);  
             }
 
+            this.Invalidate();
             this.Refresh();
             Application.DoEvents();
-            Thread.Sleep(2000);
-
+            //Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(1);
+           // Thread.Sleep(2000);
 
             if (!istable)
             {
-
                 // SoundUtility.Play(Hercules.Properties.SoundResources.DEVELOPING_PLEASE_WAIT);
             }
 
-            if (!istable)
-            {
-                WriteOutResults();
-
-                CustomEmail();
-
-                PublishToFacebook();
-            }
-            else
-            {
-                if (ischeckin)
-                {
-                    CheckinToFacebook();
-                }
-
-                if (ispromo)
-                {
-                    PromoEmail();
-                }
-
-                if (isbooth)
-                {
-                    WriteOutResults();
-
-                    CustomEmail();
-
-                    PublishToFacebook();
-                }
-
-            }
-
-
-
-            this.DialogResult = DialogResult.OK;
             this.Refresh();
+            Application.DoEvents();
+
+            this.backgroundWorker1.RunWorkerAsync();
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
+
             return;
+
+
+            //
+            //  We Stopped doing all this...
+            //
 
             if (!istable)
             {
@@ -261,11 +252,68 @@ namespace MME.Hercules.Forms.User
             }
 
             this.Refresh();
-
            
             this.DialogResult = DialogResult.OK;
-                
             
+        }
+
+        void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            this.Invoke(new System.EventHandler(this._Done));
+        }
+
+        void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            this.commit_data();
+        }
+
+        void commit_data()
+        {
+            if (!istable)
+            {
+                WriteOutResults();
+
+                CustomEmail();
+
+                PublishToFacebook();
+            }
+            else
+            {
+                if (ischeckin)
+                {
+                    CheckinToFacebook();
+                }
+
+                if (ispromo)
+                {
+                    PromoEmail();
+                }
+
+                if (isbooth)
+                {
+                    WriteOutResults();
+
+                    CustomEmail();
+
+                    PublishToFacebook();
+                }
+            }
+        }
+
+
+         
+        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+           
+            this.timer.Stop();
+
+            this.Invoke(new System.EventHandler(this._Done));
+        }
+
+        void _Done(object o, EventArgs args)
+        {
+            this.DialogResult = DialogResult.OK;
+            return;
         }
 
 

@@ -335,7 +335,7 @@ namespace MME.Hercules.Forms.User
                         bool skip_clicked = false;
                         if (AllowFacebookPublish)
                         {
-                            /*
+                            
                             using (User.Facebook fb = new Facebook(currentSession))
                             {
                                 fb.ischeckin = true;
@@ -343,8 +343,8 @@ namespace MME.Hercules.Forms.User
                                 yes_clicked = fb.yes_clicked;
                                 skip_clicked = fb.skip_clicked;
                             }
-                             * */
-
+                             
+                            /*
                             using (User.Google google = new Google(currentSession))
                             {
                                 google.ischeckin = true;
@@ -352,6 +352,7 @@ namespace MME.Hercules.Forms.User
                                 yes_clicked = google.yes_clicked;
                                 skip_clicked = google.skip_clicked;
                             }
+                             * */
                         }
 
                         if ((dr == System.Windows.Forms.DialogResult.OK) && (yes_clicked) && (!skip_clicked))

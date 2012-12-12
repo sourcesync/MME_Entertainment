@@ -811,7 +811,12 @@ namespace MME.Hercules.Forms.User
                     768 - (719 + this.pictureBoxBack.Size.Height));
             }
 
-            int more_infooff = 50;
+            int more_infooff = 0; // 50;
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "INFO_OFFSET")))
+            {
+                String offset = ConfigUtility.GetConfig(ConfigUtility.Config, "INFO_OFFSET");
+                more_infooff = int.Parse(offset);
+            }
 
             //info
             if (static_orientation == 0)
@@ -1064,8 +1069,16 @@ namespace MME.Hercules.Forms.User
             this.info.Visible = true;
 
             WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
-            info.ForeColor = System.Drawing.Color.Black;
-
+            //info.ForeColor = System.Drawing.Color.Black;
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR")))
+            {
+                String str = ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR");
+                info.ForeColor = ColorTranslator.FromHtml(str);
+            }
+            else
+            {
+                info.ForeColor = System.Drawing.Color.Black;
+            }
 
             this.Refresh();
             Application.DoEvents();
@@ -1083,8 +1096,17 @@ namespace MME.Hercules.Forms.User
 
             WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
             info.ForeColor = System.Drawing.Color.Black;
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR")))
+            {
+                String str = ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR");
+                info.ForeColor = ColorTranslator.FromHtml(str);
+            }
+            else
+            {
+                info.ForeColor = System.Drawing.Color.Black;
+            }
 
-            bool right = false;
+            bool right = true;
 
             // show overlay buttons or not...
             if (!this.b_show_overlay_buttons)
@@ -1333,13 +1355,13 @@ namespace MME.Hercules.Forms.User
             SoundUtility.PlaySync(Hercules.Properties.SoundResources.GET_READY);
             if (this.static_orientation == 0)
             {
-                this.info.Visible = false;
+                this.info.Visible = true;
                 this.infof.Visible = false;
             }
             else
             {
                 this.info.Visible = false;
-                this.infof.Visible = false;
+                this.infof.Visible = true;
             }
 
             /*
@@ -1444,7 +1466,15 @@ namespace MME.Hercules.Forms.User
 
             WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
             info.ForeColor = System.Drawing.Color.Black;
-
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR")))
+            {
+                String str = ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR");
+                info.ForeColor = ColorTranslator.FromHtml(str);
+            }
+            else
+            {
+                info.ForeColor = System.Drawing.Color.Black;
+            }
 
             this.Refresh();
             Application.DoEvents();

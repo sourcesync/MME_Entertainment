@@ -85,6 +85,7 @@
             this.info.TabIndex = 1;
             this.info.Text = "Smile!!  We are now taking your first photo!";
             this.info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.info.Visible = false;
             // 
             // labell4
             // 

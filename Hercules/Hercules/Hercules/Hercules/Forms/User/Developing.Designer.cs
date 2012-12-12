@@ -30,28 +30,32 @@
         {
             this.pb = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.SuspendLayout();
             // 
             // pb
             // 
+            this.pb.BackColor = System.Drawing.Color.Black;
             this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb.Location = new System.Drawing.Point(0, 0);
             this.pb.Name = "pb";
             this.pb.Size = new System.Drawing.Size(1024, 768);
             this.pb.TabIndex = 0;
             this.pb.TabStop = false;
+            this.pb.Visible = false;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(110, 298);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(784, 86);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Thanks For Using The WhiteCastle Photobooth !";
-            this.label1.Visible = false;
+            this.label1.Text = "Developing Photos.  Please wait...";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Developing
             // 
@@ -80,6 +84,7 @@
 
         private System.Windows.Forms.PictureBox pb;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
 
     }
 }
