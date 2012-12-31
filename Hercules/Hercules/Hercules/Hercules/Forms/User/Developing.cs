@@ -62,10 +62,14 @@ namespace MME.Hercules.Forms.User
                 pb.Size = sz;
 
                 this.Refresh();
+                this.Invalidate();
 
-                SoundUtility.PlaySync(Hercules.Properties.SoundResources.THANK_YOU_FOR_TAKING_PHOTOS);
+                SoundUtility.Play(Hercules.Properties.SoundResources.THANK_YOU_FOR_TAKING_PHOTOS);
                 Application.DoEvents();
-                Thread.Sleep(500);
+                Thread.Sleep(1);
+
+                this.label1.Visible = false;
+
             }
             else
             {
@@ -486,6 +490,14 @@ namespace MME.Hercules.Forms.User
             //System.Windows.Forms.MessageBox.Show("template save " + svpath);
             template.Save(svpath, ImageFormat.Jpeg);
             template.Dispose();         
+
+            //  HACK FOR GOOGLE EVENT
+            //  WE COPY THE ORIG TO THE DEST...
+            String origpath = this.currentSession.PhotoPath + "\\photo" + this.currentSession.FavoritePhoto + ".jpg";
+            String destpath = this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg";
+            File.Delete(destpath);
+            File.Copy(origpath, destpath);
+
 
             // create email textfile
             if (!string.IsNullOrEmpty(this.currentSession.EmailAddress))

@@ -189,10 +189,10 @@ namespace MME.Hercules.Forms.User
                 pb2.Load(string.Format("Skins\\{0}\\Screens\\usefacebook.jpg",
                     ConfigUtility.Skin));
 
-            fbyes.Load(string.Format("Skins\\{0}\\Screens\\fbyes.jpg",
+            fbyes.Load(string.Format("Skins\\{0}\\Screens\\fbyes.png",
                 ConfigUtility.Skin));
 
-            fbno.Load(string.Format("Skins\\{0}\\Screens\\fbno.jpg",
+            fbno.Load(string.Format("Skins\\{0}\\Screens\\fbno.png",
             ConfigUtility.Skin));
 
             //fbyes.Parent = pb;

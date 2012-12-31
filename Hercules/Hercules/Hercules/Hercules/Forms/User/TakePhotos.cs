@@ -429,12 +429,26 @@ namespace MME.Hercules.Forms.User
 
             Image image = null;
 
+            //  get chroma key enabled/disabled...
+            String cval = ConfigUtility.GetValue("ChromaKeyEnabled");
+            bool ck_on = true;
+            if (cval == "0")
+                ck_on = false;
+
             if (ConfigUtility.PhotoBackgrounds > 0)
             {
                 //this.preview.Image = ChromakeyUtility.CreateComposite(
-                image = ChromakeyUtility.CreateComposite(
-                    FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\forephoto" + (i + 1) + ".jpg"),
-                    ConfigUtility.Backgrounds[this.currentSession.SelectedBackgrounds[i] - 1]);
+                 
+                if (ck_on)
+                {
+                    image = ChromakeyUtility.CreateComposite(
+                        FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\forephoto" + (i + 1) + ".jpg"),
+                        ConfigUtility.Backgrounds[this.currentSession.SelectedBackgrounds[i] - 1]);
+                }
+                else
+                {
+                    image = FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\forephoto" + (i + 1) + ".jpg");
+                }
 
                 //gw
                 if (this.currentSession.SelectedColorType == ColorType.Sepia)
@@ -1066,7 +1080,7 @@ namespace MME.Hercules.Forms.User
 
             this.Visible = true;
             this.pb.Visible = true;
-            this.info.Visible = true;
+            this.info.Visible = false;
 
             WindowUtility.SetScreen(pb, Hercules.Properties.Resources.TAKEPHOTO_SCREEN);
             //info.ForeColor = System.Drawing.Color.Black;
@@ -1179,6 +1193,7 @@ namespace MME.Hercules.Forms.User
             //infof.BackColor = System.Drawing.Color.Red;
             info.Visible = false;
             info.Parent = pb;
+            info.Visible = false;
             info.AutoSize = false;
             info.Text = "Get Ready.  We are about to take your picture!";
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TAKEPHOTO_MESSAGE")))
@@ -1756,9 +1771,17 @@ namespace MME.Hercules.Forms.User
 
                     if (ConfigUtility.PhotoBackgrounds > 0)
                     {
-                        this.preview.Image = ChromakeyUtility.CreateComposite(
-                            FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\forephoto" + (i + 1) + ".jpg"),
-                            ConfigUtility.Backgrounds[this.currentSession.SelectedBackgrounds[i] - 1]);
+                        String cval = ConfigUtility.GetValue("ChromaKeyEnabled");
+                        bool ck_on = true;
+                        if (cval == "0")
+                            ck_on = false;
+
+                        if (ck_on)
+                            this.preview.Image = ChromakeyUtility.CreateComposite(
+                                FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\forephoto" + (i + 1) + ".jpg"),
+                                ConfigUtility.Backgrounds[this.currentSession.SelectedBackgrounds[i] - 1]);
+                        else
+                            this.preview.Image = FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\forephoto" + (i + 1) + ".jpg");
 
                         //gw
                         if (this.currentSession.SelectedColorType == ColorType.Sepia)

@@ -25,11 +25,20 @@ namespace HerculesWPFDJRequestor
     /// </summary>
     public partial class UserControl1 : UserControl
     {
+        public int IDLE_TIMEOUT = 20;
+        public int AFTER_SEND_TIMEOUT = 5;
+
+        public delegate void UserControlDJDelegate(int option);
+        public UserControlDJDelegate evt = null;
+
         public String entry = "";
 
         public DoubleAnimation anim = new DoubleAnimation(0.0, 360.0, new Duration(TimeSpan.FromSeconds(10)));
 
+        public bool done = false;
+        public bool timedout = false;
 
+        private System.Windows.Threading.DispatcherTimer pause = null;
 
         public UserControl1()
         {
@@ -67,7 +76,10 @@ namespace HerculesWPFDJRequestor
 
             this.textBlock1.Visibility = System.Windows.Visibility.Hidden;
             this.image2.Visibility = System.Windows.Visibility.Hidden;
-            
+
+
+            if ( this.pause!=null ) this.pause.Stop();
+            this.pause = null;
         }
 
         public void Start()
@@ -80,6 +92,21 @@ namespace HerculesWPFDJRequestor
 
             this.textBlock1.Visibility = System.Windows.Visibility.Hidden;
             this.image2.Visibility = System.Windows.Visibility.Hidden;
+
+            this.done = false;
+            this.timedout = false;
+            this.RestartTimer(IDLE_TIMEOUT);
+           
+        }
+
+        private void RestartTimer(int t)
+        {
+            if (this.pause != null) this.pause.Stop();
+            this.pause = null;
+            this.pause = new System.Windows.Threading.DispatcherTimer();
+            this.pause.Tick += new EventHandler(this.__timeout);
+            this.pause.Interval = new TimeSpan(0, 0, t);
+            this.pause.Start();
         }
 
         private void details()
@@ -118,12 +145,17 @@ namespace HerculesWPFDJRequestor
         {
             String txt = e.ControlText;
             this.entry += txt;
+
+            this.RestartTimer(IDLE_TIMEOUT);
         }
 
         private void Keyboard_KeyDown(object sender, KeyEventArgs e)
         {
             String ky = e.Key.ToString();
             this.entry += ky;
+
+
+            this.RestartTimer(IDLE_TIMEOUT);
         }
 
         private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
@@ -134,6 +166,9 @@ namespace HerculesWPFDJRequestor
         private void textBox1_TextInput(object sender, TextCompositionEventArgs e)
         {
             String txt = e.Text;
+
+
+            this.RestartTimer(IDLE_TIMEOUT);
         }
 
         private void textBox1_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -289,10 +324,48 @@ namespace HerculesWPFDJRequestor
             System.Random ran = new Random((int) DateTime.Now.Ticks & 0x0000FFFF);
             this.textBlock1.Text = popups[ran.Next(4)];
 
+            //  Hardcoded text for Google event...
+            this.textBlock1.Text = "Thank you, your request has been submitted to the DJ.";
+
             this.textBlock1.Visibility = System.Windows.Visibility.Visible;
             this.image2.Visibility = System.Windows.Visibility.Visible;
 
+            //  Make controls disappear...
+            this.done = true;
+            this.Keyboard.Visibility = System.Windows.Visibility.Hidden;
+            this.Keyboard.IsOpen = false;
+            this.InvalidateVisual();
+
+            //  Kill any current timer...
+            if (this.pause != null) this.pause.Stop();
+            this.pause = null;
+
+            //  Make the request...
             DJRequest(this.textBox1.Text);
+
+            //  Start timer to go away...
+
+            this.RestartTimer(AFTER_SEND_TIMEOUT);
+            
+        }
+
+        //  handler for timer in ui thread...
+        void __timeout(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.pause != null) this.pause.Stop();
+                this.pause = null;
+
+                if (this.timedout)
+                    return;
+                this.timedout = true;
+                this.evt(0);
+            }
+            catch (System.Exception E)
+            {
+                System.Windows.MessageBox.Show(E.ToString());
+            }
         }
 
         private void button1_MouseDown(object sender, MouseButtonEventArgs e)

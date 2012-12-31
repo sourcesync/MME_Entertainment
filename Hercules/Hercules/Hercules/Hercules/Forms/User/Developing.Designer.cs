@@ -43,7 +43,6 @@
             this.pb.Size = new System.Drawing.Size(1024, 768);
             this.pb.TabIndex = 0;
             this.pb.TabStop = false;
-            this.pb.Visible = false;
             // 
             // label1
             // 

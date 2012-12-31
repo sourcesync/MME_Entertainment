@@ -107,6 +107,8 @@ namespace HerculesWPFMaster
 
         public System.Collections.Hashtable webkey = new System.Collections.Hashtable();
 
+        public System.Windows.Threading.DispatcherTimer timer = null;
+
         public UserControl1()
         {
             InitializeComponent();
@@ -117,6 +119,7 @@ namespace HerculesWPFMaster
             this.ctlmenu.evt += new HerculesWPFMenu.UserControlMenu.UserControlMenuDelegate(this.menu_selected);
             this.ctlchoose.evt += new HerculesWPFChoose.UserControlChoose.UserControlChooseDelegate(this.choose_selected);
             this.ctlgamemenu.tevt += new HerculesWPFGameMenu.UserControl1.UserControlGameMainToggle(this.game_selected);
+            this.ctldjrequestor.evt += new HerculesWPFDJRequestor.UserControl1.UserControlDJDelegate(this.dj_selected);
 
             //  user control array..
             ctls.Add(this.ctlchoose);
@@ -316,6 +319,14 @@ namespace HerculesWPFMaster
             if (this.evt != null) this.evt(option);
         }
 
+        public void dj_selected(int option)
+        {
+            if (option == 0)
+            {
+                this.ctldjrequestor.Stop();
+                this.ShowMain();
+            }
+        }
 
         public void game_selected(int option)
         {
@@ -707,6 +718,7 @@ namespace HerculesWPFMaster
             if (!ab) this.webBrowser1.Height = 646+45;
 
             this.webBrowser1.Width = 1024;
+
             this.canvas_master.Children.Add(this.webBrowser1);
             FrameworkElement el = this.webBrowser1 as FrameworkElement;
             el.SetValue(Canvas.LeftProperty, 0.0);
@@ -718,6 +730,7 @@ namespace HerculesWPFMaster
             {
                 el.SetValue(Canvas.TopProperty, 0.0);
             }
+            //el.SetValue(Canvas.TopProperty, 1000.0);
             this.current = this.webBrowser1;
 
             //this.HideRotators();
@@ -737,16 +750,62 @@ namespace HerculesWPFMaster
              
              */
             this.webBrowser1.Navigate(new Uri(weburl, UriKind.RelativeOrAbsolute));
-            this.webBrowser1.LoadCompleted += new LoadCompletedEventHandler(webBrowser1_LoadCompleted);
+            //this.webBrowser1.LoadCompleted += new LoadCompletedEventHandler(webBrowser1_LoadCompleted);
 
             this.ShowBack();
+
+
+            this.webBrowser1.Visibility = System.Windows.Visibility.Visible;
         }
 
         void webBrowser1_LoadCompleted(object sender, NavigationEventArgs e)
         {
-            this.webBrowser1.Visibility = System.Windows.Visibility.Visible;
             this.webBrowser1.BringIntoView();
+            this.webBrowser1.Visibility = System.Windows.Visibility.Visible;
+            FrameworkElement el = this.webBrowser1 as FrameworkElement;
+            el.SetValue(Canvas.LeftProperty, 0.0);
+            el.SetValue(Canvas.TopProperty, 0.0);
             //sthrow new NotImplementedException();
+
+           // this.RestartTimer(3);
+        }
+
+        private void RestartTimer(int t)
+        {
+            if (this.timer != null) this.timer.Stop();
+            this.timer = null;
+            this.timer = new System.Windows.Threading.DispatcherTimer();
+            this.timer.Tick += new EventHandler(this.__timeout);
+            this.timer.Interval = new TimeSpan(0, 0, t);
+            this.timer.Start();
+        }
+
+        public delegate void Callback( int o );
+            
+        public void _Call( int o )
+        {
+            this.webBrowser1.BringIntoView();
+            this.webBrowser1.Visibility = System.Windows.Visibility.Visible;
+            FrameworkElement el = this.webBrowser1 as FrameworkElement;
+            el.SetValue(Canvas.LeftProperty, 0.0);
+            el.SetValue(Canvas.TopProperty, 0.0);
+        }
+
+
+        //  handler for timer in ui thread...
+        void __timeout(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.timer != null) this.timer.Stop();
+                this.timer = null;
+
+                this.Dispatcher.Invoke(new Callback(this._Call), new object[] {1});
+            }
+            catch (System.Exception E)
+            {
+                System.Windows.MessageBox.Show(E.ToString());
+            }
         }
 
         public void HideScriptErrors(WebBrowser wb, bool Hide)

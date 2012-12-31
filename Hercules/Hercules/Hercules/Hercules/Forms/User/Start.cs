@@ -375,8 +375,18 @@ namespace MME.Hercules.Forms.User
                     dr = ProcessSequenceSteps(dr);
                 }
 
+                bool get_bd = false;
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "BIRTHDAY_MODE")))
+                {
+                    String val = ConfigUtility.GetConfig(ConfigUtility.Config, "BIRTHDAY_MODE");
+                    if (val == "1") 
+                        get_bd = true;
+                
+                }
+          
+                 
                 // Are we requiring birthday ?            
-                if (dr == System.Windows.Forms.DialogResult.OK)
+                if ((get_bd) && (dr == System.Windows.Forms.DialogResult.OK))
                 {
                     using (User.Birthday bd = new Birthday(currentSession))
                     {
@@ -490,18 +500,16 @@ namespace MME.Hercules.Forms.User
                 }
 
 
-                bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
-                if (offline) AllowFacebookPublish = false;
+                 
 
                 
-
-                
-                if (!ConfigUtility.GetValue("CameraName").Equals("Web"))
+                if (!ConfigUtility.GetValue("CameraName").Equals("Web")) // booth
                 {
+                   //System.Windows.Forms.MessageBox.Show("1-" + dr.ToString() + currentSession.EmailAddress);
+
+
                     // As to pick favorite if emailing
-                    if (dr == System.Windows.Forms.DialogResult.OK &&
-                        (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
-                        AllowFacebookPublish))
+                    if (dr == System.Windows.Forms.DialogResult.OK )
                     {
                         {
                             PickFavorite pvform = new PickFavorite(currentSession);
@@ -509,12 +517,13 @@ namespace MME.Hercules.Forms.User
                         }
                     }
                 }
-                else
+                else // web cam...
                 {
+
+                    //System.Windows.Forms.MessageBox.Show("2-" + dr.ToString() + currentSession.EmailAddress);
+
                     //  Force favorite to first one...
-                    if (dr == System.Windows.Forms.DialogResult.OK &&
-                        (!string.IsNullOrEmpty(currentSession.EmailAddress) ||
-                        AllowFacebookPublish))
+                    if ((dr == System.Windows.Forms.DialogResult.OK))
                     {
                         {
                             this.currentSession.FavoritePhoto = 1;
@@ -527,6 +536,10 @@ namespace MME.Hercules.Forms.User
                 }
 
                 // Are we supporting facebook
+                bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
+                if (offline) AllowFacebookPublish = false;
+                if (string.IsNullOrEmpty(currentSession.EmailAddress)) AllowFacebookPublish = false;
+               
                 bool facebook_yes = false;
                 if (AllowFacebookPublish && dr == System.Windows.Forms.DialogResult.OK)
                 {
