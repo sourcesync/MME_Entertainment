@@ -30,8 +30,8 @@ namespace HerculesWPFGameMenu
             InitializeComponent();
 
 
-            BitmapSource src = WindowUtility.GetScreenBitmapWPF("table_main_menu_bg.jpg");
-            this.image2.Source = src;
+            //BitmapSource src = WindowUtility.GetScreenBitmapWPF("table_main_menu_bg.jpg");
+            //this.image2.Source = src;
 
             /*
             BitmapImage bm = WindowUtility.GetScreenBitmapWPF("plain_button.png");
@@ -52,10 +52,10 @@ namespace HerculesWPFGameMenu
                 }
 
             }
-            this.label1.Foreground = this.myForeBrush;
-            this.label2.Foreground = this.myForeBrush;
-            this.label3.Foreground = this.myForeBrush;
-            this.label4.Foreground = this.myForeBrush;
+           // this.label1.Foreground = this.myForeBrush;
+           // this.label2.Foreground = this.myForeBrush;
+           // this.label3.Foreground = this.myForeBrush;
+          //  this.label4.Foreground = this.myForeBrush;
 
         }
 
@@ -93,6 +93,30 @@ namespace HerculesWPFGameMenu
             if (this.tevt != null)
             {
                 this.tevt(3);
+            }
+        }
+
+        private void image7_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (this.tevt != null)
+            {
+                this.tevt(4);
+            }
+        }
+
+        private void image3_MouseUp_1(object sender, MouseButtonEventArgs e)
+        {
+            if (this.tevt != null)
+            {
+                this.tevt(5);
+            }
+        }
+
+        private void image8_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (this.tevt != null)
+            {
+                this.tevt(6);
             }
         }
     }

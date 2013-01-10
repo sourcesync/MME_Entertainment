@@ -77,6 +77,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,9 +97,21 @@
       <Project>{EBB69B0E-FCA6-4810-8C7D-3C2B06372DCE}</Project>
       <Name>HerculesWPFBlank</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFCheckers\HerculesWPFCheckers.csproj">
+      <Project>{41519951-B03F-4DD3-9F8D-7C33E6106F27}</Project>
+      <Name>HerculesWPFCheckers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFChess\HerculesWPFChess.csproj">
+      <Project>{2869A4D0-5F9E-407E-9038-2498B4B3693C}</Project>
+      <Name>HerculesWPFChess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HerculesWPFChoose\HerculesWPFChoose.csproj">
       <Project>{4DD6FE24-13EE-4153-9CBE-12E4AFD635CE}</Project>
       <Name>HerculesWPFChoose</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFDice\HerculesWPFDice.csproj">
+      <Project>{34D71995-069E-47E2-875F-77BDCEF9EB22}</Project>
+      <Name>HerculesWPFDice</Name>
     </ProjectReference>
     <ProjectReference Include="..\HerculesWPFDJRequestor\HerculesWPFDJRequestor.csproj">
       <Project>{58B0B147-664A-4244-AFBB-88C77CBB94E6}</Project>
@@ -128,9 +141,25 @@
       <Project>{1D438B20-3E32-44A5-A070-4BD7673E28E1}</Project>
       <Name>HerculesWPFMenu</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFMessageTable\HerculesWPFMessageTable.csproj">
+      <Project>{3986DCEA-42D0-4E3D-BE61-FAEA94091CE5}</Project>
+      <Name>HerculesWPFMessageTable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFSendADrink\HerculesWPFSendADrink.csproj">
+      <Project>{5C8EF603-577A-46ED-BC3F-98F65C91994D}</Project>
+      <Name>HerculesWPFSendADrink</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFSpinTheBottle\HerculesWPFSpinTheBottle.csproj">
+      <Project>{2C5EA100-3089-49A0-8B28-7DC556592E6A}</Project>
+      <Name>HerculesWPFSpinTheBottle</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HerculesWPFTicTacToe\HerculesWPFTicTacToe.csproj">
       <Project>{7BEF5DEE-56D8-433E-9A59-F0F5357230DF}</Project>
       <Name>HerculesWPFTicTacToe</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFTrivia\HerculesWPFTrivia.csproj">
+      <Project>{E67B74B7-27B7-43A6-BDF8-718D061E3D4A}</Project>
+      <Name>HerculesWPFTrivia</Name>
     </ProjectReference>
     <ProjectReference Include="..\HerculesWPFWeb\HerculesWPFWeb.csproj">
       <Project>{46EBD922-A658-4B01-8B08-84B9C8ABE6EE}</Project>

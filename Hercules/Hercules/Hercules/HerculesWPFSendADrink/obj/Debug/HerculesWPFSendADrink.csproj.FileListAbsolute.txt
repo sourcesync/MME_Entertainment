@@ -1,0 +1,12 @@
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\bin\Debug\HerculesWPFSendADrink.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\bin\Debug\HerculesWPFSendADrink.pdb
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\UserControl1.baml
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\UserControl1.g.cs
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\HerculesWPFSendADrink_MarkupCompile.cache
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\HerculesWPFSendADrink.g.resources
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\HerculesWPFSendADrink.Properties.Resources.resources
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\HerculesWPFSendADrink.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFSendADrink\obj\Debug\HerculesWPFSendADrink.pdb

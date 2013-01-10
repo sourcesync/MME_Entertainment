@@ -99,6 +99,12 @@
     <Resource Include="Images\memory-icon.png" />
     <Resource Include="Images\tictactoe-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\games-screen-bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1pix.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

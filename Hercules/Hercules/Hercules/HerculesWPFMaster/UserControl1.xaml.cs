@@ -111,50 +111,66 @@ namespace HerculesWPFMaster
 
         public UserControl1()
         {
-            InitializeComponent();
-
-            //  user control delegates...
-            this.ctlmain.evt += new HerculesWPFMain.UserControlMain.UserControlMainDelegate(this.main_selected);
-            this.ctlblank.evt += new HerculesWPFBlank.UserControlBlank.UserControlBlankDelegate(this.blank_selected);
-            this.ctlmenu.evt += new HerculesWPFMenu.UserControlMenu.UserControlMenuDelegate(this.menu_selected);
-            this.ctlchoose.evt += new HerculesWPFChoose.UserControlChoose.UserControlChooseDelegate(this.choose_selected);
-            this.ctlgamemenu.tevt += new HerculesWPFGameMenu.UserControl1.UserControlGameMainToggle(this.game_selected);
-            this.ctldjrequestor.evt += new HerculesWPFDJRequestor.UserControl1.UserControlDJDelegate(this.dj_selected);
-
-            //  user control array..
-            ctls.Add(this.ctlchoose);
-            ctls.Add(this.ctlmain);
-            ctls.Add(this.ctlmenu);
-            ctls.Add(this.ctlblank);
-            ctls.Add(this.ctlevents);
-            ctls.Add(this.ctlmemorygame);
-            ctls.Add(this.ctldraw);
-            ctls.Add(this.ctlgamemenu);
-            ctls.Add(this.ctlttt);
-            ctls.Add(this.ctlgallery);
-            //ctls.Add(this.ctlangrybirds);
-            ctls.Add(this.ctldjrequestor);
-
-            this.webBrowser1.Loaded +=new RoutedEventHandler(webBrowser1_Loaded);
-
-            /*
-            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR")))
-            {
-
-            }
-             * */
-
             try
             {
-                BitmapSource src = WindowUtility.GetScreenBitmapWPF("calendar.jpg");
-                this.ctlevents.Source = src;
+                InitializeComponent();
+
+                //  user control delegates...
+                this.ctlmain.evt += new HerculesWPFMain.UserControlMain.UserControlMainDelegate(this.main_selected);
+                this.ctlblank.evt += new HerculesWPFBlank.UserControlBlank.UserControlBlankDelegate(this.blank_selected);
+                this.ctlmenu.evt += new HerculesWPFMenu.UserControlMenu.UserControlMenuDelegate(this.menu_selected);
+               // this.ctlchoose.evt += new HerculesWPFChoose.UserControlChoose.UserControlChooseDelegate(this.choose_selected);
+                this.ctlgamemenu.tevt += new HerculesWPFGameMenu.UserControl1.UserControlGameMainToggle(this.game_selected);
+                this.ctldjrequestor.evt += new HerculesWPFDJRequestor.UserControl1.UserControlDJDelegate(this.dj_selected);
+
+                //  user control array..
+                //ctls.Add(this.ctlchoose);
+                ctls.Add(this.ctlmain);
+                ctls.Add(this.ctlmenu);
+                ctls.Add(this.ctlblank);
+                ctls.Add(this.ctlevents);
+                //ctls.Add(this.ctlmemorygame);
+                ctls.Add(this.ctldraw);
+                ctls.Add(this.ctlgamemenu);
+                ctls.Add(this.ctlttt);
+                ctls.Add(this.ctlgallery);
+                ctls.Add(this.ctlcheckers);
+
+                ctls.Add(this.ctldice);
+                ctls.Add(this.ctltrivia);
+                ctls.Add(this.ctlchess);
+                ctls.Add(this.ctlspinthebottle);
+                ctls.Add(this.ctlsendadrink);
+
+                //ctls.Add(this.ctlangrybirds);
+                ctls.Add(this.ctldjrequestor);
+
+                this.webBrowser1.Loaded += new RoutedEventHandler(webBrowser1_Loaded);
+
+                /*
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "TEXT_COLOR")))
+                {
+
+                }
+                 * */
+
+                try
+                {
+                    BitmapSource src = WindowUtility.GetScreenBitmapWPF("calendar.jpg");
+                    this.ctlevents.Source = src;
+                }
+                catch (System.Exception E)
+                {
+                    System.Windows.MessageBox.Show(E.ToString());
+                }
+
+                this.GetWebURLKey();
+
             }
             catch (System.Exception E)
             {
                 System.Windows.MessageBox.Show(E.ToString());
             }
-
-            this.GetWebURLKey();
 
             //this.imagequit.Visibility = System.Windows.Visibility.Hidden;
         }
@@ -239,8 +255,20 @@ namespace HerculesWPFMaster
             if ((option == "menu")||(option=="drinks")) // menu
             {
 
-                this.ctlchoose.Restart();
+               // this.ctlchoose.Restart();
                 this.ShowMenu();
+            }
+            else if (option == "send-a-drink")
+            {
+                this.ShowSendADrink();
+            }
+            else if (option == "message-table")
+            {
+                this.ShowMessage();
+            }
+            else if (option == "hidden")
+            {
+                this.ShowHidden();
             }
             else if (option == "hidden")
             {
@@ -332,20 +360,32 @@ namespace HerculesWPFMaster
         {
             if (option == 0)
             {
-                this.ShowMemoryGame();
+                this.ShowTTT(); //this.ShowMemoryGame();
             }
-            else if (option == 1)
-            {
-                this.ShowDraw();
-            }
+            //else if (option == 1)
+            //{
+            //     this.ShowDraw();
+            //}
             else if (option == 2)
             {
-                this.ShowTTT();
+                this.ShowCheckers();
             }
-            else if (option == 3)
+           else if (option == 3)
             {
-                this.ShowAngryBirds();
+                this.ShowDice(); //this.ShowAngryBirds();
             }
+            else if (option == 4)
+            {
+                this.ShowTrivia(); //this.ShowAngryBirds();
+            }
+            else if (option == 5)
+            {
+                this.ShowChess(); //this.ShowAngryBirds();
+            }
+            else if (option == 6)
+            {
+                this.ShowSpinTheBottle(); //this.ShowAngryBirds();
+            } 
         }
 
         public void choose_selected(int option)
@@ -393,7 +433,7 @@ namespace HerculesWPFMaster
             }
             else
             {
-                this.ShowChoose(option);
+                //this.ShowChoose(option);
                 
             }
         }
@@ -403,9 +443,9 @@ namespace HerculesWPFMaster
             this.ctlmenu.Visibility = System.Windows.Visibility.Hidden;
             this.ctlmain.Visibility = System.Windows.Visibility.Hidden;
             this.ctlblank.Visibility = System.Windows.Visibility.Hidden;
-            this.ctlchoose.Visibility = System.Windows.Visibility.Hidden;
+            //this.ctlchoose.Visibility = System.Windows.Visibility.Hidden;
             this.ctlevents.Visibility = System.Windows.Visibility.Hidden;
-            this.ctlmemorygame.Visibility = System.Windows.Visibility.Hidden;
+            //this.ctlmemorygame.Visibility = System.Windows.Visibility.Hidden;
             this.ctldraw.Visibility = System.Windows.Visibility.Hidden;
             this.ctlgamemenu.Visibility = System.Windows.Visibility.Hidden;
             this.ctlttt.Visibility = System.Windows.Visibility.Hidden;
@@ -415,6 +455,13 @@ namespace HerculesWPFMaster
             //this.ctlangrybirds.Stop();
             this.ctldjrequestor.Visibility = System.Windows.Visibility.Hidden;
             this.ctldjrequestor.Stop();
+            this.ctlcheckers.Visibility = System.Windows.Visibility.Hidden;
+            this.ctldice.Visibility = System.Windows.Visibility.Hidden;
+            this.ctltrivia.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlchess.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlspinthebottle.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlsendadrink.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlmessage.Visibility = System.Windows.Visibility.Hidden;
 
             if (this.webBrowser1 != null)
             {
@@ -529,12 +576,85 @@ namespace HerculesWPFMaster
             //this.ctlgallery.Start();
         }
 
+        /*
         public void ShowMemoryGame()
         {
             this.HideAll();
             this.ctlmemorygame.Visibility = System.Windows.Visibility.Visible;
             this.ctlmemorygame.Restart();
             this.current = this.ctlmemorygame;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+         * */
+
+        public void ShowCheckers()
+        {
+            this.HideAll();
+            this.ctlcheckers.Visibility = System.Windows.Visibility.Visible;
+            //this.ctlcheckers.Restart();
+            this.current = this.ctlcheckers;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowDice()
+        {
+            this.HideAll();
+            this.ctldice.Visibility = System.Windows.Visibility.Visible;
+            //this.ctlcheckers.Restart();
+            this.current = this.ctldice;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowSendADrink()
+        {
+            this.HideAll();
+            this.ctlsendadrink.Visibility = System.Windows.Visibility.Visible;
+            //this.ctlcheckers.Restart();
+            this.current = this.ctlsendadrink;
+            this.ShowRotators();
+            this.ShowBack();
+            this.ctlsendadrink.Start();
+        }
+
+        public void ShowMessage()
+        {
+            this.HideAll();
+            this.ctlmessage.Visibility = System.Windows.Visibility.Visible;
+            //this.ctlcheckers.Restart();
+            this.current = this.ctlmessage;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowTrivia()
+        {
+            this.HideAll();
+            this.ctltrivia.Visibility = System.Windows.Visibility.Visible;
+            //this.ctlcheckers.Restart();
+            this.current = this.ctltrivia;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowChess()
+        {
+            this.HideAll();
+            this.ctlchess.Visibility = System.Windows.Visibility.Visible;
+            //this.ctlcheckers.Restart();
+            this.current = this.ctlchess;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+
+        public void ShowSpinTheBottle()
+        {
+            this.HideAll();
+            this.ctlspinthebottle.Visibility = System.Windows.Visibility.Visible;
+            //this.ctlcheckers.Restart();
+            this.current = this.ctlspinthebottle;
             this.ShowRotators();
             this.ShowBack();
         }
@@ -558,6 +678,18 @@ namespace HerculesWPFMaster
             this.ShowRotators();
             this.ShowBack();
         }
+
+        /*
+        public void ShowDice()
+        {
+            this.HideAll();
+            this.ctlttt.Visibility = System.Windows.Visibility.Visible;
+            this.ctlttt.Restart();
+            this.current = this.ctlttt;
+            this.ShowRotators();
+            this.ShowBack();
+        }
+         * */
 
         public void ShowAngryBirds()
         {
@@ -846,6 +978,7 @@ namespace HerculesWPFMaster
             }
         }
 
+        /*
         public void ShowChoose(String option)
         {
             this.HideAll();
@@ -857,6 +990,7 @@ namespace HerculesWPFMaster
             this.ShowRotators();
             this.HideBack();
         }
+         * */
 
         public void ShowBlank()
         {
@@ -1024,11 +1158,31 @@ namespace HerculesWPFMaster
             {
                 this.ShowGameMenu();
             }
-            else if ( this.current == this.ctlmemorygame )
+           // else if ( this.current == this.ctlmemorygame )
+           // {
+            //    this.ShowGameMenu();
+           // }
+            else if (this.current == this.ctlttt)
             {
                 this.ShowGameMenu();
             }
-            else if (this.current == this.ctlttt)
+            else if (this.current == this.ctlcheckers )
+            {
+                this.ShowGameMenu();
+            }
+            else if (this.current == this.ctldice)
+            {
+                this.ShowGameMenu();
+            }
+            else if (this.current == this.ctltrivia)
+            {
+                this.ShowGameMenu();
+            }
+            else if (this.current == this.ctlchess)
+            {
+                this.ShowGameMenu();
+            }
+            else if (this.current == this.ctlspinthebottle)
             {
                 this.ShowGameMenu();
             }

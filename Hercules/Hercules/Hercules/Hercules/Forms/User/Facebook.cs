@@ -226,7 +226,8 @@ namespace MME.Hercules.Forms.User
 
                     this.labelQuestion.Text = "Would you like to post your photo to FaceBook?";
 
-                    if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FB_POST_TEXT")))
+                    String fbt = ConfigUtility.GetConfig(ConfigUtility.Config, "FB_POST_TEXT");
+                    if (!string.IsNullOrEmpty(fbt))
                     {
                         String text = ConfigUtility.GetConfig(ConfigUtility.Config, "FB_POST_TEXT");
                         this.labelQuestion.Text = text;

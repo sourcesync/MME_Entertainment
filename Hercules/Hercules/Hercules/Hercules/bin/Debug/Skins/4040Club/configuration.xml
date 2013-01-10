@@ -87,6 +87,7 @@
 
   <!--facebook checkin-->
 
+  <add key="FB_POST_TEXT" value =" " />
   
   <add key="FaceBookCheckinPlaceID" value="204068136279565" />
   <add key="FaceBookCheckinMessage" value="I was at the Buddy Media photobooth at Pier 60.  This is by far the coolest thing I have ever seen!" />

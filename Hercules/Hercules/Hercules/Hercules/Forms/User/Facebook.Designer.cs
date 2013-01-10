@@ -231,7 +231,7 @@
             // 
             // fbno
             // 
-            this.fbno.BackColor = System.Drawing.Color.White;
+            this.fbno.BackColor = System.Drawing.Color.Transparent;
             this.fbno.Location = new System.Drawing.Point(545, 269);
             this.fbno.Name = "fbno";
             this.fbno.Padding = new System.Windows.Forms.Padding(10);
@@ -242,7 +242,7 @@
             // 
             // fbyes
             // 
-            this.fbyes.BackColor = System.Drawing.Color.White;
+            this.fbyes.BackColor = System.Drawing.Color.Transparent;
             this.fbyes.Location = new System.Drawing.Point(217, 269);
             this.fbyes.Name = "fbyes";
             this.fbyes.Padding = new System.Windows.Forms.Padding(10);
@@ -253,7 +253,7 @@
             // 
             // pb2
             // 
-            this.pb2.BackColor = System.Drawing.Color.White;
+            this.pb2.BackColor = System.Drawing.Color.Black;
             this.pb2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb2.Location = new System.Drawing.Point(0, 0);
             this.pb2.Name = "pb2";

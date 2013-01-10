@@ -7,13 +7,30 @@
              xmlns:ucm="clr-namespace:HerculesWPFMain;assembly=HerculesWPFMain"
              xmlns:ucb="clr-namespace:HerculesWPFBlank;assembly=HerculesWPFBlank"
              xmlns:ucmenu="clr-namespace:HerculesWPFMenu;assembly=HerculesWPFMenu"
-             xmlns:ucchoose="clr-namespace:HerculesWPFChoose;assembly=HerculesWPFChoose"
-             xmlns:ucmemorygame="clr-namespace:HerculesWPFMemoryGame;assembly=HerculesWPFMemoryGame"
+             
+             
              xmlns:ucttt="clr-namespace:HerculesWPFTicTacToe;assembly=HerculesWPFTicTacToe"
+             
              xmlns:ucdraw="clr-namespace:HerculesWPFDraw;assembly=HerculesWPFDraw"
              xmlns:ucgamemenu="clr-namespace:HerculesWPFGameMenu;assembly=HerculesWPFGameMenu"
              xmlns:ucgallery="clr-namespace:HerculesWPFGallery;assembly=HerculesWPFGallery"
              xmlns:ucdjrequestor="clr-namespace:HerculesWPFDJRequestor;assembly=HerculesWPFDJRequestor"
+           
+             xmlns:uccheckers="clr-namespace:HerculesWPFCheckers;assembly=HerculesWPFCheckers"
+             
+             xmlns:ucdice="clr-namespace:HerculesWPFDice;assembly=HerculesWPFDice"
+             
+             xmlns:uctrivia="clr-namespace:HerculesWPFTrivia;assembly=HerculesWPFTrivia"
+             
+             xmlns:ucchess="clr-namespace:HerculesWPFChess;assembly=HerculesWPFChess"
+             
+             xmlns:ucspinthebottle="clr-namespace:HerculesWPFSpinTheBottle;assembly=HerculesWPFSpinTheBottle"
+             
+             xmlns:ucsendadrink="clr-namespace:HerculesWPFSendADrink;assembly=HerculesWPFSendADrink"
+             
+             
+             xmlns:ucmessage="clr-namespace:HerculesWPFMessageTable;assembly=HerculesWPFMessageTable"
+             
              d:DesignHeight="768" d:DesignWidth="1024">
 
     <Canvas Width="1024" Height="768">
@@ -26,13 +43,21 @@
             <ucb:UserControlBlank Canvas.Top="0" Canvas.Left="0" x:Name="ctlblank" IsEnabled="True" Visibility="Visible" />
             <ucm:UserControlMain Canvas.Top="0" Canvas.Left="0" x:Name="ctlmain" IsEnabled="True" Visibility="Hidden" />
             <ucmenu:UserControlMenu Canvas.Top="0" Canvas.Left="0" x:Name="ctlmenu" IsEnabled="True" Visibility="Hidden" />
-            <ucchoose:UserControlChoose Canvas.Top="0" Canvas.Left="0" x:Name="ctlchoose" IsEnabled="True" Visibility="Hidden" />
-            <ucmemorygame:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlmemorygame" IsEnabled="True" Visibility="Hidden" />
+            <!--<ucchoose:UserControlChoose Canvas.Top="0" Canvas.Left="0" x:Name="ctlchoose" IsEnabled="True" Visibility="Hidden" />-->
+            <!--<ucmemorygame:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlmemorygame" IsEnabled="True" Visibility="Hidden" />-->
             <ucdraw:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctldraw" IsEnabled="True" Visibility="Hidden" />
             <ucgamemenu:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlgamemenu" IsEnabled="True" Visibility="Hidden" />
             <ucttt:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlttt" IsEnabled="True" Visibility="Hidden" />
             <ucgallery:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlgallery" IsEnabled="True" Visibility="Hidden" />
             <ucdjrequestor:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctldjrequestor" IsEnabled="True" Visibility="Hidden" />
+            <uccheckers:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlcheckers" IsEnabled="True" Visibility="Hidden" />
+            <ucdice:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctldice" IsEnabled="True" Visibility="Hidden" />
+            <uctrivia:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctltrivia" IsEnabled="True" Visibility="Hidden" />
+            <ucchess:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlchess" IsEnabled="True" Visibility="Hidden" />
+            <ucspinthebottle:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlspinthebottle" IsEnabled="True" Visibility="Hidden" />
+            <ucsendadrink:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlsendadrink" IsEnabled="True" Visibility="Hidden" />
+            <ucmessage:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlmessage" IsEnabled="True" Visibility="Hidden" />
+
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagepromo" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/SURVEYSCREEN.jpg" />
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagecono" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/concierge.png" />
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagesocial" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/interact-screen.png" />

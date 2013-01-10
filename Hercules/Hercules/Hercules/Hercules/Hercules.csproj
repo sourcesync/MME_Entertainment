@@ -713,6 +713,10 @@
       <Project>{1D438B20-3E32-44A5-A070-4BD7673E28E1}</Project>
       <Name>HerculesWPFMenu</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HerculesWPFMessageTable\HerculesWPFMessageTable.csproj">
+      <Project>{3986DCEA-42D0-4E3D-BE61-FAEA94091CE5}</Project>
+      <Name>HerculesWPFMessageTable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
