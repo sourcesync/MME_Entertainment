@@ -72,6 +72,8 @@ namespace HerculesWPFTicTacToe
 
 
             BitmapSource src = WindowUtility.GetScreenBitmapWPF("gamebg.jpg");
+            //BitmapSource src = WindowUtility.GetScreenBitmapWPF("gamebg.jpg");
+
             this.image2.Source = src;
 
             this.myForeBrush = this.myBlackBrush;

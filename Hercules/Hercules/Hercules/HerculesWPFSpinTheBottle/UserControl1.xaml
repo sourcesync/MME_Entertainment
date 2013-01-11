@@ -7,5 +7,7 @@
              d:DesignHeight="768" d:DesignWidth="1024">
     <Canvas Name="canvas_master" Background="Red" Height="768" Width="1024">
         <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="image2" Stretch="Fill" Width="1024" Source="/HerculesWPFSpinTheBottle;component/Images/spin-the-bottle-bg.png" />
+        <Image Canvas.Left="310" Canvas.Top="291" Height="394" Name="image1" Stretch="Fill" Width="408" Source="/HerculesWPFSpinTheBottle;component/Images/spin-the-bottle-bottle.png" />
+        <Image Canvas.Left="66" Canvas.Top="618" Height="67" Name="image3" Stretch="Fill" Width="158" Source="/HerculesWPFSpinTheBottle;component/Images/spin-the-bottle-button.png" MouseUp="image3_MouseUp" />
     </Canvas>
 </UserControl>
