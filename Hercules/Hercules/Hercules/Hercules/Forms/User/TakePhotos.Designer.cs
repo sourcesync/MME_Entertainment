@@ -368,8 +368,8 @@
             // 
             // pb
             // 
-            this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb.Location = new System.Drawing.Point(0, 0);
+            this.pb.Margin = new System.Windows.Forms.Padding(0);
             this.pb.Name = "pb";
             this.pb.Size = new System.Drawing.Size(1024, 768);
             this.pb.TabIndex = 0;
@@ -424,7 +424,7 @@
             this.MaximizeBox = false;
             this.Name = "TakePhotos";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Take Photos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TakePhotos_FormClosed);
             this.Load += new System.EventHandler(this.TakePhotos_Load);

@@ -265,6 +265,9 @@ namespace MME.Hercules.Forms.User
                 this.pictureBox1.Visible = true;
             }
 
+            //  turn off the notice...
+            this.notice.Visible = false;
+
             this.Refresh();
 
         }

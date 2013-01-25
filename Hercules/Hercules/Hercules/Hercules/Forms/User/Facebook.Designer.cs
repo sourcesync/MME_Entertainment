@@ -46,8 +46,8 @@
             this.fbno = new System.Windows.Forms.PictureBox();
             this.fbyes = new System.Windows.Forms.PictureBox();
             this.pb2 = new System.Windows.Forms.PictureBox();
-            this.keyboard = new MME.Hercules.Keyboards.Keyboard2();
             this.pb = new System.Windows.Forms.PictureBox();
+            this.keyboard = new MME.Hercules.Keyboards.Keyboard2();
             this.alertbox.SuspendLayout();
             this.usepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -254,12 +254,22 @@
             // pb2
             // 
             this.pb2.BackColor = System.Drawing.Color.Black;
-            this.pb2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb2.Location = new System.Drawing.Point(0, 0);
+            this.pb2.Margin = new System.Windows.Forms.Padding(0);
             this.pb2.Name = "pb2";
             this.pb2.Size = new System.Drawing.Size(1024, 768);
             this.pb2.TabIndex = 0;
             this.pb2.TabStop = false;
+            // 
+            // pb
+            // 
+            this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb.Location = new System.Drawing.Point(0, 0);
+            this.pb.Margin = new System.Windows.Forms.Padding(0);
+            this.pb.Name = "pb";
+            this.pb.Size = new System.Drawing.Size(1024, 768);
+            this.pb.TabIndex = 0;
+            this.pb.TabStop = false;
             // 
             // keyboard
             // 
@@ -269,15 +279,6 @@
             this.keyboard.Name = "keyboard";
             this.keyboard.Size = new System.Drawing.Size(808, 252);
             this.keyboard.TabIndex = 13;
-            // 
-            // pb
-            // 
-            this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb.Location = new System.Drawing.Point(0, 0);
-            this.pb.Name = "pb";
-            this.pb.Size = new System.Drawing.Size(1024, 768);
-            this.pb.TabIndex = 0;
-            this.pb.TabStop = false;
             // 
             // Facebook
             // 
@@ -298,9 +299,10 @@
             this.Controls.Add(this.pb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Facebook";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Facebook";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Facebook_FormClosing);
             this.Load += new System.EventHandler(this.Facebook_Load);

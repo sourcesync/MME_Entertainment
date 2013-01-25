@@ -37,7 +37,6 @@
                 <RotateTransform Angle="180"></RotateTransform>
             </Image.RenderTransform>
         </Image>
-        <Image Canvas.Left="10" Canvas.Top="10" Height="18" Name="image12" Source="/HerculesWPFMain;component/Images/web100.png" Stretch="None" Width="150" />
         <Image Canvas.Left="-248" Canvas.Top="485" Height="18" Name="imageevents2" Source="/HerculesWPFMain;component/Images/events100.png" Stretch="None" Width="150" />
         <TextBlock Canvas.Left="101" Canvas.Top="530" Height="28" Name="label1" />
         <TextBlock Canvas.Left="101" Canvas.Top="530"  Height="28" Name="label2" />
