@@ -159,7 +159,7 @@ namespace MME.Hercules.Forms.User
                     new Uri("https://graph.facebook.com/oauth/authorize?client_id=262792687134194&redirect_uri=" +
                         System.Web.HttpUtility.UrlEncode("https://www.facebook.com/connect/login_success.html") +
                         "&type=user_agent&display=popup&scope=publish_checkins");
-                System.Console.WriteLine(uri.ToString());
+                //System.Console.WriteLine(uri.ToString());
                 webBrowser1.Url = uri;
             }
             else
@@ -173,7 +173,7 @@ namespace MME.Hercules.Forms.User
 
 
                 System.Console.WriteLine(uri.ToString());
-                System.Windows.Forms.MessageBox.Show(uri.ToString());
+                //System.Windows.Forms.MessageBox.Show(uri.ToString());
 
                 webBrowser1.Url = uri;
             }
@@ -374,8 +374,8 @@ namespace MME.Hercules.Forms.User
 
             HtmlElement body = webBrowser1.Document.Body;
             string txt = body.OuterHtml;
-            System.Windows.Forms.MessageBox.Show("dc=" + e.Url.ToString());
-            System.Windows.Forms.MessageBox.Show("body=" + txt);
+            //System.Windows.Forms.MessageBox.Show("dc=" + e.Url.ToString());
+            //System.Windows.Forms.MessageBox.Show("body=" + txt);
 
             int pos = webBrowser1.Url.ToString().IndexOf("access_token=");
             bool bOK = false;
