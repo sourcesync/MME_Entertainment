@@ -159,9 +159,13 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
-                webBrowser1.Url = new Uri("https://graph.facebook.com/oauth/authorize?client_id=262792687134194&redirect_uri=" +
+                Uri uri = new Uri("https://graph.facebook.com/oauth/authorize?client_id=262792687134194&redirect_uri=" +
                     System.Web.HttpUtility.UrlEncode("https://www.facebook.com/connect/login_success.html") +
                     "&type=user_agent&display=popup&scope=publish_stream");
+
+                System.Windows.Forms.MessageBox.Show(uri.ToString());
+
+                webBrowser1.Url = uri;
             }
 
             /*
