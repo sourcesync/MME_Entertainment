@@ -339,8 +339,7 @@ namespace MME.Hercules.Forms.User
             string txt = body.OuterHtml;
             //Console.WriteLine(txt);
 
-            System.Windows.Forms.MessageBox.Show("dc="+e.Url.ToString());
-            System.Windows.Forms.MessageBox.Show("body="+txt);
+            
 
             HtmlElementCollection els = webBrowser1.Document.GetElementsByTagName("submit");
             foreach (HtmlElement el in els)
@@ -373,6 +372,10 @@ namespace MME.Hercules.Forms.User
                 return;
             }
 
+            HtmlElement body = webBrowser1.Document.Body;
+            string txt = body.OuterHtml;
+            System.Windows.Forms.MessageBox.Show("dc=" + e.Url.ToString());
+            System.Windows.Forms.MessageBox.Show("body=" + txt);
 
             int pos = webBrowser1.Url.ToString().IndexOf("access_token=");
             bool bOK = false;
