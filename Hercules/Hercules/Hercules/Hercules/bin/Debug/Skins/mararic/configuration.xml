@@ -112,9 +112,9 @@
   <add key="INFO_OFFSET" value="-50" />
 
   <add key="MainMenuDir" value="main" />
-  <!--
+  
   <add key="SwapWebCams" value="1" />
-  -->
+  
 
   <add key="CheckoutTextColor" value="blue" />
 
