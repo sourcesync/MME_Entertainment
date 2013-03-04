@@ -89,9 +89,16 @@ namespace MME.Hercules
 
             //draw the original image on the new image
             //using the grayscale color matrix
-            g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height),
-               0, 0, original.Width, original.Height, GraphicsUnit.Pixel, attributes);
+            try
+            {
+                g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height),
+                   0, 0, original.Width, original.Height, GraphicsUnit.Pixel, attributes);
 
+            }
+            catch (System.Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.ToString());
+            }
             //dispose the Graphics object
             
             //gw...
