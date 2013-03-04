@@ -159,10 +159,15 @@ namespace MME.Hercules.Forms.User
             }
             else
             {
-                Uri uri = new Uri("https://graph.facebook.com/oauth/authorize?client_id=262792687134194&redirect_uri=" +
-                    System.Web.HttpUtility.UrlEncode("https://www.facebook.com/connect/login_success.html") +
-                    "&type=user_agent&display=popup&scope=publish_stream");
+                //Uri uri = new Uri("https://graph.facebook.com/oauth/authorize?client_id=262792687134194&redirect_uri=" +
+                 //   System.Web.HttpUtility.UrlEncode("https://www.facebook.com/connect/login_success.html") +
+                  //  "&type=user_agent&display=popup&scope=publish_stream");
 
+                Uri uri = new Uri("https://www.facebook.com/login.php?skip_api_login=1&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Foauth%3Fclient_id%3D262792687134194%26redirect_uri%3Dhttps%253A%252F%252Fwww.facebook.com%252Fconnect%252Flogin_success.html%26type%3Duser_agent%26display%3Dpopup%26scope%3Dpublish_stream%26from_login%3D1&cancel_uri=https%3A%2F%2Fwww.facebook.com%2Fconnect%2Flogin_success.html&display=popup&api_key=262792687134194");
+
+
+
+                System.Console.WriteLine(uri.ToString());
                 System.Windows.Forms.MessageBox.Show(uri.ToString());
 
                 webBrowser1.Url = uri;
