@@ -69,6 +69,11 @@ namespace MME.Hercules.Forms.User
 
         private void Facebook_Load(object sender, EventArgs e)
         {
+            bool b = webBrowser1.ScriptErrorsSuppressed;
+            System.Windows.Forms.MessageBox.Show("b="+b.ToString());
+            webBrowser1.ScriptErrorsSuppressed = true;
+            b = webBrowser1.ScriptErrorsSuppressed;
+            System.Windows.Forms.MessageBox.Show("bb="+b.ToString());
 
             // possibly adjust the buttons
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FBBUTTON_OFFSET")))
