@@ -339,6 +339,9 @@ namespace MME.Hercules.Forms.User
             string txt = body.OuterHtml;
             //Console.WriteLine(txt);
 
+            System.Windows.Forms.MessageBox.Show("dc="+e.Url.ToString());
+            System.Windows.Forms.MessageBox.Show("body="+txt);
+
             HtmlElementCollection els = webBrowser1.Document.GetElementsByTagName("submit");
             foreach (HtmlElement el in els)
             {
