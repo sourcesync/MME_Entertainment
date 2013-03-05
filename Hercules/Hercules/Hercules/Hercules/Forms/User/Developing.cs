@@ -491,13 +491,14 @@ namespace MME.Hercules.Forms.User
             template.Save(svpath, ImageFormat.Jpeg);
             template.Dispose();         
 
+            /*
             //  HACK FOR GOOGLE EVENT
             //  WE COPY THE ORIG TO THE DEST...
             String origpath = this.currentSession.PhotoPath + "\\photo" + this.currentSession.FavoritePhoto + ".jpg";
             String destpath = this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg";
             File.Delete(destpath);
             File.Copy(origpath, destpath);
-
+            */
 
             // create email textfile
             if (!string.IsNullOrEmpty(this.currentSession.EmailAddress))
