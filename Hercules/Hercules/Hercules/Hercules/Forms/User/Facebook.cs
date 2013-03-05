@@ -209,8 +209,8 @@ namespace MME.Hercules.Forms.User
             fbno.Load(string.Format("Skins\\{0}\\Screens\\fbno.png",
             ConfigUtility.Skin));
 
-            //fbyes.Parent = pb;
-            //fbno.Parent = pb;
+            fbyes.Parent = pb2;
+            fbno.Parent = pb2;
 
             notice.ForeColor = Color.Black;
 

@@ -35,8 +35,11 @@
   <add key="SkipEmailButtonY" value="40" />
   <add key="SkipEmailButtonWidth" value="100" />
   <add key="SkipEmailButtonHeight" value="100" />
-  <add key="SkipEmailButtonColor" value=""/>  
+  <add key="SkipEmailButtonColor" value=""/>
 
+
+  <add key="FinishedEmailButtonColor" value="#ff0000" />
+  
   <!-- Publish methods -->
   <add key="AllowEmailPublish" value="1" /> <!-- 1=on, 0=off -->
 
