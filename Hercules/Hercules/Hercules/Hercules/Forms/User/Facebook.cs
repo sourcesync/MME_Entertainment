@@ -515,7 +515,15 @@ namespace MME.Hercules.Forms.User
                     if (this.currentSession == null)
                         email.Text = "george@devnullenterprises.com";
                     else
-                     email.Text = this.currentSession.EmailAddress;
+                    {
+                        String[] emails = this.currentSession.EmailAddress.Split(new char[] { ';' });
+                        if (emails.Length > 0)
+                            email.Text = emails[0];
+                        else
+                            email.Text = "";
+
+
+                    }
                     em.SetAttribute("Value", email.Text);
 
                     FirstTime = false;

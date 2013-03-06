@@ -124,6 +124,11 @@ namespace MME.Hercules.Forms.User
             else
                 finished.BackColor = Color.Transparent;
 
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FinishedEmailButtonColor")))
+                another.BackColor = ColorTranslator.FromHtml(ConfigUtility.GetConfig(ConfigUtility.Config, "FinishedEmailButtonColor"));
+            else
+                another.BackColor = Color.Transparent;
+
             // adjust keyboard location...
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardY")))
             {
@@ -146,9 +151,14 @@ namespace MME.Hercules.Forms.User
                 this.skip.Location =
                     new Point(this.skip.Location.X, this.skip.Location.Y +
                         int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardDisplayY")));
+                //this.skip.Visible = true;
 
                 this.finished.Location =
                     new Point(this.finished.Location.X, this.finished.Location.Y +
+                        int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardDisplayY")));
+
+                this.another.Location =
+                    new Point(this.another.Location.X, this.another.Location.Y +
                         int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardDisplayY")));
 
                 this.Refresh();
@@ -161,7 +171,9 @@ namespace MME.Hercules.Forms.User
                 this.finished.Location = 
                     new Point( this.finished.Location.X, y );
                 this.skip.Location =
-                    new Point(this.finished.Location.X, y);
+                    new Point(this.skip.Location.X, y);
+                this.another.Location =
+                    new Point(this.another.Location.X, y);
             }
 
             if (!this.ispromo)
@@ -227,8 +239,8 @@ namespace MME.Hercules.Forms.User
             if (pb.Image != null)
                 pb.Image.Dispose();
 
-
-            this.currentSession.EmailAddress = this.textBox1.Text;
+            // Changed to support multiple emails...
+            this.currentSession.EmailAddress += (this.textBox1.Text + ";");
            
             SoundUtility.Play(Hercules.Properties.SoundResources.SELECTION_BUTTON);
             Thread.Sleep(1000);
@@ -297,6 +309,38 @@ namespace MME.Hercules.Forms.User
             {
                 Application.Exit();
             }
+        }
+
+        private void another_Click(object sender, EventArgs e)
+        {
+            if (!isValidEmail(this.textBox1.Text))
+            {
+                alertbox.Visible = true;
+                return;
+            }
+
+            SoundUtility.StopSpeaking();
+
+            if (!ispromo)
+            {
+                if (thread.ThreadState == ThreadState.Running)
+                    thread.Abort();
+
+                thread = null;
+            }
+
+            if (pb.Image != null)
+                pb.Image.Dispose();
+
+
+            this.currentSession.EmailAddress += (this.textBox1.Text + ";");
+
+            SoundUtility.Play(Hercules.Properties.SoundResources.SELECTION_BUTTON);
+            //Thread.Sleep(1000);
+
+
+            this.DialogResult = System.Windows.Forms.DialogResult.Retry;
+            
         }
 
     }

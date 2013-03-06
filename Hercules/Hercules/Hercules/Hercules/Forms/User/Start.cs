@@ -228,9 +228,19 @@ namespace MME.Hercules.Forms.User
                         bool AllowEmailPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1"));
                         if (AllowEmailPublish && dr == System.Windows.Forms.DialogResult.OK)
                         {
-                            using (User.Email ef = new Email(currentSession))
+
+                            this.currentSession.EmailAddress = "";
+
+                            //  possibly accumulate several emails...
+                            while (true)
                             {
-                                dr = ef.ShowDialog();
+                                using (User.Email ef = new Email(currentSession))
+                                {
+                                    dr = ef.ShowDialog();
+                                }
+
+                                if (dr == System.Windows.Forms.DialogResult.Retry) continue;
+                                else break;
                             }
                         }
 
@@ -308,10 +318,18 @@ namespace MME.Hercules.Forms.User
                         bool AllowEmailPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1"));
                         if (AllowEmailPublish && dr == System.Windows.Forms.DialogResult.OK)
                         {
-                            using (User.Email ef = new Email(currentSession))
+                            this.currentSession.EmailAddress = "";
+
+                            //  possibly accumulate several emails...
+                            while (true)
                             {
-                                ef.ispromo = true;
-                                dr = ef.ShowDialog();
+                                using (User.Email ef = new Email(currentSession))
+                                {
+                                    dr = ef.ShowDialog();
+                                }
+
+                                if (dr == System.Windows.Forms.DialogResult.Retry) continue;
+                                else break;
                             }
                         }
 
@@ -407,9 +425,19 @@ namespace MME.Hercules.Forms.User
                 bool AllowEmailPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("1"));
                 if (AllowEmailPublish && dr == System.Windows.Forms.DialogResult.OK)
                 {
-                    using (User.Email ef = new Email(currentSession))
+
+                    this.currentSession.EmailAddress = "";
+
+                    //  possibly accumulate several emails...
+                    while (true)
                     {
-                        dr = ef.ShowDialog();
+                        using (User.Email ef = new Email(currentSession))
+                        {
+                            dr = ef.ShowDialog();
+                        }
+
+                        if (dr == System.Windows.Forms.DialogResult.Retry) continue;
+                        else break;
                     }
                 }
 

@@ -520,8 +520,21 @@ namespace MME.Hercules.Forms.User
 
                 if (!offline)
                 {
-                    FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.EmailAddress,
-                        this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+                    // FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.EmailAddress,
+                      //      this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+
+                    //  iterate over all emails...
+                    String[] emails = this.currentSession.EmailAddress.Split(new char[] { ';' });
+
+                    for (int i=0;i<emails.Length;i++)
+                    {
+                        String email = emails[i];
+                        email = email.Trim();
+                        if (email == "") continue;
+
+                        FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, email,
+                            this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+                    }
                 }
                 ConfigUtility.IncrementCounter("Email");
 

@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.skipArea = new System.Windows.Forms.PictureBox();
             this.pictureBoxBack = new System.Windows.Forms.PictureBox();
+            this.another = new System.Windows.Forms.Button();
             this.keyboard = new MME.Hercules.Keyboards.Keyboard2();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.alertbox.SuspendLayout();
@@ -70,7 +71,7 @@
             this.skip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.skip.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skip.ForeColor = System.Drawing.Color.White;
-            this.skip.Location = new System.Drawing.Point(545, 645);
+            this.skip.Location = new System.Drawing.Point(250, 645);
             this.skip.Name = "skip";
             this.skip.Size = new System.Drawing.Size(145, 66);
             this.skip.TabIndex = 3;
@@ -85,7 +86,7 @@
             this.finished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.finished.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.finished.ForeColor = System.Drawing.Color.White;
-            this.finished.Location = new System.Drawing.Point(696, 645);
+            this.finished.Location = new System.Drawing.Point(417, 645);
             this.finished.Name = "finished";
             this.finished.Size = new System.Drawing.Size(222, 66);
             this.finished.TabIndex = 4;
@@ -161,6 +162,21 @@
             this.pictureBoxBack.Visible = false;
             this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
             // 
+            // another
+            // 
+            this.another.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.another.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.another.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.another.ForeColor = System.Drawing.Color.White;
+            this.another.Location = new System.Drawing.Point(662, 645);
+            this.another.Name = "another";
+            this.another.Size = new System.Drawing.Size(222, 66);
+            this.another.TabIndex = 10;
+            this.another.TabStop = false;
+            this.another.Text = "Add Another Email";
+            this.another.UseVisualStyleBackColor = false;
+            this.another.Click += new System.EventHandler(this.another_Click);
+            // 
             // keyboard
             // 
             this.keyboard.BackColor = System.Drawing.Color.Transparent;
@@ -177,6 +193,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.ControlBox = false;
+            this.Controls.Add(this.another);
             this.Controls.Add(this.pictureBoxBack);
             this.Controls.Add(this.keyboard);
             this.Controls.Add(this.skipArea);
@@ -218,5 +235,6 @@
         private System.Windows.Forms.PictureBox skipArea;
         private Keyboards.Keyboard2 keyboard;
         private System.Windows.Forms.PictureBox pictureBoxBack;
+        private System.Windows.Forms.Button another;
     }
 }
