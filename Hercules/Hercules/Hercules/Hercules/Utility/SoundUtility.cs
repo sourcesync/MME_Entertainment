@@ -125,10 +125,10 @@ namespace MME.Hercules
             catch { }
         }
 
-        public static void Play(string soundfile)
+        public static Boolean Play(string soundfile)
         {
             // If sound is disabled, then no play any sound
-            if (!ConfigUtility.GetValue("SoundEnabled").Equals("1")) return;
+            if (!ConfigUtility.GetValue("SoundEnabled").Equals("1")) return false;
 
             try
             {
@@ -137,8 +137,13 @@ namespace MME.Hercules
                     soundfile);
 
                 soundplayer.Play();
+
+                return true;
             }
-            catch { }
+            catch 
+            {
+                return false;
+            }
         }
     }
 }

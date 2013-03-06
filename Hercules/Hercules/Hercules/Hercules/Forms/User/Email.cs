@@ -187,7 +187,20 @@ namespace MME.Hercules.Forms.User
         private void PlayIntroSounds()
         {
             Thread.Sleep(800);
-            SoundUtility.Play(Hercules.Properties.SoundResources.ENTER_EMAIL);
+
+            if (this.currentSession.EmailAddress == "")
+            {
+                SoundUtility.Play(Hercules.Properties.SoundResources.ENTER_EMAIL);
+            }
+            else
+            {
+                if (!SoundUtility.Play(Hercules.Properties.SoundResources.NEXT_EMAIL))
+                {
+                    SoundUtility.Play(Hercules.Properties.SoundResources.ENTER_EMAIL);
+                }
+
+            }
+
         }
 
         private void skip_Click(object sender, EventArgs e)

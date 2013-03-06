@@ -150,6 +150,9 @@
   <data name="LINE_UP_EYES" xml:space="preserve">
     <value>lineupeyes.wav</value>
   </data>
+  <data name="NEXT_EMAIL" xml:space="preserve">
+    <value>nextemail.wav</value>
+  </data>
   <data name="ONE_COUNT" xml:space="preserve">
     <value>onecount.wav</value>
   </data>

@@ -35,6 +35,7 @@ namespace MME.Hercules.Forms.User
         public bool ischeckin = false;
         public bool yes_clicked = false;
         public bool skip_clicked = false;
+        
         //gw
 
         public Facebook(Session currentSession)
