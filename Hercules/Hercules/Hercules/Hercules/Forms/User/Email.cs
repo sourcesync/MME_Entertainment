@@ -138,8 +138,8 @@ namespace MME.Hercules.Forms.User
 
 
 
-                this.Refresh();
-                System.Threading.Thread.Sleep(1);
+               // this.Refresh();
+                //System.Threading.Thread.Sleep(1);
             }
 
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardDisplayY")))
@@ -161,8 +161,8 @@ namespace MME.Hercules.Forms.User
                     new Point(this.another.Location.X, this.another.Location.Y +
                         int.Parse(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardDisplayY")));
 
-                this.Refresh();
-                System.Threading.Thread.Sleep(1);
+               // this.Refresh();
+                //System.Threading.Thread.Sleep(1);
             }
 
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "KeyboardFinishY")))

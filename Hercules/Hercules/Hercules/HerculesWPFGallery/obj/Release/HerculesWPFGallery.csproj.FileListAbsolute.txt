@@ -1,0 +1,14 @@
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\bin\Release\HerculesWPFGallery.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\bin\Release\HerculesWPFGallery.pdb
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\bin\Release\HerculesConfig.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\bin\Release\HerculesConfig.pdb
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\UserControl1.baml
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\UserControl1.g.cs
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\HerculesWPFGallery_MarkupCompile.cache
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\HerculesWPFGallery.g.resources
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\HerculesWPFGallery.Properties.Resources.resources
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\GenerateResource.read.1.tlog
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\GenerateResource.write.1.tlog
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\HerculesWPFGallery.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGallery\obj\Release\HerculesWPFGallery.pdb

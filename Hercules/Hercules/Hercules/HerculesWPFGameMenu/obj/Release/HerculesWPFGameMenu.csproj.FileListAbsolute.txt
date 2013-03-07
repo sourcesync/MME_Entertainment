@@ -10,3 +10,17 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\Hercule
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\GenerateResource.write.1.tlog
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\HerculesWPFGameMenu.dll
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\HerculesWPFGameMenu.pdb
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\bin\Release\HerculesWPFGameMenu.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\bin\Release\HerculesWPFGameMenu.pdb
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\bin\Release\HerculesConfig.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\bin\Release\HerculesConfig.pdb
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\UserControl1.baml
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\UserControl1.g.cs
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\HerculesWPFGameMenu_MarkupCompile.cache
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\HerculesWPFGameMenu.g.resources
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\HerculesWPFGameMenu.Properties.Resources.resources
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\GenerateResource.read.1.tlog
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\GenerateResource.write.1.tlog
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\HerculesWPFGameMenu.dll
+C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFGameMenu\obj\Release\HerculesWPFGameMenu.pdb

@@ -1491,9 +1491,9 @@ namespace MME.Hercules.Forms.User
                 info.ForeColor = System.Drawing.Color.Black;
             }
 
-            this.Refresh();
-            Application.DoEvents();
-            System.Threading.Thread.Sleep(1);
+            //this.Refresh();
+            //Application.DoEvents();
+            //System.Threading.Thread.Sleep(1);
 
 
             this.Invoke(
