@@ -174,6 +174,17 @@ namespace MME.Hercules
             return HttpUploadFile(url, file, filename, "photo", "image/jpeg", nvc);
         }
 
+        public static string PostPublishUploadWithUrl(string uniqueid, string email, string file, string filename, string url)
+        {
+            NameValueCollection nvc = new NameValueCollection();
+            nvc.Add("imageid", uniqueid);
+            nvc.Add("email", email);
+            nvc.Add("event", ConfigUtility.Skin);
+
+            return HttpUploadFile(url, file, filename, "photo", "image/jpeg", nvc);
+        
+        }
+
         public static string PostPublishUpload(string uniqueid, string file, string filename)
         {
             NameValueCollection nvc = new NameValueCollection();
@@ -255,7 +266,8 @@ namespace MME.Hercules
 
             return response;
         }
-    
+
+        
 
         public static string HttpUploadFile(string url, string file, string filename, string paramName, string contentType, NameValueCollection nvc)
         {

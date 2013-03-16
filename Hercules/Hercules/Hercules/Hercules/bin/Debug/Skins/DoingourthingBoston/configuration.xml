@@ -52,19 +52,19 @@
 
 
 
-  <add key="HerculesPublishUrl" value="http://favpic.mobi/hercules_test.php"/>
+  <add key="HerculesPublishUrl" value="http://photomation.mmeink.com/hercules_send.php"/>
 
   <add key="UploadFavoritePhotoToAutolycus" value="1" />  
-  <add key="AutolycusPublishUrl" value="http://favpic.mobi/hercules_test.php"/>
+  <add key="AutolycusPublishUrl" value="http://photomation.mmeink.com/hercules_send.php"/>
 
 
   <!-- cloud for the photo booths -->
 
 
-  <add key="PublicPhotoUrl" value="http://favpic.mobi/event/{1}/photo/{0}.jpg"/>
+  <add key="PublicPhotoUrl" value="http://photomation.mmeink.com/event/{1}/photo/{0}.jpg"/>
 
 
-  <add key="PromoUrl" value="http://favpic.mobi/hercules_promo.php" />
+  <add key="PromoUrl" value="http://photomation.mmeink.com/hercules_promo.php" />
   <add key="PromoCode" value="0001" />
 
   <!-- Email settings -->
@@ -72,7 +72,7 @@
 
 
   <!-- user cannot skip the email screen (operator has hidden skip button) -->
-  <add key="EmailPublishUrl" value="http://favpic.mobi/hercules_test.php" />
+  <add key="EmailPublishUrl" value="http://photomation.mmeink.com/hercules_send.php" />
 
 
   <!-- leave blank to use smtp settings below -->
@@ -82,7 +82,7 @@
 
   <!-- built-in customization -->
   <add key="CustomPhotoUrl" value="" />
-  <add key="CustomPublishUrl" value="http://favpic.mobi/favoritephoto.php?viewing={1}_{0}"/>
+  <add key="CustomPublishUrl" value="http://photomation.mmeink.com/favoritephoto.php?viewing={1}_{0}"/>
 
   <!--facebook checkin-->
 

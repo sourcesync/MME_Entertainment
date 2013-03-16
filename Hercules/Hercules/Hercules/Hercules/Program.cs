@@ -98,11 +98,25 @@ namespace MME.Hercules
                 // Init camera.
                 CameraUtility.InitializeCamera();
 
+                /*
                 //FileUtility.DJRequest("This is it!");
 
-                /*
-                String url = "http://favpic.mobi/test_post.php";
-                url = "http://doingourthing-admin.group360.com/photomation.php";
+                
+                //String url = "http://favpic.mobi/test_post.php";
+
+                //String url = "http://favpic.mobi/hercules_test.php";
+
+                String url = "http://photomation.mmeink.com/hercules_send.php";
+
+                //String url = "http://autolycus.mmeentertainment.com/hercules_test.php";
+
+                //FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, email,
+                          // this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg", "");
+                FileUtility.PostPublishUploadWithUrl("55ae1b2778f5488fb9074274d70df87e.jpg", "george@devnullenterprises.com",
+                           "C:\\eventphotos\\634856819414680465\\55ae1b2778f5488fb9074274d70df87e.jpg", "", url);
+
+                
+                //surl = "http://doingourthing-admin.group360.com/photomation.php";
 
                 String ret =
                     FileUtility.PostPublishUploadURL(
@@ -110,10 +124,15 @@ namespace MME.Hercules
                     "eventname",
                     "C:\\eventphotos\\634856819414680465\\55ae1b2778f5488fb9074274d70df87e.jpg",
                     "55ae1b2778f5488fb9074274d70df87e.jpg",
+                    "chicago",
+                    "email@email.com",
+                    "email@email.com",
+                    "a date",
+
                     url);
                     //"http://doingourthing-admin.group360.com/photomation.cfm");
         
-                 * /
+               */
                  
                 /*
                 //if (!string.IsNullOrEmpty(this.currentSession.EmailAddress))
