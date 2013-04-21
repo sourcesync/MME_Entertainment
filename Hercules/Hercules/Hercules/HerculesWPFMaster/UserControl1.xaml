@@ -8,6 +8,7 @@
              xmlns:ucb="clr-namespace:HerculesWPFBlank;assembly=HerculesWPFBlank"
              xmlns:ucmenu="clr-namespace:HerculesWPFMenu;assembly=HerculesWPFMenu"
              
+             xmlns:uccraver="clr-namespace:HerculesWFPAngryBirds;assembly=HerculesWFPAngryBirds"
              
              xmlns:ucttt="clr-namespace:HerculesWPFTicTacToe;assembly=HerculesWPFTicTacToe"
              
@@ -57,6 +58,7 @@
             <ucspinthebottle:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlspinthebottle" IsEnabled="True" Visibility="Hidden" />
             <ucsendadrink:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlsendadrink" IsEnabled="True" Visibility="Hidden" />
             <ucmessage:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlmessage" IsEnabled="True" Visibility="Hidden" />
+    <uccraver:UserControl1 Canvas.Top="0" Canvas.Left="0" x:Name="ctlcraver" IsEnabled="True" Visibility="Hidden" />
 
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagepromo" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/SURVEYSCREEN.jpg" />
             <Image Canvas.Left="0" Canvas.Top="0" Height="768" Name="imagecono" Stretch="Fill" Width="1024" Source="/HerculesWPFMaster;component/Images/concierge.png" />

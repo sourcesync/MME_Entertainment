@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Hercules facebookver="1">
-
-  <string key="TITLE" value="That was awesome!  I just took my picture from Mobar at the Mandarin Oriental Hotel in New York City." />
-  <string key="DESC" value="For more information about Mandarin Oriental, visit us at:http://www.mandarinoriental.com" />
-  <string key="LINK" value="$CUSTOM1$" />
-
-</Hercules>

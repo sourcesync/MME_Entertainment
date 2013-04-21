@@ -142,7 +142,7 @@ namespace HerculesWPFMaster
                 ctls.Add(this.ctlspinthebottle);
                 ctls.Add(this.ctlsendadrink);
 
-                //ctls.Add(this.ctlangrybirds);
+                ctls.Add(this.ctlcraver);
                 ctls.Add(this.ctldjrequestor);
 
                 this.webBrowser1.Loaded += new RoutedEventHandler(webBrowser1_Loaded);
@@ -384,7 +384,8 @@ namespace HerculesWPFMaster
             }
             else if (option == 6)
             {
-                this.ShowSpinTheBottle(); //this.ShowAngryBirds();
+                //this.ShowSpinTheBottle(); 
+                this.ShowAngryBirds();
             } 
         }
 
@@ -451,8 +452,8 @@ namespace HerculesWPFMaster
             this.ctlttt.Visibility = System.Windows.Visibility.Hidden;
             this.ctlgallery.Visibility = System.Windows.Visibility.Hidden;
             this.ctlgallery.Stop();
-            //this.ctlangrybirds.Visibility = System.Windows.Visibility.Hidden;
-            //this.ctlangrybirds.Stop();
+            this.ctlcraver.Visibility = System.Windows.Visibility.Hidden;
+            this.ctlcraver.Stop();
             this.ctldjrequestor.Visibility = System.Windows.Visibility.Hidden;
             this.ctldjrequestor.Stop();
             this.ctlcheckers.Visibility = System.Windows.Visibility.Hidden;
@@ -694,9 +695,9 @@ namespace HerculesWPFMaster
         public void ShowAngryBirds()
         {
             this.HideAll();
-            //this.ctlangrybirds.Visibility = System.Windows.Visibility.Visible;
-            //this.ctlangrybirds.Restart();
-            //this.current = this.ctlangrybirds;
+            this.ctlcraver.Visibility = System.Windows.Visibility.Visible;
+            this.ctlcraver.Restart();
+            this.current = this.ctlcraver;
             this.ShowRotators();
             this.ShowBack();
         }
