@@ -38,24 +38,28 @@ namespace WindowsFormsApplication1
 
                         IntPtr cam = IntPtr.Zero;
                         i = EDSDKLib.EDSDK.EdsGetChildAtIndex(camlist, 0, out cam);
+                        System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + cam.ToString());
                         if (i == 0)
                         {
-                            System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + cam.ToString());
 
-                            i = EDSDKLib.EDSDK.EdsOpenSession( cam );
+                            i = EDSDKLib.EDSDK.EdsOpenSession(cam);
+                            System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString() + " about to take pic!");
                             if (i == 0)
                             {
-                                System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString() + " about to take pic!");
 
                                 //uint saveTo = (uint)EDSDKLib.EDSDK.EdsSaveTo.Host;
 
+                                //EdsDeviceInfo deviceInfo;
+                                EDSDKLib.EDSDK.EdsDeviceInfo deviceInfo;
+                                i = EDSDKLib.EDSDK.EdsGetDeviceInfo( cam, out deviceInfo );
+                                System.Windows.Forms.MessageBox.Show("Get Device Info status=" + i.ToString());
+                                if (i == 0)
+                                {
+                                    System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
+                                }
+
                                 //i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, EDSDKLib.EDSDK.PropID_SaveTo, 0, sizeof(saveTo), &saveTo);
-                                
-
                                 i = EDSDKLib.EDSDK.EdsSendCommand( cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 0);
-                                //  kkEdsCameraCommand_TakePicture , 0);
-
-
                                 System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
 
                                 i = EDSDKLib.EDSDK.EdsCloseSession(cam);
