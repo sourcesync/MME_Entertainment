@@ -40,12 +40,23 @@ namespace WindowsFormsApplication1
                         i = EDSDKLib.EDSDK.EdsGetChildAtIndex(camlist, 0, out cam);
                         if (i == 0)
                         {
-                            System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " about to take pic!");
+                            System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString());
 
-                            i = EDSDKLib.EDSDK.EdsSendCommand(cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 0);
-                            //  kkEdsCameraCommand_TakePicture , 0);
+                            i = EDSDKLib.EDSDK.EdsOpenSession( cam );
+                            if (i == 0)
+                            {
+                                System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString() + " about to take pic!");
 
-                            System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
+                                //uint saveTo = (uint)EDSDKLib.EDSDK.EdsSaveTo.Host;
+
+                                //i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, EDSDKLib.EDSDK.Ed 0, sizeof(saveTo), &saveTo);
+
+                                i = EDSDKLib.EDSDK.EdsSendCommand(cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 0);
+                                //  kkEdsCameraCommand_TakePicture , 0);
+
+
+                                System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
+                            }
                         }
                     }
                 }
