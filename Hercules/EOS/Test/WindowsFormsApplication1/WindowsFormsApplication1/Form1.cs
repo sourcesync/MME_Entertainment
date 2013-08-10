@@ -22,15 +22,18 @@ namespace WindowsFormsApplication1
             //sdk.
 
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
-            System.Windows.Forms.MessageBox.Show("init " + i.ToString());
+            System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
 
             IntPtr camlist = IntPtr.Zero;
             i = EDSDKLib.EDSDK.EdsGetCameraList(out camlist);
-            System.Windows.Forms.MessageBox.Show("list " + i.ToString());
+            System.Windows.Forms.MessageBox.Show("Get Camera List status=" + i.ToString());
 
             int count = 0;
             i = EDSDKLib.EDSDK.EdsGetChildCount(camlist, out count);
-            System.Windows.Forms.MessageBox.Show("cameras " + i.ToString() + " " + count.ToString());
+            System.Windows.Forms.MessageBox.Show("Get Camera Count status=" + i.ToString() + " count=" + count.ToString());
+
+            i = EDSDKLib.EDSDK.EdsTerminateSDK();
+            System.Windows.Forms.MessageBox.Show("Terminate SDK status=" + i.ToString());
         }
     }
 }
