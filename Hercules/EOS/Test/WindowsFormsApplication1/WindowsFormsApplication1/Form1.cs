@@ -58,7 +58,7 @@ namespace WindowsFormsApplication1
                                     System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
                                 }
 
-                                EDSDKLib.EDSDK.EdsSaveTo toPC = EDSDKLib.EDSDK.EdsSaveTo.Host;
+                                EDSDKLib.EDSDK.EdsSaveTo toPC = EDSDKLib.EDSDK.EdsSaveTo.Camera;
                                 uint idata = (uint)toPC;
                                 int sz = sizeof(EDSDKLib.EDSDK.EdsSaveTo);
                                 i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, (uint)EDSDKLib.EDSDK.PropID_SaveTo, 0, sz,  idata);
