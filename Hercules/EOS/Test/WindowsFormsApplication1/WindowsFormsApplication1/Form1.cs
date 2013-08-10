@@ -59,13 +59,14 @@ namespace WindowsFormsApplication1
                                 }
 
                                 EDSDKLib.EDSDK.EdsSaveTo toPC = EDSDKLib.EDSDK.EdsSaveTo.Host;
+                                uint idata = (uint)toPC;
                                 int sz = sizeof(EDSDKLib.EDSDK.EdsSaveTo);
-                                i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, (uint)EDSDKLib.EDSDK.PropID_SaveTo, 0, sz,  toPC);
+                                i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, (uint)EDSDKLib.EDSDK.PropID_SaveTo, 0, sz,  idata);
                                 System.Windows.Forms.MessageBox.Show("Set Property SaveTo sz=" + sz.ToString() + " status=" + i.ToString());
                                 //err = EdsSetPropertyData(camera_, kEdsPropID_SaveTo, 0, sizeof(EdsSaveTo), &toPC);
 
                                 //i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, EDSDKLib.EDSDK.PropID_SaveTo, 0, sizeof(saveTo), &saveTo);
-                                i = EDSDKLib.EDSDK.EdsSendCommand( cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 0);
+                                i = EDSDKLib.EDSDK.EdsSendCommand( cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 1);
                                 System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
 
                                 i = EDSDKLib.EDSDK.EdsCloseSession(cam);
