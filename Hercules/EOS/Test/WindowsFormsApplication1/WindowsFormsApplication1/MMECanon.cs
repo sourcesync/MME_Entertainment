@@ -9,40 +9,40 @@ namespace WindowsFormsApplication1
     {
         public static Boolean DEBUG = false;
 
-        EDSDKLib.EDSDK sdk = null;
-        IntPtr camlist = IntPtr.Zero;
-        IntPtr cam = IntPtr.Zero;
-        EDSDKLib.EDSDK.EdsObjectEventHandler edsObjectEventHandler = null;
+        public static EDSDKLib.EDSDK sdk = null;
+        public static IntPtr camlist = IntPtr.Zero;
+        public static IntPtr cam = IntPtr.Zero;
+        public static EDSDKLib.EDSDK.EdsObjectEventHandler edsObjectEventHandler = null;
 
         Boolean finish()
         {
             Boolean b = true;
             uint i=0;
 
-            if (this.edsObjectEventHandler!=null)
+            if (edsObjectEventHandler!=null)
             {
-                this.edsObjectEventHandler = null;
+                edsObjectEventHandler = null;
             }
 
-            if (this.cam != IntPtr.Zero)
+            if (cam != IntPtr.Zero)
             {
-                i = EDSDKLib.EDSDK.EdsRelease(this.cam);
+                i = EDSDKLib.EDSDK.EdsRelease(cam);
                 b = b && (i == 0);
-                this.cam = IntPtr.Zero;
+                cam = IntPtr.Zero;
             }
 
-            if (this.camlist != IntPtr.Zero)
+            if (camlist != IntPtr.Zero)
             {
-                i = EDSDKLib.EDSDK.EdsRelease(this.camlist);
+                i = EDSDKLib.EDSDK.EdsRelease(camlist);
                 b = b && (i==0);
-                this.camlist = IntPtr.Zero;
+                camlist = IntPtr.Zero;
             }
 
-            if (this.sdk!=null)
+            if (sdk!=null)
             {
                 i = EDSDKLib.EDSDK.EdsTerminateSDK();
                 b = b && (i==0);
-                this.sdk = null;
+                sdk = null;
             }
 
             return b;
@@ -110,13 +110,13 @@ namespace WindowsFormsApplication1
 
         private Boolean takepic()
         {
-            this.sdk = new EDSDKLib.EDSDK();
+            sdk = new EDSDKLib.EDSDK();
 
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
             if ( MMECanon.DEBUG ) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
             if (i == 0)
             {
-                i = EDSDKLib.EDSDK.EdsGetCameraList(out this.camlist);
+                i = EDSDKLib.EDSDK.EdsGetCameraList(out camlist);
                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera List status=" + i.ToString());
                 if (i == 0)
                 {
@@ -152,7 +152,7 @@ namespace WindowsFormsApplication1
 
                                 if (i == 0)
                                 {
-                                    this.edsObjectEventHandler = 
+                                    edsObjectEventHandler = 
                                         new EDSDKLib.EDSDK.EdsObjectEventHandler(objectEventHandler);
 
                                     i = EDSDKLib.EDSDK.EdsSetObjectEventHandler(cam,
