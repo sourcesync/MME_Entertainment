@@ -7,7 +7,7 @@ namespace WindowsFormsApplication1
 {
     class MMECanon
     {
-        public static Boolean DEBUG = true;
+        public static Boolean DEBUG = false;
 
         EDSDKLib.EDSDK sdk = null;
         IntPtr camlist = IntPtr.Zero;
