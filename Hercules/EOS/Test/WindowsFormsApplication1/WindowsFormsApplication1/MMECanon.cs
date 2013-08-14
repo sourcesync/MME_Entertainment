@@ -9,19 +9,19 @@ namespace WindowsFormsApplication1
     {
         public static Boolean DEBUG = true;
 
-        public static EDSDKLib.EDSDK sdk = null;
-        public static IntPtr camlist = IntPtr.Zero;
-        public static IntPtr cam = IntPtr.Zero;
-        public static EDSDKLib.EDSDK.EdsObjectEventHandler edsObjectEventHandler = null;
+        EDSDKLib.EDSDK sdk = null;
+        IntPtr camlist = IntPtr.Zero;
+        IntPtr cam = IntPtr.Zero;
+        EDSDKLib.EDSDK.EdsObjectEventHandler edsObjectEventHandler = null;
 
-        public static Boolean finish()
+        public Boolean finish()
         {
             Boolean b = true;
             uint i=0;
 
-            if (edsObjectEventHandler!=null)
+            if (this.edsObjectEventHandler!=null)
             {
-                edsObjectEventHandler = null;
+                this.edsObjectEventHandler = null;
             }
 
             if (cam != IntPtr.Zero)
@@ -48,7 +48,7 @@ namespace WindowsFormsApplication1
             return b;
         }
 
-        public static uint downloadImage(IntPtr directoryItem)
+        public uint downloadImage(IntPtr directoryItem)
         {
             uint err = 0;
 
@@ -89,7 +89,7 @@ namespace WindowsFormsApplication1
             return err;
         }
 
-        private static uint objectEventHandler(uint inEvent, IntPtr inRef, IntPtr inContext)
+        private uint objectEventHandler(uint inEvent, IntPtr inRef, IntPtr inContext)
         {
             if (EDSDKLib.EDSDK.ObjectEvent_DirItemCreated == inEvent)
             {
@@ -97,10 +97,10 @@ namespace WindowsFormsApplication1
             }
             else if (EDSDKLib.EDSDK.ObjectEvent_DirItemRequestTransfer == inEvent)
             {
-                uint err = downloadImage(inRef);
+                uint err = this.downloadImage(inRef);
 
                 //  cleanup sdk session...
-                Boolean bf = finish();
+                Boolean bf = this.finish();
 
                 System.Windows.Forms.MessageBox.Show(err.ToString() + " " + bf.ToString());
             }
@@ -111,7 +111,7 @@ namespace WindowsFormsApplication1
 
 
 
-        public static Boolean takepic()
+        public Boolean takepic()
         {
             sdk = new EDSDKLib.EDSDK();
 
@@ -119,21 +119,21 @@ namespace WindowsFormsApplication1
             if ( MMECanon.DEBUG ) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
             if (i == 0)
             {
-                i = EDSDKLib.EDSDK.EdsGetCameraList(out camlist);
+                i = EDSDKLib.EDSDK.EdsGetCameraList(out this.camlist);
                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera List status=" + i.ToString());
                 if (i == 0)
                 {
                     int count = 0;
-                    i = EDSDKLib.EDSDK.EdsGetChildCount(camlist, out count);
+                    i = EDSDKLib.EDSDK.EdsGetChildCount( camlist, out count);
                     if (MMECanon.DEBUG)  System.Windows.Forms.MessageBox.Show("Get Camera Count status=" + 
                             i.ToString() + " count=" + count.ToString());
                     if ((i == 0) && (count > 0))
                     {
-                        i = EDSDKLib.EDSDK.EdsGetChildAtIndex(camlist, 0, out cam);
+                        i = EDSDKLib.EDSDK.EdsGetChildAtIndex(camlist, 0, out this.cam);
                         if (MMECanon.DEBUG)  System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + cam.ToString());
                         if (i == 0)
                         {
-                            i = EDSDKLib.EDSDK.EdsOpenSession(cam);
+                            i = EDSDKLib.EDSDK.EdsOpenSession(this.cam);
                             if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString());
                             if (i == 0)
                             {
@@ -149,7 +149,7 @@ namespace WindowsFormsApplication1
                                 EDSDKLib.EDSDK.EdsSaveTo toPC = EDSDKLib.EDSDK.EdsSaveTo.Host;
                                 uint idata = (uint)toPC;
                                 int sz = sizeof(EDSDKLib.EDSDK.EdsSaveTo);
-                                i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, (uint)EDSDKLib.EDSDK.PropID_SaveTo, 0, sz, idata);
+                                i = EDSDKLib.EDSDK.EdsSetPropertyData( cam, (uint)EDSDKLib.EDSDK.PropID_SaveTo, 0, sz, idata);
                                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property SaveTo sz=" + sz.ToString() + " status=" + i.ToString());
 
                                 if (i == 0)

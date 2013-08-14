@@ -155,7 +155,8 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Boolean b = MMECanon.takepic();
+            MMECanon cannon = new MMECanon();
+            Boolean b = cannon.takepic();
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
     }
