@@ -163,7 +163,7 @@ namespace WindowsFormsApplication1
                                 EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler =
                                     new EDSDKLib.EDSDK.EdsObjectEventHandler(objectEventHandler);
 
-                                i = EDSDKLib.EDSDK.EdsSetObjectEventHandler(cam,
+                                i = EDSDKLib.EDSDK.EdsSetObjectEventHandler(_cam,
                                     EDSDKLib.EDSDK.ObjectEvent_All,
                                     _edsObjectEventHandler,
                                     new IntPtr(0));
