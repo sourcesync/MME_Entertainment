@@ -131,7 +131,7 @@ namespace WindowsFormsApplication1
                     {
 
                         IntPtr _cam = IntPtr.Zero;
-                        i = EDSDKLib.EDSDK.EdsGetChildAtIndex(_camlist, 0, out cam);
+                        i = EDSDKLib.EDSDK.EdsGetChildAtIndex(_camlist, 0, out _cam);
                         if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + _cam.ToString());
                         if (i == 0)
                         {
