@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
         public static IntPtr cam = IntPtr.Zero;
         public static EDSDKLib.EDSDK.EdsObjectEventHandler edsObjectEventHandler = null;
 
-        Boolean finish()
+        public static Boolean finish()
         {
             Boolean b = true;
             uint i=0;
@@ -48,7 +48,7 @@ namespace WindowsFormsApplication1
             return b;
         }
 
-        uint downloadImage(IntPtr directoryItem)
+        public static uint downloadImage(IntPtr directoryItem)
         {
             uint err = 0;
 
@@ -89,7 +89,7 @@ namespace WindowsFormsApplication1
             return err;
         }
 
-        private uint objectEventHandler(uint inEvent, IntPtr inRef, IntPtr inContext)
+        private static uint objectEventHandler(uint inEvent, IntPtr inRef, IntPtr inContext)
         {
             if (EDSDKLib.EDSDK.ObjectEvent_DirItemCreated == inEvent)
             {
@@ -97,10 +97,10 @@ namespace WindowsFormsApplication1
             }
             else if (EDSDKLib.EDSDK.ObjectEvent_DirItemRequestTransfer == inEvent)
             {
-                this.downloadImage(inRef);
+                downloadImage(inRef);
 
                 //  cleanup sdk session...
-                this.finish();
+                finish();
             }
 
             return 0;
@@ -108,7 +108,7 @@ namespace WindowsFormsApplication1
 
 
 
-        private Boolean takepic()
+        private static Boolean takepic()
         {
             sdk = new EDSDKLib.EDSDK();
 
@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1
             }
 
             //  cleanup any resources from above...
-            this.finish();
+            finish();
 
             //  got here, means something failed...
             return false;
