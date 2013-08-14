@@ -16,6 +16,64 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        //EDSDKLib.EDSDK.EdsError 
+        uint downloadImage(IntPtr directoryItem)
+        {
+            //EDSDKLib.EDSDK.EdsError err = EDSDKLib.EDSDK.EDS_ERR_OK;
+            uint err = 0;
+
+            //EDSDKLib.EDSDK.EdsStreamRef stream = NULL;
+            IntPtr stream = IntPtr.Zero;
+
+            // Get directory item information
+            EDSDKLib.EDSDK.EdsDirectoryItemInfo dirItemInfo;
+            err = EDSDKLib.EDSDK.EdsGetDirectoryItemInfo(directoryItem, out dirItemInfo);
+
+            // Create file stream for transfer destination
+            if (err == EDSDKLib.EDSDK.EDS_ERR_OK)
+            {
+                err = EDSDKLib.EDSDK.EdsCreateFileStream(dirItemInfo.szFileName,
+                    EDSDKLib.EDSDK.EdsFileCreateDisposition.CreateAlways,
+                    //EDSDKLib.EDSDK.kEdsFile_CreateAlways,
+                    EDSDKLib.EDSDK.EdsAccess.ReadWrite,
+                    //EDSDKLib.EDSDK.kEdsAccess_ReadWrite,          
+                     out stream);
+            }
+
+            // Download image
+            if (err == EDSDKLib.EDSDK.EDS_ERR_OK)
+            {
+                err = EDSDKLib.EDSDK.EdsDownload(directoryItem, dirItemInfo.Size, stream);
+            }
+
+            // Issue notification that download is complete
+            if (err == EDSDKLib.EDSDK.EDS_ERR_OK)
+            {
+                err = EDSDKLib.EDSDK.EdsDownloadComplete(directoryItem);
+            }
+
+            // Release stream
+            if (stream != IntPtr.Zero)
+            {
+                EDSDKLib.EDSDK.EdsRelease(stream);
+                stream = IntPtr.Zero;
+            }
+            return err;
+        }
+
+        private uint objectEventHandler(uint inEvent, IntPtr inRef, IntPtr inContext) 
+        {
+            if (EDSDKLib.EDSDK.ObjectEvent_DirItemCreated == inEvent) 
+            {
+                //  ownload the image
+                return 0;
+            }
+
+            return 0;
+        }
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             EDSDKLib.EDSDK sdk = new EDSDKLib.EDSDK();
@@ -64,6 +122,16 @@ namespace WindowsFormsApplication1
                                 i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, (uint)EDSDKLib.EDSDK.PropID_SaveTo, 0, sz,  idata);
                                 System.Windows.Forms.MessageBox.Show("Set Property SaveTo sz=" + sz.ToString() + " status=" + i.ToString());
                                 //err = EdsSetPropertyData(camera_, kEdsPropID_SaveTo, 0, sizeof(EdsSaveTo), &toPC);
+
+
+                                EDSDKLib.EDSDK.EdsObjectEventHandler edsObjectEventHandler = 
+                                    new EDSDKLib.EDSDK.EdsObjectEventHandler(objectEventHandler);
+
+                                i = EDSDKLib.EDSDK.EdsSetObjectEventHandler(cam, 
+                                    EDSDKLib.EDSDK.ObjectEvent_All, 
+                                    edsObjectEventHandler, 
+                                    new IntPtr(0));
+                                System.Windows.Forms.MessageBox.Show("After Delegate=" + i.ToString());
 
                                 //i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, EDSDKLib.EDSDK.PropID_SaveTo, 0, sizeof(saveTo), &saveTo);
                                 i = EDSDKLib.EDSDK.EdsSendCommand( cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 1);

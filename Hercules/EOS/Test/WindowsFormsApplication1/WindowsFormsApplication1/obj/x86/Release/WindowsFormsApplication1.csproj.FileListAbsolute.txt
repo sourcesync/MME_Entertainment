@@ -1,15 +1,7 @@
-C:\Users\George Williams\AppData\Local\Temporary Projects\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.Form1.resources
-C:\Users\George Williams\AppData\Local\Temporary Projects\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.Properties.Resources.resources
-C:\Users\George Williams\AppData\Local\Temporary Projects\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.csproj.GenerateResource.Cache
-C:\Users\George Williams\AppData\Local\Temporary Projects\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe
-C:\Users\George Williams\AppData\Local\Temporary Projects\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.pdb
-C:\Users\George Williams\AppData\Local\Temporary Projects\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.exe
-C:\Users\George Williams\AppData\Local\Temporary Projects\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.pdb
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.exe
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.pdb
 C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe
 C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.pdb
 C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.Form1.resources
 C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.Properties.Resources.resources
 C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.csproj.GenerateResource.Cache
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.exe
+C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.pdb
