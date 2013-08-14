@@ -129,7 +129,6 @@ namespace WindowsFormsApplication1
                             i.ToString() + " count=" + count.ToString());
                     if ((i == 0) && (count > 0))
                     {
-                        IntPtr cam = IntPtr.Zero;
                         i = EDSDKLib.EDSDK.EdsGetChildAtIndex(camlist, 0, out cam);
                         if (MMECanon.DEBUG)  System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + cam.ToString());
                         if (i == 0)
