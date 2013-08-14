@@ -97,18 +97,21 @@ namespace WindowsFormsApplication1
             }
             else if (EDSDKLib.EDSDK.ObjectEvent_DirItemRequestTransfer == inEvent)
             {
-                downloadImage(inRef);
+                uint err = downloadImage(inRef);
 
                 //  cleanup sdk session...
-                finish();
+                Boolean bf = finish();
+
+                System.Windows.Forms.MessageBox.Show(err.ToString() + " " + bf.ToString());
             }
+
 
             return 0;
         }
 
 
 
-        private static Boolean takepic()
+        public static Boolean takepic()
         {
             sdk = new EDSDKLib.EDSDK();
 
