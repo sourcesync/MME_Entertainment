@@ -168,7 +168,7 @@ namespace WindowsFormsApplication1
                                     EDSDKLib.EDSDK.ObjectEvent_All,
                                     _edsObjectEventHandler,
                                     new IntPtr(0));
-                                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("After Delegate=" + i.ToString());
+                                System.Windows.Forms.MessageBox.Show("After Delegate=" + i.ToString());
 
                                 i = EDSDKLib.EDSDK.EdsSendCommand( _cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 1);
                                 System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
