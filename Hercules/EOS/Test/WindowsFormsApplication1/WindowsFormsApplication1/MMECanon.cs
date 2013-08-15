@@ -91,6 +91,9 @@ namespace WindowsFormsApplication1
 
         private uint objectEventHandler(uint inEvent, IntPtr inRef, IntPtr inContext)
         {
+
+            System.Windows.Forms.MessageBox.Show("event!");
+
             if (EDSDKLib.EDSDK.ObjectEvent_DirItemCreated == inEvent)
             {
                 return 0;
@@ -102,7 +105,7 @@ namespace WindowsFormsApplication1
                 //  cleanup sdk session...
                 Boolean bf = this.finish();
 
-                System.Windows.Forms.MessageBox.Show(err.ToString() + " " + bf.ToString());
+                System.Windows.Forms.MessageBox.Show("download " + err.ToString() + " " + bf.ToString());
             }
 
 
@@ -113,13 +116,14 @@ namespace WindowsFormsApplication1
         public Boolean takepic2()
         {
             EDSDKLib.EDSDK _sdk = new EDSDKLib.EDSDK();
-            //sdk.
+            IntPtr _camlist = IntPtr.Zero;
+            IntPtr _cam = IntPtr.Zero;
+            EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler = null;
 
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
             if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
             if (i == 0)
             {
-                IntPtr _camlist = IntPtr.Zero;
                 i = EDSDKLib.EDSDK.EdsGetCameraList(out _camlist);
                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera List status=" + i.ToString());
                 if (i == 0)
@@ -130,20 +134,19 @@ namespace WindowsFormsApplication1
                     if ((i == 0) && (count > 0))
                     {
 
-                        IntPtr _cam = IntPtr.Zero;
                         i = EDSDKLib.EDSDK.EdsGetChildAtIndex(_camlist, 0, out _cam);
                         if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + _cam.ToString());
                         if (i == 0)
                         {
+
+                            i = EDSDKLib.EDSDK.EdsRelease(_camlist);
+                            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Release camlist status=" + i.ToString());
 
                             i = EDSDKLib.EDSDK.EdsOpenSession(_cam);
                             if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString());
                             if (i == 0)
                             {
 
-                                //uint saveTo = (uint)EDSDKLib.EDSDK.EdsSaveTo.Host;
-
-                                //EdsDeviceInfo deviceInfo;
                                 EDSDKLib.EDSDK.EdsDeviceInfo deviceInfo;
                                 i = EDSDKLib.EDSDK.EdsGetDeviceInfo(_cam, out deviceInfo);
                                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Device Info status=" + i.ToString());
@@ -160,28 +163,24 @@ namespace WindowsFormsApplication1
                                 //err = EdsSetPropertyData(camera_, kEdsPropID_SaveTo, 0, sizeof(EdsSaveTo), &toPC);
 
 
-                                EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler =
-                                    new EDSDKLib.EDSDK.EdsObjectEventHandler(objectEventHandler);
-
+                                _edsObjectEventHandler = new EDSDKLib.EDSDK.EdsObjectEventHandler(objectEventHandler);
                                 i = EDSDKLib.EDSDK.EdsSetObjectEventHandler(_cam,
                                     EDSDKLib.EDSDK.ObjectEvent_All,
                                     _edsObjectEventHandler,
                                     new IntPtr(0));
                                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("After Delegate=" + i.ToString());
 
-                                //i = EDSDKLib.EDSDK.EdsSetPropertyData(cam, EDSDKLib.EDSDK.PropID_SaveTo, 0, sizeof(saveTo), &saveTo);
                                 i = EDSDKLib.EDSDK.EdsSendCommand( _cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 1);
                                 System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
 
-                                i = EDSDKLib.EDSDK.EdsCloseSession( _cam );
-                                if (i == 0)
-                                {
-                                    if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Close Session status=" + i.ToString());
-                                }
                             }
                         }
                     }
                 }
+
+                i = EDSDKLib.EDSDK.EdsCloseSession(_cam);
+                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Close Session status=" + i.ToString());
+                
 
                 i = EDSDKLib.EDSDK.EdsTerminateSDK();
                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Terminate SDK status=" + i.ToString());
