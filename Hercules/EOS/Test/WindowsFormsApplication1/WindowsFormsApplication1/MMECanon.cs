@@ -92,7 +92,7 @@ namespace WindowsFormsApplication1
         private uint objectEventHandler(uint inEvent, IntPtr inRef, IntPtr inContext)
         {
 
-            System.Windows.Forms.MessageBox.Show("event!");
+            //System.Windows.Forms.MessageBox.Show("event!");
 
             if (EDSDKLib.EDSDK.ObjectEvent_DirItemCreated == inEvent)
             {
@@ -108,6 +108,8 @@ namespace WindowsFormsApplication1
                 System.Windows.Forms.MessageBox.Show("download " + err.ToString() + " " + bf.ToString());
             }
 
+            this.finish2();
+
 
             return 0;
         }
@@ -118,6 +120,38 @@ namespace WindowsFormsApplication1
         IntPtr _camlist = IntPtr.Zero;
         IntPtr _cam = IntPtr.Zero;
         EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler = null;
+
+        public Boolean finish2()
+        {
+            Boolean b = true;
+            uint i = 0;
+
+            if (_edsObjectEventHandler != null)
+            {
+                _edsObjectEventHandler = null;
+            }
+
+            if (_cam != IntPtr.Zero)
+            {
+                i = EDSDKLib.EDSDK.EdsRelease(_cam);
+                _cam = IntPtr.Zero;
+            }
+
+            if (_camlist != IntPtr.Zero)
+            {
+                i = EDSDKLib.EDSDK.EdsRelease(_camlist);
+                _camlist = IntPtr.Zero;
+            }
+
+            if (_sdk != null)
+            {
+                i = EDSDKLib.EDSDK.EdsTerminateSDK();
+                _sdk = null;
+            }
+
+            b = b && (i == 0);
+            return b;
+        }
 
         public Boolean takepic2()
         {
