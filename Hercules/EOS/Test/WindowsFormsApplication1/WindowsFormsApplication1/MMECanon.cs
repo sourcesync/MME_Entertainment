@@ -213,7 +213,9 @@ namespace WindowsFormsApplication1
                                 if (i == 0)
                                 {
                                     i = EDSDKLib.EDSDK.EdsSendCommand(_cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 1);
-                                    System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
+                                    //System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
+
+                                    this.finish2();
 
                                     return true;
                                 }
