@@ -26,9 +26,10 @@ namespace MME.Hercules.Forms.Operator
         {
             InitializeComponent();
 
-            this.camera = CameraUtility.camera;
+            //gw this.camera = CameraUtility.camera;
+            this.camera = null; //gw CameraUtility.camera.
 
-            brightnessValues = new List<int>();
+             brightnessValues = new List<int>();
             exposureModesList = new Dictionary<string, int>();
 
             camera_Connected(null, null);

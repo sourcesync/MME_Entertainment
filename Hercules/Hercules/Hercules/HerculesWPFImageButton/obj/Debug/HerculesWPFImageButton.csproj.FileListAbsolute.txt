@@ -46,3 +46,13 @@ C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercu
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\GenerateResource.write.1.tlog
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\HerculesWPFImageButton.dll
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\HerculesWPFImageButton.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\bin\Debug\HerculesWPFImageButton.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\bin\Debug\HerculesWPFImageButton.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\UserControl1.baml
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\UserControl1.g.cs
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\HerculesWPFImageButton_MarkupCompile.cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\HerculesWPFImageButton.g.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\HerculesWPFImageButton.Properties.Resources.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\HerculesWPFImageButton.csproj.GenerateResource.Cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\HerculesWPFImageButton.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFImageButton\obj\Debug\HerculesWPFImageButton.pdb

@@ -12,3 +12,16 @@ C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercu
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\HerculesWFPAngryBirds.pdb
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\bin\Debug\HerculesConfig.dll
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\bin\Debug\HerculesConfig.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\bin\Debug\HerculesWFPAngryBirds.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\bin\Debug\HerculesWFPAngryBirds.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\bin\Debug\HerculesConfig.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\bin\Debug\HerculesConfig.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\HerculesWFPAngryBirds.csprojResolveAssemblyReference.cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\UserControl1.baml
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\UserControl1.g.cs
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\HerculesWFPAngryBirds_MarkupCompile.cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\HerculesWFPAngryBirds.g.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\HerculesWFPAngryBirds.Properties.Resources.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\HerculesWFPAngryBirds.csproj.GenerateResource.Cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\HerculesWFPAngryBirds.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWFPAngryBirds\obj\Debug\HerculesWFPAngryBirds.pdb

@@ -54,3 +54,16 @@ C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercu
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\GenerateResource.write.1.tlog
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.dll
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesWPFTicTacToe.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesWPFTicTacToe.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesConfig.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesConfig.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.csprojResolveAssemblyReference.cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\UserControl1.baml
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\UserControl1.g.cs
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe_MarkupCompile.cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.g.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.Properties.Resources.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.csproj.GenerateResource.Cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.pdb

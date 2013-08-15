@@ -54,3 +54,16 @@ C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercu
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\GenerateResource.write.1.tlog
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.dll
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesWPFMemoryGame.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesWPFMemoryGame.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesConfig.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\bin\Debug\HerculesConfig.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.csprojResolveAssemblyReference.cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\UserControl1.baml
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\UserControl1.g.cs
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame_MarkupCompile.cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.g.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.Properties.Resources.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.csproj.GenerateResource.Cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMemoryGame\obj\Debug\HerculesWPFMemoryGame.pdb

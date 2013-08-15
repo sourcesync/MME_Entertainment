@@ -10,3 +10,13 @@ C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercu
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\GenerateResource.write.1.tlog
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.dll
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\bin\Debug\HerculesWPFCheckers.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\bin\Debug\HerculesWPFCheckers.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\UserControl1.baml
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\UserControl1.g.cs
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers_MarkupCompile.cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.g.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.Properties.Resources.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.csproj.GenerateResource.Cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.pdb

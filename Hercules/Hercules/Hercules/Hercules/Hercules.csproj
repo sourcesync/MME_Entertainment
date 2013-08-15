@@ -308,6 +308,7 @@
     </Compile>
     <Compile Include="Types\BoothType.cs" />
     <Compile Include="Types\ColorType.cs" />
+    <Compile Include="Utility\AbstractCannon.cs" />
     <Compile Include="Utility\CameraUtility.cs" />
     <Compile Include="Utility\ChromakeyUtility.cs" />
     <Compile Include="Utility\ConfigUtility.cs" />
@@ -716,6 +717,10 @@
     <ProjectReference Include="..\HerculesWPFMessageTable\HerculesWPFMessageTable.csproj">
       <Project>{3986DCEA-42D0-4E3D-BE61-FAEA94091CE5}</Project>
       <Name>HerculesWPFMessageTable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MMECannon\MMECannon.csproj">
+      <Project>{85CDE07B-F7E8-4C96-B52B-56F3F673275F}</Project>
+      <Name>MMECannon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

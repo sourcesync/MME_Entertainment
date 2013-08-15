@@ -5,7 +5,8 @@ namespace MME.Hercules
 {
     public class CameraUtility
     {
-        public static RDC.CameraSDK.Camera camera;
+        //public static RDC.CameraSDK.Camera camera;
+        public static AbstractCannon camera;
 
         public static void InitializeCamera()
         {
@@ -17,30 +18,33 @@ namespace MME.Hercules
                 if (ConfigUtility.GetValue("CameraName").Equals("Web"))
                     return;
 
-                // Start Camera
-                camera = new RDC.CameraSDK.Camera();
+                //gw - determine if we use old or new sdk...
+                string cam_for_sdk = ConfigUtility.GetValue("CameraName");
+                bool old_sdk = true;
+                if (cam_for_sdk.ToLower().Contains("eos"))
+                    old_sdk = false;
+
+
+                //  start sdk
+                //gw camera = new RDC.CameraSDK.Camera();
+                camera = new AbstractCannon(old_sdk);
                 camera.StartSDK();
-
-
                 camera.GetDevices();
                 Thread.Sleep(1000);
 
-                //gw
+                //  connect cam
                 string cname = camera.ConnectedCameraName;
+                if (!camera.Connect(ConfigUtility.GetValue("CameraName")))
+                {
+                    System.Windows.Forms.MessageBox.Show("Cannot connect to camera!" +
+                        ConfigUtility.GetValue("CameraName") + " but found " + cname);
+                }
 
-
-                camera.Connect(ConfigUtility.GetValue("CameraName"));
-
+                //  parameters...
                 camera.ZoomPos = Convert.ToInt32(ConfigUtility.GetValue("ZoomPos"));
                 camera.ShootingMode = Convert.ToInt32(ConfigUtility.GetValue("ShootingMode"));
-                
-                //System.Windows.Forms.MessageBox.Show(camera.ShootingMode.ToString());
-                //System.Windows.Forms.MessageBox.Show(ConfigUtility.GetValue("ShootingMode"));
-                //System.Windows.Forms.MessageBox.Show(camera.ShootingMode.ToString());
                 camera.ExposureCompensation = Convert.ToInt32(ConfigUtility.GetValue("ExposureCompensation"));
                 camera.ImageQuality = RDC.CameraSDK.prType.prptpImageQuality.Normal;
-
-                //camera.
 
                 // Default to bw if forcing to bw.
                 CameraUtility.camera.PhotoEffect = 0;
@@ -71,8 +75,8 @@ namespace MME.Hercules
             if (!ConfigUtility.GetValue("CameraEnabled").Equals("1"))
                 return;
 
-            camera.Disconnect();
-            camera.EndSDK();
+            //gw camera.Disconnect();
+            //gw camera.EndSDK();
         }
     }
 }
