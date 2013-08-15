@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace WindowsFormsApplication1
 {
@@ -162,30 +163,52 @@ namespace WindowsFormsApplication1
 
         MMECanon cannon = null;
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            cannon = new MMECanon();
-            Boolean b = cannon.takepic2();
-            System.Windows.Forms.MessageBox.Show(b.ToString());
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
             cannon = new MMECanon();
-            Boolean b = cannon.init3();
+            Boolean b = cannon.init();
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Boolean b = cannon.takepic3();
+            Boolean b = cannon.takepic();
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Boolean b = cannon.finish3();
+            Boolean b = cannon.finish();
             System.Windows.Forms.MessageBox.Show(b.ToString());
+        }
+
+        Thread t1 = null;
+
+        private void ThreadTakePic()
+        {
+            cannon = new MMECanon();
+            Boolean b = cannon.init();
+            System.Console.WriteLine("init " + b.ToString());
+
+            if (b)
+            {
+                b = cannon.takepic();
+                System.Console.WriteLine("take " + b.ToString());
+
+            }
+
+            b = cannon.finish();
+            System.Console.WriteLine("finish " + b.ToString());
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            t1 = new Thread(ThreadTakePic);
+            t1.Start();
+
+            t1.Join();
         }
     }
 }
