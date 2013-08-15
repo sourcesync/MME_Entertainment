@@ -52,6 +52,11 @@ namespace MME.Hercules
         public AbstractCannon(Boolean old)
         {
             this.old = old;
+
+            if (!this.old)
+            {
+                eos_camera = new MMECannon.MMECanon();
+            }
         }
 
         public bool StartSDK()
