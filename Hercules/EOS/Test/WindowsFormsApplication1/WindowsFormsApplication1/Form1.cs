@@ -218,6 +218,19 @@ namespace WindowsFormsApplication1
 
         }
 
+
+
+        private void ThreadWait()
+        {
+
+            while (!cannon.download_done)
+            {
+                System.Threading.Thread.Sleep(10);
+                Application.DoEvents();
+            }
+
+        }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             t1 = new Thread(ThreadTakePic);
@@ -230,11 +243,15 @@ namespace WindowsFormsApplication1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            t1 = new Thread(ThreadTakePic2);
-            t1.Start();
+            Boolean b = cannon.takepic();
+            if (b)
+            {
 
-            t1.Join();
-            bool b = false;
+                t1 = new Thread(ThreadWait);
+                t1.Start();
+
+                t1.Join();
+            }
         }
     }
 }
