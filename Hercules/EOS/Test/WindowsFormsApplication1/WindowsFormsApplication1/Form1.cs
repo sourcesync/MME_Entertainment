@@ -168,5 +168,24 @@ namespace WindowsFormsApplication1
             Boolean b = cannon.takepic2();
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cannon = new MMECanon();
+            Boolean b = cannon.init3();
+            System.Windows.Forms.MessageBox.Show(b.ToString());
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Boolean b = cannon.takepic3();
+            System.Windows.Forms.MessageBox.Show(b.ToString());
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Boolean b = cannon.finish3();
+            System.Windows.Forms.MessageBox.Show(b.ToString());
+        }
     }
 }
