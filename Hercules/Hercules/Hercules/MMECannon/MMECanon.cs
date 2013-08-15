@@ -168,6 +168,8 @@ namespace MMECannon
         public Boolean takepic(String path, bool wait)
         {
             this.download_done = false;
+            if (path == null) this.path = "takepic.jpg";
+            else this.path = path;
 
             uint i = EDSDKLib.EDSDK.EdsSendCommand(_cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 0);
             if (i == 0)
@@ -179,6 +181,8 @@ namespace MMECannon
                         System.Windows.Forms.Application.DoEvents();
                         System.Threading.Thread.Sleep(50);
                     }
+
+                    //  TODO: should timeout here...
 
                     return true;
                 }
