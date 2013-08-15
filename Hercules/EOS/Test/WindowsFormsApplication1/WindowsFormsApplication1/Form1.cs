@@ -241,6 +241,8 @@ namespace WindowsFormsApplication1
             bool b = false;
         }
 
+
+
         private void button2_Click_1(object sender, EventArgs e)
         {
             Boolean b = cannon.takepic();
@@ -252,6 +254,17 @@ namespace WindowsFormsApplication1
 
                 t1.Join();
             }
+        }
+
+        private void cam_event(object o, System.EventArgs args)
+        {
+            Boolean b = cannon.takepic();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            System.Delegate del = new System.EventHandler( this.cam_event );
+            this.button1.Invoke(del);
         }
     }
 }

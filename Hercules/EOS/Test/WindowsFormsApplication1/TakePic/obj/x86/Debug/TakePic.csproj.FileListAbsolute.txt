@@ -1,0 +1,4 @@
+C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\TakePic\bin\Debug\TakePic.exe
+C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\TakePic\bin\Debug\TakePic.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\TakePic\obj\x86\Debug\TakePic.exe
+C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\TakePic\obj\x86\Debug\TakePic.pdb
