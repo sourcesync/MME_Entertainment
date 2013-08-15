@@ -177,6 +177,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
+                /*
 
                 i = EDSDKLib.EDSDK.EdsCloseSession(_cam);
                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Close Session status=" + i.ToString());
@@ -184,6 +185,7 @@ namespace WindowsFormsApplication1
 
                 i = EDSDKLib.EDSDK.EdsTerminateSDK();
                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Terminate SDK status=" + i.ToString());
+                 * */
             }
 
             return true;
