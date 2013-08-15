@@ -160,9 +160,11 @@ namespace WindowsFormsApplication1
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
 
+        MMECanon cannon = null;
+
         private void button3_Click(object sender, EventArgs e)
         {
-            MMECanon cannon = new MMECanon();
+            cannon = new MMECanon();
             Boolean b = cannon.takepic2();
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }

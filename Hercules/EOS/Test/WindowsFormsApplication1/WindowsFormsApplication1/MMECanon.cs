@@ -113,12 +113,18 @@ namespace WindowsFormsApplication1
         }
 
 
+
+        EDSDKLib.EDSDK _sdk = null; //new EDSDKLib.EDSDK();
+        IntPtr _camlist = IntPtr.Zero;
+        IntPtr _cam = IntPtr.Zero;
+        EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler = null;
+
         public Boolean takepic2()
         {
-            EDSDKLib.EDSDK _sdk = new EDSDKLib.EDSDK();
-            IntPtr _camlist = IntPtr.Zero;
-            IntPtr _cam = IntPtr.Zero;
-            EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler = null;
+            //EDSDKLib.EDSDK _sdk = new EDSDKLib.EDSDK();
+            //IntPtr _camlist = IntPtr.Zero;
+            //IntPtr _cam = IntPtr.Zero;
+            //EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler = null;
 
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
             if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
@@ -155,7 +161,7 @@ namespace WindowsFormsApplication1
                                     if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
                                 }
 
-                                EDSDKLib.EDSDK.EdsSaveTo toPC = EDSDKLib.EDSDK.EdsSaveTo.Camera;
+                                EDSDKLib.EDSDK.EdsSaveTo toPC = EDSDKLib.EDSDK.EdsSaveTo.Host;
                                 uint idata = (uint)toPC;
                                 int sz = sizeof(EDSDKLib.EDSDK.EdsSaveTo);
                                 i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam, (uint)EDSDKLib.EDSDK.PropID_SaveTo, 0, sz, idata);
@@ -168,10 +174,15 @@ namespace WindowsFormsApplication1
                                     EDSDKLib.EDSDK.ObjectEvent_All,
                                     _edsObjectEventHandler,
                                     new IntPtr(0));
-                                System.Windows.Forms.MessageBox.Show("After Delegate=" + i.ToString());
+                                //System.Windows.Forms.MessageBox.Show("After Delegate=" + i.ToString());
 
-                                i = EDSDKLib.EDSDK.EdsSendCommand( _cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 1);
-                                System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
+                                if (i == 0)
+                                {
+                                    i = EDSDKLib.EDSDK.EdsSendCommand(_cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 1);
+                                    System.Windows.Forms.MessageBox.Show("After Take Pic status=" + i.ToString());
+
+                                    return true;
+                                }
 
                             }
                         }
@@ -188,7 +199,7 @@ namespace WindowsFormsApplication1
                  * */
             }
 
-            return true;
+            return false;
         }
 
 
