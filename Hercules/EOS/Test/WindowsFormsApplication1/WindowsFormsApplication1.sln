@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "anothertry", "anothertry\anothertry.csproj", "{627CF79F-5437-4F9B-AAA2-A8F7F49A8B79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakePic", "TakePic\TakePic.csproj", "{B0327298-0006-4182-B7AC-0C49C7B12474}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,6 +21,10 @@ Global
 		{627CF79F-5437-4F9B-AAA2-A8F7F49A8B79}.Debug|x86.Build.0 = Debug|x86
 		{627CF79F-5437-4F9B-AAA2-A8F7F49A8B79}.Release|x86.ActiveCfg = Release|x86
 		{627CF79F-5437-4F9B-AAA2-A8F7F49A8B79}.Release|x86.Build.0 = Release|x86
+		{B0327298-0006-4182-B7AC-0C49C7B12474}.Debug|x86.ActiveCfg = Debug|x86
+		{B0327298-0006-4182-B7AC-0C49C7B12474}.Debug|x86.Build.0 = Debug|x86
+		{B0327298-0006-4182-B7AC-0C49C7B12474}.Release|x86.ActiveCfg = Release|x86
+		{B0327298-0006-4182-B7AC-0C49C7B12474}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

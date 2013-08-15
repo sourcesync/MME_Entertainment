@@ -209,10 +209,12 @@ namespace WindowsFormsApplication1
             Boolean b = cannon.takepic();
             System.Console.WriteLine("take " + b.ToString());
 
+            /*
             while (!cannon.download_done)
             {
                 System.Threading.Thread.Sleep(10);
             }
+             * */
 
         }
 
@@ -222,6 +224,8 @@ namespace WindowsFormsApplication1
             t1.Start();
 
             t1.Join();
+
+            bool b = false;
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -230,6 +234,7 @@ namespace WindowsFormsApplication1
             t1.Start();
 
             t1.Join();
+            bool b = false;
         }
     }
 }
