@@ -203,9 +203,30 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void ThreadTakePic2()
+        {
+
+            Boolean b = cannon.takepic();
+            System.Console.WriteLine("take " + b.ToString());
+
+            while (!cannon.download_done)
+            {
+                System.Threading.Thread.Sleep(10);
+            }
+
+        }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             t1 = new Thread(ThreadTakePic);
+            t1.Start();
+
+            t1.Join();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            t1 = new Thread(ThreadTakePic2);
             t1.Start();
 
             t1.Join();

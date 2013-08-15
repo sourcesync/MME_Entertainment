@@ -9,6 +9,8 @@ namespace WindowsFormsApplication1
     {
         public static Boolean DEBUG = false;
 
+        public bool download_done = false;
+
         public uint downloadImage(IntPtr directoryItem)
         {
             uint err = 0;
@@ -47,6 +49,8 @@ namespace WindowsFormsApplication1
                 stream = IntPtr.Zero;
             }
 
+            this.download_done = true;
+
             return err;
         }
 
@@ -80,6 +84,7 @@ namespace WindowsFormsApplication1
             //IntPtr _camlist = IntPtr.Zero;
             //IntPtr _cam = IntPtr.Zero;
             //EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler = null;
+            this.download_done = false;
 
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
             if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
@@ -155,6 +160,8 @@ namespace WindowsFormsApplication1
 
         public Boolean takepic()
         {
+            this.download_done = false;
+
             uint i = EDSDKLib.EDSDK.EdsSendCommand(_cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 0);
             if (i == 0) return true;
             else return false;
