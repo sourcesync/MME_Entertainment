@@ -157,7 +157,7 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
             MMECanon cannon = new MMECanon();
-            Boolean b = cannon.takepic();
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
 
@@ -173,7 +173,7 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Boolean b = cannon.takepic();
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
 
@@ -193,7 +193,7 @@ namespace WindowsFormsApplication1
 
             if (b)
             {
-                b = cannon.takepic();
+                b = cannon.takepic("c:/temp/image.jpg", false);
                 System.Console.WriteLine("take " + b.ToString());
 
             }
@@ -206,7 +206,7 @@ namespace WindowsFormsApplication1
         private void ThreadTakePic2()
         {
 
-            Boolean b = cannon.takepic();
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
             System.Console.WriteLine("take " + b.ToString());
 
             /*
@@ -245,7 +245,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Boolean b = cannon.takepic();
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
             if (b)
             {
 
@@ -258,13 +258,20 @@ namespace WindowsFormsApplication1
 
         private void cam_event(object o, System.EventArgs args)
         {
-            Boolean b = cannon.takepic();
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             System.Delegate del = new System.EventHandler( this.cam_event );
             this.button1.Invoke(del);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Boolean b = cannon.takepic("c:/temp/image.jpg", true);
+            System.Windows.Forms.MessageBox.Show(b.ToString());
+
         }
     }
 }

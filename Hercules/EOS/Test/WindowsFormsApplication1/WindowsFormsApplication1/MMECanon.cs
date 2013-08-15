@@ -11,6 +11,8 @@ namespace WindowsFormsApplication1
 
         public bool download_done = false;
 
+        public string path = "c:/temp/image.jpg";
+
         public uint downloadImage(IntPtr directoryItem)
         {
             uint err = 0;
@@ -24,7 +26,9 @@ namespace WindowsFormsApplication1
             // Create file stream for transfer destination
             if (err == EDSDKLib.EDSDK.EDS_ERR_OK)
             {
-                err = EDSDKLib.EDSDK.EdsCreateFileStream(dirItemInfo.szFileName,
+                err = EDSDKLib.EDSDK.EdsCreateFileStream(
+                    this.path,
+                    //dirItemInfo.szFileName,
                     EDSDKLib.EDSDK.EdsFileCreateDisposition.CreateAlways,
                     EDSDKLib.EDSDK.EdsAccess.ReadWrite,       
                      out stream);
@@ -158,12 +162,28 @@ namespace WindowsFormsApplication1
         }
 
 
-        public Boolean takepic()
+        public Boolean takepic(String path, bool wait)
         {
             this.download_done = false;
 
             uint i = EDSDKLib.EDSDK.EdsSendCommand(_cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 0);
-            if (i == 0) return true;
+            if (i == 0)
+            {
+                if (wait)
+                {
+                    while (!this.download_done)
+                    {
+                        System.Windows.Forms.Application.DoEvents();
+                        System.Threading.Thread.Sleep(50);
+                    }
+
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
             else return false;
         }
 
