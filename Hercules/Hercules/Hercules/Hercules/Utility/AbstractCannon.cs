@@ -18,35 +18,35 @@ namespace MME.Hercules
         public Int32 ZoomPos
         {
             get { return _ZoomPos; }
-            set { rdc_camera.ZoomPos = value; }
+            set { if (rdc_camera!=null) rdc_camera.ZoomPos = value; }
         }
 
         public Int32 _ShootingMode = 0;
         public Int32 ShootingMode
         {
             get { return _ShootingMode; }
-            set { rdc_camera.ShootingMode = value; }
+            set { if (rdc_camera != null) rdc_camera.ShootingMode = value; }
         }
 
         public Int32 _ExposureCompensation = 0;
         public Int32 ExposureCompensation
         {
             get { return _ExposureCompensation; }
-            set { rdc_camera.ExposureCompensation = value; }
+            set { if (rdc_camera != null)  rdc_camera.ExposureCompensation = value; }
         }
 
         public RDC.CameraSDK.prType.prptpImageQuality  _ImageQuality;
         public RDC.CameraSDK.prType.prptpImageQuality ImageQuality
         {
             get { return _ImageQuality; }
-            set { rdc_camera.ImageQuality = value; }
+            set { if (rdc_camera != null) rdc_camera.ImageQuality = value; }
         }
                 
         public Int32 _PhotoEffect = 0;
         public Int32 PhotoEffect
         {
             get { return _PhotoEffect; }
-            set { rdc_camera.PhotoEffect = value; }
+            set { if (rdc_camera != null) rdc_camera.PhotoEffect = value; }
         }
 
         public AbstractCannon(Boolean old)
