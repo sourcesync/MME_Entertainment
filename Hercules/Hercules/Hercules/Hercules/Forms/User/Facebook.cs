@@ -139,7 +139,7 @@ namespace MME.Hercules.Forms.User
             keyboard.SetKeyboard(false);
 
             InternetSetOption(IntPtr.Zero, INTERNET_OPTION_END_BROWSER_SESSION, IntPtr.Zero, 0);
-            WindowUtility.ClearCache();
+            //gw WindowUtility.ClearCache();
 
             //gw
             if (!this.ischeckin)
