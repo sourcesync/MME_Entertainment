@@ -94,7 +94,8 @@ namespace MME.Hercules
             }
             else
             {
-                return eos_camera.takepic("test.jpg", false);
+                bool b = eos_camera.takepic("test.jpg", false);
+                return b;
             }
         }
 
