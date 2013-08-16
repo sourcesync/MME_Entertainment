@@ -33,8 +33,14 @@ namespace MME.Hercules
                     System.Windows.Forms.MessageBox.Show("ERROR: Cannot initialize Cannon SDK!");
                     return false;
                 }
+
+                System.Windows.Forms.Application.DoEvents();
+
                 camera.GetDevices();
                 Thread.Sleep(1000);
+
+
+                System.Windows.Forms.Application.DoEvents();
 
                 //  connect cam
                 string cname = camera.ConnectedCameraName;

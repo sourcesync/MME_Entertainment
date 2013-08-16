@@ -94,7 +94,8 @@ namespace MME.Hercules
             }
             else
             {
-                bool b = eos_camera.takepic("test.jpg", false);
+                uint err = 0;
+                bool b = eos_camera.takepic("test.jpg", false, out err);
                 return b;
             }
         }
@@ -110,7 +111,9 @@ namespace MME.Hercules
             }
             else
             {
-                return eos_camera.takepic(path, true);
+                uint err = 0;
+                bool b = eos_camera.takepic(path, true, out err);
+                return b;
             }
         }
 

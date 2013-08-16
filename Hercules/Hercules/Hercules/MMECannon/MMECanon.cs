@@ -165,13 +165,14 @@ namespace MMECannon
         }
 
 
-        public Boolean takepic(String path, bool wait)
+        public Boolean takepic(String path, bool wait, out uint err)
         {
             this.download_done = false;
             if (path == null) this.path = "takepic.jpg";
             else this.path = path;
 
             uint i = EDSDKLib.EDSDK.EdsSendCommand(_cam, EDSDKLib.EDSDK.CameraCommand_TakePicture, 0);
+            err = i;
             if (i == 0)
             {
                 if (wait)
