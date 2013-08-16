@@ -490,6 +490,7 @@ namespace MME.Hercules.Forms.User
                 String compression = ConfigUtility.GetValue("JpegCompressionQuality");
                 if ( (compression!=null) && (compression!="") ) comp_l = long.Parse(compression);
                 EncoderParameter myencp = new EncoderParameter(myenc, comp_l);
+                myencps.Param[0] = myencp;
 
                 image.Save(
                     this.currentSession.PhotoPath + "\\photo" + (i + 1) + ".jpg",
