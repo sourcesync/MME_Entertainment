@@ -187,6 +187,12 @@
     <Compile Include="Forms\User\Birthday.Designer.cs">
       <DependentUpon>Birthday.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User\Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Payment.Designer.cs">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User\Google.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,6 +315,7 @@
     <Compile Include="Types\BoothType.cs" />
     <Compile Include="Types\ColorType.cs" />
     <Compile Include="Utility\AbstractCannon.cs" />
+    <Compile Include="Utility\BillCollectorUtil.cs" />
     <Compile Include="Utility\CameraUtility.cs" />
     <Compile Include="Utility\ChromakeyUtility.cs" />
     <Compile Include="Utility\ConfigUtility.cs" />
@@ -392,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\Birthday.resx">
       <DependentUpon>Birthday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Payment.resx">
+      <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\Google.resx">
       <DependentUpon>Google.cs</DependentUpon>
@@ -717,6 +727,10 @@
     <ProjectReference Include="..\HerculesWPFMessageTable\HerculesWPFMessageTable.csproj">
       <Project>{3986DCEA-42D0-4E3D-BE61-FAEA94091CE5}</Project>
       <Name>HerculesWPFMessageTable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MMEBillCollector\MMEBillCollector.csproj">
+      <Project>{4A1893E0-8B94-4500-AB51-4B161542E060}</Project>
+      <Name>MMEBillCollector</Name>
     </ProjectReference>
     <ProjectReference Include="..\MMECannon\MMECannon.csproj">
       <Project>{85CDE07B-F7E8-4C96-B52B-56F3F673275F}</Project>

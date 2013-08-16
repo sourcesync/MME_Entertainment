@@ -393,6 +393,24 @@ namespace MME.Hercules.Forms.User
                     dr = ProcessSequenceSteps(dr);
                 }
 
+                //  payment screen ?
+                bool get_payment = false;
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "PAYMENT_MODE")))
+                {
+                    String val = ConfigUtility.GetConfig(ConfigUtility.Config, "PAYMENT_MODE");
+                    if (val == "1")
+                        get_payment = true;
+                }
+                // Are we requiring birthday ?            
+                if ((get_payment) && (dr == System.Windows.Forms.DialogResult.OK))
+                {
+                    using (User.Payment py = new Payment(currentSession))
+                    {
+                        dr = py.ShowDialog();
+                    }
+                }
+
+
                 bool get_bd = false;
                 if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "BIRTHDAY_MODE")))
                 {

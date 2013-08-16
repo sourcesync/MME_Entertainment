@@ -8,15 +8,15 @@ namespace MME.Hercules
         //public static RDC.CameraSDK.Camera camera;
         public static AbstractCannon camera;
 
-        public static void InitializeCamera()
+        public static bool InitializeCamera()
         {
             try
             {
                 if (!ConfigUtility.GetValue("CameraEnabled").Equals("1"))
-                    return;
+                    return true;
 
                 if (ConfigUtility.GetValue("CameraName").Equals("Web"))
-                    return;
+                    return true;
 
                 //gw - determine if we use old or new sdk...
                 string cam_for_sdk = ConfigUtility.GetValue("CameraName");
@@ -31,6 +31,7 @@ namespace MME.Hercules
                 if (!camera.StartSDK())
                 {
                     System.Windows.Forms.MessageBox.Show("ERROR: Cannot initialize Cannon SDK!");
+                    return false;
                 }
                 camera.GetDevices();
                 Thread.Sleep(1000);
@@ -51,11 +52,14 @@ namespace MME.Hercules
 
                 // Default to bw if forcing to bw.
                 CameraUtility.camera.PhotoEffect = 0;
+
+                return true;
             }
             catch (System.Exception e)
             {
-                System.Windows.Forms.MessageBox.Show("error!");
+                System.Windows.Forms.MessageBox.Show("CameraUtility Error!");
                 System.Windows.Forms.MessageBox.Show(e.ToString());
+                return false;
             }
         }
 

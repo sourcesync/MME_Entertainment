@@ -41,7 +41,7 @@ namespace MME.Hercules
         }
 
 
-
+        
 
         [STAThread]
         static void Main(string[] args)
@@ -95,8 +95,17 @@ namespace MME.Hercules
                 //PhidgetUtility.InitPhidgetBoard();
                 if (!PhidgetUtility2.InitAll()) ;
 
-                // Init camera.
-                CameraUtility.InitializeCamera();
+                // Init camera...
+                if (!CameraUtility.InitializeCamera())
+                {
+                    return;
+                }
+
+                // Init bill collector...
+                if (!MME.Hercules.Utility.BillCollector.Initialize(null, null))
+                {
+                    return;
+                }
 
                 /*
                 //FileUtility.DJRequest("This is it!");
@@ -159,6 +168,10 @@ namespace MME.Hercules
                 }
                 */
                 
+
+                //  Initialize bill collector...
+                
+
 
                 // Start
                 Application.EnableVisualStyles();

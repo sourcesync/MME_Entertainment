@@ -1,0 +1,10 @@
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\bin\Debug\BillCollectorUtility.exe
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\bin\Debug\BillCollectorUtility.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\bin\Debug\MMEBillCollector.dll
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\bin\Debug\MMEBillCollector.pdb
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\obj\x86\Debug\BillCollectorUtility.csprojResolveAssemblyReference.cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\obj\x86\Debug\BillCollectorUtility.Form1.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\obj\x86\Debug\BillCollectorUtility.Properties.Resources.resources
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\obj\x86\Debug\BillCollectorUtility.csproj.GenerateResource.Cache
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\obj\x86\Debug\BillCollectorUtility.exe
+C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\BillCollectorUtility\obj\x86\Debug\BillCollectorUtility.pdb

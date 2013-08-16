@@ -19,7 +19,9 @@
 
   <add key="ROOM_NUMBER_MODE" value="0" />
 
-  <add key="BIRTHDAY_MODE" value="1" />
+  <add key="BIRTHDAY_MODE" value="0" />
+
+  <add key="PAYMENT_MODE" value="1" />
 
   <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->
   <add key="TEXT_COLOR" value="#000000" />
