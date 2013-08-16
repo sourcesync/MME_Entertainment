@@ -12,11 +12,13 @@ namespace MME.Hercules.Utility
 
         public static bool Initialize( System.Windows.Forms.Control sync, System.EventHandler cb)
         {
-            String port = "COM3";
+            String port = "";
 
             String val = ConfigUtility.GetValue("BillCollectorPort");
             if ((val != null) && (val != ""))
                 port = val;
+
+            if (port == "") return true;
 
             bc = new MMEBillCollector.MMEBillCollector(port);
             if (!bc.init(sync, cb))
