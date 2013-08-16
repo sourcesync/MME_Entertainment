@@ -421,6 +421,17 @@ namespace MME.Hercules.Forms.User
             }
         }
 
+        private ImageCodecInfo GetEncoder(ImageFormat format)
+        {
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                    return codec;
+            }
+            return null;
+        }
+
         private void ProcessPicThread(object _i)
         {
             int i = (int)_i;
@@ -466,8 +477,25 @@ namespace MME.Hercules.Forms.User
                 //gw
 
                 //this.preview.Image.Save(this.currentSession.PhotoPath + "\\photo" + (i + 1) + ".jpg",
-                image.Save(this.currentSession.PhotoPath + "\\photo" + (i + 1) + ".jpg",
-                    System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                //gw 
+                //gwimage.Save(this.currentSession.PhotoPath + "\\photo" + (i + 1) + ".jpg",
+                //gw    System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+                System.Drawing.Imaging.Encoder myenc = System.Drawing.Imaging.Encoder.Quality;
+                EncoderParameters myencps = new EncoderParameters(1);
+
+                long comp_l = 100L;
+                String compression = ConfigUtility.GetValue("JpegCompressionQuality");
+                if ( (compression!=null) && (compression!="") ) comp_l = long.Parse(compression);
+                EncoderParameter myencp = new EncoderParameter(myenc, comp_l);
+
+                image.Save(
+                    this.currentSession.PhotoPath + "\\photo" + (i + 1) + ".jpg",
+                    //System.Drawing.Imaging.ImageFormat.Jpeg,
+                    jpgEncoder,
+                    myencps);
             }
 
             //gw
