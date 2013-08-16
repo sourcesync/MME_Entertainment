@@ -49,6 +49,9 @@ namespace MME.Hercules
             try
             {
 
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+
                 // Load configuration files to memory
                 LoadConfig(ref ConfigUtility.Config, "configuration", true);
                 LoadConfig(ref ConfigUtility.SpeechConfig, "speech", false);
@@ -174,8 +177,6 @@ namespace MME.Hercules
 
 
                 // Start
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Forms.User.Start());
              
                 
