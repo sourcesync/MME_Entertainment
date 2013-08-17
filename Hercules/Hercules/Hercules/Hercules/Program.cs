@@ -101,6 +101,8 @@ namespace MME.Hercules
                 // Init camera...
                 if (!CameraUtility.InitializeCamera())
                 {
+                    System.Windows.Forms.MessageBox.Show("Please restart this software.");
+                    Application.Exit();
                     return;
                 }
 
