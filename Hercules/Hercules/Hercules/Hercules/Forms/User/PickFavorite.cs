@@ -89,6 +89,9 @@ namespace MME.Hercules.Forms.User
 
                 this.Controls.Add(bg);
 
+                bg.Parent = pb;
+                bg.BackColor = System.Drawing.Color.Transparent;
+
                 this.Refresh();
             }
 
