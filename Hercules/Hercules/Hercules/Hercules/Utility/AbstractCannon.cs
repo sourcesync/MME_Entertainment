@@ -102,19 +102,20 @@ namespace MME.Hercules
         }
 
 
-        public bool Release(string path)
+        public uint Release(string path)
         {
             if (old)
             {
                 System.Drawing.Bitmap bm = rdc_camera.Release(path);
-                if (bm != null) return true;
-                else return false;
+                if (bm != null) return 1;
+                else return 0;
             }
             else
             {
                 uint err = 0;
                 bool b = eos_camera.takepic(path, true, out err);
-                return b;
+                if (!b) return err;
+                else return 0;
             }
         }
 

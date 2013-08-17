@@ -1734,10 +1734,16 @@ namespace MME.Hercules.Forms.User
                 if (ConfigUtility.CameraEnabled)
                 {
                     if (CameraUtility.camera != null && !string.IsNullOrEmpty(CameraUtility.camera.ConnectedCameraName))
-                        
-                        
-                        CameraUtility.camera.Release(this.currentSession.PhotoPath + "\\" +
+                    {
+                        uint status = CameraUtility.camera.Release(this.currentSession.PhotoPath + "\\" +
                             "forephoto" + (i + 1) + ".jpg");
+                        if (status != 0)
+                        {
+                            System.Windows.Forms.MessageBox.Show("ERROR:  There was a problem taking a pic.  error=" + status);
+                            this.DialogResult = DialogResult.Cancel;
+                            return;
+                        }
+                    }
                 }
                 else
                 {
