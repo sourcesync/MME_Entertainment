@@ -409,7 +409,7 @@ namespace MME.Hercules.Forms.User
                         dr = py.ShowDialog();
                     }
                 }
-
+                
 
                 bool get_bd = false;
                 if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "BIRTHDAY_MODE")))

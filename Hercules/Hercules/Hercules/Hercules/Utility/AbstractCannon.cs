@@ -84,19 +84,20 @@ namespace MME.Hercules
             }
         }
 
-        public bool Connect(String name)
+        public uint Connect(String name)
         {
             if (old)
             {
                 rdc_camera.Connect(name);
                 //  TODO: should do something here to check for old api...
-                return true;
+                return 0;
             }
             else
             {
                 uint err = 0;
                 bool b = eos_camera.takepic("test.jpg", false, out err);
-                return b;
+                if (!b) return err;
+                else return 0;
             }
         }
 

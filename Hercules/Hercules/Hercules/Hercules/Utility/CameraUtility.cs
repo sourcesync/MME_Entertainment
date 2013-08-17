@@ -44,10 +44,12 @@ namespace MME.Hercules
 
                 //  connect cam
                 string cname = camera.ConnectedCameraName;
-                if (!camera.Connect(ConfigUtility.GetValue("CameraName")))
+                uint status = camera.Connect(ConfigUtility.GetValue("CameraName"));
+                if (status!=0)
                 {
-                    System.Windows.Forms.MessageBox.Show("ERROR: Cannot connect to camera!" +
-                        ConfigUtility.GetValue("CameraName") + " but found " + cname);
+                    System.Windows.Forms.MessageBox.Show("ERROR: Cannot connect to camera:" +
+                        " found camera-> " + cname + " error=" + status);
+                    return false;
                 }
 
                 //  parameters...

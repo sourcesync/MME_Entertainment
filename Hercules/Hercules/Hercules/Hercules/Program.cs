@@ -101,14 +101,16 @@ namespace MME.Hercules
                 // Init camera...
                 if (!CameraUtility.InitializeCamera())
                 {
-                    System.Windows.Forms.MessageBox.Show("Please restart this software.");
-                    Application.Exit();
+                    System.Windows.Forms.MessageBox.Show("Cannot start camera. Please restart this software.");
+                    Environment.Exit(1);
                     return;
                 }
 
                 // Init bill collector...
                 if (!MME.Hercules.Utility.BillCollector.Initialize(null, null))
                 {
+                    System.Windows.Forms.MessageBox.Show("Cannot start bill collector. Please restart this software.");
+                    Environment.Exit(1);
                     return;
                 }
 

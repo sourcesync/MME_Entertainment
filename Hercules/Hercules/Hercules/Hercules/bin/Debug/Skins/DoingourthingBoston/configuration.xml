@@ -21,7 +21,8 @@
 
   <add key="BIRTHDAY_MODE" value="0" />
 
-  <add key="PAYMENT_MODE" value="0" />
+  <add key="PAYMENT_MODE" value="1" />
+  <add key="PAYMENT_MODE_TIMEOUT" value="10" />
 
   <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->
   <add key="TEXT_COLOR" value="#000000" />
@@ -42,7 +43,7 @@
   <add key="SkipEmailButtonHeight" value="100" />
   <add key="SkipEmailButtonColor" value=""/>
 
-  <add key="FinishedEmailButtonColor" value="#ffff00" />
+  <add key="FinishedEmailButtonColor" value="#00ffff" />
 
   <!-- Publish methods -->
   <add key="AllowEmailPublish" value="1" /> <!-- 1=on, 0=off -->
@@ -112,7 +113,7 @@
   <add key="CustomLocation" value="San Francisco" />"
   <add key="KeyboardY" value="-50" />
   <add key="KeyboardFinishY" value="600" />
-  <add key="PIC_OFFSET_Y" value="0" />
+  <add key="PIC_OFFSET_Y" value="-40" />
 
   <!-- 4 Photo customization -->
   <add key="Photo1_X" value="60" />

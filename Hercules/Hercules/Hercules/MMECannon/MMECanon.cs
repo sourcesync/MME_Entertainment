@@ -86,10 +86,6 @@ namespace MMECannon
 
         public Boolean init()
         {
-            //EDSDKLib.EDSDK _sdk = new EDSDKLib.EDSDK();
-            //IntPtr _camlist = IntPtr.Zero;
-            //IntPtr _cam = IntPtr.Zero;
-            //EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler = null;
             this.download_done = false;
 
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
@@ -141,7 +137,6 @@ namespace MMECannon
                                     EDSDKLib.EDSDK.ObjectEvent_All,
                                     _edsObjectEventHandler,
                                     new IntPtr(0));
-                                //System.Windows.Forms.MessageBox.Show("After Delegate=" + i.ToString());
 
                                 if (i == 0)
                                     return true;
@@ -150,15 +145,6 @@ namespace MMECannon
                         }
                     }
                 }
-                /*
-
-                i = EDSDKLib.EDSDK.EdsCloseSession(_cam);
-                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Close Session status=" + i.ToString());
-                
-
-                i = EDSDKLib.EDSDK.EdsTerminateSDK();
-                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Terminate SDK status=" + i.ToString());
-                 * */
             }
 
             return false;
