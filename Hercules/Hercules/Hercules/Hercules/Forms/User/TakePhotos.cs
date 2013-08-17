@@ -1439,6 +1439,7 @@ namespace MME.Hercules.Forms.User
 
             //  Show the snapshot preview...
             this.preview.Image = FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\photo" + (1) + ".jpg");
+            this.preview.Parent = this.pb;
             this.preview.Visible = true;
             
             //  Turn off cam preview...
@@ -1774,6 +1775,8 @@ namespace MME.Hercules.Forms.User
                         {
 
                             this.preview.Image = this.proc_image;
+                            this.preview.Parent = this.pb;
+
                             if (ConfigUtility.CameraEnabled)               
                             {
                                 this.preview.Image.RotateFlip(System.Drawing.RotateFlipType.Rotate90FlipNone);
@@ -1812,6 +1815,8 @@ namespace MME.Hercules.Forms.User
                         else
                             this.preview.Image = FileUtility.LoadBitmap(this.currentSession.PhotoPath + "\\forephoto" + (i + 1) + ".jpg");
 
+                        this.preview.Parent = this.pb;
+
                         //gw
                         if (this.currentSession.SelectedColorType == ColorType.Sepia)
                         {
@@ -1820,6 +1825,7 @@ namespace MME.Hercules.Forms.User
                             this.preview.Image.Dispose();
                             this.preview.Image = null;
                             this.preview.Image = btm;
+                            this.preview.Parent = this.pb;
                         }
                         //gw
 
@@ -1836,6 +1842,8 @@ namespace MME.Hercules.Forms.User
 
                     if (this.currentSession.SelectedColorType == ColorType.BW)
                         this.preview.Image = FileUtility.MakeGrayscale((System.Drawing.Bitmap)this.preview.Image);
+
+                    this.preview.Parent = this.pb;
 
                     this.preview.Visible = true;
                     this.preview.BringToFront();

@@ -359,6 +359,7 @@
             // 
             // preview
             // 
+            this.preview.BackColor = System.Drawing.Color.Transparent;
             this.preview.Location = new System.Drawing.Point(352, 253);
             this.preview.Name = "preview";
             this.preview.Size = new System.Drawing.Size(262, 350);
