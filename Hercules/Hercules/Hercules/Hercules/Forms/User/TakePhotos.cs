@@ -1735,6 +1735,12 @@ namespace MME.Hercules.Forms.User
                 {
                     if (CameraUtility.camera != null && !string.IsNullOrEmpty(CameraUtility.camera.ConnectedCameraName))
                     {
+                        if (i == 0)
+                        {
+                            Application.DoEvents();
+                            System.Threading.Thread.Sleep(500);
+                        }
+
                         uint status = CameraUtility.camera.Release(this.currentSession.PhotoPath + "\\" +
                             "forephoto" + (i + 1) + ".jpg");
                         if (status != 0)

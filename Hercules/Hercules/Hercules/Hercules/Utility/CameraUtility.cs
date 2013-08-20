@@ -37,7 +37,10 @@ namespace MME.Hercules
                 System.Windows.Forms.Application.DoEvents();
 
                 camera.GetDevices();
-                Thread.Sleep(1000);
+
+
+                System.Windows.Forms.Application.DoEvents();
+                Thread.Sleep(2000);
 
 
                 System.Windows.Forms.Application.DoEvents();
