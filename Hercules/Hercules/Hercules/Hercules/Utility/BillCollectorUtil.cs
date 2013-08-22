@@ -13,14 +13,19 @@ namespace MME.Hercules.Utility
         public static bool Initialize( System.Windows.Forms.Control sync, System.EventHandler cb)
         {
             String port = "";
+            String initstr = null;
 
             String val = ConfigUtility.GetValue("BillCollectorPort");
             if ((val != null) && (val != ""))
                 port = val;
 
+            val = ConfigUtility.GetValue("BillCollectorInitString");
+            if ((val != null) && (val != ""))
+                initstr = val;
+
             if (port == "") return true;
 
-            bc = new MMEBillCollector.MMEBillCollector(port);
+            bc = new MMEBillCollector.MMEBillCollector(port, initstr);
             if (!bc.init(sync, cb))
             {
                 System.Windows.Forms.MessageBox.Show("ERROR: Cannot initialize bill collector.");

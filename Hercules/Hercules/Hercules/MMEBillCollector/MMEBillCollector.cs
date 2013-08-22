@@ -11,6 +11,7 @@ namespace MMEBillCollector
     {
         public static SerialPort _serialPort = null;
         public String port = null;
+        public String initstr = null;
         public bool _continue = false;
         public const int BUFMAX = 1000;
         byte[] buf = new byte[BUFMAX];
@@ -19,9 +20,10 @@ namespace MMEBillCollector
         public System.Windows.Forms.Control sync = null;
         public System.EventHandler cb = null;
 
-        public  MMEBillCollector(String port)
+        public  MMEBillCollector(String port, String init)
         {  
             this.port = port;
+            this.initstr = init;
         }
 
         public Boolean init(System.Windows.Forms.Control sync, System.EventHandler cb)
@@ -53,6 +55,11 @@ namespace MMEBillCollector
             if (!send_clear_command())
             {
                 return false;
+            }
+
+            if (this.initstr != null)
+            {
+                this.send_command(this.initstr);
             }
 
             if (!send_status_command())
@@ -130,6 +137,28 @@ namespace MMEBillCollector
                     continue;
                 }
             }
+        }
+
+        public bool send_command(String str)
+        {
+            char[] chrs = str.ToCharArray();
+
+            //_serialPort.Write(chrs, 0, chrs.Length);
+
+            
+            for ( int i=0;i<chrs.Length;i++)
+            {
+                char c = chrs[i];
+                byte[] b = new byte[] { (byte)c };
+                _serialPort.Write(b, 0, 1);
+
+            }
+
+            byte[] cr = new byte[] { 13 };
+            _serialPort.Write(cr,0,1);
+
+            return true;
+
         }
 
         public bool send_clear_command()
