@@ -72,5 +72,11 @@ namespace MME.Hercules
 
         public int MaxCopies
         { get; set; }
+
+        public bool IsOffline
+        { get; set; }
+
+        public bool ConfigOffline
+        { get; set; }
     }
 }

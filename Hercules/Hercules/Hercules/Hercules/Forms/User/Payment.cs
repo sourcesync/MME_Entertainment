@@ -22,6 +22,8 @@ namespace MME.Hercules.Forms.User
         private System.Timers.ElapsedEventHandler timer_handler = null;
         private System.EventHandler timer_invoke_handler = null;
 
+        private String end_transaction_string = "0500";
+
         public Payment(Session currentSession)
         {
             InitializeComponent();
@@ -55,6 +57,13 @@ namespace MME.Hercules.Forms.User
 
         private void Payment_Load(object sender, EventArgs e)
         {
+            //  get payment amount to look for...
+            String val = ConfigUtility.GetValue("BillCollectorInitString");
+            if ((val != null) && (val != ""))
+            {
+                this.end_transaction_string = val.Substring(1);
+            }
+
             // adjust form/pb sizes...
             Size sz = WindowUtility.GetScreenSize(Hercules.Properties.Resources.EMAIL_SCREEN);
             this.Size = sz;
@@ -112,17 +121,52 @@ namespace MME.Hercules.Forms.User
             {
                  SoundUtility.Play("selection.wav");
 
-                if ( message.EndsWith("0500") )
+                if ( message.EndsWith( this.end_transaction_string ) )
                 {
                     done = true;
+                }
+
+                if (!done)
+                {
+                    try
+                    {
+                    String tail = message.Substring(message.Length - 4);
+                    float cur_amount = float.Parse(tail);
+                    float max_amount = float.Parse(this.end_transaction_string);
+                    if (cur_amount >= max_amount)
+                    {
+                        done = true;
+                    }
+                    }
+                    catch
+                    {
+                    }
+
                 }
             }
             else if (message.StartsWith("Ready"))
             {
-                if (message.EndsWith("0500"))
+                if (message.EndsWith( this.end_transaction_string ) )
                 {
                     SoundUtility.Play("selection.wav");
                     done = true;
+                }
+
+                if (!done)
+                {
+                    try
+                    {
+                        String tail = message.Substring(message.Length - 4);
+                        float cur_amount = float.Parse(tail);
+                        float max_amount = float.Parse(this.end_transaction_string);
+                        if (cur_amount >= max_amount)
+                        {
+                            done = true;
+                        }
+                    }
+                    catch
+                    {
+                    }
                 }
             }
 
@@ -135,7 +179,17 @@ namespace MME.Hercules.Forms.User
                     MME.Hercules.Utility.BillCollector.bc.cb = null;
                     MME.Hercules.Utility.BillCollector.bc.send_clear_command();
                 }
+
+                //  destroy the timer...
+                this.timer.Stop();
+
                 this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                //  restart the timer...
+                this.timer.Stop();
+                this.timer.Start();
             }
 
         }

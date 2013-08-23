@@ -7,6 +7,8 @@ using System.Xml;
 using System.IO;
 using Phidgets;
 using Phidgets.Events;
+using System.IO;
+using System.Net;
 
 namespace MME.Hercules.Forms.User
 {
@@ -175,10 +177,45 @@ namespace MME.Hercules.Forms.User
 
         }
 
+
+        public static bool GetConfigOffline()
+        {
+            bool config_offline = false;
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
+            {
+                String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
+                if (val == "1")
+                    config_offline = true;
+            }
+            return config_offline;
+        }
+
+        public static bool GetActualOffline()
+        {
+            try
+            {
+                HttpWebRequest wr = (HttpWebRequest)WebRequest.Create("http://www.google.com");
+                System.Net.WebResponse resp = wr.GetResponse();
+                return false;
+            }
+            catch (System.Exception e)
+            {
+                return true;
+            }
+        }
+
         private void Workflow()
         {
             // Start new session
             currentSession = new Session();
+
+            //  Get various offline status...
+            currentSession.ConfigOffline = GetConfigOffline();
+            currentSession.IsOffline = GetActualOffline();
+
+            MME.Hercules.Program.is_offline = currentSession.IsOffline;
+            MME.Hercules.Program.config_offline = currentSession.ConfigOffline ;
+            
 
            // System.Windows.Forms.MessageBox.Show(currentSession.ID.ToString());
             
@@ -191,6 +228,9 @@ namespace MME.Hercules.Forms.User
             //false);
 
             //  Deal with offline status...
+
+            bool offline = (this.currentSession.ConfigOffline || this.currentSession.IsOffline);
+            /*
             bool offline = false;
             if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
             {
@@ -198,6 +238,7 @@ namespace MME.Hercules.Forms.User
                 if (val == "1")
                     offline = true;
             }
+             * */
 
 
 
@@ -258,6 +299,14 @@ namespace MME.Hercules.Forms.User
                                     continue;
                                 }
                             }
+                        }
+
+
+                        //  lets check actual offline again if needed before possibly asking for facebook...
+                        if (!this.currentSession.ConfigOffline)
+                        {
+                            this.currentSession.IsOffline = Start.GetActualOffline();
+                            offline = this.currentSession.ConfigOffline || this.currentSession.IsOffline;
                         }
 
 

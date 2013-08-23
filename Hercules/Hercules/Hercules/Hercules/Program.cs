@@ -16,6 +16,10 @@ namespace MME.Hercules
 {
     static class Program
     {
+        public static bool config_offline = false;
+        public static bool is_offline = false;
+        public static System.Threading.Thread offline_thread = null;
+
         private static void LoadConfig(ref XmlDocument config, string name, bool required)
         {
             try
@@ -41,6 +45,102 @@ namespace MME.Hercules
         }
 
 
+        static bool ProcessOfflineDir(String dir)
+        {
+            bool b = true;
+
+            //  read the content of the email file 
+            String offline_file = System.IO.Path.Combine(new string[2] { dir, "OFFLINE.txt" });
+            String emailaddresses = System.IO.File.ReadAllText(offline_file);
+            emailaddresses = emailaddresses.Trim();
+
+            //  read the contents of the favephoto file...
+            offline_file = System.IO.Path.Combine(new string[2] { dir, "OFFLINE_FAVEPHOTO.txt" });
+            String favephoto = System.IO.File.ReadAllText(offline_file);
+            favephoto = favephoto.Trim();
+
+            //  read the contents of the photopath file...
+            offline_file = System.IO.Path.Combine(new string[2] { dir, "OFFLINE_PHOTOPATH.txt" });
+            String photopath = System.IO.File.ReadAllText(offline_file);
+            photopath = photopath.Trim();
+
+            //  iterate over all emails...
+            String[] emails = emailaddresses.Split(new char[] { ';' });
+
+            for (int i = 0; i < emails.Length; i++)
+            {
+                String email = emails[i];
+                email = email.Trim();
+                if (email == "") continue;
+
+                FileUtility.PostPublishUpload(favephoto, email,
+                    photopath + "\\" + favephoto + ".jpg", "");
+            }
+
+            return true;
+        }
+
+        static void OfflineTasks()
+        {
+            while (true)
+            {
+                if ( Program.config_offline)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    continue;
+                }
+                else if (Program.is_offline)
+                {
+                    Program.is_offline = MME.Hercules.Forms.User.Start.GetActualOffline();
+                    if (Program.is_offline)
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        continue;
+                    }
+                }
+
+                //  looks like we are online, check for offline tasks...
+
+                try
+                {
+                    //  Get all the event photo directories...
+                    String eventdir = ConfigUtility.GetValue("StoreImagesPath");
+                    var dirs = System.IO.Directory.EnumerateDirectories(eventdir);
+                    String[] dirlist = dirs.ToArray();
+                    for (int i=0;i<dirlist.Length;i++)
+                    {
+                        String dir = dirlist[i];
+
+                        //  See if it needs offline processing....
+                        String offline_file = System.IO.Path.Combine(new string[2] { dir, "OFFLINE.txt" });
+
+                        if (System.IO.File.Exists(offline_file))
+                        {
+                            ProcessOfflineDir(dir);
+
+                            //  delete the offline marker, whatever happens...
+                            try
+                            {
+                                System.IO.File.Delete(offline_file);
+                            }
+                            catch
+                            {
+                                System.Windows.Forms.MessageBox.Show("There was a critical problem deleting an offline marker file.");
+                                Application.Exit();
+                            }
+                        }
+
+                    }
+
+                }
+                catch
+                {
+                    System.Threading.Thread.Sleep(500);
+                }
+
+            }
+
+        }
         
 
         [STAThread]
@@ -113,6 +213,15 @@ namespace MME.Hercules
                     Environment.Exit(1);
                     return;
                 }
+
+
+                //  Start the offline thread...
+                config_offline = MME.Hercules.Forms.User.Start.GetConfigOffline();
+                is_offline = MME.Hercules.Forms.User.Start.GetActualOffline();
+
+                System.Threading.ThreadStart start = new System.Threading.ThreadStart( Program.OfflineTasks );
+                offline_thread = new System.Threading.Thread(start);
+                offline_thread.Start();
 
                 /*
                 //FileUtility.DJRequest("This is it!");

@@ -510,14 +510,17 @@ namespace MME.Hercules.Forms.User
                 String p2 = this.currentSession.EmailAddress;
                 String p3 = this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg";
 
-                bool offline = false;
+
+                bool offline = (this.currentSession.ConfigOffline || this.currentSession.IsOffline);
+                /*
+                bool config_offline = false;
                 if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
                 {
                     String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
                     if (val == "1")
-                        offline = true;
+                        config_offline = true;
                 }
-
+                */
                 if (!offline)
                 {
                     // FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, this.currentSession.EmailAddress,
@@ -538,6 +541,9 @@ namespace MME.Hercules.Forms.User
                 }
                 ConfigUtility.IncrementCounter("Email");
 
+
+
+                //if (config_offline)
                 if (offline)
                 {
                     //  Write the email address to that photo directory...
@@ -549,12 +555,36 @@ namespace MME.Hercules.Forms.User
                         email_file.Flush();
                         email_file.Close();
                     }
+
+                    //  Write the favorite photo filename to that directory
+                    pth = this.currentSession.PhotoPath + "\\OFFLINE_FAVEPHOTO.txt";
+                    if ((!System.IO.File.Exists(pth)) && (this.currentSession.FavoritePhotoFilename != null))
+                    {
+                        StreamWriter favephote_file = System.IO.File.CreateText(pth);
+                        favephote_file.WriteLine(this.currentSession.FavoritePhotoFilename);
+                        favephote_file.Flush();
+                        favephote_file.Close();
+                    }
+
+                    //  Write the favorite photo path to that directory
+                    pth = this.currentSession.PhotoPath + "\\OFFLINE_PHOTOPATH.txt";
+                    if ((!System.IO.File.Exists(pth)) && (this.currentSession.PhotoPath != null))
+                    {
+                        StreamWriter photopath_file = System.IO.File.CreateText(pth);
+                        photopath_file.WriteLine(this.currentSession.PhotoPath);
+                        photopath_file.Flush();
+                        photopath_file.Close();
+                    }
                 }
 
             }
 
             if (ConfigUtility.GetValue("UploadFavoritePhotoToAutolycus").Equals("1"))
             {
+
+                bool offline = (this.currentSession.ConfigOffline || this.currentSession.IsOffline);
+
+                /*
                 bool offline = false;
                 if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
                 {
@@ -562,6 +592,7 @@ namespace MME.Hercules.Forms.User
                     if (val == "1")
                         offline = true;
                 }
+                 * */
 
                 if (!offline)
                     FileUtility.PostPublishUpload(this.currentSession.FavoritePhotoFilename, 
@@ -573,13 +604,17 @@ namespace MME.Hercules.Forms.User
 
             if ( ! String.IsNullOrEmpty(url) )
             {
-                bool offline = false;
+
+                bool offline = (this.currentSession.ConfigOffline || this.currentSession.IsOffline);
+                /*
+                bool config_offline = false;
                 if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
                 {
                     String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
                     if (val == "1")
-                        offline = true;
+                        config_offline = true;
                 }
+                 * */
 
                 if (!offline)
                 {
@@ -624,6 +659,8 @@ namespace MME.Hercules.Forms.User
             if ((ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1")) && !string.IsNullOrEmpty(this.currentSession.FacebookAccessToken))
             {
 
+                bool offline = (this.currentSession.ConfigOffline || this.currentSession.IsOffline);
+                /*
                 bool offline = false;
                 if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
                 {
@@ -631,6 +668,7 @@ namespace MME.Hercules.Forms.User
                     if (val == "1")
                         offline = true;
                 }
+                 * */
 
                 if (!offline)
                 {
@@ -664,13 +702,15 @@ namespace MME.Hercules.Forms.User
                                 this.currentSession.FavoritePhotoFilename + ".jpg");
                     }
 
-                    bool offline = false;
+                    bool offline = (this.currentSession.ConfigOffline || this.currentSession.IsOffline);
+                    /*
                     if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
                     {
                         String val = ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE");
                         if (val == "1")
                             offline = true;
                     }
+                     * */
 
                     if (!offline)
                     {
@@ -691,6 +731,9 @@ namespace MME.Hercules.Forms.User
                 }
                 else if (!string.IsNullOrEmpty(this.currentSession.EmailAddress))
                 {
+
+                    bool offline = (this.currentSession.ConfigOffline || this.currentSession.IsOffline);
+                    /*
                     bool offline = false;
                     if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
                     {
@@ -698,6 +741,7 @@ namespace MME.Hercules.Forms.User
                         if (val == "1")
                             offline = true;
                     }
+                     * */
 
                     if (!offline)
                     {
@@ -736,6 +780,9 @@ namespace MME.Hercules.Forms.User
                 else
                     link = FacebookUtility.GetConfig("link");
 
+
+                bool offl = (this.currentSession.ConfigOffline || this.currentSession.IsOffline);
+                /*
                 bool offl = false;
                     if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "OFFLINE")))
                     {
@@ -743,6 +790,7 @@ namespace MME.Hercules.Forms.User
                         if (val == "1")
                             offl = true;
                     }
+                 * */
 
                 if (!offl)
                 {
