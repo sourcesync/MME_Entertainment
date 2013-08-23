@@ -143,6 +143,8 @@ namespace MMEBillCollector
         {
             char[] chrs = str.ToCharArray();
 
+            bool use_raw_num = false;
+            //if (str.StartsWith("M")) use_raw_num = true;
             //_serialPort.Write(chrs, 0, chrs.Length);
 
             
@@ -150,6 +152,9 @@ namespace MMEBillCollector
             {
                 char c = chrs[i];
                 byte[] b = new byte[] { (byte)c };
+                if ((use_raw_num) && (char.IsDigit(c)))
+                    b = new byte[] { byte.Parse(c.ToString()) };
+
                 _serialPort.Write(b, 0, 1);
 
             }

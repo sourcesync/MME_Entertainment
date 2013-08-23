@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.pb = new System.Windows.Forms.PictureBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // pb
@@ -43,13 +41,8 @@
             this.pb.Size = new System.Drawing.Size(1024, 768);
             this.pb.TabIndex = 4;
             this.pb.TabStop = false;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(-15, -15);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 6;
+            this.pb.Click += new System.EventHandler(this.pb_Click);
+            this.pb.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pb_MouseClick);
             // 
             // Payment
             // 
@@ -58,7 +51,6 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.ControlBox = false;
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.pb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -68,7 +60,6 @@
             this.Text = "NumPrints";
             this.Load += new System.EventHandler(this.Payment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -76,6 +67,5 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pb;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

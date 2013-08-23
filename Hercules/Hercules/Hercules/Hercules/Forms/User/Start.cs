@@ -306,6 +306,8 @@ namespace MME.Hercules.Forms.User
                         if (!this.currentSession.ConfigOffline)
                         {
                             this.currentSession.IsOffline = Start.GetActualOffline();
+                            //System.Windows.Forms.MessageBox.Show("checking online status=" +
+                              //  this.currentSession.IsOffline);
                             offline = this.currentSession.ConfigOffline || this.currentSession.IsOffline;
                         }
 
@@ -630,11 +632,22 @@ namespace MME.Hercules.Forms.User
                     }
                 }
 
-                // Are we supporting facebook
+
+                //  lets check actual offline again if needed before possibly asking for facebook...
+                if (!this.currentSession.ConfigOffline)
+                {
+                    this.currentSession.IsOffline = Start.GetActualOffline();
+                    //System.Windows.Forms.MessageBox.Show("checking online status=" +
+                    //    this.currentSession.IsOffline);
+                    offline = this.currentSession.ConfigOffline || this.currentSession.IsOffline;
+                }
+
+                //  check do facebook here...
                 bool AllowFacebookPublish = (ConfigUtility.GetConfig(ConfigUtility.Config, "AllowFacebookPublish").Equals("1"));
                 if (offline) AllowFacebookPublish = false;
                 if (string.IsNullOrEmpty(currentSession.EmailAddress)) AllowFacebookPublish = false;
                
+                //  Do facebook here...
                 bool facebook_yes = false;
                 if (AllowFacebookPublish && dr == System.Windows.Forms.DialogResult.OK)
                 {

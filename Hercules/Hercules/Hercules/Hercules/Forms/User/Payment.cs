@@ -172,18 +172,7 @@ namespace MME.Hercules.Forms.User
 
             if (done)
             {
-                //  Set bill callback stuff...
-                if (MME.Hercules.Utility.BillCollector.bc != null)
-                {
-                    MME.Hercules.Utility.BillCollector.bc.sync = null;
-                    MME.Hercules.Utility.BillCollector.bc.cb = null;
-                    MME.Hercules.Utility.BillCollector.bc.send_clear_command();
-                }
-
-                //  destroy the timer...
-                this.timer.Stop();
-
-                this.DialogResult = DialogResult.OK;
+                this.DoneOK();
             }
             else
             {
@@ -192,6 +181,39 @@ namespace MME.Hercules.Forms.User
                 this.timer.Start();
             }
 
+        }
+
+        private void DoneOK()
+        {
+            this.timer.Stop();
+
+            if (MME.Hercules.Utility.BillCollector.bc != null)
+            {
+                MME.Hercules.Utility.BillCollector.bc.sync = null;
+                MME.Hercules.Utility.BillCollector.bc.cb = null;
+                MME.Hercules.Utility.BillCollector.bc.send_clear_command();
+            }
+
+            this.DialogResult = DialogResult.OK;
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.DoneOK();
+        }
+
+        private void pb_Click(object sender, EventArgs e)
+        {
+            // if ((MousePosition.X < 10) && (MousePosition.Y < 10))
+            //    this.DoneOK();
+
+        }
+
+        private void pb_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                this.DoneOK();
         }
 
 
