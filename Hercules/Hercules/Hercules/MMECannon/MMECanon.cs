@@ -78,11 +78,18 @@ namespace MMECannon
             return 0;
         }
 
+        private uint propertyEventHandler(uint inEvent, uint propID, uint q, IntPtr inContext)
+        {
+            if (DEBUG) System.Windows.Forms.MessageBox.Show("got prop " + inEvent.ToString() + " " + 
+                propID.ToString() + " " + q.ToString());
+            return 0;
+        }
 
         IntPtr _camlist = IntPtr.Zero;
         IntPtr _cam = IntPtr.Zero;
         EDSDKLib.EDSDK.EdsObjectEventHandler _edsObjectEventHandler = null;
 
+        EDSDKLib.EDSDK.EdsPropertyEventHandler _edsPropertyEventHandler = null;
 
         public Boolean init()
         {
@@ -259,12 +266,23 @@ namespace MMECannon
 
                                 if (i == 0)
                                 {
-                                    UInt32 device = (UInt32)System.Runtime.InteropServices.Marshal.ReadInt32(ptr);
-                                    device |= EDSDKLib.EDSDK.EvfOutputDevice_PC;
-                                    i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam,
-                                        EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,
-                                        sizeof(UInt32), device);
-                                    System.Windows.Forms.MessageBox.Show("EDS SET PROPERTY DATA=" + device.ToString() + " " + i.ToString());
+                                    _edsPropertyEventHandler = new EDSDKLib.EDSDK.EdsPropertyEventHandler( propertyEventHandler );
+
+                                    i = EDSDKLib.EDSDK.EdsSetPropertyEventHandler(_cam,
+                                        EDSDKLib.EDSDK.PropertyEvent_All,
+                                        _edsPropertyEventHandler,
+                                        new IntPtr(0));
+                                    if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("SET PROP EVT HANDLER=" + i.ToString());
+
+                                    if (i == 0)
+                                    {
+                                        UInt32 device = (UInt32)System.Runtime.InteropServices.Marshal.ReadInt32(ptr);
+                                        device |= EDSDKLib.EDSDK.EvfOutputDevice_PC;
+                                        i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam,
+                                            EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,
+                                            sizeof(UInt32), device);
+                                        System.Windows.Forms.MessageBox.Show("EDS SET PROPERTY DATA=" + device.ToString() + " " + i.ToString());
+                                    }
                                 }
                             }
                         }
