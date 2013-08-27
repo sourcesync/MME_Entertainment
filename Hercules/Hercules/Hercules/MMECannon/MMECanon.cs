@@ -219,6 +219,40 @@ namespace MMECannon
         }
 
 
+        public uint downloadEvfData(IntPtr camera)
+        {
+            uint err = 0;
+            //EdsStreamRef stream = NULL;
+            IntPtr stream = IntPtr.Zero;
+            //EdsEvfImageRef = NULL;
+            IntPtr image = IntPtr.Zero;
+
+            // Create memory stream.
+            //err = EdsCreateMemoryStream(0, &stream);
+            err = EDSDKLib.EDSDK.EdsCreateMemoryStream(0, out stream);
+            if (DEBUG) System.Windows.Forms.MessageBox.Show("eds create mem stream=" + err.ToString());
+            if (err==0)
+            {
+                //err = EdsCreateEvfImageRef(stream, &evfImage);
+                err = EDSDKLib.EDSDK.EdsCreateEvfImageRef(stream, out image);
+                if (DEBUG) System.Windows.Forms.MessageBox.Show("eds create evt image ref=" + err.ToString());
+
+                if (err == 0)
+                {
+                    err = EDSDKLib.EDSDK.EdsDownloadEvfImage(camera, image);
+                    if (DEBUG) System.Windows.Forms.MessageBox.Show("eds download evt image=" + err.ToString());
+                    if (err == 0)
+                    {
+                    }
+                }
+
+                EDSDKLib.EDSDK.EdsRelease(stream);
+                EDSDKLib.EDSDK.EdsRelease(image);
+
+            }
+            return err;
+        }
+
         public uint startLiveview(out uint err)
         {
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
