@@ -287,7 +287,7 @@ namespace MMECannon
                                         i = EDSDKLib.EDSDK.EdsGetPropertyData(_cam, EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,
                                             sizeof(UInt32), ptr);
                                         device = (UInt32)System.Runtime.InteropServices.Marshal.ReadInt32(ptr);
-                                        if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("EDS GET PROPERTY DATA 2=" + i.ToString() + device.ToString());
+                                        if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("EDS GET PROPERTY DATA 2=" + i.ToString() + " " + device.ToString());
 
                                     
                                     }
