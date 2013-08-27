@@ -212,7 +212,7 @@ namespace MMECannon
         }
 
 
-        public uint startLiveview(IntPtr camera)
+        public uint startLiveview(out uint err)
         {
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
             if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
@@ -271,6 +271,7 @@ namespace MMECannon
                     }
                 }
             }
+            err = i;
             return i;
         }
     }

@@ -157,7 +157,8 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
             MMECannon.MMECanon cannon = new MMECannon.MMECanon();
-            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
+            uint err = 0;
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false, out err);
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
 
@@ -173,7 +174,8 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
+            uint err = 0;
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false, out err);
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
 
@@ -193,7 +195,9 @@ namespace WindowsFormsApplication1
 
             if (b)
             {
-                b = cannon.takepic("c:/temp/image.jpg", false);
+
+                uint err = 0;
+                b = cannon.takepic("c:/temp/image.jpg", false, out err);
                 System.Console.WriteLine("take " + b.ToString());
 
             }
@@ -206,7 +210,8 @@ namespace WindowsFormsApplication1
         private void ThreadTakePic2()
         {
 
-            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
+            uint err = 0;
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false, out err);
             System.Console.WriteLine("take " + b.ToString());
 
             /*
@@ -245,7 +250,8 @@ namespace WindowsFormsApplication1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
+            uint err = 0;
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false, out err);
             if (b)
             {
 
@@ -258,7 +264,8 @@ namespace WindowsFormsApplication1
 
         private void cam_event(object o, System.EventArgs args)
         {
-            Boolean b = cannon.takepic("c:/temp/image.jpg", false);
+            uint err = 0;
+            Boolean b = cannon.takepic("c:/temp/image.jpg", false, out err);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -269,7 +276,8 @@ namespace WindowsFormsApplication1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Boolean b = cannon.takepic("c:/temp/image.jpg", true);
+            uint err = 0;
+            Boolean b = cannon.takepic("c:/temp/image.jpg", true, out err);
             System.Windows.Forms.MessageBox.Show(b.ToString());
 
         }
@@ -277,7 +285,9 @@ namespace WindowsFormsApplication1
       
         private void button8_Click(object sender, EventArgs e)
         {
-
+            uint err = 0;
+            MMECannon.MMECanon.DEBUG = true;
+            uint i = cannon.startLiveview(out err);
         }
     }
 }
