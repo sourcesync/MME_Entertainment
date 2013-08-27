@@ -287,6 +287,7 @@ namespace WindowsFormsApplication1
         {
             uint err = 0;
             MMECannon.MMECanon.DEBUG = true;
+            MMECannon.MMECanon cannon = new MMECannon.MMECanon();
             uint i = cannon.startLiveview(out err);
         }
     }
