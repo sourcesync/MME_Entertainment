@@ -32,7 +32,7 @@ namespace MMECannon
                     this.path,
                     //dirItemInfo.szFileName,
                     EDSDKLib.EDSDK.EdsFileCreateDisposition.CreateAlways,
-                    EDSDKLib.EDSDK.EdsAccess.ReadWrite,       
+                    EDSDKLib.EDSDK.EdsAccess.ReadWrite,
                      out stream);
             }
 
@@ -205,12 +205,75 @@ namespace MMECannon
             }
 
             i = EDSDKLib.EDSDK.EdsTerminateSDK();
-            
+
 
             b = b && (i == 0);
             return b;
         }
 
 
+        public uint startLiveview(IntPtr camera)
+        {
+            uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
+            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
+            if (i == 0)
+            {
+                i = EDSDKLib.EDSDK.EdsGetCameraList(out _camlist);
+                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera List status=" + i.ToString());
+                if (i == 0)
+                {
+                    int count = 0;
+                    i = EDSDKLib.EDSDK.EdsGetChildCount(_camlist, out count);
+                    if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera Count status=" + i.ToString() + " count=" + count.ToString());
+                    if ((i == 0) && (count > 0))
+                    {
+
+                        i = EDSDKLib.EDSDK.EdsGetChildAtIndex(_camlist, 0, out _cam);
+                        if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + _cam.ToString());
+                        if (i == 0)
+                        {
+
+                            i = EDSDKLib.EDSDK.EdsRelease(_camlist);
+                            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Release camlist status=" + i.ToString());
+
+                            i = EDSDKLib.EDSDK.EdsOpenSession(_cam);
+                            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString());
+                            if (i == 0)
+                            {
+
+                                EDSDKLib.EDSDK.EdsDeviceInfo deviceInfo;
+                                i = EDSDKLib.EDSDK.EdsGetDeviceInfo(_cam, out deviceInfo);
+                                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Device Info status=" + i.ToString());
+                                if (i == 0)
+                                {
+                                    this.connected_camera_name = deviceInfo.szDeviceDescription;
+                                    if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
+                                }
+
+                                // Get the output device for the live view image
+
+                                IntPtr ptr = System.Runtime.InteropServices.Marshal.AllocHGlobal(sizeof(UInt32));
+                                i = EDSDKLib.EDSDK.EdsGetPropertyData(_cam, EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,
+                                    sizeof(UInt32), ptr);
+                                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("EDS GET PROPERTY DATA=" + i.ToString());
+
+                                if (i == 0)
+                                {
+                                    UInt32 device = (UInt32)System.Runtime.InteropServices.Marshal.ReadInt32(ptr);
+                                    device |= EDSDKLib.EDSDK.EvfOutputDevice_PC;
+                                    i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam,
+                                        EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,
+                                        sizeof(UInt32), device);
+                                    System.Windows.Forms.MessageBox.Show("EDS SET PROPERTY DATA=" + device.ToString() + " " + i.ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return i;
+        }
     }
+        
 }
+               
