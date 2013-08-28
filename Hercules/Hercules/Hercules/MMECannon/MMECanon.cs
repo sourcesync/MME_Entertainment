@@ -246,6 +246,25 @@ namespace MMECannon
                     if (DEBUG) System.Windows.Forms.MessageBox.Show("eds download evt image=" + err.ToString());
                     if (err == 0)
                     {
+                        uint length=0;
+                        err = EDSDKLib.EDSDK.EdsGetLength(stream, out length);
+                        if (DEBUG) System.Windows.Forms.MessageBox.Show("get length image=" + err.ToString() +
+                            " " + length.ToString());
+                    
+                        if ( (err==0)&&(length>0) )
+                        {
+                            System.Drawing.Bitmap bm = null;
+                            unsafe
+                            {
+                                byte* bt = (byte*)image.ToPointer();
+                                System.IO.UnmanagedMemoryStream ums = new System.IO.UnmanagedMemoryStream
+                                    (bt, length, length, System.IO.FileAccess.Read);
+                                bm = new System.Drawing.Bitmap(ums, true);
+                                System.Windows.Forms.MessageBox.Show(bm.ToString());
+                                //bm = new System.Drawing.Bitmap(
+
+                            }
+                        }
                     }
                 }
 
@@ -255,6 +274,32 @@ namespace MMECannon
             }
             return err;
         }
+
+        /*
+        public unsafe static System.Drawing.Bitmap GetEvfImage(IntPtr evfStream)
+        {
+            IntPtr jpgPointer;
+            uint err;
+            uint length = 0;
+            System.Drawing.Bitmap i = null;
+
+            err = EDSDK.EdsGetPointer(evfStream, out jpgPointer);
+
+            if (err == EDSDK.EDS_ERR_OK)
+                err = EDSDK.EdsGetLength(evfStream, out length);
+
+            if (err == EDSDK.EDS_ERR_OK)
+            {
+                if (length != 0)
+                {
+                    UnmanagedMemoryStream ums = new UnmanagedMemoryStream
+                    ((byte*)jpgPointer.ToPointer(), length, length, FileAccess.Read);
+                    i = new Bitmap(ums, true);
+                }
+            }
+            return i;
+        }
+        */
 
         public uint startLiveview(out uint err)
         {
