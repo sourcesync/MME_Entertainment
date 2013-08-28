@@ -265,7 +265,8 @@ namespace MMECannon
                                     System.IO.UnmanagedMemoryStream ums = new System.IO.UnmanagedMemoryStream
                                         (bt, length, length, System.IO.FileAccess.Read);
                                     bm = new System.Drawing.Bitmap(ums, true);
-                                    System.Windows.Forms.MessageBox.Show(bm.ToString());
+                                    System.Windows.Forms.MessageBox.Show(bm.RawFormat.ToString() +
+                                        " " + bm.Size.ToString());
                                     //bm = new System.Drawing.Bitmap(
                                 }
 
