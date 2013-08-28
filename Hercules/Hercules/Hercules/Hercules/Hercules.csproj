@@ -187,6 +187,12 @@
     <Compile Include="Forms\User\Birthday.Designer.cs">
       <DependentUpon>Birthday.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User\AlmostReady.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\AlmostReady.Designer.cs">
+      <DependentUpon>AlmostReady.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User\Payment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -399,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\Birthday.resx">
       <DependentUpon>Birthday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\AlmostReady.resx">
+      <DependentUpon>AlmostReady.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>

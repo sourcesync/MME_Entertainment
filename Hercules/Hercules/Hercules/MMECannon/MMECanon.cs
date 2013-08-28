@@ -82,6 +82,9 @@ namespace MMECannon
         {
             if (DEBUG) System.Windows.Forms.MessageBox.Show("got prop " + inEvent.ToString() + " " + 
                 propID.ToString() + " " + q.ToString());
+
+            downloadEvfData(_cam);
+
             return 0;
         }
 

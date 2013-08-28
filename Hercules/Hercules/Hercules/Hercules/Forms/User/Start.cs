@@ -570,6 +570,23 @@ namespace MME.Hercules.Forms.User
                         this.currentSession.SelectedBackgrounds.Add(1);
                 }
 
+                // get ready screen ?
+                bool almost_ready = false;
+                if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "ALMOST_READY_MODE")))
+                {
+                    String val = ConfigUtility.GetConfig(ConfigUtility.Config, "ALMOST_READY_MODE");
+                    if (val == "1")
+                        almost_ready = true;
+                }
+                // Are we requiring birthday ?            
+                if ((almost_ready) && (dr == System.Windows.Forms.DialogResult.OK))
+                {
+                    using (User.AlmostReady py = new AlmostReady(currentSession))
+                    {
+                        dr = py.ShowDialog();
+                    }
+                }
+                
 
 
                 // Start picture taking
