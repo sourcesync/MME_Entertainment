@@ -253,15 +253,21 @@ namespace MMECannon
                     
                         if ( (err==0)&&(length>0) )
                         {
-                            System.Drawing.Bitmap bm = null;
-                            unsafe
+                            IntPtr jpgPointer = IntPtr.Zero;
+                            err = EDSDKLib.EDSDK.EdsGetPointer(stream, out jpgPointer);
+                            if (DEBUG) System.Windows.Forms.MessageBox.Show("get jptPointer=" + err.ToString());
+                            if (err==0)
                             {
-                                byte* bt = (byte*)image.ToPointer();
-                                System.IO.UnmanagedMemoryStream ums = new System.IO.UnmanagedMemoryStream
-                                    (bt, length, length, System.IO.FileAccess.Read);
-                                bm = new System.Drawing.Bitmap(ums, true);
-                                System.Windows.Forms.MessageBox.Show(bm.ToString());
-                                //bm = new System.Drawing.Bitmap(
+                                System.Drawing.Bitmap bm = null;
+                                unsafe
+                                {
+                                    byte* bt = (byte*)jpgPointer.ToPointer();
+                                    System.IO.UnmanagedMemoryStream ums = new System.IO.UnmanagedMemoryStream
+                                        (bt, length, length, System.IO.FileAccess.Read);
+                                    bm = new System.Drawing.Bitmap(ums, true);
+                                    System.Windows.Forms.MessageBox.Show(bm.ToString());
+                                    //bm = new System.Drawing.Bitmap(
+                                }
 
                             }
                         }
