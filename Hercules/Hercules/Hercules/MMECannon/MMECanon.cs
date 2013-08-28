@@ -15,6 +15,8 @@ namespace MMECannon
 
         public string connected_camera_name;
 
+        public System.Windows.Forms.PictureBox pb;
+
         public uint downloadImage(IntPtr directoryItem)
         {
             uint err = 0;
@@ -83,7 +85,14 @@ namespace MMECannon
             if (DEBUG) System.Windows.Forms.MessageBox.Show("got prop " + inEvent.ToString() + " " + 
                 propID.ToString() + " " + q.ToString());
 
-            downloadEvfData(_cam);
+            if (this.pb!=null)
+            {
+                while (true)
+                {
+                    downloadEvfData(_cam, this.pb);
+                    System.Windows.Forms.Application.DoEvents();
+                }
+            }
 
             return 0;
         }
@@ -222,7 +231,7 @@ namespace MMECannon
         }
 
 
-        public uint downloadEvfData(IntPtr camera)
+        public uint downloadEvfData(IntPtr camera, System.Windows.Forms.PictureBox pb )
         {
             uint err = 0;
             //EdsStreamRef stream = NULL;
@@ -270,6 +279,12 @@ namespace MMECannon
                                     //bm = new System.Drawing.Bitmap(
                                 }
 
+                                if (pb!=null)
+                                {
+                                    pb.Image = bm;
+                                    System.Windows.Forms.Application.DoEvents();
+                                    //downloadEvfData(camera, pb);
+                                }
                             }
                         }
                     }
@@ -308,8 +323,10 @@ namespace MMECannon
         }
         */
 
-        public uint startLiveview(out uint err)
+        public uint startLiveview(out uint err, System.Windows.Forms.PictureBox pb)
         {
+            this.pb = pb;
+
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
             if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
             if (i == 0)
