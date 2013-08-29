@@ -286,7 +286,7 @@ namespace WindowsFormsApplication1
         private void button8_Click(object sender, EventArgs e)
         {
             uint err = 0;
-            MMECannon.MMECanon.DEBUG = true;
+            MMECannon.MMECanon.DEBUG = false;
             MMECannon.MMECanon cannon = new MMECannon.MMECanon();
             uint i = cannon.startLiveview(out err, this.pictureBox1);
         }

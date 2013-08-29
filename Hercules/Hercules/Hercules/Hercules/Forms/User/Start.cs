@@ -88,7 +88,28 @@ namespace MME.Hercules.Forms.User
 
             }
 
-            
+            //  set offline icon possibly...
+            //this.pictureBox1.Parent = this.pb;
+            //  set offline icon possibly...
+            bool coffline = GetConfigOffline();
+            bool aoffline = GetActualOffline();
+            bool offline = coffline || aoffline;
+            bool show_offline = false;
+            if (offline)
+            {
+                String path = "Skins\\" + ConfigUtility.Skin + "\\Screens\\offline.png";
+                if (System.IO.File.Exists(path))
+                {
+                    this.pictureBox1.Load(path);
+                    show_offline = true;
+                }
+            }
+            if (show_offline)
+                this.pictureBox1.Visible = true;
+            else
+                this.pictureBox1.Visible = false;
+            this.pictureBox1.BringToFront();
+
             if (ConfigUtility.GetValue("BoothType") == "2")
             {
                 this.juststart();
@@ -217,6 +238,8 @@ namespace MME.Hercules.Forms.User
             MME.Hercules.Program.config_offline = currentSession.ConfigOffline ;
             
 
+
+
            // System.Windows.Forms.MessageBox.Show(currentSession.ID.ToString());
             
             DialogResult dr = System.Windows.Forms.DialogResult.OK;
@@ -239,6 +262,23 @@ namespace MME.Hercules.Forms.User
                     offline = true;
             }
              * */
+
+            bool show_offline = false;
+            if (offline)
+            {
+                String path = "Skins\\" + ConfigUtility.Skin + "\\Screens\\offline.png";
+                if (System.IO.File.Exists(path))
+                {
+                    this.pictureBox1.Load(path);
+                    show_offline = true;
+                }
+            }
+            if (show_offline)
+                this.pictureBox1.Visible = true;
+            else
+                this.pictureBox1.Visible = false;
+            this.pictureBox1.BringToFront();
+
 
 
 

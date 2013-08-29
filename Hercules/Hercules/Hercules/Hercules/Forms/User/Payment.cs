@@ -111,39 +111,8 @@ namespace MME.Hercules.Forms.User
             this.timer.Start();
         }
 
-        private void BillCollectorEvent(object sender, EventArgs e)
-        {
-            bool done = false;
-
-            String message = (String)sender;
-
-            if ( (message.StartsWith("V")) || (message.StartsWith("C") ) )
-            {
-                 SoundUtility.Play("selection.wav");
-
-                if ( message.EndsWith( this.end_transaction_string ) )
-                {
-                    done = true;
-                }
-
-                if (!done)
-                {
-                    try
-                    {
-                    String tail = message.Substring(message.Length - 4);
-                    float cur_amount = float.Parse(tail);
-                    float max_amount = float.Parse(this.end_transaction_string);
-                    if (cur_amount >= max_amount)
-                    {
-                        done = true;
-                    }
-                    }
-                    catch
-                    {
-                    }
-
-                }
-            }
+        /*
+         * 
             else if (message.StartsWith("Ready"))
             {
                 if (message.EndsWith( this.end_transaction_string ) )
@@ -168,6 +137,50 @@ namespace MME.Hercules.Forms.User
                     {
                     }
                 }
+            }
+         * */
+
+        private void BillCollectorEvent(object sender, EventArgs e)
+        {
+            bool done = false;
+
+            String bill_message = (String)sender;
+
+            //bill_message = "Ready V0500 C0000";
+
+            String[] messages = bill_message.Split(new char[] { ' ' });
+            for ( int i=0;i<messages.Length;i++ )
+            {
+                String message = messages[i];
+
+                if ( (message.StartsWith("V")) || (message.StartsWith("C") ) )
+                {
+                        SoundUtility.Play("selection.wav");
+
+                        if ( message.EndsWith( this.end_transaction_string ) )
+                        {
+                            done = true;
+                        }
+
+                        if (!done)
+                        {
+                            try
+                            {
+                                String tail = message.Substring(message.Length - 4);
+                                float cur_amount = float.Parse(tail);
+                                float max_amount = float.Parse(this.end_transaction_string);
+                                if (cur_amount >= max_amount)
+                                {
+                                    done = true;
+                                }
+                            }
+                            catch
+                            {
+                            }
+                        }
+                }
+
+                if (done) break;
             }
 
             if (done)

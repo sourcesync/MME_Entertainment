@@ -274,7 +274,7 @@ namespace MMECannon
                                     System.IO.UnmanagedMemoryStream ums = new System.IO.UnmanagedMemoryStream
                                         (bt, length, length, System.IO.FileAccess.Read);
                                     bm = new System.Drawing.Bitmap(ums, true);
-                                    System.Windows.Forms.MessageBox.Show(bm.RawFormat.ToString() +
+                                    if (MMECanon.DEBUG)  System.Windows.Forms.MessageBox.Show(bm.RawFormat.ToString() +
                                         " " + bm.Size.ToString());
                                     //bm = new System.Drawing.Bitmap(
                                 }
@@ -387,7 +387,7 @@ namespace MMECannon
                                         i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam,
                                             EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,
                                             sizeof(UInt32), device);
-                                        System.Windows.Forms.MessageBox.Show("EDS SET PROPERTY DATA=" + i.ToString() + " " +
+                                        if (MMECanon.DEBUG)  System.Windows.Forms.MessageBox.Show("EDS SET PROPERTY DATA=" + i.ToString() + " " +
                                             device.ToString() + " ");
 
                                         i = EDSDKLib.EDSDK.EdsGetPropertyData(_cam, EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,

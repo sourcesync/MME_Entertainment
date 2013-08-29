@@ -52,10 +52,12 @@ namespace MMEBillCollector
 
             _continue = true;
 
+            /*
             if (!send_clear_command())
             {
                 return false;
             }
+             * */
 
             if (this.initstr != null)
             {

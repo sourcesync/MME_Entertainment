@@ -33,11 +33,13 @@
             this.sb2 = new System.Windows.Forms.PictureBox();
             this.sb1 = new System.Windows.Forms.PictureBox();
             this.pb2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startArea)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sb2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sb1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pb
@@ -95,6 +97,15 @@
             this.pb2.Click += new System.EventHandler(this.pb2_Click_1);
             this.pb2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pb2_MouseDown);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Red;
+            this.pictureBox1.Location = new System.Drawing.Point(996, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 25);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -102,6 +113,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pb2);
             this.Controls.Add(this.sb1);
             this.Controls.Add(this.sb2);
@@ -125,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sb2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sb1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -136,6 +149,7 @@
         private System.Windows.Forms.PictureBox sb2;
         private System.Windows.Forms.PictureBox sb1;
         private System.Windows.Forms.PictureBox pb2;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
     }
 }
