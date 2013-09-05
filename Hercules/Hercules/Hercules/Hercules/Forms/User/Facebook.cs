@@ -515,6 +515,8 @@ namespace MME.Hercules.Forms.User
                 {
                     if (this.currentSession == null)
                         email.Text = "george@devnullenterprises.com";
+                    else if (this.currentSession.EmailAddress == null)
+                        email.Text = "";
                     else
                     {
                         String[] emails = this.currentSession.EmailAddress.Split(new char[] { ';' });
