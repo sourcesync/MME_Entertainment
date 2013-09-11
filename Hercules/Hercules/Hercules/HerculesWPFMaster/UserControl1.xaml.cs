@@ -384,8 +384,8 @@ namespace HerculesWPFMaster
             }
             else if (option == 6)
             {
-                //this.ShowSpinTheBottle(); 
-                this.ShowAngryBirds();
+                this.ShowSpinTheBottle(); 
+                //this.ShowAngryBirds();
             } 
         }
 

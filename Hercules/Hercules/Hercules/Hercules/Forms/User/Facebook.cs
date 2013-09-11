@@ -282,6 +282,7 @@ namespace MME.Hercules.Forms.User
 
             //  turn off the notice...
             this.notice.Visible = false;
+            this.notice.SendToBack();
 
             this.Refresh();
 
