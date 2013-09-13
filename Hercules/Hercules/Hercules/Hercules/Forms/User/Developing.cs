@@ -494,11 +494,18 @@ namespace MME.Hercules.Forms.User
             /*
             //  HACK FOR GOOGLE EVENT
             //  WE COPY THE ORIG TO THE DEST...
-            String origpath = this.currentSession.PhotoPath + "\\photo" + this.currentSession.FavoritePhoto + ".jpg";
-            String destpath = this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg";
-            File.Delete(destpath);
-            File.Copy(origpath, destpath);
-            */
+             */
+            if (!string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "UploadRawPhoto")))
+            {
+                string val = ConfigUtility.GetConfig(ConfigUtility.Config, "UploadRawPhoto");
+                if (val != "0")
+                {
+                    String origpath = this.currentSession.PhotoPath + "\\photo" + this.currentSession.FavoritePhoto + ".jpg";
+                    String destpath = this.currentSession.PhotoPath + "\\" + this.currentSession.FavoritePhotoFilename + ".jpg";
+                    File.Delete(destpath);
+                    File.Copy(origpath, destpath);
+                }
+            }
 
             // create email textfile
             if (!string.IsNullOrEmpty(this.currentSession.EmailAddress))

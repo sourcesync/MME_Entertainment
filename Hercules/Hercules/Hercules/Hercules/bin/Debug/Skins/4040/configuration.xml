@@ -146,5 +146,6 @@
 
 
   <add key="FlashGames" value="C:\gamesuite\main-page.html" />
+  <add key="UploadRawPhoto" value="1" />
   
 </Hercules>
