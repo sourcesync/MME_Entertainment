@@ -32,8 +32,7 @@ namespace MME.Hercules.Forms.User
 
 
            //gw
-            //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
-            //true);
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
 
             // touch start
             startArea.Parent = pb;
@@ -247,8 +246,8 @@ namespace MME.Hercules.Forms.User
             pb.Visible = false;
 
             // Turn off vanity light
-            //gw PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
-            //false);
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+                false);
 
             //  Deal with offline status...
 
@@ -730,7 +729,7 @@ namespace MME.Hercules.Forms.User
 
 
                 //gw
-                //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
+                PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
                 //gw
 
 

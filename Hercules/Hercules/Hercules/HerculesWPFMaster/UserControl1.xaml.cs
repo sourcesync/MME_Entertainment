@@ -324,7 +324,14 @@ namespace HerculesWPFMaster
             }
             else if (option == "games") // games...
             {
-                this.ShowGameMenu();
+                if ( string.IsNullOrEmpty(ConfigUtility.GetConfig(ConfigUtility.Config, "FlashGames") ) )
+                {
+                    this.ShowGameMenu();
+                }
+                else
+                {
+                    this.ShowFlashGames();
+                }
             }
             else if (option == "gallery") // gallery...
             {
@@ -812,6 +819,14 @@ namespace HerculesWPFMaster
             }
 
             this.ShowWeb(weburl, true);
+        }
+
+        public void ShowFlashGames()
+        {
+            String weburl = ConfigUtility.GetConfig(ConfigUtility.Config, "FlashGames");
+           
+
+            this.ShowWeb(weburl, false);
         }
 
         public void ShowWeb(String weburl, bool ab)

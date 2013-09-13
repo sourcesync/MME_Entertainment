@@ -145,4 +145,6 @@
   <add key="DJRequestUrl" value="http://favpic.mobi/djrequest.php" />
 
 
+  <add key="FlashGames" value="C:\gamesuite\main-page.html" />
+  
 </Hercules>

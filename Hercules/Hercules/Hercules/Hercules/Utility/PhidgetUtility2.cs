@@ -38,9 +38,10 @@ namespace MME.Hercules
 
         public static bool InitAll()
         {
-            if (!ConfigUtility.GetValue("UsePhidgetBoard").Equals("1"))
+            if (ConfigUtility.GetValue("UsePhidgetBoard").Equals("0"))
                 return false;
-            if (!ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("1"))
+
+            if (ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("-1"))
                 return false;
 
             /* CHI, first one */
@@ -65,9 +66,10 @@ namespace MME.Hercules
 
         public static bool InitPhidgetBoard1(int sid)
         {
-            if (!ConfigUtility.GetValue("UsePhidgetBoard").Equals("1"))
+            if (ConfigUtility.GetValue("UsePhidgetBoard").Equals("0"))
                 return false;
-            if (!ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("1"))
+
+            if (ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("-1"))
                 return false;
             System.Console.WriteLine("before open");
 
@@ -84,9 +86,9 @@ namespace MME.Hercules
 
         public static bool InitPhidgetBoard2(int sid)
         {
-            if (!ConfigUtility.GetValue("UsePhidgetBoard").Equals("1"))
+            if (ConfigUtility.GetValue("UsePhidgetBoard").Equals("0"))
                 return false;
-            if (!ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("1"))
+            if (ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("-1"))
                 return false;
             System.Console.WriteLine("before open");
 
@@ -103,9 +105,9 @@ namespace MME.Hercules
 
         public static void Shutdown()
         {
-            if (!ConfigUtility.GetValue("UsePhidgetBoard").Equals("1"))
+            if ( ConfigUtility.GetValue("UsePhidgetBoard").Equals("0"))
                 return;
-            if (!ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("1"))
+            if (ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("-1"))
                 return;
 
             //ifKit.close();
@@ -130,9 +132,9 @@ namespace MME.Hercules
 
         public static void RelayN(int which, int index, bool enabled)
         {
-            if (!ConfigUtility.GetValue("UsePhidgetBoard").Equals("1"))
+            if (ConfigUtility.GetValue("UsePhidgetBoard").Equals("0"))
                 return;
-            if (!ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("1"))
+            if (ConfigUtility.GetValue("PhidgetRelay_Scentomatic").Equals("-1"))
                 return;
 
             System.Console.WriteLine("before relay" + index.ToString() + " " + enabled.ToString());

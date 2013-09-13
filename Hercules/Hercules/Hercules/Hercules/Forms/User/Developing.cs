@@ -161,7 +161,7 @@ namespace MME.Hercules.Forms.User
 
                 // turn on vanity light
                 //gw
-                //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),true);
+                PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),true);
 
                 if (this.ischeckin)
                 {
