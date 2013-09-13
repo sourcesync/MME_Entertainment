@@ -17,14 +17,21 @@ namespace MME.Hercules
             if (!ConfigUtility.GetValue("UsePhidgetBoard").Equals("1"))
                 return;
 
+            if (ConfigUtility.GetValue("PhidgetRelay_VanityLight").Equals("0"))
+                return;
+
+            int sid = int.Parse(ConfigUtility.GetValue(ConfigUtility.GetValue("PhidgetRelay_VanityLight")));
+
               ifKit = new InterfaceKit();
-              ifKit.open();
+              ifKit.open(sid);
               ifKit.waitForAttachment();
         }
 
         public static void Shutdown()
         {
             if (!ConfigUtility.GetValue("UsePhidgetBoard").Equals("1"))
+                return;
+            if (ConfigUtility.GetValue("PhidgetRelay_VanityLight").Equals("0"))
                 return;
 
             ifKit.close();
@@ -34,6 +41,8 @@ namespace MME.Hercules
         public static void Relay(int index, bool enabled)
         {
             if (!ConfigUtility.GetValue("UsePhidgetBoard").Equals("1"))
+                return;
+            if (ConfigUtility.GetValue("PhidgetRelay_VanityLight").Equals("0"))
                 return;
 
             if (index >= 0 && index <= ifKit.outputs.Count -1)
