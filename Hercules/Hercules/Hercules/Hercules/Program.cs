@@ -195,8 +195,8 @@ namespace MME.Hercules
                 }
 
                 // Init Phidgetboard if using it
-                //PhidgetUtility.InitPhidgetBoard();
-                if (!PhidgetUtility2.InitAll()) ;
+                PhidgetUtility.InitPhidgetBoard();
+                PhidgetUtility2.InitAll() ;
 
                 // Init camera...
                 if (!CameraUtility.InitializeCamera())
