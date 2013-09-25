@@ -67,3 +67,31 @@ C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\o
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.csproj.GenerateResource.Cache
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.dll
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\bin\Debug\HerculesWPFChoose.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\bin\Debug\HerculesWPFChoose.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\bin\Debug\HerculesConfig.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\bin\Debug\HerculesConfig.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\UserControlChoose.baml
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\UserControlChoose.g.cs
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose_MarkupCompile.cache
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.g.resources
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.Properties.Resources.resources
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\bin\Debug\HerculesWPFChoose.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\bin\Debug\HerculesWPFChoose.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\bin\Debug\HerculesConfig.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\bin\Debug\HerculesConfig.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\UserControlChoose.baml
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\UserControlChoose.g.cs
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose_MarkupCompile.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.g.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.Properties.Resources.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFChoose\obj\Debug\HerculesWPFChoose.pdb

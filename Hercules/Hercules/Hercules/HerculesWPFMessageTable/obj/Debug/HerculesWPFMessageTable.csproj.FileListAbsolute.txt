@@ -20,3 +20,27 @@ C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageT
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.csproj.GenerateResource.Cache
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.dll
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\bin\Debug\HerculesWPFMessageTable.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\bin\Debug\HerculesWPFMessageTable.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\UserControl1.baml
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\UserControl1.g.cs
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable_MarkupCompile.cache
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.g.resources
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.Properties.Resources.resources
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\bin\Debug\HerculesWPFMessageTable.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\bin\Debug\HerculesWPFMessageTable.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\UserControl1.baml
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\UserControl1.g.cs
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable_MarkupCompile.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.g.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.Properties.Resources.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMessageTable\obj\Debug\HerculesWPFMessageTable.pdb

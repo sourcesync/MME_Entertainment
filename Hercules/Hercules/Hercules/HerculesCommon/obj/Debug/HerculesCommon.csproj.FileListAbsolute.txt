@@ -22,3 +22,8 @@ C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesCommon\bin\
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesCommon\bin\Debug\HerculesCommon.pdb
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesCommon\obj\Debug\HerculesCommon.dll
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesCommon\obj\Debug\HerculesCommon.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesCommon\bin\Debug\HerculesCommon.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesCommon\bin\Debug\HerculesCommon.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesCommon\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesCommon\obj\Debug\HerculesCommon.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesCommon\obj\Debug\HerculesCommon.pdb

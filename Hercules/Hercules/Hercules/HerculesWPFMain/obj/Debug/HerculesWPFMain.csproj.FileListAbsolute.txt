@@ -77,3 +77,35 @@ C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.csproj.GenerateResource.Cache
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.dll
 C:\Projects\MME\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesWPFMain.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesWPFMain.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesCommon.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesConfig.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesCommon.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesConfig.pdb
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\UserControlMain.baml
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\UserControlMain.g.cs
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain_MarkupCompile.cache
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.g.resources
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.Properties.Resources.resources
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.dll
+C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesWPFMain.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesWPFMain.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesCommon.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesConfig.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesCommon.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\bin\Debug\HerculesConfig.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\UserControlMain.baml
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\UserControlMain.g.cs
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain_MarkupCompile.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.g.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.Properties.Resources.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFMain\obj\Debug\HerculesWPFMain.pdb

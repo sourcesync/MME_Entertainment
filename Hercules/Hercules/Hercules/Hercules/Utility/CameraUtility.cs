@@ -36,6 +36,9 @@ namespace MME.Hercules
 
                 System.Windows.Forms.Application.DoEvents();
 
+                //uint status = camera.Connect(ConfigUtility.GetValue("CameraName"));
+                
+
                 camera.GetDevices();
 
 

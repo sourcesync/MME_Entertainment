@@ -32,7 +32,7 @@ namespace MME.Hercules.Forms.User
 
 
            //gw
-            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
+           PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
 
             // touch start
             startArea.Parent = pb;
@@ -478,6 +478,8 @@ namespace MME.Hercules.Forms.User
             }
             else // NOT TABLE MODE, NORMAL...
             {
+                PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
+                //g
                 if (ConfigUtility.SequenceConfig != null)
                 {
                     dr = ProcessSequenceSteps(dr);
@@ -624,6 +626,8 @@ namespace MME.Hercules.Forms.User
                     {
                         dr = py.ShowDialog();
                     }
+
+                    
                 }
                 
 
@@ -633,6 +637,7 @@ namespace MME.Hercules.Forms.User
 
                 if (!ConfigUtility.GetValue("CameraName").Equals("Web"))
                 {
+                    
                     if (dr == System.Windows.Forms.DialogResult.OK)
                     {
                         using (User.TakePhotos tpform = new TakePhotos(currentSession))
@@ -643,6 +648,7 @@ namespace MME.Hercules.Forms.User
                 }
                 else
                 {
+                    
                     if (dr == System.Windows.Forms.DialogResult.OK)
                     {
                         using (User.TakePhotos tpform = new TakePhotos(currentSession))
@@ -650,6 +656,8 @@ namespace MME.Hercules.Forms.User
                             dr = tpform.ShowDialog();
                         }
                     }
+
+                    
                 }
 
 
@@ -729,7 +737,7 @@ namespace MME.Hercules.Forms.User
 
 
                 //gw
-                PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
+                PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), false);
                 //gw
 
 

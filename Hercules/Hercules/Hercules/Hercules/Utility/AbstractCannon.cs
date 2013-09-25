@@ -57,6 +57,10 @@ namespace MME.Hercules
             {
                 eos_camera = new MMECannon.MMECanon();
             }
+            else
+            {
+                rdc_camera = new RDC.CameraSDK.Camera();
+            }
         }
 
         public bool StartSDK()

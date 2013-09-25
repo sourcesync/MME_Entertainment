@@ -21,10 +21,10 @@
 
   <add key="BIRTHDAY_MODE" value="0" />
 
-  <add key="PAYMENT_MODE" value="1" />
+  <add key="PAYMENT_MODE" value="0" />
   <add key="PAYMENT_MODE_TIMEOUT" value="10" />
 
-  <add key="ALMOST_READY_MODE" value="1" />
+  <add key="ALMOST_READY_MODE" value="0" />
   <add key="ALMOST_READY_MODE_TIMEOUT" value="10" />
 
   <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->

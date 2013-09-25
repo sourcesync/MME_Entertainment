@@ -17,7 +17,7 @@ namespace MME.Hercules
             if ( ConfigUtility.GetValue("UsePhidgetBoard").Equals("0"))
                 return;
 
-            String val = ConfigUtility.GetValue(ConfigUtility.GetValue("UsePhidgetBoard"));
+            String val = ConfigUtility.GetValue("UsePhidgetBoard");
 
                 int sid = int.Parse(val);
 
