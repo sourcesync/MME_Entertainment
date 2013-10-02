@@ -166,3 +166,45 @@ C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercu
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\GenerateResource.write.1.tlog
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.dll
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\bin\Debug\HerculesForms.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\bin\Debug\HerculesForms.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\bin\Debug\CameraSDK.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\bin\Debug\Chromagic.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\bin\Debug\Phidget21.NET.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\bin\Debug\CameraSDK.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.CustomControl1.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.Database.Sample.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.Display.AuxDisplay.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.Operator.Camera.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.Operator.Chromakey.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.Operator.Error.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.Operator.Main.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.Test.Console.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.ConsoleForm.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.TestForm.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.Backgrounds.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.Developing.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.Email.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.Facebook.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.Keyboard.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.PhotoType.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.PickFavorite.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.RoomNumber.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.Scentomatic.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.Selection.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.Start.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.TakePhotos.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.Test.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Forms.User.VideoPlayer.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Keyboards.FullKeyboard.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\MME.Hercules.Keyboards.Keyboard2.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\Hercules.NumericKeyboard.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.Properties.Resources.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.Properties.SoundResources.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.Properties.SpeechResources.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.UserControl1.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesForms\obj\Debug\HerculesForms.pdb

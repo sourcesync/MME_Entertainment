@@ -31,7 +31,9 @@ namespace MME.Hercules.Forms.User
                this.WindowState = FormWindowState.Normal;
 
 
-           //gw
+           //gw - 
+            // turn on - THIS WILL TURN ON VANITY LIGHT WHEN
+            //Program STARTS
            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
 
             // touch start
@@ -246,8 +248,8 @@ namespace MME.Hercules.Forms.User
             pb.Visible = false;
 
             // Turn off vanity light
-            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
-                false);
+            //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+            //    false);
 
             //  Deal with offline status...
 
@@ -478,7 +480,7 @@ namespace MME.Hercules.Forms.User
             }
             else // NOT TABLE MODE, NORMAL...
             {
-                PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
+                //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
                 //g
                 if (ConfigUtility.SequenceConfig != null)
                 {
@@ -737,7 +739,7 @@ namespace MME.Hercules.Forms.User
 
 
                 //gw
-                PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), false);
+                //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
                 //gw
 
 
@@ -827,9 +829,17 @@ namespace MME.Hercules.Forms.User
         private void startArea_Click(object sender, EventArgs e)
         {
             PlaySelectionSound();
-
+            // turn off - THIS WILL TURN OFF VANITY LIgHT WHEN YOU
+            // HIT START BUTTON
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+                false);
             // Start participant workflow
             Workflow();
+
+            // turn on - THIS WILL TURN ON VANITY LIGHT WHEN
+            // EXPERIENCE IS DONE
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+                true);
         }
 
         private void Start_FormClosed(object sender, FormClosedEventArgs e)

@@ -13,3 +13,8 @@ C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TranspC
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TranspControl\obj\Debug\ResolveAssemblyReference.cache
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TranspControl\obj\Debug\TranspControl.dll
 C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TranspControl\obj\Debug\TranspControl.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\TranspControl\bin\Debug\TranspControl.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\TranspControl\bin\Debug\TranspControl.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\TranspControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\TranspControl\obj\Debug\TranspControl.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\TranspControl\obj\Debug\TranspControl.pdb

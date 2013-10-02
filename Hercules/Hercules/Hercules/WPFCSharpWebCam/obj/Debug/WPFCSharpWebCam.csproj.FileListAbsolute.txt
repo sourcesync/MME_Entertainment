@@ -66,3 +66,18 @@ C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercu
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\ResGen.write.1.tlog
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.exe
 C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\bin\Debug\WPFCSharpWebCam.exe
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\bin\Debug\WPFCSharpWebCam.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\Window1.baml
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\Window1.g.cs
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\App.g.cs
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam_MarkupCompile.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.g.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.Properties.Resources.resources
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\ResGen.read.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\ResGen.write.1.tlog
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.exe
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\WPFCSharpWebCam\obj\Debug\WPFCSharpWebCam.pdb

@@ -7,3 +7,8 @@ C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercule
 C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\MMECannon\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\MMECannon\obj\Debug\MMECannon.dll
 C:\Documents and Settings\Hercules\Desktop\George\src2\MME_Entertainment\Hercules\Hercules\Hercules\MMECannon\obj\Debug\MMECannon.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\MMECannon\bin\Debug\MMECannon.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\MMECannon\bin\Debug\MMECannon.pdb
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\MMECannon\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\MMECannon\obj\Debug\MMECannon.dll
+C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\MMECannon\obj\Debug\MMECannon.pdb
