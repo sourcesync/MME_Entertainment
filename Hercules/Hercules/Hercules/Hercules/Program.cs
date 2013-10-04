@@ -201,9 +201,10 @@ namespace MME.Hercules
 
                 //  Get debug setting if any...
                 bool debug_mode = false;
-                String debug_val = ConfigUtility.GetValue("Debug");
+                String debug_val = ConfigUtility.GetValue("DebugMode");
                 if (debug_val == "1") debug_mode = true;
 
+                //System.Windows.Forms.MessageBox.Show("debug val" + debug_val);
                 PhidgetUtility.DEBUG = debug_mode;
                 CameraUtility.DEBUG = debug_mode;
 
