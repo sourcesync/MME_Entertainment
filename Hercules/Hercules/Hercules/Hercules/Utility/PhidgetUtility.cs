@@ -40,6 +40,9 @@ namespace MME.Hercules
             if (ConfigUtility.GetValue("UsePhidgetBoard").Equals("0"))
                 return;
 
+
+            System.Windows.Forms.MessageBox.Show("About To Set Phidget Relay->" + index + " " + enabled);
+
             if (index >= 0 && index <= ifKit.outputs.Count -1)
                 ifKit.outputs[index] = enabled;
         }

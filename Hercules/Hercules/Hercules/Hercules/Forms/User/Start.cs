@@ -838,6 +838,7 @@ namespace MME.Hercules.Forms.User
 
             // turn on - THIS WILL TURN ON VANITY LIGHT WHEN
             // EXPERIENCE IS DONE
+
             PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
                 true);
         }
