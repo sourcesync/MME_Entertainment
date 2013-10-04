@@ -815,7 +815,7 @@ namespace MME.Hercules.Forms.User
             PlaySelectionSound();
 
             PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
-               true);
+               false);
 
             // Start participant workflow
             Workflow();
@@ -877,8 +877,12 @@ namespace MME.Hercules.Forms.User
 
             PlaySelectionSound();
 
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+              false);
             // Start participant workflow
             Workflow();
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+              true);
 
         }
 
@@ -894,8 +898,14 @@ namespace MME.Hercules.Forms.User
         {
             PlaySelectionSound();
 
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+              false);
+
             // Start participant workflow
             Workflow();
+
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+              true);
         }
 
         private void Start_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
