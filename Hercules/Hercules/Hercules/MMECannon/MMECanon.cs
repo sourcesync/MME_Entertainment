@@ -7,7 +7,7 @@ namespace MMECannon
 {
     public class MMECanon
     {
-        public static Boolean DEBUG = false;
+        public bool DEBUG = false;
 
         public bool download_done = false;
 
@@ -103,51 +103,52 @@ namespace MMECannon
 
         EDSDKLib.EDSDK.EdsPropertyEventHandler _edsPropertyEventHandler = null;
 
-        public Boolean init()
+        public Boolean init(bool debug)
         {
+            this.DEBUG = DEBUG;
             this.download_done = false;
 
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
-            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
+            if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
             if (i == 0)
             {
                 i = EDSDKLib.EDSDK.EdsGetCameraList(out _camlist);
-                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera List status=" + i.ToString());
+                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera List status=" + i.ToString());
                 if (i == 0)
                 {
                     int count = 0;
                     i = EDSDKLib.EDSDK.EdsGetChildCount(_camlist, out count);
-                    if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera Count status=" + i.ToString() + " count=" + count.ToString());
+                    if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera Count status=" + i.ToString() + " count=" + count.ToString());
                     if ((i == 0) && (count > 0))
                     {
 
                         i = EDSDKLib.EDSDK.EdsGetChildAtIndex(_camlist, 0, out _cam);
-                        if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + _cam.ToString());
+                        if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + _cam.ToString());
                         if (i == 0)
                         {
 
                             i = EDSDKLib.EDSDK.EdsRelease(_camlist);
-                            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Release camlist status=" + i.ToString());
+                            if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Release camlist status=" + i.ToString());
 
                             i = EDSDKLib.EDSDK.EdsOpenSession(_cam);
-                            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString());
+                            if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString());
                             if (i == 0)
                             {
 
                                 EDSDKLib.EDSDK.EdsDeviceInfo deviceInfo;
                                 i = EDSDKLib.EDSDK.EdsGetDeviceInfo(_cam, out deviceInfo);
-                                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Device Info status=" + i.ToString());
+                                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Get Device Info status=" + i.ToString());
                                 if (i == 0)
                                 {
                                     this.connected_camera_name = deviceInfo.szDeviceDescription;
-                                    if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
+                                    if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
                                 }
 
                                 EDSDKLib.EDSDK.EdsSaveTo toPC = EDSDKLib.EDSDK.EdsSaveTo.Host;
                                 uint idata = (uint)toPC;
                                 int sz = sizeof(EDSDKLib.EDSDK.EdsSaveTo);
                                 i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam, (uint)EDSDKLib.EDSDK.PropID_SaveTo, 0, sz, idata);
-                                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property SaveTo sz=" + sz.ToString() + " status=" + i.ToString());
+                                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property SaveTo sz=" + sz.ToString() + " status=" + i.ToString());
                                 //err = EdsSetPropertyData(camera_, kEdsPropID_SaveTo, 0, sizeof(EdsSaveTo), &toPC);
 
                                 //  Set capacity might help...
@@ -156,7 +157,7 @@ namespace MMECannon
                                 capacity.BytesPerSector = 0x1000;
                                 capacity.Reset = 1;
                                 i = EDSDKLib.EDSDK.EdsSetCapacity(_cam, capacity);
-                                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Set Capacity status=" + i.ToString());
+                                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Set Capacity status=" + i.ToString());
 
                                 if (i == 0)
                                 {
@@ -274,7 +275,7 @@ namespace MMECannon
                         {
                             IntPtr jpgPointer = IntPtr.Zero;
                             err = EDSDKLib.EDSDK.EdsGetPointer(stream, out jpgPointer);
-                            if (DEBUG) System.Windows.Forms.MessageBox.Show("get jptPointer=" + err.ToString());
+                            if (this.DEBUG) System.Windows.Forms.MessageBox.Show("get jptPointer=" + err.ToString());
                             if (err==0)
                             {
                                 System.Drawing.Bitmap bm = null;
@@ -284,7 +285,7 @@ namespace MMECannon
                                     System.IO.UnmanagedMemoryStream ums = new System.IO.UnmanagedMemoryStream
                                         (bt, length, length, System.IO.FileAccess.Read);
                                     bm = new System.Drawing.Bitmap(ums, true);
-                                    if (MMECanon.DEBUG)  System.Windows.Forms.MessageBox.Show(bm.RawFormat.ToString() +
+                                    if (this.DEBUG)  System.Windows.Forms.MessageBox.Show(bm.RawFormat.ToString() +
                                         " " + bm.Size.ToString());
                                     //bm = new System.Drawing.Bitmap(
                                 }
@@ -338,39 +339,39 @@ namespace MMECannon
             this.pb = pb;
 
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
-            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
+            if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Init SDK status=" + i.ToString());
             if (i == 0)
             {
                 i = EDSDKLib.EDSDK.EdsGetCameraList(out _camlist);
-                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera List status=" + i.ToString());
+                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera List status=" + i.ToString());
                 if (i == 0)
                 {
                     int count = 0;
                     i = EDSDKLib.EDSDK.EdsGetChildCount(_camlist, out count);
-                    if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera Count status=" + i.ToString() + " count=" + count.ToString());
+                    if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Get Camera Count status=" + i.ToString() + " count=" + count.ToString());
                     if ((i == 0) && (count > 0))
                     {
 
                         i = EDSDKLib.EDSDK.EdsGetChildAtIndex(_camlist, 0, out _cam);
-                        if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + _cam.ToString());
+                        if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Get Child at 0 status=" + i.ToString() + " " + _cam.ToString());
                         if (i == 0)
                         {
 
                             i = EDSDKLib.EDSDK.EdsRelease(_camlist);
-                            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Release camlist status=" + i.ToString());
+                            if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Release camlist status=" + i.ToString());
 
                             i = EDSDKLib.EDSDK.EdsOpenSession(_cam);
-                            if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString());
+                            if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString());
                             if (i == 0)
                             {
 
                                 EDSDKLib.EDSDK.EdsDeviceInfo deviceInfo;
                                 i = EDSDKLib.EDSDK.EdsGetDeviceInfo(_cam, out deviceInfo);
-                                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Get Device Info status=" + i.ToString());
+                                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Get Device Info status=" + i.ToString());
                                 if (i == 0)
                                 {
                                     this.connected_camera_name = deviceInfo.szDeviceDescription;
-                                    if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
+                                    if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
                                 }
 
                                 // Get the output device for the live view image
@@ -378,7 +379,7 @@ namespace MMECannon
                                 IntPtr ptr = System.Runtime.InteropServices.Marshal.AllocHGlobal(sizeof(UInt32));
                                 i = EDSDKLib.EDSDK.EdsGetPropertyData(_cam, EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,
                                     sizeof(UInt32), ptr);
-                                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("EDS GET PROPERTY DATA=" + i.ToString());
+                                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("EDS GET PROPERTY DATA=" + i.ToString());
 
                                 if (i == 0)
                                 {
@@ -388,7 +389,7 @@ namespace MMECannon
                                         EDSDKLib.EDSDK.PropertyEvent_All,
                                         _edsPropertyEventHandler,
                                         new IntPtr(0));
-                                    if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("SET PROP EVT HANDLER=" + i.ToString());
+                                    if (this.DEBUG) System.Windows.Forms.MessageBox.Show("SET PROP EVT HANDLER=" + i.ToString());
 
                                     if (i == 0)
                                     {
@@ -397,13 +398,13 @@ namespace MMECannon
                                         i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam,
                                             EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,
                                             sizeof(UInt32), device);
-                                        if (MMECanon.DEBUG)  System.Windows.Forms.MessageBox.Show("EDS SET PROPERTY DATA=" + i.ToString() + " " +
+                                        if (this.DEBUG)  System.Windows.Forms.MessageBox.Show("EDS SET PROPERTY DATA=" + i.ToString() + " " +
                                             device.ToString() + " ");
 
                                         i = EDSDKLib.EDSDK.EdsGetPropertyData(_cam, EDSDKLib.EDSDK.PropID_Evf_OutputDevice, 0,
                                             sizeof(UInt32), ptr);
                                         device = (UInt32)System.Runtime.InteropServices.Marshal.ReadInt32(ptr);
-                                        if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("EDS GET PROPERTY DATA 2=" + i.ToString() + " " + device.ToString());
+                                        if (this.DEBUG) System.Windows.Forms.MessageBox.Show("EDS GET PROPERTY DATA 2=" + i.ToString() + " " + device.ToString());
 
                                     
                                     }

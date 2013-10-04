@@ -51,14 +51,16 @@ namespace MME.Hercules
             set { if (rdc_camera != null) rdc_camera.PhotoEffect = value; }
         }
 
-        public AbstractCannon(Boolean old)
+        public AbstractCannon(Boolean old, bool debug)
         {
+            this.DEBUG = debug;
             this.old = old;
 
             if (!this.old)
             {
-                MMECannon.MMECanon.DEBUG = DEBUG;
                 eos_camera = new MMECannon.MMECanon();
+                eos_camera.DEBUG = this.DEBUG;
+          
                 
             }
             else
@@ -75,7 +77,7 @@ namespace MME.Hercules
             }
             else
             {
-                return eos_camera.init();
+                return eos_camera.init(this.DEBUG);
             }
         }
 

@@ -30,7 +30,7 @@ namespace MME.Hercules
 
                 //  start sdk
                 //gw camera = new RDC.CameraSDK.Camera();
-                camera = new AbstractCannon(old_sdk);
+                camera = new AbstractCannon(old_sdk, DEBUG);
                 camera.DEBUG = CameraUtility.DEBUG;
                 if (!camera.StartSDK())
                 {
