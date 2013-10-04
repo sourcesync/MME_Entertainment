@@ -199,6 +199,14 @@ namespace MME.Hercules
                     ConfigUtility.Backgrounds.Add(bm);
                 }
 
+                //  Get debug setting if any...
+                bool debug_mode = false;
+                String debug_val = ConfigUtility.GetValue("Debug");
+                if (debug_val == "1") debug_mode = true;
+
+                PhidgetUtility.DEBUG = debug_mode;
+                CameraUtility.DEBUG = debug_mode;
+
                 // Init Phidgetboard if using it
                 PhidgetUtility.InitPhidgetBoard();
                 PhidgetUtility2.InitAll() ;
@@ -210,6 +218,7 @@ namespace MME.Hercules
                     Environment.Exit(1);
                     return;
                 }
+                
 
                 // Init bill collector...
                 if (!MME.Hercules.Utility.BillCollector.Initialize(null, null))

@@ -7,6 +7,7 @@ namespace MME.Hercules
     {
         //public static RDC.CameraSDK.Camera camera;
         public static AbstractCannon camera;
+        public static bool DEBUG = false;
 
         public static bool InitializeCamera()
         {
@@ -24,10 +25,13 @@ namespace MME.Hercules
                 if (cam_for_sdk.ToLower().Contains("eos"))
                     old_sdk = false;
 
+                if (DEBUG)
+                    System.Windows.Forms.MessageBox.Show("About To Start SDK");
 
                 //  start sdk
                 //gw camera = new RDC.CameraSDK.Camera();
                 camera = new AbstractCannon(old_sdk);
+                camera.DEBUG = CameraUtility.DEBUG;
                 if (!camera.StartSDK())
                 {
                     System.Windows.Forms.MessageBox.Show("ERROR: Cannot initialize Cannon SDK!");
@@ -37,7 +41,11 @@ namespace MME.Hercules
                 System.Windows.Forms.Application.DoEvents();
 
                 //uint status = camera.Connect(ConfigUtility.GetValue("CameraName"));
-                
+
+
+
+                if (DEBUG)
+                    System.Windows.Forms.MessageBox.Show("About To Get Camera Devices.");
 
                 camera.GetDevices();
 
@@ -50,6 +58,11 @@ namespace MME.Hercules
 
                 //  connect cam
                 string cname = camera.ConnectedCameraName;
+
+
+                if (DEBUG)
+                    System.Windows.Forms.MessageBox.Show("About To Connect Camera->" + cname);
+
                 uint status = camera.Connect(ConfigUtility.GetValue("CameraName"));
                 if (status!=0)
                 {

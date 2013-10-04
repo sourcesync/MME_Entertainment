@@ -7,6 +7,8 @@ namespace MME.Hercules
 {
     public class AbstractCannon
     {
+        public bool DEBUG = false;
+
         public bool old = true;
         
         public static RDC.CameraSDK.Camera rdc_camera;
@@ -98,6 +100,9 @@ namespace MME.Hercules
             }
             else
             {
+                if (DEBUG)
+                    System.Windows.Forms.MessageBox.Show("About to take test pic");
+
                 uint err = 0;
                 bool b = eos_camera.takepic("test.jpg", false, out err);
                 if (!b) return err;
@@ -125,18 +130,22 @@ namespace MME.Hercules
 
         public void Disconnect()
         {
+            if (DEBUG) System.Windows.Forms.MessageBox.Show("About to call disconnect");
+
             if (old)
             {
                 rdc_camera.Disconnect();
             }
             else
             {
-
+                //eos_camera.
             }
         }
 
         public void EndSDK()
         {
+            if (DEBUG) System.Windows.Forms.MessageBox.Show("About to end sdk");
+
             if (old)
             {
                 rdc_camera.EndSDK();

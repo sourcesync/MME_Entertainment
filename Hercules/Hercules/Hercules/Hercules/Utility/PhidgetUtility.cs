@@ -11,6 +11,7 @@ namespace MME.Hercules
     public static class PhidgetUtility
     {
         private static InterfaceKit ifKit;
+        public static bool DEBUG = true;
 
         public static void InitPhidgetBoard()
         {
@@ -41,7 +42,8 @@ namespace MME.Hercules
                 return;
 
 
-            System.Windows.Forms.MessageBox.Show("About To Set Phidget Relay->" + index + " " + enabled);
+            if ( DEBUG )
+                System.Windows.Forms.MessageBox.Show("About To Set Phidget Relay->" + index + " " + enabled);
 
             if (index >= 0 && index <= ifKit.outputs.Count -1)
                 ifKit.outputs[index] = enabled;
