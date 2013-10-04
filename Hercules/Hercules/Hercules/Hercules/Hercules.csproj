@@ -90,10 +90,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\json_newton\Json45r8\Bin\Net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Phidget21.NET, Version=2.1.8.41, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
+    <Reference Include="Phidget21.NET, Version=2.1.8.173, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Phidget\Phidget21.NET.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Phidgets\Phidget21.NET.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -124,6 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProcessChecker.cs" />
     <Compile Include="Classes\Background.cs" />
     <Compile Include="Classes\KeyboardLayout.cs" />
     <Compile Include="Classes\Session.cs" />

@@ -148,7 +148,12 @@ namespace MME.Hercules
         {
             try
             {
-
+                if ( !ProcessChecker.IsOnlyProcess2("Hercules") )
+                {
+                    //System.Windows.Forms.MessageBox.Show("Another Hercules Is Running");
+                    System.Environment.Exit(1);
+                }
+                
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
