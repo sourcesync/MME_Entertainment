@@ -57,7 +57,9 @@ namespace MME.Hercules
 
             if (!this.old)
             {
+                MMECannon.MMECanon.DEBUG = DEBUG;
                 eos_camera = new MMECannon.MMECanon();
+                
             }
             else
             {

@@ -150,12 +150,22 @@ namespace MMECannon
                                 if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property SaveTo sz=" + sz.ToString() + " status=" + i.ToString());
                                 //err = EdsSetPropertyData(camera_, kEdsPropID_SaveTo, 0, sizeof(EdsSaveTo), &toPC);
 
+                                //  Set capacity might help...
+                                EDSDKLib.EDSDK.EdsCapacity capacity = new EDSDKLib.EDSDK.EdsCapacity();
+                                capacity.NumberOfFreeClusters = 0x7FFFFFFF;
+                                capacity.BytesPerSector = 0x1000;
+                                capacity.Reset = 1;
+                                i = EDSDKLib.EDSDK.EdsSetCapacity(_cam, capacity);
+                                if (MMECanon.DEBUG) System.Windows.Forms.MessageBox.Show("Set Capacity status=" + i.ToString());
 
-                                _edsObjectEventHandler = new EDSDKLib.EDSDK.EdsObjectEventHandler(objectEventHandler);
-                                i = EDSDKLib.EDSDK.EdsSetObjectEventHandler(_cam,
-                                    EDSDKLib.EDSDK.ObjectEvent_All,
-                                    _edsObjectEventHandler,
-                                    new IntPtr(0));
+                                if (i == 0)
+                                {
+                                    _edsObjectEventHandler = new EDSDKLib.EDSDK.EdsObjectEventHandler(objectEventHandler);
+                                    i = EDSDKLib.EDSDK.EdsSetObjectEventHandler(_cam,
+                                        EDSDKLib.EDSDK.ObjectEvent_All,
+                                        _edsObjectEventHandler,
+                                        new IntPtr(0));
+                                }
 
                                 if (i == 0)
                                     return true;
