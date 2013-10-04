@@ -127,7 +127,7 @@ static class ProcessChecker
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("Another Hercules Processing is Already Running.");
+                    System.Windows.Forms.MessageBox.Show("Another Hercules Program is Already Running.  Please Locate that Program in your Task Manager and kill it and try again.");
                     //pids=" +
                     //    proc.Id + " " + proc.Id);
                     return false;
