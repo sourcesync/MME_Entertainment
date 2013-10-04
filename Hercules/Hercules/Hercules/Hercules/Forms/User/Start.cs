@@ -814,16 +814,28 @@ namespace MME.Hercules.Forms.User
         {
             PlaySelectionSound();
 
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+               true);
+
             // Start participant workflow
             Workflow();
+
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+              true);
         }
 
         private void startbutton_Click(object sender, EventArgs e)
         {
             PlaySelectionSound();
 
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+               false);
+
             // Start participant workflow
             Workflow();
+
+            PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
+               true);
         }
 
         private void startArea_Click(object sender, EventArgs e)
@@ -831,6 +843,7 @@ namespace MME.Hercules.Forms.User
             PlaySelectionSound();
             // turn off - THIS WILL TURN OFF VANITY LIgHT WHEN YOU
             // HIT START BUTTON
+
             PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")),
                 false);
             // Start participant workflow
