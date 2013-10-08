@@ -168,7 +168,7 @@ namespace WindowsFormsApplication1
         private void button4_Click(object sender, EventArgs e)
         {
             cannon = new MMECannon.MMECanon();
-            Boolean b = cannon.init();
+            Boolean b = cannon.init(true);
             System.Windows.Forms.MessageBox.Show(b.ToString());
         }
 
@@ -190,7 +190,7 @@ namespace WindowsFormsApplication1
         private void ThreadTakePic()
         {
             cannon = new MMECannon.MMECanon();
-            Boolean b = cannon.init();
+            Boolean b = cannon.init(true);
             System.Console.WriteLine("init " + b.ToString());
 
             if (b)
@@ -286,7 +286,7 @@ namespace WindowsFormsApplication1
         private void button8_Click(object sender, EventArgs e)
         {
             uint err = 0;
-            MMECannon.MMECanon.DEBUG = false;
+            //MMECannon.MMECanon.DEBUG = false;
             MMECannon.MMECanon cannon = new MMECannon.MMECanon();
             uint i = cannon.startLiveview(out err, this.pictureBox1);
         }
