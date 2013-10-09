@@ -146,9 +146,10 @@ namespace MMECannon
 
                                 // set camera param...
                                 int ssz = sizeof(uint);
-                                i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam, (uint)EDSDKLib.EDSDK.PropID_AEModeSelect, 0, ssz, 4);
+                                uint vval = EDSDKLib.EDSDK.AEMode_Mamual;
+                                i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam, (uint)EDSDKLib.EDSDK.PropID_AEModeSelect, 0, ssz, vval);
                                 if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property AEMode sz=" + 
-                                    ssz.ToString() + " status=" + i.ToString());
+                                    ssz.ToString() + " vval=" + vval + " status=" + i.ToString());
                                
 
                                 EDSDKLib.EDSDK.EdsSaveTo toPC = EDSDKLib.EDSDK.EdsSaveTo.Host;
