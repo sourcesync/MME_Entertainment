@@ -144,11 +144,21 @@ namespace MMECannon
                                     if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
                                 }
 
+                                /* DEVICE IS BUSY ERROR
                                 // set camera param...
                                 int ssz = sizeof(uint);
                                 uint vval = EDSDKLib.EDSDK.AEMode_Mamual;
                                 i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam, (uint)EDSDKLib.EDSDK.PropID_AEModeSelect, 0, ssz, vval);
                                 if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property AEMode sz=" + 
+                                    ssz.ToString() + " vval=" + vval + " status=" + i.ToString());
+                                 * */
+
+
+                                // set camera param...
+                                int ssz = sizeof(uint);
+                                uint vval = EDSDKLib.EDSDK.AEMode_Mamual;
+                                i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam, (uint)EDSDKLib.EDSDK.PropID_AEMode, 0, ssz, vval);
+                                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property AEMode sz=" +
                                     ssz.ToString() + " vval=" + vval + " status=" + i.ToString());
                                
 
