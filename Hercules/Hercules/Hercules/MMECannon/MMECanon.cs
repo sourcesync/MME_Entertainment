@@ -153,12 +153,19 @@ namespace MMECannon
                                     ssz.ToString() + " vval=" + vval + " status=" + i.ToString());
                                  * */
 
-
+                                /* ERR, NOT SUPPORTED ERR
                                 // set camera param...
                                 int ssz = sizeof(uint);
                                 uint vval = EDSDKLib.EDSDK.AEMode_Mamual;
                                 i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam, (uint)EDSDKLib.EDSDK.PropID_AEMode, 0, ssz, vval);
                                 if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property AEMode sz=" +
+                                    ssz.ToString() + " vval=" + vval + " status=" + i.ToString());
+                                 * */
+                                int ssz = sizeof(uint);
+                                uint vval = 0;
+                                i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam, (uint)EDSDKLib.EDSDK.PropID_ExposureCompensation, 
+                                    0, ssz, vval);
+                                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property EM sz=" +
                                     ssz.ToString() + " vval=" + vval + " status=" + i.ToString());
                                
 
