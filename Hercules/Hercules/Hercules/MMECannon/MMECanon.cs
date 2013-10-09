@@ -7,7 +7,7 @@ namespace MMECannon
 {
     public class MMECanon
     {
-        public bool DEBUG = false;
+        public bool DEBUG = true;
 
         public bool download_done = false;
 
@@ -105,7 +105,7 @@ namespace MMECannon
 
         public Boolean init(bool debug)
         {
-            this.DEBUG = DEBUG;
+            this.DEBUG = debug;
             this.download_done = false;
 
             uint i = EDSDKLib.EDSDK.EdsInitializeSDK();
@@ -134,7 +134,7 @@ namespace MMECannon
                             if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Open Session status=" + i.ToString());
                             if (i == 0)
                             {
-
+                                // get device info...
                                 EDSDKLib.EDSDK.EdsDeviceInfo deviceInfo;
                                 i = EDSDKLib.EDSDK.EdsGetDeviceInfo(_cam, out deviceInfo);
                                 if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Get Device Info status=" + i.ToString());
@@ -143,6 +143,13 @@ namespace MMECannon
                                     this.connected_camera_name = deviceInfo.szDeviceDescription;
                                     if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Device Info description= " + deviceInfo.szDeviceDescription);
                                 }
+
+                                // set camera param...
+                                int ssz = sizeof(uint);
+                                i = EDSDKLib.EDSDK.EdsSetPropertyData(_cam, (uint)EDSDKLib.EDSDK.AEMode_Mamual, 0, ssz, 4);
+                                if (this.DEBUG) System.Windows.Forms.MessageBox.Show("Set Property AEMode sz=" + 
+                                    ssz.ToString() + " status=" + i.ToString());
+                               
 
                                 EDSDKLib.EDSDK.EdsSaveTo toPC = EDSDKLib.EDSDK.EdsSaveTo.Host;
                                 uint idata = (uint)toPC;
