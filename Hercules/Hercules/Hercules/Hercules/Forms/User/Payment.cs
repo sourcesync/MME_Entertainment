@@ -200,12 +200,16 @@ namespace MME.Hercules.Forms.User
         {
             this.timer.Stop();
 
+            // uncomment to send clear command before launching the experience...
+
+            /*
             if (MME.Hercules.Utility.BillCollector.bc != null)
             {
                 MME.Hercules.Utility.BillCollector.bc.sync = null;
                 MME.Hercules.Utility.BillCollector.bc.cb = null;
                 MME.Hercules.Utility.BillCollector.bc.send_clear_command();
             }
+             * */
 
             this.DialogResult = DialogResult.OK;
 
