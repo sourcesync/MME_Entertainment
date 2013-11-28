@@ -199,6 +199,15 @@ namespace MME.Hercules.Forms.User
 
         }
 
+        public static bool GetCameraCalibration()
+        {
+             String val = ConfigUtility.GetValue("CameraCalibrationProperty");
+             if (System.Environment.MachineName == val) 
+                 return true;
+             else 
+                 return false;
+            
+        }
 
         public static bool GetConfigOffline()
         {
@@ -480,13 +489,7 @@ namespace MME.Hercules.Forms.User
             }
             else // NOT TABLE MODE, NORMAL...
             {
-                // if there is vend, reset at the top of loop before starting anything...
-                if (MME.Hercules.Utility.BillCollector.bc != null)
-                {
-                    MME.Hercules.Utility.BillCollector.bc.sync = null;
-                    MME.Hercules.Utility.BillCollector.bc.cb = null;
-                    MME.Hercules.Utility.BillCollector.bc.send_clear_command();
-                }
+                
 
                 //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);
                 //g
@@ -745,6 +748,14 @@ namespace MME.Hercules.Forms.User
                     }
                 }
 
+
+                // if there is vend, reset at the top of loop before starting anything...
+                if (MME.Hercules.Utility.BillCollector.bc != null)
+                {
+                    MME.Hercules.Utility.BillCollector.bc.sync = null;
+                    MME.Hercules.Utility.BillCollector.bc.cb = null;
+                    MME.Hercules.Utility.BillCollector.bc.send_clear_command();
+                }
 
                 //gw
                 //PhidgetUtility.Relay(Convert.ToInt32(ConfigUtility.GetValue("PhidgetRelay_VanityLight")), true);

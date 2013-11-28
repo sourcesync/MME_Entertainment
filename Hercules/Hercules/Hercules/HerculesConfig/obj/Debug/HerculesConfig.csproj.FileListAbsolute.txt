@@ -33,3 +33,8 @@ C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainm
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\obj\Debug\HerculesConfig.dll
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\obj\Debug\HerculesConfig.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\bin\Debug\HerculesConfig.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\bin\Debug\HerculesConfig.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\obj\Debug\HerculesConfig.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesConfig\obj\Debug\HerculesConfig.pdb

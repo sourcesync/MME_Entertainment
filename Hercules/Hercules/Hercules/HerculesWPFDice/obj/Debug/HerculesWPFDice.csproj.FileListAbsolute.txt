@@ -44,3 +44,15 @@ C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainm
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\GenerateResource.write.1.tlog
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\HerculesWPFDice.dll
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\HerculesWPFDice.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\bin\Debug\HerculesWPFDice.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\bin\Debug\HerculesWPFDice.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\UserControl1.baml
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\UserControl1.g.cs
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\HerculesWPFDice_MarkupCompile.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\HerculesWPFDice.g.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\HerculesWPFDice.Properties.Resources.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\HerculesWPFDice.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDice\obj\Debug\HerculesWPFDice.pdb

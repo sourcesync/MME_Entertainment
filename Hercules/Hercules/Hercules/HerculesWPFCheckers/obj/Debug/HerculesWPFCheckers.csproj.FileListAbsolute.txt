@@ -44,3 +44,15 @@ C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainm
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\GenerateResource.write.1.tlog
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.dll
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\bin\Debug\HerculesWPFCheckers.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\bin\Debug\HerculesWPFCheckers.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\UserControl1.baml
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\UserControl1.g.cs
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers_MarkupCompile.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.g.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.Properties.Resources.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFCheckers\obj\Debug\HerculesWPFCheckers.pdb

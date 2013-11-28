@@ -95,3 +95,17 @@ C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainm
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\GenerateResource.write.1.tlog
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\HerculesWPFDraw.dll
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\HerculesWPFDraw.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\bin\Debug\HerculesWPFDraw.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\bin\Debug\HerculesWPFDraw.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\bin\Debug\HerculesConfig.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\bin\Debug\HerculesConfig.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\UserControl1.baml
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\UserControl1.g.cs
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\HerculesWPFDraw_MarkupCompile.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\HerculesWPFDraw.g.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\HerculesWPFDraw.Properties.Resources.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\HerculesWPFDraw.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDraw\obj\Debug\HerculesWPFDraw.pdb

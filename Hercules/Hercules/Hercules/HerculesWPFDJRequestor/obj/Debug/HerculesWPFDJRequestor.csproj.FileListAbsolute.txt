@@ -117,3 +117,17 @@ C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainm
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\GenerateResource.write.1.tlog
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\HerculesWPFDJRequestor.dll
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\HerculesWPFDJRequestor.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\bin\Debug\HerculesWPFDJRequestor.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\bin\Debug\HerculesWPFDJRequestor.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\bin\Debug\HerculesConfig.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\bin\Debug\HerculesConfig.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\UserControl1.baml
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\UserControl1.g.cs
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\HerculesWPFDJRequestor_MarkupCompile.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\HerculesWPFDJRequestor.g.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\HerculesWPFDJRequestor.Properties.Resources.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\HerculesWPFDJRequestor.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFDJRequestor\obj\Debug\HerculesWPFDJRequestor.pdb

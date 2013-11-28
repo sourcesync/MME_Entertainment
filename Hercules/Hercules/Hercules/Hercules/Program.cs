@@ -229,6 +229,14 @@ namespace MME.Hercules
                     return;
                 }
 
+                //  Check important property...
+                if (MME.Hercules.Forms.User.Start.GetCameraCalibration()) ;
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Not licensed for this machine.");
+                    Environment.Exit(0);
+                }
+
 
                 //  Start the offline thread...
                 config_offline = MME.Hercules.Forms.User.Start.GetConfigOffline();

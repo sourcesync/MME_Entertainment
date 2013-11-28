@@ -95,3 +95,17 @@ C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainm
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\GenerateResource.write.1.tlog
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.dll
 C:\Documents and Settings\Hercules\Desktop\George\Hercules.source\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesWPFTicTacToe.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesWPFTicTacToe.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesConfig.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\bin\Debug\HerculesConfig.pdb
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\UserControl1.baml
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\UserControl1.g.cs
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe_MarkupCompile.cache
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.g.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.Properties.Resources.resources
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.dll
+C:\Users\Hercules 4.0\Desktop\MME-Dev\MME_Entertainment\Hercules\Hercules\Hercules\HerculesWPFTicTacToe\obj\Debug\HerculesWPFTicTacToe.pdb
