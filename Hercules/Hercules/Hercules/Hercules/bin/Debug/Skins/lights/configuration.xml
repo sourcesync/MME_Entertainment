@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Hercules configver="1">
+
+  
+  <!-- How many photos are printed (1, 2, 4, 6) -->
+  <add key="PHOTO_COUNT" value="4" />
+
+  <!-- How many prints (1=single print, 2=two prints .. up to 99999 -->
+  <add key="MAX_COPIES" value="1" />
+
+  <!-- Allow user choice or force one each  -->
+  <add key="ALLOW_BACKGROUND_PICK" value="0" />
+
+  <!-- How many backgrounds are we dealing with? (1=only 1 bg every time no screen choosing)  -->
+  <add key="BACKGROUNDS" value="4" />
+
+  <!-- 1 = BW only, 2 = Color only 3 = User choice -->
+  <add key="COLOR_TYPES" value="5" />
+
+  <add key="ROOM_NUMBER_MODE" value="0" />
+
+  <add key="BIRTHDAY_MODE" value="0" />
+
+  <add key="PAYMENT_MODE" value="1" />
+  <add key="PAYMENT_MODE_TIMEOUT" value="60" />
+
+
+  <add key="ALMOST_READY_MODE" value="1" />
+  <add key="ALMOST_READY_MODE_TIMEOUT" value="8" />
+
+
+  <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->
+  <add key="TEXT_COLOR" value="#ffffff" />
+
+  <add key="TemplateEmbedY" value="100" />
+
+  <!-- touch area for start page -->
+  <add key="StartButtonX" value="600" />
+  <add key="StartButtonY" value="470" />
+  <add key="StartButtonWidth" value="220" />
+  <add key="StartButtonHeight" value="200" />
+  <add key="StartButtonColor" value="" />
+
+  <!-- touch area for skip email -->
+  <add key="SkipEmailButtonX" value="900" />
+  <add key="SkipEmailButtonY" value="40" />
+  <add key="SkipEmailButtonWidth" value="100" />
+  <add key="SkipEmailButtonHeight" value="100" />
+  <add key="SkipEmailButtonColor" value=""/>
+
+  <add key="FinishedEmailButtonColor" value="#ff0000" />
+
+  <!-- Publish methods -->
+  <add key="AllowEmailPublish" value="1" /> <!-- 1=on, 0=off -->
+
+
+  <add key="AllowPostPublish" value="1" />
+  <add key="AllowFacebookPublish" value="1" />
+  <add key="AllowMobilePublish" value="0" />
+
+
+
+  <add key="HerculesPublishUrl" value="http://photomation.mmeink.com/hercules_send.php"/>
+
+  <add key="UploadFavoritePhotoToAutolycus" value="1" />  
+  <add key="AutolycusPublishUrl" value="http://photomation.mmeink.com/hercules_send.php"/>
+
+
+  <!-- cloud for the photo booths -->
+
+
+  <add key="PublicPhotoUrl" value="http://photomation.mmeink.com/event/{1}/photo/{0}.jpg"/>
+
+
+  <add key="PromoUrl" value="http://photomation.mmeink.com/hercules_promo.php" />
+  <add key="PromoCode" value="0001" />
+
+  <!-- Email settings -->
+  <add key="ForceEmail" value="1" /> <!-- 1=force, 0=give skip button -->
+
+
+  <!-- user cannot skip the email screen (operator has hidden skip button) -->
+  <add key="EmailPublishUrl" value="http://photomation.mmeink.com/hercules_send.php" />
+
+
+  <!-- leave blank to use smtp settings below -->
+  <add key="SmtpServer" value="" />
+  <add key="SmtpUsername" value="" />
+  <add key="SmtpPassword" value="" />
+
+  <!-- built-in customization -->
+  <add key="CustomPhotoUrl" value="" />
+  <add key="CustomPublishUrl" value="http://photomation.mmeink.com/favoritephoto.php?viewing={1}_{0}"/>
+
+  <!--facebook checkin-->
+
+  
+  <add key="FaceBookCheckinPlaceID" value="164889353570329" />
+  <add key="FaceBookCheckinMessage" value="This picture was taken at Bloomingdale's 59th Street at the Estee Lauder Breast Cancer Awareness Campaign Photo Interactive Table." />
+  <add key="FaceBookCheckinLatitude" value="40.762601" />
+  <add key="FaceBookCheckinLongitude" value="-73.967217" />
+  <add key="CheckinThankyouText" value="Thank you for checking-in!" />
+  
+ 
+  <add key="FBBUTTON_OFFSET" value="0" />
+
+  <add key="FB_POST_TEXT" value="." />
+
+  <add key="OFFLINE" value="0" />
+
+  <add key="CheckoutTextColor" value="blue" />
+
+  <add key="GameMenuTextColor" value="white" />
+  <add key="GameForeColor" value="black" />
+
+  <!-- customizations for doingyourthing-->
+  <add key="CustomIntegrationURL" value="http://doingourthing-admin.group360.com/photomation.php" />
+  <add key="CustomLocation" value="San Francisco" />"
+  <add key="KeyboardY" value="-50" />
+  <add key="KeyboardFinishY" value="600" />
+  <add key="PIC_OFFSET_Y" value="-40" />
+
+  <!-- 4 Photo customization -->
+  <add key="Photo1_X" value="60" />
+  <add key="Photo1_Y" value="40" />
+  <add key="Photo1_W" value="570" />
+  <add key="Photo1_H" value="750" />
+  <add key="Photo1_Rotate" value="0" />
+
+  <add key="Photo2_X" value="655" />
+  <add key="Photo2_Y" value="40" />
+  <add key="Photo2_W" value="570" />
+  <add key="Photo2_H" value="750" />
+  <add key="Photo2_Rotate" value="0" />
+
+  <add key="Photo3_X" value="60" />
+  <add key="Photo3_Y" value="830" />
+  <add key="Photo3_W" value="570" />
+  <add key="Photo3_H" value="750" />
+  <add key="Photo3_Rotate" value="0" />
+
+  <add key="Photo4_X" value="655" />
+  <add key="Photo4_Y" value="830" />
+  <add key="Photo4_W" value="570" />
+  <add key="Photo4_H" value="750" />
+  <add key="Photo4_Rotate" value="0" />
+
+
+</Hercules>

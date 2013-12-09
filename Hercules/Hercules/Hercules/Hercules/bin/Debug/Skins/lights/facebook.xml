@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Hercules facebookver="1">
+
+  <string key="TITLE" value="Check out my awesome picture taken from the MOAF Photo Booth!" />
+  <string key="DESC" value=" Stop down to 48 Wall Street in NYC to check out the great displays and exhibits" />
+  <string key="LINK" value="$CUSTOM1$" />
+
+</Hercules>

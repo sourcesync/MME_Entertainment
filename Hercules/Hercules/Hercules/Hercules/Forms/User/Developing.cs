@@ -397,6 +397,16 @@ namespace MME.Hercules.Forms.User
 
         private void CustomEmail()
         {
+            if ((ConfigUtility.GetConfig(ConfigUtility.Config, "AllowEmailPublish").Equals("0")))
+            {
+                // insert artificial delay here - remember we can do this
+                // here because its a background worker thread
+                // this trick won't work in other places esp in the main thread
+                // of execution like the UI thread
+                Thread.Sleep(2000);
+                return;
+            }
+                   
             if (this.currentSession.FavoritePhoto == 0)
                 return;
             

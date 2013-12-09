@@ -9,10 +9,10 @@
   <add key="MAX_COPIES" value="1" />
 
   <!-- Allow user choice or force one each  -->
-  <add key="ALLOW_BACKGROUND_PICK" value="0" />
+  <add key="ALLOW_BACKGROUND_PICK" value="1" />
 
   <!-- How many backgrounds are we dealing with? (1=only 1 bg every time no screen choosing)  -->
-  <add key="BACKGROUNDS" value="4" />
+  <add key="BACKGROUNDS" value="2" />
 
   <!-- 1 = BW only, 2 = Color only 3 = User choice -->
   <add key="COLOR_TYPES" value="5" />
@@ -21,16 +21,16 @@
 
   <add key="BIRTHDAY_MODE" value="0" />
 
-  <add key="PAYMENT_MODE" value="1" />
+  <add key="PAYMENT_MODE" value="0" />
   <add key="PAYMENT_MODE_TIMEOUT" value="60" />
 
 
-  <add key="ALMOST_READY_MODE" value="0" />
+  <add key="ALMOST_READY_MODE" value="1" />
   <add key="ALMOST_READY_MODE_TIMEOUT" value="8" />
 
 
   <!-- The color of text generaeted by the booth example #ffffff = white, #000000 = black -->
-  <add key="TEXT_COLOR" value="#ffffff" />
+  <add key="TEXT_COLOR" value="#ffffffd" />
 
   <add key="TemplateEmbedY" value="100" />
 
@@ -51,7 +51,7 @@
   <add key="FinishedEmailButtonColor" value="#ff0000" />
 
   <!-- Publish methods -->
-  <add key="AllowEmailPublish" value="1" /> <!-- 1=on, 0=off -->
+  <add key="AllowEmailPublish" value="0" /> <!-- 1=on, 0=off -->
 
 
   <add key="AllowPostPublish" value="1" />
@@ -120,33 +120,31 @@
   <add key="KeyboardFinishY" value="600" />
   <add key="PIC_OFFSET_Y" value="-40" />
 
-  <!-- 4 Photo customization -->
-  <!--
-  <add key="Photo1_X" value="60" />
-  <add key="Photo1_Y" value="40" />
-  <add key="Photo1_W" value="570" />
-  <add key="Photo1_H" value="750" />
+ 
+	
+  <!-- 1 Photo customization 
+  <add key="Photo1_X" value="50" />
+  <add key="Photo1_Y" value="50" />
+  <add key="Photo1_W" value="1100" />
+  <add key="Photo1_H" value="1500" />
+  <add key="Photo1_Rotate" value="0" />
+	-->
+
+  <!-- 2 Photo customization 
+  <add key="Photo1_X" value="350" />
+  <add key="Photo1_Y" value="100" />
+  <add key="Photo1_W" value="500" />
+  <add key="Photo1_H" value="700" />
   <add key="Photo1_Rotate" value="0" />
 
-  <add key="Photo2_X" value="655" />
-  <add key="Photo2_Y" value="40" />
-  <add key="Photo2_W" value="570" />
-  <add key="Photo2_H" value="750" />
+  <add key="Photo2_X" value="350" />
+  <add key="Photo2_Y" value="1000" />
+  <add key="Photo2_W" value="500" />
+  <add key="Photo2_H" value="700" />
   <add key="Photo2_Rotate" value="0" />
+-->
 
-  <add key="Photo3_X" value="60" />
-  <add key="Photo3_Y" value="830" />
-  <add key="Photo3_W" value="570" />
-  <add key="Photo3_H" value="750" />
-  <add key="Photo3_Rotate" value="0" />
-
-  <add key="Photo4_X" value="655" />
-  <add key="Photo4_Y" value="830" />
-  <add key="Photo4_W" value="570" />
-  <add key="Photo4_H" value="750" />
-  <add key="Photo4_Rotate" value="0" />
-  -->
-  <!-- 4 Photo customization -->
+  <!--  4 Photo customization -->
   <add key="Photo1_X" value="0" />
   <add key="Photo1_Y" value="0" />
   <add key="Photo1_W" value="100" />
@@ -170,4 +168,45 @@
   <add key="Photo4_W" value="100" />
   <add key="Photo4_H" value="100" />
   <add key="Photo4_Rotate" value="0" />
+	
+
+
+  <!-- 6 Photo customization 
+  <add key="Photo1_X" value="60" />
+  <add key="Photo1_Y" value="20" />
+  <add key="Photo1_W" value="430" />
+  <add key="Photo1_H" value="570" />
+  <add key="Photo1_Rotate" value="0" />
+
+  <add key="Photo2_X" value="760" />
+  <add key="Photo2_Y" value="20" />
+  <add key="Photo2_W" value="430" />
+  <add key="Photo2_H" value="570" />
+  <add key="Photo2_Rotate" value="0" />
+
+  <add key="Photo3_X" value="60" />
+  <add key="Photo3_Y" value="610" />
+  <add key="Photo3_W" value="430" />
+  <add key="Photo3_H" value="570" />
+  <add key="Photo3_Rotate" value="0" />
+
+  <add key="Photo4_X" value="760" />
+  <add key="Photo4_Y" value="610" />
+  <add key="Photo4_W" value="430" />
+  <add key="Photo4_H" value="570" />
+  <add key="Photo4_Rotate" value="0" />
+
+  <add key="Photo5_X" value="60" />
+  <add key="Photo5_Y" value="1200" />
+  <add key="Photo5_W" value="430" />
+  <add key="Photo5_H" value="570" />
+  <add key="Photo5_Rotate" value="0" />
+
+  <add key="Photo6_X" value="760" />
+  <add key="Photo6_Y" value="1200" />
+  <add key="Photo6_W" value="430" />
+  <add key="Photo6_H" value="570" />
+  <add key="Photo6_Rotate" value="0" />
+-->
+
 </Hercules>

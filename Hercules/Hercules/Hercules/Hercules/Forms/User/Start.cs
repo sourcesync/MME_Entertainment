@@ -681,15 +681,34 @@ namespace MME.Hercules.Forms.User
                 {
                    //System.Windows.Forms.MessageBox.Show("1-" + dr.ToString() + currentSession.EmailAddress);
 
-
-                    // As to pick favorite if emailing
-                    if (dr == System.Windows.Forms.DialogResult.OK )
+                    bool email_publish =
+                        ((ConfigUtility.GetConfig(ConfigUtility.Config,
+                        "AllowEmailPublish").Equals("1")));
+                   
+                    if ((ConfigUtility.PhotoCount > 1) && email_publish )
                     {
+                        // As to pick favorite if emailing
+                        if (dr == System.Windows.Forms.DialogResult.OK)
                         {
-                            PickFavorite pvform = new PickFavorite(currentSession);
-                            dr = pvform.ShowDialog();
+                            {
+                                PickFavorite pvform = new PickFavorite(currentSession);
+                                dr = pvform.ShowDialog();
+                            }
                         }
                     }
+                    else
+                    {
+                        //  Force favorite to first one...
+                        if (dr == System.Windows.Forms.DialogResult.OK )
+                        {
+                            this.currentSession.FavoritePhoto = 1;
+                            this.currentSession.FavoritePhotoFilename = "photo1";
+
+                            // set favorite - stolen from pick favorite...
+                            this.currentSession.FavoritePhotoFilename = Guid.NewGuid().ToString().Replace("-", "");
+                        }
+                    }
+
                 }
                 else // web cam...
                 {
