@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Hercules facebookver="1">
-
-  <string key="TITLE" value="This picture was taken at the 4040 club NYC." />
-  <string key="DESC" value="Visit 4040club.com/nyc to view more pix!" />
-  <string key="LINK" value="$CUSTOM1$" />
-
-</Hercules>
