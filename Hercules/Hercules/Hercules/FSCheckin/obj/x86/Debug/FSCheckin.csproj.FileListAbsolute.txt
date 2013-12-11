@@ -1,9 +1,0 @@
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FSCheckin\bin\Debug\FSCheckin.exe
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FSCheckin\bin\Debug\FSCheckin.pdb
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FSCheckin\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FSCheckin\obj\x86\Debug\FSCheckin.Form1.resources
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FSCheckin\obj\x86\Debug\FSCheckin.Properties.Resources.resources
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FSCheckin\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FSCheckin\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FSCheckin\obj\x86\Debug\FSCheckin.exe
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\FSCheckin\obj\x86\Debug\FSCheckin.pdb

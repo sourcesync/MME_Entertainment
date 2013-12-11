@@ -1,7 +1,0 @@
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\anothertry\obj\x86\Release\anothertry.Form1.resources
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\anothertry\obj\x86\Release\anothertry.Properties.Resources.resources
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\anothertry\obj\x86\Release\anothertry.csproj.GenerateResource.Cache
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\anothertry\bin\Release\anothertry.exe
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\anothertry\bin\Release\anothertry.pdb
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\anothertry\obj\x86\Release\anothertry.exe
-C:\Projects\MME\MME_Entertainment\Hercules\EOS\Test\WindowsFormsApplication1\anothertry\obj\x86\Release\anothertry.pdb

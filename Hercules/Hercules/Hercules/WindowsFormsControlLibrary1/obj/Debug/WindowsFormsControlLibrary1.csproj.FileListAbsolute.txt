@@ -1,8 +1,0 @@
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsControlLibrary1\bin\Debug\WindowsFormsControlLibrary1.dll
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsControlLibrary1\bin\Debug\WindowsFormsControlLibrary1.pdb
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsControlLibrary1\obj\Debug\ResolveAssemblyReference.cache
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.UserControl1.resources
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsControlLibrary1\obj\Debug\GenerateResource.read.1.tlog
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsControlLibrary1\obj\Debug\GenerateResource.write.1.tlog
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.dll
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.pdb

@@ -1,9 +1,0 @@
-C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestDisplayProgram\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestDisplayProgram\obj\x86\Debug\TestDisplayProgram.Form1.resources
-C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestDisplayProgram\obj\x86\Debug\TestDisplayProgram.Properties.Resources.resources
-C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestDisplayProgram\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestDisplayProgram\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestDisplayProgram\bin\Debug\TestDisplayProgram.exe
-C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestDisplayProgram\bin\Debug\TestDisplayProgram.pdb
-C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestDisplayProgram\obj\x86\Debug\TestDisplayProgram.exe
-C:\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\TestDisplayProgram\obj\x86\Debug\TestDisplayProgram.pdb

@@ -1,6 +1,0 @@
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\bin\Release\CameraSDK.dll
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Release\ResolveAssemblyReference.cache
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Release\CameraSDK.dll
-C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\bin\Release\CameraSDK.dll
-C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Release\ResolveAssemblyReference.cache
-C:\Users\Disco\Desktop\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\CanonSDK\obj\Release\CameraSDK.dll

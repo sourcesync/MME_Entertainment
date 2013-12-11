@@ -1,9 +1,0 @@
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsCustomDraw\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsCustomDraw\obj\x86\Debug\WindowsFormsCustomDraw.Properties.Resources.resources
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsCustomDraw\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsCustomDraw\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsCustomDraw\bin\Debug\WindowsFormsCustomDraw.exe
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsCustomDraw\bin\Debug\WindowsFormsCustomDraw.pdb
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsCustomDraw\obj\x86\Debug\WindowsFormsCustomDraw.exe
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsCustomDraw\obj\x86\Debug\WindowsFormsCustomDraw.pdb
-C:\George\MME\sourcecontrol\MME_Entertainment\Hercules\Hercules\Hercules\WindowsFormsCustomDraw\obj\x86\Debug\WindowsFormsCustomDraw.Form1.resources
